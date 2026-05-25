@@ -170,8 +170,8 @@ main::after {
 
 .section-frame {
   position: relative;
-  min-height: auto;
-  padding: clamp(104px, 10vw, 154px) clamp(20px, 5vw, 82px) clamp(52px, 6vw, 88px);
+  min-height: 112dvh;
+  padding: clamp(140px, 14dvh, 210px) clamp(20px, 5vw, 82px) clamp(120px, 13dvh, 190px);
   overflow: hidden;
 }
 
@@ -236,14 +236,14 @@ main::after {
 .section-frame:not(.hero) {
   z-index: calc(10 + var(--slide-index, 1));
   background: transparent;
-  min-height: auto;
+  min-height: 118dvh;
   transform-origin: center top;
   box-shadow: 0 -1px 0 rgba(244, 245, 240, 0.08);
 }
 
 .section-frame:not(.hero):not(.installed) {
   margin-top: 0;
-  padding-top: clamp(104px, 10vw, 154px);
+  padding-top: clamp(140px, 14dvh, 210px);
   clip-path: none;
 }
 
@@ -647,8 +647,10 @@ h1 .title-feed {
   grid-template-columns: minmax(440px, 0.92fr) minmax(560px, 1.08fr);
   align-items: center;
   gap: clamp(36px, 4vw, 64px);
-  margin-top: clamp(-220px, -22dvh, -140px);
-  padding-top: calc(clamp(104px, 10vw, 154px) + clamp(140px, 22dvh, 220px));
+  min-height: 128dvh;
+  margin-top: 0;
+  padding-top: clamp(170px, 18dvh, 260px);
+  padding-bottom: clamp(150px, 16dvh, 240px);
   background:
     linear-gradient(180deg, rgba(7, 7, 7, 0) 0%, rgba(7, 7, 7, 0.78) 16%, rgba(7, 7, 7, 0.98) 36%, rgba(7, 7, 7, 1) 100%),
     radial-gradient(circle at 86% 18%, rgba(255, 163, 0, 0.12), transparent 24rem),
@@ -1121,11 +1123,11 @@ h1 .title-feed {
 }
 
 .fit {
-  min-height: 112dvh;
+  min-height: 124dvh;
   display: grid;
   place-items: center;
-  padding-top: clamp(150px, 17vh, 220px);
-  padding-bottom: clamp(170px, 20vh, 260px);
+  padding-top: clamp(170px, 18dvh, 260px);
+  padding-bottom: clamp(210px, 22dvh, 320px);
   overflow: hidden;
   isolation: isolate;
   background: var(--black);
@@ -1287,15 +1289,17 @@ h1 .title-feed {
 }
 
 .section-frame.installed {
-  margin-top: clamp(-220px, -22dvh, -140px);
-  padding-top: calc(clamp(104px, 10vw, 154px) + clamp(140px, 22dvh, 220px));
+  min-height: 128dvh;
+  margin-top: 0;
+  padding-top: clamp(170px, 18dvh, 260px);
+  padding-bottom: clamp(150px, 16dvh, 240px);
   background:
-    linear-gradient(180deg, rgba(7, 7, 7, 0) 0%, rgba(7, 7, 7, 0.78) 16%, rgba(7, 7, 7, 0.98) 36%, rgba(7, 7, 7, 1) 100%),
+    linear-gradient(180deg, rgba(7, 7, 7, 0.98) 0%, rgba(7, 7, 7, 0.98) 18%, rgba(7, 7, 7, 1) 100%),
     radial-gradient(circle at var(--tone-x, 20%) var(--tone-y, 22%), var(--section-accent), transparent 30rem),
     linear-gradient(115deg, var(--section-contrast), transparent 42%),
     var(--section-base);
-  -webkit-mask-image: linear-gradient(180deg, transparent 0, rgba(0, 0, 0, 0.18) 48px, #000 210px, #000 100%);
-  mask-image: linear-gradient(180deg, transparent 0, rgba(0, 0, 0, 0.18) 48px, #000 210px, #000 100%);
+  -webkit-mask-image: none;
+  mask-image: none;
 }
 
 .intelligence {
@@ -1771,13 +1775,14 @@ h1 .title-feed {
   }
 
   .section-frame {
-    min-height: auto;
-    padding: 94px 16px 52px;
+    min-height: 112dvh;
+    padding: 116px 16px 92px;
   }
 
   .section-frame:not(.hero):not(.installed) {
     margin-top: 0;
-    padding-top: 94px;
+    min-height: 112dvh;
+    padding-top: 116px;
     clip-path: none;
   }
 
@@ -1790,9 +1795,9 @@ h1 .title-feed {
   .fit {
     grid-template-columns: 1fr;
     gap: 34px;
-    min-height: 108dvh;
-    padding-top: 118px;
-    padding-bottom: 138px;
+    min-height: 118dvh;
+    padding-top: 136px;
+    padding-bottom: 170px;
   }
 
   .quote-block h2,
@@ -1860,8 +1865,10 @@ h1 .title-feed {
 
   .installed {
     gap: 38px;
-    margin-top: -132px;
-    padding-top: 210px;
+    min-height: 124dvh;
+    margin-top: 0;
+    padding-top: 148px;
+    padding-bottom: 142px;
   }
 
   .installed-copy h2 {
@@ -2721,7 +2728,7 @@ h1 .title-feed {
 
 /* Hero 02: WebGL shader inspirado no Throw Shade, travado na identidade Feed. */
 .hero {
-  min-height: 182dvh;
+  min-height: 214dvh;
   z-index: 2;
   grid-template-columns: 1fr;
   align-items: stretch;
