@@ -1392,6 +1392,31 @@ h1 .title-feed {
   text-align: center;
 }
 
+.fit-content::before,
+.fit-content::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: clamp(54px, 6vh, 86px);
+  z-index: -1;
+  width: min(68vw, 760px);
+  height: 1px;
+  background:
+    linear-gradient(90deg, transparent, rgba(255, 163, 0, 0.72), rgba(244, 245, 240, 0.18), transparent);
+  opacity: 0.44;
+  transform: translate3d(-50%, 0, 0) scaleX(0.68);
+  transform-origin: center;
+  animation: fitCtaSignal 3200ms cubic-bezier(0.16, 1, 0.3, 1) infinite alternate;
+  pointer-events: none;
+}
+
+.fit-content::after {
+  width: min(44vw, 500px);
+  bottom: clamp(40px, 4.8vh, 64px);
+  opacity: 0.28;
+  animation-delay: 680ms;
+}
+
 .fit-content .eyebrow {
   margin-bottom: 0;
   color: var(--white);
@@ -1421,9 +1446,90 @@ h1 .title-feed {
   width: max-content;
   min-width: min(100%, 380px);
   margin-top: clamp(6px, 1.4vh, 16px);
+  overflow: visible;
+  isolation: isolate;
   opacity: 1;
   transform: none;
   justify-self: center;
+  box-shadow:
+    0 20px 54px rgba(0, 0, 0, 0.34),
+    0 0 0 1px rgba(244, 245, 240, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.82);
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    transform 220ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 220ms ease;
+}
+
+.fit-content .fit-email-button::before,
+.fit-content .fit-email-button::after {
+  content: "";
+  position: absolute;
+  inset: -12px;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.fit-content .fit-email-button::before {
+  border: 1px solid rgba(255, 163, 0, 0.42);
+  background:
+    radial-gradient(circle at 84% 50%, rgba(255, 163, 0, 0.28), transparent 34%),
+    linear-gradient(90deg, transparent, rgba(255, 163, 0, 0.12), transparent);
+  opacity: 0.78;
+  transform: scale(1);
+  animation: fitButtonPulse 2200ms cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+.fit-content .fit-email-button::after {
+  inset: 2px;
+  z-index: 0;
+  border-radius: 999px;
+  background:
+    linear-gradient(105deg, transparent 0 24%, rgba(255, 255, 255, 0.5) 42%, transparent 58% 100%);
+  opacity: 0;
+  transform: translate3d(-34%, 0, 0);
+  transition:
+    opacity 180ms ease,
+    transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fit-content .fit-email-button span {
+  position: relative;
+  z-index: 1;
+  transition:
+    color 180ms ease,
+    background 180ms ease,
+    transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  animation: fitArrowNudge 1600ms cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+.fit-content .fit-email-button:hover,
+.fit-content .fit-email-button:focus-visible {
+  transform: translate3d(0, -3px, 0) scale(1.018);
+  box-shadow:
+    0 22px 70px rgba(255, 163, 0, 0.24),
+    0 20px 54px rgba(0, 0, 0, 0.38),
+    0 0 0 1px rgba(255, 163, 0, 0.58),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72);
+}
+
+.fit-content .fit-email-button:hover::after,
+.fit-content .fit-email-button:focus-visible::after {
+  opacity: 0.42;
+  transform: translate3d(34%, 0, 0);
+}
+
+.fit-content .fit-email-button:hover span,
+.fit-content .fit-email-button:focus-visible span {
+  transform: translate3d(3px, 0, 0) rotate(8deg);
+  animation-play-state: paused;
+}
+
+.fit-content .fit-email-button:active {
+  transform: translate3d(0, -1px, 0) scale(0.99);
 }
 
 @keyframes fitShaderDrift {
@@ -2037,6 +2143,7 @@ h1 .title-feed {
   .fit-content .fit-email-button {
     width: 100%;
     min-width: 0;
+    max-width: 420px;
   }
 
   h1 {
@@ -3809,7 +3916,11 @@ button.hero-cta {
 
   .fit-shader,
   .fit-shader::before,
-  .fit-shader::after {
+  .fit-shader::after,
+  .fit-content::before,
+  .fit-content::after,
+  .fit-content .fit-email-button::before,
+  .fit-content .fit-email-button span {
     animation: none;
     filter: none;
     mix-blend-mode: normal;
@@ -3854,6 +3965,513 @@ button.hero-cta {
 
   .hero-cta span {
     width: 34px;
+  }
+}
+
+/* Delight pass: services become an operating console instead of a flat card grid. */
+.installed {
+  --installed-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  grid-template-columns: minmax(340px, 0.62fr) minmax(760px, 1.38fr);
+  align-items: center;
+  gap: clamp(44px, 5vw, 86px);
+}
+
+.section-frame.installed {
+  min-height: 132dvh;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at var(--active-service-x, 20%) 16%, rgba(255, 163, 0, 0.16), transparent 25rem),
+    linear-gradient(180deg, rgba(7, 7, 7, 0.96) 0%, rgba(7, 7, 7, 1) 74%),
+    var(--black);
+}
+
+.section-frame.installed::before {
+  opacity: 0.28;
+  background-size: 72px 72px, 72px 72px, 100% 100%;
+}
+
+.installed-copy {
+  align-self: center;
+}
+
+.installed-copy h2 {
+  max-width: 10.8ch;
+  font-size: clamp(3.35rem, 5.2vw, 6.7rem);
+  line-height: 0.88;
+}
+
+.installed-route {
+  width: min(100%, 520px);
+  margin-top: clamp(34px, 4vw, 58px);
+  display: grid;
+  grid-template-columns: auto 1fr auto 1fr auto;
+  align-items: center;
+  gap: 12px;
+  color: rgba(244, 245, 240, 0.78);
+  font-size: clamp(0.72rem, 0.78vw, 0.86rem);
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.installed-route i {
+  height: 1px;
+  min-width: 28px;
+  background:
+    linear-gradient(90deg, rgba(255, 163, 0, 0.88), rgba(244, 245, 240, 0.12));
+  transform-origin: left;
+  animation: installedRoutePulse 2400ms cubic-bezier(0.16, 1, 0.3, 1) infinite alternate;
+}
+
+.installed-route i:nth-of-type(2) {
+  animation-delay: 360ms;
+}
+
+.installed-console {
+  position: relative;
+  z-index: 6;
+  display: grid;
+  grid-template-columns: minmax(290px, 0.86fr) minmax(460px, 1.14fr);
+  gap: 16px;
+  align-items: stretch;
+  transform: translateZ(0);
+}
+
+.installed.installed-is-interacting .installed-current {
+  border-color: rgba(255, 163, 0, 0.68);
+}
+
+.installed.installed-is-interacting .installed-current::before {
+  opacity: 0.5;
+}
+
+.installed.installed-is-interacting .installed-current::after {
+  opacity: 1;
+}
+
+.installed.installed-is-interacting .installed-current-icon {
+  transform: rotate(var(--active-service-tilt, 0deg)) scale(1.04);
+}
+
+.installed.installed-is-interacting .installed-system .installed-module {
+  opacity: 0.48;
+}
+
+.installed-console::before {
+  content: "";
+  position: absolute;
+  inset: -22px;
+  z-index: -1;
+  border: 1px solid rgba(244, 245, 240, 0.08);
+  background:
+    linear-gradient(90deg, rgba(255, 163, 0, 0.08), transparent 38%),
+    radial-gradient(circle at 18% var(--active-service-y, 16%), rgba(255, 163, 0, 0.2), transparent 17rem),
+    rgba(7, 7, 7, 0.34);
+  box-shadow:
+    inset 0 1px 0 rgba(244, 245, 240, 0.08),
+    0 38px 120px rgba(0, 0, 0, 0.42);
+  pointer-events: none;
+}
+
+.installed-current {
+  position: relative;
+  min-height: 100%;
+  display: grid;
+  align-content: stretch;
+  grid-template-rows: auto 1fr auto auto auto;
+  gap: 16px;
+  padding: clamp(24px, 3vw, 38px);
+  border: 1px solid rgba(255, 163, 0, 0.28);
+  background:
+    linear-gradient(160deg, rgba(255, 163, 0, 0.16), rgba(244, 245, 240, 0.035) 44%, rgba(7, 7, 7, 0.44)),
+    rgba(7, 7, 7, 0.62);
+  overflow: hidden;
+  contain: layout paint;
+  transition:
+    border-color 180ms var(--installed-ease);
+}
+
+.installed-current::before {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  border: 1px solid rgba(244, 245, 240, 0.08);
+  background:
+    repeating-linear-gradient(0deg, transparent 0 12px, rgba(244, 245, 240, 0.045) 13px),
+    linear-gradient(135deg, transparent 0 48%, rgba(255, 163, 0, 0.18) 48.2% 48.5%, transparent 48.8%);
+  opacity: 0.36;
+  pointer-events: none;
+  transition: opacity 260ms ease;
+}
+
+.installed-current::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: 0;
+  border: 1px solid rgba(255, 163, 0, 0.5);
+  background:
+    radial-gradient(circle at 20% 18%, rgba(255, 163, 0, 0.2), transparent 18rem),
+    linear-gradient(135deg, rgba(255, 163, 0, 0.12), transparent 52%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+
+.installed-current-top,
+.installed-current-label,
+.installed-current h3,
+.installed-current > p,
+.installed-output,
+.installed-current-visual,
+.installed-current-icon {
+  position: relative;
+  z-index: 1;
+}
+
+.installed-current-top {
+  position: absolute;
+  left: clamp(24px, 3vw, 38px);
+  right: clamp(24px, 3vw, 38px);
+  top: clamp(24px, 3vw, 38px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  color: rgba(244, 245, 240, 0.58);
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.installed-current-top strong {
+  color: var(--orange);
+  font-size: 0.96rem;
+}
+
+.installed-current-visual {
+  min-height: clamp(160px, 17vw, 230px);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: stretch;
+  gap: 16px;
+  margin-top: clamp(52px, 5vw, 72px);
+}
+
+.installed-current-icon {
+  width: clamp(76px, 7vw, 108px);
+  align-self: start;
+  border-radius: 50%;
+  border-color: rgba(255, 163, 0, 0.72);
+  background:
+    radial-gradient(circle at 34% 26%, rgba(244, 245, 240, 0.92), transparent 22%),
+    linear-gradient(135deg, #ffbe3d, #ffa300 42%, #9c6200);
+  box-shadow:
+    inset 0 1px 0 rgba(244, 245, 240, 0.44),
+    0 18px 46px rgba(255, 163, 0, 0.18);
+  transform: rotate(var(--active-service-tilt, 0deg));
+  transition:
+    border-radius 260ms var(--installed-ease),
+    transform 220ms var(--installed-ease);
+}
+
+.installed-current-icon svg {
+  width: 46%;
+  height: 46%;
+  color: rgba(7, 7, 7, 0.92);
+  stroke-width: 2.4;
+}
+
+.installed-current-stack {
+  display: grid;
+  gap: 8px;
+}
+
+.installed-current-stack span {
+  position: relative;
+  min-height: 48px;
+  display: grid;
+  align-content: center;
+  gap: 3px;
+  border: 1px solid rgba(244, 245, 240, 0.1);
+  padding: 10px 12px 10px 16px;
+  color: rgba(244, 245, 240, 0.64);
+  background:
+    linear-gradient(90deg, rgba(255, 163, 0, 0.12), rgba(244, 245, 240, 0.025)),
+    rgba(7, 7, 7, 0.2);
+  font-size: clamp(0.78rem, 0.78vw, 0.9rem);
+  font-weight: 700;
+  line-height: 1.12;
+  overflow: hidden;
+}
+
+.installed-current-stack span::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: var(--orange);
+  opacity: 0.86;
+}
+
+.installed-current-stack b {
+  color: rgba(244, 245, 240, 0.92);
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.installed-current-stack span:nth-child(2) {
+  transform: translateX(12px);
+}
+
+.installed-current-stack span:nth-child(3) {
+  transform: translateX(24px);
+  border-color: rgba(255, 163, 0, 0.24);
+  color: rgba(244, 245, 240, 0.82);
+}
+
+.installed-current-label {
+  margin: clamp(8px, 1vw, 14px) 0 0;
+  color: var(--orange);
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.installed-current h3 {
+  margin: 0;
+  color: var(--white);
+  font-size: clamp(2.25rem, 4vw, 4.65rem);
+  line-height: 0.9;
+}
+
+.installed-current > p:not(.installed-current-label) {
+  max-width: 32ch;
+  margin: 0;
+  color: rgba(244, 245, 240, 0.78);
+  font-size: clamp(1rem, 1.12vw, 1.18rem);
+  line-height: 1.42;
+}
+
+.installed-output {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.installed-output span {
+  min-height: 34px;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(255, 163, 0, 0.2);
+  border-radius: 999px;
+  padding: 0 12px;
+  color: rgba(244, 245, 240, 0.82);
+  background: rgba(255, 163, 0, 0.08);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.installed-console .installed-system {
+  max-width: none;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border: 0;
+  padding: 0;
+}
+
+.installed-console .installed-module {
+  min-height: 190px;
+  padding: 22px 20px 24px;
+  background:
+    linear-gradient(var(--service-angle), color-mix(in srgb, var(--service-accent), transparent 88%), rgba(244, 245, 240, 0.022) 54%),
+    rgba(244, 245, 240, 0.018);
+  transition-delay: 0ms;
+  transition:
+    opacity 220ms ease,
+    border-color 220ms ease,
+    transform 220ms var(--installed-ease);
+}
+
+.installed-console .installed-module p {
+  max-width: 30ch;
+  font-size: 0.95rem;
+  line-height: 1.36;
+}
+
+.installed-console .installed-module h3 {
+  font-size: clamp(1.45rem, 1.8vw, 2.18rem);
+}
+
+.installed-console .installed-module .service-mark {
+  width: 50px;
+}
+
+.installed-console .installed-module:is(:hover, :focus-visible, .is-active) {
+  transform: none;
+}
+
+.installed-console .installed-module.is-active {
+  border-color: rgba(255, 163, 0, 0.34);
+}
+
+.installed-console .installed-module.is-active::before {
+  height: 2px;
+}
+
+.installed .installed-console {
+  opacity: 0;
+  transform: translateY(34px);
+  animation: installedContentIn 780ms cubic-bezier(0.16, 1, 0.3, 1) 120ms forwards;
+}
+
+@keyframes installedRoutePulse {
+  0% {
+    transform: scaleX(0.58);
+    opacity: 0.52;
+  }
+
+  100% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fitButtonPulse {
+  0%, 100% {
+    opacity: 0.42;
+    transform: scale(0.985);
+  }
+
+  50% {
+    opacity: 0.86;
+    transform: scale(1.055);
+  }
+}
+
+@keyframes fitArrowNudge {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  48% {
+    transform: translate3d(2px, -1px, 0);
+  }
+}
+
+@keyframes fitCtaSignal {
+  from {
+    opacity: 0.18;
+    transform: translate3d(-50%, 0, 0) scaleX(0.42);
+  }
+
+  to {
+    opacity: 0.5;
+    transform: translate3d(-50%, 0, 0) scaleX(1);
+  }
+}
+
+@media (max-width: 1180px) {
+  .installed,
+  .installed-console {
+    grid-template-columns: 1fr;
+  }
+
+  .installed-copy h2 {
+    max-width: 12ch;
+  }
+
+  .installed-console .installed-system {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 780px) {
+  .section-frame.installed {
+    min-height: auto;
+    padding-top: 132px;
+    padding-bottom: 124px;
+  }
+
+  .installed {
+    gap: 34px;
+  }
+
+  .installed-copy h2 {
+    max-width: 11ch;
+    font-size: clamp(2.7rem, 12.4vw, 4.35rem);
+  }
+
+  .installed-route {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-top: 30px;
+  }
+
+  .installed-route i {
+    width: 46px;
+  }
+
+  .installed-console {
+    gap: 12px;
+  }
+
+  .installed-console::before {
+    inset: -10px;
+  }
+
+  .installed-current {
+    min-height: auto;
+    padding: 22px 18px 24px;
+  }
+
+  .installed-current::before {
+    inset: 12px;
+  }
+
+  .installed-current-top {
+    left: 18px;
+    right: 18px;
+    top: 18px;
+  }
+
+  .installed-current-visual {
+    min-height: auto;
+    grid-template-columns: 1fr;
+    margin-top: 52px;
+  }
+
+  .installed-current-icon {
+    width: 78px;
+  }
+
+  .installed-current-stack span,
+  .installed-current-stack span:nth-child(2),
+  .installed-current-stack span:nth-child(3) {
+    transform: none;
+  }
+
+  .installed-current h3 {
+    font-size: clamp(2.1rem, 12vw, 3.5rem);
+  }
+
+  .installed-output span {
+    min-height: 31px;
+    font-size: 0.76rem;
+  }
+
+  .installed-console .installed-system {
+    grid-template-columns: 1fr;
+  }
+
+  .installed-console .installed-module {
+    min-height: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .installed-route i {
+    animation: none;
   }
 }
 
