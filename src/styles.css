@@ -3519,6 +3519,71 @@ button.hero-cta {
 }
 
 @media (max-width: 780px) {
+  .site-shader-background,
+  .site-shader-background::before,
+  .site-shader-background::after {
+    display: none;
+    animation: none;
+  }
+
+  .section-frame.installed,
+  .section-frame.intelligence,
+  .section-frame.problem,
+  .section-frame.services,
+  .section-frame.process,
+  .section-frame.use-cases,
+  .section-frame.method,
+  .section-frame.fit,
+  .section-frame.cta {
+    filter: none !important;
+    box-shadow: 0 -1px 0 rgba(244, 245, 240, 0.08);
+    background:
+      linear-gradient(180deg, rgba(7, 7, 7, 0.96), rgba(7, 7, 7, 1)),
+      radial-gradient(circle at var(--tone-x, 20%) var(--tone-y, 22%), var(--section-accent), transparent 28rem),
+      var(--section-base);
+    transition: none;
+  }
+
+  .section-frame.installed::after,
+  .section-frame.intelligence::after,
+  .section-frame.problem::after,
+  .section-frame.services::after,
+  .section-frame.process::after,
+  .section-frame.use-cases::after,
+  .section-frame.method::after,
+  .section-frame.fit::after,
+  .section-frame.cta::after {
+    content: none;
+    display: none;
+    animation: none;
+  }
+
+  .section-frame.installed::before,
+  .section-frame.intelligence::before,
+  .section-frame.problem::before,
+  .section-frame.services::before,
+  .section-frame.process::before,
+  .section-frame.use-cases::before,
+  .section-frame.method::before,
+  .section-frame.fit::before,
+  .section-frame.cta::before {
+    opacity: 0.18;
+    mix-blend-mode: normal;
+    mask-image: none;
+  }
+
+  .fit-shader,
+  .fit-shader::before,
+  .fit-shader::after {
+    animation: none;
+    filter: none;
+    mix-blend-mode: normal;
+  }
+
+  .hero-stage::before {
+    opacity: var(--hero-stage-overlay);
+  }
+
   .hero {
     min-height: 190dvh;
     padding: 0;

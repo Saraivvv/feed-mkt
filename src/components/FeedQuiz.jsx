@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import InteractiveWavesCanvas from "./InteractiveWavesCanvas";
 
 const whatsappPhone = "5516993020694";
+const quizFormName = "feed-quiz";
 
 const initialAnswers = {
   company: "",
@@ -127,6 +128,31 @@ function buildWhatsAppHref(message) {
   return `https://api.whatsapp.com/send?text=${message}`;
 }
 
+function buildQuizSubmissionPayload(answers) {
+  return {
+    "form-name": quizFormName,
+    company: answers.company.trim(),
+    market: answers.market.trim(),
+    stage: getSelectedTitles("stage", answers.stage),
+    digitalPresence: getSelectedTitles("digitalPresence", answers.digitalPresence),
+    priority: getSelectedTitles("priority", answers.priority),
+    rawAnswers: JSON.stringify(answers),
+    pageUrl: typeof window === "undefined" ? "" : window.location.href,
+    submittedAt: new Date().toISOString(),
+    userAgent: typeof navigator === "undefined" ? "" : navigator.userAgent,
+  };
+}
+
+async function submitQuizAnswers(answers) {
+  const body = new URLSearchParams(buildQuizSubmissionPayload(answers));
+
+  await fetch("/", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: body.toString(),
+  });
+}
+
 function WhatsAppMark() {
   return (
     <svg className="quiz-whatsapp-icon" viewBox="0 0 32 32" aria-hidden="true">
@@ -141,6 +167,7 @@ function FeedQuizModal({ isOpen, onClose }) {
   const [answers, setAnswers] = useState(initialAnswers);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const loadingTimerRef = useRef(null);
 
   const currentStep = quizSteps[stepIndex];
@@ -153,6 +180,7 @@ function FeedQuizModal({ isOpen, onClose }) {
       setAnswers(initialAnswers);
       setIsAnalyzing(false);
       setIsComplete(false);
+      setIsSubmitting(false);
       window.clearTimeout(loadingTimerRef.current);
       return undefined;
     }
@@ -203,10 +231,18 @@ function FeedQuizModal({ isOpen, onClose }) {
     }, 1450);
   };
 
-  const goNext = () => {
-    if (!canContinue()) return;
+  const goNext = async () => {
+    if (!canContinue() || isSubmitting) return;
 
     if (stepIndex === quizSteps.length - 1) {
+      setIsSubmitting(true);
+      try {
+        await submitQuizAnswers(answers);
+      } catch (error) {
+        console.error("Nao foi possivel salvar as respostas do quiz.", error);
+      } finally {
+        setIsSubmitting(false);
+      }
       showAnalysis();
       return;
     }
@@ -338,8 +374,8 @@ function FeedQuizModal({ isOpen, onClose }) {
                     <span aria-hidden="true">←</span>
                     Voltar
                   </button>
-                  <button type="button" className="quiz-primary" onClick={goNext} disabled={!canContinue()}>
-                    {stepIndex === quizSteps.length - 1 ? "Analisar respostas" : "Continuar"}
+                  <button type="button" className="quiz-primary" onClick={goNext} disabled={!canContinue() || isSubmitting}>
+                    {isSubmitting ? "Enviando..." : stepIndex === quizSteps.length - 1 ? "Analisar respostas" : "Continuar"}
                     <span aria-hidden="true">→</span>
                   </button>
                 </div>

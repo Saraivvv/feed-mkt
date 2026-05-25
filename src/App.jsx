@@ -53,28 +53,33 @@ function App() {
 
     sections.forEach((section) => observer.observe(section));
 
-    const sectionToneObserver = new IntersectionObserver(
-      (entries) => {
-        const visibleEntry = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    const shouldUseSectionTone = !window.matchMedia("(max-width: 780px), (pointer: coarse)").matches;
+    const sectionToneObserver = shouldUseSectionTone
+      ? new IntersectionObserver(
+          (entries) => {
+            const visibleEntry = entries
+              .filter((entry) => entry.isIntersecting)
+              .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
 
-        if (!visibleEntry) return;
+            if (!visibleEntry) return;
 
-        sections.forEach((section) => section.classList.remove("is-current"));
-        visibleEntry.target.classList.add("is-current");
-      },
-      {
-        rootMargin: "-34% 0px -34% 0px",
-        threshold: [0.08, 0.24, 0.42, 0.6],
-      },
-    );
+            sections.forEach((section) => section.classList.remove("is-current"));
+            visibleEntry.target.classList.add("is-current");
+          },
+          {
+            rootMargin: "-34% 0px -34% 0px",
+            threshold: [0.08, 0.24, 0.42, 0.6],
+          },
+        )
+      : null;
 
-    sections.forEach((section) => sectionToneObserver.observe(section));
+    if (sectionToneObserver) {
+      sections.forEach((section) => sectionToneObserver.observe(section));
+    }
 
     return () => {
       observer.disconnect();
-      sectionToneObserver.disconnect();
+      sectionToneObserver?.disconnect();
       document.documentElement.classList.remove("can-reveal");
     };
   }, []);
