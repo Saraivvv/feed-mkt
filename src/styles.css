@@ -202,10 +202,10 @@ main::after {
     radial-gradient(ellipse at 72% 28%, rgba(244, 245, 240, 0.18), transparent 18rem),
     radial-gradient(ellipse at 58% 72%, rgba(255, 163, 0, 0.46), transparent 22rem),
     radial-gradient(ellipse at 84% 78%, rgba(83, 86, 90, 0.3), transparent 24rem);
-  filter: blur(42px) saturate(1.18) contrast(1.12);
-  opacity: 0.72;
+  filter: blur(24px) saturate(1.08) contrast(1.06);
+  opacity: 0.58;
   mix-blend-mode: screen;
-  animation: shaderDrift 18s cubic-bezier(0.45, 0, 0.55, 1) infinite alternate;
+  animation: none;
 }
 
 .site-shader-background::after {
@@ -644,7 +644,7 @@ h1 .title-feed {
 
 .installed {
   display: grid;
-  grid-template-columns: minmax(440px, 0.92fr) minmax(560px, 1.08fr);
+  grid-template-columns: minmax(360px, 0.72fr) minmax(680px, 1.28fr);
   align-items: center;
   gap: clamp(36px, 4vw, 64px);
   min-height: 128dvh;
@@ -678,7 +678,7 @@ h1 .title-feed {
 
 .installed-copy h2 {
   max-width: 700px;
-  font-size: clamp(3.25rem, 4.9vw, 5.85rem);
+  font-size: clamp(3rem, 4.35vw, 5.15rem);
 }
 
 .installed-copy > p:not(.eyebrow) {
@@ -693,31 +693,35 @@ h1 .title-feed {
   position: relative;
   z-index: 6;
   display: grid;
-  gap: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
   width: 100%;
-  max-width: 760px;
+  max-width: 940px;
   justify-self: stretch;
   border-top: 1px solid rgba(244, 245, 240, 0.16);
   border-bottom: 1px solid rgba(244, 245, 240, 0.16);
-  padding: 12px 0;
+  padding: 16px 0;
+  contain: layout paint;
 }
 
 .installed-module {
+  --service-accent: var(--orange);
+  --service-angle: 135deg;
   position: relative;
-  min-height: 142px;
+  min-height: 228px;
   display: grid;
-  grid-template-columns: 64px 1fr;
-  column-gap: 26px;
-  align-items: start;
-  padding: 26px 30px 26px 24px;
+  align-content: start;
+  grid-template-rows: auto auto auto 1fr;
+  gap: 13px;
+  padding: 26px 22px 28px;
   border: 1px solid rgba(244, 245, 240, 0.12);
   background:
-    linear-gradient(90deg, rgba(255, 163, 0, 0.055), rgba(244, 245, 240, 0.025) 46%, rgba(244, 245, 240, 0.012)),
+    linear-gradient(var(--service-angle), color-mix(in srgb, var(--service-accent), transparent 84%), rgba(244, 245, 240, 0.025) 46%, rgba(244, 245, 240, 0.012)),
     rgba(244, 245, 240, 0.018);
   cursor: pointer;
   outline: 0;
+  overflow: hidden;
   transition:
-    background 220ms ease,
     border-color 220ms ease,
     transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -736,14 +740,16 @@ h1 .title-feed {
 .installed-module::after {
   content: "";
   position: absolute;
-  left: 12px;
-  top: 32px;
-  width: 6px;
-  height: 6px;
+  right: -34px;
+  top: -42px;
+  width: 132px;
+  aspect-ratio: 1;
   border-radius: 50%;
-  background: var(--orange);
-  opacity: 0;
-  transform: scale(0.3);
+  background:
+    radial-gradient(circle, color-mix(in srgb, var(--service-accent), transparent 54%), transparent 62%);
+  opacity: 0.16;
+  transform: scale(0.86);
+  pointer-events: none;
   transition:
     opacity 220ms ease,
     transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -754,17 +760,42 @@ h1 .title-feed {
 }
 
 .installed-module span {
+  position: relative;
+  z-index: 1;
   color: var(--orange);
+  font-size: 0.78rem;
   font-weight: 900;
+  letter-spacing: 0.04em;
   transition:
     color 220ms ease,
     transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.installed-module strong {
+  position: absolute;
+  top: 26px;
+  right: 22px;
+  z-index: 1;
+  min-height: 28px;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(244, 245, 240, 0.12);
+  border-radius: 999px;
+  padding: 0 10px;
+  color: rgba(244, 245, 240, 0.66);
+  background: rgba(7, 7, 7, 0.28);
+  font-size: 0.72rem;
+  font-weight: 900;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
 .installed-module h3 {
+  position: relative;
+  z-index: 1;
   margin: 0;
   color: var(--white);
-  font-size: clamp(1.55rem, 2.1vw, 2.55rem);
+  font-size: clamp(1.55rem, 2vw, 2.35rem);
   line-height: 0.96;
   transition:
     color 220ms ease,
@@ -772,9 +803,10 @@ h1 .title-feed {
 }
 
 .installed-module p {
-  grid-column: 2;
-  max-width: 520px;
-  margin: 16px 0 0;
+  position: relative;
+  z-index: 1;
+  max-width: 26ch;
+  margin: 4px 0 0;
   color: rgba(244, 245, 240, 0.7);
   line-height: 1.42;
   transition:
@@ -782,12 +814,182 @@ h1 .title-feed {
     transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.service-mark {
+  position: relative;
+  z-index: 1;
+  width: 58px;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--service-accent), transparent 42%);
+  border-radius: 14px;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--service-accent), var(--white) 20%), color-mix(in srgb, var(--service-accent), var(--black) 42%));
+  box-shadow:
+    inset 0 1px 0 rgba(244, 245, 240, 0.28),
+    0 18px 42px color-mix(in srgb, var(--service-accent), transparent 78%);
+  transition:
+    border-radius 260ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.service-mark::before,
+.service-mark::after {
+  content: "";
+  position: absolute;
+  display: block;
+  background: rgba(7, 7, 7, 0.72);
+  transition:
+    transform 260ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 220ms ease;
+}
+
+.service-mark svg {
+  width: 30px;
+  height: 30px;
+  color: rgba(7, 7, 7, 0.78);
+  stroke-width: 2.2;
+}
+
+.service-branding {
+  --service-angle: 124deg;
+}
+
+.service-leads {
+  --service-angle: 18deg;
+}
+
+.service-social {
+  --service-angle: 150deg;
+}
+
+.service-seo {
+  --service-angle: 205deg;
+}
+
+.service-landing {
+  --service-angle: 72deg;
+}
+
+.service-automation {
+  --service-angle: 318deg;
+}
+
+.service-branding .service-mark::before {
+  inset: 15px;
+  border: 2px solid rgba(7, 7, 7, 0.72);
+  border-radius: 50%;
+  background: transparent;
+}
+
+.service-branding .service-mark::after {
+  width: 26px;
+  height: 2px;
+  transform: rotate(-22deg);
+}
+
+.service-leads .service-mark::before {
+  left: 13px;
+  right: 13px;
+  top: 18px;
+  height: 8px;
+  border-radius: 999px;
+}
+
+.service-leads .service-mark::after {
+  left: 18px;
+  bottom: 15px;
+  width: 22px;
+  height: 22px;
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+
+.service-social .service-mark::before {
+  left: 14px;
+  top: 15px;
+  width: 12px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  box-shadow: 18px 0 0 rgba(7, 7, 7, 0.72), 9px 18px 0 rgba(7, 7, 7, 0.72);
+}
+
+.service-social .service-mark::after {
+  left: 20px;
+  top: 25px;
+  width: 20px;
+  height: 2px;
+  box-shadow: 9px 8px 0 rgba(7, 7, 7, 0.72);
+  transform: rotate(30deg);
+}
+
+.service-seo .service-mark::before {
+  left: 13px;
+  top: 13px;
+  width: 22px;
+  aspect-ratio: 1;
+  border: 3px solid rgba(7, 7, 7, 0.72);
+  border-radius: 50%;
+  background: transparent;
+}
+
+.service-seo .service-mark::after {
+  right: 14px;
+  bottom: 15px;
+  width: 18px;
+  height: 4px;
+  border-radius: 999px;
+  transform: rotate(45deg);
+}
+
+.service-landing .service-mark::before {
+  inset: 14px 12px;
+  border: 2px solid rgba(7, 7, 7, 0.72);
+  border-radius: 6px;
+  background: transparent;
+}
+
+.service-landing .service-mark::after {
+  left: 19px;
+  right: 19px;
+  bottom: 18px;
+  height: 7px;
+  border-radius: 999px;
+}
+
+.service-automation .service-mark::before {
+  left: 14px;
+  top: 14px;
+  width: 10px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  box-shadow: 20px 0 0 rgba(7, 7, 7, 0.72), 10px 20px 0 rgba(7, 7, 7, 0.72);
+}
+
+.service-automation .service-mark::after {
+  left: 19px;
+  top: 21px;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(7, 7, 7, 0.72);
+  border-radius: 50%;
+  background: transparent;
+}
+
+.service-mark::before,
+.service-mark::after {
+  content: none;
+  display: none;
+}
+
 .installed-module:is(:hover, :focus-visible, .is-active) {
   border-color: rgba(255, 163, 0, 0.46);
   background:
-    linear-gradient(90deg, rgba(255, 163, 0, 0.14), rgba(255, 163, 0, 0.04) 42%, rgba(244, 245, 240, 0.025)),
+    linear-gradient(var(--service-angle), color-mix(in srgb, var(--service-accent), transparent 76%), rgba(255, 163, 0, 0.04) 42%, rgba(244, 245, 240, 0.025)),
     rgba(244, 245, 240, 0.034);
-  transform: translateX(-12px);
+  transform: translateY(-8px);
+  box-shadow:
+    0 18px 38px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(244, 245, 240, 0.12);
 }
 
 .installed-module:is(:hover, :focus-visible, .is-active)::before {
@@ -795,23 +997,34 @@ h1 .title-feed {
 }
 
 .installed-module:is(:hover, :focus-visible, .is-active)::after {
-  opacity: 1;
-  transform: scale(1);
+  opacity: 0.28;
+  transform: scale(1.08);
 }
 
 .installed-module:is(:hover, :focus-visible, .is-active) span {
   color: var(--white);
-  transform: translateX(6px);
+  transform: translateY(-2px);
+}
+
+.installed-module:is(:hover, :focus-visible, .is-active) strong {
+  border-color: color-mix(in srgb, var(--service-accent), transparent 36%);
+  color: var(--white);
+  background: color-mix(in srgb, var(--service-accent), transparent 86%);
 }
 
 .installed-module:is(:hover, :focus-visible, .is-active) h3 {
   color: var(--orange);
-  transform: translateX(8px);
+  transform: translateY(-2px);
 }
 
 .installed-module:is(:hover, :focus-visible, .is-active) p {
   color: rgba(244, 245, 240, 0.88);
-  transform: translateX(8px);
+  transform: translateY(-2px);
+}
+
+.installed-module:is(:hover, :focus-visible, .is-active) .service-mark {
+  border-radius: 50%;
+  transform: translateY(-3px) rotate(-8deg);
 }
 
 .installed .installed-copy {
@@ -1456,6 +1669,13 @@ h1 .title-feed {
   animation: sectionTransfer 5200ms cubic-bezier(0.45, 0, 0.55, 1) infinite alternate;
 }
 
+.section-frame.installed::after,
+.section-frame.installed.is-visible::after {
+  content: none;
+  display: none;
+  animation: none;
+}
+
 .intelligence,
 .services,
 .use-cases,
@@ -1703,6 +1923,8 @@ h1 .title-feed {
 
   .installed-system {
     order: 2;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: none;
   }
 
   .process-grid,
@@ -1888,26 +2110,41 @@ h1 .title-feed {
     width: 100%;
     max-width: none;
     justify-self: stretch;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 12px 0;
   }
 
   .installed-module {
     min-height: auto;
-    grid-template-columns: 42px 1fr;
-    column-gap: 16px;
-    padding: 20px 0;
+    gap: 14px;
+    padding: 22px 18px 24px;
   }
 
   .installed-module:is(:hover, :focus-visible, .is-active) {
-    padding-left: 10px;
+    transform: translateY(-4px);
   }
 
   .installed-module::after {
-    top: 23px;
+    right: -44px;
+    top: -46px;
+    width: 128px;
   }
 
   .installed-module span {
-    padding-top: 3px;
     font-size: 0.88rem;
+  }
+
+  .installed-module strong {
+    top: 22px;
+    right: 18px;
+    min-height: 26px;
+    font-size: 0.68rem;
+  }
+
+  .service-mark {
+    width: 50px;
+    border-radius: 12px;
   }
 
   .installed-module h3 {
@@ -1915,9 +2152,7 @@ h1 .title-feed {
   }
 
   .installed-module p {
-    grid-column: 2;
     max-width: none;
-    margin-top: 14px;
     font-size: 0.96rem;
     line-height: 1.48;
   }

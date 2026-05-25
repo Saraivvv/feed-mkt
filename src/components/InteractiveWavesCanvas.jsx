@@ -162,6 +162,32 @@ function InteractiveWavesCanvas({ variant = "base", className = "" }) {
 
   useEffect(() => {
     const canvas = canvasRef.current;
+    const visibility = { active: false };
+    let renderFrame = null;
+    let frame = 0;
+
+    const startLoop = (render) => {
+      if (frame) return;
+      visibility.active = true;
+      frame = requestAnimationFrame(render);
+    };
+
+    const stopLoop = () => {
+      visibility.active = false;
+      if (frame) cancelAnimationFrame(frame);
+      frame = 0;
+    };
+
+    const visibilityObserver = new IntersectionObserver(
+      ([entry]) => {
+        visibility.active = entry.isIntersecting;
+        if (visibility.active && renderFrame) startLoop(renderFrame);
+      },
+      { rootMargin: "160px 0px", threshold: 0.01 },
+    );
+
+    visibilityObserver.observe(canvas);
+
     const gl = canvas.getContext("webgl", {
       alpha: false,
       antialias: false,
@@ -171,7 +197,10 @@ function InteractiveWavesCanvas({ variant = "base", className = "" }) {
       stencil: false,
     });
 
-    if (!gl) return runFallbackCanvas(canvas, variant);
+    if (!gl) {
+      visibilityObserver.disconnect();
+      return runFallbackCanvas(canvas, variant);
+    }
 
     const vertexSource = `
       attribute vec2 a_position;
@@ -230,12 +259,12 @@ function InteractiveWavesCanvas({ variant = "base", className = "" }) {
           float fi = float(i);
           vec2 point = aspectPoint(u_trail[i]);
           float age = 1.0 - fi / 12.0;
-          float radius = 0.20 + fi * 0.026;
+          float radius = 0.26 + fi * 0.034;
           float distanceToPoint = distance(p, point);
           float influence = 1.0 - smoothstep(0.0, radius, distanceToPoint);
           influence = influence * influence * (3.0 - 2.0 * influence) * age;
-          warp += repelFrom(p, point, radius, 0.024 + age * 0.034);
-          trailVoid = max(trailVoid, influence * 0.74);
+          warp += repelFrom(p, point, radius, 0.044 + age * 0.072);
+          trailVoid = max(trailVoid, influence * 0.86);
         }
 
         return warp;
@@ -243,8 +272,8 @@ function InteractiveWavesCanvas({ variant = "base", className = "" }) {
 
       float cursorVoid(vec2 p, vec2 pointer) {
         float distanceToPointer = distance(p, pointer);
-        float core = 1.0 - smoothstep(0.0, 0.13, distanceToPointer);
-        float cushion = 1.0 - smoothstep(0.13, 0.29, distanceToPointer);
+        float core = 1.0 - smoothstep(0.0, 0.18, distanceToPointer);
+        float cushion = 1.0 - smoothstep(0.18, 0.42, distanceToPointer);
         return clamp(core * 0.98 + cushion * 0.42, 0.0, 1.0);
       }
 
@@ -253,7 +282,7 @@ function InteractiveWavesCanvas({ variant = "base", className = "" }) {
         vec2 pointer = aspectPoint(u_pointer);
         float trailVoid = 0.0;
         vec2 warp = trailWarp(p, trailVoid);
-        warp += repelFrom(p, pointer, 0.30, 0.125);
+        warp += repelFrom(p, pointer, 0.44, 0.245);
         p += warp;
 
         float cursor = cursorVoid(p, pointer);
@@ -269,7 +298,7 @@ function InteractiveWavesCanvas({ variant = "base", className = "" }) {
         float line = 1.0 - smoothstep(0.020, 0.048, center);
 
         float broken = 0.72 + noise(vec2(uv.x * 150.0 + time * 0.75, lines * 0.09)) * 0.28;
-        return line * broken * (1.0 - lineVoid * 0.96);
+        return line * broken * (1.0 - lineVoid * 0.985);
       }
 
       void main() {
@@ -298,6 +327,7 @@ function InteractiveWavesCanvas({ variant = "base", className = "" }) {
       program = createProgram(gl, vertexSource, fragmentSource);
     } catch (error) {
       console.warn(error);
+      visibilityObserver.disconnect();
       return runFallbackCanvas(canvas, variant);
     }
 
@@ -320,12 +350,12 @@ function InteractiveWavesCanvas({ variant = "base", className = "" }) {
     const pointer = { x: 0.5, y: 0.5, tx: 0.5, ty: 0.5 };
     const trail = Array.from({ length: 12 }, () => ({ x: 0.5, y: 0.5 }));
     const startTime = performance.now();
-    let frame = 0;
+    let lastDraw = 0;
     let width = 1;
     let height = 1;
 
     const resize = () => {
-      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.15);
       const rect = canvas.getBoundingClientRect();
       width = Math.max(1, Math.floor(rect.width * dpr));
       height = Math.max(1, Math.floor(rect.height * dpr));
@@ -344,8 +374,13 @@ function InteractiveWavesCanvas({ variant = "base", className = "" }) {
     };
 
     const render = (now) => {
-      frame = requestAnimationFrame(render);
-      if (document.hidden) return;
+      frame = 0;
+      if (document.hidden || !visibility.active) return;
+      if (now - lastDraw < 28) {
+        startLoop(render);
+        return;
+      }
+      lastDraw = now;
 
       pointer.tx += (pointer.x - pointer.tx) * 0.08;
       pointer.ty += (pointer.y - pointer.ty) * 0.08;
@@ -364,15 +399,18 @@ function InteractiveWavesCanvas({ variant = "base", className = "" }) {
       });
       gl.uniform1f(timeLocation, (now - startTime) / 1000);
       gl.drawArrays(gl.TRIANGLES, 0, 6);
+      startLoop(render);
     };
+    renderFrame = render;
 
     resize();
     window.addEventListener("resize", resize);
     window.addEventListener("pointermove", handlePointerMove, { passive: true });
-    frame = requestAnimationFrame(render);
+    startLoop(render);
 
     return () => {
-      cancelAnimationFrame(frame);
+      stopLoop();
+      visibilityObserver.disconnect();
       window.removeEventListener("resize", resize);
       window.removeEventListener("pointermove", handlePointerMove);
       gl.deleteBuffer(buffer);

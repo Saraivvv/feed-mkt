@@ -4,19 +4,52 @@ import InteractiveWavesCanvas from "./components/InteractiveWavesCanvas";
 
 const installedSystems = [
   {
+    key: "branding",
     number: "01",
-    title: "Clareza",
-    text: "Organizar oferta, posicionamento e mensagem para a empresa explicar valor sem depender de improviso.",
+    title: "Branding",
+    icon: "fingerprint-pattern",
+    label: "Identidade",
+    text: "Construímos marcas fortes, consistentes e memoráveis, alinhadas ao posicionamento certo para atrair e converter clientes.",
   },
   {
+    key: "leads",
     number: "02",
-    title: "Inteligência",
-    text: "Aplicar IA onde existe repetição, decisão e conhecimento solto, criando apoio real para a rotina.",
+    title: "Leads",
+    icon: "funnel",
+    label: "Captação",
+    text: "Criamos processos para gerar leads qualificados com previsibilidade, foco em volume, qualidade e custo por aquisição.",
   },
   {
+    key: "social",
     number: "03",
-    title: "Uso real",
-    text: "Entregar páginas, fluxos, assistentes e materiais que entram no trabalho e continuam funcionando depois.",
+    title: "Social Media",
+    icon: "share-2",
+    label: "Conteúdo",
+    text: "Planejamos conteúdo, posicionamento e rotinas de publicação para fortalecer sua marca e abrir conversas comerciais.",
+  },
+  {
+    key: "seo",
+    number: "04",
+    title: "SEO",
+    icon: "search-check",
+    label: "Busca",
+    text: "Otimizamos sua presença orgânica para atrair tráfego qualificado e gerar resultados consistentes no longo prazo.",
+  },
+  {
+    key: "landing",
+    number: "05",
+    title: "Site",
+    icon: "panels-top-left",
+    label: "Conversão",
+    text: "Desenhamos sites claros, rápidos e orientados para conversão, conectados a campanhas, ofertas e diagnósticos.",
+  },
+  {
+    key: "automation",
+    number: "06",
+    title: "IA e automações",
+    icon: "brain-circuit",
+    label: "Operação",
+    text: "Aplicamos IA em tarefas repetitivas, atendimento, análise e organização para reduzir fricção na operação.",
   },
 ];
 
@@ -196,28 +229,38 @@ function App() {
 
         <section className={`installed section-frame reveal installed-state-${activeInstalled}`} id="o-que-instalamos">
           <div className="installed-copy">
-            <p className="eyebrow">O que a Feed instala</p>
+            <p className="eyebrow">Serviços da Feed</p>
             <h2>
-              Sistemas simples para transformar conhecimento em execução<span>.</span>
+              Tudo que sua empresa precisa para montar sua estratégia<span>.</span>
             </h2>
             <p>
-              A Feed conecta marca, processo e IA para criar ativos que a empresa consegue usar: mais clareza para vender, mais estrutura para operar e mais inteligencia aplicada no dia a dia.
+              Em um único parceiro: marca, aquisição, conteúdo, páginas e inteligência aplicada para transformar estratégia em execução.
             </p>
           </div>
 
-          <div className="installed-system" aria-label="Pilares instalados pela Feed">
+          <div className="installed-system" aria-label="Serviços oferecidos pela Feed">
             {installedSystems.map((item) => (
               <article
-                className={`installed-module ${activeInstalled === Number(item.number) - 1 ? "is-active" : ""}`}
+                className={`installed-module service-${item.key} ${activeInstalled === Number(item.number) - 1 ? "is-active" : ""}`}
                 key={item.number}
                 onClick={() => setActiveInstalled(Number(item.number) - 1)}
                 onFocus={() => setActiveInstalled(Number(item.number) - 1)}
                 onMouseEnter={() => setActiveInstalled(Number(item.number) - 1)}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    setActiveInstalled(Number(item.number) - 1);
+                  }
+                }}
                 role="button"
                 tabIndex={0}
                 style={{ "--module-index": Number(item.number) - 1 }}
               >
+                <div className="service-mark" aria-hidden="true">
+                  <ServiceIcon name={item.icon} />
+                </div>
                 <span>{item.number}</span>
+                <strong>{item.label}</strong>
                 <h3>{item.title}</h3>
                 <p>{item.text}</p>
               </article>
@@ -245,6 +288,88 @@ function App() {
       <FeedQuizModal isOpen={isQuizOpen} onClose={() => setIsQuizOpen(false)} />
     </>
   );
+}
+
+function ServiceIcon({ name }) {
+  const commonProps = {
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "2",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    focusable: "false",
+    "aria-hidden": "true",
+  };
+
+  switch (name) {
+    case "fingerprint-pattern":
+      return (
+        <svg {...commonProps}>
+          <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4" />
+          <path d="M14 13.12c0 2.38 0 6.38-1 8.88" />
+          <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02" />
+          <path d="M2 12a10 10 0 0 1 18-6" />
+          <path d="M2 16h.01" />
+          <path d="M21.8 16c.2-2 .131-5.354 0-6" />
+          <path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2" />
+          <path d="M8.65 22c.21-.66.45-1.32.57-2" />
+          <path d="M9 6.8a6 6 0 0 1 9 5.2v2" />
+        </svg>
+      );
+    case "funnel":
+      return (
+        <svg {...commonProps}>
+          <path d="M10 20a1 1 0 0 0 .553.895l2 1A1 1 0 0 0 14 21v-7a2 2 0 0 1 .517-1.341L21.74 4.67A1 1 0 0 0 21 3H3a1 1 0 0 0-.742 1.67l7.225 7.989A2 2 0 0 1 10 14z" />
+        </svg>
+      );
+    case "share-2":
+      return (
+        <svg {...commonProps}>
+          <circle cx="18" cy="5" r="3" />
+          <circle cx="6" cy="12" r="3" />
+          <circle cx="18" cy="19" r="3" />
+          <line x1="8.59" x2="15.42" y1="13.51" y2="17.49" />
+          <line x1="15.41" x2="8.59" y1="6.51" y2="10.49" />
+        </svg>
+      );
+    case "search-check":
+      return (
+        <svg {...commonProps}>
+          <path d="m8 11 2 2 4-4" />
+          <circle cx="11" cy="11" r="8" />
+          <path d="m21 21-4.3-4.3" />
+        </svg>
+      );
+    case "panels-top-left":
+      return (
+        <svg {...commonProps}>
+          <rect width="18" height="18" x="3" y="3" rx="2" />
+          <path d="M3 9h18" />
+          <path d="M9 21V9" />
+        </svg>
+      );
+    case "brain-circuit":
+      return (
+        <svg {...commonProps}>
+          <path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z" />
+          <path d="M9 13a4.5 4.5 0 0 0 3-4" />
+          <path d="M6.003 5.125A3 3 0 0 0 6.401 6.5" />
+          <path d="M3.477 10.896a4 4 0 0 1 .585-.396" />
+          <path d="M6 18a4 4 0 0 1-1.967-.516" />
+          <path d="M12 13h4" />
+          <path d="M12 18h6a2 2 0 0 1 2 2v1" />
+          <path d="M12 8h8" />
+          <path d="M16 8V5a2 2 0 0 1 2-2" />
+          <circle cx="16" cy="13" r=".5" />
+          <circle cx="18" cy="3" r=".5" />
+          <circle cx="20" cy="21" r=".5" />
+          <circle cx="20" cy="8" r=".5" />
+        </svg>
+      );
+    default:
+      return null;
+  }
 }
 
 function PaymentBadge({ method }) {
