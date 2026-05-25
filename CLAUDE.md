@@ -1,115 +1,69 @@
-# MazyOS — Sistema operacional do negócio
+# Feed — MazyOS
 
-Sua empresa roda em cima desse arquivo. Aqui ficam as regras de operação
-do MazyOS — como o Claude lê o contexto, aprende com correções, mantém
-tudo atualizado e cria skills novas conforme a operação evolui.
+## O que é esse workspace
 
-Esse arquivo é editável. Quando o `/instalar` rodar, ele complementa o
-final dessa página com as regras específicas do seu negócio.
+Operação da Feed dentro do MazyOS. Aqui ficam contexto do negócio, identidade, propostas, conteúdos, dados, entregas e projetos ligados à agência.
 
----
+**Estrutura de pastas:**
+- `_memoria/` — quem é a Feed, como falamos, foco atual
+- `identidade/` — marca da Feed aplicada nos materiais
+- `clientes/` — uma subpasta por cliente, quando a operação começar a organizar clientes ativos aqui
+- `briefings/` — briefings antes de virar cliente
+- `propostas/` — propostas em andamento
+- `marketing/` — conteúdo institucional da Feed
+- `saidas/` — documentos pontuais, análises e entregas avulsas
+- `dados/` — arquivos a analisar, relatórios e exports
+- `scripts/` — automações e utilitários locais
 
-## Contexto do negócio
+## Sobre a agência
 
-No início de toda conversa, ler os seguintes arquivos (quando existirem
-e estiverem preenchidos):
+A Feed é uma agência/consultoria de IA, marca e soluções para empresas. Ela nasceu como agência tradicional de marketing e comunicação e está migrando para uma operação centrada em IA aplicada.
 
-1. `_memoria/empresa.md` — quem é o usuário, o que faz, como funciona o negócio
-2. `_memoria/preferencias.md` — tom de voz, estilo de escrita, o que evitar
-3. `_memoria/estrategia.md` — foco atual, prioridades, prazos
+Atende pequenas e médias empresas B2B que têm buracos na operação e precisam de soluções práticas, rápidas e fáceis de implementar.
 
-Usar essas informações como base pra qualquer resposta ou decisão. Ao
-sugerir prioridades, formatos ou abordagens, considerar o foco atual
-descrito em `estrategia.md`.
+Serviços principais:
 
-Pra qualquer tarefa visual (carrossel, post, landing page), consultar
-`identidade/design-guide.md` como referência de estilo.
+- Soluções de IA para empresas
+- Posicionamento de marca
+- Posicionamento de empresários
+- Consultoria prática e implementação
+- Marketing e comunicação quando isso servir ao posicionamento e à operação
 
-Não é necessário listar o que foi lido nem confirmar a leitura. Apenas
-usar o contexto naturalmente.
+Time: Guilherme e Roseane. Guilherme cuida da operação, IA e soluções técnicas. Roseane cuida da parte burocrática, documentação e escritório.
 
----
+## Clientes ativos
 
-## Fluxo de trabalho
+Ainda não há base recorrente estruturada neste workspace. A prioridade atual é prospectar novos clientes e criar uma base de empresas que trabalhem com a Feed.
 
-Antes de executar qualquer tarefa, verificar se existe skill relevante
-em `.claude/skills/`. Se encontrar, seguir as instruções da skill. Se
-não encontrar, executar a tarefa normalmente.
+## O que mais produzimos aqui
 
-Ao concluir uma tarefa que não tinha skill mas parece repetível (o
-usuário provavelmente vai pedir de novo no futuro), perguntar:
+- Propostas comerciais para novos clientes
+- Diagnósticos de operação e posicionamento
+- Conteúdos institucionais da Feed
+- Materiais de venda e apresentação
+- Soluções e automações para clientes
+- Análises de dados, documentos e processos
 
-> "Isso pode virar uma skill pra próxima vez. Quer que eu crie?"
+## Tom de voz
 
-Não perguntar pra tarefas pontuais ou perguntas simples. Só quando o
-padrão de repetição for claro.
+Falar como gente falando com gente. A Feed deve soar humana, clara, prática e confiante, entre formalidade e informalidade. Sem pose corporativa excessiva e sem informalidade forçada.
 
----
+Evitar texto genérico, sem direção ou com cara de gerado por IA. Evitar travessões como vício, excesso de emoji, jargão vazio, promessa milagrosa de IA e frases prontas de mercado.
 
-## Aprender com correções
+## Regras do sistema
 
-Quando o usuário corrigir algo, melhorar uma resposta ou dar uma
-instrução que parece permanente (frases como "na verdade é assim", "não
-faça mais isso", "prefiro assim", "sempre que...", "evita...", "da
-próxima vez..."), perguntar:
+- No início de toda conversa, usar `_memoria/empresa.md`, `_memoria/preferencias.md`, `_memoria/estrategia.md` e `identidade/design-guide.md` como base silenciosa de contexto.
+- Para qualquer tarefa visual, consultar `identidade/design-guide.md` antes de propor layout, cor, tipografia ou estilo.
+- Cliente novo deve ganhar pasta em `clientes/<Nome>/` com briefing, estratégia e subpastas conforme entregas contratadas.
+- Proposta nova deve ir para `propostas/` antes de fechar.
+- Casos de sucesso devem ficar em `clientes/<Nome>/caso.md` para reuso em pitches.
+- Quando surgir uma tarefa repetitiva real, sugerir `/mapear-rotinas` para transformar em skill.
 
-> "Quer que eu salve isso pra não precisar repetir?"
+## Ferramentas conectadas
 
-Se sim, identificar onde faz mais sentido salvar:
-
-- **Sobre o negócio** (clientes, serviços, mercado) → `_memoria/empresa.md`
-- **Sobre preferências e estilo** (tom de voz, formato, o que evitar) → `_memoria/preferencias.md`
-- **Sobre prioridades e foco** (projetos, metas, prazos) → `_memoria/estrategia.md`
-- **Regra de comportamento nessa pasta** → próprio `CLAUDE.md`
-
-Salvar com uma linha nova clara, sem reformatar o arquivo inteiro.
-Confirmar mostrando a linha adicionada.
-
-Não perguntar se a correção for óbvia de contexto imediato (ex: "na
-verdade o arquivo se chama X"). Só perguntar quando a informação tiver
-valor duradouro.
-
----
-
-## Manter contexto atualizado
-
-Ao terminar uma tarefa que mudou algo relevante (cliente novo, skill
-nova, mudança de foco, processo novo, ferramenta instalada, estrutura
-alterada), perguntar:
-
-> "Isso mudou algo no teu contexto. Quer que eu atualize a memória?"
-
-Se sim, identificar o que atualizar:
-
-- **Cliente, serviço, ferramenta, equipe** → `_memoria/empresa.md`
-- **Mudança de prioridade ou foco** → `_memoria/estrategia.md`
-- **Tom ou estilo** → `_memoria/preferencias.md`
-- **Pasta, regra de organização, skill criada** → `CLAUDE.md`
-- **Visual (cores, fontes, logo)** → `identidade/design-guide.md`
-
-Mostrar o que vai mudar antes de salvar. Não reformatar o arquivo
-inteiro, só adicionar ou editar a linha relevante.
-
-**Quando NÃO perguntar:**
-- Tarefas pontuais sem impacto no contexto (escrever um email avulso, criar um post)
-- Perguntas simples ou conversas sem ação
-- Mudanças já salvas pelo bloco "Aprender com correções"
-
-**Dica:** rode `/atualizar` pra uma varredura completa quando houver dúvida.
-
----
-
-## Criação de skills
-
-Quando o usuário pedir skill nova:
-
-1. Verificar se existe template relevante em `templates/skills/`. Se
-   existir, usar como base e adaptar pro contexto
-2. Perguntar se é específica desse projeto ou útil em qualquer:
-   - Específica → `.claude/skills/nome-da-skill/SKILL.md` (local)
-   - Universal → `~/.claude/skills/nome-da-skill/SKILL.md` (global)
-3. Ler `_memoria/empresa.md` e `_memoria/preferencias.md` pra calibrar
-   o conteúdo da skill ao contexto do negócio
-4. Se a skill precisar de arquivos de apoio (templates, exemplos),
-   criar dentro da pasta da skill
-5. Seguir o fluxo da skill-creator nativa do Claude Code
+- [ ] Notion
+- [ ] Gmail
+- [ ] Google Calendar
+- [ ] Canva
+- [ ] Meta Ads
+- [ ] Google Ads
