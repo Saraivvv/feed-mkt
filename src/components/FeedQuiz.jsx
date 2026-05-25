@@ -146,7 +146,7 @@ function buildQuizSubmissionPayload(answers) {
 async function submitQuizAnswers(answers) {
   const body = new URLSearchParams(buildQuizSubmissionPayload(answers));
 
-  await fetch("/", {
+  await fetch("/feed-quiz-form.html", {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: body.toString(),
