@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import InteractiveWavesCanvas from "./InteractiveWavesCanvas";
 
-const whatsappPhone = "";
+const whatsappPhone = "5516993020694";
 
 const initialAnswers = {
   company: "",
@@ -148,7 +148,14 @@ function FeedQuizModal({ isOpen, onClose }) {
   const whatsappHref = useMemo(() => buildWhatsAppHref(whatsappMessage), [whatsappMessage]);
 
   useEffect(() => {
-    if (!isOpen) return undefined;
+    if (!isOpen) {
+      setStepIndex(0);
+      setAnswers(initialAnswers);
+      setIsAnalyzing(false);
+      setIsComplete(false);
+      window.clearTimeout(loadingTimerRef.current);
+      return undefined;
+    }
 
     const handleKeyDown = (event) => {
       if (event.key === "Escape") onClose();
