@@ -1,0 +1,77 @@
+name: atendimento-sanre
+
+# ---------------------------------------------------------------------------
+# Ajustes (override) carregados automaticamente pelo docker compose.
+#   - n8n: desliga cookie seguro (acesso por IP/http)
+#   - evolution-api: fixa a versão corrigida (sem o bug do loop de QR)
+#   - chatwoot-web / chatwoot-worker: inbox do atendente humano (Fase 4)
+#
+# Primeira vez (preparar banco do Chatwoot):
+#   docker compose run --rm chatwoot-web bundle exec rails db:chatwoot_prepare
+# Subir tudo:
+#   docker compose up -d
+# ---------------------------------------------------------------------------
+
+services:
+  n8n:
+    environment:
+      - N8N_SECURE_COOKIE=false
+
+  evolution-api:
+    image: evoapicloud/evolution-api:v2.3.7
+    environment:
+      # Endereço interno do Evolution (pro Chatwoot conseguir chamar de volta)
+      - SERVER_URL=http://evolution-api:8080
+      # Liga o recurso de integração com o Chatwoot (vem desligado por padrão)
+      - CHATWOOT_ENABLED=true
+
+  chatwoot-web:
+    image: chatwoot/chatwoot:v3.16.0
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    ports:
+      - "3000:3000"
+    environment:
+      - INSTALLATION_ENV=docker
+      - RAILS_ENV=production
+      - NODE_ENV=production
+      - SECRET_KEY_BASE=${CHATWOOT_SECRET_KEY_BASE}
+      - DEFAULT_LOCALE=pt_BR
+      - FRONTEND_URL=${CHATWOOT_FRONTEND_URL}
+      - POSTGRES_HOST=postgres
+      - POSTGRES_USERNAME=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DATABASE=chatwoot
+      - REDIS_URL=redis://redis:6379
+      - RAILS_MAX_THREADS=5
+    entrypoint: docker/entrypoints/rails.sh
+    command: ["bundle", "exec", "rails", "s", "-p", "3000", "-b", "0.0.0.0"]
+    networks: [internal]
+
+  chatwoot-worker:
+    image: chatwoot/chatwoot:v3.16.0
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      - INSTALLATION_ENV=docker
+      - RAILS_ENV=production
+      - NODE_ENV=production
+      - SECRET_KEY_BASE=${CHATWOOT_SECRET_KEY_BASE}
+      - DEFAULT_LOCALE=pt_BR
+      - FRONTEND_URL=${CHATWOOT_FRONTEND_URL}
+      - POSTGRES_HOST=postgres
+      - POSTGRES_USERNAME=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DATABASE=chatwoot
+      - REDIS_URL=redis://redis:6379
+      - RAILS_MAX_THREADS=5
+    command: ["bundle", "exec", "sidekiq", "-C", "config/sidekiq.yml"]
+    networks: [internal]

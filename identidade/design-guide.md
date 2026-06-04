@@ -62,11 +62,10 @@ As peças devem parecer soluções práticas para empresa real: limpas, objetiva
 
 ## Logo
 
-- **Arquivo:** logo existe no manual da marca. Quando houver arquivo separado, salvar como `identidade/logo.png` ou `identidade/logo.svg`.
-- **Versão pra fundo escuro:** usar versão branca sobre preto quando disponível.
-- **Onde usar:** slide final do carrossel (CTA), header de propostas, slides de apresentação, documentos institucionais.
-- **Tamanho sugerido:** largura entre 120-200px nos HTMLs.
-
+- **Arquivo:** `identidade/logo.svg` — versão vetorial principal, enviada via painel em 25 de mai. de 2026 (original: `LOGOS SIMBOLO FEED.svg`)
+- **Versão pra fundo escuro:** *(a definir)*
+- **Onde usar:** header de propostas, slide final de carrossel (CTA), assinatura de e-mail, marca d'água em fichas de produto
+- **Tamanho sugerido:** largura entre 120-200px nos HTMLs
 ---
 
 ## Observações adicionais

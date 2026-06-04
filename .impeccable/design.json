@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-05-25T02:20:00-03:00",
+  "title": "Design System: Feed",
+  "extensions": {
+    "colorMeta": {
+      "feed-black": {
+        "role": "primary",
+        "displayName": "Feed Black Field",
+        "canonical": "#070707",
+        "tonalRamp": ["oklch(15% 0.006 65)", "oklch(24% 0.006 65)", "oklch(34% 0.006 65)", "oklch(45% 0.006 65)", "oklch(57% 0.006 65)", "oklch(70% 0.006 65)", "oklch(84% 0.006 65)", "oklch(95% 0.006 65)"]
+      },
+      "feed-orange": {
+        "role": "primary",
+        "displayName": "Feed Signal Orange",
+        "canonical": "#ffa300",
+        "tonalRamp": ["oklch(15% 0.12 70)", "oklch(27% 0.14 70)", "oklch(39% 0.16 70)", "oklch(51% 0.18 70)", "oklch(63% 0.19 70)", "oklch(75% 0.16 70)", "oklch(86% 0.11 70)", "oklch(95% 0.05 70)"]
+      },
+      "feed-blue": {
+        "role": "secondary",
+        "displayName": "Technical Blue",
+        "canonical": "#1560d1",
+        "tonalRamp": ["oklch(15% 0.08 260)", "oklch(27% 0.11 260)", "oklch(39% 0.14 260)", "oklch(51% 0.16 260)", "oklch(63% 0.14 260)", "oklch(75% 0.1 260)", "oklch(86% 0.06 260)", "oklch(95% 0.03 260)"]
+      },
+      "feed-white": {
+        "role": "neutral",
+        "displayName": "Warm Feed White",
+        "canonical": "#f4f5f0",
+        "tonalRamp": ["oklch(15% 0.006 100)", "oklch(26% 0.006 100)", "oklch(38% 0.006 100)", "oklch(50% 0.006 100)", "oklch(63% 0.006 100)", "oklch(76% 0.006 100)", "oklch(88% 0.006 100)", "oklch(96% 0.006 100)"]
+      },
+      "feed-gray": {
+        "role": "neutral",
+        "displayName": "Cool Industrial Gray",
+        "canonical": "#53565a",
+        "tonalRamp": ["oklch(15% 0.006 250)", "oklch(26% 0.006 250)", "oklch(38% 0.006 250)", "oklch(50% 0.006 250)", "oklch(63% 0.006 250)", "oklch(76% 0.006 250)", "oklch(88% 0.006 250)", "oklch(95% 0.006 250)"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "First-viewport statements and poster-scale identity." },
+      "headline": { "displayName": "Headline", "purpose": "Section claims and conversion statements." },
+      "title": { "displayName": "Title", "purpose": "Modules, quiz options and compact panel titles." },
+      "body": { "displayName": "Body", "purpose": "Explanatory copy in short, concrete blocks." },
+      "label": { "displayName": "Label", "purpose": "Eyebrows, counters, progress labels and technical tags." }
+    },
+    "shadows": [
+      { "name": "ambient-panel-lift", "value": "0 34px 110px rgba(0, 0, 0, 0.58), inset 0 1px 0 rgba(244, 245, 240, 0.12)", "purpose": "Quiz panels and immersive overlays." },
+      { "name": "hero-control-lift", "value": "0 18px 46px rgba(0, 0, 0, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.76)", "purpose": "Floating hero CTA." },
+      { "name": "orange-hover-charge", "value": "0 20px 54px rgba(255, 163, 0, 0.26), 0 16px 44px rgba(0, 0, 0, 0.32)", "purpose": "Charged hover state on action controls." },
+      { "name": "quiet-structural-edge", "value": "0 -1px 0 rgba(244, 245, 240, 0.08)", "purpose": "Section separation without generic card shadow." }
+    ],
+    "motion": [
+      { "name": "feed-expo", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Primary tactile easing for reveal, lift and press states." },
+      { "name": "state-fast", "value": "180ms ease", "purpose": "Color and border state changes." },
+      { "name": "panel-in", "value": "520ms cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Modal panel entrance." },
+      { "name": "progress-shift", "value": "420ms cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Quiz and progress track updates." }
+    ],
+    "breakpoints": [
+      { "name": "mobile", "value": "780px" },
+      { "name": "small-mobile", "value": "420px" },
+      { "name": "coarse-pointer", "value": "(pointer: coarse)" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Hero Light CTA",
+      "kind": "button",
+      "refersTo": "button-light-hero",
+      "description": "Primary first-fold action, warm white at rest and orange on hover.",
+      "html": "<button class=\"ds-hero-cta\">Quero melhorar a minha operacao<span aria-hidden=\"true\">↗</span></button>",
+      "css": ".ds-hero-cta { min-height: 58px; display: inline-flex; align-items: center; justify-content: center; gap: 18px; border: 1px solid rgba(244,245,240,.86); border-radius: 999px; padding: 0 10px 0 28px; background: #f4f5f0; color: #070707; font-family: Barlow, Arial, Helvetica, sans-serif; font-size: 1rem; font-weight: 800; cursor: pointer; box-shadow: 0 18px 46px rgba(0,0,0,.32), inset 0 1px 0 rgba(255,255,255,.76); transition: background 180ms ease, border-color 180ms ease, color 180ms ease, box-shadow 180ms ease, transform 180ms cubic-bezier(.16,1,.3,1); } .ds-hero-cta span { width: 40px; aspect-ratio: 1; display: grid; place-items: center; border-radius: 50%; background: #ffa300; color: #070707; } .ds-hero-cta:hover, .ds-hero-cta:focus-visible { border-color: #ffa300; background: #ffa300; transform: translateY(-2px); box-shadow: 0 20px 54px rgba(255,163,0,.26), 0 16px 44px rgba(0,0,0,.32); outline: none; } .ds-hero-cta:hover span, .ds-hero-cta:focus-visible span { background: #070707; color: #ffa300; } .ds-hero-cta:active { transform: translateY(1px) scale(.985); }"
+    },
+    {
+      "name": "Quiz Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Orange diagnostic action for continuing or submitting quiz steps.",
+      "html": "<button class=\"ds-quiz-primary\">Continuar<span aria-hidden=\"true\">→</span></button>",
+      "css": ".ds-quiz-primary { min-height: 56px; display: inline-flex; align-items: center; justify-content: center; gap: 12px; border: 1px solid #ffa300; border-radius: 999px; padding: 0 28px; background: #ffa300; color: #070707; font-family: Barlow, Arial, Helvetica, sans-serif; font-weight: 900; cursor: pointer; transition: opacity 180ms ease, background 180ms ease, color 180ms ease, transform 180ms cubic-bezier(.16,1,.3,1), box-shadow 180ms ease; } .ds-quiz-primary:hover, .ds-quiz-primary:focus-visible { transform: translateY(-2px); box-shadow: 0 20px 44px rgba(255,163,0,.16); outline: none; } .ds-quiz-primary:active { transform: translateY(1px) scale(.985); } .ds-quiz-primary:disabled { opacity: .38; cursor: not-allowed; transform: none; box-shadow: none; }"
+    },
+    {
+      "name": "Dark Input",
+      "kind": "input",
+      "refersTo": "input-dark",
+      "description": "Touch-friendly dark input with orange activated focus.",
+      "html": "<label class=\"ds-input-wrap\"><span>Empresa</span><input class=\"ds-input\" placeholder=\"Ex: Atlas Energia\" /></label>",
+      "css": ".ds-input-wrap { display: grid; gap: 10px; color: rgba(244,245,240,.72); font-family: Barlow, Arial, Helvetica, sans-serif; font-weight: 800; } .ds-input-wrap span { font-size: .84rem; text-transform: uppercase; color: #ffa300; } .ds-input { min-height: 64px; border: 1px solid rgba(244,245,240,.16); border-radius: 18px; padding: 0 18px; background: rgba(7,7,7,.72); color: #f4f5f0; font: inherit; font-size: 1.05rem; outline: 0; transition: border-color 180ms ease, background 180ms ease, box-shadow 180ms ease; } .ds-input:focus { border-color: rgba(255,163,0,.72); background: rgba(7,7,7,.88); box-shadow: inset 0 0 0 1px rgba(255,163,0,.32); }"
+    },
+    {
+      "name": "Quiz Option",
+      "kind": "card",
+      "refersTo": "module-row",
+      "description": "Numbered selectable diagnostic answer with tactile orange state.",
+      "html": "<button class=\"ds-quiz-option\"><small>01</small><span><strong>Clareza para vender</strong><em>Oferta, mensagem e explicacao mais simples</em></span><i aria-hidden=\"true\"></i></button>",
+      "css": ".ds-quiz-option { min-height: 80px; display: grid; grid-template-columns: 42px 1fr 24px; align-items: center; gap: 18px; border: 1px solid rgba(244,245,240,.12); border-radius: 18px; padding: 14px 22px; background: linear-gradient(90deg, rgba(244,245,240,.045), rgba(244,245,240,.018)); color: #f4f5f0; font-family: Barlow, Arial, Helvetica, sans-serif; text-align: left; cursor: pointer; transition: border-color 180ms ease, background 180ms ease, transform 180ms cubic-bezier(.16,1,.3,1); } .ds-quiz-option small { width: 42px; aspect-ratio: 1; display: grid; place-items: center; border: 1px solid rgba(244,245,240,.12); border-radius: 10px; background: rgba(244,245,240,.055); font-weight: 900; } .ds-quiz-option span { display: grid; gap: 6px; } .ds-quiz-option strong { font-size: 1rem; } .ds-quiz-option em { color: rgba(244,245,240,.54); font-style: normal; font-size: .95rem; } .ds-quiz-option i { width: 20px; aspect-ratio: 1; justify-self: end; border: 1px solid rgba(244,245,240,.22); border-radius: 50%; } .ds-quiz-option:hover, .ds-quiz-option:focus-visible { border-color: rgba(255,163,0,.78); background: linear-gradient(90deg, rgba(255,163,0,.13), rgba(255,163,0,.035)); transform: translateY(-2px); outline: none; } .ds-quiz-option.is-selected small, .ds-quiz-option.is-selected i { border-color: #ffa300; background: #ffa300; color: #070707; }"
+    },
+    {
+      "name": "Installed Module Row",
+      "kind": "card",
+      "refersTo": "module-row",
+      "description": "Operational pillar row with number, title and hover translation.",
+      "html": "<article class=\"ds-module-row\"><span>01</span><div><h3>Clareza</h3><p>Organizar oferta, posicionamento e mensagem para explicar valor sem improviso.</p></div></article>",
+      "css": ".ds-module-row { position: relative; min-height: 142px; display: grid; grid-template-columns: 64px 1fr; column-gap: 26px; align-items: start; padding: 26px 30px 26px 24px; border: 1px solid rgba(244,245,240,.12); background: linear-gradient(90deg, rgba(255,163,0,.055), rgba(244,245,240,.025) 46%, rgba(244,245,240,.012)), rgba(244,245,240,.018); color: #f4f5f0; font-family: Barlow, Arial, Helvetica, sans-serif; transition: background 220ms ease, border-color 220ms ease, transform 260ms cubic-bezier(.16,1,.3,1); } .ds-module-row span { color: #ffa300; font-weight: 900; } .ds-module-row h3 { margin: 0; color: #f4f5f0; font-size: clamp(1.55rem,2.1vw,2.55rem); line-height: .96; } .ds-module-row p { max-width: 520px; margin: 16px 0 0; color: rgba(244,245,240,.7); line-height: 1.42; } .ds-module-row:hover { border-color: rgba(255,163,0,.46); background: linear-gradient(90deg, rgba(255,163,0,.14), rgba(255,163,0,.04) 42%, rgba(244,245,240,.025)), rgba(244,245,240,.034); transform: translateX(-12px); } .ds-module-row:hover h3 { color: #ffa300; }"
+    },
+    {
+      "name": "Dark Diagnostic Panel",
+      "kind": "card",
+      "refersTo": "panel-dark",
+      "description": "Immersive modal panel with warm border, ambient shadow and internal glow.",
+      "html": "<section class=\"ds-panel\"><p class=\"ds-eyebrow\">Diagnostico Feed</p><h2>O que faria mais diferenca agora?</h2><p>Escolha os ganhos que voce quer destravar primeiro.</p></section>",
+      "css": ".ds-panel { position: relative; overflow: hidden; border: 1px solid rgba(244,245,240,.14); border-radius: 30px; padding: clamp(30px,5vw,56px); background: radial-gradient(circle at 12% 8%, rgba(255,163,0,.13), transparent 20rem), linear-gradient(135deg, rgba(244,245,240,.05), transparent 46%), rgba(13,13,12,.94); color: #f4f5f0; font-family: Barlow, Arial, Helvetica, sans-serif; box-shadow: 0 36px 120px rgba(0,0,0,.48), inset 0 1px 0 rgba(244,245,240,.1); } .ds-panel::before { content: \"\"; position: absolute; inset: 0; background: radial-gradient(circle, rgba(244,245,240,.13) 0 .65px, transparent .85px) 0 0 / 5px 5px, linear-gradient(116deg, transparent 0 51%, rgba(255,163,0,.1) 51.08% 51.18%, transparent 51.28%); opacity: .22; pointer-events: none; } .ds-panel > * { position: relative; z-index: 1; } .ds-eyebrow { width: max-content; min-height: 32px; display: inline-flex; align-items: center; border: 1px solid rgba(255,163,0,.5); border-radius: 999px; padding: 0 14px; color: #ffa300; background: rgba(255,163,0,.08); font-size: .78rem; font-weight: 900; text-transform: uppercase; } .ds-panel h2 { max-width: 760px; margin: 18px 0 0; font-size: clamp(2.25rem,4.4vw,4.25rem); line-height: 1; } .ds-panel p:last-child { max-width: 640px; color: rgba(244,245,240,.64); font-size: clamp(1rem,1.5vw,1.18rem); line-height: 1.45; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Operational Static, Made Tactile",
+    "overview": "The Feed system should feel like an operating layer switching on: dark, graphic, immediate, and responsive to touch. It is not a polite agency website. It is a brand surface for a pragmatic, dynamic and precise company that turns loose knowledge into working systems.\n\nThe visual language is a premium operational collage: black fields, warm white type, orange decisions, technical blue in small doses, thin grids, live waves, numbered modules, dense interaction states and high-contrast calls to action. Motion and canvas effects are part of the brand, but they must always support clarity and conversion.",
+    "keyCharacteristics": [
+      "Dark operating-room atmosphere anchored in Feed black, not generic tech dark mode.",
+      "Orange is the decision color: action, active state, progress, selection and emphasis.",
+      "Barlow carries the whole system through extreme scale contrast instead of font mixing.",
+      "Surfaces feel tactile through borders, glows, inset highlights, pointer response and scroll reveal.",
+      "Mobile is not a downgrade: buttons, quiz choices and canvas feedback must feel made for touch."
+    ],
+    "rules": [
+      { "name": "The Orange Decides Rule", "body": "Orange marks the moment of action or selection. If everything is orange, nothing is decisive.", "section": "colors" },
+      { "name": "The No Generic AI Color Rule", "body": "Purple gradients, random neon blues and \"tech AI\" palettes are forbidden. Blue exists only as a precise technical support signal.", "section": "colors" },
+      { "name": "The Warm Neutral Rule", "body": "Never use pure `#000` or pure `#fff` in new UI. Feed black and Feed white carry the brand temperature.", "section": "colors" },
+      { "name": "The Single Family, Hard Contrast Rule", "body": "Do not add a second font to create personality. Push Barlow through scale, weight and layout first.", "section": "typography" },
+      { "name": "The Short Claim Rule", "body": "Large type must say less. If a headline needs a paragraph to work, rewrite the idea.", "section": "typography" },
+      { "name": "The Equipment Light Rule", "body": "Use shadows to make controls feel touchable or panels feel present. Do not use soft generic card shadows as decoration.", "section": "elevation" },
+      { "name": "The Border Before Shadow Rule", "body": "For normal content modules, use borders, grids and tonal shifts before reaching for elevation.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do use Feed black, Feed white and Feed orange as the core palette.",
+      "Do make action states tactile: hover lift, active press, orange selection, visible progress.",
+      "Do keep the web and mobile experience equally intentional, especially the hero CTA and quiz.",
+      "Do use grids, thin lines, numbering and layered operational visuals to show systems being built.",
+      "Do keep IA concrete: pages, fluxos, assistentes, materiais comerciais, diagnosticos and systems that enter real work.",
+      "Do preserve `prefers-reduced-motion` and keep canvas-heavy effects performance-aware."
+    ],
+    "donts": [
+      "Don't use templates genericos de IA.",
+      "Don't use roxo/azul neon as the default AI palette.",
+      "Don't make promessas milagrosas about IA.",
+      "Don't drift into visual corporativo frio.",
+      "Don't add excesso de efeitos sem funcao.",
+      "Don't use linguagem burocratica or textos com cara automatica.",
+      "Don't build layouts previsiveis demais, especially repeated text-left/image-right sections.",
+      "Don't create cards repetidos sem hierarquia.",
+      "Don't use imagens bonitas que nao ajudam a entender a operacao.",
+      "Don't add side-stripe borders, gradient text, decorative glassmorphism or repeated icon-card grids."
+    ]
+  }
+}

@@ -1,0 +1,58 @@
+name: atendimento-sanre
+
+# ---------------------------------------------------------------------------
+# Chatwoot - inbox do atendente humano (FASE 4)
+#
+# Só suba isto quando for implementar o "falar com atendente" de verdade.
+# Ele reaproveita o Postgres e o Redis que já estão no docker-compose.yml.
+#
+# Subir junto com a stack principal:
+#   docker compose -f docker-compose.yml -f docker-compose.chatwoot.yml up -d
+#
+# Na PRIMEIRA vez, prepare o banco do Chatwoot (rode uma vez só):
+#   docker compose -f docker-compose.yml -f docker-compose.chatwoot.yml \
+#     run --rm chatwoot-web bundle exec rails db:chatwoot_prepare
+# ---------------------------------------------------------------------------
+
+services:
+  chatwoot-web:
+    image: chatwoot/chatwoot:v3.16.0
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    ports:
+      - "3000:3000"
+    environment: &chatwoot-env
+      - INSTALLATION_ENV=docker
+      - RAILS_ENV=production
+      - NODE_ENV=production
+      - SECRET_KEY_BASE=${CHATWOOT_SECRET_KEY_BASE}
+      - DEFAULT_LOCALE=pt_BR
+      # Troque para o domínio real quando tiver (ex: https://chat.seudominio.com)
+      - FRONTEND_URL=${CHATWOOT_FRONTEND_URL}
+      # Banco
+      - POSTGRES_HOST=postgres
+      - POSTGRES_USERNAME=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DATABASE=chatwoot
+      # Redis
+      - REDIS_URL=redis://redis:6379
+      - RAILS_MAX_THREADS=5
+    entrypoint: docker/entrypoints/rails.sh
+    command: ["bundle", "exec", "rails", "s", "-p", "3000", "-b", "0.0.0.0"]
+    networks: [internal]
+
+  chatwoot-worker:
+    image: chatwoot/chatwoot:v3.16.0
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment: *chatwoot-env
+    command: ["bundle", "exec", "sidekiq", "-C", "config/sidekiq.yml"]
+    networks: [internal]

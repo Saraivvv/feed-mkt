@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Feed — Identidade Visual</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;500;600;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#070707; --ink:#111111; --white:#f4f5f0;
+    --orange:#ffa300; --blue:#1560d1; --gray:#53565a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  @page{ size:A4; margin:0; }
+  html,body{ background:var(--black); color:var(--white);
+    font-family:"Barlow",Arial,Helvetica,sans-serif; font-weight:500;
+    -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .page{ width:210mm; height:297mm; overflow:hidden; padding:18mm 22mm; position:relative;
+    page-break-after:always; }
+  .page:last-child{ page-break-after:auto; }
+
+  /* CAPA */
+  .cover{ display:flex; flex-direction:column; justify-content:space-between;
+    background:var(--black); }
+  .cover .logo{ width:54px; height:auto; }
+  .cover-mid h1{ font-weight:900; font-size:74px; line-height:.9; letter-spacing:-1px; }
+  .cover-mid .accent{ color:var(--orange); }
+  .cover-mid p{ margin-top:18px; max-width:62%; color:#cfd0cb; font-size:16px; line-height:1.5; }
+  .cover-foot{ display:flex; justify-content:space-between; align-items:flex-end;
+    font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#8b8d88; font-weight:800; }
+  .cover-foot .bar{ height:6px; width:140px; background:var(--orange); margin-bottom:14px; }
+
+  /* CONTEÚDO */
+  .eyebrow{ display:inline-block; font-size:11px; font-weight:800; letter-spacing:.18em;
+    text-transform:uppercase; color:var(--orange); margin-bottom:10px; }
+  h2{ font-weight:900; font-size:34px; line-height:.96; margin-bottom:6px; }
+  h2 .num{ color:var(--orange); margin-right:12px; }
+  .section{ margin-bottom:24px; }
+  p.lead{ color:#cfd0cb; font-size:14px; line-height:1.55; max-width:90%; }
+  ul{ list-style:none; margin-top:14px; }
+  li{ position:relative; padding-left:20px; margin-bottom:9px; font-size:13.5px;
+    line-height:1.5; color:#e7e8e3; }
+  li::before{ content:""; position:absolute; left:0; top:8px; width:7px; height:7px;
+    background:var(--orange); }
+  li strong{ color:var(--white); font-weight:800; }
+  .divider{ height:1px; background:rgba(244,245,240,.12); margin:0 0 20px; }
+
+  /* SWATCHES */
+  .swatches{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:18px; }
+  .sw{ border:1px solid rgba(244,245,240,.12); border-radius:6px; overflow:hidden; }
+  .sw .chip{ height:62px; }
+  .sw .meta{ padding:10px 12px; background:var(--ink); }
+  .sw .name{ font-weight:800; font-size:12.5px; }
+  .sw .hex{ font-size:11px; color:#9a9c97; letter-spacing:.06em; margin-top:2px; }
+  .sw .role{ font-size:10.5px; color:#7f817c; margin-top:4px; line-height:1.35; }
+
+  /* TIPOGRAFIA */
+  .type-row{ border-bottom:1px solid rgba(244,245,240,.1); padding:11px 0; }
+  .type-row .label{ font-size:10.5px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--orange); font-weight:800; margin-bottom:4px; }
+  .t-display{ font-weight:900; font-size:40px; line-height:.9; }
+  .t-title{ font-weight:800; font-size:24px; }
+  .t-body{ font-weight:500; font-size:15px; color:#cfd0cb; }
+  .t-light{ font-weight:300; font-size:18px; color:#cfd0cb; }
+
+  /* DO / DONT */
+  .cols{ display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:18px; }
+  .col h3{ font-size:13px; font-weight:800; letter-spacing:.1em; text-transform:uppercase;
+    margin-bottom:12px; padding-bottom:8px; border-bottom:2px solid; }
+  .col.do h3{ color:var(--orange); border-color:var(--orange); }
+  .col.dont h3{ color:#e8584d; border-color:#e8584d; }
+  .col.dont li::before{ background:#e8584d; }
+  .col li{ font-size:12.5px; }
+
+  .ref{ margin-top:26px; padding:14px 16px; background:var(--ink);
+    border-left:3px solid var(--orange); border-radius:4px; font-size:12px; color:#b9bab5; }
+  .pagefoot{ position:absolute; bottom:14mm; left:22mm; right:22mm;
+    display:flex; justify-content:space-between; font-size:10px; letter-spacing:.12em;
+    text-transform:uppercase; color:#6c6e69; font-weight:800; }
+</style>
+</head>
+<body>
+
+<!-- CAPA -->
+<section class="page cover">
+  <div>
+    <svg class="logo" viewBox="0 0 1366 1496" xmlns="http://www.w3.org/2000/svg"><path d="M305.66,169.17l0,1023.35c0,87.329 70.795,158.124 158.125,158.124l121.186,0l3.81,-383.129l226.755,0l0,81.355l222.14,-220.787l-223.698,-224.237l0,78.997l-227.481,0l0,108.821l-224.548,-223.117l226.607,-225.265l0,108.207l278.688,-0.946c156.277,-21.355 248.098,-110.435 261.628,-281.374l-823.213,0Z" style="fill:#ffa300;fill-rule:nonzero;"/></svg>
+  </div>
+  <div class="cover-mid">
+    <h1>Identidade<br>Visual <span class="accent">Feed</span></h1>
+    <p>Guia de marca para aplicação em propostas, apresentações e materiais comerciais. Agência pragmática de IA aplicada, marca e operação para empresas B2B.</p>
+  </div>
+  <div class="cover-foot">
+    <div>
+      <div class="bar"></div>
+      Manual de marca · uso interno
+    </div>
+    <div>2026</div>
+  </div>
+</section>
+
+<!-- CORES + TIPOGRAFIA -->
+<section class="page">
+  <div class="section">
+    <span class="eyebrow">01 — Paleta</span>
+    <h2><span class="num">01</span>Cores</h2>
+    <p class="lead">Sistema preto-e-laranja com branco quente para leitura e cinza industrial como estrutura. Azul entra só como sinal técnico de apoio — nunca substitui o laranja como cor de ação.</p>
+    <div class="swatches">
+      <div class="sw"><div class="chip" style="background:#070707;border-bottom:1px solid rgba(244,245,240,.12)"></div><div class="meta"><div class="name">Feed Black</div><div class="hex">#070707 · Pantone Black 6 C</div><div class="role">Fundo principal</div></div></div>
+      <div class="sw"><div class="chip" style="background:#ffa300"></div><div class="meta"><div class="name">Signal Orange</div><div class="hex">#FFA300 · Pantone 137 C</div><div class="role">Destaque / CTA / ação</div></div></div>
+      <div class="sw"><div class="chip" style="background:#f4f5f0"></div><div class="meta"><div class="name">Bright White</div><div class="hex">#F4F5F0 · branco quente</div><div class="role">Texto principal</div></div></div>
+      <div class="sw"><div class="chip" style="background:#1560d1"></div><div class="meta"><div class="name">Technical Blue</div><div class="hex">#1560D1</div><div class="role">Apoio técnico (uso restrito)</div></div></div>
+      <div class="sw"><div class="chip" style="background:#53565a"></div><div class="meta"><div class="name">Cool Gray</div><div class="hex">#53565A · Cool Gray 11 C</div><div class="role">Cards / fundo alternativo</div></div></div>
+      <div class="sw"><div class="chip" style="background:repeating-linear-gradient(45deg,#7a2a8a,#7a2a8a 8px,#5a1e6a 8px,#5a1e6a 16px)"></div><div class="meta"><div class="name">Proibido</div><div class="hex">roxo / azul neon</div><div class="role">Estética "tech/IA" genérica</div></div></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <span class="eyebrow">02 — Tipografia</span>
+    <h2><span class="num">02</span>Barlow</h2>
+    <p class="lead">Família única levada pelo contraste de escala e peso, sem misturar fontes. Evitar fontes genéricas com cara de template de IA.</p>
+    <div class="type-row"><div class="label">Títulos e destaques · Extra Bold / Bold</div><div class="t-display">Solução prática</div></div>
+    <div class="type-row"><div class="label">Subtítulos · Bold</div><div class="t-title">Posicionamento de marca e operação</div></div>
+    <div class="type-row"><div class="label">Corpo e botões · Medium</div><div class="t-body">Texto de leitura, descrições e blocos explicativos da proposta. Claro, direto, sem jargão vazio.</div></div>
+    <div class="type-row"><div class="label">Apoio · Extra Light</div><div class="t-light">Legendas e textos secundários quando precisar de leveza.</div></div>
+  </div>
+
+  <div class="pagefoot"><span>Feed · Identidade Visual</span><span>02</span></div>
+</section>
+
+<!-- ESTILO + ELEMENTOS -->
+<section class="page">
+  <div class="section">
+    <span class="eyebrow">03 — Direção</span>
+    <h2><span class="num">03</span>Estilo geral</h2>
+    <p class="lead">Marca forte, direta e gráfica. Contraste alto entre preto, branco e laranja. Pode parecer tecnológica e atual, mas nunca genérica, fria ou "AI slop". As peças devem parecer soluções práticas para empresa real: limpas, objetivas, com composição firme e bom uso de espaço.</p>
+  </div>
+
+  <div class="section">
+    <span class="eyebrow">04 — Componentes</span>
+    <h2><span class="num">04</span>Elementos-chave</h2>
+    <ul>
+      <li><strong>Bordas:</strong> discretas, quando ajudarem a organizar a informação.</li>
+      <li><strong>Cards:</strong> border-radius baixo a moderado; evitar aparência infantil.</li>
+      <li><strong>Botões:</strong> alto contraste — laranja em fundo escuro, ou preto/branco em fundos coloridos.</li>
+      <li><strong>Sombras:</strong> usar pouco; preferir contraste, grid e hierarquia tipográfica.</li>
+      <li><strong>Grafismos:</strong> o símbolo / setas do logo podem servir de apoio em baixa opacidade.</li>
+    </ul>
+  </div>
+
+  <div class="ref">
+    <strong>Logo</strong> — A palavra Feed com símbolo/setas no F. Existem aplicações em preto, branco, laranja e azul. Usar no header de propostas, slide final de carrossel (CTA), assinatura de e-mail e marca d'água. Largura sugerida 120–200px. Referência principal: <em>FEED MANUAL DA MARCA.pdf</em>.
+  </div>
+
+  <div class="pagefoot"><span>Feed · Identidade Visual</span><span>03</span></div>
+</section>
+
+<!-- DO / DONT -->
+<section class="page">
+  <div class="section">
+    <span class="eyebrow">05 — Regras</span>
+    <h2><span class="num">05</span>Fazer e não fazer</h2>
+    <div class="cols">
+      <div class="col do">
+        <h3>Fazer</h3>
+        <ul>
+          <li>Usar preto, branco e laranja como paleta central.</li>
+          <li>Manter composição limpa, objetiva e com bom uso de espaço.</li>
+          <li>Apostar em contraste, grid e hierarquia tipográfica.</li>
+          <li>Usar o símbolo do logo como grafismo de apoio sutil.</li>
+          <li>Manter texto com posicionamento e direção claros.</li>
+        </ul>
+      </div>
+      <div class="col dont">
+        <h3>Nunca fazer</h3>
+        <ul>
+          <li>Visual com cara de template genérico de IA.</li>
+          <li>Degradês roxo/azul como estética padrão de "tecnologia".</li>
+          <li>Exagero em efeitos, brilhos, blobs ou ícones 3D genéricos.</li>
+          <li>Texto automático, sem direção ou posicionamento.</li>
+          <li>Emoji como decoração.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="ref">
+    <strong>Tom de voz</strong> — Falar como gente falando com gente: humana, clara, prática e confiante, entre formalidade e informalidade. Sem pose corporativa, sem informalidade forçada, sem promessa milagrosa de IA, sem frases prontas de mercado.
+  </div>
+
+  <div class="pagefoot"><span>Feed · Identidade Visual</span><span>04</span></div>
+</section>
+
+</body>
+</html>

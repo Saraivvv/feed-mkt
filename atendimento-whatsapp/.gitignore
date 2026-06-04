@@ -1,0 +1,9 @@
+# Segredos - NUNCA versionar
+.env
+.env.*
+!.env.example
+
+# Dados locais
+postgres_data/
+redis_data/
+*.log
