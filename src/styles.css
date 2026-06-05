@@ -1986,6 +1986,26 @@ h1 .title-feed {
   text-align: center;
 }
 
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+}
+
+.footer-links a {
+  color: rgba(244, 245, 240, 0.62);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: color 200ms ease;
+}
+
+.footer-links a:hover,
+.footer-links a:focus-visible {
+  color: var(--orange);
+}
+
 .process {
   color: var(--white);
 }

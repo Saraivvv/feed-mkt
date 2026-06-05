@@ -487,6 +487,9 @@ function SiteFooter() {
       </div>
       <div className="footer-legal">
         <p>FEED MARKETING E COMUNICAÇÃO • CNPJ 53.877.987/0001-93</p>
+        <nav className="footer-links" aria-label="Links legais">
+          <a href="/privacidade.html">Política de Privacidade</a>
+        </nav>
         <small>© 2026 FEED MKT. Todos os direitos reservados.</small>
       </div>
     </footer>
