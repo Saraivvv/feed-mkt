@@ -282,7 +282,7 @@ function App() {
                 tabIndex={0}
                 style={{ "--module-index": Number(item.number) - 1 }}
               >
-                <FeedMark className="installed-module-art" />
+                <span className="installed-module-ghost" aria-hidden="true">{item.number}</span>
                 <div className="service-mark" aria-hidden="true">
                   <ServiceIcon name={item.icon} />
                 </div>
@@ -319,20 +319,6 @@ function App() {
       </main>
       <FeedQuizModal isOpen={isQuizOpen} onClose={() => setIsQuizOpen(false)} />
     </>
-  );
-}
-
-function FeedMark({ className }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 1366 1496"
-      fill="currentColor"
-      aria-hidden="true"
-      focusable="false"
-    >
-      <path d="M305.66,169.17l0,1023.35c0,87.329 70.795,158.124 158.125,158.124l121.186,0l3.81,-383.129l226.755,0l0,81.355l222.14,-220.787l-223.698,-224.237l0,78.997l-227.481,0l0,108.821l-224.548,-223.117l226.607,-225.265l0,108.207l278.688,-0.946c156.277,-21.355 248.098,-110.435 261.628,-281.374l-823.213,0Z" />
-    </svg>
   );
 }
 

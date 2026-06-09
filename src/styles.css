@@ -5357,29 +5357,33 @@ button.hero-cta {
     translate 260ms var(--installed-ease, cubic-bezier(0.16, 1, 0.3, 1));
 }
 
-/* Feed symbol as card art: fills the lower-right void, varies tilt per card. */
-.installed-module-art {
-  position: absolute;
-  z-index: 0;
-  right: -16%;
-  bottom: -20%;
-  width: 60%;
-  height: auto;
-  color: var(--service-accent);
-  opacity: 0.08;
-  transform: rotate(calc(var(--module-index, 0) * 13deg - 8deg));
-  transform-origin: 70% 70%;
-  pointer-events: none;
-  transition:
-    opacity 320ms ease,
-    scale 420ms var(--installed-ease, cubic-bezier(0.16, 1, 0.3, 1)),
-    translate 420ms var(--installed-ease, cubic-bezier(0.16, 1, 0.3, 1));
+/* Compact cards: content hugs the top, no hollow void below. */
+.installed-module {
+  min-height: 0;
+  padding: 24px 22px 26px;
 }
 
-.installed-module:is(:hover, :focus-visible, .is-active) .installed-module-art {
-  opacity: 0.2;
-  scale: 1.08;
-  translate: -3% -3%;
+/* Large faint number as editorial texture, pinned bottom-right. */
+.installed-module .installed-module-ghost {
+  position: absolute;
+  z-index: 0;
+  right: 14px;
+  bottom: -20px;
+  color: var(--service-accent);
+  font-size: clamp(4.5rem, 6vw, 7rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  opacity: 0.08;
+  pointer-events: none;
+  transition:
+    opacity 300ms ease,
+    translate 360ms var(--installed-ease, cubic-bezier(0.16, 1, 0.3, 1));
+}
+
+.installed-module:is(:hover, :focus-visible, .is-active) .installed-module-ghost {
+  opacity: 0.17;
+  translate: 0 -4px;
 }
 
 /* Icon: drop the heavy "app tile" glow for a cleaner mark. */
