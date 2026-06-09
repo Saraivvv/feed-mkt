@@ -73,9 +73,16 @@ function App() {
   const [activeInstalled, setActiveInstalled] = useState(0);
   const [isQuizOpen, setIsQuizOpen] = useState(false);
   const heroStageRef = useRef(null);
+  const servicesTrackRef = useRef(null);
+  const activeService = installedSystems[activeInstalled];
 
-  const activateInstalled = (index) => {
-    setActiveInstalled((current) => (current === index ? current : index));
+  const goToService = (index) => {
+    const track = servicesTrackRef.current;
+    if (!track) return;
+    const total = track.offsetHeight - window.innerHeight;
+    if (total <= 0) return;
+    const frac = (index + 0.5) / installedSystems.length;
+    window.scrollTo({ top: track.offsetTop + total * frac, behavior: "smooth" });
   };
 
   useEffect(() => {
@@ -124,6 +131,34 @@ function App() {
       observer.disconnect();
       sectionToneObserver?.disconnect();
       document.documentElement.classList.remove("can-reveal");
+    };
+  }, []);
+
+  useEffect(() => {
+    const track = servicesTrackRef.current;
+    if (!track) return undefined;
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const viewport = window.innerHeight || 1;
+      const total = track.offsetHeight - viewport;
+      if (total <= 0) return;
+      const scrolled = Math.min(Math.max(-track.getBoundingClientRect().top, 0), total);
+      const progress = scrolled / total;
+      const count = installedSystems.length;
+      const index = Math.min(count - 1, Math.max(0, Math.floor(progress * count)));
+      setActiveInstalled((current) => (current === index ? current : index));
+    };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (frame) cancelAnimationFrame(frame);
     };
   }, []);
 
@@ -238,65 +273,64 @@ function App() {
         <div className="site-shader-background" aria-hidden="true" />
 
         <section
-          className={`installed section-frame reveal installed-state-${activeInstalled}`}
+          className={`services-immersive section-frame reveal service-${activeService.key}`}
           id="o-que-instalamos"
-          style={{
-            "--active-service": activeInstalled,
-            "--active-service-x": `${20 + activeInstalled * 9}%`,
-            "--active-service-y": `${16 + activeInstalled * 11}%`,
-            "--active-service-tilt": `${activeInstalled * -5}deg`,
-          }}
+          style={{ "--ss-active": activeInstalled }}
         >
-          <div className="installed-copy">
-            <p className="eyebrow">Serviços da Feed</p>
-            <h2>
-              Tudo que sua empresa precisa para montar sua estratégia<span>.</span>
-            </h2>
-            <p>
-              Em um único parceiro: marca, aquisição, conteúdo, páginas e inteligência aplicada para transformar estratégia em execução.
-            </p>
-            <div className="installed-route" aria-hidden="true">
-              <span>Diagnóstico</span>
-              <i />
-              <span>Execução</span>
-              <i />
-              <span>Sistema vivo</span>
-            </div>
-          </div>
+          <div className="ss-track" ref={servicesTrackRef}>
+            <div className="ss-stage">
+              <div className="ss-grain" aria-hidden="true" />
 
-          <div className="installed-system" aria-label="Serviços oferecidos pela Feed">
-            {installedSystems.map((item) => (
-              <article
-                className={`installed-module service-${item.key} ${activeInstalled === Number(item.number) - 1 ? "is-active" : ""}`}
-                key={item.number}
-                onClick={() => activateInstalled(Number(item.number) - 1)}
-                onFocus={() => activateInstalled(Number(item.number) - 1)}
-                onMouseEnter={() => activateInstalled(Number(item.number) - 1)}
-                onKeyDown={(event) => {
-                  if (event.key === "Enter" || event.key === " ") {
-                    event.preventDefault();
-                    activateInstalled(Number(item.number) - 1);
-                  }
-                }}
-                role="button"
-                tabIndex={0}
-                style={{ "--module-index": Number(item.number) - 1 }}
-              >
-                <span className="installed-module-ghost" aria-hidden="true">{item.number}</span>
-                <div className="service-mark" aria-hidden="true">
-                  <ServiceIcon name={item.icon} />
+              <header className="ss-head">
+                <p className="eyebrow">Serviços da Feed</p>
+                <p className="ss-head-line">
+                  Tudo que sua empresa precisa para montar sua estratégia.
+                </p>
+              </header>
+
+              <span className="ss-ghost" aria-hidden="true" key={`ghost-${activeService.key}`}>
+                {activeService.number}
+              </span>
+
+              <div className="ss-panel" key={activeService.key}>
+                <div className={`ss-mark service-mark service-${activeService.key}`} aria-hidden="true">
+                  <ServiceIcon name={activeService.icon} />
                 </div>
-                <span>{item.number}</span>
-                <strong>{item.label}</strong>
-                <h3>{item.title}</h3>
-                <p>{item.tagline}</p>
-                <div className="installed-module-tags">
-                  {item.outputs.map((output) => (
-                    <span key={output}>{output}</span>
+                <p className="ss-label">
+                  <span>{activeService.number}</span> / {activeService.label}
+                </p>
+                <h2 className="ss-title">{activeService.title}</h2>
+                <p className="ss-tagline">{activeService.tagline}</p>
+                <ul className="ss-outputs">
+                  {activeService.outputs.map((output) => (
+                    <li key={output}>{output}</li>
                   ))}
-                </div>
-              </article>
-            ))}
+                </ul>
+              </div>
+
+              <nav className="ss-progress" aria-label="Serviços da Feed">
+                {installedSystems.map((item, index) => (
+                  <button
+                    key={item.key}
+                    type="button"
+                    className={`ss-dot ${index === activeInstalled ? "is-active" : ""} ${index < activeInstalled ? "is-past" : ""}`}
+                    onClick={() => goToService(index)}
+                    aria-current={index === activeInstalled ? "true" : undefined}
+                  >
+                    <span className="ss-dot-num">{item.number}</span>
+                    <span className="ss-dot-name">{item.title}</span>
+                  </button>
+                ))}
+              </nav>
+
+              <div
+                className="ss-cue"
+                aria-hidden="true"
+                data-end={activeInstalled === installedSystems.length - 1 ? "true" : "false"}
+              >
+                <span>Role para navegar</span>
+              </div>
+            </div>
           </div>
         </section>
 
