@@ -5836,17 +5836,16 @@ button.hero-cta {
 @media (max-width: 900px) {
   .ss-stage {
     place-items: stretch;
-    padding-top: clamp(96px, 15vh, 150px);
-    padding-bottom: clamp(110px, 16vh, 160px);
+    padding: clamp(84px, 12vh, 120px) clamp(22px, 6vw, 44px) clamp(26px, 4vh, 44px);
   }
 
-  /* Stack into a normal column on mobile; absolute centering doesn't fit. */
+  /* Clean vertical column: header at top, content below it (consistent
+     start), progress pushed to the bottom by flex so nothing overlaps. */
   .ss-inner {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: clamp(14px, 2vh, 22px);
     height: 100%;
+    max-width: none;
   }
 
   .ss-inner::before {
@@ -5864,34 +5863,40 @@ button.hero-cta {
     max-width: none;
   }
 
+  .ss-head {
+    margin-bottom: clamp(20px, 4vh, 40px);
+  }
+
   .ss-panel {
     min-height: 0;
+    gap: clamp(10px, 1.4vh, 16px);
   }
 
-  .ss-head {
-    margin-bottom: clamp(6px, 1.5vh, 16px);
-  }
-
-  .ss-ghost {
-    top: 38%;
-    right: -4vw;
-    font-size: clamp(13rem, 58vw, 30rem);
-    opacity: 0.08;
+  .ss-title {
+    font-size: clamp(3rem, 13vw, 4.4rem);
   }
 
   .ss-tagline {
     max-width: none;
+    font-size: clamp(1.1rem, 4.6vw, 1.5rem);
+  }
+
+  .ss-ghost {
+    top: 32%;
+    right: -6vw;
+    font-size: clamp(11rem, 50vw, 20rem);
+    opacity: 0.09;
   }
 
   .ss-progress {
-    right: auto;
-    left: 50%;
-    top: auto;
-    bottom: clamp(46px, 8vh, 84px);
-    transform: translateX(-50%);
+    position: static;
+    margin-top: auto;
+    transform: none;
     grid-auto-flow: column;
+    justify-content: start;
     align-items: end;
-    gap: 10px;
+    gap: clamp(12px, 4vw, 20px);
+    padding-top: clamp(22px, 4vh, 38px);
   }
 
   .ss-dot {
