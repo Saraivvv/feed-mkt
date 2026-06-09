@@ -5613,13 +5613,15 @@ button.hero-cta {
 .ss-panel {
   position: absolute;
   left: var(--ss-pad);
-  top: 50%;
-  translate: 0 -50%;
+  /* Fixed top anchor (below the header): every slide starts at the same
+     spot, so the icon and title never shift with text length. */
+  top: clamp(120px, 16vh, 250px);
   z-index: 2;
   max-width: min(620px, 64%);
   display: grid;
+  align-content: start;
   justify-items: start;
-  gap: clamp(12px, 1.5vh, 22px);
+  gap: clamp(10px, 1.3vh, 18px);
   animation: ssPanelIn 620ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
@@ -5860,6 +5862,10 @@ button.hero-cta {
     bottom: auto;
     translate: none;
     max-width: none;
+  }
+
+  .ss-panel {
+    min-height: 0;
   }
 
   .ss-head {
