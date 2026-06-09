@@ -5343,3 +5343,117 @@ button.hero-cta {
   }
 }
 
+/* Services rework: clean 3x2 grid, short copy, staggered reveal, tags on hover. */
+.installed-system {
+  align-self: center;
+}
+
+.installed-module {
+  grid-template-rows: none;
+  /* transform is driven by the entrance animation; the hover lift uses the
+     independent translate property so the two never fight. */
+  transition:
+    border-color 220ms ease,
+    translate 260ms var(--installed-ease, cubic-bezier(0.16, 1, 0.3, 1));
+}
+
+/* Short tagline replaces the old paragraph. */
+.installed-module p {
+  max-width: 24ch;
+  color: rgba(244, 245, 240, 0.74);
+  font-size: clamp(0.96rem, 1.05vw, 1.12rem);
+  line-height: 1.32;
+}
+
+/* Outputs collapsed by default, revealed on the active/hovered card. */
+.installed-module-tags {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  max-height: 0;
+  margin-top: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition:
+    max-height 340ms var(--installed-ease, cubic-bezier(0.16, 1, 0.3, 1)),
+    margin-top 340ms var(--installed-ease, cubic-bezier(0.16, 1, 0.3, 1)),
+    opacity 240ms ease;
+}
+
+.installed-module-tags span {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(255, 163, 0, 0.26);
+  border-radius: 999px;
+  padding: 4px 11px;
+  color: rgba(244, 245, 240, 0.86);
+  background: rgba(255, 163, 0, 0.09);
+  font-size: 0.74rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.installed-module:is(:hover, :focus-visible, .is-active) .installed-module-tags {
+  max-height: 132px;
+  margin-top: 14px;
+  opacity: 1;
+}
+
+/* The active/hovered card lifts and lights its accent. */
+.installed-module:is(:hover, :focus-visible, .is-active) {
+  translate: 0 -6px;
+  border-color: rgba(255, 163, 0, 0.5);
+}
+
+.installed-module:is(:hover, :focus-visible, .is-active)::before {
+  width: 100%;
+}
+
+.installed-module:is(:hover, :focus-visible, .is-active)::after {
+  opacity: 0.32;
+  transform: scale(1);
+}
+
+.installed-module:is(:hover, :focus-visible, .is-active) .service-mark {
+  border-color: var(--service-accent);
+  color: var(--orange);
+}
+
+/* Staggered entrance when the section scrolls into view. */
+.can-reveal .installed .installed-module {
+  opacity: 0;
+}
+
+.can-reveal .installed.is-visible .installed-module {
+  animation: installedModuleIn 720ms var(--installed-ease, cubic-bezier(0.16, 1, 0.3, 1)) both;
+  animation-delay: calc(var(--module-index, 0) * 85ms);
+}
+
+@keyframes installedModuleIn {
+  from {
+    opacity: 0;
+    transform: translateY(36px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .can-reveal .installed .installed-module,
+  .can-reveal .installed.is-visible .installed-module {
+    opacity: 1;
+    animation: none;
+  }
+}
+
+@media (max-width: 780px) {
+  .installed-module:is(:hover, :focus-visible, .is-active) .installed-module-tags {
+    max-height: 160px;
+  }
+}
+

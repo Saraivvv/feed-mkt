@@ -9,8 +9,7 @@ const installedSystems = [
     title: "Branding",
     icon: "fingerprint-pattern",
     label: "Identidade",
-    text: "Construímos marcas fortes, consistentes e memoráveis, alinhadas ao posicionamento certo para atrair e converter clientes.",
-    proof: "Posicionamento, voz, visual e materiais comerciais conectados em uma direção só.",
+    tagline: "Marca forte e clara, pronta pra vender.",
     outputs: ["Território de marca", "Oferta clara", "Materiais de venda"],
   },
   {
@@ -19,8 +18,7 @@ const installedSystems = [
     title: "Leads",
     icon: "funnel",
     label: "Captação",
-    text: "Criamos processos para gerar leads qualificados com previsibilidade, foco em volume, qualidade e custo por aquisição.",
-    proof: "Campanhas, páginas e rotinas de qualificação para transformar interesse em conversa.",
+    tagline: "Um fluxo previsível de clientes certos.",
     outputs: ["Fluxo de entrada", "Lista qualificada", "Rotina de follow-up"],
   },
   {
@@ -29,8 +27,7 @@ const installedSystems = [
     title: "Social Media",
     icon: "share-2",
     label: "Conteúdo",
-    text: "Planejamos conteúdo, posicionamento e rotinas de publicação para fortalecer sua marca e abrir conversas comerciais.",
-    proof: "Pautas, formatos e cadência para a marca aparecer com consistência, sem improviso semanal.",
+    tagline: "Presença toda semana, sem improviso.",
     outputs: ["Calendário editorial", "Roteiros", "Posts comerciais"],
   },
   {
@@ -39,8 +36,7 @@ const installedSystems = [
     title: "SEO",
     icon: "search-check",
     label: "Busca",
-    text: "Otimizamos sua presença orgânica para atrair tráfego qualificado e gerar resultados consistentes no longo prazo.",
-    proof: "Estrutura, conteúdo e intenções de busca organizadas para gerar demanda ao longo do tempo.",
+    tagline: "Quem te procura, te encontra primeiro.",
     outputs: ["Mapa de buscas", "Páginas otimizadas", "Plano de conteúdo"],
   },
   {
@@ -49,8 +45,7 @@ const installedSystems = [
     title: "Site",
     icon: "panels-top-left",
     label: "Conversão",
-    text: "Desenhamos sites claros, rápidos e orientados para conversão, conectados a campanhas, ofertas e diagnósticos.",
-    proof: "Páginas que explicam, qualificam e levam o visitante para o próximo passo sem ruído.",
+    tagline: "Uma página que explica e converte.",
     outputs: ["Landing pages", "Diagnósticos", "Medição de conversão"],
   },
   {
@@ -59,8 +54,7 @@ const installedSystems = [
     title: "IA e automações",
     icon: "brain-circuit",
     label: "Operação",
-    text: "Aplicamos IA em tarefas repetitivas, atendimento, análise e organização para reduzir fricção na operação.",
-    proof: "Assistentes e automações simples que entram na rotina, economizam tempo e reduzem retrabalho.",
+    tagline: "A rotina repetitiva no automático.",
     outputs: ["Assistentes internos", "Fluxos automáticos", "Bases organizadas"],
   },
 ];
@@ -77,10 +71,8 @@ const paymentMethods = [
 
 function App() {
   const [activeInstalled, setActiveInstalled] = useState(0);
-  const [isInstalledInteracting, setIsInstalledInteracting] = useState(false);
   const [isQuizOpen, setIsQuizOpen] = useState(false);
   const heroStageRef = useRef(null);
-  const activeSystem = installedSystems[activeInstalled];
 
   const activateInstalled = (index) => {
     setActiveInstalled((current) => (current === index ? current : index));
@@ -246,7 +238,7 @@ function App() {
         <div className="site-shader-background" aria-hidden="true" />
 
         <section
-          className={`installed section-frame reveal installed-state-${activeInstalled} ${isInstalledInteracting ? "installed-is-interacting" : ""}`}
+          className={`installed section-frame reveal installed-state-${activeInstalled}`}
           id="o-que-instalamos"
           style={{
             "--active-service": activeInstalled,
@@ -272,79 +264,38 @@ function App() {
             </div>
           </div>
 
-          <div
-            className="installed-console"
-            onMouseEnter={() => setIsInstalledInteracting(true)}
-            onMouseLeave={() => setIsInstalledInteracting(false)}
-            onFocus={() => setIsInstalledInteracting(true)}
-            onBlur={(event) => {
-              if (!event.currentTarget.contains(event.relatedTarget)) {
-                setIsInstalledInteracting(false);
-              }
-            }}
-          >
-            <aside className="installed-current" aria-live="polite">
-              <div className="installed-current-top">
-                <span>Módulo ativo</span>
-                <strong>{activeSystem.number}/06</strong>
-              </div>
-              <div className="installed-current-visual" aria-hidden="true">
-                <div className="installed-current-icon service-mark">
-                  <ServiceIcon name={activeSystem.icon} />
+          <div className="installed-system" aria-label="Serviços oferecidos pela Feed">
+            {installedSystems.map((item) => (
+              <article
+                className={`installed-module service-${item.key} ${activeInstalled === Number(item.number) - 1 ? "is-active" : ""}`}
+                key={item.number}
+                onClick={() => activateInstalled(Number(item.number) - 1)}
+                onFocus={() => activateInstalled(Number(item.number) - 1)}
+                onMouseEnter={() => activateInstalled(Number(item.number) - 1)}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    activateInstalled(Number(item.number) - 1);
+                  }
+                }}
+                role="button"
+                tabIndex={0}
+                style={{ "--module-index": Number(item.number) - 1 }}
+              >
+                <div className="service-mark" aria-hidden="true">
+                  <ServiceIcon name={item.icon} />
                 </div>
-                <div className="installed-current-stack">
-                  <span>
-                    <b>Entrada</b>
-                    Diagnóstico e prioridade
-                  </span>
-                  <span>
-                    <b>Produção</b>
-                    Sistema, página ou rotina
-                  </span>
-                  <span>
-                    <b>Saída</b>
-                    {activeSystem.outputs[0]}
-                  </span>
+                <span>{item.number}</span>
+                <strong>{item.label}</strong>
+                <h3>{item.title}</h3>
+                <p>{item.tagline}</p>
+                <div className="installed-module-tags">
+                  {item.outputs.map((output) => (
+                    <span key={output}>{output}</span>
+                  ))}
                 </div>
-              </div>
-              <p className="installed-current-label">{activeSystem.label}</p>
-              <h3>{activeSystem.title}</h3>
-              <p>{activeSystem.proof}</p>
-              <div className="installed-output">
-                {activeSystem.outputs.map((output) => (
-                  <span key={output}>{output}</span>
-                ))}
-              </div>
-            </aside>
-
-            <div className="installed-system" aria-label="Serviços oferecidos pela Feed">
-              {installedSystems.map((item) => (
-                <article
-                  className={`installed-module service-${item.key} ${activeInstalled === Number(item.number) - 1 ? "is-active" : ""}`}
-                  key={item.number}
-                  onClick={() => activateInstalled(Number(item.number) - 1)}
-                  onFocus={() => activateInstalled(Number(item.number) - 1)}
-                  onMouseEnter={() => activateInstalled(Number(item.number) - 1)}
-                  onKeyDown={(event) => {
-                    if (event.key === "Enter" || event.key === " ") {
-                      event.preventDefault();
-                      activateInstalled(Number(item.number) - 1);
-                    }
-                  }}
-                  role="button"
-                  tabIndex={0}
-                  style={{ "--module-index": Number(item.number) - 1 }}
-                >
-                  <div className="service-mark" aria-hidden="true">
-                    <ServiceIcon name={item.icon} />
-                  </div>
-                  <span>{item.number}</span>
-                  <strong>{item.label}</strong>
-                  <h3>{item.title}</h3>
-                  <p>{item.text}</p>
-                </article>
-              ))}
-            </div>
+              </article>
+            ))}
           </div>
         </section>
 
