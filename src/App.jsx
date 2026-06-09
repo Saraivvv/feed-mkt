@@ -281,54 +281,56 @@ function App() {
             <div className="ss-stage">
               <div className="ss-grain" aria-hidden="true" />
 
-              <header className="ss-head">
-                <p className="eyebrow">Serviços da Feed</p>
-                <p className="ss-head-line">
-                  Tudo que sua empresa precisa para montar sua estratégia.
-                </p>
-              </header>
+              <div className="ss-inner">
+                <header className="ss-head">
+                  <p className="eyebrow">Serviços da Feed</p>
+                  <p className="ss-head-line">
+                    Tudo que sua empresa precisa para montar sua estratégia.
+                  </p>
+                </header>
 
-              <span className="ss-ghost" aria-hidden="true" key={`ghost-${activeService.key}`}>
-                {activeService.number}
-              </span>
+                <span className="ss-ghost" aria-hidden="true" key={`ghost-${activeService.key}`}>
+                  {activeService.number}
+                </span>
 
-              <div className="ss-panel" key={activeService.key}>
-                <div className={`ss-mark service-mark service-${activeService.key}`} aria-hidden="true">
-                  <ServiceIcon name={activeService.icon} />
+                <div className="ss-panel" key={activeService.key}>
+                  <div className={`ss-mark service-mark service-${activeService.key}`} aria-hidden="true">
+                    <ServiceIcon name={activeService.icon} />
+                  </div>
+                  <p className="ss-label">
+                    <span>{activeService.number}</span> / {activeService.label}
+                  </p>
+                  <h2 className="ss-title">{activeService.title}</h2>
+                  <p className="ss-tagline">{activeService.tagline}</p>
+                  <ul className="ss-outputs">
+                    {activeService.outputs.map((output) => (
+                      <li key={output}>{output}</li>
+                    ))}
+                  </ul>
                 </div>
-                <p className="ss-label">
-                  <span>{activeService.number}</span> / {activeService.label}
-                </p>
-                <h2 className="ss-title">{activeService.title}</h2>
-                <p className="ss-tagline">{activeService.tagline}</p>
-                <ul className="ss-outputs">
-                  {activeService.outputs.map((output) => (
-                    <li key={output}>{output}</li>
+
+                <nav className="ss-progress" aria-label="Serviços da Feed">
+                  {installedSystems.map((item, index) => (
+                    <button
+                      key={item.key}
+                      type="button"
+                      className={`ss-dot ${index === activeInstalled ? "is-active" : ""} ${index < activeInstalled ? "is-past" : ""}`}
+                      onClick={() => goToService(index)}
+                      aria-current={index === activeInstalled ? "true" : undefined}
+                    >
+                      <span className="ss-dot-num">{item.number}</span>
+                      <span className="ss-dot-name">{item.title}</span>
+                    </button>
                   ))}
-                </ul>
-              </div>
+                </nav>
 
-              <nav className="ss-progress" aria-label="Serviços da Feed">
-                {installedSystems.map((item, index) => (
-                  <button
-                    key={item.key}
-                    type="button"
-                    className={`ss-dot ${index === activeInstalled ? "is-active" : ""} ${index < activeInstalled ? "is-past" : ""}`}
-                    onClick={() => goToService(index)}
-                    aria-current={index === activeInstalled ? "true" : undefined}
-                  >
-                    <span className="ss-dot-num">{item.number}</span>
-                    <span className="ss-dot-name">{item.title}</span>
-                  </button>
-                ))}
-              </nav>
-
-              <div
-                className="ss-cue"
-                aria-hidden="true"
-                data-end={activeInstalled === installedSystems.length - 1 ? "true" : "false"}
-              >
-                <span>Role para navegar</span>
+                <div
+                  className="ss-cue"
+                  aria-hidden="true"
+                  data-end={activeInstalled === installedSystems.length - 1 ? "true" : "false"}
+                >
+                  <span>Role para navegar</span>
+                </div>
               </div>
             </div>
           </div>
