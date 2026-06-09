@@ -5357,6 +5357,36 @@ button.hero-cta {
     translate 260ms var(--installed-ease, cubic-bezier(0.16, 1, 0.3, 1));
 }
 
+/* Feed symbol as card art: fills the lower-right void, varies tilt per card. */
+.installed-module-art {
+  position: absolute;
+  z-index: 0;
+  right: -16%;
+  bottom: -20%;
+  width: 60%;
+  height: auto;
+  color: var(--service-accent);
+  opacity: 0.08;
+  transform: rotate(calc(var(--module-index, 0) * 13deg - 8deg));
+  transform-origin: 70% 70%;
+  pointer-events: none;
+  transition:
+    opacity 320ms ease,
+    scale 420ms var(--installed-ease, cubic-bezier(0.16, 1, 0.3, 1)),
+    translate 420ms var(--installed-ease, cubic-bezier(0.16, 1, 0.3, 1));
+}
+
+.installed-module:is(:hover, :focus-visible, .is-active) .installed-module-art {
+  opacity: 0.2;
+  scale: 1.08;
+  translate: -3% -3%;
+}
+
+/* Icon: drop the heavy "app tile" glow for a cleaner mark. */
+.service-mark {
+  box-shadow: inset 0 1px 0 rgba(244, 245, 240, 0.22);
+}
+
 /* Short tagline replaces the old paragraph. */
 .installed-module p {
   max-width: 24ch;
