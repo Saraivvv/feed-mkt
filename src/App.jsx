@@ -1,5 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { lazy, Suspense, useEffect, useRef, useState } from "react";
 import FeedQuizModal from "./components/FeedQuiz";
+
+const Dithering = lazy(() =>
+  import("@paper-design/shaders-react").then((mod) => ({ default: mod.Dithering })),
+);
 
 const installedSystems = [
   {
@@ -71,6 +75,7 @@ const paymentMethods = [
 function App() {
   const [activeInstalled, setActiveInstalled] = useState(0);
   const [isQuizOpen, setIsQuizOpen] = useState(false);
+  const [isHeroHovered, setIsHeroHovered] = useState(false);
   const servicesTrackRef = useRef(null);
   const activeService = installedSystems[activeInstalled];
 
@@ -180,10 +185,26 @@ function App() {
       )}
 
       <main id="top">
-        <section className="hero section-frame" aria-label="Home">
+        <section
+          className="hero section-frame"
+          aria-label="Home"
+          onMouseEnter={() => setIsHeroHovered(true)}
+          onMouseLeave={() => setIsHeroHovered(false)}
+        >
           <div className="hero-bg" aria-hidden="true">
-            <span className="hero-bg-blob hero-bg-blob-1" />
-            <span className="hero-bg-blob hero-bg-blob-2" />
+            <Suspense fallback={<span className="hero-bg-blob hero-bg-blob-1" />}>
+              <div className="hero-bg-dither">
+                <Dithering
+                  colorBack="#00000000"
+                  colorFront="#ffa300"
+                  shape="warp"
+                  type="4x4"
+                  speed={isHeroHovered ? 0.6 : 0.2}
+                  minPixelRatio={1}
+                  style={{ width: "100%", height: "100%" }}
+                />
+              </div>
+            </Suspense>
             <span className="hero-bg-grid" />
           </div>
 
