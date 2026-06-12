@@ -5501,6 +5501,8 @@ button.hero-cta {
   padding: 0;
   min-height: 0;
   background: var(--black);
+  /* No seam line against the hero above. */
+  box-shadow: none;
 }
 
 /* The reveal system would translate/clip the section; that breaks the
@@ -5529,7 +5531,7 @@ button.hero-cta {
   isolation: isolate;
   background:
     radial-gradient(circle at calc(28% + var(--ss-active, 0) * 9%) 26%, rgba(255, 163, 0, 0.16), transparent 36rem),
-    linear-gradient(180deg, #0a0a0a, #070707);
+    linear-gradient(180deg, #070707, #0a0a0a 38%, #070707);
   transition: background 600ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -5922,6 +5924,17 @@ button.hero-cta {
   }
 }
 
+/* Text selection in brand colors (instead of browser default blue). */
+::selection {
+  background: var(--orange);
+  color: #170e02;
+}
+
+::-moz-selection {
+  background: var(--orange);
+  color: #170e02;
+}
+
 /* ===================================================================
    New hero: site opens straight into a headline + animated background
    (replaces the old white intro-curtain reveal). Appended last so it
@@ -5938,6 +5951,18 @@ button.hero-cta {
     #070707;
   overflow: hidden;
   isolation: isolate;
+}
+
+/* Soft hand-off into the services block: fades the dither out before the
+   section edge so there is no hard cut / black band between them. */
+.hero.section-frame::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 1;
+  height: clamp(160px, 26vh, 280px);
+  background: linear-gradient(180deg, rgba(7, 7, 7, 0), #070707);
+  pointer-events: none;
 }
 
 .hero-bg {
