@@ -5609,7 +5609,7 @@ button.hero-cta {
   top: 50%;
   translate: -50% -50%;
   z-index: 5;
-  width: clamp(72px, 6.6vw, 100px);
+  width: clamp(92px, 8.6vw, 136px);
   aspect-ratio: 1;
   display: grid;
   place-items: center;
@@ -5657,9 +5657,8 @@ button.hero-cta {
   position: absolute;
   left: -27px;
   top: -27px;
-  display: grid;
-  justify-items: center;
-  gap: 10px;
+  width: 54px;
+  height: 54px;
   cursor: pointer;
   outline: 0;
   transition:
@@ -5668,8 +5667,8 @@ button.hero-cta {
 }
 
 .orb-node-dot {
-  width: 54px;
-  aspect-ratio: 1;
+  width: 100%;
+  height: 100%;
   display: grid;
   place-items: center;
   border: 1px solid rgba(244, 245, 240, 0.3);
@@ -5688,13 +5687,19 @@ button.hero-cta {
   height: 23px;
 }
 
+/* Positioned at the dot center; the inline transform pushes it radially
+   outward along the node's own angle. */
 .orb-node-label {
+  position: absolute;
+  left: 50%;
+  top: 50%;
   white-space: nowrap;
   color: rgba(244, 245, 240, 0.66);
   font-size: 0.74rem;
   font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  pointer-events: none;
   transition: color 260ms ease;
 }
 
@@ -5939,6 +5944,21 @@ button.hero-cta {
     background:
       radial-gradient(ellipse 80% 40% at 50% 55%, rgba(255, 163, 0, 0.07), transparent 68%),
       #070707;
+  }
+
+  .orb-center {
+    width: 76px;
+  }
+
+  /* Long labels wrap into two centered lines so they never leave the
+     viewport when pushed radially outward. */
+  .orb-node-label {
+    white-space: normal;
+    width: max-content;
+    max-width: 11ch;
+    text-align: center;
+    font-size: 0.64rem;
+    line-height: 1.25;
   }
 }
 

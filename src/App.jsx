@@ -284,10 +284,12 @@ function OrbitalServices({ items, onCta }) {
     const measure = () => {
       const isWide = el.clientWidth > 900;
       const xFraction = isWide ? 0.34 : 0.5;
-      const horizontalRoom = el.clientWidth * xFraction - (isWide ? 130 : 70);
-      const verticalRoom = el.clientHeight / 2 - (isWide ? 88 : 72);
+      const horizontalRoom = el.clientWidth * xFraction - (isWide ? 140 : 78);
+      const verticalRoom = el.clientHeight / 2 - (isWide ? 124 : 84);
       setCenterX(xFraction * 100);
-      setRadius(Math.max(116, Math.min(horizontalRoom, verticalRoom)));
+      // Hard cap keeps the ring proportional to the core logo and preserves
+      // the stage margins on very large screens.
+      setRadius(Math.max(116, Math.min(horizontalRoom, verticalRoom, 340)));
     };
     measure();
     const observer = new ResizeObserver(measure);
@@ -331,6 +333,11 @@ function OrbitalServices({ items, onCta }) {
         const x = radius * Math.cos(theta);
         const y = radius * Math.sin(theta);
         const depth = (1 + Math.sin(theta)) / 2;
+        // Label floats radially outward from its dot, so the orbit reads as
+        // a clean circle instead of every label hanging below the node.
+        const labelDistance = centerX === 50 ? 46 : 58;
+        const labelX = Math.cos(theta) * labelDistance;
+        const labelY = Math.sin(theta) * labelDistance;
         const isOpen = item.key === activeKey;
         const isRelated = !isOpen && Boolean(activeItem?.related?.includes(item.key));
 
@@ -360,7 +367,12 @@ function OrbitalServices({ items, onCta }) {
             <span className="orb-node-dot">
               <ServiceIcon name={item.icon} />
             </span>
-            <span className="orb-node-label">{item.title}</span>
+            <span
+              className="orb-node-label"
+              style={{ transform: `translate(calc(-50% + ${labelX.toFixed(1)}px), calc(-50% + ${labelY.toFixed(1)}px))` }}
+            >
+              {item.title}
+            </span>
 
             {isOpen && (
               <div className="orb-detail" onClick={(event) => event.stopPropagation()}>
