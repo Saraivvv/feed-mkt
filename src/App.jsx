@@ -255,20 +255,6 @@ function App() {
           <div className="ss-track" ref={servicesTrackRef}>
             <div className="ss-stage">
               <div className="ss-card">
-                <Suspense fallback={null}>
-                  <div className="ss-card-dither" aria-hidden="true">
-                    <Dithering
-                      colorBack="#00000000"
-                      colorFront="#ffa300"
-                      shape="warp"
-                      type="4x4"
-                      speed={0.15}
-                      minPixelRatio={1}
-                      style={{ width: "100%", height: "100%" }}
-                    />
-                  </div>
-                </Suspense>
-
                 <div className="ss-inner">
                 <header className="ss-head">
                   <p className="eyebrow">Serviços da Feed</p>

@@ -5526,9 +5526,8 @@ button.hero-cta {
   height: 100vh;
   overflow: hidden;
   display: grid;
-  place-items: stretch;
-  /* Even margin all around the outlined card. */
-  padding: clamp(14px, 2.4vh, 28px) clamp(14px, 2vw, 30px);
+  place-items: center;
+  padding: clamp(18px, 3vh, 40px) clamp(16px, 3vw, 48px);
   isolation: isolate;
   background: #070707;
 }
@@ -5539,46 +5538,30 @@ button.hero-cta {
   }
 }
 
-/* The outlined card that frames the whole slide experience. */
+/* The outlined card that frames the slide experience. Sized as an object
+   on the page (not full-bleed), centered with breathing room around it. */
 .ss-card {
   position: relative;
+  width: min(100%, 1240px);
+  height: min(100%, 740px);
   display: grid;
   place-items: center;
   padding: clamp(24px, 3.5vh, 44px) clamp(20px, 3vw, 48px);
   border: 1px solid rgba(244, 245, 240, 0.13);
-  border-radius: clamp(26px, 3vw, 44px);
+  border-radius: clamp(26px, 3vw, 40px);
   overflow: hidden;
   isolation: isolate;
-  /* Warm layered glows: top wash (continuity with the hero), the active
-     service glow drifting as the user advances, an amber pool below. */
+  /* Spotlight: one warm beam from the top lighting the title area (drifts
+     slightly per slide), deep vignette at the edges, near-black base. */
   background:
-    radial-gradient(ellipse 110% 46% at 50% 0%, rgba(255, 163, 0, 0.1), transparent 70%),
-    radial-gradient(circle at calc(24% + var(--ss-active, 0) * 10%) 30%, rgba(255, 163, 0, 0.2), transparent 32rem),
-    radial-gradient(ellipse 70% 56% at 88% 96%, rgba(219, 70, 18, 0.15), transparent 68%),
+    radial-gradient(ellipse 64% 56% at calc(30% + var(--ss-active, 0) * 5%) -8%, rgba(255, 178, 64, 0.16), transparent 62%),
+    linear-gradient(118deg, rgba(255, 163, 0, 0.05), transparent 40%),
+    radial-gradient(ellipse 130% 110% at 50% 46%, transparent 52%, rgba(0, 0, 0, 0.55) 100%),
     #0b0a08;
   box-shadow:
     inset 0 1px 0 rgba(244, 245, 240, 0.08),
     0 40px 110px rgba(0, 0, 0, 0.5);
   transition: background 600ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* Dithering shader as the card's internal grain, at low opacity.
-   Masked lighter over the text zone (left) and stronger at the edges. */
-.ss-card-dither {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  opacity: 0.07;
-  mix-blend-mode: screen;
-  pointer-events: none;
-  -webkit-mask-image: linear-gradient(100deg, rgba(0, 0, 0, 0.35), #000 62%);
-  mask-image: linear-gradient(100deg, rgba(0, 0, 0, 0.35), #000 62%);
-}
-
-.ss-card-dither canvas {
-  width: 100%;
-  height: 100%;
-  display: block;
 }
 
 /* Central frame: everything positions against this, so the composition
@@ -5632,8 +5615,9 @@ button.hero-cta {
   position: absolute;
   left: var(--ss-pad);
   /* Fixed top anchor (below the header): every slide starts at the same
-     spot, so the icon and title never shift with text length. */
-  top: clamp(120px, 16vh, 250px);
+     spot, so the icon and title never shift with text length. Percentage
+     so it tracks the card height, not the viewport. */
+  top: clamp(110px, 26%, 200px);
   z-index: 2;
   max-width: min(620px, 64%);
   display: grid;
@@ -5858,6 +5842,8 @@ button.hero-cta {
   }
 
   .ss-card {
+    width: 100%;
+    height: 100%;
     padding: clamp(20px, 5vw, 28px);
     border-radius: 24px;
   }
