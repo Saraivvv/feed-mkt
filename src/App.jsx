@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import FeedQuizModal from "./components/FeedQuiz";
-import InteractiveWavesCanvas from "./components/InteractiveWavesCanvas";
 
 const installedSystems = [
   {
@@ -72,7 +71,6 @@ const paymentMethods = [
 function App() {
   const [activeInstalled, setActiveInstalled] = useState(0);
   const [isQuizOpen, setIsQuizOpen] = useState(false);
-  const heroStageRef = useRef(null);
   const servicesTrackRef = useRef(null);
   const activeService = installedSystems[activeInstalled];
 
@@ -162,77 +160,6 @@ function App() {
     };
   }, []);
 
-  useEffect(() => {
-    let frame = 0;
-    let lastState = "";
-    const previousScrollRestoration = window.history.scrollRestoration;
-    const shouldStartAtHome = !window.location.hash;
-
-    if (shouldStartAtHome) {
-      window.history.scrollRestoration = "manual";
-      if (window.scrollY < 8) window.scrollTo(0, 0);
-    }
-
-    const syncHeroReveal = () => {
-      frame = 0;
-      const viewport = Math.max(window.innerHeight || 1, 1);
-      const revealDistance = Math.max(520, viewport * 0.72);
-      const progress = Math.min(Math.max(window.scrollY / revealDistance, 0), 1);
-      const smooth = (edge0, edge1, value) => {
-        const x = Math.min(Math.max((value - edge0) / (edge1 - edge0), 0), 1);
-        return x * x * (3 - 2 * x);
-      };
-      const eased = 1 - Math.pow(1 - progress, 3);
-      const landing = smooth(0.62, 1, progress);
-      const canvas = smooth(0.1, 0.82, progress);
-      const root = document.documentElement;
-      const nextState = [
-        progress.toFixed(4),
-        canvas.toFixed(4),
-        (-progress * 100).toFixed(2),
-        (1 - smooth(0.02, 0.24, progress)).toFixed(4),
-        (-50 - (1 - eased) * 2).toFixed(2),
-        (1 + (1 - eased) * 5.6).toFixed(4),
-      ].join("|");
-
-      if (nextState !== lastState) {
-        lastState = nextState;
-        root.style.setProperty("--hero-reveal", progress.toFixed(4));
-        root.style.setProperty("--hero-canvas-opacity", canvas.toFixed(4));
-        root.style.setProperty("--hero-stage-overlay", canvas.toFixed(4));
-        root.style.setProperty("--hero-curtain-y", `${(-progress * 100).toFixed(2)}%`);
-        root.style.setProperty("--hero-cue-opacity", (1 - smooth(0.02, 0.24, progress)).toFixed(4));
-        root.style.setProperty("--hero-zoom-y", `${(-50 - (1 - eased) * 2).toFixed(2)}%`);
-        root.style.setProperty("--hero-zoom-scale", (1 + (1 - eased) * 5.6).toFixed(4));
-      }
-      root.classList.toggle("is-hero-revealed", progress > 0.78);
-    };
-
-    const requestSync = () => {
-      if (frame) return;
-      frame = window.requestAnimationFrame(syncHeroReveal);
-    };
-
-    syncHeroReveal();
-    window.addEventListener("scroll", requestSync, { passive: true });
-    window.addEventListener("resize", requestSync);
-
-    return () => {
-      if (frame) window.cancelAnimationFrame(frame);
-      window.removeEventListener("scroll", requestSync);
-      window.removeEventListener("resize", requestSync);
-      document.documentElement.style.removeProperty("--hero-reveal");
-      document.documentElement.style.removeProperty("--hero-canvas-opacity");
-      document.documentElement.style.removeProperty("--hero-stage-overlay");
-      document.documentElement.style.removeProperty("--hero-curtain-y");
-      document.documentElement.style.removeProperty("--hero-cue-opacity");
-      document.documentElement.style.removeProperty("--hero-zoom-y");
-      document.documentElement.style.removeProperty("--hero-zoom-scale");
-      document.documentElement.classList.remove("is-hero-revealed");
-      window.history.scrollRestoration = previousScrollRestoration;
-    };
-  }, []);
-
   return (
     <>
       {false && (
@@ -254,20 +181,47 @@ function App() {
 
       <main id="top">
         <section className="hero section-frame" aria-label="Home">
-          <div className="hero-stage" ref={heroStageRef}>
-            <InteractiveWavesCanvas />
-            <div className="hero-intro-curtain" aria-hidden="true" />
-            <div className="hero-logo-mask hero-symbol-zoom" aria-hidden="true" />
-            <button className="hero-cta" type="button" onClick={() => setIsQuizOpen(true)}>
-              Quero melhorar a minha operação
-              <span aria-hidden="true">↗</span>
+          <div className="hero-bg" aria-hidden="true">
+            <span className="hero-bg-blob hero-bg-blob-1" />
+            <span className="hero-bg-blob hero-bg-blob-2" />
+            <span className="hero-bg-grid" />
+          </div>
+
+          <div className="hero-topbar">
+            <a className="hero-brand" href="#top" aria-label="Feed">
+              <img src="/brand/feed-logo-simples-branca.png" alt="Feed" />
+            </a>
+            <button className="hero-pill-link" type="button" onClick={() => setIsQuizOpen(true)}>
+              Diagnóstico gratuito
             </button>
-            <div className="hero-scroll-cue" aria-hidden="true">
-              <strong>Deslize</strong>
-              <small>para revelar</small>
-              <span />
+          </div>
+
+          <div className="hero-content">
+            <span className="hero-eyebrow">
+              <i aria-hidden="true" />
+              Agência de IA aplicada
+            </span>
+            <h1 className="hero-h1">
+              IA prática pra sua empresa <span>vender e operar melhor.</span>
+            </h1>
+            <p className="hero-sub">
+              Marca, aquisição, conteúdo e automações num parceiro só. A gente transforma estratégia em execução.
+            </p>
+            <div className="hero-actions">
+              <button className="hero-btn hero-btn-primary" type="button" onClick={() => setIsQuizOpen(true)}>
+                Quero melhorar a minha operação
+                <span aria-hidden="true">↗</span>
+              </button>
+              <a className="hero-btn hero-btn-ghost" href="#o-que-instalamos">
+                Ver o que fazemos
+              </a>
             </div>
           </div>
+
+          <a className="hero-cue" href="#o-que-instalamos" aria-label="Rolar para os serviços">
+            <span>Role para começar</span>
+            <i aria-hidden="true" />
+          </a>
         </section>
 
         <div className="site-shader-background" aria-hidden="true" />
