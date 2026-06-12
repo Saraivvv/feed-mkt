@@ -215,20 +215,18 @@ function App() {
 
         <section className="services-immersive section-frame reveal" id="o-que-instalamos">
           <div className="ss-stage">
-            <div className="ss-card">
-              <header className="ss-head">
-                <p className="eyebrow">Serviços da Feed</p>
-                <p className="ss-head-line">
-                  Tudo que sua empresa precisa para montar sua estratégia.
-                </p>
-              </header>
-
-              <OrbitalServices items={installedSystems} onCta={() => setIsQuizOpen(true)} />
-
-              <p className="orb-hint" aria-hidden="true">
-                Clique em um módulo para explorar
+            <header className="ss-head">
+              <p className="eyebrow">Serviços da Feed</p>
+              <p className="ss-head-line">
+                Tudo que sua empresa precisa para montar sua estratégia.
               </p>
-            </div>
+            </header>
+
+            <OrbitalServices items={installedSystems} onCta={() => setIsQuizOpen(true)} />
+
+            <p className="orb-hint" aria-hidden="true">
+              Clique em um módulo para explorar
+            </p>
           </div>
         </section>
 
@@ -265,7 +263,8 @@ function FeedMark({ className }) {
 function OrbitalServices({ items, onCta }) {
   const [activeKey, setActiveKey] = useState(null);
   const [angle, setAngle] = useState(0);
-  const [radius, setRadius] = useState(230);
+  const [radius, setRadius] = useState(280);
+  const [centerX, setCenterX] = useState(50);
   const wrapRef = useRef(null);
 
   // Auto-rotate the orbit while nothing is open.
@@ -277,12 +276,18 @@ function OrbitalServices({ items, onCta }) {
     return () => clearInterval(timer);
   }, [activeKey]);
 
-  // Radius follows the container, so the orbit fits the card on any screen.
+  // Orbit size and anchor follow the container: on wide screens the orbit
+  // sits on the left of the stage; on small screens it centers.
   useEffect(() => {
     const el = wrapRef.current;
     if (!el) return undefined;
     const measure = () => {
-      setRadius(Math.max(112, Math.min(el.clientWidth, el.clientHeight) / 2 - 86));
+      const isWide = el.clientWidth > 900;
+      const xFraction = isWide ? 0.34 : 0.5;
+      const horizontalRoom = el.clientWidth * xFraction - (isWide ? 130 : 70);
+      const verticalRoom = el.clientHeight / 2 - (isWide ? 88 : 72);
+      setCenterX(xFraction * 100);
+      setRadius(Math.max(116, Math.min(horizontalRoom, verticalRoom)));
     };
     measure();
     const observer = new ResizeObserver(measure);
@@ -312,15 +317,16 @@ function OrbitalServices({ items, onCta }) {
         if (event.target === wrapRef.current) setActiveKey(null);
       }}
     >
-      <div className="orb-ring" style={{ width: radius * 2, height: radius * 2 }} aria-hidden="true" />
+      <div className="orb-core" style={{ left: `${centerX}%` }}>
+        <div className="orb-ring" style={{ width: radius * 2, height: radius * 2 }} aria-hidden="true" />
 
-      <div className="orb-center" aria-hidden="true">
-        <span className="orb-center-ping" />
-        <span className="orb-center-ping orb-center-ping-2" />
-        <FeedMark className="orb-center-mark" />
-      </div>
+        <div className="orb-center" aria-hidden="true">
+          <span className="orb-center-ping" />
+          <span className="orb-center-ping orb-center-ping-2" />
+          <FeedMark className="orb-center-mark" />
+        </div>
 
-      {items.map((item, index) => {
+        {items.map((item, index) => {
         const theta = ((((index / items.length) * 360 + angle) % 360) * Math.PI) / 180;
         const x = radius * Math.cos(theta);
         const y = radius * Math.sin(theta);
@@ -392,7 +398,8 @@ function OrbitalServices({ items, onCta }) {
             )}
           </div>
         );
-      })}
+        })}
+      </div>
     </div>
   );
 }

@@ -5516,69 +5516,22 @@ button.hero-cta {
 
 .ss-stage {
   position: relative;
+  --ss-pad: clamp(24px, 3vw, 64px);
   height: 100vh;
   overflow: hidden;
   display: grid;
-  place-items: center;
-  padding: clamp(18px, 3vh, 40px) clamp(16px, 3vw, 48px);
+  place-items: stretch;
   isolation: isolate;
-  background: #070707;
+  /* Open stage: plain dark with a soft warm pool under the orbit. */
+  background:
+    radial-gradient(ellipse 46% 52% at 34% 52%, rgba(255, 163, 0, 0.07), transparent 68%),
+    #070707;
 }
 
 @supports (height: 100svh) {
   .ss-stage {
     height: 100svh;
   }
-}
-
-/* The outlined card that frames the slide experience. Sized as an object
-   on the page (not full-bleed), centered with breathing room around it. */
-.ss-card {
-  position: relative;
-  --ss-pad: clamp(24px, 2.4vw, 42px);
-  width: min(100%, 1240px);
-  height: min(100%, 740px);
-  display: grid;
-  place-items: stretch;
-  padding: clamp(24px, 3.5vh, 44px) clamp(20px, 3vw, 48px);
-  border: 1px solid rgba(244, 245, 240, 0.13);
-  border-radius: clamp(26px, 3vw, 40px);
-  overflow: hidden;
-  isolation: isolate;
-  /* Halftone print: near-black base with a faint warm anchor at the top
-     right corner where the dot field radiates from. */
-  background:
-    radial-gradient(ellipse 56% 48% at 90% 4%, rgba(255, 163, 0, 0.09), transparent 62%),
-    #0b0a08;
-  box-shadow:
-    inset 0 1px 0 rgba(244, 245, 240, 0.08),
-    0 40px 110px rgba(0, 0, 0, 0.5);
-}
-
-/* Halftone dot field, two layers: a wide field of small dots and a tight
-   cluster of bigger dots at the corner, reading as print dots growing. */
-.ss-card::before,
-.ss-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.ss-card::before {
-  background-image: radial-gradient(circle, rgba(255, 163, 0, 0.4) 1.1px, transparent 1.6px);
-  background-size: 13px 13px;
-  -webkit-mask-image: radial-gradient(circle at 89% 6%, #000 4%, transparent 56%);
-  mask-image: radial-gradient(circle at 89% 6%, #000 4%, transparent 56%);
-}
-
-.ss-card::after {
-  background-image: radial-gradient(circle, rgba(255, 163, 0, 0.52) 2.4px, transparent 3px);
-  background-size: 13px 13px;
-  background-position: 6.5px 6.5px;
-  -webkit-mask-image: radial-gradient(circle at 93% 2%, #000 2%, transparent 28%);
-  mask-image: radial-gradient(circle at 93% 2%, #000 2%, transparent 28%);
 }
 
 .ss-head {
@@ -5601,19 +5554,50 @@ button.hero-cta {
   line-height: 1.3;
 }
 
+/* Wide screens: the orbit anchors left, so the section copy moves to the
+   right column, vertically centered, with more presence. */
+@media (min-width: 901px) {
+  .ss-head {
+    left: auto;
+    right: var(--ss-pad);
+    top: 50%;
+    translate: 0 -50%;
+    width: min(34vw, 520px);
+    max-width: none;
+  }
+
+  .ss-head-line {
+    color: var(--white);
+    font-size: clamp(1.7rem, 2.3vw, 2.7rem);
+    font-weight: 800;
+    line-height: 1.08;
+  }
+}
+
 /* ===== Orbital services: nodes orbit the Feed mark; click to expand. ===== */
 .orb-wrap {
   position: relative;
   z-index: 1;
   width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+}
+
+/* Zero-size anchor at the orbit center; everything hangs off this point.
+   Its horizontal position comes inline from the component (left on wide
+   screens, centered on small ones). */
+.orb-core {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
 }
 
 .orb-ring {
   position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
   border: 1px solid rgba(244, 245, 240, 0.1);
   border-radius: 50%;
   pointer-events: none;
@@ -5621,8 +5605,11 @@ button.hero-cta {
 
 .orb-center {
   position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
   z-index: 5;
-  width: clamp(64px, 6vw, 84px);
+  width: clamp(72px, 6.6vw, 100px);
   aspect-ratio: 1;
   display: grid;
   place-items: center;
@@ -5668,12 +5655,11 @@ button.hero-cta {
 
 .orb-node {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  margin: -24px 0 0 -24px;
+  left: -27px;
+  top: -27px;
   display: grid;
   justify-items: center;
-  gap: 9px;
+  gap: 10px;
   cursor: pointer;
   outline: 0;
   transition:
@@ -5682,7 +5668,7 @@ button.hero-cta {
 }
 
 .orb-node-dot {
-  width: 48px;
+  width: 54px;
   aspect-ratio: 1;
   display: grid;
   place-items: center;
@@ -5698,8 +5684,8 @@ button.hero-cta {
 }
 
 .orb-node-dot svg {
-  width: 21px;
-  height: 21px;
+  width: 23px;
+  height: 23px;
 }
 
 .orb-node-label {
@@ -5945,20 +5931,14 @@ button.hero-cta {
 }
 
 @media (max-width: 900px) {
-  .ss-stage {
-    place-items: stretch;
-    padding: clamp(10px, 1.6vh, 16px) clamp(10px, 3vw, 16px);
-  }
-
-  .ss-card {
-    width: 100%;
-    height: 100%;
-    padding: clamp(20px, 5vw, 28px);
-    border-radius: 24px;
-  }
-
   .ss-head {
     max-width: 24ch;
+  }
+
+  .ss-stage {
+    background:
+      radial-gradient(ellipse 80% 40% at 50% 55%, rgba(255, 163, 0, 0.07), transparent 68%),
+      #070707;
   }
 }
 
