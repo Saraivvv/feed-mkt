@@ -14,6 +14,7 @@ const installedSystems = [
     label: "Identidade",
     tagline: "Marca forte e clara, pronta pra vender.",
     outputs: ["Território de marca", "Oferta clara", "Materiais de venda"],
+    related: ["social", "landing"],
   },
   {
     key: "leads",
@@ -23,6 +24,7 @@ const installedSystems = [
     label: "Captação",
     tagline: "Um fluxo previsível de clientes certos.",
     outputs: ["Fluxo de entrada", "Lista qualificada", "Rotina de follow-up"],
+    related: ["seo", "landing"],
   },
   {
     key: "social",
@@ -32,6 +34,7 @@ const installedSystems = [
     label: "Conteúdo",
     tagline: "Presença toda semana, sem improviso.",
     outputs: ["Calendário editorial", "Roteiros", "Posts comerciais"],
+    related: ["branding", "automation"],
   },
   {
     key: "seo",
@@ -41,6 +44,7 @@ const installedSystems = [
     label: "Busca",
     tagline: "Quem te procura, te encontra primeiro.",
     outputs: ["Mapa de buscas", "Páginas otimizadas", "Plano de conteúdo"],
+    related: ["leads", "landing"],
   },
   {
     key: "landing",
@@ -50,6 +54,7 @@ const installedSystems = [
     label: "Conversão",
     tagline: "Uma página que explica e converte.",
     outputs: ["Landing pages", "Diagnósticos", "Medição de conversão"],
+    related: ["leads", "seo"],
   },
   {
     key: "automation",
@@ -59,6 +64,7 @@ const installedSystems = [
     label: "Operação",
     tagline: "A rotina repetitiva no automático.",
     outputs: ["Assistentes internos", "Fluxos automáticos", "Bases organizadas"],
+    related: ["leads", "social"],
   },
 ];
 
@@ -73,20 +79,8 @@ const paymentMethods = [
 ];
 
 function App() {
-  const [activeInstalled, setActiveInstalled] = useState(0);
   const [isQuizOpen, setIsQuizOpen] = useState(false);
   const [isHeroHovered, setIsHeroHovered] = useState(false);
-  const servicesTrackRef = useRef(null);
-  const activeService = installedSystems[activeInstalled];
-
-  const goToService = (index) => {
-    const track = servicesTrackRef.current;
-    if (!track) return;
-    const total = track.offsetHeight - window.innerHeight;
-    if (total <= 0) return;
-    const frac = (index + 0.5) / installedSystems.length;
-    window.scrollTo({ top: track.offsetTop + total * frac, behavior: "smooth" });
-  };
 
   useEffect(() => {
     document.documentElement.classList.add("can-reveal");
@@ -134,34 +128,6 @@ function App() {
       observer.disconnect();
       sectionToneObserver?.disconnect();
       document.documentElement.classList.remove("can-reveal");
-    };
-  }, []);
-
-  useEffect(() => {
-    const track = servicesTrackRef.current;
-    if (!track) return undefined;
-    let frame = 0;
-    const update = () => {
-      frame = 0;
-      const viewport = window.innerHeight || 1;
-      const total = track.offsetHeight - viewport;
-      if (total <= 0) return;
-      const scrolled = Math.min(Math.max(-track.getBoundingClientRect().top, 0), total);
-      const progress = scrolled / total;
-      const count = installedSystems.length;
-      const index = Math.min(count - 1, Math.max(0, Math.floor(progress * count)));
-      setActiveInstalled((current) => (current === index ? current : index));
-    };
-    const onScroll = () => {
-      if (!frame) frame = requestAnimationFrame(update);
-    };
-    update();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      if (frame) cancelAnimationFrame(frame);
     };
   }, []);
 
@@ -247,66 +213,21 @@ function App() {
 
         <div className="site-shader-background" aria-hidden="true" />
 
-        <section
-          className={`services-immersive section-frame reveal service-${activeService.key}`}
-          id="o-que-instalamos"
-          style={{ "--ss-active": activeInstalled }}
-        >
-          <div className="ss-track" ref={servicesTrackRef}>
-            <div className="ss-stage">
-              <div className="ss-card">
-                <div className="ss-inner">
-                <header className="ss-head">
-                  <p className="eyebrow">Serviços da Feed</p>
-                  <p className="ss-head-line">
-                    Tudo que sua empresa precisa para montar sua estratégia.
-                  </p>
-                </header>
+        <section className="services-immersive section-frame reveal" id="o-que-instalamos">
+          <div className="ss-stage">
+            <div className="ss-card">
+              <header className="ss-head">
+                <p className="eyebrow">Serviços da Feed</p>
+                <p className="ss-head-line">
+                  Tudo que sua empresa precisa para montar sua estratégia.
+                </p>
+              </header>
 
-                <span className="ss-ghost" aria-hidden="true" key={`ghost-${activeService.key}`}>
-                  {activeService.number}
-                </span>
+              <OrbitalServices items={installedSystems} onCta={() => setIsQuizOpen(true)} />
 
-                <div className="ss-panel" key={activeService.key}>
-                  <div className={`ss-mark service-mark service-${activeService.key}`} aria-hidden="true">
-                    <ServiceIcon name={activeService.icon} />
-                  </div>
-                  <p className="ss-label">
-                    <span>{activeService.number}</span> / {activeService.label}
-                  </p>
-                  <h2 className="ss-title">{activeService.title}</h2>
-                  <p className="ss-tagline">{activeService.tagline}</p>
-                  <ul className="ss-outputs">
-                    {activeService.outputs.map((output) => (
-                      <li key={output}>{output}</li>
-                    ))}
-                  </ul>
-                </div>
-
-                <nav className="ss-progress" aria-label="Serviços da Feed">
-                  {installedSystems.map((item, index) => (
-                    <button
-                      key={item.key}
-                      type="button"
-                      className={`ss-dot ${index === activeInstalled ? "is-active" : ""} ${index < activeInstalled ? "is-past" : ""}`}
-                      onClick={() => goToService(index)}
-                      aria-current={index === activeInstalled ? "true" : undefined}
-                    >
-                      <span className="ss-dot-num">{item.number}</span>
-                      <span className="ss-dot-name">{item.title}</span>
-                    </button>
-                  ))}
-                </nav>
-
-                <div
-                  className="ss-cue"
-                  aria-hidden="true"
-                  data-end={activeInstalled === installedSystems.length - 1 ? "true" : "false"}
-                >
-                  <span>Role para navegar</span>
-                </div>
-              </div>
-              </div>
+              <p className="orb-hint" aria-hidden="true">
+                Clique em um módulo para explorar
+              </p>
             </div>
           </div>
         </section>
@@ -330,6 +251,149 @@ function App() {
       </main>
       <FeedQuizModal isOpen={isQuizOpen} onClose={() => setIsQuizOpen(false)} />
     </>
+  );
+}
+
+function FeedMark({ className }) {
+  return (
+    <svg className={className} viewBox="0 0 1366 1496" fill="currentColor" aria-hidden="true" focusable="false">
+      <path d="M305.66,169.17l0,1023.35c0,87.329 70.795,158.124 158.125,158.124l121.186,0l3.81,-383.129l226.755,0l0,81.355l222.14,-220.787l-223.698,-224.237l0,78.997l-227.481,0l0,108.821l-224.548,-223.117l226.607,-225.265l0,108.207l278.688,-0.946c156.277,-21.355 248.098,-110.435 261.628,-281.374l-823.213,0Z" />
+    </svg>
+  );
+}
+
+function OrbitalServices({ items, onCta }) {
+  const [activeKey, setActiveKey] = useState(null);
+  const [angle, setAngle] = useState(0);
+  const [radius, setRadius] = useState(230);
+  const wrapRef = useRef(null);
+
+  // Auto-rotate the orbit while nothing is open.
+  useEffect(() => {
+    if (activeKey) return undefined;
+    const timer = setInterval(() => {
+      setAngle((prev) => (prev + 0.22) % 360);
+    }, 50);
+    return () => clearInterval(timer);
+  }, [activeKey]);
+
+  // Radius follows the container, so the orbit fits the card on any screen.
+  useEffect(() => {
+    const el = wrapRef.current;
+    if (!el) return undefined;
+    const measure = () => {
+      setRadius(Math.max(112, Math.min(el.clientWidth, el.clientHeight) / 2 - 86));
+    };
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const activeItem = items.find((item) => item.key === activeKey) || null;
+
+  const toggleNode = (key) => {
+    if (activeKey === key) {
+      setActiveKey(null);
+      return;
+    }
+    // Rotate the chosen node to the top of the orbit so its detail card
+    // opens toward the center of the stage.
+    const index = items.findIndex((item) => item.key === key);
+    setActiveKey(key);
+    setAngle((((270 - (index / items.length) * 360) % 360) + 360) % 360);
+  };
+
+  return (
+    <div
+      className={`orb-wrap ${activeKey ? "has-open" : ""}`}
+      ref={wrapRef}
+      onClick={(event) => {
+        if (event.target === wrapRef.current) setActiveKey(null);
+      }}
+    >
+      <div className="orb-ring" style={{ width: radius * 2, height: radius * 2 }} aria-hidden="true" />
+
+      <div className="orb-center" aria-hidden="true">
+        <span className="orb-center-ping" />
+        <span className="orb-center-ping orb-center-ping-2" />
+        <FeedMark className="orb-center-mark" />
+      </div>
+
+      {items.map((item, index) => {
+        const theta = ((((index / items.length) * 360 + angle) % 360) * Math.PI) / 180;
+        const x = radius * Math.cos(theta);
+        const y = radius * Math.sin(theta);
+        const depth = (1 + Math.sin(theta)) / 2;
+        const isOpen = item.key === activeKey;
+        const isRelated = !isOpen && Boolean(activeItem?.related?.includes(item.key));
+
+        return (
+          <div
+            key={item.key}
+            className={`orb-node ${isOpen ? "is-open" : ""} ${isRelated ? "is-related" : ""}`}
+            style={{
+              transform: `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px)`,
+              zIndex: isOpen ? 60 : Math.round(10 + 20 * depth),
+              opacity: isOpen ? 1 : 0.45 + 0.55 * depth,
+            }}
+            onClick={(event) => {
+              event.stopPropagation();
+              toggleNode(item.key);
+            }}
+            onKeyDown={(event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                toggleNode(item.key);
+              }
+            }}
+            role="button"
+            tabIndex={0}
+            aria-expanded={isOpen}
+          >
+            <span className="orb-node-dot">
+              <ServiceIcon name={item.icon} />
+            </span>
+            <span className="orb-node-label">{item.title}</span>
+
+            {isOpen && (
+              <div className="orb-detail" onClick={(event) => event.stopPropagation()}>
+                <header>
+                  <strong>{item.label}</strong>
+                  <span>{item.number} / 06</span>
+                </header>
+                <h3>{item.title}</h3>
+                <p>{item.tagline}</p>
+                <div className="orb-detail-tags">
+                  {item.outputs.map((output) => (
+                    <span key={output}>{output}</span>
+                  ))}
+                </div>
+                {item.related?.length > 0 && (
+                  <div className="orb-detail-related">
+                    <small>Trabalha junto com</small>
+                    <div>
+                      {item.related.map((relatedKey) => {
+                        const relatedItem = items.find((entry) => entry.key === relatedKey);
+                        if (!relatedItem) return null;
+                        return (
+                          <button key={relatedKey} type="button" onClick={() => toggleNode(relatedKey)}>
+                            {relatedItem.title} <i aria-hidden="true">→</i>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+                <button className="orb-detail-cta" type="button" onClick={onCta}>
+                  Quero isso na minha operação <i aria-hidden="true">↗</i>
+                </button>
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </div>
   );
 }
 

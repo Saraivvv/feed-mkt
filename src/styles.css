@@ -5514,15 +5514,8 @@ button.hero-cta {
   filter: none;
 }
 
-.ss-track {
-  position: relative;
-  width: 100%;
-  height: 540vh;
-}
-
 .ss-stage {
-  position: sticky;
-  top: 0;
+  position: relative;
   height: 100vh;
   overflow: hidden;
   display: grid;
@@ -5542,10 +5535,11 @@ button.hero-cta {
    on the page (not full-bleed), centered with breathing room around it. */
 .ss-card {
   position: relative;
+  --ss-pad: clamp(24px, 2.4vw, 42px);
   width: min(100%, 1240px);
   height: min(100%, 740px);
   display: grid;
-  place-items: center;
+  place-items: stretch;
   padding: clamp(24px, 3.5vh, 44px) clamp(20px, 3vw, 48px);
   border: 1px solid rgba(244, 245, 240, 0.13);
   border-radius: clamp(26px, 3vw, 40px);
@@ -5587,18 +5581,6 @@ button.hero-cta {
   mask-image: radial-gradient(circle at 93% 2%, #000 2%, transparent 28%);
 }
 
-/* Central frame: everything positions against this, so the composition
-   holds together inside the card. The card border is the frame now, so
-   the old vertical spine is gone. */
-.ss-inner {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  max-width: 1280px;
-  height: 100%;
-  --ss-pad: clamp(24px, 2.4vw, 42px);
-}
-
 .ss-head {
   position: absolute;
   left: var(--ss-pad);
@@ -5619,214 +5601,185 @@ button.hero-cta {
   line-height: 1.3;
 }
 
-.ss-ghost {
-  position: absolute;
+/* ===== Orbital services: nodes orbit the Feed mark; click to expand. ===== */
+.orb-wrap {
+  position: relative;
   z-index: 1;
-  right: clamp(44px, 5vw, 96px);
-  top: 50%;
-  color: var(--orange);
-  font-size: clamp(11rem, 19vw, 19rem);
-  font-weight: 900;
-  line-height: 0.78;
-  letter-spacing: -0.05em;
-  opacity: 0.12;
-  pointer-events: none;
-  animation: ssGhostIn 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-.ss-panel {
-  position: absolute;
-  left: var(--ss-pad);
-  /* Fixed top anchor (below the header): every slide starts at the same
-     spot, so the icon and title never shift with text length. Percentage
-     so it tracks the card height, not the viewport. */
-  top: clamp(92px, 25%, 158px);
-  z-index: 2;
-  max-width: min(620px, 64%);
-  display: grid;
-  align-content: start;
-  justify-items: start;
-  gap: clamp(10px, 1.3vh, 18px);
-  animation: ssPanelIn 620ms cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-/* Clean orange line icon: no tile, no box, just the stroke. */
-.ss-mark {
-  width: clamp(40px, 3.2vw, 52px);
-  border: 0;
-  border-radius: 0;
-  background: none;
-  box-shadow: none;
-  color: var(--orange);
-}
-
-.ss-mark::before,
-.ss-mark::after {
-  display: none;
-}
-
-.ss-mark svg {
   width: 100%;
   height: 100%;
-  color: var(--orange);
-  stroke-width: 1.5;
-}
-
-.ss-label {
-  margin: 0;
-  color: rgba(244, 245, 240, 0.68);
-  font-size: clamp(0.8rem, 0.95vw, 1rem);
-  font-weight: 900;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-
-.ss-label span {
-  color: var(--orange);
-}
-
-.ss-title {
-  margin: 0;
-  color: var(--white);
-  font-size: clamp(2.9rem, 5.4vw, 5.6rem);
-  line-height: 0.9;
-  letter-spacing: -0.015em;
-}
-
-.ss-tagline {
-  margin: 0;
-  max-width: 26ch;
-  color: rgba(244, 245, 240, 0.82);
-  font-size: clamp(1.08rem, 1.45vw, 1.5rem);
-  font-weight: 500;
-  line-height: 1.28;
-}
-
-.ss-outputs {
-  list-style: none;
-  margin: clamp(6px, 1.2vh, 16px) 0 0;
-  padding: 0;
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.ss-outputs li {
-  display: inline-flex;
   align-items: center;
-  border: 1px solid rgba(255, 163, 0, 0.3);
-  border-radius: 999px;
-  padding: 7px 14px;
-  color: rgba(244, 245, 240, 0.9);
-  background: rgba(255, 163, 0, 0.08);
-  font-size: clamp(0.76rem, 0.85vw, 0.9rem);
-  font-weight: 700;
+  justify-content: center;
 }
 
-.ss-progress {
+.orb-ring {
   position: absolute;
-  z-index: 3;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  border: 1px solid rgba(244, 245, 240, 0.1);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.orb-center {
+  position: absolute;
+  z-index: 5;
+  width: clamp(64px, 6vw, 84px);
+  aspect-ratio: 1;
   display: grid;
-  gap: 2px;
+  place-items: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ffbe3d, #ffa300 48%, #b87400);
+  box-shadow:
+    inset 0 1px 0 rgba(244, 245, 240, 0.4),
+    0 14px 44px rgba(255, 163, 0, 0.28);
 }
 
-.ss-dot {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 12px;
-  padding: 9px 0;
-  border: 0;
-  background: transparent;
-  color: rgba(244, 245, 240, 0.4);
-  font: inherit;
+.orb-center-mark {
+  width: 52%;
+  height: auto;
+  color: #170e02;
+}
+
+.orb-center-ping {
+  position: absolute;
+  inset: -10px;
+  border: 1px solid rgba(255, 163, 0, 0.4);
+  border-radius: 50%;
+  animation: orbPing 2400ms cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.orb-center-ping-2 {
+  inset: -20px;
+  border-color: rgba(255, 163, 0, 0.22);
+  animation-delay: 600ms;
+}
+
+@keyframes orbPing {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+
+  75%,
+  100% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
+
+.orb-node {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -24px 0 0 -24px;
+  display: grid;
+  justify-items: center;
+  gap: 9px;
   cursor: pointer;
-  text-align: right;
-  transition: color 240ms ease;
-}
-
-.ss-dot-num {
-  min-width: 2ch;
-  font-size: 0.72rem;
-  font-weight: 900;
-  letter-spacing: 0.08em;
-}
-
-.ss-dot-name {
-  max-width: 0;
-  overflow: hidden;
-  white-space: nowrap;
-  opacity: 0;
-  font-size: 0.86rem;
-  font-weight: 800;
+  outline: 0;
   transition:
-    max-width 340ms cubic-bezier(0.16, 1, 0.3, 1),
-    opacity 240ms ease;
+    transform 700ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 700ms ease;
 }
 
-.ss-dot::after {
-  content: "";
-  width: 26px;
-  height: 2px;
-  background: currentColor;
-  transition: width 280ms cubic-bezier(0.16, 1, 0.3, 1);
+.orb-node-dot {
+  width: 48px;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(244, 245, 240, 0.3);
+  border-radius: 50%;
+  background: rgba(11, 10, 8, 0.92);
+  color: rgba(244, 245, 240, 0.85);
+  transition:
+    border-color 260ms ease,
+    background 260ms ease,
+    color 260ms ease,
+    scale 260ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.ss-dot:hover {
-  color: rgba(244, 245, 240, 0.82);
+.orb-node-dot svg {
+  width: 21px;
+  height: 21px;
 }
 
-.ss-dot.is-past {
-  color: rgba(255, 163, 0, 0.5);
+.orb-node-label {
+  white-space: nowrap;
+  color: rgba(244, 245, 240, 0.66);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 260ms ease;
 }
 
-.ss-dot.is-active {
+.orb-node:is(:hover, :focus-visible) .orb-node-dot {
+  border-color: rgba(255, 163, 0, 0.7);
   color: var(--orange);
 }
 
-.ss-dot.is-active .ss-dot-name {
-  max-width: 18ch;
-  opacity: 1;
+.orb-node.is-open .orb-node-dot {
+  border-color: var(--orange);
+  background: var(--orange);
+  color: #170e02;
+  scale: 1.25;
 }
 
-.ss-dot.is-active::after {
-  width: 48px;
+.orb-node.is-open .orb-node-label,
+.orb-node:is(:hover, :focus-visible) .orb-node-label {
+  color: var(--white);
 }
 
-.ss-cue {
+.orb-node.is-related .orb-node-dot {
+  border-color: rgba(255, 163, 0, 0.65);
+  color: var(--orange);
+  animation: orbRelatedPulse 1400ms ease-in-out infinite;
+}
+
+@keyframes orbRelatedPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 163, 0, 0.3);
+  }
+
+  50% {
+    box-shadow: 0 0 0 9px rgba(255, 163, 0, 0);
+  }
+}
+
+/* Expanded detail card, dropping from the active node. */
+.orb-detail {
   position: absolute;
-  z-index: 3;
-  left: var(--ss-pad);
-  bottom: clamp(30px, 5vh, 74px);
-  display: inline-flex;
-  align-items: center;
+  top: calc(100% + 16px);
+  left: 50%;
+  translate: -50%;
+  width: min(340px, 82vw);
+  display: grid;
   gap: 10px;
-  color: rgba(244, 245, 240, 0.5);
-  font-size: 0.76rem;
-  font-weight: 800;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  transition: opacity 320ms ease;
+  padding: 20px 20px 18px;
+  border: 1px solid rgba(255, 163, 0, 0.3);
+  border-radius: 18px;
+  background: rgba(10, 9, 7, 0.94);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+  cursor: default;
+  text-align: left;
+  animation: orbDetailIn 360ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-.ss-cue::before {
+.orb-detail::before {
   content: "";
-  width: 30px;
-  height: 1px;
-  background: rgba(255, 163, 0, 0.7);
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  width: 1px;
+  height: 16px;
+  background: rgba(255, 163, 0, 0.5);
 }
 
-.ss-cue[data-end="true"] {
-  opacity: 0;
-}
-
-@keyframes ssPanelIn {
+@keyframes orbDetailIn {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(12px);
   }
 
   to {
@@ -5835,26 +5788,159 @@ button.hero-cta {
   }
 }
 
-@keyframes ssGhostIn {
-  from {
-    opacity: 0;
-    transform: translateY(-50%) translateX(7%);
-  }
+.orb-detail header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
 
-  to {
-    opacity: 0.1;
-    transform: translateY(-50%) translateX(0);
-  }
+.orb-detail header strong {
+  border: 1px solid rgba(255, 163, 0, 0.34);
+  border-radius: 999px;
+  padding: 4px 10px;
+  color: var(--orange);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.orb-detail header span {
+  color: rgba(244, 245, 240, 0.5);
+  font-size: 0.74rem;
+  font-weight: 800;
+}
+
+.orb-detail h3 {
+  margin: 0;
+  color: var(--white);
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.orb-detail > p {
+  margin: 0;
+  color: rgba(244, 245, 240, 0.78);
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.orb-detail-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.orb-detail-tags span {
+  border: 1px solid rgba(244, 245, 240, 0.16);
+  border-radius: 999px;
+  padding: 4px 10px;
+  color: rgba(244, 245, 240, 0.82);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.orb-detail-related {
+  display: grid;
+  gap: 7px;
+  border-top: 1px solid rgba(244, 245, 240, 0.1);
+  padding-top: 10px;
+}
+
+.orb-detail-related small {
+  color: rgba(244, 245, 240, 0.5);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.orb-detail-related div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.orb-detail-related button {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid rgba(244, 245, 240, 0.18);
+  border-radius: 999px;
+  padding: 5px 11px;
+  background: transparent;
+  color: rgba(244, 245, 240, 0.84);
+  font: inherit;
+  font-size: 0.76rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: border-color 200ms ease, color 200ms ease;
+}
+
+.orb-detail-related button:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+}
+
+.orb-detail-related button i {
+  font-style: normal;
+}
+
+.orb-detail-cta {
+  margin-top: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 999px;
+  padding: 11px 16px;
+  background: var(--orange);
+  color: #170e02;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 900;
+  cursor: pointer;
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.orb-detail-cta:hover {
+  transform: translateY(-2px);
+}
+
+.orb-detail-cta i {
+  font-style: normal;
+}
+
+.orb-hint {
+  position: absolute;
+  z-index: 2;
+  left: var(--ss-pad);
+  bottom: clamp(22px, 3.5vh, 38px);
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(244, 245, 240, 0.5);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.orb-hint::before {
+  content: "";
+  width: 30px;
+  height: 1px;
+  background: rgba(255, 163, 0, 0.7);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .ss-panel,
-  .ss-ghost {
+  .orb-center-ping,
+  .orb-node.is-related .orb-node-dot {
     animation: none;
-  }
-
-  .ss-ghost {
-    transform: translateY(-50%);
   }
 }
 
@@ -5871,86 +5957,8 @@ button.hero-cta {
     border-radius: 24px;
   }
 
-  /* Clean vertical column: header at top, content below it (consistent
-     start), progress pushed to the bottom by flex so nothing overlaps. */
-  .ss-inner {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    max-width: none;
-  }
-
-  .ss-inner::before {
-    display: none;
-  }
-
-  .ss-head,
-  .ss-panel,
-  .ss-cue {
-    position: static;
-    left: auto;
-    top: auto;
-    bottom: auto;
-    translate: none;
-    max-width: none;
-  }
-
   .ss-head {
-    margin-bottom: clamp(20px, 4vh, 40px);
-  }
-
-  .ss-panel {
-    min-height: 0;
-    gap: clamp(10px, 1.4vh, 16px);
-  }
-
-  .ss-title {
-    font-size: clamp(3rem, 13vw, 4.4rem);
-  }
-
-  .ss-tagline {
-    max-width: none;
-    font-size: clamp(1.1rem, 4.6vw, 1.5rem);
-  }
-
-  .ss-ghost {
-    top: 32%;
-    right: -6vw;
-    font-size: clamp(11rem, 50vw, 20rem);
-    opacity: 0.09;
-  }
-
-  .ss-progress {
-    position: static;
-    margin-top: auto;
-    transform: none;
-    grid-auto-flow: column;
-    justify-content: start;
-    align-items: end;
-    gap: clamp(12px, 4vw, 20px);
-    padding-top: clamp(22px, 4vh, 38px);
-  }
-
-  .ss-dot {
-    flex-direction: column;
-    gap: 6px;
-    padding: 0;
-  }
-
-  .ss-dot-name {
-    display: none;
-  }
-
-  .ss-dot::after {
-    width: 16px;
-  }
-
-  .ss-dot.is-active::after {
-    width: 26px;
-  }
-
-  .ss-cue {
-    display: none;
+    max-width: 24ch;
   }
 }
 
