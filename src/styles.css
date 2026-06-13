@@ -1385,17 +1385,6 @@ h1 .title-feed {
 /* Uniform site grid for the .fit section, layered above the shader
    (z-index 0) and below the content (z-index 2). Same 64px spec as the
    services stage so the grid reads consistently across the whole site. */
-.fit.section-frame::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background-image:
-    linear-gradient(90deg, rgba(244, 245, 240, 0.18) 1px, transparent 1px),
-    linear-gradient(180deg, rgba(244, 245, 240, 0.18) 1px, transparent 1px);
-  background-size: 64px 64px;
-}
 
 .fit-content {
   position: relative;
@@ -1836,12 +1825,9 @@ h1 .title-feed {
   padding: 46px clamp(18px, 4vw, 64px) 34px;
   border-top: 1px solid rgba(244, 245, 240, 0.1);
   color: rgba(244, 245, 240, 0.64);
-  background-image:
-    linear-gradient(90deg, rgba(244, 245, 240, 0.18) 1px, transparent 1px),
-    linear-gradient(180deg, rgba(244, 245, 240, 0.18) 1px, transparent 1px),
-    radial-gradient(circle, rgba(244, 245, 240, 0.08) 0 0.7px, transparent 0.9px),
+  background:
+    radial-gradient(circle, rgba(244, 245, 240, 0.08) 0 0.7px, transparent 0.9px) 0 0 / 6px 6px,
     linear-gradient(180deg, rgba(7, 7, 7, 0.78), rgba(7, 7, 7, 0.95));
-  background-size: 64px 64px, 64px 64px, 6px 6px, 100% 100%;
   box-shadow: 0 -22px 70px rgba(0, 0, 0, 0.42);
 }
 
@@ -5542,14 +5528,10 @@ button.hero-cta {
   display: grid;
   place-items: stretch;
   isolation: isolate;
-  /* Open stage: plain dark with a soft warm pool under the orbit,
-     plus the uniform site grid (same 64px spec as the .fit section). */
+  /* Open stage: plain dark with a soft warm pool under the orbit. */
   background:
-    linear-gradient(90deg, rgba(244, 245, 240, 0.18) 1px, transparent 1px),
-    linear-gradient(180deg, rgba(244, 245, 240, 0.18) 1px, transparent 1px),
     radial-gradient(ellipse 46% 52% at 34% 52%, rgba(255, 163, 0, 0.07), transparent 68%),
     #070707;
-  background-size: 64px 64px, 64px 64px, 100% 100%, 100% 100%;
 }
 
 @supports (height: 100svh) {
