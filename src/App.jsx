@@ -285,11 +285,11 @@ function OrbitalServices({ items, onCta }) {
       const isWide = el.clientWidth > 900;
       const xFraction = isWide ? 0.34 : 0.5;
       const horizontalRoom = el.clientWidth * xFraction - (isWide ? 140 : 78);
-      const verticalRoom = el.clientHeight / 2 - (isWide ? 124 : 84);
+      const verticalRoom = el.clientHeight / 2 - (isWide ? 88 : 84);
       setCenterX(xFraction * 100);
       // Hard cap keeps the ring proportional to the core logo and preserves
       // the stage margins on very large screens.
-      setRadius(Math.max(116, Math.min(horizontalRoom, verticalRoom, 340)));
+      setRadius(Math.max(116, Math.min(horizontalRoom, verticalRoom, 252)));
     };
     measure();
     const observer = new ResizeObserver(measure);
