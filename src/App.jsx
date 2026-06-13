@@ -253,7 +253,9 @@ function App() {
           <div className="shift-glow" aria-hidden="true" />
           <div className="shift-head">
             <p className="eyebrow">Antes e depois</p>
-            <h2>O que muda quando a Feed entra na operação.</h2>
+            <h2>
+              O que <span>muda</span> quando a Feed entra na operação.
+            </h2>
             <p className="shift-sub">
               A gente não vende ferramenta. Resolve o que trava o seu dia e o seu crescimento.
             </p>
@@ -264,8 +266,8 @@ function App() {
               <span className="shift-h-before">Como é hoje</span>
               <span className="shift-h-after">Com a Feed</span>
             </div>
-            {shiftPairs.map((pair) => (
-              <div className="shift-row" key={pair.before}>
+            {shiftPairs.map((pair, index) => (
+              <div className="shift-row" key={pair.before} style={{ "--row": index }}>
                 <p className="shift-before">
                   <i aria-hidden="true" />
                   {pair.before}
