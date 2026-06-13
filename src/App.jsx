@@ -68,6 +68,25 @@ const installedSystems = [
   },
 ];
 
+const shiftPairs = [
+  {
+    before: "Cliente só chega por indicação, sem previsibilidade.",
+    after: "Um fluxo de leads qualificados entrando todo mês.",
+  },
+  {
+    before: "Cada material parece de uma empresa diferente.",
+    after: "Uma marca consistente que comunica valor e vende.",
+  },
+  {
+    before: "O conteúdo sai quando sobra tempo e some por semanas.",
+    after: "Presença constante nas redes, sem depender de inspiração.",
+  },
+  {
+    before: "O time perde o dia em tarefa repetitiva e manual.",
+    after: "IA e automações no trabalho chato, time focado no cliente.",
+  },
+];
+
 const paymentMethods = [
   { label: "Pix", className: "pix" },
   { label: "VISA", className: "visa" },
@@ -227,6 +246,37 @@ function App() {
             <p className="orb-hint" aria-hidden="true">
               Clique em um módulo para explorar
             </p>
+          </div>
+        </section>
+
+        <section className="shift section-frame reveal" id="o-que-muda">
+          <div className="shift-glow" aria-hidden="true" />
+          <div className="shift-head">
+            <p className="eyebrow">Antes e depois</p>
+            <h2>O que muda quando a Feed entra na operação.</h2>
+            <p className="shift-sub">
+              A gente não vende ferramenta. Resolve o que trava o seu dia e o seu crescimento.
+            </p>
+          </div>
+
+          <div className="shift-grid">
+            <div className="shift-grid-head" aria-hidden="true">
+              <span className="shift-h-before">Como é hoje</span>
+              <span className="shift-h-after">Com a Feed</span>
+            </div>
+            {shiftPairs.map((pair) => (
+              <div className="shift-row" key={pair.before}>
+                <p className="shift-before">
+                  <i aria-hidden="true" />
+                  {pair.before}
+                </p>
+                <span className="shift-arrow" aria-hidden="true">→</span>
+                <p className="shift-after">
+                  <i aria-hidden="true" />
+                  {pair.after}
+                </p>
+              </div>
+            ))}
           </div>
         </section>
 
