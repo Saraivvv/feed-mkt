@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,200;0,400;0,500;0,700;0,800;0,900;1,900&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--black:#070707;--orange:#FFA300;--white:#F4F5F0;--blue:#1560D1;--gray:#53565A;--cream:#F1EFE6;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:#202020;font-family:'Barlow',sans-serif;-webkit-font-smoothing:antialiased;display:flex;flex-wrap:wrap;}
+
+  .tile{width:640px;height:640px;position:relative;overflow:hidden;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;background:#23211d;color:var(--white);}
+  .label{position:absolute;left:0;right:0;bottom:0;padding:16px 24px;background:rgba(7,7,7,.86);
+    font-weight:800;font-size:19px;letter-spacing:.05em;text-transform:uppercase;color:var(--white);}
+  .label small{display:block;margin-top:3px;font-weight:500;font-size:13.5px;letter-spacing:.01em;
+    text-transform:none;opacity:.66;}
+
+  .grain{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='matrix' values='0.34 0.34 0.34 0 0 0.34 0.34 0.34 0 0 0.34 0.34 0.34 0 0 0.34 0.34 0.34 0 0'/><feComponentTransfer><feFuncA type='table' tableValues='0.5 0.22 0.04 0.22 0.5'/></feComponentTransfer></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    background-size:200px 200px;background-repeat:repeat;}
+
+  /* 1 GRÃO */
+  .t-grain{background-color:var(--orange);}
+  .t-grain .demo{font-weight:900;font-size:120px;color:rgba(7,7,7,.14);letter-spacing:-.04em;}
+
+  /* 2 BLOCOS */
+  .t-blocks{flex-direction:row;gap:0;}
+  .blk{flex:1;height:100%;display:flex;align-items:flex-start;justify-content:center;padding-top:40px;
+    font-weight:800;font-size:15px;letter-spacing:.08em;}
+  .blk.k{background:var(--black);color:var(--white);}
+  .blk.o{background:var(--orange);color:var(--black);}
+  .blk.c{background:var(--cream);color:#6f6c60;}
+
+  /* 3 CARD CREME */
+  .t-card{background:var(--orange);}
+  .minicard{position:relative;width:470px;background:var(--cream);border-radius:20px;padding:54px 48px 46px;
+    box-shadow:0 30px 70px rgba(0,0,0,.45);display:flex;flex-direction:column;align-items:center;gap:18px;}
+  .card-dots{position:absolute;top:26px;left:30px;display:flex;gap:11px;}
+  .card-dots i{width:14px;height:14px;border-radius:50%;background:#d3d0c2;display:block;}
+  .card-dots i:first-child{background:var(--orange);}
+  .minicard .fm{width:150px;height:auto;fill:var(--black);}
+
+  /* 4 CAIXA LARANJA */
+  .t-mt{background:var(--cream);color:var(--black);}
+  .t-mt .demo{font-weight:900;font-size:74px;line-height:1.22;letter-spacing:-.03em;text-align:center;}
+  .mtbox{background:var(--orange);color:var(--black);padding:.04em .13em .02em;
+    -webkit-box-decoration-break:clone;box-decoration-break:clone;}
+
+  /* 5 MARCA-TEXTO CÍRCULO */
+  .t-circle{background:var(--cream);color:var(--black);}
+  .supp{position:relative;display:inline-block;}
+  .supp svg{position:absolute;left:50%;top:50%;transform:translate(-50%,-52%) rotate(-2.5deg);width:430px;height:auto;z-index:0;}
+  .supp p{position:relative;z-index:1;font-weight:900;font-size:46px;text-transform:uppercase;letter-spacing:-.015em;}
+
+  /* 6 MARCA-TEXTO RISCO */
+  .t-strike{background:var(--black);color:var(--white);}
+  .t-strike .demo{font-weight:900;font-size:96px;letter-spacing:-.03em;}
+  .strike{position:relative;display:inline-block;}
+  .strike svg{position:absolute;left:-4%;top:52%;width:108%;height:.32em;transform:translateY(-50%);overflow:visible;}
+
+  /* 7 SÍMBOLO + SETAS */
+  .t-mark{background:var(--black);}
+  .t-mark .row{display:flex;align-items:center;gap:54px;}
+  .t-mark .fm{width:120px;height:auto;fill:var(--orange);}
+  .t-mark .arrow{width:120px;height:120px;}
+
+  /* 8 TIPOGRAFIA */
+  .t-type{background:var(--black);color:var(--white);align-items:flex-start;justify-content:center;padding:0 64px;}
+  .t-type .aa{font-weight:900;font-size:188px;line-height:.82;letter-spacing:-.05em;}
+  .t-type .eb{margin-top:14px;font-weight:800;font-size:20px;text-transform:uppercase;letter-spacing:.32em;color:var(--orange);}
+  .t-type .cav{margin-top:8px;font-family:'Caveat',cursive;font-weight:700;font-size:40px;color:var(--white);opacity:.8;}
+</style>
+</head>
+<body>
+
+<!-- 1 GRÃO -->
+<div class="tile t-grain grain">
+  <span class="demo">Aa</span>
+  <div class="label">Grão universal<small>.grain · feTurbulence, aparece em qualquer cor sem alterá-la</small></div>
+</div>
+
+<!-- 2 BLOCOS CHAPADOS + PALETA -->
+<div class="tile t-blocks">
+  <div class="blk k grain">#070707</div>
+  <div class="blk o grain">#FFA300</div>
+  <div class="blk c grain">#F1EFE6</div>
+  <div class="label">Blocos chapados<small>preto · laranja · creme — cor sólida com grão</small></div>
+</div>
+
+<!-- 3 CARD CREME -->
+<div class="tile t-card grain">
+  <div class="minicard">
+    <div class="card-dots"><i></i><i></i><i></i></div>
+    <svg class="fm" viewBox="0 0 1366 1496"><path fill="#070707" d="M305.66,169.17l0,1023.35c0,87.329 70.795,158.124 158.125,158.124l121.186,0l3.81,-383.129l226.755,0l0,81.355l222.14,-220.787l-223.698,-224.237l0,78.997l-227.481,0l0,108.821l-224.548,-223.117l226.607,-225.265l0,108.207l278.688,-0.946c156.277,-21.355 248.098,-110.435 261.628,-281.374l-823.213,0Z"/></svg>
+  </div>
+  <div class="label">Card creme + janelinha<small>#F1EFE6 · cantos 20px · sombra suave · 3 bolinhas (1ª laranja)</small></div>
+</div>
+
+<!-- 4 CAIXA LARANJA -->
+<div class="tile t-mt">
+  <p class="demo">Marketing<br>que <span class="mtbox">opera</span></p>
+  <div class="label">Caixa de destaque<small>.mtbox · ênfase positiva · line-height ≥ 1.16</small></div>
+</div>
+
+<!-- 5 MARCA-TEXTO CÍRCULO -->
+<div class="tile t-circle">
+  <span class="supp">
+    <svg viewBox="0 0 640 190" fill="none" stroke="#FFA300" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><path d="M48 104 C 64 48, 250 34, 332 37 C 474 42, 604 56, 596 100 C 588 150, 398 166, 298 161 C 150 155, 34 146, 50 98 C 55 80, 74 70, 156 60"/></svg>
+    <p>agência de antes</p>
+  </span>
+  <div class="label">Marca-texto à mão · círculo<small>traço SVG laranja — assinatura criativa, toque analógico</small></div>
+</div>
+
+<!-- 6 MARCA-TEXTO RISCO -->
+<div class="tile t-strike">
+  <span class="demo">Não <span class="strike">enfeita<svg viewBox="0 0 200 24" preserveAspectRatio="none"><path d="M4 15 C 55 6, 150 19, 196 9" fill="none" stroke="#FFA300" stroke-width="7" stroke-linecap="round" vector-effect="non-scaling-stroke"/></svg></span></span>
+  <div class="label">Marca-texto à mão · risco<small>riscar o "velho" / a palavra negada, à mão</small></div>
+</div>
+
+<!-- 7 SÍMBOLO + SETAS -->
+<div class="tile t-mark grain">
+  <div class="row">
+    <svg class="fm" viewBox="0 0 1366 1496"><path fill="#FFA300" d="M305.66,169.17l0,1023.35c0,87.329 70.795,158.124 158.125,158.124l121.186,0l3.81,-383.129l226.755,0l0,81.355l222.14,-220.787l-223.698,-224.237l0,78.997l-227.481,0l0,108.821l-224.548,-223.117l226.607,-225.265l0,108.207l278.688,-0.946c156.277,-21.355 248.098,-110.435 261.628,-281.374l-823.213,0Z"/></svg>
+    <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="#FFA300" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h14M12 6l6 6-6 6"/></svg>
+  </div>
+  <div class="label">Símbolo F + setas<small>elemento estrutural — vetor nítido, do logo</small></div>
+</div>
+
+<!-- 8 TIPOGRAFIA -->
+<div class="tile t-type">
+  <div>
+    <div class="aa">Aa</div>
+    <div class="eb">Eyebrow · 0.32em</div>
+    <div class="cav">detalhe manuscrito (Caveat)</div>
+  </div>
+  <div class="label">Barlow<small>família única · contraste de escala e peso · 900 / 500 / 200</small></div>
+</div>
+
+</body>
+</html>
