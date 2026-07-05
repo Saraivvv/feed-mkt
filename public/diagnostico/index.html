@@ -497,8 +497,11 @@
 
     <script>
       (function () {
-        // Marca quando a pagina carregou pro gate de tempo anti-bot no servidor.
+        // Marca quando a pagina carregou. A fricção de tempo é UX aqui no front:
+        // se o submit vier rápido demais, a gente segura o envio até completar o
+        // tempo mínimo (humano nunca trava). O servidor não confia no elapsedMs.
         var loadedAt = Date.now();
+        var MIN_FILL_MS = 1200;
         var form = document.getElementById("capture");
         var btn = document.getElementById("btn");
         var err = document.getElementById("err");
@@ -541,40 +544,47 @@
           emailEl.disabled = true;
           btn.textContent = "Enviando...";
 
-          fetch("/api/diagnostico", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              nome: nome,
-              email: email,
-              site: hpEl ? hpEl.value : "",
-              elapsedMs: Date.now() - loadedAt,
-              pageUrl: window.location.href,
-              submittedAt: new Date().toISOString(),
-              userAgent: navigator.userAgent,
-            }),
-          })
-            .then(function (res) {
-              return res.json().then(function (data) {
-                return { ok: res.ok, data: data };
+          function enviar() {
+            fetch("/api/diagnostico", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                nome: nome,
+                email: email,
+                site: hpEl ? hpEl.value : "",
+                pageUrl: window.location.href,
+                submittedAt: new Date().toISOString(),
+                userAgent: navigator.userAgent,
+              }),
+            })
+              .then(function (res) {
+                return res.json().then(function (data) {
+                  return { ok: res.ok, data: data };
+                });
+              })
+              .then(function (r) {
+                // Só mostra sucesso em 2xx REAL do envio. Qualquer outra coisa cai no catch.
+                if (!r.ok) {
+                  throw new Error((r.data && r.data.error) || "Falha no envio");
+                }
+                form.style.display = "none";
+                success.classList.add("show");
+              })
+              .catch(function () {
+                btn.disabled = false;
+                nomeEl.disabled = false;
+                emailEl.disabled = false;
+                btn.textContent = "Quero meu diagnóstico";
+                showError(
+                  "Deu um problema pra enviar agora. Tenta de novo em instantes, por favor."
+                );
               });
-            })
-            .then(function (r) {
-              if (!r.ok) {
-                throw new Error((r.data && r.data.error) || "Falha no envio");
-              }
-              form.style.display = "none";
-              success.classList.add("show");
-            })
-            .catch(function () {
-              btn.disabled = false;
-              nomeEl.disabled = false;
-              emailEl.disabled = false;
-              btn.textContent = "Quero meu diagnóstico";
-              showError(
-                "Deu um problema pra enviar agora. Tenta de novo em instantes, por favor."
-              );
-            });
+          }
+
+          // Fricção de tempo como UX: segura o envio até fechar o tempo mínimo
+          // desde o load. Pra humano quase sempre é 0ms; só atrasa o robô instantâneo.
+          var espera = Math.max(0, MIN_FILL_MS - (Date.now() - loadedAt));
+          setTimeout(enviar, espera);
         });
       })();
     </script>

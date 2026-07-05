@@ -18,31 +18,63 @@ const PDF_URL = `${SITE_URL}/${PDF_FILENAME}`;
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-// Gate de tempo: submit mais rapido que isso apos o load = bot.
-const MIN_FILL_MS = 2000;
-
 // ---- Rate limit BEST-EFFORT em memoria ----
 // ATENCAO: isso vive so na memoria da instancia da function. Reseta a cada cold
 // start e nao e compartilhado entre instancias concorrentes. Serve como freio de
 // mao pra abuso casual; pra rate limit real (persistente, distribuido) o certo e
 // Vercel KV / Upstash Redis. Nao dependa disto como unica linha de defesa.
 const RATE_WINDOW_MS = 10 * 60 * 1000; // 10 min
-const MAX_PER_IP = 3; // 3 envios por IP na janela
-const MAX_PER_EMAIL = 1; // 1 envio por email na janela
+// B2B costuma vir de escritorio atras de NAT (varios humanos, um IP so). 3 era
+// agressivo demais e barrava time legitimo. O freio apertado fica no e-mail.
+const MAX_PER_IP = 15; // 15 envios por IP na janela
+const MAX_PER_EMAIL = 1; // 1 envio por email na janela (limite mais apertado)
 const rateByIp = new Map();
 const rateByEmail = new Map();
 
-function rateAllow(map, key, max) {
+// ---- Reserva in-flight: o "limiter em duas fases" de verdade ----
+// O peek read-only sozinho nao segura flood CONCORRENTE. Entre o peek e o commit
+// existe o await do envio, entao duas requests paralelas com o MESMO e-mail passam
+// as duas no peek antes de qualquer slot ser gravado, as duas mandam, e so depois
+// gravam. Pra fechar isso a gente guarda uma RESERVA in-flight por chave (contador
+// de requests em voo), separada dos slots commitados, e conta reserva + commit no
+// limite. A 2a request paralela ve a reserva da 1a e ja toma 429.
+// Honestidade: esses mapas vivem na memoria da instancia serverless, entao a
+// reserva fecha o flood concorrente DENTRO da mesma instancia (que e exatamente o
+// caso apontado). Entre instancias distintas continua best-effort, igual ao resto
+// do limiter. Cross-instancia so com Vercel KV / Upstash Redis, fica pra depois.
+const inflightByIp = new Map();
+const inflightByEmail = new Map();
+
+function reserve(map, key) {
+  if (!key) return;
+  map.set(key, (map.get(key) || 0) + 1);
+}
+
+function release(map, key) {
+  if (!key) return;
+  const n = (map.get(key) || 0) - 1;
+  if (n > 0) map.set(key, n);
+  else map.delete(key);
+}
+
+// Rate limit em DUAS FASES pra nao queimar slot num envio que falhou:
+//   ratePeek  -> checagem read-only ("esse IP/email ja estourou?"), poda a janela e
+//                conta COMMITADOS + RESERVAS in-flight contra o limite.
+//   rateCommit-> grava o timestamp, chamado SO depois do envio principal dar certo.
+function ratePeek(map, inflightMap, key, max) {
   if (!key) return true;
   const now = Date.now();
   const hits = (map.get(key) || []).filter((t) => now - t < RATE_WINDOW_MS);
-  if (hits.length >= max) {
-    map.set(key, hits);
-    return false;
-  }
+  map.set(key, hits);
+  return hits.length + (inflightMap.get(key) || 0) < max;
+}
+
+function rateCommit(map, key) {
+  if (!key) return;
+  const now = Date.now();
+  const hits = (map.get(key) || []).filter((t) => now - t < RATE_WINDOW_MS);
   hits.push(now);
   map.set(key, hits);
-  return true;
 }
 
 function getClientIp(req) {
@@ -64,21 +96,18 @@ export default async function handler(req, res) {
   const submittedAt = (data.submittedAt || "").toString().trim();
   const userAgent = (data.userAgent || "").toString().trim();
   const honeypot = (data.site || "").toString().trim();
-  const elapsedMs = Number(data.elapsedMs);
 
   // ---- Anti-abuso a) HONEYPOT: campo oculto que humano nunca preenche. ----
-  // Se veio preenchido, e bot. Fingimos sucesso e nao enviamos nada.
+  // Se veio preenchido, e bot. Fingimos sucesso e nao enviamos nada. Aqui o
+  // fake-success e legitimo: e bot, nunca vai reenviar nem ver tela nenhuma.
   if (honeypot) {
     res.status(200).json({ ok: true });
     return;
   }
 
-  // ---- Anti-abuso b) GATE DE TEMPO: submit rapido demais = bot. ----
-  // Fingimos sucesso e nao enviamos nada.
-  if (Number.isFinite(elapsedMs) && elapsedMs < MIN_FILL_MS) {
-    res.status(200).json({ ok: true });
-    return;
-  }
+  // A fricção de tempo virou UX no front (segura o submit rapido demais). O
+  // elapsedMs e client-trust (burlavel por POST direto), entao NAO serve de
+  // defesa real no servidor. Quem defende de verdade e honeypot + rate-limit.
 
   // Validacao: nome nao vazio e e-mail valido.
   if (!nome) {
@@ -90,9 +119,14 @@ export default async function handler(req, res) {
     return;
   }
 
-  // ---- Anti-abuso c) RATE LIMIT best-effort (ver comentario no topo). ----
+  // ---- Anti-abuso c) RATE LIMIT best-effort, FASE 1: peek read-only. ----
+  // So contem flood. O slot so e gravado (rateCommit) depois do envio principal
+  // dar certo, la embaixo. Assim um SMTP que falha nao bloqueia o retry do lead.
   const ip = getClientIp(req);
-  if (!rateAllow(rateByIp, ip, MAX_PER_IP) || !rateAllow(rateByEmail, email, MAX_PER_EMAIL)) {
+  if (
+    !ratePeek(rateByIp, inflightByIp, ip, MAX_PER_IP) ||
+    !ratePeek(rateByEmail, inflightByEmail, email, MAX_PER_EMAIL)
+  ) {
     res.status(429).json({ error: "Muitas solicitações. Tenta de novo daqui a pouco." });
     return;
   }
@@ -101,12 +135,20 @@ export default async function handler(req, res) {
   const pass = process.env.SMTP_APP_PASSWORD;
   const internalTo = process.env.LEAD_TO || user;
 
+  // SMTP nao configurado retorna ANTES de reservar, entao nao mexe em inflight/slot.
   if (!user || !pass) {
     console.error("SMTP_USER ou SMTP_APP_PASSWORD nao configurados.");
     res.status(500).json({ error: "E-mail nao configurado" });
     return;
   }
 
+  // RESERVA SINCRONA: logo depois do peek passar e sem NENHUM await no meio, pra a
+  // request concorrente com o mesmo e-mail/IP ver a reserva no peek dela e tomar 429.
+  // O finally la embaixo garante que a reserva e liberada em TODO caminho de saida.
+  reserve(inflightByIp, ip);
+  reserve(inflightByEmail, email);
+
+  try {
   const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 465,
@@ -230,9 +272,16 @@ export default async function handler(req, res) {
     });
   } catch (err) {
     console.error("Falha ao enviar Diagnóstico pro lead:", err);
+    // NAO grava o slot: o lead nao recebeu, entao o retry tem que ser permitido.
+    // O finally libera a reserva, logo o retry com o mesmo e-mail continua passando.
     res.status(500).json({ error: "Falha ao enviar" });
     return;
   }
+
+  // RATE LIMIT FASE 2: envio principal deu certo, agora sim consome o slot. O slot
+  // commitado passa a segurar a cota pela janela; a reserva e liberada no finally.
+  rateCommit(rateByIp, ip);
+  rateCommit(rateByEmail, email);
 
   // 2) Notificacao interna DESACOPLADA: se falhar, so loga. Nao derruba a resposta
   //    nem faz o cliente reenviar (o que geraria PDF duplicado pro lead).
@@ -255,6 +304,13 @@ export default async function handler(req, res) {
   }
 
   res.status(200).json({ ok: true });
+  } finally {
+    // Libera a reserva in-flight em QUALQUER saida (sucesso, falha de SMTP ou throw
+    // inesperado). Nunca vaza reserva que travaria o e-mail pra sempre. Em sucesso o
+    // slot commitado ja segura a cota; em falha nada foi gravado e o retry passa.
+    release(inflightByIp, ip);
+    release(inflightByEmail, email);
+  }
 }
 
 async function carregarPdf() {
