@@ -1,0 +1,645 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;500;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta
+      name="description"
+      content="Agende uma conversa de 30 minutos com a Feed sobre o gargalo da sua operação. Sem apresentação de slides, sem empurrar pacote."
+    />
+    <meta property="og:title" content="Agende sua conversa | Feed" />
+    <meta
+      property="og:description"
+      content="Uma conversa de 30 minutos sobre o gargalo da sua operação. Sem apresentação de slides, sem empurrar pacote."
+    />
+    <meta property="og:type" content="website" />
+    <title>Agende sua conversa | Feed</title>
+    <style>
+      :root {
+        --black: #070707;
+        --white: #f4f5f0;
+        --orange: #ffa300;
+        --blue: #1560d1;
+        --gray: #53565a;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        background: var(--black);
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        min-width: 320px;
+        min-height: 100vh;
+        color: var(--white);
+        font-family: "Barlow", system-ui, "Segoe UI", Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        background:
+          radial-gradient(circle at 14% 8%, rgba(255, 163, 0, 0.16), transparent 22rem),
+          radial-gradient(circle at 86% 92%, rgba(21, 96, 209, 0.14), transparent 24rem),
+          var(--black);
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* Grafismo de fundo: setas do símbolo Feed em baixa opacidade */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        background-image: repeating-linear-gradient(
+          115deg,
+          rgba(244, 245, 240, 0.022) 0px,
+          rgba(244, 245, 240, 0.022) 1px,
+          transparent 1px,
+          transparent 42px
+        );
+        opacity: 0.7;
+      }
+
+      main {
+        position: relative;
+        z-index: 1;
+        flex: 1;
+        width: 100%;
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: clamp(28px, 6vw, 64px) clamp(20px, 5vw, 56px) 48px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: clamp(32px, 5vw, 72px);
+        align-items: center;
+      }
+
+      @media (max-width: 860px) {
+        main {
+          grid-template-columns: 1fr;
+          gap: 36px;
+          align-items: stretch;
+          min-height: 100vh;
+        }
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: clamp(28px, 5vw, 44px);
+      }
+      .brand img {
+        height: 30px;
+        width: auto;
+        display: block;
+      }
+      .brand .kicker {
+        font-size: 11px;
+        letter-spacing: 0.32em;
+        text-transform: uppercase;
+        color: var(--gray);
+        font-weight: 700;
+        padding-left: 12px;
+        border-left: 1px solid rgba(83, 86, 90, 0.6);
+      }
+
+      .col-left {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        align-self: flex-start;
+        gap: 8px;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--orange);
+        margin-bottom: 22px;
+      }
+      .eyebrow::before {
+        content: "";
+        width: 22px;
+        height: 2px;
+        background: var(--orange);
+        display: inline-block;
+      }
+
+      h1 {
+        margin: 0 0 20px;
+        font-weight: 800;
+        font-size: clamp(2rem, 5vw, 3.15rem);
+        line-height: 1.05;
+        letter-spacing: -0.015em;
+      }
+      h1 .accent {
+        color: var(--orange);
+      }
+
+      .lede {
+        margin: 0 0 26px;
+        font-size: clamp(1.02rem, 1.6vw, 1.18rem);
+        line-height: 1.55;
+        color: rgba(244, 245, 240, 0.82);
+        max-width: 38ch;
+        font-weight: 300;
+      }
+
+      .bullets {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 12px;
+      }
+      .bullets li {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        font-size: 0.98rem;
+        line-height: 1.4;
+        color: rgba(244, 245, 240, 0.9);
+        font-weight: 500;
+      }
+      .bullets svg {
+        flex: 0 0 auto;
+        margin-top: 2px;
+      }
+
+      /* ---- Card do formulário ---- */
+      .card {
+        position: relative;
+        background: linear-gradient(180deg, rgba(83, 86, 90, 0.16), rgba(7, 7, 7, 0.4));
+        border: 1px solid rgba(244, 245, 240, 0.1);
+        border-radius: 14px;
+        padding: clamp(26px, 3.4vw, 38px);
+        box-shadow: 0 24px 60px -30px rgba(0, 0, 0, 0.9);
+      }
+      .card::before {
+        content: "";
+        position: absolute;
+        top: -1px;
+        left: 22px;
+        right: 22px;
+        height: 2px;
+        background: linear-gradient(90deg, var(--orange), transparent 70%);
+        border-radius: 2px;
+      }
+
+      .card h2 {
+        margin: 0 0 6px;
+        font-size: 1.28rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      .card p.sub {
+        margin: 0 0 24px;
+        font-size: 0.94rem;
+        line-height: 1.45;
+        color: rgba(244, 245, 240, 0.68);
+        font-weight: 300;
+      }
+
+      .field {
+        margin-bottom: 16px;
+      }
+      .row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+      @media (max-width: 460px) {
+        .row {
+          grid-template-columns: 1fr;
+          gap: 0;
+        }
+      }
+      .field label {
+        display: block;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(244, 245, 240, 0.7);
+        margin-bottom: 7px;
+      }
+      .field input,
+      .field textarea {
+        width: 100%;
+        padding: 13px 15px;
+        font-family: inherit;
+        font-size: 1rem;
+        font-weight: 500;
+        color: var(--white);
+        background: rgba(7, 7, 7, 0.55);
+        border: 1px solid rgba(244, 245, 240, 0.16);
+        border-radius: 9px;
+        transition: border-color 0.18s ease, box-shadow 0.18s ease;
+      }
+      .field textarea {
+        resize: vertical;
+        min-height: 88px;
+        line-height: 1.45;
+      }
+      .field input::placeholder,
+      .field textarea::placeholder {
+        color: rgba(244, 245, 240, 0.32);
+        font-weight: 300;
+      }
+      .field input:focus,
+      .field textarea:focus {
+        outline: none;
+        border-color: var(--orange);
+        box-shadow: 0 0 0 3px rgba(255, 163, 0, 0.16);
+      }
+      .field input:disabled,
+      .field textarea:disabled {
+        opacity: 0.55;
+        cursor: not-allowed;
+      }
+      .field .opt {
+        font-weight: 400;
+        color: rgba(244, 245, 240, 0.38);
+        letter-spacing: 0.04em;
+      }
+
+      button.submit {
+        width: 100%;
+        margin-top: 8px;
+        padding: 15px 20px;
+        font-family: inherit;
+        font-size: 1.02rem;
+        font-weight: 700;
+        letter-spacing: 0.01em;
+        color: var(--black);
+        background: var(--orange);
+        border: none;
+        border-radius: 9px;
+        cursor: pointer;
+        transition: transform 0.14s ease, background 0.18s ease, box-shadow 0.18s ease;
+        box-shadow: 0 12px 28px -12px rgba(255, 163, 0, 0.55);
+      }
+      button.submit:hover:not(:disabled) {
+        background: #ffb42e;
+        transform: translateY(-1px);
+      }
+      button.submit:active:not(:disabled) {
+        transform: translateY(0);
+      }
+      button.submit:disabled {
+        cursor: wait;
+        opacity: 0.75;
+      }
+
+      .form-note {
+        margin: 14px 0 0;
+        font-size: 12px;
+        line-height: 1.4;
+        color: rgba(244, 245, 240, 0.42);
+        font-weight: 300;
+        text-align: center;
+      }
+
+      .error-msg {
+        display: none;
+        margin: 14px 0 0;
+        padding: 11px 14px;
+        font-size: 0.88rem;
+        line-height: 1.4;
+        color: #ffd5d5;
+        background: rgba(209, 40, 40, 0.14);
+        border: 1px solid rgba(209, 40, 40, 0.4);
+        border-radius: 9px;
+        font-weight: 500;
+      }
+      .error-msg.show {
+        display: block;
+      }
+
+      /* ---- Estado de sucesso ---- */
+      .success {
+        display: none;
+        text-align: center;
+        padding: 8px 0;
+      }
+      .success.show {
+        display: block;
+        animation: rise 0.5s ease both;
+      }
+      @keyframes rise {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .success .check {
+        width: 58px;
+        height: 58px;
+        margin: 0 auto 20px;
+        border-radius: 50%;
+        background: rgba(255, 163, 0, 0.14);
+        border: 1px solid rgba(255, 163, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .success h2 {
+        margin: 0 0 12px;
+        font-size: 1.5rem;
+        font-weight: 800;
+        letter-spacing: -0.01em;
+      }
+      .success p {
+        margin: 0 auto;
+        max-width: 34ch;
+        font-size: 1rem;
+        line-height: 1.55;
+        color: rgba(244, 245, 240, 0.78);
+        font-weight: 300;
+      }
+
+      footer {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        padding: 22px 20px 30px;
+        font-size: 12px;
+        color: rgba(83, 86, 90, 0.9);
+        font-weight: 300;
+      }
+      footer a {
+        color: rgba(244, 245, 240, 0.55);
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="col-left">
+        <div class="brand">
+          <img src="/brand/feed-logo-simples-branca.png" alt="Feed" onerror="this.style.display='none'" />
+          <span class="kicker">Conversa</span>
+        </div>
+
+        <span class="eyebrow">30 minutos, sem pitch</span>
+        <h1>
+          Vamos conversar sobre <span class="accent">o gargalo da sua operação</span>
+        </h1>
+        <p class="lede">
+          Você leu o Diagnóstico e quer trocar uma ideia. Ótimo. Marque abaixo e a gente
+          senta 30 minutos pra entender o seu caso de verdade.
+        </p>
+
+        <ul class="bullets">
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M20 6 9 17l-5-5" stroke="#FFA300" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Sem apresentação de slides, sem empurrar pacote
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M20 6 9 17l-5-5" stroke="#FFA300" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            A gente olha a sua operação e aponta onde está o nó
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M20 6 9 17l-5-5" stroke="#FFA300" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Você sai com um primeiro passo claro, dando ou não em contrato
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <div class="card">
+          <!-- Formulário -->
+          <form id="capture" novalidate>
+            <!-- Honeypot anti-bot: humano nunca vê nem preenche. Se vier preenchido, o servidor descarta. -->
+            <div
+              class="hp"
+              aria-hidden="true"
+              style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none"
+            >
+              <label for="site">Não preencha este campo</label>
+              <input type="text" id="site" name="site" tabindex="-1" autocomplete="off" />
+            </div>
+            <h2>Pedir a conversa</h2>
+            <p class="sub">
+              Deixe seus dados e uma linha sobre o que está travando. A gente te chama no
+              e-mail pra acertar o melhor horário.
+            </p>
+
+            <div class="field">
+              <label for="nome">Seu nome</label>
+              <input
+                type="text"
+                id="nome"
+                name="nome"
+                autocomplete="name"
+                placeholder="Como podemos te chamar"
+                required
+              />
+            </div>
+
+            <div class="field">
+              <label for="email">Seu melhor e-mail</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                autocomplete="email"
+                inputmode="email"
+                placeholder="voce@suaempresa.com"
+                required
+              />
+            </div>
+
+            <div class="row">
+              <div class="field">
+                <label for="empresa">Empresa</label>
+                <input
+                  type="text"
+                  id="empresa"
+                  name="empresa"
+                  autocomplete="organization"
+                  placeholder="Nome da empresa"
+                  required
+                />
+              </div>
+              <div class="field">
+                <label for="cargo">Cargo <span class="opt">(opcional)</span></label>
+                <input
+                  type="text"
+                  id="cargo"
+                  name="cargo"
+                  autocomplete="organization-title"
+                  placeholder="Seu papel na empresa"
+                />
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="motivo">O que mais trava sua operação hoje? <span class="opt">(opcional)</span></label>
+              <textarea
+                id="motivo"
+                name="motivo"
+                placeholder="Conte em poucas linhas onde a operação emperra. Ajuda a gente a chegar na conversa já entendendo o seu caso."
+              ></textarea>
+            </div>
+
+            <button type="submit" class="submit" id="btn">Quero conversar</button>
+
+            <div class="error-msg" id="err"></div>
+
+            <p class="form-note">
+              Seus dados ficam com a gente e com mais ninguém. Sem spam, sem enrolação.
+            </p>
+          </form>
+
+          <!-- Estado de sucesso -->
+          <div class="success" id="success" aria-live="polite">
+            <div class="check">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <path d="M20 6 9 17l-5-5" stroke="#FFA300" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <h2>Recebido!</h2>
+            <p>
+              Recebi seu pedido de conversa. Vou te chamar no e-mail em até 1 dia útil pra
+              acertar o melhor horário.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      Feed, IA, marca e soluções para empresas. &nbsp;·&nbsp;
+      <a href="/privacidade.html">Privacidade</a>
+    </footer>
+
+    <script>
+      (function () {
+        // Marca quando a pagina carregou pro gate de tempo anti-bot no servidor.
+        var loadedAt = Date.now();
+        var form = document.getElementById("capture");
+        var btn = document.getElementById("btn");
+        var err = document.getElementById("err");
+        var success = document.getElementById("success");
+        var nomeEl = document.getElementById("nome");
+        var emailEl = document.getElementById("email");
+        var empresaEl = document.getElementById("empresa");
+        var cargoEl = document.getElementById("cargo");
+        var motivoEl = document.getElementById("motivo");
+        var hpEl = document.getElementById("site");
+
+        var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        function showError(msg) {
+          err.textContent = msg;
+          err.classList.add("show");
+        }
+        function clearError() {
+          err.classList.remove("show");
+          err.textContent = "";
+        }
+
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          clearError();
+
+          var nome = nomeEl.value.trim();
+          var email = emailEl.value.trim();
+          var empresa = empresaEl.value.trim();
+          var cargo = cargoEl.value.trim();
+          var motivo = motivoEl.value.trim();
+
+          if (!nome) {
+            showError("Por favor, escreva seu nome.");
+            nomeEl.focus();
+            return;
+          }
+          if (!EMAIL_RE.test(email)) {
+            showError("Confere o e-mail pra gente, parece que ele está incompleto.");
+            emailEl.focus();
+            return;
+          }
+          if (!empresa) {
+            showError("Escreve o nome da sua empresa, por favor.");
+            empresaEl.focus();
+            return;
+          }
+
+          btn.disabled = true;
+          nomeEl.disabled = true;
+          emailEl.disabled = true;
+          empresaEl.disabled = true;
+          cargoEl.disabled = true;
+          motivoEl.disabled = true;
+          btn.textContent = "Enviando...";
+
+          fetch("/api/agendar", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              nome: nome,
+              email: email,
+              empresa: empresa,
+              cargo: cargo,
+              motivo: motivo,
+              site: hpEl ? hpEl.value : "",
+              elapsedMs: Date.now() - loadedAt,
+              pageUrl: window.location.href,
+              submittedAt: new Date().toISOString(),
+              userAgent: navigator.userAgent,
+            }),
+          })
+            .then(function (res) {
+              return res.json().then(function (data) {
+                return { ok: res.ok, data: data };
+              });
+            })
+            .then(function (r) {
+              if (!r.ok) {
+                throw new Error((r.data && r.data.error) || "Falha no envio");
+              }
+              form.style.display = "none";
+              success.classList.add("show");
+            })
+            .catch(function () {
+              btn.disabled = false;
+              nomeEl.disabled = false;
+              emailEl.disabled = false;
+              empresaEl.disabled = false;
+              cargoEl.disabled = false;
+              motivoEl.disabled = false;
+              btn.textContent = "Quero conversar";
+              showError(
+                "Deu um problema pra enviar agora. Tenta de novo em instantes, por favor."
+              );
+            });
+        });
+      })();
+    </script>
+  </body>
+</html>

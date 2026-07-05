@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;500;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta
+      name="description"
+      content="Diagnóstico do Gargalo da Feed. Descubra o quanto sua empresa ainda depende de você e onde está o gargalo que trava o crescimento."
+    />
+    <meta property="og:title" content="Diagnóstico do Gargalo | Feed" />
+    <meta
+      property="og:description"
+      content="Descubra o quanto sua empresa ainda depende de você. Deixe seu nome e e-mail e receba o Diagnóstico do Gargalo na sua caixa de entrada."
+    />
+    <meta property="og:type" content="website" />
+    <title>Diagnóstico do Gargalo | Feed</title>
+    <style>
+      :root {
+        --black: #070707;
+        --white: #f4f5f0;
+        --orange: #ffa300;
+        --blue: #1560d1;
+        --gray: #53565a;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        background: var(--black);
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        min-width: 320px;
+        min-height: 100vh;
+        color: var(--white);
+        font-family: "Barlow", system-ui, "Segoe UI", Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        background:
+          radial-gradient(circle at 14% 8%, rgba(255, 163, 0, 0.16), transparent 22rem),
+          radial-gradient(circle at 86% 92%, rgba(21, 96, 209, 0.14), transparent 24rem),
+          var(--black);
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* Grafismo de fundo: setas do símbolo Feed em baixa opacidade */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        background-image: repeating-linear-gradient(
+          115deg,
+          rgba(244, 245, 240, 0.022) 0px,
+          rgba(244, 245, 240, 0.022) 1px,
+          transparent 1px,
+          transparent 42px
+        );
+        opacity: 0.7;
+      }
+
+      main {
+        position: relative;
+        z-index: 1;
+        flex: 1;
+        width: 100%;
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: clamp(28px, 6vw, 64px) clamp(20px, 5vw, 56px) 48px;
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: clamp(32px, 5vw, 72px);
+        align-items: center;
+      }
+
+      @media (max-width: 860px) {
+        main {
+          grid-template-columns: 1fr;
+          gap: 36px;
+          align-items: stretch;
+          min-height: 100vh;
+        }
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: clamp(28px, 5vw, 44px);
+      }
+      .brand img {
+        height: 30px;
+        width: auto;
+        display: block;
+      }
+      .brand .kicker {
+        font-size: 11px;
+        letter-spacing: 0.32em;
+        text-transform: uppercase;
+        color: var(--gray);
+        font-weight: 700;
+        padding-left: 12px;
+        border-left: 1px solid rgba(83, 86, 90, 0.6);
+      }
+
+      .col-left {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        align-self: flex-start;
+        gap: 8px;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--orange);
+        margin-bottom: 22px;
+      }
+      .eyebrow::before {
+        content: "";
+        width: 22px;
+        height: 2px;
+        background: var(--orange);
+        display: inline-block;
+      }
+
+      h1 {
+        margin: 0 0 20px;
+        font-weight: 800;
+        font-size: clamp(2rem, 5.2vw, 3.35rem);
+        line-height: 1.04;
+        letter-spacing: -0.015em;
+      }
+      h1 .accent {
+        color: var(--orange);
+      }
+
+      .lede {
+        margin: 0 0 26px;
+        font-size: clamp(1.02rem, 1.6vw, 1.18rem);
+        line-height: 1.55;
+        color: rgba(244, 245, 240, 0.82);
+        max-width: 34ch;
+        font-weight: 300;
+      }
+
+      .bullets {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 12px;
+      }
+      .bullets li {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        font-size: 0.98rem;
+        line-height: 1.4;
+        color: rgba(244, 245, 240, 0.9);
+        font-weight: 500;
+      }
+      .bullets svg {
+        flex: 0 0 auto;
+        margin-top: 2px;
+      }
+
+      /* ---- Card do formulário ---- */
+      .card {
+        position: relative;
+        background: linear-gradient(180deg, rgba(83, 86, 90, 0.16), rgba(7, 7, 7, 0.4));
+        border: 1px solid rgba(244, 245, 240, 0.1);
+        border-radius: 14px;
+        padding: clamp(26px, 3.4vw, 38px);
+        box-shadow: 0 24px 60px -30px rgba(0, 0, 0, 0.9);
+      }
+      .card::before {
+        content: "";
+        position: absolute;
+        top: -1px;
+        left: 22px;
+        right: 22px;
+        height: 2px;
+        background: linear-gradient(90deg, var(--orange), transparent 70%);
+        border-radius: 2px;
+      }
+
+      .card h2 {
+        margin: 0 0 6px;
+        font-size: 1.28rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      .card p.sub {
+        margin: 0 0 24px;
+        font-size: 0.94rem;
+        line-height: 1.45;
+        color: rgba(244, 245, 240, 0.68);
+        font-weight: 300;
+      }
+
+      .field {
+        margin-bottom: 16px;
+      }
+      .field label {
+        display: block;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(244, 245, 240, 0.7);
+        margin-bottom: 7px;
+      }
+      .field input {
+        width: 100%;
+        padding: 13px 15px;
+        font-family: inherit;
+        font-size: 1rem;
+        font-weight: 500;
+        color: var(--white);
+        background: rgba(7, 7, 7, 0.55);
+        border: 1px solid rgba(244, 245, 240, 0.16);
+        border-radius: 9px;
+        transition: border-color 0.18s ease, box-shadow 0.18s ease;
+      }
+      .field input::placeholder {
+        color: rgba(244, 245, 240, 0.32);
+        font-weight: 300;
+      }
+      .field input:focus {
+        outline: none;
+        border-color: var(--orange);
+        box-shadow: 0 0 0 3px rgba(255, 163, 0, 0.16);
+      }
+      .field input:disabled {
+        opacity: 0.55;
+        cursor: not-allowed;
+      }
+
+      button.submit {
+        width: 100%;
+        margin-top: 8px;
+        padding: 15px 20px;
+        font-family: inherit;
+        font-size: 1.02rem;
+        font-weight: 700;
+        letter-spacing: 0.01em;
+        color: var(--black);
+        background: var(--orange);
+        border: none;
+        border-radius: 9px;
+        cursor: pointer;
+        transition: transform 0.14s ease, background 0.18s ease, box-shadow 0.18s ease;
+        box-shadow: 0 12px 28px -12px rgba(255, 163, 0, 0.55);
+      }
+      button.submit:hover:not(:disabled) {
+        background: #ffb42e;
+        transform: translateY(-1px);
+      }
+      button.submit:active:not(:disabled) {
+        transform: translateY(0);
+      }
+      button.submit:disabled {
+        cursor: wait;
+        opacity: 0.75;
+      }
+
+      .form-note {
+        margin: 14px 0 0;
+        font-size: 12px;
+        line-height: 1.4;
+        color: rgba(244, 245, 240, 0.42);
+        font-weight: 300;
+        text-align: center;
+      }
+
+      .error-msg {
+        display: none;
+        margin: 14px 0 0;
+        padding: 11px 14px;
+        font-size: 0.88rem;
+        line-height: 1.4;
+        color: #ffd5d5;
+        background: rgba(209, 40, 40, 0.14);
+        border: 1px solid rgba(209, 40, 40, 0.4);
+        border-radius: 9px;
+        font-weight: 500;
+      }
+      .error-msg.show {
+        display: block;
+      }
+
+      /* ---- Estado de sucesso ---- */
+      .success {
+        display: none;
+        text-align: center;
+        padding: 8px 0;
+      }
+      .success.show {
+        display: block;
+        animation: rise 0.5s ease both;
+      }
+      @keyframes rise {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .success .check {
+        width: 58px;
+        height: 58px;
+        margin: 0 auto 20px;
+        border-radius: 50%;
+        background: rgba(255, 163, 0, 0.14);
+        border: 1px solid rgba(255, 163, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .success h2 {
+        margin: 0 0 12px;
+        font-size: 1.5rem;
+        font-weight: 800;
+        letter-spacing: -0.01em;
+      }
+      .success p {
+        margin: 0 auto;
+        max-width: 32ch;
+        font-size: 1rem;
+        line-height: 1.55;
+        color: rgba(244, 245, 240, 0.78);
+        font-weight: 300;
+      }
+      .success .hint {
+        margin-top: 18px;
+        font-size: 0.86rem;
+        color: rgba(244, 245, 240, 0.5);
+      }
+      .success .hint a {
+        color: var(--orange);
+        text-decoration: none;
+        font-weight: 600;
+        border-bottom: 1px solid rgba(255, 163, 0, 0.4);
+      }
+
+      footer {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        padding: 22px 20px 30px;
+        font-size: 12px;
+        color: rgba(83, 86, 90, 0.9);
+        font-weight: 300;
+      }
+      footer a {
+        color: rgba(244, 245, 240, 0.55);
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="col-left">
+        <div class="brand">
+          <img src="/brand/feed-logo-simples-branca.png" alt="Feed" onerror="this.style.display='none'" />
+          <span class="kicker">Diagnóstico</span>
+        </div>
+
+        <span class="eyebrow">Diagnóstico do Gargalo</span>
+        <h1>
+          Descubra o quanto sua empresa <span class="accent">ainda depende de você</span>
+        </h1>
+        <p class="lede">
+          Um material curto e direto pra você enxergar onde está o gargalo que trava o
+          crescimento, e o que fazer com ele.
+        </p>
+
+        <ul class="bullets">
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M20 6 9 17l-5-5" stroke="#FFA300" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Onde a operação para quando você não está por perto
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M20 6 9 17l-5-5" stroke="#FFA300" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Os pontos que mais consomem seu tempo hoje
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M20 6 9 17l-5-5" stroke="#FFA300" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            O primeiro passo pra tirar a empresa das suas costas
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <div class="card">
+          <!-- Formulário -->
+          <form id="capture" novalidate>
+            <!-- Honeypot anti-bot: humano nunca vê nem preenche. Se vier preenchido, o servidor descarta. -->
+            <div
+              class="hp"
+              aria-hidden="true"
+              style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none"
+            >
+              <label for="site">Não preencha este campo</label>
+              <input type="text" id="site" name="site" tabindex="-1" autocomplete="off" />
+            </div>
+            <h2>Receba agora, é de graça</h2>
+            <p class="sub">
+              Deixe seu nome e e-mail. O Diagnóstico do Gargalo cai na sua caixa de entrada em
+              instantes.
+            </p>
+
+            <div class="field">
+              <label for="nome">Seu nome</label>
+              <input
+                type="text"
+                id="nome"
+                name="nome"
+                autocomplete="name"
+                placeholder="Como podemos te chamar"
+                required
+              />
+            </div>
+
+            <div class="field">
+              <label for="email">Seu melhor e-mail</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                autocomplete="email"
+                inputmode="email"
+                placeholder="voce@suaempresa.com"
+                required
+              />
+            </div>
+
+            <button type="submit" class="submit" id="btn">Quero meu diagnóstico</button>
+
+            <div class="error-msg" id="err"></div>
+
+            <p class="form-note">
+              Seus dados ficam com a gente e com mais ninguém. Sem spam, sem enrolação.
+            </p>
+          </form>
+
+          <!-- Estado de sucesso -->
+          <div class="success" id="success" aria-live="polite">
+            <div class="check">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <path d="M20 6 9 17l-5-5" stroke="#FFA300" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <h2>Pronto!</h2>
+            <p>
+              Acabei de mandar o Diagnóstico pro seu e-mail. Dá uma olhada na caixa de entrada
+              (e no spam, caso não apareça de primeira).
+            </p>
+            <p class="hint">
+              Não chegou em alguns minutos? Baixe direto por
+              <a href="/diagnostico-do-gargalo.pdf" target="_blank" rel="noopener">aqui</a>.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      Feed, IA, marca e soluções para empresas. &nbsp;·&nbsp;
+      <a href="/privacidade.html">Privacidade</a>
+    </footer>
+
+    <script>
+      (function () {
+        // Marca quando a pagina carregou pro gate de tempo anti-bot no servidor.
+        var loadedAt = Date.now();
+        var form = document.getElementById("capture");
+        var btn = document.getElementById("btn");
+        var err = document.getElementById("err");
+        var success = document.getElementById("success");
+        var nomeEl = document.getElementById("nome");
+        var emailEl = document.getElementById("email");
+        var hpEl = document.getElementById("site");
+
+        var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        function showError(msg) {
+          err.textContent = msg;
+          err.classList.add("show");
+        }
+        function clearError() {
+          err.classList.remove("show");
+          err.textContent = "";
+        }
+
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          clearError();
+
+          var nome = nomeEl.value.trim();
+          var email = emailEl.value.trim();
+
+          if (!nome) {
+            showError("Por favor, escreva seu nome.");
+            nomeEl.focus();
+            return;
+          }
+          if (!EMAIL_RE.test(email)) {
+            showError("Confere o e-mail pra gente, parece que ele está incompleto.");
+            emailEl.focus();
+            return;
+          }
+
+          btn.disabled = true;
+          nomeEl.disabled = true;
+          emailEl.disabled = true;
+          btn.textContent = "Enviando...";
+
+          fetch("/api/diagnostico", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              nome: nome,
+              email: email,
+              site: hpEl ? hpEl.value : "",
+              elapsedMs: Date.now() - loadedAt,
+              pageUrl: window.location.href,
+              submittedAt: new Date().toISOString(),
+              userAgent: navigator.userAgent,
+            }),
+          })
+            .then(function (res) {
+              return res.json().then(function (data) {
+                return { ok: res.ok, data: data };
+              });
+            })
+            .then(function (r) {
+              if (!r.ok) {
+                throw new Error((r.data && r.data.error) || "Falha no envio");
+              }
+              form.style.display = "none";
+              success.classList.add("show");
+            })
+            .catch(function () {
+              btn.disabled = false;
+              nomeEl.disabled = false;
+              emailEl.disabled = false;
+              btn.textContent = "Quero meu diagnóstico";
+              showError(
+                "Deu um problema pra enviar agora. Tenta de novo em instantes, por favor."
+              );
+            });
+        });
+      })();
+    </script>
+  </body>
+</html>

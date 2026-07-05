@@ -1,0 +1,8 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "functions": {
+    "api/diagnostico.js": {
+      "includeFiles": "public/diagnostico-do-gargalo.pdf"
+    }
+  }
+}
