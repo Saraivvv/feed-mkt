@@ -87,6 +87,37 @@ const shiftPairs = [
   },
 ];
 
+const faqItems = [
+  {
+    q: "O que uma agência de IA faz na prática?",
+    a: "Encontra onde sua operação perde tempo e dinheiro e resolve com tecnologia: atendimento que responde sozinho, processos que rodam sem ninguém empurrar, marca e aquisição organizadas. Na Feed isso começa com um diagnóstico da operação e termina com a solução implementada e rodando na sua rotina.",
+  },
+  {
+    q: "Quanto custa implementar IA numa pequena empresa?",
+    a: "Depende do tamanho do buraco. Ferramentas prontas custam de R$100 a R$500 por mês. Um agente de IA no WhatsApp bem implementado fica entre R$8 mil e R$25 mil, mais uma mensalidade. O caminho certo é começar pequeno, com um projeto que se paga em poucos meses. No diagnóstico a gente mostra a faixa real pro seu caso.",
+  },
+  {
+    q: "Automação de WhatsApp não vai irritar meus clientes?",
+    a: "Robô burro irrita. Automação bem feita responde na hora, resolve o que é simples e passa pro humano quando a conversa pede. Seu cliente ganha resposta imediata e seu time para de perder o dia repetindo a mesma informação.",
+  },
+  {
+    q: "Preciso de time de TI pra usar IA na empresa?",
+    a: "Não. A Feed implementa, treina quem vai usar e acompanha a solução funcionando. Você não precisa contratar ninguém nem entender de tecnologia: precisa saber onde sua operação trava, e isso a gente descobre junto.",
+  },
+  {
+    q: "Em quanto tempo vejo resultado?",
+    a: "Automação de atendimento começa a trabalhar em semanas. Posicionamento e aquisição aparecem em 2 a 3 meses. Bons projetos de IA costumam se pagar entre 4 e 8 meses. A gente prefere entrega rápida e escopo enxuto a projeto grande que nunca termina.",
+  },
+  {
+    q: "A Feed atende só a região de Ribeirão Preto?",
+    a: "A base é a região de Ribeirão Preto e Bebedouro, no interior de SP, com atendimento presencial quando faz sentido. Boa parte dos clientes a gente atende 100% remoto, em qualquer lugar do Brasil.",
+  },
+  {
+    q: "O que é o diagnóstico gratuito?",
+    a: "Uma leitura rápida da sua operação e presença digital: onde você perde cliente, o que dá pra automatizar e o que trava seu crescimento. Você sai com um mapa claro do que fazer, feche com a gente ou não.",
+  },
+];
+
 const paymentMethods = [
   { label: "Pix", className: "pix" },
   { label: "VISA", className: "visa" },
@@ -100,6 +131,7 @@ const paymentMethods = [
 function App() {
   const [isQuizOpen, setIsQuizOpen] = useState(false);
   const [isHeroHovered, setIsHeroHovered] = useState(false);
+  const [openFaq, setOpenFaq] = useState(0);
 
   useEffect(() => {
     document.documentElement.classList.add("can-reveal");
@@ -279,6 +311,47 @@ function App() {
                 </p>
               </div>
             ))}
+          </div>
+        </section>
+
+        <section className="faq section-frame reveal" id="perguntas" aria-label="Perguntas frequentes">
+          <div className="faq-inner">
+            <header className="faq-head">
+              <p className="eyebrow">Perguntas frequentes</p>
+              <h2>
+                O que todo mundo pergunta <span>antes de começar.</span>
+              </h2>
+            </header>
+            <div className="faq-list">
+              {faqItems.map((item, index) => (
+                <div
+                  className={`faq-item${openFaq === index ? " is-open" : ""}`}
+                  style={{ "--faq-index": index }}
+                  key={item.q}
+                >
+                  <button
+                    type="button"
+                    className="faq-question"
+                    aria-expanded={openFaq === index}
+                    onClick={() => setOpenFaq(openFaq === index ? -1 : index)}
+                  >
+                    <span>{item.q}</span>
+                    <i aria-hidden="true" />
+                  </button>
+                  <div className="faq-answer">
+                    <div className="faq-answer-clip">
+                      <p>{item.a}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <p className="faq-more">
+              Ficou com outra dúvida?{" "}
+              <button type="button" className="faq-more-link" onClick={() => setIsQuizOpen(true)}>
+                Começa pelo diagnóstico gratuito
+              </button>
+            </p>
           </div>
         </section>
 
@@ -585,7 +658,8 @@ function SiteFooter() {
       </div>
       <div className="footer-legal">
         <p>FEED MARKETING E COMUNICAÇÃO • CNPJ 53.877.987/0001-93</p>
-        <nav className="footer-links" aria-label="Links legais">
+        <nav className="footer-links" aria-label="Links do rodapé">
+          <a href="/blog/">Blog</a>
           <a href="/privacidade.html">Política de Privacidade</a>
         </nav>
         <small>© 2026 FEED MKT. Todos os direitos reservados.</small>
