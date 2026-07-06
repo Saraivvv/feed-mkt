@@ -1293,7 +1293,8 @@ function main() {
     const raw = readFileSync(join(SRC_DIR, file), "utf8");
     const { meta, body } = parseFrontmatter(raw, file);
     if (meta.status !== "published") {
-      console.log(`(rascunho, ignorado) ${file}`);
+      const label = meta.status === "scheduled" ? "agendado" : "rascunho";
+      console.log(`(${label}, ignorado) ${file}`);
       continue;
     }
     posts.push({
