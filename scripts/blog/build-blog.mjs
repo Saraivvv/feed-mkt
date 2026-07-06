@@ -1422,6 +1422,509 @@ ${plannedCards}
 `;
 }
 
+function renderSimpleIndex(posts) {
+  const pageTitle = "Blog da Feed: IA aplicada pra PMEs";
+  const description =
+    "Guias práticos sobre IA aplicada para pequenas empresas: custo, atendimento, automação, ROI e operação. Sem hype.";
+  const canonical = `${SITE}/blog/`;
+  const featured = posts.find((p) => String(p.featured) === "true") || posts[0];
+
+  const jsonLd = JSON.stringify(
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "@id": `${canonical}#blog`,
+        name: "Blog da Feed",
+        description,
+        url: canonical,
+        inLanguage: "pt-BR",
+        publisher: {
+          "@type": "Organization",
+          name: ORG_NAME,
+          url: `${SITE}/`,
+          logo: { "@type": "ImageObject", url: ORG_LOGO },
+        },
+        blogPost: posts.map((p) => ({
+          "@type": "BlogPosting",
+          headline: p.title,
+          url: `${SITE}/blog/${p.slug}/`,
+          datePublished: p.date,
+        })),
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: `${SITE}/` },
+          { "@type": "ListItem", position: 2, name: "Blog", item: canonical },
+        ],
+      },
+    ],
+    null,
+    2
+  );
+
+  const featuredPromise = list(featured.readingPromise)
+    .slice(0, 4)
+    .map((item) => `<li>${esc(item)}</li>`)
+    .join("");
+
+  const cards = posts
+    .map(
+      (p) => `        <a class="post-row" href="/blog/${p.slug}/">
+          <div class="post-row-meta">
+            <span>${esc(p.contentType || "Guia")}</span>
+            <time datetime="${p.date}">${dataHumana(p.date)}</time>
+            <span>${p.readingTime} min</span>
+          </div>
+          <div>
+            <h3>${esc(p.title)}</h3>
+            <p>${esc(p.cardTakeaway || p.description)}</p>
+          </div>
+        </a>`
+    )
+    .join("\n");
+
+  const planned = list(featured.relatedPlanned)
+    .slice(0, 4)
+    .map((item) => `<li>${esc(item)}</li>`)
+    .join("");
+
+  return `<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;500;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="robots" content="index, follow" />
+    <title>${esc(pageTitle)}</title>
+    <meta name="description" content="${esc(description)}" />
+    <link rel="canonical" href="${canonical}" />
+    <meta name="theme-color" content="#070707" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Feed" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:url" content="${canonical}" />
+    <meta property="og:title" content="${esc(pageTitle)}" />
+    <meta property="og:description" content="${esc(description)}" />
+    <meta property="og:image" content="${OG_IMAGE}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="${esc(pageTitle)}" />
+    <meta name="twitter:description" content="${esc(description)}" />
+    <meta name="twitter:image" content="${OG_IMAGE}" />
+    <script type="application/ld+json">
+${jsonLd}
+    </script>
+    <style>
+      :root {
+        --black: #070707;
+        --white: #f4f5f0;
+        --orange: #ffa300;
+        --line: rgba(244, 245, 240, 0.12);
+      }
+      * { box-sizing: border-box; }
+      html { background: var(--black); }
+      body {
+        margin: 0;
+        min-width: 320px;
+        color: var(--white);
+        background:
+          radial-gradient(circle at 14% 0%, rgba(255, 163, 0, 0.08), transparent 24rem),
+          linear-gradient(90deg, rgba(244, 245, 240, 0.026) 1px, transparent 1px),
+          linear-gradient(180deg, rgba(244, 245, 240, 0.018) 1px, transparent 1px),
+          var(--black);
+        background-size: auto, 92px 92px, 92px 92px, auto;
+        font-family: Barlow, Arial, Helvetica, sans-serif;
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: inherit; text-decoration: none; }
+      .shell {
+        max-width: 1060px;
+        margin: 0 auto;
+        padding: clamp(28px, 5vw, 48px) clamp(20px, 5vw, 40px) 72px;
+      }
+      .top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: clamp(52px, 8vw, 92px);
+      }
+      .brand img { display: block; max-width: 120px; height: 26px; width: auto; }
+      .nav {
+        color: rgba(244, 245, 240, 0.64);
+        font-size: 0.82rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .nav:hover { color: var(--orange); }
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.8fr);
+        gap: clamp(32px, 6vw, 72px);
+        align-items: end;
+        margin-bottom: clamp(52px, 8vw, 88px);
+      }
+      .eyebrow {
+        margin: 0 0 18px;
+        color: var(--orange);
+        font-size: 0.74rem;
+        font-weight: 900;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+      }
+      h1 {
+        margin: 0 0 20px;
+        max-width: 760px;
+        font-size: clamp(2.35rem, 7vw, 5.1rem);
+        font-weight: 900;
+        line-height: 0.96;
+        letter-spacing: 0;
+      }
+      .intro {
+        margin: 0;
+        max-width: 620px;
+        color: rgba(244, 245, 240, 0.72);
+        font-size: 1.14rem;
+        font-weight: 300;
+      }
+      .reader-map {
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+      .reader-map div {
+        padding: 18px 0;
+        border-top: 1px solid var(--line);
+      }
+      .reader-map div:first-child { border-top: 0; }
+      .reader-map span {
+        display: block;
+        margin-bottom: 5px;
+        color: var(--orange);
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+      .reader-map strong {
+        display: block;
+        color: rgba(244, 245, 240, 0.9);
+        font-size: 1.16rem;
+        line-height: 1.2;
+      }
+      .featured {
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
+        gap: clamp(26px, 5vw, 56px);
+        padding: clamp(28px, 5vw, 46px);
+        border: 1px solid var(--line);
+        border-top-color: rgba(255, 163, 0, 0.42);
+        border-radius: 8px;
+        background: rgba(244, 245, 240, 0.026);
+        margin-bottom: clamp(46px, 7vw, 72px);
+      }
+      .featured h2 {
+        margin: 0 0 18px;
+        color: var(--white);
+        font-size: clamp(1.85rem, 4vw, 3.3rem);
+        font-weight: 900;
+        line-height: 1;
+      }
+      .featured p {
+        margin: 0 0 24px;
+        color: rgba(244, 245, 240, 0.74);
+        font-size: 1.08rem;
+        font-weight: 300;
+      }
+      .facts {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 26px;
+      }
+      .facts span {
+        border: 1px solid rgba(244, 245, 240, 0.14);
+        border-radius: 999px;
+        padding: 7px 11px;
+        color: rgba(244, 245, 240, 0.72);
+        font-size: 0.82rem;
+        font-weight: 800;
+      }
+      .button {
+        display: inline-flex;
+        width: fit-content;
+        padding: 14px 24px;
+        border-radius: 5px;
+        background: var(--orange);
+        color: var(--black);
+        font-size: 0.9rem;
+        font-weight: 900;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        transition: transform 0.16s ease, box-shadow 0.16s ease;
+      }
+      .button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 10px 28px rgba(255, 163, 0, 0.18);
+      }
+      .promise {
+        padding: 22px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(7, 7, 7, 0.36);
+      }
+      .promise h3 {
+        margin: 0 0 16px;
+        color: rgba(244, 245, 240, 0.9);
+        font-size: 1.08rem;
+        line-height: 1.18;
+      }
+      .promise ul {
+        margin: 0;
+        padding-left: 18px;
+        color: rgba(244, 245, 240, 0.72);
+        font-weight: 300;
+      }
+      .promise li { margin-bottom: 10px; }
+      .promise li::marker { color: var(--orange); }
+      .section-head {
+        margin-bottom: 22px;
+      }
+      .section-head h2 {
+        margin: 0;
+        font-size: clamp(1.5rem, 3vw, 2rem);
+        line-height: 1.08;
+      }
+      .post-list {
+        display: grid;
+        border-top: 1px solid var(--line);
+        margin-bottom: clamp(46px, 7vw, 72px);
+      }
+      .post-row {
+        display: grid;
+        grid-template-columns: 220px minmax(0, 1fr);
+        gap: clamp(20px, 4vw, 40px);
+        padding: 26px 0;
+        border-bottom: 1px solid var(--line);
+        transition: color 0.15s ease, transform 0.15s ease;
+      }
+      .post-row:hover {
+        color: var(--orange);
+        transform: translateX(2px);
+      }
+      .post-row-meta {
+        display: grid;
+        align-content: start;
+        gap: 6px;
+        color: rgba(244, 245, 240, 0.48);
+        font-size: 0.78rem;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .post-row-meta span:first-child { color: var(--orange); }
+      .post-row h3 {
+        margin: 0 0 8px;
+        color: var(--white);
+        font-size: clamp(1.25rem, 3vw, 1.7rem);
+        line-height: 1.12;
+      }
+      .post-row p {
+        margin: 0;
+        max-width: 680px;
+        color: rgba(244, 245, 240, 0.66);
+        font-size: 1rem;
+        font-weight: 300;
+      }
+      .up-next {
+        display: grid;
+        grid-template-columns: 0.75fr 1.25fr;
+        gap: clamp(24px, 5vw, 56px);
+        padding: clamp(24px, 5vw, 38px) 0;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        margin-bottom: clamp(46px, 7vw, 72px);
+      }
+      .up-next ul {
+        margin: 0;
+        padding-left: 18px;
+        color: rgba(244, 245, 240, 0.76);
+        font-size: 1.05rem;
+        font-weight: 700;
+      }
+      .up-next li { margin-bottom: 12px; }
+      .up-next li::marker { color: var(--orange); }
+      .cta {
+        padding: clamp(26px, 5vw, 38px);
+        border: 1px solid rgba(255, 163, 0, 0.28);
+        border-radius: 8px;
+        background: linear-gradient(135deg, rgba(255, 163, 0, 0.1), rgba(244, 245, 240, 0.026) 42%);
+      }
+      .cta h2 {
+        margin: 0 0 10px;
+        font-size: clamp(1.3rem, 3vw, 1.75rem);
+        line-height: 1.1;
+      }
+      .cta p {
+        margin: 0 0 22px;
+        max-width: 650px;
+        color: rgba(244, 245, 240, 0.76);
+        font-weight: 300;
+      }
+      .cta-actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 16px 24px;
+      }
+      .text-link {
+        color: rgba(244, 245, 240, 0.72);
+        font-weight: 800;
+      }
+      .text-link:hover { color: var(--orange); }
+      .foot {
+        margin-top: clamp(48px, 8vw, 64px);
+        padding-top: 22px;
+        border-top: 1px solid var(--line);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 10px 20px;
+        color: rgba(244, 245, 240, 0.4);
+        font-size: 0.78rem;
+        line-height: 1.5;
+      }
+      .foot a {
+        color: rgba(244, 245, 240, 0.55);
+        font-weight: 700;
+      }
+      .foot a:hover { color: var(--orange); }
+      @media (max-width: 820px) {
+        .hero,
+        .featured,
+        .up-next {
+          grid-template-columns: 1fr;
+        }
+        .hero {
+          margin-bottom: 44px;
+        }
+        h1 {
+          font-size: clamp(2.35rem, 13vw, 3.25rem);
+        }
+        .featured {
+          padding: 26px;
+        }
+        .featured h2 {
+          font-size: clamp(1.78rem, 8vw, 2.35rem);
+          line-height: 1.05;
+        }
+        .post-row {
+          grid-template-columns: 1fr;
+          gap: 14px;
+        }
+        .post-row:hover {
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <div class="top">
+        <a class="brand" href="/" aria-label="Feed, página inicial">
+          <img src="/brand/feed-logo-simples-branca.png" alt="Feed" />
+        </a>
+        <a class="nav" href="/">Voltar ao site</a>
+      </div>
+
+      <section class="hero" aria-label="Introdução do blog">
+        <div>
+          <p class="eyebrow">Blog da Feed</p>
+          <h1>Guias para decidir onde a IA paga a conta.</h1>
+          <p class="intro">
+            Conteúdo direto para pequenas empresas que querem automatizar atendimento,
+            organizar operação e investir em IA sem cair em promessa vazia.
+          </p>
+        </div>
+        <div class="reader-map" aria-label="Como usar o blog">
+          <div><span>Se você está começando</span><strong>Leia o guia principal antes de contratar ferramenta.</strong></div>
+          <div><span>Se o atendimento trava</span><strong>Priorize WhatsApp, resposta rápida e follow-up.</strong></div>
+          <div><span>Se precisa decidir investimento</span><strong>Compare custo, retorno e payback esperado.</strong></div>
+        </div>
+      </section>
+
+      <section class="featured" aria-label="Comece por este guia">
+        <div>
+          <p class="eyebrow">Comece por este guia</p>
+          <h2>${esc(featured.title)}</h2>
+          <p>${esc(featured.heroSummary || featured.description)}</p>
+          <div class="facts">
+            ${featured.costRange ? `<span>${esc(featured.costRange)}</span>` : ""}
+            ${featured.payback ? `<span>Payback: ${esc(featured.payback)}</span>` : ""}
+            <span>${featured.readingTime} min de leitura</span>
+          </div>
+          <a class="button" href="/blog/${featured.slug}/">Ler guia completo</a>
+        </div>
+        <aside class="promise">
+          <h3>Depois da leitura, você entende:</h3>
+          <ul>${featuredPromise}</ul>
+        </aside>
+      </section>
+
+      <section aria-label="Guias publicados">
+        <div class="section-head">
+          <p class="eyebrow">Guias publicados</p>
+          <h2>Leitura prática para decisão de negócio.</h2>
+        </div>
+        <div class="post-list">
+${cards}
+        </div>
+      </section>
+
+      ${planned ? `<section class="up-next" aria-label="Próximos temas">
+        <div>
+          <p class="eyebrow">Próximos temas</p>
+          <h2>O blog vai crescer por trilhas, não por posts soltos.</h2>
+        </div>
+        <ul>${planned}</ul>
+      </section>` : ""}
+
+      <aside class="cta">
+        <h2>Quer saber o que faz sentido para sua empresa?</h2>
+        <p>
+          A Feed faz um diagnóstico gratuito da sua operação e da sua presença digital.
+          Você sai sabendo onde a IA resolve de verdade, quanto custa e por onde começar.
+        </p>
+        <div class="cta-actions">
+          <a class="button" href="/#contato">Diagnóstico gratuito</a>
+          <a class="text-link" href="https://wa.me/5516993020694" target="_blank" rel="noopener">Chamar no WhatsApp</a>
+        </div>
+      </aside>
+
+      <div class="foot">
+        <p>
+          <strong style="color: rgba(244, 245, 240, 0.62); font-weight: 800"
+            >FEED MARKETING E COMUNICAÇÃO</strong
+          ><br />© 2026 FEED MKT. Todos os direitos reservados.
+        </p>
+        <p><a href="/">agenciafeed.com</a></p>
+      </div>
+    </main>
+  </body>
+</html>
+`;
+}
+
 function atualizarSitemap(posts) {
   let xml = readFileSync(SITEMAP_PATH, "utf8");
 
@@ -1498,7 +2001,7 @@ function main() {
   }
 
   mkdirSync(OUT_DIR, { recursive: true });
-  writeFileSync(join(OUT_DIR, "index.html"), renderEditorialIndex(posts), "utf8");
+  writeFileSync(join(OUT_DIR, "index.html"), renderSimpleIndex(posts), "utf8");
   console.log("gerado: public/blog/index.html");
 
   atualizarSitemap(posts);
