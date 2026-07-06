@@ -1472,23 +1472,21 @@ function renderSimpleIndex(posts) {
 
   const cards = posts
     .map(
-      (p) => `        <a class="post-row" href="/blog/${p.slug}/">
-          <div class="post-row-meta">
+      (p) => `        <a class="article-card" href="/blog/${p.slug}/">
+          <div class="article-meta">
             <span>${esc(p.contentType || "Guia")}</span>
             <time datetime="${p.date}">${dataHumana(p.date)}</time>
             <span>${p.readingTime} min</span>
           </div>
-          <div>
-            <h3>${esc(p.title)}</h3>
-            <p>${esc(p.cardTakeaway || p.description)}</p>
-          </div>
+          <h3>${esc(p.title)}</h3>
+          <p>${esc(p.cardTakeaway || p.description)}</p>
         </a>`
     )
     .join("\n");
 
   const planned = list(featured.relatedPlanned)
     .slice(0, 4)
-    .map((item) => `<li>${esc(item)}</li>`)
+    .map((item, index) => `<li><span>0${index + 1}</span>${esc(item)}</li>`)
     .join("");
 
   return `<!doctype html>
@@ -1526,9 +1524,12 @@ ${jsonLd}
     <style>
       :root {
         --black: #070707;
+        --surface: #10100d;
+        --surface-strong: #171610;
         --white: #f4f5f0;
         --orange: #ffa300;
-        --line: rgba(244, 245, 240, 0.12);
+        --line: rgba(244, 245, 240, 0.1);
+        --muted: rgba(244, 245, 240, 0.68);
       }
       * { box-sizing: border-box; }
       html { background: var(--black); }
@@ -1537,27 +1538,25 @@ ${jsonLd}
         min-width: 320px;
         color: var(--white);
         background:
-          radial-gradient(circle at 14% 0%, rgba(255, 163, 0, 0.08), transparent 24rem),
-          linear-gradient(90deg, rgba(244, 245, 240, 0.026) 1px, transparent 1px),
-          linear-gradient(180deg, rgba(244, 245, 240, 0.018) 1px, transparent 1px),
+          radial-gradient(circle at 20% 0%, rgba(255, 163, 0, 0.1), transparent 22rem),
+          linear-gradient(180deg, rgba(244, 245, 240, 0.04), transparent 30rem),
           var(--black);
-        background-size: auto, 92px 92px, 92px 92px, auto;
         font-family: Barlow, Arial, Helvetica, sans-serif;
         line-height: 1.7;
         -webkit-font-smoothing: antialiased;
       }
       a { color: inherit; text-decoration: none; }
       .shell {
-        max-width: 1060px;
+        max-width: 1180px;
         margin: 0 auto;
-        padding: clamp(28px, 5vw, 48px) clamp(20px, 5vw, 40px) 72px;
+        padding: clamp(26px, 4vw, 42px) clamp(20px, 5vw, 44px) 72px;
       }
       .top {
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 16px;
-        margin-bottom: clamp(52px, 8vw, 92px);
+        margin-bottom: clamp(42px, 7vw, 78px);
       }
       .brand img { display: block; max-width: 120px; height: 26px; width: auto; }
       .nav {
@@ -1570,10 +1569,11 @@ ${jsonLd}
       .nav:hover { color: var(--orange); }
       .hero {
         display: grid;
-        grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.8fr);
-        gap: clamp(32px, 6vw, 72px);
-        align-items: end;
-        margin-bottom: clamp(52px, 8vw, 88px);
+        grid-template-columns: minmax(0, 1fr) minmax(280px, 390px);
+        gap: clamp(28px, 5vw, 64px);
+        align-items: center;
+        min-height: 520px;
+        margin-bottom: 34px;
       }
       .eyebrow {
         margin: 0 0 18px;
@@ -1585,64 +1585,106 @@ ${jsonLd}
       }
       h1 {
         margin: 0 0 20px;
-        max-width: 760px;
-        font-size: clamp(2.35rem, 7vw, 5.1rem);
+        max-width: 720px;
+        font-size: clamp(2.7rem, 6.4vw, 5.35rem);
         font-weight: 900;
-        line-height: 0.96;
+        line-height: 0.92;
         letter-spacing: 0;
       }
       .intro {
         margin: 0;
-        max-width: 620px;
-        color: rgba(244, 245, 240, 0.72);
+        max-width: 600px;
+        color: var(--muted);
         font-size: 1.14rem;
         font-weight: 300;
       }
-      .reader-map {
-        border-top: 1px solid var(--line);
-        border-bottom: 1px solid var(--line);
+      .path-card {
+        position: relative;
+        padding: 28px;
+        border: 1px solid rgba(244, 245, 240, 0.11);
+        border-radius: 8px;
+        background:
+          linear-gradient(135deg, rgba(255, 163, 0, 0.12), transparent 36%),
+          rgba(16, 16, 13, 0.86);
+        box-shadow: 0 24px 70px rgba(0, 0, 0, 0.22);
       }
-      .reader-map div {
-        padding: 18px 0;
-        border-top: 1px solid var(--line);
+      .path-card::before {
+        content: "";
+        position: absolute;
+        left: 40px;
+        top: 86px;
+        bottom: 34px;
+        width: 1px;
+        background: rgba(255, 163, 0, 0.34);
       }
-      .reader-map div:first-child { border-top: 0; }
-      .reader-map span {
+      .path-title {
+        margin: 0 0 22px;
+        color: rgba(244, 245, 240, 0.92);
+        font-size: 1rem;
+        font-weight: 900;
+        line-height: 1.2;
+      }
+      .path-step {
+        position: relative;
+        display: grid;
+        grid-template-columns: 24px minmax(0, 1fr);
+        gap: 16px;
+        margin-top: 20px;
+      }
+      .path-step:first-of-type { margin-top: 0; }
+      .path-step b {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        place-items: center;
+        width: 24px;
+        height: 24px;
+        border-radius: 999px;
+        background: var(--orange);
+        color: #1a1508;
+        font-size: 0.74rem;
+        font-weight: 900;
+        line-height: 1;
+      }
+      .path-step span {
         display: block;
-        margin-bottom: 5px;
         color: var(--orange);
-        font-size: 0.72rem;
+        font-size: 0.68rem;
         font-weight: 900;
         letter-spacing: 0.18em;
         text-transform: uppercase;
       }
-      .reader-map strong {
+      .path-step strong {
         display: block;
+        margin-top: 3px;
         color: rgba(244, 245, 240, 0.9);
-        font-size: 1.16rem;
-        line-height: 1.2;
+        font-size: 1.02rem;
+        line-height: 1.18;
       }
       .featured {
+        position: relative;
+        overflow: hidden;
         display: grid;
-        grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
-        gap: clamp(26px, 5vw, 56px);
-        padding: clamp(28px, 5vw, 46px);
-        border: 1px solid var(--line);
-        border-top-color: rgba(255, 163, 0, 0.42);
+        grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.85fr);
+        gap: clamp(24px, 5vw, 56px);
+        padding: clamp(30px, 5vw, 54px);
         border-radius: 8px;
-        background: rgba(244, 245, 240, 0.026);
-        margin-bottom: clamp(46px, 7vw, 72px);
+        background:
+          linear-gradient(90deg, rgba(255, 163, 0, 0.18) 0 8px, transparent 8px),
+          radial-gradient(circle at 0% 10%, rgba(255, 163, 0, 0.16), transparent 22rem),
+          var(--surface);
+        margin-bottom: clamp(34px, 6vw, 58px);
       }
       .featured h2 {
         margin: 0 0 18px;
         color: var(--white);
-        font-size: clamp(1.85rem, 4vw, 3.3rem);
+        font-size: clamp(2rem, 4.2vw, 3.65rem);
         font-weight: 900;
         line-height: 1;
       }
       .featured p {
         margin: 0 0 24px;
-        color: rgba(244, 245, 240, 0.74);
+        color: var(--muted);
         font-size: 1.08rem;
         font-weight: 300;
       }
@@ -1677,11 +1719,12 @@ ${jsonLd}
         transform: translateY(-1px);
         box-shadow: 0 10px 28px rgba(255, 163, 0, 0.18);
       }
+      .button:active { transform: translateY(0); }
       .promise {
-        padding: 22px;
-        border: 1px solid var(--line);
+        align-self: center;
+        padding: 24px;
         border-radius: 8px;
-        background: rgba(7, 7, 7, 0.36);
+        background: rgba(7, 7, 7, 0.42);
       }
       .promise h3 {
         margin: 0 0 16px;
@@ -1697,8 +1740,14 @@ ${jsonLd}
       }
       .promise li { margin-bottom: 10px; }
       .promise li::marker { color: var(--orange); }
+      .content-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(260px, 340px);
+        gap: clamp(26px, 5vw, 54px);
+        align-items: start;
+      }
       .section-head {
-        margin-bottom: 22px;
+        margin-bottom: 20px;
       }
       .section-head h2 {
         margin: 0;
@@ -1707,39 +1756,40 @@ ${jsonLd}
       }
       .post-list {
         display: grid;
-        border-top: 1px solid var(--line);
-        margin-bottom: clamp(46px, 7vw, 72px);
+        gap: 14px;
       }
-      .post-row {
+      .article-card {
         display: grid;
-        grid-template-columns: 220px minmax(0, 1fr);
-        gap: clamp(20px, 4vw, 40px);
-        padding: 26px 0;
-        border-bottom: 1px solid var(--line);
-        transition: color 0.15s ease, transform 0.15s ease;
+        gap: 14px;
+        padding: clamp(22px, 4vw, 30px);
+        border: 1px solid rgba(244, 245, 240, 0.1);
+        border-radius: 8px;
+        background: rgba(244, 245, 240, 0.035);
+        transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
       }
-      .post-row:hover {
-        color: var(--orange);
-        transform: translateX(2px);
+      .article-card:hover {
+        transform: translateY(-2px);
+        border-color: rgba(255, 163, 0, 0.32);
+        background: rgba(244, 245, 240, 0.052);
       }
-      .post-row-meta {
-        display: grid;
-        align-content: start;
-        gap: 6px;
+      .article-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 14px;
         color: rgba(244, 245, 240, 0.48);
         font-size: 0.78rem;
         font-weight: 900;
         letter-spacing: 0.08em;
         text-transform: uppercase;
       }
-      .post-row-meta span:first-child { color: var(--orange); }
-      .post-row h3 {
+      .article-meta span:first-child { color: var(--orange); }
+      .article-card h3 {
         margin: 0 0 8px;
         color: var(--white);
-        font-size: clamp(1.25rem, 3vw, 1.7rem);
+        font-size: clamp(1.35rem, 3vw, 1.9rem);
         line-height: 1.12;
       }
-      .post-row p {
+      .article-card p {
         margin: 0;
         max-width: 680px;
         color: rgba(244, 245, 240, 0.66);
@@ -1747,24 +1797,37 @@ ${jsonLd}
         font-weight: 300;
       }
       .up-next {
-        display: grid;
-        grid-template-columns: 0.75fr 1.25fr;
-        gap: clamp(24px, 5vw, 56px);
-        padding: clamp(24px, 5vw, 38px) 0;
-        border-top: 1px solid var(--line);
-        border-bottom: 1px solid var(--line);
-        margin-bottom: clamp(46px, 7vw, 72px);
+        position: sticky;
+        top: 26px;
+        padding: 24px;
+        border-radius: 8px;
+        background: rgba(16, 16, 13, 0.74);
+        border: 1px solid rgba(244, 245, 240, 0.09);
       }
       .up-next ul {
+        display: grid;
+        gap: 14px;
+        list-style: none;
         margin: 0;
-        padding-left: 18px;
-        color: rgba(244, 245, 240, 0.76);
-        font-size: 1.05rem;
+        padding: 0;
+        color: rgba(244, 245, 240, 0.78);
+        font-size: 0.98rem;
         font-weight: 700;
       }
-      .up-next li { margin-bottom: 12px; }
-      .up-next li::marker { color: var(--orange); }
+      .up-next li {
+        display: grid;
+        grid-template-columns: 34px minmax(0, 1fr);
+        gap: 12px;
+        align-items: start;
+      }
+      .up-next li span {
+        color: var(--orange);
+        font-size: 0.75rem;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+      }
       .cta {
+        margin-top: clamp(34px, 6vw, 58px);
         padding: clamp(26px, 5vw, 38px);
         border: 1px solid rgba(255, 163, 0, 0.28);
         border-radius: 8px;
@@ -1794,8 +1857,6 @@ ${jsonLd}
       .text-link:hover { color: var(--orange); }
       .foot {
         margin-top: clamp(48px, 8vw, 64px);
-        padding-top: 22px;
-        border-top: 1px solid var(--line);
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
@@ -1812,15 +1873,18 @@ ${jsonLd}
       @media (max-width: 820px) {
         .hero,
         .featured,
-        .up-next {
+        .content-grid {
           grid-template-columns: 1fr;
         }
         .hero {
-          margin-bottom: 44px;
+          min-height: 0;
+          margin-bottom: 28px;
         }
         h1 {
-          font-size: clamp(2.35rem, 13vw, 3.25rem);
+          font-size: clamp(2.35rem, 12vw, 3.3rem);
         }
+        .path-card { padding: 22px; }
+        .path-card::before { left: 34px; }
         .featured {
           padding: 26px;
         }
@@ -1828,13 +1892,10 @@ ${jsonLd}
           font-size: clamp(1.78rem, 8vw, 2.35rem);
           line-height: 1.05;
         }
-        .post-row {
-          grid-template-columns: 1fr;
-          gap: 14px;
-        }
-        .post-row:hover {
+        .article-card:hover {
           transform: none;
         }
+        .up-next { position: static; }
       }
     </style>
   </head>
@@ -1856,10 +1917,11 @@ ${jsonLd}
             organizar operação e investir em IA sem cair em promessa vazia.
           </p>
         </div>
-        <div class="reader-map" aria-label="Como usar o blog">
-          <div><span>Se você está começando</span><strong>Leia o guia principal antes de contratar ferramenta.</strong></div>
-          <div><span>Se o atendimento trava</span><strong>Priorize WhatsApp, resposta rápida e follow-up.</strong></div>
-          <div><span>Se precisa decidir investimento</span><strong>Compare custo, retorno e payback esperado.</strong></div>
+        <div class="path-card" aria-label="Como usar o blog">
+          <p class="path-title">Escolha a leitura pelo problema que você quer resolver agora.</p>
+          <div class="path-step"><b>1</b><div><span>Começando</span><strong>Leia o guia principal antes de contratar ferramenta.</strong></div></div>
+          <div class="path-step"><b>2</b><div><span>Atendimento travado</span><strong>Priorize WhatsApp, resposta rápida e follow-up.</strong></div></div>
+          <div class="path-step"><b>3</b><div><span>Investimento</span><strong>Compare custo, retorno e payback esperado.</strong></div></div>
         </div>
       </section>
 
@@ -1881,23 +1943,25 @@ ${jsonLd}
         </aside>
       </section>
 
-      <section aria-label="Guias publicados">
-        <div class="section-head">
-          <p class="eyebrow">Guias publicados</p>
-          <h2>Leitura prática para decisão de negócio.</h2>
-        </div>
-        <div class="post-list">
+      <div class="content-grid">
+        <section aria-label="Guias publicados">
+          <div class="section-head">
+            <p class="eyebrow">Guias publicados</p>
+            <h2>Leitura prática para decisão de negócio.</h2>
+          </div>
+          <div class="post-list">
 ${cards}
-        </div>
-      </section>
+          </div>
+        </section>
 
-      ${planned ? `<section class="up-next" aria-label="Próximos temas">
-        <div>
-          <p class="eyebrow">Próximos temas</p>
-          <h2>O blog vai crescer por trilhas, não por posts soltos.</h2>
-        </div>
-        <ul>${planned}</ul>
-      </section>` : ""}
+        ${planned ? `<aside class="up-next" aria-label="Próximos temas">
+          <div class="section-head">
+            <p class="eyebrow">Próximos temas</p>
+            <h2>O blog vai crescer por trilhas.</h2>
+          </div>
+          <ul>${planned}</ul>
+        </aside>` : ""}
+      </div>
 
       <aside class="cta">
         <h2>Quer saber o que faz sentido para sua empresa?</h2>
