@@ -633,10 +633,13 @@ function renderEditorialIndex(posts) {
     .slice(0, 4)
     .map((item) => `<li>${esc(item)}</li>`)
     .join("");
+  const publishedCount = posts.length;
+  const issueDate = dataHumana(featured.date);
 
   const cards = posts
     .map(
       (p, index) => `        <a class="blog-card" href="/blog/${p.slug}/" style="--card-index: ${index}">
+          <span class="blog-card-number">${String(index + 1).padStart(2, "0")}</span>
           <div class="blog-card-top">
             <span>${esc(p.contentType || "Guia")}</span>
             <time datetime="${p.date}">${dataHumana(p.date)}</time>
@@ -717,8 +720,11 @@ ${jsonLd}
     <style>
       :root {
         --black: #070707;
+        --panel: #10100e;
+        --panel-2: #161511;
         --white: #f4f5f0;
         --orange: #ffa300;
+        --line: rgba(244, 245, 240, 0.12);
       }
       * { box-sizing: border-box; }
       html { background: var(--black); scroll-behavior: smooth; }
@@ -727,9 +733,12 @@ ${jsonLd}
         min-width: 320px;
         color: var(--white);
         background:
-          radial-gradient(circle at 15% 0%, rgba(255, 163, 0, 0.09), transparent 22rem),
-          linear-gradient(180deg, rgba(244, 245, 240, 0.03), transparent 36rem),
+          linear-gradient(90deg, rgba(244, 245, 240, 0.035) 1px, transparent 1px),
+          linear-gradient(180deg, rgba(244, 245, 240, 0.025) 1px, transparent 1px),
+          radial-gradient(circle at 12% 0%, rgba(255, 163, 0, 0.085), transparent 22rem),
+          linear-gradient(180deg, rgba(244, 245, 240, 0.035), transparent 36rem),
           var(--black);
+        background-size: 88px 88px, 88px 88px, auto, auto;
         font-family: Barlow, Arial, Helvetica, sans-serif;
         line-height: 1.7;
         -webkit-font-smoothing: antialiased;
@@ -745,7 +754,7 @@ ${jsonLd}
         align-items: center;
         justify-content: space-between;
         gap: 16px;
-        margin-bottom: clamp(48px, 8vw, 80px);
+        margin-bottom: clamp(42px, 7vw, 72px);
       }
       .blog-brand img { max-width: 120px; height: 26px; width: auto; display: block; }
       .blog-nav {
@@ -758,10 +767,10 @@ ${jsonLd}
       .blog-nav:hover { color: var(--orange); text-decoration: none; }
       .blog-hero-grid {
         display: grid;
-        grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+        grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
         gap: clamp(28px, 5vw, 56px);
-        align-items: end;
-        margin-bottom: clamp(48px, 8vw, 82px);
+        align-items: stretch;
+        margin-bottom: clamp(24px, 5vw, 42px);
       }
       .blog-eyebrow,
       .featured-kicker,
@@ -776,9 +785,9 @@ ${jsonLd}
       h1 {
         margin: 0 0 16px;
         max-width: 830px;
-        font-size: clamp(2.45rem, 7vw, 5.55rem);
+        font-size: clamp(2.35rem, 7vw, 5.25rem);
         font-weight: 900;
-        line-height: 0.92;
+        line-height: 0.95;
         letter-spacing: 0;
       }
       .blog-intro {
@@ -788,11 +797,18 @@ ${jsonLd}
         font-size: 1.125rem;
         font-weight: 300;
       }
-      .blog-signals { display: grid; gap: 12px; }
-      .signal {
-        padding: 16px 0;
-        border-top: 1px solid rgba(244, 245, 240, 0.12);
+      .blog-signals {
+        display: grid;
+        gap: 0;
+        align-self: end;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
       }
+      .signal {
+        padding: 18px 0;
+        border-top: 1px solid var(--line);
+      }
+      .signal:first-child { border-top: 0; }
       .signal span {
         display: block;
         color: var(--orange);
@@ -808,14 +824,59 @@ ${jsonLd}
         font-size: clamp(1.05rem, 2vw, 1.35rem);
         line-height: 1.2;
       }
-      .featured {
+      .issue-strip {
         display: grid;
-        grid-template-columns: minmax(0, 1.2fr) minmax(270px, 0.8fr);
-        gap: clamp(24px, 5vw, 48px);
-        padding: clamp(24px, 5vw, 44px) 0;
+        grid-template-columns: 1.1fr 0.9fr 0.9fr;
+        margin-bottom: clamp(48px, 7vw, 78px);
+        border: 1px solid var(--line);
+        background: rgba(244, 245, 240, 0.025);
+      }
+      .issue-strip div {
+        min-height: 112px;
+        padding: 20px;
+        border-right: 1px solid var(--line);
+      }
+      .issue-strip div:last-child { border-right: 0; }
+      .issue-strip span {
+        display: block;
+        margin-bottom: 18px;
+        color: rgba(244, 245, 240, 0.44);
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+      .issue-strip strong {
+        display: block;
+        color: rgba(244, 245, 240, 0.9);
+        font-size: clamp(1.15rem, 2vw, 1.55rem);
+        line-height: 1.05;
+      }
+      .featured {
+        position: relative;
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.95fr);
+        gap: clamp(24px, 5vw, 54px);
+        padding: clamp(28px, 5vw, 48px);
         border-top: 1px solid rgba(255, 163, 0, 0.35);
-        border-bottom: 1px solid rgba(244, 245, 240, 0.12);
+        border-bottom: 1px solid var(--line);
+        border-left: 1px solid var(--line);
+        border-right: 1px solid var(--line);
+        border-radius: 8px;
+        background:
+          linear-gradient(135deg, rgba(255, 163, 0, 0.06), transparent 34%),
+          rgba(244, 245, 240, 0.025);
         margin-bottom: clamp(48px, 7vw, 76px);
+      }
+      .featured::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: linear-gradient(90deg, transparent, rgba(244, 245, 240, 0.045), transparent);
+        transform: translateX(-100%);
+        animation: sweep 8s cubic-bezier(0.16, 1, 0.3, 1) infinite;
       }
       .featured h2 {
         margin: 0 0 18px;
@@ -882,6 +943,46 @@ ${jsonLd}
       }
       .featured-aside li { margin-bottom: 10px; }
       .featured-aside li::marker { color: var(--orange); }
+      .featured-panel {
+        display: grid;
+        gap: 18px;
+      }
+      .featured-aside {
+        padding: clamp(20px, 3vw, 28px);
+        border: 1px solid rgba(244, 245, 240, 0.12);
+        border-radius: 8px;
+        background:
+          linear-gradient(180deg, rgba(244, 245, 240, 0.045), rgba(244, 245, 240, 0.018)),
+          var(--panel);
+        box-shadow: inset 0 1px 0 rgba(244, 245, 240, 0.08);
+      }
+      .field-note {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        border: 1px solid rgba(244, 245, 240, 0.12);
+        border-radius: 8px;
+        overflow: hidden;
+        background: rgba(7, 7, 7, 0.45);
+      }
+      .field-note div {
+        padding: 16px;
+        border-right: 1px solid rgba(244, 245, 240, 0.1);
+      }
+      .field-note div:last-child { border-right: 0; }
+      .field-note span {
+        display: block;
+        margin-bottom: 7px;
+        color: rgba(244, 245, 240, 0.43);
+        font-size: 0.68rem;
+        font-weight: 900;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+      .field-note strong {
+        color: var(--white);
+        font-size: 1.1rem;
+        line-height: 1.05;
+      }
       .tracks,
       .latest,
       .planned {
@@ -908,13 +1009,13 @@ ${jsonLd}
       .tracks-grid {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        border-top: 1px solid rgba(244, 245, 240, 0.12);
-        border-bottom: 1px solid rgba(244, 245, 240, 0.12);
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
       }
       .track-item {
         min-height: 180px;
         padding: 24px 22px;
-        border-right: 1px solid rgba(244, 245, 240, 0.12);
+        border-right: 1px solid var(--line);
         color: var(--white);
         transition: background 0.16s ease, transform 0.16s ease;
       }
@@ -954,14 +1055,26 @@ ${jsonLd}
         gap: 18px;
       }
       .blog-card {
+        position: relative;
         display: block;
-        padding: clamp(22px, 4vw, 30px);
-        border: 1px solid rgba(244, 245, 240, 0.12);
+        min-height: 340px;
+        padding: clamp(24px, 4vw, 32px);
+        border: 1px solid var(--line);
         border-radius: 8px;
-        background: rgba(244, 245, 240, 0.02);
+        background:
+          linear-gradient(180deg, rgba(244, 245, 240, 0.045), rgba(244, 245, 240, 0.015)),
+          var(--black);
         transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
         animation: cardIn 0.45s ease both;
         animation-delay: calc(var(--card-index) * 70ms);
+      }
+      .blog-card::after {
+        content: "";
+        position: absolute;
+        inset: auto 20px 20px 20px;
+        height: 1px;
+        background: linear-gradient(90deg, var(--orange), transparent);
+        opacity: 0.35;
       }
       .blog-card:hover {
         border-color: rgba(255, 163, 0, 0.45);
@@ -969,11 +1082,20 @@ ${jsonLd}
         transform: translateY(-2px);
         text-decoration: none;
       }
+      .blog-card-number {
+        position: absolute;
+        top: 22px;
+        right: 22px;
+        color: rgba(244, 245, 240, 0.18);
+        font-size: clamp(2.2rem, 5vw, 3.8rem);
+        font-weight: 900;
+        line-height: 0.8;
+      }
       .blog-card-top {
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
         gap: 14px;
-        margin-bottom: 18px;
+        margin: 0 64px 22px 0;
         color: rgba(244, 245, 240, 0.52);
         font-size: 0.78rem;
         font-weight: 800;
@@ -1010,8 +1132,10 @@ ${jsonLd}
         text-transform: uppercase;
       }
       .planned-card {
-        padding: 24px 0;
-        border-top: 1px solid rgba(244, 245, 240, 0.12);
+        padding: 24px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(244, 245, 240, 0.018);
       }
       .planned-card span {
         color: var(--orange);
@@ -1108,12 +1232,38 @@ ${jsonLd}
         from { opacity: 0; transform: translateY(10px); }
         to { opacity: 1; transform: translateY(0); }
       }
+      @keyframes sweep {
+        0%, 68% { transform: translateX(-100%); opacity: 0; }
+        76% { opacity: 1; }
+        100% { transform: translateX(100%); opacity: 0; }
+      }
       @media (max-width: 820px) {
         .blog-hero-grid,
         .featured,
+        .issue-strip,
         .blog-list,
         .planned-grid {
           grid-template-columns: 1fr;
+        }
+        .issue-strip div {
+          min-height: auto;
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+        .issue-strip div:last-child { border-bottom: 0; }
+        .featured {
+          padding: 24px 20px;
+        }
+        .field-note {
+          grid-template-columns: 1fr;
+        }
+        .field-note div {
+          border-right: 0;
+          border-bottom: 1px solid rgba(244, 245, 240, 0.1);
+        }
+        .field-note div:last-child { border-bottom: 0; }
+        .blog-card {
+          min-height: auto;
         }
         .tracks-grid {
           grid-template-columns: 1fr;
@@ -1159,6 +1309,21 @@ ${jsonLd}
         </div>
       </section>
 
+      <section class="issue-strip" aria-label="Ritmo editorial">
+        <div>
+          <span>Edição atual</span>
+          <strong>${esc(featured.category || "IA aplicada")}</strong>
+        </div>
+        <div>
+          <span>Biblioteca</span>
+          <strong>${publishedCount} guia${publishedCount === 1 ? "" : "s"} publicado${publishedCount === 1 ? "" : "s"}</strong>
+        </div>
+        <div>
+          <span>Próximo bloco</span>
+          <strong>terça e quinta, 09h</strong>
+        </div>
+      </section>
+
       <section class="featured" aria-label="Artigo em destaque">
         <div>
           <p class="featured-kicker">${esc(featured.cardLabel || "Comece por aqui")}</p>
@@ -1171,10 +1336,22 @@ ${jsonLd}
           </div>
           <a class="featured-link" href="/blog/${featured.slug}/">Ler guia completo</a>
         </div>
-        <aside class="featured-aside">
-          <h3>Você vai sair sabendo</h3>
-          <ul>${featuredPromise}</ul>
-        </aside>
+        <div class="featured-panel">
+          <div class="field-note" aria-label="Resumo do artigo em destaque">
+            <div>
+              <span>Publicado</span>
+              <strong>${issueDate}</strong>
+            </div>
+            <div>
+              <span>Formato</span>
+              <strong>${esc(featured.contentType || "Guia")}</strong>
+            </div>
+          </div>
+          <aside class="featured-aside">
+            <h3>Você vai sair sabendo</h3>
+            <ul>${featuredPromise}</ul>
+          </aside>
+        </div>
       </section>
 
       <section class="tracks" aria-label="Trilhas de leitura">
