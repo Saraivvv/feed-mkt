@@ -5,6 +5,28 @@ seoTitle: "Quanto custa implementar IA numa pequena empresa? | Feed"
 description: "Faixas reais de preço pra implementar IA numa pequena empresa em 2026: de R$100 por mês em ferramentas prontas a R$40 mil em projetos completos. Sem enrolação."
 date: 2026-07-05
 keyword: quanto custa implementar IA
+category: Custos e decisões
+stage: Estou avaliando IA
+contentType: Guia de decisão
+featured: true
+readerQuestion: "Quanto eu deveria pagar por IA sem cair em proposta inflada?"
+painPoint: "Você quer orçamento de IA, mas ainda não sabe o que é preço justo, exagero ou projeto pequeno demais."
+businessOutcome: "Chegar em conversas com fornecedores sabendo faixa de preço, risco e retorno esperado."
+heroSummary: "Faixas reais de R$100 por mês a R$40 mil, com critérios para saber quando o investimento faz sentido."
+cardLabel: "Antes de pedir orçamento"
+cardTakeaway: "Veja quando R$8 mil é justo, quando R$40 mil faz sentido e quando a PME está comprando capacidade que não vai usar."
+costRange: "R$100/mês a R$40 mil"
+payback: "4 a 8 meses"
+difficulty: "Médio"
+ctaVariant: diagnostico-custo
+readingPromise:
+  - "Entender as faixas reais de preço por tipo de solução"
+  - "Saber o que encarece um projeto de IA"
+  - "Evitar os desperdícios mais comuns em pequenas empresas"
+  - "Calcular se o projeto se paga em meses, não em anos"
+relatedPlanned:
+  - "Como escolher o primeiro processo para automatizar"
+  - "Agente de IA no WhatsApp vale para sua empresa?"
 status: published
 ---
 

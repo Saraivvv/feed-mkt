@@ -1,0 +1,58 @@
+name: Publish scheduled blog posts
+
+on:
+  schedule:
+    # 09:00 America/Sao_Paulo on Tuesdays and Thursdays.
+    - cron: "0 12 * * 2,4"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-scheduled-blog
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Publish due posts
+        run: npm run blog:publish-scheduled
+
+      - name: Validate blog
+        run: npm run blog:validate
+
+      - name: Build blog
+        run: npm run blog:build
+
+      - name: Build site
+        run: npm run build
+
+      - name: Commit generated changes
+        run: |
+          if git diff --quiet; then
+            echo "No scheduled posts to publish."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add marketing/blog public/blog public/sitemap.xml
+          git commit -m "Publish scheduled blog posts"
+          git push
