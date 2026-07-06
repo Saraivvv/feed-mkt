@@ -5,10 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 127.0.0.1",
-    "build": "vite build",
+    "build": "npm run seo:build && vite build",
     "blog:build": "node scripts/blog/build-blog.mjs",
     "blog:validate": "node scripts/blog/validate-blog.mjs",
     "blog:publish-scheduled": "node scripts/blog/publish-scheduled.mjs",
+    "seo:build": "node scripts/seo/build-seo-pages.mjs",
     "preview": "vite preview --host 127.0.0.1",
     "mazyui": "node mazyui-server.mjs"
   },

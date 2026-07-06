@@ -648,6 +648,12 @@ function PaymentBadge({ method }) {
 function SiteFooter() {
   return (
     <footer className="fixed-site-footer" aria-label="Rodapé Feed">
+      <nav className="footer-seo-links" aria-label="Páginas estratégicas">
+        <a href="/ia-para-pequenas-empresas/">IA para pequenas empresas</a>
+        <a href="/automacao-whatsapp/">Automação de WhatsApp</a>
+        <a href="/agentes-de-ia/">Agentes de IA</a>
+        <a href="/diagnostico-ia-empresa/">Diagnóstico de IA</a>
+      </nav>
       <div className="footer-payment">
         <p>Formas de pagamento</p>
         <div className="payment-row" aria-label="Formas de pagamento aceitas">
