@@ -28,7 +28,7 @@ readingPromise:
 relatedPlanned:
   - "Como medir perda de vendas por demora no atendimento"
   - "Agente de IA no WhatsApp vale para sua empresa?"
-status: scheduled
+status: published
 ---
 
 Automação de WhatsApp para pequena empresa vale a pena quando o atendimento deixou de ser apenas uma conversa e virou gargalo comercial. Se a empresa demora para responder, esquece follow-up, repete a mesma explicação todos os dias e não sabe quantas oportunidades perdeu, o problema já passou do ponto de "organizar melhor a agenda". Ele virou operação.
