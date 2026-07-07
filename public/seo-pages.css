@@ -169,6 +169,27 @@ ol li::before {
   border: 1px solid rgba(255, 163, 0, 0.24);
   background: linear-gradient(135deg, rgba(255, 163, 0, 0.11), transparent 44%), var(--surface);
 }
+.site-nap {
+  margin-top: clamp(34px, 6vw, 64px);
+  padding-top: 24px;
+  border-top: 1px solid rgba(244, 245, 240, 0.1);
+  display: grid;
+  gap: 8px;
+}
+.site-nap address {
+  font-style: normal;
+  color: rgba(244, 245, 240, 0.66);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+.site-nap address strong { color: rgba(244, 245, 240, 0.92); }
+.site-nap a { color: rgba(244, 245, 240, 0.86); font-weight: 700; }
+.site-nap a:hover { color: var(--orange); }
+.nap-legal {
+  color: rgba(244, 245, 240, 0.34);
+  font-size: 0.74rem;
+  letter-spacing: 0.02em;
+}
 @media (max-width: 820px) {
   .top, nav { align-items: flex-start; }
   .top, .hero, .split, .decision, .related { grid-template-columns: 1fr; }

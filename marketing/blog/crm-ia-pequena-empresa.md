@@ -28,6 +28,7 @@ readingPromise:
 relatedPlanned:
   - "Como medir perda de vendas por demora no atendimento"
   - "Follow-up automático sem parecer robô"
+  - "IA para PME: guia prático para começar sem gastar errado"
 status: scheduled
 ---
 

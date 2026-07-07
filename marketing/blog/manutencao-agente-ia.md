@@ -28,6 +28,7 @@ readingPromise:
 relatedPlanned:
   - "Dados desorganizados: por que a IA responde mal"
   - "Agente de IA no WhatsApp vale para sua empresa?"
+  - "IA para PME: guia prático para começar sem gastar errado"
 status: scheduled
 ---
 

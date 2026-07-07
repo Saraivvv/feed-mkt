@@ -113,6 +113,35 @@ function extractSections(markdown) {
   }));
 }
 
+// Extrai pares pergunta/resposta da seção "## Perguntas frequentes".
+// Formato esperado: pergunta em negrito (**...?**) seguida do parágrafo de resposta.
+// Alimenta o schema FAQPage (rich result no Google + fonte que IA cita no GEO).
+function extractFaq(markdown) {
+  const start = markdown.search(/^##\s+Perguntas frequentes\s*$/im);
+  if (start === -1) return [];
+  let rest = markdown.slice(start).replace(/^##\s+Perguntas frequentes\s*$/im, "");
+  const nextH2 = rest.search(/^##\s+/m);
+  if (nextH2 !== -1) rest = rest.slice(0, nextH2);
+  const blocks = rest.split(/\n\s*\n/).map((b) => b.trim()).filter(Boolean);
+  const faq = [];
+  for (let i = 0; i < blocks.length; i++) {
+    const b = blocks[i];
+    // Formato 1: pergunta em negrito e resposta em linhas adjacentes no mesmo bloco.
+    const inline = b.match(/^\*\*(.+?)\*\*\s*\n([\s\S]+)$/);
+    if (inline) {
+      faq.push({ q: inline[1].trim(), a: inline[2].replace(/\s+/g, " ").trim() });
+      continue;
+    }
+    // Formato 2: pergunta sozinha num bloco, resposta no bloco seguinte.
+    const solo = b.match(/^\*\*(.+?)\*\*$/s);
+    if (solo && i + 1 < blocks.length && !/^\*\*/.test(blocks[i + 1])) {
+      faq.push({ q: solo[1].trim(), a: blocks[i + 1].replace(/\s+/g, " ").trim() });
+      i++;
+    }
+  }
+  return faq;
+}
+
 function renderMarkdown(md) {
   let html = marked.parse(md);
   html = html.replace(/<h2>(.*?)<\/h2>/g, (_, title) => {
@@ -128,48 +157,59 @@ function renderMarkdown(md) {
 
 function jsonLdPost(post) {
   const url = `${SITE}/blog/${post.slug}/`;
-  return JSON.stringify(
-    [
-      {
-        "@context": "https://schema.org",
-        "@type": "Article",
-        "@id": `${url}#article`,
-        headline: post.title,
-        description: post.description,
-        datePublished: post.date,
-        dateModified: post.date,
-        inLanguage: "pt-BR",
-        mainEntityOfPage: { "@type": "WebPage", "@id": url },
-        image: OG_IMAGE,
-        author: {
-          "@type": "Organization",
-          name: ORG_NAME,
-          url: `${SITE}/`,
-        },
-        publisher: {
-          "@type": "Organization",
-          name: ORG_NAME,
-          url: `${SITE}/`,
-          logo: { "@type": "ImageObject", url: ORG_LOGO },
-        },
-        ...(post.keyword ? { keywords: post.keyword } : {}),
+  const graph = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "@id": `${url}#article`,
+      headline: post.title,
+      description: post.description,
+      datePublished: post.date,
+      dateModified: post.date,
+      inLanguage: "pt-BR",
+      mainEntityOfPage: { "@type": "WebPage", "@id": url },
+      image: OG_IMAGE,
+      author: {
+        "@type": "Organization",
+        name: ORG_NAME,
+        url: `${SITE}/`,
       },
-      {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: `${SITE}/` },
-          { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE}/blog/` },
-          { "@type": "ListItem", position: 3, name: post.title, item: url },
-        ],
+      publisher: {
+        "@type": "Organization",
+        name: ORG_NAME,
+        url: `${SITE}/`,
+        logo: { "@type": "ImageObject", url: ORG_LOGO },
       },
-    ],
-    null,
-    2
-  );
+      ...(post.keyword ? { keywords: post.keyword } : {}),
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${SITE}/` },
+        { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE}/blog/` },
+        { "@type": "ListItem", position: 3, name: post.title, item: url },
+      ],
+    },
+  ];
+
+  if (post.faq?.length) {
+    graph.push({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "@id": `${url}#faq`,
+      mainEntity: post.faq.map((item) => ({
+        "@type": "Question",
+        name: item.q,
+        acceptedAnswer: { "@type": "Answer", text: item.a },
+      })),
+    });
+  }
+
+  return JSON.stringify(graph, null, 2);
 }
 
-function renderPost(template, post) {
+function renderPost(template, post, posts = []) {
   // seoTitle opcional no frontmatter encurta o <title> sem mudar o H1
   const pageTitle = post.seoTitle || `${post.title} | Blog da Feed`;
   const promiseItems = list(post.readingPromise)
@@ -198,7 +238,7 @@ function renderPost(template, post) {
           ${post.sections.map((section) => `<a href="#${section.id}">${esc(section.title)}</a>`).join("\n")}
         </nav>`
     : "";
-  const related = renderRelated(post);
+  const related = renderRelated(post, posts);
   return template
     .replaceAll("{{PAGE_TITLE}}", esc(pageTitle))
     .replaceAll("{{META_DESCRIPTION}}", esc(post.description))
@@ -221,7 +261,32 @@ function list(value) {
   return [value];
 }
 
-function renderRelated(post) {
+function normTitle(value) {
+  return String(value ?? "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
+// Casa um título livre de relatedPlanned com um post já publicado.
+// Match por igualdade normalizada e, como fallback, por prefixo/contido
+// (cobre relatedPlanned encurtado, ex: sem o subtítulo do H1).
+function findPublishedByTitle(title, posts) {
+  const n = normTitle(title);
+  if (!n) return null;
+  return (
+    posts.find((p) => normTitle(p.title) === n) ||
+    posts.find((p) => {
+      const pt = normTitle(p.title);
+      return pt && (pt.includes(n) || n.includes(pt));
+    }) ||
+    null
+  );
+}
+
+function renderRelated(post, posts = []) {
   const planned = list(post.relatedPlanned);
   if (!planned.length) return "";
   return `<section class="post-related" aria-label="Próximas leituras">
@@ -229,13 +294,25 @@ function renderRelated(post) {
         <h2>Continue pela decisão que vem depois</h2>
         <div class="related-list">
           ${planned
-            .map(
-              (item) => `<article>
+            .map((item) => {
+              const match = findPublishedByTitle(item, posts);
+              if (match && match.slug !== post.slug) {
+                const takeaway =
+                  match.cardTakeaway ||
+                  match.heroSummary ||
+                  "Continue a trilha para transformar interesse em IA em decisão operacional.";
+                return `<article class="is-live">
+            <span>Ler guia</span>
+            <h3><a href="/blog/${match.slug}/">${esc(match.title)}</a></h3>
+            <p>${esc(takeaway)}</p>
+          </article>`;
+              }
+              return `<article>
             <span>Em breve</span>
             <h3>${esc(item)}</h3>
             <p>Esse guia entra na trilha para transformar interesse em IA em decisão operacional.</p>
-          </article>`
-            )
+          </article>`;
+            })
             .join("\n")}
         </div>
       </section>`;
@@ -2046,6 +2123,7 @@ function main() {
       html: renderMarkdown(body),
       sections: extractSections(body),
       readingTime: tempoLeitura(body),
+      faq: extractFaq(body),
     });
   }
 
@@ -2060,7 +2138,7 @@ function main() {
   for (const post of posts) {
     const dir = join(OUT_DIR, post.slug);
     mkdirSync(dir, { recursive: true });
-    writeFileSync(join(dir, "index.html"), renderPost(template, post), "utf8");
+    writeFileSync(join(dir, "index.html"), renderPost(template, post, posts), "utf8");
     console.log(`gerado: public/blog/${post.slug}/index.html`);
   }
 

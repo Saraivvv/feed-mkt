@@ -28,6 +28,7 @@ readingPromise:
 relatedPlanned:
   - "Como escolher o primeiro processo para automatizar"
   - "Quanto custa implementar IA numa pequena empresa?"
+  - "IA para PME: guia prático para começar sem gastar errado"
 status: scheduled
 ---
 

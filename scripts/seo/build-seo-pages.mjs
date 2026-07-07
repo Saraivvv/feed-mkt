@@ -165,6 +165,80 @@ const pages = [
     ],
     related: ["ia-para-pequenas-empresas", "automacao-whatsapp", "agentes-de-ia"],
   },
+  {
+    slug: "agencia-de-ia-ribeirao-preto",
+    type: "local",
+    title: "Agência de IA em Ribeirão Preto e região | Feed",
+    h1: "Agência de IA em Ribeirão Preto para quem quer resultado, não hype.",
+    eyebrow: "Ribeirão Preto e região",
+    description:
+      "A Feed é uma agência de IA que atende empresas de Ribeirão Preto e região com automação de atendimento no WhatsApp, agentes de IA e organização da operação. Diagnóstico gratuito.",
+    intro:
+      "A Feed ajuda empresas de Ribeirão Preto e cidades vizinhas a usarem IA onde ela paga a conta: atendimento, follow-up e operação. O trabalho é remoto na maior parte do tempo, presencial quando o projeto pede, sempre com escopo enxuto e retorno mensurável.",
+    primaryCta: "Pedir diagnóstico gratuito",
+    secondaryCta: "Ver guia de custos",
+    secondaryHref: "/blog/quanto-custa-implementar-ia-pequena-empresa/",
+    serviceName:
+      "Consultoria e implementação de IA para empresas de Ribeirão Preto e região",
+    bulletsTitle: "O que a Feed resolve para empresas da região",
+    bullets: [
+      "IA aplicada onde a empresa perde tempo ou venda, com um projeto pequeno e medido antes de qualquer expansão.",
+      "Atendimento no WhatsApp que responde rápido, qualifica o lead e passa para humano quando precisa.",
+      "Follow-up automático para parar de perder orçamento por esquecimento.",
+      "Organização de CRM, agenda, planilhas e base de conhecimento para a IA responder certo.",
+    ],
+    decisionTitle: "Como a Feed começa um projeto na região",
+    decisions: [
+      "Diagnóstico gratuito da operação, sem compromisso.",
+      "Escolha do gargalo com mais impacto no caixa e mais fácil de medir.",
+      "Implementação enxuta conectada ao que a empresa já usa.",
+      "Medição de tempo economizado, velocidade de resposta e vendas recuperadas.",
+    ],
+    faqs: [
+      ["A Feed atende presencialmente em Ribeirão Preto?", "A maior parte do trabalho é remota, o que deixa o projeto mais ágil e barato. Quando o projeto pede presença, a Feed vai até a empresa na região."],
+      ["Vocês atendem empresas fora de Ribeirão Preto?", "Sim. A base é na região de Ribeirão Preto e Bebedouro, e o atendimento remoto cobre todo o Brasil. Cidades vizinhas são atendidas normalmente."],
+      ["Minha empresa é pequena, ainda vale usar IA?", "Vale quando existe um gargalo real com repetição e impacto em venda. A Feed começa pequeno justamente para a PME não gastar errado."],
+      ["Quanto custa começar?", "Depende do gargalo. As faixas reais de preço estão no guia de custos, e o diagnóstico gratuito indica o primeiro projeto com melhor retorno."],
+    ],
+    related: ["ia-para-pequenas-empresas", "automacao-whatsapp", "agentes-de-ia"],
+  },
+  {
+    slug: "agencia-de-marketing-bebedouro",
+    type: "local",
+    title: "Agência de marketing e IA em Bebedouro | Feed",
+    h1: "Agência de marketing e IA em Bebedouro para PME que precisa vender mais.",
+    eyebrow: "Bebedouro e região",
+    description:
+      "A Feed é uma agência de marketing e IA com base em Bebedouro: posicionamento de marca, atendimento automatizado no WhatsApp e operação com IA para pequenas empresas. Diagnóstico gratuito.",
+    intro:
+      "A Feed nasceu unindo marketing e IA aplicada para ajudar empresas de Bebedouro e região a venderem mais sem depender de sorte. Menos post solto, mais operação que gera contato, atende rápido e converte.",
+    primaryCta: "Pedir diagnóstico gratuito",
+    secondaryCta: "Ver guia de custos",
+    secondaryHref: "/blog/quanto-custa-implementar-ia-pequena-empresa/",
+    serviceName:
+      "Marketing, posicionamento e IA aplicada para empresas de Bebedouro e região",
+    bulletsTitle: "O que a Feed faz por empresas de Bebedouro",
+    bullets: [
+      "Marketing com direção, ligado a venda e a posicionamento, não a post solto sem estratégia.",
+      "Atendimento no WhatsApp automatizado para responder rápido e não perder cliente por demora.",
+      "Posicionamento de marca e do empresário para a empresa ser lembrada na região.",
+      "Automação de operação e follow-up para o time focar no que fecha negócio.",
+    ],
+    decisionTitle: "Por que unir marketing e IA",
+    decisions: [
+      "Marketing traz o contato, a IA garante que ele seja atendido na hora.",
+      "Follow-up automático recupera quem ia esfriar e escapar.",
+      "Posicionamento claro faz a empresa ser escolhida antes do preço.",
+      "Tudo medido, para saber o que traz cliente e o que é só barulho.",
+    ],
+    faqs: [
+      ["A Feed é de Bebedouro?", "Sim, a base da Feed é na região de Bebedouro e Ribeirão Preto. O atendimento é remoto na maior parte, com presença quando o projeto pede."],
+      ["A Feed faz só marketing ou também IA?", "As duas coisas, juntas. A Feed começou no marketing e hoje aplica IA na operação: atendimento, follow-up e processos, sempre ligados a venda."],
+      ["Serve para comércio e serviço local?", "Sim. O foco é PME da região com operação travada, que precisa de solução prática e rápida, não de projeto grande demais."],
+      ["Como começa?", "Pelo diagnóstico gratuito. A Feed olha marketing e operação, mostra onde a venda escapa e indica o primeiro passo com maior retorno."],
+    ],
+    related: ["ia-para-pequenas-empresas", "diagnostico-ia-empresa", "automacao-whatsapp"],
+  },
 ];
 
 function esc(value) {
@@ -333,6 +407,19 @@ ${JSON.stringify(pageSchema(page), null, 2)}
         <p>A Feed faz um diagnóstico gratuito da sua operação e mostra o primeiro projeto de IA com maior chance de retorno.</p>
         <a class="button" href="/#contato">Pedir diagnóstico gratuito</a>
       </aside>
+
+      <footer class="site-nap">
+        <address>
+          <strong>Feed, marketing e IA</strong><br />
+          Interior de São Paulo, região de Ribeirão Preto e Bebedouro. Atendimento remoto em todo o Brasil.<br />
+          <a href="tel:+5516993020694">(16) 99302-0694</a>
+          <span aria-hidden="true"> · </span>
+          <a href="https://wa.me/5516993020694" target="_blank" rel="noopener">WhatsApp</a>
+          <span aria-hidden="true"> · </span>
+          <a href="mailto:emailmkt@agenciafeed.com">emailmkt@agenciafeed.com</a>
+        </address>
+        <p class="nap-legal">FEED MARKETING E COMUNICAÇÃO · CNPJ 53.877.987/0001-93</p>
+      </footer>
     </main>
   </body>
 </html>
@@ -511,6 +598,27 @@ ol li::before {
   border: 1px solid rgba(255, 163, 0, 0.24);
   background: linear-gradient(135deg, rgba(255, 163, 0, 0.11), transparent 44%), var(--surface);
 }
+.site-nap {
+  margin-top: clamp(34px, 6vw, 64px);
+  padding-top: 24px;
+  border-top: 1px solid rgba(244, 245, 240, 0.1);
+  display: grid;
+  gap: 8px;
+}
+.site-nap address {
+  font-style: normal;
+  color: rgba(244, 245, 240, 0.66);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+.site-nap address strong { color: rgba(244, 245, 240, 0.92); }
+.site-nap a { color: rgba(244, 245, 240, 0.86); font-weight: 700; }
+.site-nap a:hover { color: var(--orange); }
+.nap-legal {
+  color: rgba(244, 245, 240, 0.34);
+  font-size: 0.74rem;
+  letter-spacing: 0.02em;
+}
 @media (max-width: 820px) {
   .top, nav { align-items: flex-start; }
   .top, .hero, .split, .decision, .related { grid-template-columns: 1fr; }
@@ -525,8 +633,15 @@ ol li::before {
 function updateSitemap() {
   const path = join(PUBLIC_DIR, "sitemap.xml");
   let xml = readFileSync(path, "utf8");
+  // Remove dinamicamente as entradas das paginas atuais antes de reinserir,
+  // para o build ser idempotente e nao acumular duplicatas a cada rodada.
+  const reEsc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const slugAlt = pages.map((p) => reEsc(p.slug)).join("|");
   xml = xml.replace(
-    /\s*<url>\s*<loc>https:\/\/agenciafeed\.com\/(?:ia-para-pequenas-empresas|automacao-whatsapp|agentes-de-ia|diagnostico-ia-empresa)\/<\/loc>[\s\S]*?<\/url>/g,
+    new RegExp(
+      `\\s*<url>\\s*<loc>${reEsc(SITE)}/(?:${slugAlt})/</loc>[\\s\\S]*?</url>`,
+      "g"
+    ),
     ""
   );
 

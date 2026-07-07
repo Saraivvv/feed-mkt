@@ -653,6 +653,8 @@ function SiteFooter() {
         <a href="/automacao-whatsapp/">Automação de WhatsApp</a>
         <a href="/agentes-de-ia/">Agentes de IA</a>
         <a href="/diagnostico-ia-empresa/">Diagnóstico de IA</a>
+        <a href="/agencia-de-ia-ribeirao-preto/">Agência de IA em Ribeirão Preto</a>
+        <a href="/agencia-de-marketing-bebedouro/">Agência de marketing em Bebedouro</a>
       </nav>
       <div className="footer-payment">
         <p>Formas de pagamento</p>
@@ -664,6 +666,14 @@ function SiteFooter() {
       </div>
       <div className="footer-legal">
         <p>FEED MARKETING E COMUNICAÇÃO • CNPJ 53.877.987/0001-93</p>
+        <address className="footer-nap">
+          Interior de São Paulo, região de Ribeirão Preto e Bebedouro. Atendimento remoto em todo o Brasil.<br />
+          <a href="tel:+5516993020694">(16) 99302-0694</a>
+          {" · "}
+          <a href="https://wa.me/5516993020694" target="_blank" rel="noopener">WhatsApp</a>
+          {" · "}
+          <a href="mailto:emailmkt@agenciafeed.com">emailmkt@agenciafeed.com</a>
+        </address>
         <nav className="footer-links" aria-label="Links do rodapé">
           <a href="/blog/">Blog</a>
           <a href="/privacidade.html">Política de Privacidade</a>

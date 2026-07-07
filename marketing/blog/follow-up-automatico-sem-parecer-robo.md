@@ -28,6 +28,7 @@ readingPromise:
 relatedPlanned:
   - "Como medir perda de vendas por demora no atendimento"
   - "CRM com IA para pequena empresa"
+  - "IA para PME: guia prático para começar sem gastar errado"
 status: scheduled
 ---
 

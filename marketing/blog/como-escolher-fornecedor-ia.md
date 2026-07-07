@@ -28,6 +28,7 @@ readingPromise:
 relatedPlanned:
   - "Quanto custa implementar IA numa pequena empresa?"
   - "7 erros em projetos de IA que pequenas empresas devem evitar"
+  - "IA para PME: guia prático para começar sem gastar errado"
 status: scheduled
 ---
 

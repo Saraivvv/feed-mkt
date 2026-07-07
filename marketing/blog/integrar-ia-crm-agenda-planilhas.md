@@ -28,6 +28,7 @@ readingPromise:
 relatedPlanned:
   - "Automação de processos internos com IA"
   - "CRM com IA para pequena empresa"
+  - "IA para PME: guia prático para começar sem gastar errado"
 status: scheduled
 ---
 

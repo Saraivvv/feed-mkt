@@ -28,6 +28,7 @@ readingPromise:
 relatedPlanned:
   - "Automação de WhatsApp para pequena empresa"
   - "Quanto custa implementar IA numa pequena empresa?"
+  - "IA para PME: guia prático para começar sem gastar errado"
 status: scheduled
 ---
 

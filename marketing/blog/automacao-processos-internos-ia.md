@@ -28,6 +28,7 @@ readingPromise:
 relatedPlanned:
   - "Como escolher o primeiro processo para automatizar"
   - "Como calcular ROI de automação com IA"
+  - "IA para PME: guia prático para começar sem gastar errado"
 status: scheduled
 ---
 

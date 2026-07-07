@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="refresh" content="45" />
+<title>Painel — Missão SEO + GEO da Feed</title>
+<style>
+  :root{
+    --bg:#0c0d10; --panel:#141519; --panel2:#1b1d22; --line:#262931;
+    --txt:#f4f5f0; --muted:#9a9ea8; --orange:#ff6a2b; --orange-soft:#ff6a2b22;
+    --green:#37d67a; --green-soft:#37d67a1c; --blue:#4aa8ff; --blue-soft:#4aa8ff1c;
+    --amber:#ffc24a; --amber-soft:#ffc24a1c; --grey:#6b7080; --grey-soft:#6b708018;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:radial-gradient(1200px 600px at 80% -10%,#1a1c22 0,var(--bg) 55%);
+    color:var(--txt);font:15px/1.5 'Segoe UI',system-ui,sans-serif;padding:38px 22px 80px}
+  .wrap{max-width:1000px;margin:0 auto}
+  header{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:8px}
+  h1{font-size:1.55rem;margin:0;letter-spacing:-.02em}
+  h1 span{color:var(--orange)}
+  .sub{color:var(--muted);font-size:.9rem;margin:6px 0 0}
+  .stamp{color:var(--muted);font-size:.78rem;text-align:right}
+  .stamp b{color:var(--txt)}
+  .overall{margin:26px 0 34px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px 22px}
+  .overall .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+  .overall .pct{font-size:2rem;font-weight:800;letter-spacing:-.03em}
+  .bar{height:10px;background:#000;border-radius:99px;overflow:hidden;border:1px solid var(--line)}
+  .bar>i{display:block;height:100%;background:linear-gradient(90deg,var(--orange),#ff9a5b);border-radius:99px}
+  .legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:14px;font-size:.78rem;color:var(--muted)}
+  .legend span{display:inline-flex;align-items:center;gap:6px}
+  .dot{width:9px;height:9px;border-radius:99px;display:inline-block}
+  .phase{margin:0 0 22px;background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .phase>.head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 20px;background:var(--panel2)}
+  .phase>.head h2{font-size:1.02rem;margin:0;display:flex;align-items:center;gap:10px}
+  .phase .kicker{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);font-weight:700}
+  .mini{width:120px}
+  .mini .bar{height:7px}
+  .count{font-size:.78rem;color:var(--muted);white-space:nowrap}
+  ul{list-style:none;margin:0;padding:6px 0}
+  li{display:flex;align-items:flex-start;gap:12px;padding:11px 20px;border-top:1px solid var(--line)}
+  li:first-child{border-top:0}
+  .pill{flex:none;font-size:.68rem;font-weight:700;letter-spacing:.03em;padding:4px 9px;border-radius:99px;white-space:nowrap;margin-top:1px}
+  .p-done{background:var(--green-soft);color:var(--green)}
+  .p-prog{background:var(--blue-soft);color:var(--blue)}
+  .p-todo{background:var(--grey-soft);color:var(--muted)}
+  .p-user{background:var(--amber-soft);color:var(--amber)}
+  .task{flex:1}
+  .task .t{font-weight:600}
+  .task.done .t{color:var(--muted);text-decoration:line-through;text-decoration-color:#3a3d45}
+  .task .d{color:var(--muted);font-size:.82rem;margin-top:2px}
+  .tag{font-size:.68rem;color:var(--grey);border:1px solid var(--line);padding:1px 7px;border-radius:6px;margin-left:6px}
+  footer{color:var(--muted);font-size:.78rem;text-align:center;margin-top:34px;line-height:1.7}
+  code{background:#000;border:1px solid var(--line);padding:1px 6px;border-radius:5px;color:var(--orange);font-size:.82em}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>Missão <span>SEO + GEO</span> da Feed</h1>
+      <p class="sub">Blog, presença local e otimização para busca e IAs. Atualizado pelo piloto conforme concluímos.</p>
+    </div>
+    <div class="stamp">Atualizado em<br><b>07/07/2026 · noite</b><br><span style="opacity:.6">recarrega sozinho a cada 45s</span></div>
+  </header>
+
+  <section class="overall">
+    <div class="top">
+      <div><div class="pct">50%</div><div style="color:var(--muted);font-size:.82rem">do plano concluído</div></div>
+      <div style="text-align:right;color:var(--muted);font-size:.82rem">11 de 22 etapas<br>concluídas</div>
+    </div>
+    <div class="bar"><i style="width:50%"></i></div>
+    <div class="legend">
+      <span><i class="dot" style="background:var(--green)"></i> Concluído</span>
+      <span><i class="dot" style="background:var(--blue)"></i> Em andamento</span>
+      <span><i class="dot" style="background:var(--muted)"></i> A fazer</span>
+      <span><i class="dot" style="background:var(--amber)"></i> Depende de você</span>
+    </div>
+  </section>
+
+  <!-- FASE 0 -->
+  <section class="phase">
+    <div class="head">
+      <h2><span class="kicker">Fase 0</span> Enxergar · medir</h2>
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="mini"><div class="bar"><i style="width:0%;background:var(--amber)"></i></div></div>
+        <span class="count">0/4</span>
+      </div>
+    </div>
+    <ul>
+      <li><span class="pill p-user">Você</span><div class="task"><div class="t">Decidir domínio canônico: apex vs www <span class="tag">recomendo apex</span></div><div class="d">O site serve em <code>www</code> mas o código usa <code>agenciafeed.com</code>. Recomendo padronizar no apex (zero código).</div></div></li>
+      <li><span class="pill p-user">Você</span><div class="task"><div class="t">Alinhar redirect na Vercel</div><div class="d">Inverter para <code>www → agenciafeed.com</code> no painel da Vercel.</div></div></li>
+      <li><span class="pill p-user">Você</span><div class="task"><div class="t">Conectar Google Search Console + enviar sitemap</div><div class="d">Propriedade de domínio, verificação por TXT no DNS. Nunca foi conectado.</div></div></li>
+      <li><span class="pill p-user">Você</span><div class="task"><div class="t">Importar no Bing Webmaster</div><div class="d">1 clique a partir do GSC. Alimenta o índice do ChatGPT/Copilot (GEO).</div></div></li>
+    </ul>
+  </section>
+
+  <!-- FASE 1 -->
+  <section class="phase">
+    <div class="head">
+      <h2><span class="kicker">Fase 1</span> Presença local</h2>
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="mini"><div class="bar"><i style="width:75%;background:var(--green)"></i></div></div>
+        <span class="count">3/4</span>
+      </div>
+    </div>
+    <ul>
+      <li><span class="pill p-done">Feito</span><div class="task done"><div class="t">Página local: Agência de IA em Ribeirão Preto</div><div class="d"><code>/agencia-de-ia-ribeirao-preto/</code> gerada, com FAQ, schema e conteúdo local real.</div></div></li>
+      <li><span class="pill p-done">Feito</span><div class="task done"><div class="t">Página local: Agência de marketing e IA em Bebedouro</div><div class="d"><code>/agencia-de-marketing-bebedouro/</code> gerada, com FAQ e schema. Bônus: corrigi bug de duplicata no sitemap.</div></div></li>
+      <li><span class="pill p-done">Feito</span><div class="task done"><div class="t">Bloco NAP consistente no site</div><div class="d">Rodapé com região + (16) 99302-0694 (tel/WhatsApp/e-mail) no site React e nas páginas estáticas. Build validado.</div></div></li>
+      <li><span class="pill p-user">Você</span><div class="task"><div class="t">Configurar Google Meu Negócio (área de atendimento)</div><div class="d">Modo SAB, sem endereço público, verificação por vídeo/carta. Foco em avaliações.</div></div></li>
+    </ul>
+  </section>
+
+  <!-- FASE 2 -->
+  <section class="phase">
+    <div class="head">
+      <h2><span class="kicker">Fase 2</span> Conteúdo · blog</h2>
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="mini"><div class="bar"><i style="width:70%;background:var(--green)"></i></div></div>
+        <span class="count">6/9</span>
+      </div>
+    </div>
+    <ul>
+      <li><span class="pill p-done">Feito</span><div class="task done"><div class="t">Corrigir defeito de link interno no build</div><div class="d"><code>renderRelated</code> agora vira link real quando o irmão publica. Testado.</div></div></li>
+      <li><span class="pill p-done">Feito</span><div class="task done"><div class="t">Reescrever o pilar como hub</div><div class="d">De ~460 para 1668 palavras, H2 em pergunta, 13 links internos, FAQ.</div></div></li>
+      <li><span class="pill p-done">Feito</span><div class="task done"><div class="t">Fechar teia hub-and-spoke</div><div class="d">16 satélites linkando de volta pro pilar. 0 órfãos.</div></div></li>
+      <li><span class="pill p-done">Feito</span><div class="task done"><div class="t">FAQPage schema automático no build</div><div class="d">Todo post com seção de perguntas gera schema de FAQ (SEO + GEO).</div></div></li>
+      <li><span class="pill p-done">Feito</span><div class="task done"><div class="t">Atualizar doc de estratégia defasado</div><div class="d">Parou de dizer que o site é "SPA sem blog".</div></div></li>
+      <li><span class="pill p-prog">Andamento</span><div class="task"><div class="t">Aprofundar satélites rasos <span class="tag">1 de 16</span></div><div class="d">Feito: automação WhatsApp (1216 palavras + FAQ). Próximos: medir-perda, agente-IA-WhatsApp.</div></div></li>
+      <li><span class="pill p-todo">A fazer</span><div class="task"><div class="t">Revisar os demais 14 satélites</div><div class="d">Engrossar conteúdo, adicionar FAQ, manter voz Feed. Candidato a delegação.</div></div></li>
+      <li><span class="pill p-todo">A fazer</span><div class="task"><div class="t">Salvar no GitHub (commit + push)</div><div class="d">Nada foi commitado ainda. <code>/salvar</code> quando aprovar. Push = deploy na Vercel.</div></div></li>
+      <li><span class="pill p-done">Feito</span><div class="task done"><div class="t">Confirmar publicação automática (workflow Ter/Qui)</div><div class="d">Post de hoje no trilho, 9h BRT. Cadência validada.</div></div></li>
+    </ul>
+  </section>
+
+  <!-- FASE 3 -->
+  <section class="phase">
+    <div class="head">
+      <h2><span class="kicker">Fase 3</span> GEO · ser citado por IAs</h2>
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="mini"><div class="bar"><i style="width:40%;background:var(--green)"></i></div></div>
+        <span class="count">2/5</span>
+      </div>
+    </div>
+    <ul>
+      <li><span class="pill p-done">Feito</span><div class="task done"><div class="t">FAQPage schema (fonte que IA cita)</div><div class="d">Ligado no build. Já vale pro pilar e pro post do WhatsApp.</div></div></li>
+      <li><span class="pill p-done">Feito</span><div class="task done"><div class="t">Base de entidade no ar</div><div class="d"><code>llms.txt</code>, JSON-LD, H2 em pergunta, CNPJ. Já publicado.</div></div></li>
+      <li><span class="pill p-todo">A fazer</span><div class="task"><div class="t">Tabelas com números reais nos guias de decisão</div><div class="d">Faixas de preço e prazos em formato extraível por IA.</div></div></li>
+      <li><span class="pill p-todo">A fazer</span><div class="task"><div class="t">Presença externa + NAP em diretórios</div><div class="d">Consistência de nome/telefone/região onde as IAs leem.</div></div></li>
+      <li><span class="pill p-todo">A fazer</span><div class="task"><div class="t">Teste GEO mensal</div><div class="d">Perguntar os termos-alvo no ChatGPT/Gemini/Perplexity e registrar quem aparece.</div></div></li>
+    </ul>
+  </section>
+
+  <footer>
+    Piloto: Claude (Opus 4.8) · Painel local servido em <code>localhost:4599</code><br>
+    Ordem recomendada: Fase 1 (local) agora, em paralelo com o restante dos satélites. Fase 0 destrava com você.
+  </footer>
+</div>
+</body>
+</html>

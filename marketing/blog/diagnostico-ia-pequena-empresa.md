@@ -28,6 +28,7 @@ readingPromise:
 relatedPlanned:
   - "Como escolher o primeiro processo para automatizar"
   - "Dados desorganizados: por que a IA responde mal"
+  - "IA para PME: guia prático para começar sem gastar errado"
 status: scheduled
 ---
 

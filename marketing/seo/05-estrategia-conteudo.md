@@ -1,8 +1,10 @@
 # Passo 5 — Estratégia de conteúdo (autoridade + GEO)
 
+> **Atualização (07/07/2026):** o blog **já existe e está no ar**. O pré-requisito técnico abaixo foi resolvido: as páginas são estáticas, geradas por `npm run blog:build` a partir dos markdowns em `marketing/blog/`. O **calendário real** de publicação hoje mora no frontmatter dos 17 posts agendados (fonte de verdade), não na tabela de semanas mais abaixo. Fluxo, cadência e status estão em `marketing/blog/README.md`. As seções de satélites, páginas locais e regras de formato deste doc seguem válidas como direção estratégica; a tabela "Calendário editorial" abaixo é histórica.
+
 Insumo direto pra `/publicar-tema`. Cada item vira artigo no site + carrossel + legenda.
 
-**Pré-requisito técnico:** o site hoje é uma SPA sem blog. Os artigos precisam ser publicados como **páginas HTML estáticas** (ex.: `/blog/nome-do-artigo.html` na pasta `public/`), senão nem Google nem IAs leem direito. Ver Passo 4.
+**Pré-requisito técnico (resolvido):** os artigos são publicados como **páginas HTML estáticas** em `/blog/<slug>/` na pasta `public/`, geradas pelo pipeline de build. Ver Passo 4.
 
 ## Cluster principal: IA para PMEs
 

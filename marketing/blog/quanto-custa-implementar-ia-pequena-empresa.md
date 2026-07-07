@@ -27,6 +27,7 @@ readingPromise:
 relatedPlanned:
   - "Como escolher o primeiro processo para automatizar"
   - "Agente de IA no WhatsApp vale para sua empresa?"
+  - "IA para PME: guia prático para começar sem gastar errado"
 status: published
 ---
 

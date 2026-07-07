@@ -27,7 +27,8 @@ readingPromise:
   - "Definir uma métrica antes de automatizar"
 relatedPlanned:
   - "Automação de processos internos com IA"
-  - "Erros em projetos de IA para pequenas empresas"
+  - "7 erros em projetos de IA que pequenas empresas devem evitar"
+  - "IA para PME: guia prático para começar sem gastar errado"
 status: scheduled
 ---
 

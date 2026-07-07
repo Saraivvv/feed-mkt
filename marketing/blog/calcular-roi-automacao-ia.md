@@ -28,6 +28,7 @@ readingPromise:
 relatedPlanned:
   - "Quanto custa implementar IA numa pequena empresa?"
   - "Como medir perda de vendas por demora no atendimento"
+  - "IA para PME: guia prático para começar sem gastar errado"
 status: scheduled
 ---
 

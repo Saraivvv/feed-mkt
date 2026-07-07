@@ -28,6 +28,7 @@ readingPromise:
 relatedPlanned:
   - "Diagnóstico de IA para pequena empresa"
   - "Agente de IA no WhatsApp vale para sua empresa?"
+  - "IA para PME: guia prático para começar sem gastar errado"
 status: scheduled
 ---
 
