@@ -29,7 +29,7 @@ relatedPlanned:
   - "Automação de WhatsApp para pequena empresa"
   - "Quanto custa implementar IA numa pequena empresa?"
   - "IA para PME: guia prático para começar sem gastar errado"
-status: scheduled
+status: published
 ---
 
 Medir perda de vendas por demora no atendimento é mais simples do que parece. Você não precisa começar com dashboard, CRM caro ou relatório perfeito. Precisa responder quatro perguntas: quantos contatos chegam, quanto tempo a empresa demora para responder, quantos não avançam e qual é o valor médio de uma venda.
