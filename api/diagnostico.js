@@ -149,10 +149,15 @@ export default async function handler(req, res) {
   reserve(inflightByEmail, email);
 
   try {
+  // SMTP configuravel por env. Padrao = Hostinger (e-mail do dominio agenciafeed.com
+  // fica na Hostinger). Pra trocar de provedor (Titan, Gmail, etc.) e so setar
+  // SMTP_HOST/SMTP_PORT na Vercel, sem mexer no codigo. secure=true na 465 (SSL).
+  const smtpHost = process.env.SMTP_HOST || "smtp.hostinger.com";
+  const smtpPort = Number(process.env.SMTP_PORT) || 465;
   const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 465,
-    secure: true,
+    host: smtpHost,
+    port: smtpPort,
+    secure: smtpPort === 465,
     auth: { user, pass },
     // Timeouts pra nao deixar a function pendurada -> 504.
     connectionTimeout: 10000,

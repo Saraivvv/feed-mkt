@@ -34,11 +34,19 @@ export default async function handler(req, res) {
     return;
   }
 
+  // SMTP configuravel por env. Padrao = Hostinger (e-mail do dominio agenciafeed.com
+  // fica na Hostinger). Pra trocar de provedor e so setar SMTP_HOST/SMTP_PORT na
+  // Vercel. secure=true na 465 (SSL).
+  const smtpHost = process.env.SMTP_HOST || "smtp.hostinger.com";
+  const smtpPort = Number(process.env.SMTP_PORT) || 465;
   const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 465,
-    secure: true,
+    host: smtpHost,
+    port: smtpPort,
+    secure: smtpPort === 465,
     auth: { user, pass },
+    connectionTimeout: 10000,
+    greetingTimeout: 10000,
+    socketTimeout: 10000,
   });
 
   const row = (label, value) =>
