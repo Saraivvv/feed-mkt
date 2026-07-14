@@ -29,7 +29,7 @@ relatedPlanned:
   - "Automação de processos internos com IA"
   - "7 erros em projetos de IA que pequenas empresas devem evitar"
   - "IA para PME: guia prático para começar sem gastar errado"
-status: scheduled
+status: published
 ---
 
 O primeiro processo para automatizar não deve ser o mais bonito, o mais tecnológico nem o que o fornecedor acha mais impressionante. Deve ser o processo que combina dor clara, repetição, volume suficiente e risco controlado. Em pequena empresa, começar certo vale mais do que começar grande.
