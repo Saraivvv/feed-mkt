@@ -66,10 +66,10 @@
 
   <section class="overall">
     <div class="top">
-      <div><div class="pct">50%</div><div style="color:var(--muted);font-size:.82rem">do plano concluído</div></div>
-      <div style="text-align:right;color:var(--muted);font-size:.82rem">11 de 22 etapas<br>concluídas</div>
+      <div><div class="pct">64%</div><div style="color:var(--muted);font-size:.82rem">do plano concluído</div></div>
+      <div style="text-align:right;color:var(--muted);font-size:.82rem">14 de 22 etapas<br>concluídas</div>
     </div>
-    <div class="bar"><i style="width:50%"></i></div>
+    <div class="bar"><i style="width:64%"></i></div>
     <div class="legend">
       <span><i class="dot" style="background:var(--green)"></i> Concluído</span>
       <span><i class="dot" style="background:var(--blue)"></i> Em andamento</span>
@@ -83,13 +83,13 @@
     <div class="head">
       <h2><span class="kicker">Fase 0</span> Enxergar · medir</h2>
       <div style="display:flex;align-items:center;gap:12px">
-        <div class="mini"><div class="bar"><i style="width:0%;background:var(--amber)"></i></div></div>
-        <span class="count">0/4</span>
+        <div class="mini"><div class="bar"><i style="width:50%;background:var(--green)"></i></div></div>
+        <span class="count">2/4</span>
       </div>
     </div>
     <ul>
-      <li><span class="pill p-user">Você</span><div class="task"><div class="t">Decidir domínio canônico: apex vs www <span class="tag">recomendo apex</span></div><div class="d">O site serve em <code>www</code> mas o código usa <code>agenciafeed.com</code>. Recomendo padronizar no apex (zero código).</div></div></li>
-      <li><span class="pill p-user">Você</span><div class="task"><div class="t">Alinhar redirect na Vercel</div><div class="d">Inverter para <code>www → agenciafeed.com</code> no painel da Vercel.</div></div></li>
+      <li><span class="pill p-done">Feito</span><div class="task done"><div class="t">Decidir domínio canônico: apex vs www</div><div class="d">Decidido: <strong>apex</strong> (<code>agenciafeed.com</code>). Código já está 100% em apex, nada a mudar ali.</div></div></li>
+      <li><span class="pill p-done">Feito</span><div class="task done"><div class="t">Alinhar redirect na Vercel (apex primário)</div><div class="d">Verificado: apex serve 200, <code>www → 308 → agenciafeed.com</code>. Servidor, sitemap e canonical alinhados.</div></div></li>
       <li><span class="pill p-user">Você</span><div class="task"><div class="t">Conectar Google Search Console + enviar sitemap</div><div class="d">Propriedade de domínio, verificação por TXT no DNS. Nunca foi conectado.</div></div></li>
       <li><span class="pill p-user">Você</span><div class="task"><div class="t">Importar no Bing Webmaster</div><div class="d">1 clique a partir do GSC. Alimenta o índice do ChatGPT/Copilot (GEO).</div></div></li>
     </ul>
@@ -117,8 +117,8 @@
     <div class="head">
       <h2><span class="kicker">Fase 2</span> Conteúdo · blog</h2>
       <div style="display:flex;align-items:center;gap:12px">
-        <div class="mini"><div class="bar"><i style="width:70%;background:var(--green)"></i></div></div>
-        <span class="count">6/9</span>
+        <div class="mini"><div class="bar"><i style="width:78%;background:var(--green)"></i></div></div>
+        <span class="count">7/9</span>
       </div>
     </div>
     <ul>
@@ -127,9 +127,9 @@
       <li><span class="pill p-done">Feito</span><div class="task done"><div class="t">Fechar teia hub-and-spoke</div><div class="d">16 satélites linkando de volta pro pilar. 0 órfãos.</div></div></li>
       <li><span class="pill p-done">Feito</span><div class="task done"><div class="t">FAQPage schema automático no build</div><div class="d">Todo post com seção de perguntas gera schema de FAQ (SEO + GEO).</div></div></li>
       <li><span class="pill p-done">Feito</span><div class="task done"><div class="t">Atualizar doc de estratégia defasado</div><div class="d">Parou de dizer que o site é "SPA sem blog".</div></div></li>
-      <li><span class="pill p-prog">Andamento</span><div class="task"><div class="t">Aprofundar satélites rasos <span class="tag">1 de 16</span></div><div class="d">Feito: automação WhatsApp (1216 palavras + FAQ). Próximos: medir-perda, agente-IA-WhatsApp.</div></div></li>
-      <li><span class="pill p-todo">A fazer</span><div class="task"><div class="t">Revisar os demais 14 satélites</div><div class="d">Engrossar conteúdo, adicionar FAQ, manter voz Feed. Candidato a delegação.</div></div></li>
-      <li><span class="pill p-todo">A fazer</span><div class="task"><div class="t">Salvar no GitHub (commit + push)</div><div class="d">Nada foi commitado ainda. <code>/salvar</code> quando aprovar. Push = deploy na Vercel.</div></div></li>
+      <li><span class="pill p-prog">Andamento</span><div class="task"><div class="t">Aprofundar satélites rasos <span class="tag">4 de 16</span></div><div class="d">Feito: automação WhatsApp, medir-perda, primeiro-processo, erros-projetos (todos com FAQ). Próximo: agente-ia-whatsapp (21/07).</div></div></li>
+      <li><span class="pill p-todo">A fazer</span><div class="task"><div class="t">Revisar os demais 12 satélites</div><div class="d">Engrossar conteúdo, adicionar FAQ, manter voz Feed. Links no corpo só pra posts já publicados.</div></div></li>
+      <li><span class="pill p-done">Feito</span><div class="task done"><div class="t">Salvar no GitHub (commit + push)</div><div class="d">Commit <code>7ea0a6d</code> na main. Reconciliado com a publicação automática do robô. Deploy na Vercel disparado.</div></div></li>
       <li><span class="pill p-done">Feito</span><div class="task done"><div class="t">Confirmar publicação automática (workflow Ter/Qui)</div><div class="d">Post de hoje no trilho, 9h BRT. Cadência validada.</div></div></li>
     </ul>
   </section>
