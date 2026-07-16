@@ -1,4 +1,5 @@
 import nodemailer from "nodemailer";
+import { enviarParaCRM } from "./_crm.js";
 
 // Recebe as respostas do quiz do site e envia um e-mail com o lead.
 // Roda como Serverless Function na Vercel (mesmo dominio do site, sem CORS).
@@ -94,6 +95,19 @@ export default async function handler(req, res) {
       text,
       html,
     });
+    // CRM best-effort: e-mail ja garantiu o lead; falha aqui so loga.
+    await enviarParaCRM({
+      empresa: company,
+      origem: "Quiz do site",
+      detalhes: {
+        "Mercado / segmento": market,
+        "Momento atual": stage,
+        "Presença digital": digitalPresence,
+        Prioridade: priority,
+        "Página": pageUrl,
+      },
+    });
+
     res.status(200).json({ ok: true });
   } catch (err) {
     console.error("Falha ao enviar lead por e-mail:", err);

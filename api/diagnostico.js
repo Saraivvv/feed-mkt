@@ -1,4 +1,5 @@
 import nodemailer from "nodemailer";
+import { enviarParaCRM } from "./_crm.js";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 
@@ -307,6 +308,18 @@ export default async function handler(req, res) {
   } catch (err) {
     console.error("Erro inesperado na notificacao interna:", err);
   }
+
+  // 3) CRM (Twenty) DESACOPLADO: best-effort. Falhou, so loga; o lead ja
+  //    recebeu o material e a Feed ja foi notificada por e-mail.
+  await enviarParaCRM({
+    nome,
+    email,
+    origem: "Diagnóstico do Gargalo",
+    detalhes: {
+      Origem: "LinkedIn GARGALO",
+      "Página": pageUrl,
+    },
+  });
 
   res.status(200).json({ ok: true });
   } finally {

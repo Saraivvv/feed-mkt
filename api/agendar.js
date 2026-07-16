@@ -1,4 +1,5 @@
 import nodemailer from "nodemailer";
+import { enviarParaCRM } from "./_crm.js";
 
 // Peca 3 do funil: pedido de conversa (agendamento) vindo de /agendar.
 // Quem chega aqui ja leu o "Diagnostico do Gargalo" e quer marcar uma reuniao
@@ -240,7 +241,23 @@ export default async function handler(req, res) {
   rateCommit(rateByIp, ip);
   rateCommit(rateByEmail, email);
 
-  // 2) Webhook do n8n (CRM) DESACOPLADO: best-effort. Se a env nao existe OU o
+  // 2) CRM (Twenty) DESACOPLADO: best-effort. Lead quente entra direto como
+  //    oportunidade em MEETING (pediu conversa). Falhou, so loga.
+  await enviarParaCRM({
+    nome,
+    email,
+    empresa,
+    cargo,
+    origem: "Pedido de conversa",
+    stage: "MEETING",
+    detalhes: {
+      "O que trava": motivo,
+      Origem: ORIGEM,
+      "Página": pageUrl,
+    },
+  });
+
+  // 3) Webhook do n8n DESACOPLADO: best-effort. Se a env nao existe OU o
   //    POST falha, so loga. O e-mail pra Feed ja garantiu o lead.
   await enviarWebhookN8N({
     nome,
