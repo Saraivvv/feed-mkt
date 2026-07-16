@@ -29,7 +29,7 @@ relatedPlanned:
   - "Como escolher o primeiro processo para automatizar"
   - "Quanto custa implementar IA numa pequena empresa?"
   - "IA para PME: guia prático para começar sem gastar errado"
-status: scheduled
+status: published
 ---
 
 Projetos de IA em pequenas empresas raramente dão errado por falta de tecnologia. Eles dão errado porque começam com a pergunta errada, escopo grande demais, dados bagunçados e nenhuma métrica de retorno. A ferramenta vira protagonista, mas o problema real continua escondido.
