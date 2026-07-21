@@ -29,7 +29,7 @@ relatedPlanned:
   - "Automação de WhatsApp para pequena empresa"
   - "Como medir perda de vendas por demora no atendimento"
   - "IA para PME: guia prático para começar sem gastar errado"
-status: scheduled
+status: published
 ---
 
 Agente de IA no WhatsApp vale a pena quando a empresa tem volume de conversas, perguntas repetidas, demora de resposta e perda comercial mensurável. Não vale quando o problema é apenas falta de organização básica, baixa demanda ou ausência de oferta clara.
