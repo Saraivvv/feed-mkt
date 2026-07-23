@@ -29,7 +29,7 @@ relatedPlanned:
   - "Como escolher o primeiro processo para automatizar"
   - "Como calcular ROI de automação com IA"
   - "IA para PME: guia prático para começar sem gastar errado"
-status: scheduled
+status: published
 ---
 
 Automação de processos internos com IA começa melhor quando a empresa para de procurar tecnologia e passa a procurar repetição. Toda operação tem tarefas que se repetem, consomem tempo e dependem de informação espalhada. A IA pode ajudar, mas só quando o processo é claro o bastante para ser explicado.
