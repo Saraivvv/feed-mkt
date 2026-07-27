@@ -118,16 +118,6 @@ const faqItems = [
   },
 ];
 
-const paymentMethods = [
-  { label: "Pix", className: "pix" },
-  { label: "VISA", className: "visa" },
-  { label: "Mastercard", className: "mastercard" },
-  { label: "elo", className: "elo" },
-  { label: "AMEX", className: "amex" },
-  { label: "HIPERCARD", className: "hipercard" },
-  { label: "Boleto", className: "boleto" },
-];
-
 function App() {
   const [isQuizOpen, setIsQuizOpen] = useState(false);
   const [isHeroHovered, setIsHeroHovered] = useState(false);
@@ -623,28 +613,6 @@ function ServiceIcon({ name }) {
   }
 }
 
-function PaymentBadge({ method }) {
-  return (
-    <span className={`payment-badge payment-${method.className}`} aria-label={method.label}>
-      {method.className === "pix" && (
-        <svg viewBox="0 0 48 48" aria-hidden="true">
-          <path d="M24 5.8c2.1 0 4.1.8 5.6 2.3l10.3 10.3c3.1 3.1 3.1 8.2 0 11.3L29.6 40c-3.1 3.1-8.2 3.1-11.3 0L8.1 29.7C5 26.6 5 21.5 8.1 18.4L18.4 8.1C19.9 6.6 21.9 5.8 24 5.8Z" />
-          <path d="M17.2 17.7h4.5l5 5c1.1 1.1 2.8 1.1 3.9 0l2.1-2.1 3.1 3.1-2.1 2.1c-2.8 2.8-7.3 2.8-10.1 0l-5-5h-1.4v-3.1Z" />
-          <path d="M30.8 30.3h-4.5l-5-5c-1.1-1.1-2.8-1.1-3.9 0l-2.1 2.1-3.1-3.1 2.1-2.1c2.8-2.8 7.3-2.8 10.1 0l5 5h1.4v3.1Z" />
-        </svg>
-      )}
-      {method.className === "mastercard" && (
-        <span className="mastercard-mark" aria-hidden="true">
-          <i />
-          <i />
-        </span>
-      )}
-      {method.className === "boleto" && <span className="barcode-mark" aria-hidden="true" />}
-      <strong>{method.label}</strong>
-    </span>
-  );
-}
-
 function SiteFooter() {
   return (
     <footer className="fixed-site-footer" aria-label="Rodapé Feed">
@@ -656,14 +624,6 @@ function SiteFooter() {
         <a href="/agencia-de-ia-ribeirao-preto/">Agência de IA em Ribeirão Preto</a>
         <a href="/agencia-de-marketing-bebedouro/">Agência de marketing em Bebedouro</a>
       </nav>
-      <div className="footer-payment">
-        <p>Formas de pagamento</p>
-        <div className="payment-row" aria-label="Formas de pagamento aceitas">
-          {paymentMethods.map((method) => (
-            <PaymentBadge method={method} key={method.label} />
-          ))}
-        </div>
-      </div>
       <div className="footer-legal">
         <p>FEED MARKETING E COMUNICAÇÃO • CNPJ 53.877.987/0001-93</p>
         <address className="footer-nap">
