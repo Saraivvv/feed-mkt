@@ -29,7 +29,7 @@ relatedPlanned:
   - "Como medir perda de vendas por demora no atendimento"
   - "Follow-up automático sem parecer robô"
   - "IA para PME: guia prático para começar sem gastar errado"
-status: scheduled
+status: published
 ---
 
 CRM com IA para pequena empresa só importa se a empresa já decidiu como vende. Sem etapas claras, responsável e próximo passo, o CRM vira depósito de contatos. Com IA, vira depósito mais caro.
