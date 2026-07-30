@@ -29,7 +29,7 @@ relatedPlanned:
   - "Quanto custa implementar IA numa pequena empresa?"
   - "Como medir perda de vendas por demora no atendimento"
   - "IA para PME: guia prático para começar sem gastar errado"
-status: scheduled
+status: published
 ---
 
 Calcular ROI de automação com IA não precisa começar com planilha complicada. Para pequena empresa, a pergunta principal é: quanto dinheiro ou tempo o projeto recupera por mês em comparação com o investimento inicial e o custo mensal?
