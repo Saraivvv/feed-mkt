@@ -29,7 +29,7 @@ relatedPlanned:
   - "Como medir perda de vendas por demora no atendimento"
   - "CRM com IA para pequena empresa"
   - "IA para PME: guia prático para começar sem gastar errado"
-status: scheduled
+status: published
 ---
 
 Follow-up automático sem parecer robô depende menos da ferramenta e mais do contexto. A mensagem ruim é aquela que ignora o que o cliente falou. A mensagem boa lembra o motivo da conversa, aponta o próximo passo e respeita o momento.
