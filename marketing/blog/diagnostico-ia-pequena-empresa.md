@@ -29,7 +29,7 @@ relatedPlanned:
   - "Como escolher o primeiro processo para automatizar"
   - "Dados desorganizados: por que a IA responde mal"
   - "IA para PME: guia prático para começar sem gastar errado"
-status: scheduled
+status: published
 ---
 
 Diagnóstico de IA para pequena empresa deve começar pela operação, não pela tecnologia. Antes de recomendar chatbot, agente, automação ou CRM, é preciso entender onde a empresa perde tempo, dinheiro, venda ou qualidade.
