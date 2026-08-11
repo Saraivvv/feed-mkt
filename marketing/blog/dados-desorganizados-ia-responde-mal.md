@@ -29,7 +29,7 @@ relatedPlanned:
   - "Diagnóstico de IA para pequena empresa"
   - "Agente de IA no WhatsApp vale para sua empresa?"
   - "IA para PME: guia prático para começar sem gastar errado"
-status: scheduled
+status: published
 ---
 
 Dados desorganizados fazem a IA responder mal porque a IA não conhece sua empresa por instinto. Ela depende do que recebe: preços, políticas, serviços, prazos, exceções, respostas frequentes e regras de negócio. Se isso está espalhado, incompleto ou desatualizado, a resposta sai fraca.
