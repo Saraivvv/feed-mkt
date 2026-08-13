@@ -29,7 +29,7 @@ relatedPlanned:
   - "Quanto custa implementar IA numa pequena empresa?"
   - "7 erros em projetos de IA que pequenas empresas devem evitar"
   - "IA para PME: guia prático para começar sem gastar errado"
-status: scheduled
+status: published
 ---
 
 Escolher fornecedor de IA exige menos conhecimento técnico do que parece. Você não precisa entender todos os modelos, APIs e integrações. Precisa saber se o fornecedor entende seu problema, propõe escopo realista, mostra métrica de sucesso e explica como a solução será mantida.
