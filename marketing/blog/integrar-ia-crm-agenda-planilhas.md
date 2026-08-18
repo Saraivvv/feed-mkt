@@ -29,7 +29,7 @@ relatedPlanned:
   - "Automação de processos internos com IA"
   - "CRM com IA para pequena empresa"
   - "IA para PME: guia prático para começar sem gastar errado"
-status: scheduled
+status: published
 ---
 
 Integrar IA com CRM, agenda e planilhas faz sentido quando a integração elimina retrabalho, reduz erro ou acelera uma etapa que impacta venda e operação. Não faz sentido quando a empresa quer conectar tudo antes de provar que o fluxo principal funciona.
