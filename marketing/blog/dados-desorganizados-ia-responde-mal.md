@@ -103,7 +103,7 @@ Não precisa de projeto de gestão do conhecimento. Precisa de uma semana e disc
 
 **Dia 5, revisar com quem atende.** A pessoa que fala com cliente todo dia acha em minutos o que está errado ou faltando.
 
-Formato importa menos do que existir. Documento único, planilha ou pasta organizada resolvem. O que não funciona é conhecimento espalhado em conversa antiga.
+Formato importa menos do que existir. Essa base é o insumo principal de qualquer [agente de IA](/agentes-de-ia/). Documento único, planilha ou pasta organizada resolvem. O que não funciona é conhecimento espalhado em conversa antiga.
 
 ## Como manter a base viva
 

@@ -96,7 +96,7 @@ Manutenção assusta porque soa como mais um projeto. Na prática, cabe em pouco
 
 **Sempre que mudar preço, campanha, serviço ou horário.** A base é atualizada antes da mudança ir para o cliente. Esse é o gatilho que evita a maior parte dos erros graves.
 
-Três papéis dão conta: quem atende cliente todo dia, quem decide prioridade e quem mexe no sistema. Sem o primeiro, a manutenção fica teórica.
+Três papéis dão conta: quem atende cliente todo dia, quem decide prioridade e quem mexe no sistema. Nos projetos de [agentes de IA](/agentes-de-ia/) da Feed, esse ritual entra combinado desde o começo. Sem o primeiro, a manutenção fica teórica.
 
 ## Quanto custa manter
 

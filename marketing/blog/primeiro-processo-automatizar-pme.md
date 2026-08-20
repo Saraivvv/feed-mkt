@@ -108,7 +108,7 @@ Para muitas empresas sim, porque tem volume diário, repetição e demora que cu
 Não. O melhor é automatizar a parte repetitiva e deixar a exceção com humano. Um pedaço bem resolvido prova valor mais rápido do que um projeto grande que demora a sair do papel.
 
 **Quanto custa esse primeiro projeto?**
-Depende do escopo e da integração. As faixas reais estão no guia de [quanto custa implementar IA numa pequena empresa](/blog/quanto-custa-implementar-ia-pequena-empresa/). A régua é simples: se não se paga em poucos meses, reduza o escopo. Para ver o processo inteiro antes de escolher, comece pelo [guia de IA para PME](/blog/ia-para-pme-guia-pratico/).
+Depende do escopo e da integração. As faixas reais estão no guia de [quanto custa implementar IA numa pequena empresa](/blog/quanto-custa-implementar-ia-pequena-empresa/). A régua é simples: se não se paga em poucos meses, reduza o escopo. Para ver o processo inteiro antes de escolher, comece pelo [guia de IA para PME](/blog/ia-para-pme-guia-pratico/). Se preferir fazer isso acompanhado, o [diagnóstico de IA](/diagnostico-ia-empresa/) prioriza junto com você.
 
 **E se eu não conseguir escolher sozinho?**
 É exatamente o que o diagnóstico gratuito da Feed faz: olha teus processos, aplica esses critérios e aponta o primeiro projeto com maior chance de retorno, sem empurrar ferramenta.

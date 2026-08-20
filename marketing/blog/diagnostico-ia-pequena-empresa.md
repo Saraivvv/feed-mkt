@@ -100,7 +100,7 @@ Diagnóstico bom em pequena empresa é curto. Uma semana costuma bastar, com est
 
 **Dia 5, montar a conta e a recomendação.** Gargalos ordenados por impacto e facilidade, projeto sugerido, métrica, investimento e próximo passo.
 
-Se alguém propõe um diagnóstico de dois meses para uma empresa de dez pessoas, o problema está no escopo, não na complexidade do negócio.
+Se alguém propõe um diagnóstico de dois meses para uma empresa de dez pessoas, o problema está no escopo, não na complexidade do negócio. O formato curto que a Feed usa está em [diagnóstico de IA para empresas](/diagnostico-ia-empresa/).
 
 ## As perguntas que o diagnóstico precisa responder com número
 

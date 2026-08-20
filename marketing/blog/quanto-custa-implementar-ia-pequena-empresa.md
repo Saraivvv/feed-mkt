@@ -47,7 +47,7 @@ A pergunta "quanto custa IA" é parecida com "quanto custa um carro". Depende se
 | Consultoria e diagnóstico | R$3 mil a R$10 mil | pontual |
 | Projeto piloto completo (diagnóstico + primeira automação funcionando) | R$15 mil a R$40 mil | R$800 a R$2.500 |
 
-Vale repetir: são faixas de mercado, não tabela de preço da Feed. A gente trabalha com escopo realista pra PME, o que na prática significa começar pelo problema que mais dói e dimensionar o projeto pro tamanho da empresa, não pro tamanho da proposta.
+Vale repetir: são faixas de mercado, não tabela de preço da Feed. O que a gente monta está descrito em [agentes de IA para empresas](/agentes-de-ia/) e em [automação de WhatsApp](/automacao-whatsapp/). A gente trabalha com escopo realista pra PME, o que na prática significa começar pelo problema que mais dói e dimensionar o projeto pro tamanho da empresa, não pro tamanho da proposta.
 
 ## O que cada faixa entrega na prática?
 

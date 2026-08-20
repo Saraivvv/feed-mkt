@@ -28,16 +28,16 @@ const pages = [
   {
     slug: "ia-para-pequenas-empresas",
     type: "hub",
-    title: "IA para pequenas empresas: guia prático | Feed",
+    title: "Consultoria e implementação de IA para PMEs | Feed",
     h1: "IA para pequenas empresas, sem projeto inflado.",
-    eyebrow: "Página pilar",
+    eyebrow: "Serviço",
     description:
-      "Guia da Feed para pequenas empresas entenderem onde usar IA, quando automatizar atendimento, quanto investir e por onde começar.",
+      "A Feed implementa IA em pequenas e médias empresas: atendimento no WhatsApp, follow-up, agentes internos e organização de dados, com escopo enxuto e retorno medido.",
     intro:
       "A IA só vale a pena quando resolve um gargalo real: atendimento lento, follow-up esquecido, dados bagunçados ou operação manual demais. Esta página organiza o caminho para uma PME começar com segurança.",
     primaryCta: "Pedir diagnóstico gratuito",
-    secondaryCta: "Ver guia de custos",
-    secondaryHref: "/blog/quanto-custa-implementar-ia-pequena-empresa/",
+    secondaryCta: "Ler o guia completo",
+    secondaryHref: "/blog/ia-para-pme-guia-pratico/",
     serviceName: "Consultoria e implementação de IA para pequenas empresas",
     bulletsTitle: "Onde a IA costuma pagar a conta",
     bullets: [
@@ -59,6 +59,11 @@ const pages = [
       ["Preciso trocar meus sistemas para usar IA?", "Não necessariamente. Na maioria dos casos, a Feed começa conectando IA ao que a empresa já usa: WhatsApp, CRM, agenda, planilhas e documentos."],
     ],
     related: ["automacao-whatsapp", "agentes-de-ia", "diagnostico-ia-empresa"],
+    relatedPosts: [
+      ["/blog/ia-para-pme-guia-pratico/", "IA para PME: guia prático para começar"],
+      ["/blog/quanto-custa-implementar-ia-pequena-empresa/", "Quanto custa implementar IA numa pequena empresa?"],
+      ["/blog/primeiro-processo-automatizar-pme/", "Como escolher o primeiro processo para automatizar"],
+    ],
   },
   {
     slug: "automacao-whatsapp",
@@ -94,6 +99,11 @@ const pages = [
       ["Quanto tempo leva para implementar?", "Um primeiro fluxo pode entrar no ar em poucas semanas, dependendo da clareza das respostas, integrações e volume de exceções."],
     ],
     related: ["ia-para-pequenas-empresas", "agentes-de-ia", "diagnostico-ia-empresa"],
+    relatedPosts: [
+      ["/blog/automacao-whatsapp-pequena-empresa/", "Automação de WhatsApp: quando vale a pena"],
+      ["/blog/agente-ia-whatsapp-vale-a-pena/", "Agente de IA no WhatsApp vale para sua empresa?"],
+      ["/blog/como-medir-perda-vendas-demora-atendimento/", "Como medir perda de vendas por demora no atendimento"],
+    ],
   },
   {
     slug: "agentes-de-ia",
@@ -129,6 +139,11 @@ const pages = [
       ["Um agente de IA precisa integrar com sistemas?", "Nem sempre no começo. A integração faz sentido quando o agente precisa consultar ou registrar dados em CRM, agenda, planilhas ou plataformas internas."],
     ],
     related: ["ia-para-pequenas-empresas", "automacao-whatsapp", "diagnostico-ia-empresa"],
+    relatedPosts: [
+      ["/blog/agente-ia-whatsapp-vale-a-pena/", "Agente de IA no WhatsApp vale para sua empresa?"],
+      ["/blog/dados-desorganizados-ia-responde-mal/", "Dados desorganizados fazem a IA responder mal"],
+      ["/blog/integrar-ia-crm-agenda-planilhas/", "Integrar IA com CRM, agenda e planilhas"],
+    ],
   },
   {
     slug: "diagnostico-ia-empresa",
@@ -164,6 +179,11 @@ const pages = [
       ["O diagnóstico serve para empresas pequenas?", "Sim. Ele foi pensado para PMEs que precisam de clareza, escopo enxuto e implementação realista."],
     ],
     related: ["ia-para-pequenas-empresas", "automacao-whatsapp", "agentes-de-ia"],
+    relatedPosts: [
+      ["/blog/diagnostico-ia-pequena-empresa/", "Diagnóstico de IA: o que precisa ser analisado"],
+      ["/blog/erros-projetos-ia-pequenas-empresas/", "7 erros em projetos de IA que PMEs devem evitar"],
+      ["/blog/primeiro-processo-automatizar-pme/", "Como escolher o primeiro processo para automatizar"],
+    ],
   },
   {
     slug: "agencia-de-ia-ribeirao-preto",
@@ -201,6 +221,11 @@ const pages = [
       ["Quanto custa começar?", "Depende do gargalo. As faixas reais de preço estão no guia de custos, e o diagnóstico gratuito indica o primeiro projeto com melhor retorno."],
     ],
     related: ["ia-para-pequenas-empresas", "automacao-whatsapp", "agentes-de-ia"],
+    relatedPosts: [
+      ["/blog/ia-para-pme-guia-pratico/", "IA para PME: guia prático para começar"],
+      ["/blog/quanto-custa-implementar-ia-pequena-empresa/", "Quanto custa implementar IA numa pequena empresa?"],
+      ["/blog/automacao-whatsapp-pequena-empresa/", "Automação de WhatsApp: quando vale a pena"],
+    ],
   },
   {
     slug: "agencia-de-marketing-bebedouro",
@@ -238,6 +263,11 @@ const pages = [
       ["Como começa?", "Pelo diagnóstico gratuito. A Feed olha marketing e operação, mostra onde a venda escapa e indica o primeiro passo com maior retorno."],
     ],
     related: ["ia-para-pequenas-empresas", "diagnostico-ia-empresa", "automacao-whatsapp"],
+    relatedPosts: [
+      ["/blog/ia-para-pme-guia-pratico/", "IA para PME: guia prático para começar"],
+      ["/blog/quanto-custa-implementar-ia-pequena-empresa/", "Quanto custa implementar IA numa pequena empresa?"],
+      ["/blog/primeiro-processo-automatizar-pme/", "Como escolher o primeiro processo para automatizar"],
+    ],
   },
 ];
 
@@ -397,7 +427,9 @@ ${JSON.stringify(pageSchema(page), null, 2)}
         </div>
         <div class="related-links">
           ${related}
-          <a href="/blog/quanto-custa-implementar-ia-pequena-empresa/">Quanto custa implementar IA numa pequena empresa?</a>
+          ${(page.relatedPosts || [["/blog/quanto-custa-implementar-ia-pequena-empresa/", "Quanto custa implementar IA numa pequena empresa?"]])
+            .map(([href, label]) => `<a href="${href}">${esc(label)}</a>`)
+            .join("\n          ")}
           <a href="/blog/">Todos os artigos do blog</a>
         </div>
       </section>

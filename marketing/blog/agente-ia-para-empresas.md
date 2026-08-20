@@ -93,7 +93,7 @@ A conta que importa é simples. Um agente de R$15 mil de implantação e R$1.200
 
 Comece pelo caminho mais percorrido. Primeira resposta, dúvidas frequentes, qualificação, coleta de dados e passagem para humano já cobrem a maior parte do volume. Agenda e CRM entram se forem usados de verdade no dia a dia.
 
-Evite abrir o projeto com integração de ERP, financeiro e estoque. Isso multiplica prazo e custo antes de existir prova de retorno. Fase um serve para provar valor rápido. Fase dois amplia com dado real na mão.
+Evite abrir o projeto com integração de ERP, financeiro e estoque. Isso multiplica prazo e custo antes de existir prova de retorno. Fase um serve para provar valor rápido. Fase dois amplia com dado real na mão. O escopo que a Feed costuma montar está descrito em [agentes de IA para empresas](/agentes-de-ia/).
 
 ## Como medir se o agente está funcionando
 

@@ -90,7 +90,7 @@ O caminho oficial é a API do WhatsApp Business, da própria Meta. O número fic
 
 O caminho não oficial conecta um celular comum por meio de bibliotecas que simulam o aplicativo. Sai mais barato no começo e é o que muitos fornecedores oferecem sem avisar. O problema é o risco: o número pode ser bloqueado, o histórico se perde e a empresa fica sem o canal principal de venda de um dia para o outro.
 
-Para negócio que depende do WhatsApp para vender, a conta oficial é o caminho seguro. Se o fornecedor não deixa claro qual dos dois ele usa, pergunte antes de assinar.
+Para negócio que depende do WhatsApp para vender, a conta oficial é o caminho seguro. É por ela que a Feed monta os projetos de [automação de WhatsApp](/automacao-whatsapp/). Se o fornecedor não deixa claro qual dos dois ele usa, pergunte antes de assinar.
 
 ## Quanto tempo demora para colocar no ar?
 

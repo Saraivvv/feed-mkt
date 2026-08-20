@@ -111,7 +111,7 @@ CRM morre por adoção, não por tecnologia. Quatro cuidados resolvem a maior pa
 3. **Defina um ritual curto.** Cinco minutos por dia olhando o que está parado vale mais que reunião semanal de uma hora.
 4. **Mostre o ganho para quem preenche.** Vendedor adota quando o CRM devolve algo: lembrete na hora certa, histórico pronto, menos conversa perdida.
 
-A IA ajuda justamente aqui, tirando a digitação do caminho. Ela registra o que foi conversado, atualiza etapa e sugere o próximo passo, o que reduz o atrito que faz o time desistir.
+A IA ajuda justamente aqui, tirando a digitação do caminho. É uma das funções mais pedidas nos [agentes de IA](/agentes-de-ia/) que a Feed implementa. Ela registra o que foi conversado, atualiza etapa e sugere o próximo passo, o que reduz o atrito que faz o time desistir.
 
 ## Sinais de que o CRM está funcionando
 

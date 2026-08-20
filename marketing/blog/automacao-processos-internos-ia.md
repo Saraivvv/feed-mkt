@@ -98,7 +98,7 @@ Automação interna boa é discreta. Ela não precisa aparecer para o cliente. E
 
 **Relatório semanal montado na mão.** Alguém abre três planilhas toda segunda, copia números e monta um resumo. A automação junta as fontes, calcula e entrega o resumo pronto, com a IA escrevendo a leitura do que mudou. O ganho não é só a hora economizada, é o relatório existir mesmo na semana corrida.
 
-Os três têm a mesma assinatura: acontecem toda semana, seguem regra clara e o erro é visível. É esse padrão que você procura.
+Os três têm a mesma assinatura: acontecem toda semana, seguem regra clara e o erro é visível. Quando o piloto vira rotina, o formato é o de um [agente de IA interno](/agentes-de-ia/). É esse padrão que você procura.
 
 ## Quanto custa e o que fica com a empresa
 

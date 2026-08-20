@@ -124,7 +124,7 @@ Repare no padrão: assunto específico, uma pergunta só e saída fácil. A últ
 - **Mandar tudo no mesmo horário para todo mundo.** Disparo em bloco tem cara de lista, não de atendimento.
 - **Ignorar quem respondeu.** Nada queima mais confiança que receber lembrete automático depois de já ter falado com alguém.
 
-Esse último exige regra clara na automação: respondeu, humano assume e a sequência para na hora.
+Esse último exige regra clara na automação: respondeu, humano assume e a sequência para na hora. É assim que o fluxo é desenhado nos projetos de [automação de WhatsApp](/automacao-whatsapp/).
 
 ## Como medir sem se enganar
 

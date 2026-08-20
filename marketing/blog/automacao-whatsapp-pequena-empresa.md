@@ -112,6 +112,6 @@ Depende do volume e do tipo de automação. Operações maiores e com IA costuma
 Tempo de resposta e taxa de agendamento melhoram já nas primeiras semanas. O retorno financeiro que fecha a conta costuma aparecer em 4 a 8 meses, dependendo do ticket e do volume.
 
 **Por onde eu começo?**
-Meça uma semana de atendimento real: volume, tempo de resposta e conversas sem fechamento. Esses números mostram se o WhatsApp virou gargalo e qual fluxo automatizar primeiro. Se a dúvida ainda é mais ampla, o [guia de IA para PME](/blog/ia-para-pme-guia-pratico/) mostra onde o atendimento entra na fila de prioridades. É por aí que o diagnóstico gratuito da Feed começa.
+Meça uma semana de atendimento real: volume, tempo de resposta e conversas sem fechamento. Esses números mostram se o WhatsApp virou gargalo e qual fluxo automatizar primeiro. Se a dúvida ainda é mais ampla, o [guia de IA para PME](/blog/ia-para-pme-guia-pratico/) mostra onde o atendimento entra na fila de prioridades. Para ver o escopo do serviço, a página de [automação de WhatsApp com IA](/automacao-whatsapp/) explica o que entra no projeto. É por aí que o diagnóstico gratuito da Feed começa.
 
 Se você quer saber se esse é o caso da sua empresa, o diagnóstico gratuito da Feed olha o atendimento real, identifica onde a venda escapa e desenha um primeiro escopo enxuto, sem vender ferramenta que você não precisa.

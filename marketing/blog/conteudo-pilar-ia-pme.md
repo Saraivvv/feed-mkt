@@ -43,7 +43,7 @@ Usar IA na prática é colocar um sistema para fazer, sozinho, uma tarefa repeti
 
 Não é robô pensando sozinho. É processo claro, com uma camada de IA que entende linguagem e decide dentro de regras que você define. Quando o processo é confuso, a IA erra junto. Quando o processo é claro, ela acelera.
 
-Por isso a pergunta certa não é "qual ferramenta de IA eu compro". É "qual tarefa da minha operação eu quero tirar das costas de alguém, com segurança e com número para provar que valeu".
+Por isso a pergunta certa não é "qual ferramenta de IA eu compro". É "qual tarefa da minha operação eu quero tirar das costas de alguém, com segurança e com número para provar que valeu". Quando a resposta é atendimento, o caminho costuma ser [automação de WhatsApp](/automacao-whatsapp/). Quando é operação interna, um [agente de IA](/agentes-de-ia/) resolve melhor.
 
 ## Onde a IA gera retorno numa pequena empresa?
 
@@ -140,6 +140,6 @@ Um piloto bem escolhido mostra sinal em semanas no indicador que você definiu. 
 Não é o objetivo num projeto bem feito. A IA tira a repetição e libera a equipe para decisão, exceção e relacionamento, que é onde ela gera mais valor.
 
 **Por onde eu começo hoje?**
-Escolha um gargalo, coloque um número nele e faça um diagnóstico honesto do que dá para automatizar com segurança. É exatamente isso que fazemos no diagnóstico gratuito.
+Escolha um gargalo, coloque um número nele e faça um diagnóstico honesto do que dá para automatizar com segurança. É exatamente isso que fazemos no [diagnóstico de IA](/diagnostico-ia-empresa/) gratuito. Se preferir ver antes como a Feed implementa, a página de [consultoria e implementação de IA para PMEs](/ia-para-pequenas-empresas/) mostra o escopo.
 
 IA para PME não precisa ser complexa para ser útil. Precisa ser bem escolhida. Comece pequeno, meça sem preguiça e só expanda quando o primeiro projeto provar valor. O resto é consequência.

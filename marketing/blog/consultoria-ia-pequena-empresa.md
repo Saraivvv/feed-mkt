@@ -58,7 +58,7 @@ Consultoria é o trabalho de decisão que vem junto ou logo depois: priorizaçã
 
 Implementação é construir e colocar no ar. Agente, automação, integração, base de conhecimento, testes e ajuste.
 
-Para PME, o mais comum e mais saudável é o pacote curto: diagnóstico e consultoria juntos, seguidos de uma implementação pequena que prova valor. Consultoria longa sem implementação costuma render relatório bonito e operação intacta.
+Para PME, o mais comum e mais saudável é o pacote curto: diagnóstico e consultoria juntos, seguidos de uma implementação pequena que prova valor. Consultoria longa sem implementação costuma render relatório bonito e operação intacta. O formato curto está descrito em [diagnóstico de IA para empresas](/diagnostico-ia-empresa/).
 
 ## Como esse trabalho é cobrado?
 

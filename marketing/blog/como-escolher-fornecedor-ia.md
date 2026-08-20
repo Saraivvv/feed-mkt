@@ -101,7 +101,7 @@ Propostas de IA costumam chegar em formatos diferentes de propósito, o que difi
 - quem mantém a base depois;
 - de quem são as contas, credenciais e dados.
 
-Quando você preenche essa tabela, a proposta vaga se revela sozinha. Ela deixa metade das células vazias e compensa com adjetivo.
+Quando você preenche essa tabela, a proposta vaga se revela sozinha. Se quiser comparar com um trabalho que já nasce nesse formato, veja como funciona o [diagnóstico de IA da Feed](/diagnostico-ia-empresa/). Ela deixa metade das células vazias e compensa com adjetivo.
 
 ## O que pedir de prova antes de assinar
 

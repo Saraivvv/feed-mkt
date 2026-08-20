@@ -100,7 +100,7 @@ Nem toda integração custa igual. Na prática existem três níveis.
 
 **Nível 3, sistema fechado ou legado.** ERP antigo, software regional sem API, planilha que mora na máquina de alguém. Aqui o custo sobe muito e a manutenção também. Muitas vezes a resposta certa é não integrar agora e resolver com exportação periódica.
 
-Antes de pedir orçamento, descubra em qual nível cada sistema seu está. Essa única informação muda o preço da proposta e o prazo do projeto.
+Antes de pedir orçamento, descubra em qual nível cada sistema seu está. Essa checagem faz parte do [diagnóstico de IA](/diagnostico-ia-empresa/). Essa única informação muda o preço da proposta e o prazo do projeto.
 
 ## O que quebra depois e como se proteger
 

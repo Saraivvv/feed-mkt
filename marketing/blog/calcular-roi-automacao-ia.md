@@ -107,7 +107,7 @@ Uma clínica recebe 60 mensagens por semana pedindo informação e agendamento. 
 
 **Passo 4, montar a conta.** Implantação de R$15 mil, mensalidade de R$1.200. Ganho líquido mensal: R$3.500 menos R$1.200, igual a R$2.300. Payback: 15.000 dividido por 2.300, aproximadamente 6,5 meses.
 
-**Passo 5, decidir.** Está dentro da faixa saudável de 4 a 8 meses. Se estivesse em 14 meses, a resposta certa seria reduzir escopo, não desistir do projeto.
+**Passo 5, decidir.** Está dentro da faixa saudável de 4 a 8 meses. Para montar essa conta com alguém olhando a sua operação junto, existe o [diagnóstico de IA](/diagnostico-ia-empresa/). Se estivesse em 14 meses, a resposta certa seria reduzir escopo, não desistir do projeto.
 
 ## Os custos que ninguém coloca na conta
 
