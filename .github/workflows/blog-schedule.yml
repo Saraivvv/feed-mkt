@@ -45,9 +45,11 @@ jobs:
         run: npm run build
 
       - name: Commit generated changes
+        id: commit
         run: |
           if git diff --quiet; then
             echo "No scheduled posts to publish."
+            echo "published=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
 
@@ -56,3 +58,10 @@ jobs:
           git add marketing/blog public/blog public/sitemap.xml public/llms.txt
           git commit -m "Publish scheduled blog posts"
           git push
+          echo "published=true" >> "$GITHUB_OUTPUT"
+
+      # Avisa Bing e Copilot na hora, em vez de esperar o robô passar.
+      - name: Notify IndexNow
+        if: steps.commit.outputs.published == 'true'
+        continue-on-error: true
+        run: npm run seo:indexnow
