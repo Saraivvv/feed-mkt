@@ -113,7 +113,7 @@ Base envelhece rápido em pequena empresa: preço muda, campanha entra, produto 
 - **um gatilho de atualização**, ou seja, toda mudança de preço, política ou campanha passa pela base antes de ir para o cliente;
 - **uma revisão mensal de 30 minutos**, olhando o que o time reportou como resposta errada no mês.
 
-Sem gatilho, a base vira retrato de um mês qualquer do passado. Esse é o mesmo raciocínio de [manutenção de agente de IA](/blog/manutencao-agente-ia/): automação é canal vivo, não entrega única.
+Sem gatilho, a base vira retrato de um mês qualquer do passado. É o mesmo raciocínio que sustenta a manutenção de um [agente de IA](/agentes-de-ia/): automação é canal vivo, não entrega única.
 
 ## O teste das dez perguntas
 

@@ -123,7 +123,7 @@ De R$100 por mês, no caso de ferramentas prontas, a R$40 mil de investimento in
 Dá. Ferramentas prontas resolvem ganho individual por poucas centenas de reais por mês, e um escopo enxuto de atendimento cobre o gargalo mais comum sem projeto grande. O erro caro é assinar várias ferramentas sem mudar nenhuma rotina.
 
 **Qual a diferença de preço entre chatbot e agente de IA?**
-Chatbot de menu é mais barato porque segue fluxo fixo e não consulta informação da empresa. Agente entende linguagem natural, usa a base do negócio e executa ação, o que exige implantação, teste e manutenção. A comparação está em [agente de IA para empresas](/blog/agente-ia-para-empresas/).
+Chatbot de menu é mais barato porque segue fluxo fixo e não consulta informação da empresa. Agente entende linguagem natural, usa a base do negócio e executa ação, o que exige implantação, teste e manutenção. A diferença de escopo está descrita em [agentes de IA para empresas](/agentes-de-ia/).
 
 **Existe custo mensal depois que o projeto entra no ar?**
 Existe, e precisa estar na proposta: serviço do fornecedor, consumo do canal oficial e do modelo de IA, e algumas horas da sua equipe para revisão. Projeto que só mostra o valor de implantação está escondendo parte da conta.

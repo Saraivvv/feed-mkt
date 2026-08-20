@@ -192,7 +192,7 @@ const pages = [
     h1: "Agência de IA em Ribeirão Preto para quem quer resultado, não hype.",
     eyebrow: "Ribeirão Preto e região",
     description:
-      "A Feed é uma agência de IA que atende empresas de Ribeirão Preto e região com automação de atendimento no WhatsApp, agentes de IA e organização da operação. Diagnóstico gratuito.",
+      "Agência de IA em Ribeirão Preto e região: automação de atendimento no WhatsApp, agentes de IA e operação organizada, com diagnóstico gratuito.",
     intro:
       "A Feed ajuda empresas de Ribeirão Preto e cidades vizinhas a usarem IA onde ela paga a conta: atendimento, follow-up e operação. O trabalho é remoto na maior parte do tempo, presencial quando o projeto pede, sempre com escopo enxuto e retorno mensurável.",
     primaryCta: "Pedir diagnóstico gratuito",
@@ -234,7 +234,7 @@ const pages = [
     h1: "Agência de marketing e IA em Bebedouro para PME que precisa vender mais.",
     eyebrow: "Bebedouro e região",
     description:
-      "A Feed é uma agência de marketing e IA com base em Bebedouro: posicionamento de marca, atendimento automatizado no WhatsApp e operação com IA para pequenas empresas. Diagnóstico gratuito.",
+      "Agência de marketing e IA em Bebedouro: posicionamento de marca, atendimento automatizado no WhatsApp e IA na operação, com diagnóstico gratuito.",
     intro:
       "A Feed nasceu unindo marketing e IA aplicada para ajudar empresas de Bebedouro e região a venderem mais sem depender de sorte. Menos post solto, mais operação que gera contato, atende rápido e converte.",
     primaryCta: "Pedir diagnóstico gratuito",
