@@ -83,6 +83,10 @@ relatedPlanned:
 status: published
 ```
 
+## Auditoria
+
+`npm run seo:audit` bate o site publicado: status de cada URL do sitemap, canonical, tamanho de title e description, presença de Article e FAQPage e todos os links internos. Deve terminar com 0 link quebrado e 0 problema. Rode antes e depois de mexer em conteúdo.
+
 ## Status
 
 - `draft`: rascunho, nao entra no site.

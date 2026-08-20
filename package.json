@@ -11,12 +11,14 @@
     "blog:publish-scheduled": "node scripts/blog/publish-scheduled.mjs",
     "seo:build": "node scripts/seo/build-seo-pages.mjs",
     "preview": "vite preview --host 127.0.0.1",
-    "mazyui": "node mazyui-server.mjs"
+    "mazyui": "node mazyui-server.mjs",
+    "seo:audit": "node scripts/seo/audit-site.mjs"
   },
   "dependencies": {
     "@paper-design/shaders-react": "^0.0.76",
     "@vitejs/plugin-react": "^5.1.1",
     "cheerio": "^1.2.0",
+    "lenis": "^1.3.25",
     "nodemailer": "^6.10.1",
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
