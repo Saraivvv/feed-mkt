@@ -4,7 +4,13 @@
 
 Ordem de impacto: Search Console primeiro, Bing depois, Google Business por último (mas o Business é o que mais vira telefone tocando na região).
 
-## 1. Google Search Console (30 minutos)
+## 1. Google Search Console — FEITO em 20/08/2026
+
+Verificado por tag HTML no head do `index.html` (propriedade por prefixo de URL, https://agenciafeed.com) e sitemap enviado. A tag `google-site-verification` não pode ser removida do site, senão a verificação cai. Dado de busca com volume útil a partir do começo de setembro.
+
+O passo a passo original fica abaixo como registro.
+
+### Como foi feito
 
 Sem isso, a gente publica no escuro: não dá para saber qual busca traz gente, qual página aparece e o que o Google não conseguiu indexar.
 
