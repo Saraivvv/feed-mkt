@@ -12,22 +12,19 @@ O passo a passo original fica abaixo como registro.
 
 ### Como foi feito
 
-Sem isso, a gente publica no escuro: não dá para saber qual busca traz gente, qual página aparece e o que o Google não conseguiu indexar.
+Não foi por propriedade de domínio, porque o DNS está na Hostinger e o registro TXT daria trabalho à toa. Foi por **prefixo de URL** (`https://agenciafeed.com`) com verificação por **tag HTML**: o Guilherme gerou o código no Search Console, eu coloquei no head do `index.html` e publiquei, ele clicou em verificar e enviou o `sitemap.xml`.
 
-1. Entre em [search.google.com/search-console](https://search.google.com/search-console) com a conta Google da Feed, a mesma que vai administrar o Google Business.
-2. Escolha **propriedade de domínio** e digite `agenciafeed.com`.
-3. O Google vai dar um registro **TXT**. Adicione no painel de DNS onde o domínio está hospedado (Hostinger), com nome `@` e o valor que ele mostrar.
-4. Espere alguns minutos e clique em verificar.
-5. Em **Sitemaps**, envie `sitemap.xml`.
-6. Em **Inspeção de URL**, peça indexação destas seis, uma por vez:
+Detalhe que custou uma rodada: a primeira tag gerada saiu de outra conta Google. A válida é a segunda, da conta que ficou dona da propriedade.
+
+### O que ainda vale fazer lá dentro (5 minutos)
+
+Em **Inspeção de URL**, pedir indexação destas seis, uma por vez, para acelerar a entrada no índice:
    - `https://agenciafeed.com/`
    - `https://agenciafeed.com/ia-para-pequenas-empresas/`
    - `https://agenciafeed.com/agencia-de-ia-ribeirao-preto/`
    - `https://agenciafeed.com/agencia-de-marketing-bebedouro/`
    - `https://agenciafeed.com/blog/ia-para-pme-guia-pratico/`
    - `https://agenciafeed.com/blog/quanto-custa-implementar-ia-pequena-empresa/`
-
-Se preferir não mexer em DNS, dá para usar propriedade por prefixo de URL e verificar com uma tag no `<head>`. Nesse caso me passa o código que eu coloco no site e faço o deploy.
 
 Depois de duas semanas com dados, me avisa: dá para escolher os próximos artigos pelo que já aparece na busca em vez de escolher por pesquisa qualitativa.
 
