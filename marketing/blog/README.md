@@ -44,6 +44,8 @@ status: scheduled
 publishAt: 2026-07-07
 ```
 
+O `blog:build` também atualiza sozinho o `public/sitemap.xml` e a seção **Guias do blog** do `public/llms.txt`, que é a fonte que as IAs leem. Não edite essas duas partes na mão.
+
 O GitHub Actions roda terça e quinta de manhã no horário de Brasília. Quando `publishAt`
 for igual ou anterior ao dia atual, o workflow troca `status: scheduled` para
 `status: published`, valida o blog, gera as páginas estáticas, faz commit e deixa a

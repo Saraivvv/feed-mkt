@@ -20,6 +20,7 @@ const ROOT = resolve(__dirname, "..", "..");
 const SRC_DIR = join(ROOT, "marketing", "blog");
 const OUT_DIR = join(ROOT, "public", "blog");
 const SITEMAP_PATH = join(ROOT, "public", "sitemap.xml");
+const LLMS_PATH = join(ROOT, "public", "llms.txt");
 const TEMPLATE_PATH = join(__dirname, "template.html");
 
 const SITE = "https://agenciafeed.com";
@@ -2098,6 +2099,23 @@ function atualizarSitemap(posts) {
   writeFileSync(SITEMAP_PATH, xml, "utf8");
 }
 
+// Mantem a secao de guias do llms.txt em dia (fonte que as IAs leem no GEO).
+function atualizarLlms(posts) {
+  if (!existsSync(LLMS_PATH)) return false;
+
+  let txt = readFileSync(LLMS_PATH, "utf8");
+  // Remove a secao anterior, para rodar quantas vezes precisar sem duplicar.
+  txt = txt.replace(/\n## Guias do blog[\s\S]*?(?=\n## |$)/, "");
+
+  const linhas = posts.map(
+    (p) => `- ${p.title}: ${SITE}/blog/${p.slug}/`
+  );
+
+  txt = `${txt.trimEnd()}\n\n## Guias do blog\n\n${linhas.join("\n")}\n`;
+  writeFileSync(LLMS_PATH, txt, "utf8");
+  return true;
+}
+
 function main() {
   if (!existsSync(SRC_DIR)) {
     console.error(`Pasta de posts não encontrada: ${SRC_DIR}`);
@@ -2148,6 +2166,8 @@ function main() {
 
   atualizarSitemap(posts);
   console.log("atualizado: public/sitemap.xml");
+
+  if (atualizarLlms(posts)) console.log("atualizado: public/llms.txt");
   console.log(`\n${posts.length} post(s) publicado(s).`);
 }
 

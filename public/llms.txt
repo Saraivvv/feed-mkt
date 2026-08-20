@@ -41,6 +41,8 @@ Razão social: Feed Marketing e Comunicação (CNPJ 53.877.987/0001-93).
 
 
 
+
+
 ## Páginas estratégicas
 
 - IA para pequenas empresas, sem projeto inflado: https://agenciafeed.com/ia-para-pequenas-empresas/
@@ -50,3 +52,21 @@ Razão social: Feed Marketing e Comunicação (CNPJ 53.877.987/0001-93).
 - Agência de IA em Ribeirão Preto para quem quer resultado, não hype: https://agenciafeed.com/agencia-de-ia-ribeirao-preto/
 - Agência de marketing e IA em Bebedouro para PME que precisa vender mais: https://agenciafeed.com/agencia-de-marketing-bebedouro/
 - Blog da Feed: https://agenciafeed.com/blog/
+
+## Guias do blog
+
+- IA para PME: guia prático para começar sem gastar errado: https://agenciafeed.com/blog/ia-para-pme-guia-pratico/
+- Integrar IA com CRM, agenda e planilhas: quando faz sentido?: https://agenciafeed.com/blog/integrar-ia-crm-agenda-planilhas/
+- Como escolher fornecedor de IA sem cair em promessa vazia: https://agenciafeed.com/blog/como-escolher-fornecedor-ia/
+- Dados desorganizados: por que a IA responde mal na empresa: https://agenciafeed.com/blog/dados-desorganizados-ia-responde-mal/
+- Diagnóstico de IA para pequena empresa: o que precisa ser analisado: https://agenciafeed.com/blog/diagnostico-ia-pequena-empresa/
+- Follow-up automático sem parecer robô: como fazer direito: https://agenciafeed.com/blog/follow-up-automatico-sem-parecer-robo/
+- Como calcular ROI de automação com IA na pequena empresa: https://agenciafeed.com/blog/calcular-roi-automacao-ia/
+- CRM com IA para pequena empresa: o que realmente importa: https://agenciafeed.com/blog/crm-ia-pequena-empresa/
+- Automação de processos internos com IA: por onde começar: https://agenciafeed.com/blog/automacao-processos-internos-ia/
+- Agente de IA no WhatsApp vale para sua empresa?: https://agenciafeed.com/blog/agente-ia-whatsapp-vale-a-pena/
+- 7 erros em projetos de IA que pequenas empresas devem evitar: https://agenciafeed.com/blog/erros-projetos-ia-pequenas-empresas/
+- Como escolher o primeiro processo para automatizar na sua empresa: https://agenciafeed.com/blog/primeiro-processo-automatizar-pme/
+- Como medir perda de vendas por demora no atendimento: https://agenciafeed.com/blog/como-medir-perda-vendas-demora-atendimento/
+- Automação de WhatsApp para pequena empresa: quando vale a pena?: https://agenciafeed.com/blog/automacao-whatsapp-pequena-empresa/
+- Quanto custa implementar IA numa pequena empresa? Faixas reais de preço: https://agenciafeed.com/blog/quanto-custa-implementar-ia-pequena-empresa/
