@@ -114,4 +114,21 @@ A ordem que funciona pra maioria das PMEs:
 
 Se você quer o mapa completo antes de decidir, o [guia de IA para PME](/blog/ia-para-pme-guia-pratico/) organiza essa sequência do começo ao fim.
 
+## Perguntas frequentes
+
+**Quanto custa implementar IA numa pequena empresa?**
+De R$100 por mês, no caso de ferramentas prontas, a R$40 mil de investimento inicial num projeto completo de automação. Um agente de IA no WhatsApp sob medida costuma ficar entre R$8 mil e R$25 mil de implantação, mais mensalidade de R$800 a R$2.500.
+
+**Dá para começar com orçamento curto?**
+Dá. Ferramentas prontas resolvem ganho individual por poucas centenas de reais por mês, e um escopo enxuto de atendimento cobre o gargalo mais comum sem projeto grande. O erro caro é assinar várias ferramentas sem mudar nenhuma rotina.
+
+**Qual a diferença de preço entre chatbot e agente de IA?**
+Chatbot de menu é mais barato porque segue fluxo fixo e não consulta informação da empresa. Agente entende linguagem natural, usa a base do negócio e executa ação, o que exige implantação, teste e manutenção. A comparação está em [agente de IA para empresas](/blog/agente-ia-para-empresas/).
+
+**Existe custo mensal depois que o projeto entra no ar?**
+Existe, e precisa estar na proposta: serviço do fornecedor, consumo do canal oficial e do modelo de IA, e algumas horas da sua equipe para revisão. Projeto que só mostra o valor de implantação está escondendo parte da conta.
+
+**Em quanto tempo o investimento se paga?**
+Entre 4 e 8 meses quando o projeto ataca um gargalo real e mensurável. A conta com os seus números você monta com [como calcular ROI de automação com IA](/blog/calcular-roi-automacao-ia/).
+
 Se você quer saber quanto custaria pro seu caso específico, o caminho mais curto é o **diagnóstico gratuito da Feed**. A gente olha sua operação e sua presença digital, aponta onde a IA resolve de verdade e te entrega uma visão honesta de investimento e retorno, com escopo realista pra pequena e média empresa. Sem compromisso e sem papo de vendedor: se o seu caso não precisar de IA agora, a gente fala isso também. É só clicar no botão abaixo ou chamar no WhatsApp.

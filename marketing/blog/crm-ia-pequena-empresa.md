@@ -89,3 +89,54 @@ Não comece medindo tudo. Comece por:
 Com esses dados, a empresa entende onde perde dinheiro, principalmente se cruzar com [como medir perda de vendas por demora no atendimento](/blog/como-medir-perda-vendas-demora-atendimento/). A IA pode então atacar um gargalo real.
 
 CRM com IA não é sobre parecer empresa grande. É sobre vender sem deixar oportunidade cair. Se a ferramenta ajuda o time a responder melhor, lembrar melhor e decidir melhor, faz sentido. Se só adiciona tela e obrigação, é ruído. Para encaixar o CRM no plano maior de IA, veja o [guia de IA para PME](/blog/ia-para-pme-guia-pratico/).
+
+## Planilha, CRM simples ou CRM completo?
+
+A escolha depende de volume e de quantas pessoas mexem no funil.
+
+**Planilha** funciona até umas poucas dezenas de oportunidades ativas e uma ou duas pessoas vendendo. É barata, flexível e todo mundo sabe usar. Quebra quando duas pessoas editam ao mesmo tempo e quando ninguém lembra de atualizar.
+
+**CRM simples** entra quando existe time, mais de um canal de entrada e necessidade de histórico. Ele traz etapa, tarefa, lembrete e registro de conversa. Para a maioria das pequenas empresas, é aqui que a conta fecha.
+
+**CRM completo**, com automação avançada, previsão e relatório complexo, faz sentido quando existe operação comercial estruturada, com meta, funil grande e mais de um time. Contratar isso antes da hora é o erro descrito acima.
+
+A régua prática: escolha a ferramenta mais simples que atende o volume de hoje mais uns seis meses de crescimento. Trocar de CRM depois é chato, mas é menos caro que pagar por complexidade que ninguém usa.
+
+## Como implantar sem o time abandonar em duas semanas
+
+CRM morre por adoção, não por tecnologia. Quatro cuidados resolvem a maior parte:
+
+1. **Comece com poucos campos obrigatórios.** Se preencher um lead leva dois minutos, ninguém preenche.
+2. **Entre pelo canal onde a venda já acontece.** Se tudo é WhatsApp, o registro precisa nascer dali, de preferência automático.
+3. **Defina um ritual curto.** Cinco minutos por dia olhando o que está parado vale mais que reunião semanal de uma hora.
+4. **Mostre o ganho para quem preenche.** Vendedor adota quando o CRM devolve algo: lembrete na hora certa, histórico pronto, menos conversa perdida.
+
+A IA ajuda justamente aqui, tirando a digitação do caminho. Ela registra o que foi conversado, atualiza etapa e sugere o próximo passo, o que reduz o atrito que faz o time desistir.
+
+## Sinais de que o CRM está funcionando
+
+Olhe quatro coisas depois de um mês:
+
+- percentual de oportunidades com próximo passo marcado;
+- tempo médio até o primeiro contato;
+- quantidade de negócios parados há mais de duas semanas;
+- taxa de avanço entre etapas.
+
+Se o número de oportunidades sem próximo passo cai, o CRM pegou. Se sobe, o time voltou para o WhatsApp solto e o problema é de rotina, não de ferramenta.
+
+## Perguntas frequentes
+
+**Preciso de CRM ou dá para começar com planilha?**
+Dá para começar com planilha se o volume é baixo e uma ou duas pessoas vendem. A troca vira necessária quando aparecem mais canais, mais gente e histórico que precisa ser consultado.
+
+**O que a IA faz de útil dentro do CRM?**
+Resumo de conversa, registro automático do que foi combinado, classificação de intenção, alerta de oportunidade parada e sugestão de próxima mensagem. Ela reduz digitação e esquecimento, que são as duas causas mais comuns de venda perdida.
+
+**Quanto custa um CRM com IA para pequena empresa?**
+As ferramentas variam de plano gratuito a algumas centenas de reais por mês por usuário. O custo maior costuma ser a implantação e a integração com o WhatsApp, não a licença. As faixas de projeto estão em [quanto custa implementar IA numa pequena empresa](/blog/quanto-custa-implementar-ia-pequena-empresa/).
+
+**Meu time não usa o CRM atual. Trocar resolve?**
+Quase nunca. Se o problema é rotina e campo demais, a ferramenta nova vira o mesmo abandono em três meses. Simplifique etapas e campos primeiro, depois avalie a troca.
+
+**Por onde começo se vendo tudo pelo WhatsApp?**
+Pelo registro automático da conversa e por um funil de cinco etapas. Resolvido isso, o resto do CRM entra sozinho. É esse desenho que o diagnóstico gratuito da Feed entrega antes de falar de ferramenta.

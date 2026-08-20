@@ -87,3 +87,54 @@ Fique atento quando o fornecedor:
 Bons fornecedores perguntam muito, começam pequeno, falam de dados, desenham fluxo, explicam risco e conectam investimento com retorno. Eles não tentam vender IA para tudo. Tentam encontrar onde ela paga a conta.
 
 Escolher fornecedor de IA é escolher parceiro de operação. A tecnologia importa, mas o método importa mais. Para pequena empresa, a melhor proposta não é a mais futurista. É a que resolve um gargalo real e consegue provar resultado. Se a decisão ainda está aberta, o [guia de IA para PME](/blog/ia-para-pme-guia-pratico/) mostra onde a IA costuma pagar a conta numa empresa pequena.
+
+## Como comparar duas propostas lado a lado
+
+Propostas de IA costumam chegar em formatos diferentes de propósito, o que dificulta comparação. Coloque as duas na mesma régua, com estas colunas:
+
+- problema que será resolvido, em uma frase;
+- métrica que prova sucesso e o número de partida;
+- escopo da primeira fase, item por item;
+- o que fica de fora;
+- investimento inicial e custo mensal;
+- prazo até estar no ar;
+- quem mantém a base depois;
+- de quem são as contas, credenciais e dados.
+
+Quando você preenche essa tabela, a proposta vaga se revela sozinha. Ela deixa metade das células vazias e compensa com adjetivo.
+
+## O que pedir de prova antes de assinar
+
+Peça três coisas concretas. A primeira é uma demonstração com informação da sua empresa, não com exemplo genérico. Mande dez perguntas reais que seus clientes fazem e veja o que o sistema responde.
+
+A segunda é referência de cliente parecido, de preferência do mesmo porte. Não precisa ser do mesmo setor, precisa ser da mesma complexidade de operação.
+
+A terceira é o plano de saída. Se o projeto não der certo em três meses, o que acontece? Quem fica com a base de conhecimento, os fluxos e o histórico de conversas? Fornecedor que trata essa pergunta com naturalidade costuma ser o mesmo que entrega.
+
+## O contrato precisa dizer
+
+Além de escopo e preço, olhe quatro pontos que geram briga depois:
+
+- **propriedade dos dados e da base de conhecimento**, que precisa ser da sua empresa;
+- **o que está incluído em manutenção** e o que vira hora extra;
+- **prazo de resposta para erro em produção**, principalmente se o agente fala com cliente;
+- **condição de encerramento**, com aviso prévio e entrega dos ativos.
+
+Nada disso é desconfiança. É o mínimo de um contrato de serviço que envolve o canal de vendas da empresa.
+
+## Perguntas frequentes
+
+**Preciso entender de tecnologia para escolher bem?**
+Não. Você precisa entender da sua operação. As perguntas que separam proposta boa de ruim são sobre problema, métrica, escopo, manutenção e propriedade dos dados, não sobre modelo ou arquitetura.
+
+**Agência, consultoria ou freelancer: qual contratar?**
+Depende do que falta. Freelancer resolve escopo pequeno e bem definido. Agência e consultoria fazem sentido quando é preciso desenhar processo, integrar áreas e manter o projeto vivo depois da entrega. O risco do freelancer é continuidade, o risco da agência é escopo inflado.
+
+**Preço muito abaixo dos outros é sinal ruim?**
+Nem sempre, mas exige explicação. Costuma significar escopo menor, ferramenta pronta em vez de solução própria ou conexão não oficial com o WhatsApp. Pergunte o que muda em relação à proposta mais cara e decida com a diferença na mão.
+
+**Como saber se o fornecedor vai sumir depois da entrega?**
+Pergunte quem atende, em qual canal e com qual prazo. Peça o nome da pessoa responsável, não só o da empresa. E confirme se manutenção está no contrato ou se será cobrada por demanda.
+
+**E se eu não souber avaliar a resposta técnica?**
+Peça a explicação em termos de operação: o que muda no dia a dia da equipe, o que o cliente vai sentir, quem faz o quê. Quem entende de verdade consegue explicar sem jargão. É assim que o diagnóstico gratuito da Feed conversa com o dono do negócio.

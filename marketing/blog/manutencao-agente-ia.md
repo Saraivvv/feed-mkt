@@ -85,3 +85,58 @@ IA sem manutenção começa a perder confiança. Responde com informação antig
 Isso é perigoso porque o cliente não separa IA e marca. Para ele, a resposta errada é da empresa.
 
 Manutenção não é extra supérfluo. É o que transforma agente de IA em operação confiável. Se a empresa quer retorno contínuo, precisa tratar a IA como canal vivo. Boa parte da manutenção é manter a base em ordem, assunto de [por que a IA responde mal com dados desorganizados](/blog/dados-desorganizados-ia-responde-mal/), e o [guia de IA para PME](/blog/ia-para-pme-guia-pratico/) mostra onde essa etapa entra no projeto.
+
+## Um plano de manutenção que cabe numa PME
+
+Manutenção assusta porque soa como mais um projeto. Na prática, cabe em pouco tempo por semana quando tem ritual definido.
+
+**Toda semana, 30 minutos.** Alguém do atendimento lê 15 ou 20 conversas do período, marca o que a IA errou, o que ela deveria ter resolvido sozinha e o que deveria ter passado para humano antes.
+
+**Todo mês, 1 hora.** Gestor e fornecedor olham os números, aplicam os ajustes acumulados na base e no fluxo, e revisam se a métrica principal continua andando.
+
+**Sempre que mudar preço, campanha, serviço ou horário.** A base é atualizada antes da mudança ir para o cliente. Esse é o gatilho que evita a maior parte dos erros graves.
+
+Três papéis dão conta: quem atende cliente todo dia, quem decide prioridade e quem mexe no sistema. Sem o primeiro, a manutenção fica teórica.
+
+## Quanto custa manter
+
+O custo mensal de um agente tem três partes, e a proposta precisa mostrar todas.
+
+A primeira é o serviço do fornecedor, que cobre suporte, ajuste de fluxo e correção. A segunda é o consumo: canal oficial cobra por conversa e o modelo de IA cobra por uso. A terceira é o tempo da sua equipe, aquelas horas de revisão que não aparecem em fatura nenhuma mas existem.
+
+Se a proposta traz só a primeira parte, peça as outras duas por escrito. É o tipo de surpresa que azeda projeto bom no terceiro mês.
+
+## Os sinais de que a manutenção está atrasada
+
+Você percebe antes do cliente reclamar, se olhar:
+
+- taxa de passagem para humano subindo sem explicação;
+- respostas com informação antiga aparecendo nas conversas;
+- perguntas novas se repetindo sem resposta boa;
+- equipe corrigindo a IA manualmente na frente do cliente;
+- ninguém consegue dizer quem atualizou a base pela última vez.
+
+Qualquer um desses sozinho já pede uma revisão fora do calendário.
+
+## O que fica com a empresa
+
+Manutenção também é sobre autonomia. Confirme desde o contrato quem tem acesso à base de conhecimento, aos fluxos e ao histórico de conversas. O ideal é que sua equipe consiga atualizar preço e política sem abrir chamado.
+
+Fornecedor que centraliza tudo cria dependência cara. Quem entrega painel e treina a equipe está pensando em relação longa.
+
+## Perguntas frequentes
+
+**Com que frequência preciso revisar um agente de IA?**
+Semanal no primeiro mês, depois quinzenal ou mensal conforme o volume. Além disso, sempre que houver mudança de preço, campanha ou processo.
+
+**Manutenção costuma estar incluída na mensalidade?**
+Varia. Alguns contratos cobrem ajuste de fluxo e correção, outros cobram por hora. Peça por escrito o que entra e o que vira extra antes de assinar.
+
+**Quem deve ser o responsável interno?**
+Alguém do atendimento, com apoio de quem decide preço e política. É a pessoa que convive com o cliente que enxerga primeiro o que a IA está errando.
+
+**O que acontece se eu não fizer manutenção?**
+A IA passa a responder com informação velha, perde confiança do time e vira risco comercial. O cliente não separa IA e marca: para ele, a resposta errada é da empresa.
+
+**Dá para reduzir manutenção com base bem feita?**
+Reduz bastante. Base organizada, com dono e gatilho de atualização, é o que mais diminui erro, como explica [por que a IA responde mal com dados desorganizados](/blog/dados-desorganizados-ia-responde-mal/). Ainda assim, revisão de conversas real continua necessária.

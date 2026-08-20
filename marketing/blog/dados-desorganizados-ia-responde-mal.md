@@ -90,3 +90,52 @@ Se a IA responde bem a perguntas comuns e reconhece limite, a base está no cami
 Mesmo antes da IA, organizar conhecimento ajuda o time. Novos funcionários aprendem mais rápido, respostas ficam consistentes e o atendimento depende menos de uma pessoa específica.
 
 Por isso, estruturar dados não é custo invisível. É infraestrutura operacional. Sem ela, a IA vira risco. Com ela, a automação fica mais confiável, rápida e fácil de manter. Para ver onde a organização de dados entra na sequência completa, leia o [guia de IA para PME](/blog/ia-para-pme-guia-pratico/).
+
+## Como montar a base mínima em uma semana
+
+Não precisa de projeto de gestão do conhecimento. Precisa de uma semana e disciplina.
+
+**Dia 1 e 2, colher.** Abra as últimas 200 conversas de atendimento e liste as perguntas que mais aparecem. Isso já entrega a espinha dorsal da base, porque é exatamente o que o cliente pergunta.
+
+**Dia 3, escrever as respostas.** Uma resposta por pergunta, curta, com número quando houver. Preço, prazo, região, forma de pagamento, condição, exceção. Se a resposta é "depende", escreva de que depende.
+
+**Dia 4, registrar as regras.** O que a empresa não faz, o que não pode ser prometido, quando precisa passar para humano, qual desconto existe e quem autoriza.
+
+**Dia 5, revisar com quem atende.** A pessoa que fala com cliente todo dia acha em minutos o que está errado ou faltando.
+
+Formato importa menos do que existir. Documento único, planilha ou pasta organizada resolvem. O que não funciona é conhecimento espalhado em conversa antiga.
+
+## Como manter a base viva
+
+Base envelhece rápido em pequena empresa: preço muda, campanha entra, produto sai. Três combinados seguram isso:
+
+- **um dono nomeado**, com nome e não com cargo genérico;
+- **um gatilho de atualização**, ou seja, toda mudança de preço, política ou campanha passa pela base antes de ir para o cliente;
+- **uma revisão mensal de 30 minutos**, olhando o que o time reportou como resposta errada no mês.
+
+Sem gatilho, a base vira retrato de um mês qualquer do passado. Esse é o mesmo raciocínio de [manutenção de agente de IA](/blog/manutencao-agente-ia/): automação é canal vivo, não entrega única.
+
+## O teste das dez perguntas
+
+Antes de colocar qualquer IA na frente do cliente, faça um teste simples. Escolha dez perguntas reais, sendo sete comuns e três difíceis, incluindo uma que a empresa não atende.
+
+Espere três comportamentos: responder certo o que sabe, dizer que não sabe quando não sabe e chamar humano no caso que exige decisão. Se ela inventa resposta na pergunta difícil, o problema não é o modelo, é a base sem limite escrito.
+
+Repita esse teste toda vez que houver mudança grande de preço ou serviço. Leva 15 minutos e evita o tipo de erro que chega no cliente.
+
+## Perguntas frequentes
+
+**Preciso organizar tudo antes de começar com IA?**
+Não. Organize o que entra no primeiro escopo. Se o agente vai atender vendas, organize preço, prazo, região e objeção. O resto entra quando o projeto crescer.
+
+**Onde a base deve ficar?**
+Onde a equipe consiga editar sem depender de fornecedor. Documento compartilhado, planilha ou painel do próprio sistema. O que importa é ter um lugar único e atualizado, não a ferramenta.
+
+**Quem deve ser o dono da base?**
+Alguém que convive com o cliente e tem autonomia para confirmar preço e política. Em pequena empresa, costuma ser quem coordena atendimento ou o próprio dono no começo.
+
+**A IA não aprende sozinha com as conversas?**
+Ela usa o que você fornece como fonte de verdade. Aprender sozinha com conversa é justamente o que causa resposta errada, porque a conversa contém dúvida, erro e exceção não confirmada.
+
+**Como sei se a base está boa o suficiente?**
+Faça o teste das dez perguntas. Se ela acerta o comum, admite o que não sabe e escala o que exige humano, está pronta para a primeira fase. Esse levantamento faz parte do diagnóstico gratuito da Feed.

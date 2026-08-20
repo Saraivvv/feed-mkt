@@ -86,3 +86,59 @@ Depois de alguns meses, isso cria uma biblioteca mais forte do que publicar sem 
 Nos primeiros 60 dias, publicar é prioridade porque o blog precisa ganhar corpo. Depois, o equilíbrio muda. Um post novo por semana e uma revisão quinzenal é um bom ritmo.
 
 Revisão é onde conteúdo deixa de ser campanha e vira ativo. O artigo continua trabalhando mesmo depois da publicação, trazendo leitura, contexto e decisão para quem ainda está escolhendo por onde começar com IA. Quem chega agora costuma entrar pelo [guia de IA para PME](/blog/ia-para-pme-guia-pratico/).
+
+## Como escolher qual post revisar
+
+Revisar tudo é impossível e desnecessário. A fila de prioridade é simples:
+
+1. **Posts que falam de preço ou de faixa de investimento.** Envelhecem mais rápido e influenciam compra.
+2. **Posts que recebem leitura mas não geram ação.** Existe interesse e falta caminho: o problema costuma ser CTA fraco ou resposta enterrada no meio do texto.
+3. **Posts órfãos.** Artigos que nenhum outro linka ficam isolados e perdem força.
+4. **Posts que agora têm irmãos.** Quando sai um guia novo sobre o mesmo tema, os antigos precisam apontar para ele.
+5. **Posts curtos demais para a pergunta que respondem.** Texto raso perde para conteúdo que resolve a dúvida inteira.
+
+Escolha um por rodada. Revisão profunda de um artigo rende mais que retoque superficial em cinco.
+
+## Checklist de revisão em 30 minutos
+
+- a primeira resposta aparece nos dois primeiros parágrafos;
+- os números continuam verdadeiros hoje;
+- os subtítulos são perguntas reais de quem busca;
+- existem de dois a quatro links internos contextuais no corpo;
+- existe bloco de perguntas frequentes;
+- o CTA está claro e coerente com o momento do leitor;
+- o título e a descrição cabem no limite e prometem o que o texto entrega;
+- nenhum link interno aponta para página inexistente.
+
+Se o post passa nos oito itens, ele está fazendo o trabalho dele. Se falha em três ou mais, vale reescrever seções inteiras em vez de remendar.
+
+## O que não fazer numa revisão
+
+Não mude a URL de um post que já recebe tráfego. Slug novo significa endereço novo, e o histórico fica para trás. Se a mudança for inevitável, é preciso redirecionar o endereço antigo.
+
+Não infle o texto com parágrafo genérico só para ganhar tamanho. Conteúdo mais longo ajuda quando responde mais, não quando enrola mais.
+
+Não apague seções que respondem dúvidas ainda vivas. Reescreva com informação nova, mantendo a pergunta que trouxe o leitor até ali.
+
+## Como medir se a revisão funcionou
+
+Compare o mês seguinte com o anterior em três pontos: leituras do artigo, tempo de permanência e ações vindas dele, como clique no CTA ou contato. Se nada mudou em dois meses, o problema provavelmente é de tema, não de texto.
+
+Registre o que foi alterado e a data. Sem esse histórico, ninguém sabe qual versão gerou qual resultado.
+
+## Perguntas frequentes
+
+**Com que frequência devo revisar posts antigos?**
+Uma revisão a cada duas semanas sustenta bem um blog pequeno. Depois dos primeiros meses, o ritmo saudável é um post novo por semana e uma revisão quinzenal.
+
+**Vale mais publicar novo ou revisar antigo?**
+No começo, publicar, porque o blog precisa de corpo e cobertura de tema. Depois que existe biblioteca, revisar costuma render mais por hora de trabalho, principalmente em artigos de decisão de compra.
+
+**Preciso mudar a data do post quando reviso?**
+Só quando a atualização é significativa e muda a resposta principal. Trocar data por trocar não engana ninguém e tira a referência histórica do leitor.
+
+**Revisar posts ajuda a aparecer em resposta de IA?**
+Ajuda, porque modelos preferem texto direto, com estrutura clara, dado consistente e limite explícito. Artigo com informação contraditória ou desatualizada tende a ser descartado como fonte.
+
+**Como sei que um post precisa de revisão urgente?**
+Quando ele cita preço antigo, ferramenta que mudou ou processo que a empresa não faz mais. Esse tipo de erro custa confiança na hora em que o leitor está decidindo comprar.

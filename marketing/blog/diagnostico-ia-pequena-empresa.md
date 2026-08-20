@@ -85,3 +85,55 @@ O resultado deve ser um mapa claro:
 - próximos passos.
 
 Diagnóstico não é apresentação bonita. É decisão. Ele evita que a empresa compre IA porque está na moda e ajuda a começar por onde existe retorno real. O [guia de IA para PME](/blog/ia-para-pme-guia-pratico/) reúne o caminho inteiro depois do diagnóstico.
+
+## Como é um diagnóstico de uma semana
+
+Diagnóstico bom em pequena empresa é curto. Uma semana costuma bastar, com este roteiro:
+
+**Dia 1, conversa com quem decide.** Onde dói, o que já foi tentado, qual resultado é esperado e quanto a empresa está disposta a investir. Sem essa conversa, o resto vira exercício técnico.
+
+**Dia 2, olhar o atendimento real.** Últimas semanas de conversa, volume por canal, tempo de resposta, quantas conversas morreram sem próximo passo.
+
+**Dia 3, olhar a operação interna.** Que tarefa se repete, quanto tempo consome, onde acontece erro, o que é feito duas vezes.
+
+**Dia 4, olhar a informação.** Onde estão preço, política, prazo e regra. Se está na cabeça de alguém, isso vira item do projeto.
+
+**Dia 5, montar a conta e a recomendação.** Gargalos ordenados por impacto e facilidade, projeto sugerido, métrica, investimento e próximo passo.
+
+Se alguém propõe um diagnóstico de dois meses para uma empresa de dez pessoas, o problema está no escopo, não na complexidade do negócio.
+
+## As perguntas que o diagnóstico precisa responder com número
+
+No fim do trabalho, estas perguntas não podem ficar no "acho que":
+
+- quantos contatos chegam por semana e por qual canal;
+- quanto tempo leva a primeira resposta;
+- quantas conversas ficam sem próximo passo;
+- quanto vale, em dinheiro, o que se perde nesse vão;
+- quantas horas por semana o time gasta em tarefa repetitiva;
+- qual métrica vai provar melhora e quanto ela vale hoje.
+
+Sem esses seis números, qualquer recomendação é palpite bem apresentado. O método para levantar os dois primeiros está em [como medir perda de vendas por demora no atendimento](/blog/como-medir-perda-vendas-demora-atendimento/).
+
+## O diagnóstico pode terminar em "ainda não"
+
+Esse é o resultado mais valioso quando é verdade. Empresa com pouco volume, oferta indefinida ou equipe sem quem assuma o lead qualificado não deve começar por IA. Deve começar por aquisição, posicionamento ou processo comercial.
+
+Um diagnóstico que sempre termina em proposta de projeto não é diagnóstico. É prospecção com outro nome.
+
+## Perguntas frequentes
+
+**Quanto tempo leva um diagnóstico de IA?**
+Em pequena empresa, de uma a três semanas. Uma semana costuma bastar quando a operação é enxuta e o dono participa das conversas.
+
+**O que eu recebo no final?**
+Mapa dos gargalos por impacto e facilidade, projeto recomendado com escopo fechado, métrica de sucesso com número de partida, estimativa de investimento e retorno, e a lista do que precisa ser organizado antes.
+
+**Preciso preparar alguma coisa antes?**
+Ajuda ter acesso ao histórico de atendimento, uma ideia do ticket médio e meia hora de quem atende o cliente todo dia. O resto se levanta durante o trabalho.
+
+**Diagnóstico é a mesma coisa que consultoria?**
+Não. Diagnóstico é a leitura da operação. Consultoria usa essa leitura para priorizar, desenhar escopo e planejar fases. Em PME, os dois costumam vir juntos e curtos.
+
+**E se o diagnóstico apontar que não é hora de investir em IA?**
+Então ele economizou o valor do projeto inteiro. O relatório continua útil, porque mostra qual gargalo resolver primeiro com processo, oferta ou aquisição. É assim que o diagnóstico gratuito da Feed funciona.

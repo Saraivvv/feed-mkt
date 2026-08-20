@@ -81,3 +81,47 @@ Um bom escopo inicial inclui resposta imediata, qualificação, dúvidas frequen
 O projeto precisa ter uma métrica principal. Pode ser reduzir tempo de resposta, aumentar agendamentos, recuperar orçamentos ou diminuir horas do time.
 
 Agente de IA no WhatsApp vale quando a conversa já é parte central da venda. Se o WhatsApp é só canal auxiliar, talvez não seja prioridade. O diagnóstico certo separa esses casos antes de qualquer proposta. Se você ainda está montando o quadro geral, o [guia de IA para PME](/blog/ia-para-pme-guia-pratico/) mostra a sequência inteira, do gargalo escolhido ao projeto que se paga.
+
+## Conta oficial ou número comum?
+
+Essa decisão vem antes da escolha do fornecedor. Um agente de IA precisa de acesso programável às mensagens, e existem dois caminhos.
+
+O caminho oficial é a API do WhatsApp Business, da própria Meta. O número fica verificado, a empresa aparece com nome e categoria, várias pessoas atendem ao mesmo tempo e a conta não corre risco de bloqueio por automação. A cobrança é por conversa iniciada, com valor pequeno por janela de 24 horas, e mensagens que a empresa inicia precisam usar modelos aprovados.
+
+O caminho não oficial conecta um celular comum por meio de bibliotecas que simulam o aplicativo. Sai mais barato no começo e é o que muitos fornecedores oferecem sem avisar. O problema é o risco: o número pode ser bloqueado, o histórico se perde e a empresa fica sem o canal principal de venda de um dia para o outro.
+
+Para negócio que depende do WhatsApp para vender, a conta oficial é o caminho seguro. Se o fornecedor não deixa claro qual dos dois ele usa, pergunte antes de assinar.
+
+## Quanto tempo demora para colocar no ar?
+
+Um escopo enxuto, com base de conhecimento organizada, costuma levar de três a seis semanas. A conta oficial precisa de verificação do negócio, o que leva alguns dias e depende de documento e página no Facebook Business.
+
+O que estica prazo é sempre a mesma coisa: informação espalhada, regra de negócio cheia de exceção e integração com sistema que ninguém documentou. Quando a empresa já tem preço, política e perguntas frequentes escritos, a implantação anda rápido.
+
+## O que medir depois que ligar
+
+Ligue com uma métrica principal e três de apoio. A principal costuma ser tempo até a primeira resposta ou número de agendamentos. As de apoio:
+
+- percentual de conversas resolvidas sem passar para humano;
+- quantas conversas o agente devolveu para a equipe e por quê;
+- respostas erradas reportadas pelo time na semana;
+- vendas ou orçamentos que saíram de conversas que o agente iniciou de volta.
+
+Compare tudo com a semana anterior à implantação. Sem esse número de partida, qualquer resultado vira opinião.
+
+## Perguntas frequentes
+
+**Agente de IA no WhatsApp pode derrubar meu número?**
+Na API oficial da Meta, não. O risco existe nas soluções que conectam um celular comum simulando o aplicativo, que violam os termos e podem levar a bloqueio. Pergunte ao fornecedor qual caminho ele usa antes de fechar.
+
+**Quanto custa manter um agente rodando por mês?**
+Além da mensalidade do fornecedor, existe o custo por conversa da própria Meta e o consumo do modelo de IA. Em operação de pequena empresa, esses dois somados costumam ficar bem abaixo da mensalidade do serviço, mas precisam estar na proposta.
+
+**O cliente percebe que está falando com IA?**
+Percebe quando a resposta é genérica ou quando ele foge do roteiro e o sistema insiste no script. Um agente bem feito assume que é atendimento automático, resolve rápido o que sabe e chama uma pessoa quando o caso pede.
+
+**Preciso ter CRM antes de contratar o agente?**
+Não. Dá para começar registrando em planilha e evoluir depois. O que não pode faltar é alguém para assumir a conversa qualificada, senão o agente só acelera a chegada de um lead que ninguém atende.
+
+**Como sei se meu volume justifica?**
+Meça uma semana real de atendimento: quantas mensagens chegam, quantas ficam mais de uma hora sem resposta e quantas conversas morrem sem próximo passo. Se o buraco aparece já nessa semana, o volume justifica. É por aí que o diagnóstico gratuito da Feed começa.

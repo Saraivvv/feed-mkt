@@ -89,3 +89,50 @@ Liste todas as integrações desejadas e dê nota para:
 - facilidade técnica.
 
 Comece pela maior pontuação. Deixe o resto para fase dois. Projeto de IA bom não conecta tudo de primeira. Conecta o necessário para gerar retorno e aprender com a operação real. Para ver a ordem completa do projeto, do gargalo à escala, leia o [guia de IA para PME](/blog/ia-para-pme-guia-pratico/).
+
+## Três níveis de integração, três faixas de trabalho
+
+Nem toda integração custa igual. Na prática existem três níveis.
+
+**Nível 1, conector pronto.** A ferramenta já fala com o sistema, basta autorizar e mapear campos. É o caso de CRMs populares, agendas do Google e planilhas na nuvem. Sai barato e entra rápido.
+
+**Nível 2, API documentada.** O sistema tem interface própria e alguém precisa escrever a ligação, tratar erro e testar. Custa horas de desenvolvimento e exige acesso de quem administra a ferramenta.
+
+**Nível 3, sistema fechado ou legado.** ERP antigo, software regional sem API, planilha que mora na máquina de alguém. Aqui o custo sobe muito e a manutenção também. Muitas vezes a resposta certa é não integrar agora e resolver com exportação periódica.
+
+Antes de pedir orçamento, descubra em qual nível cada sistema seu está. Essa única informação muda o preço da proposta e o prazo do projeto.
+
+## O que quebra depois e como se proteger
+
+Integração não é entrega definitiva. Ela quebra por motivos banais:
+
+- alguém renomeia uma coluna ou uma etapa do funil;
+- a senha ou o token de acesso expira;
+- a ferramenta muda a versão da API;
+- o limite de chamadas do plano contratado estoura;
+- uma planilha vira duas.
+
+Três combinados evitam o pior. Primeiro, avisar quando falhar: a automação precisa reclamar em algum lugar que alguém olha, não morrer em silêncio. Segundo, credencial da empresa, criada em conta corporativa e não no e-mail pessoal de quem saiu. Terceiro, um responsável nomeado para consertar quando quebrar.
+
+## O teste antes de dizer que está pronto
+
+Rode a integração com dez casos reais, incluindo dois problemáticos: um registro incompleto e um duplicado. Confira se o dado chegou no lugar certo, se não gerou registro dobrado e se o erro apareceu para alguém.
+
+Integração que só foi testada com exemplo perfeito quebra na primeira semana de operação real.
+
+## Perguntas frequentes
+
+**Vale integrar IA com meu ERP?**
+Só depois que o fluxo principal estiver rodando e provando retorno. ERP costuma ser nível 2 ou 3 de integração, o que multiplica custo e prazo. Comece registrando o essencial em CRM ou planilha.
+
+**Preciso integrar com a agenda?**
+Se marcação de horário é parte central da venda, sim. Se a agenda é usada de forma irregular, integrar só transfere a bagunça. Antes de integrar, defina duração, disponibilidade e responsável.
+
+**Planilha é solução ou gambiarra?**
+É solução legítima para muita PME. Barata, flexível e todo mundo entende. Vira problema quando não tem padrão de coluna e quando várias pessoas editam ao mesmo tempo.
+
+**Quanto custa uma integração?**
+Depende do nível. Conector pronto é quase custo zero de desenvolvimento. API documentada é trabalho de horas. Sistema fechado pode custar mais que o resto do projeto. As faixas gerais estão em [quanto custa implementar IA numa pequena empresa](/blog/quanto-custa-implementar-ia-pequena-empresa/).
+
+**Como escolho a primeira integração?**
+Pela que elimina trabalho manual diário com menor esforço técnico. Se duas empatam, escolha a que envolve o sistema que sua equipe realmente usa. Esse ordenamento é parte do diagnóstico gratuito da Feed.
