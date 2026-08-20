@@ -55,13 +55,13 @@ Retorno mensal estimado = vendas recuperadas + horas economizadas + custos evita
 
 Payback = investimento inicial dividido pelo ganho mensal líquido.
 
-Se um projeto custa R$18 mil de implantação e R$1.200 por mês, e gera R$5 mil por mês em valor, o ganho líquido é R$3.800. O payback aproximado é 18.000 / 3.800 = 4,7 meses.
+Se um projeto custa R$18 mil de implantação e R$1.200 por mês, e gera R$5 mil por mês em valor, o ganho líquido é R$3.800. O payback aproximado é 18.000 / 3.800 = 4,7 meses. Se você ainda não sabe se esses valores fazem sentido, veja as faixas praticadas em [quanto custa implementar IA numa pequena empresa](/blog/quanto-custa-implementar-ia-pequena-empresa/).
 
 Isso é bom para PME. Projetos que se pagam entre 4 e 8 meses costumam ser saudáveis. Acima de 12 meses, precisa olhar com mais cuidado.
 
 ## Como estimar vendas recuperadas
 
-Comece pelo gargalo. Se a empresa perde leads por demora, estime quantas vendas poderiam ser recuperadas com resposta rápida e follow-up. Não precisa ser perfeito; precisa ser honesto.
+Comece pelo gargalo. Se a empresa perde leads por demora, estime quantas vendas poderiam ser recuperadas com resposta rápida e follow-up. Não precisa ser perfeito; precisa ser honesto. O passo a passo dessa estimativa está em [como medir perda de vendas por demora no atendimento](/blog/como-medir-perda-vendas-demora-atendimento/).
 
 Exemplo: 40 leads por semana, 10 ficam sem resposta adequada, 20% poderiam virar venda, ticket médio de R$500. Isso dá R$1.000 por semana, ou R$4 mil por mês em potencial.
 
@@ -93,4 +93,4 @@ Peça que a proposta mostre:
 
 Se o fornecedor não consegue explicar a conta, desconfie. IA boa para PME precisa ser traduzida em operação e dinheiro.
 
-Calcular ROI antes de contratar não elimina risco, mas reduz muito a chance de comprar tecnologia por impulso. A melhor automação é aquela que a empresa consegue defender com número simples.
+Calcular ROI antes de contratar não elimina risco, mas reduz muito a chance de comprar tecnologia por impulso. A melhor automação é aquela que a empresa consegue defender com número simples. O [guia de IA para PME](/blog/ia-para-pme-guia-pratico/) reúne o resto da sequência: onde aplicar, por onde começar e o que evitar.

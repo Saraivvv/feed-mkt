@@ -34,7 +34,7 @@ status: published
 
 Automação de processos internos com IA começa melhor quando a empresa para de procurar tecnologia e passa a procurar repetição. Toda operação tem tarefas que se repetem, consomem tempo e dependem de informação espalhada. A IA pode ajudar, mas só quando o processo é claro o bastante para ser explicado.
 
-Pequenas empresas costumam errar por tentar automatizar o processo mais complexo primeiro. Isso aumenta custo, prazo e frustração. O caminho mais seguro é escolher um piloto interno com impacto visível e risco controlado.
+Pequenas empresas costumam errar por tentar automatizar o processo mais complexo primeiro. Isso aumenta custo, prazo e frustração. O caminho mais seguro é escolher um piloto interno com impacto visível e risco controlado. O método para essa escolha está em [como escolher o primeiro processo para automatizar](/blog/primeiro-processo-automatizar-pme/).
 
 ## Bons candidatos para automação interna
 
@@ -88,4 +88,4 @@ Isso não substitui a operação inteira. Mas reduz digitação, erro e tempo de
 
 Antes de implementar, defina o número que importa: horas economizadas por semana, erros reduzidos, tempo de processamento ou velocidade de resposta. Sem isso, a automação vira sensação.
 
-Automação interna boa é discreta. Ela não precisa aparecer para o cliente. Ela faz a empresa operar com menos atrito, menos retrabalho e mais previsibilidade. Para pequena empresa, isso pode valer mais do que um projeto chamativo.
+Automação interna boa é discreta. Ela não precisa aparecer para o cliente. Ela faz a empresa operar com menos atrito, menos retrabalho e mais previsibilidade. Para pequena empresa, isso pode valer mais do que um projeto chamativo. Para ver onde a automação interna entra no plano maior, vale ler o [guia de IA para PME](/blog/ia-para-pme-guia-pratico/).

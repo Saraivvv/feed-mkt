@@ -47,7 +47,7 @@ Antes de contratar qualquer CRM, defina:
 - o que significa oportunidade perdida;
 - quais informações são obrigatórias.
 
-Se a empresa não sabe isso, a primeira tarefa é desenhar processo. Ferramenta vem depois.
+Se a empresa não sabe isso, a primeira tarefa é desenhar processo. Ferramenta vem depois, no ritmo de [como escolher o primeiro processo para automatizar](/blog/primeiro-processo-automatizar-pme/).
 
 ## Onde a IA pode ajudar
 
@@ -86,6 +86,6 @@ Não comece medindo tudo. Comece por:
 - follow-ups feitos;
 - vendas ganhas e perdidas.
 
-Com esses dados, a empresa entende onde perde dinheiro. A IA pode então atacar um gargalo real.
+Com esses dados, a empresa entende onde perde dinheiro, principalmente se cruzar com [como medir perda de vendas por demora no atendimento](/blog/como-medir-perda-vendas-demora-atendimento/). A IA pode então atacar um gargalo real.
 
-CRM com IA não é sobre parecer empresa grande. É sobre vender sem deixar oportunidade cair. Se a ferramenta ajuda o time a responder melhor, lembrar melhor e decidir melhor, faz sentido. Se só adiciona tela e obrigação, é ruído.
+CRM com IA não é sobre parecer empresa grande. É sobre vender sem deixar oportunidade cair. Se a ferramenta ajuda o time a responder melhor, lembrar melhor e decidir melhor, faz sentido. Se só adiciona tela e obrigação, é ruído. Para encaixar o CRM no plano maior de IA, veja o [guia de IA para PME](/blog/ia-para-pme-guia-pratico/).

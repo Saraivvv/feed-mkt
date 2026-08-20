@@ -48,7 +48,7 @@ Contexto significa mencionar o assunto da conversa. Timing significa voltar quan
 
 ## Quando automatizar?
 
-Automatize quando existem oportunidades suficientes paradas e o time esquece de voltar. Se a empresa tem poucos leads, um lembrete manual pode resolver. Se há dezenas de conversas por semana, automação começa a fazer diferença.
+Automatize quando existem oportunidades suficientes paradas e o time esquece de voltar. Se a empresa tem poucos leads, um lembrete manual pode resolver. Se há dezenas de conversas por semana, automação começa a fazer diferença. O lugar natural para controlar isso é o funil, e vale entender o que [um CRM com IA muda numa pequena empresa](/blog/crm-ia-pequena-empresa/).
 
 O primeiro fluxo pode ser simples:
 
@@ -87,10 +87,10 @@ Meça:
 - quantas viraram proposta, agenda ou venda;
 - quantas pessoas pediram para parar.
 
-Se o número de retomadas é alto, o follow-up estava faltando. Se muita gente ignora, talvez a oferta, timing ou mensagem estejam ruins.
+Se o número de retomadas é alto, o follow-up estava faltando, e dá para colocar preço nisso com [como medir perda de vendas por demora no atendimento](/blog/como-medir-perda-vendas-demora-atendimento/). Se muita gente ignora, talvez a oferta, timing ou mensagem estejam ruins.
 
 ## O papel do humano
 
 Automação deve lembrar, preparar e iniciar. O humano deve entrar quando existe intenção real. Isso evita que vendedor perca tempo caçando conversa fria e melhora a velocidade com quem respondeu.
 
-Follow-up automático bom não substitui relacionamento. Ele impede que oportunidade quente morra por esquecimento. Para pequenas empresas que atendem pelo WhatsApp, isso pode recuperar vendas sem aumentar equipe.
+Follow-up automático bom não substitui relacionamento. Ele impede que oportunidade quente morra por esquecimento. Para pequenas empresas que atendem pelo WhatsApp, isso pode recuperar vendas sem aumentar equipe. O [guia de IA para PME](/blog/ia-para-pme-guia-pratico/) mostra onde o follow-up entra na fila de prioridades.

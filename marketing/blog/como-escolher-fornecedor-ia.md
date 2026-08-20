@@ -44,7 +44,7 @@ Sem problema específico, não existe projeto específico.
 
 ## Pergunta 2: qual métrica prova sucesso?
 
-Peça uma métrica. Tempo de resposta, taxa de agendamento, horas economizadas, vendas recuperadas, erros reduzidos. Se ninguém sabe medir, ninguém sabe se funcionou.
+Peça uma métrica. Tempo de resposta, taxa de agendamento, horas economizadas, vendas recuperadas, erros reduzidos. Se ninguém sabe medir, ninguém sabe se funcionou. A régua de retorno você monta antes da reunião, com [como calcular ROI de automação com IA](/blog/calcular-roi-automacao-ia/).
 
 Fornecedor sério ajuda a definir a régua antes de implementar.
 
@@ -62,7 +62,7 @@ Se o fornecedor promete que a IA resolve tudo sozinha, desconfie.
 
 ## Pergunta 5: quem atualiza a base?
 
-Preço, política, prazo e oferta mudam. Quem atualiza? O fornecedor? Sua equipe? Existe painel? Precisa pedir suporte? Qual o prazo?
+Preço, política, prazo e oferta mudam, e base desatualizada faz a IA [responder errado no lugar mais caro](/blog/dados-desorganizados-ia-responde-mal/). Quem atualiza? O fornecedor? Sua equipe? Existe painel? Precisa pedir suporte? Qual o prazo?
 
 Manutenção é parte do projeto. Sem ela, a automação envelhece.
 
@@ -86,4 +86,4 @@ Fique atento quando o fornecedor:
 
 Bons fornecedores perguntam muito, começam pequeno, falam de dados, desenham fluxo, explicam risco e conectam investimento com retorno. Eles não tentam vender IA para tudo. Tentam encontrar onde ela paga a conta.
 
-Escolher fornecedor de IA é escolher parceiro de operação. A tecnologia importa, mas o método importa mais. Para pequena empresa, a melhor proposta não é a mais futurista. É a que resolve um gargalo real e consegue provar resultado.
+Escolher fornecedor de IA é escolher parceiro de operação. A tecnologia importa, mas o método importa mais. Para pequena empresa, a melhor proposta não é a mais futurista. É a que resolve um gargalo real e consegue provar resultado. Se a decisão ainda está aberta, o [guia de IA para PME](/blog/ia-para-pme-guia-pratico/) mostra onde a IA costuma pagar a conta numa empresa pequena.

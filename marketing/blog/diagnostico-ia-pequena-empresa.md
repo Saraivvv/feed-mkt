@@ -40,7 +40,7 @@ Um diagnóstico ruim pergunta: "qual ferramenta você quer usar?". Um diagnósti
 
 O primeiro bloco é atendimento. Quantas mensagens chegam? Por quais canais? Quanto tempo a empresa demora para responder? Quantas conversas param sem próximo passo? Quais perguntas se repetem?
 
-Se o atendimento é o principal gargalo, IA pode ajudar com resposta imediata, triagem, qualificação e follow-up. Mas só depois de medir o buraco.
+Se o atendimento é o principal gargalo, IA pode ajudar com resposta imediata, triagem, qualificação e follow-up. Mas só depois de medir o buraco, e medir é o que ensina [como medir perda de vendas por demora no atendimento](/blog/como-medir-perda-vendas-demora-atendimento/).
 
 ## Operação
 
@@ -52,7 +52,7 @@ Automação interna costuma ser menos visível, mas pode gerar muito retorno. El
 
 IA precisa de informação organizada. Por isso, o diagnóstico deve olhar onde estão preços, políticas, serviços, perguntas frequentes, documentos, histórico e regras de negócio.
 
-Se tudo está espalhado na cabeça do dono, em mensagens antigas e planilhas soltas, parte do projeto será organizar base de conhecimento. Ignorar isso aumenta erro.
+Se tudo está espalhado na cabeça do dono, em mensagens antigas e planilhas soltas, parte do projeto será organizar base de conhecimento. Ignorar isso aumenta erro, como mostra [por que a IA responde mal com dados desorganizados](/blog/dados-desorganizados-ia-responde-mal/).
 
 ## Aquisição e vendas
 
@@ -84,4 +84,4 @@ O resultado deve ser um mapa claro:
 - estimativa de investimento;
 - próximos passos.
 
-Diagnóstico não é apresentação bonita. É decisão. Ele evita que a empresa compre IA porque está na moda e ajuda a começar por onde existe retorno real.
+Diagnóstico não é apresentação bonita. É decisão. Ele evita que a empresa compre IA porque está na moda e ajuda a começar por onde existe retorno real. O [guia de IA para PME](/blog/ia-para-pme-guia-pratico/) reúne o caminho inteiro depois do diagnóstico.

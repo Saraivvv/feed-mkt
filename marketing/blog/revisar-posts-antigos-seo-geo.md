@@ -85,4 +85,4 @@ Depois de alguns meses, isso cria uma biblioteca mais forte do que publicar sem 
 
 Nos primeiros 60 dias, publicar é prioridade porque o blog precisa ganhar corpo. Depois, o equilíbrio muda. Um post novo por semana e uma revisão quinzenal é um bom ritmo.
 
-Revisão é onde conteúdo deixa de ser campanha e vira ativo. O artigo continua trabalhando mesmo depois da publicação, trazendo leitura, contexto e decisão para quem ainda está escolhendo por onde começar com IA.
+Revisão é onde conteúdo deixa de ser campanha e vira ativo. O artigo continua trabalhando mesmo depois da publicação, trazendo leitura, contexto e decisão para quem ainda está escolhendo por onde começar com IA. Quem chega agora costuma entrar pelo [guia de IA para PME](/blog/ia-para-pme-guia-pratico/).

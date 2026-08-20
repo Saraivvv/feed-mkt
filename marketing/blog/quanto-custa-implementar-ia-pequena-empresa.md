@@ -79,7 +79,7 @@ Alguns itens fazem o orçamento subir de forma legítima. Vale conhecer pra não
 - **Regras de negócio complexas.** Se a resposta certa depende de tabela de preço por região, condição de pagamento por perfil de cliente e política de desconto sazonal, a IA precisa de mais treinamento e mais teste.
 - **Volume alto de atendimento.** Mais conversas significam mais consumo de API e mais casos raros pra tratar. O custo mensal acompanha.
 - **Exigências de segurança e conformidade.** Setores como saúde e finanças pedem cuidados extras com dados, e isso é trabalho real, não frescura de fornecedor.
-- **Dados desorganizados.** O clássico. A IA só responde bem sobre aquilo que a empresa consegue explicar de forma organizada. Estruturar essa base é parte do projeto e custa tempo.
+- **Dados desorganizados.** O clássico. A IA só responde bem sobre aquilo que a empresa consegue explicar de forma organizada. Estruturar essa base é parte do projeto e custa tempo, pelo motivo explicado em [por que a IA responde mal com dados desorganizados](/blog/dados-desorganizados-ia-responde-mal/).
 
 Se um fornecedor cobra caro por causa desses fatores e mostra onde cada real vai, o preço alto pode ser justo. O problema é quando o valor sobe sem explicação.
 
@@ -101,15 +101,17 @@ O payback típico de um projeto de IA bem dimensionado pra PME fica **entre 4 e 
 
 Um exemplo com números redondos: um agente de atendimento de R$15 mil de implantação e R$1.200 por mês precisa gerar cerca de R$3.700 mensais em valor pra se pagar em 6 meses. Pra um negócio com ticket médio de R$500, isso significa recuperar 7 ou 8 vendas por mês que hoje se perdem por demora no atendimento. Na maioria das empresas que atendem pelo WhatsApp, esse número é atingível já no primeiro mês.
 
-Se a conta do fornecedor não fecha nem no papel, desconfie. Projeto que só se paga em dois anos não é projeto pra pequena empresa.
+Se a conta do fornecedor não fecha nem no papel, desconfie. O jeito de refazer essa conta sozinho está em [como calcular ROI de automação com IA](/blog/calcular-roi-automacao-ia/). Projeto que só se paga em dois anos não é projeto pra pequena empresa.
 
 ## Por onde começar sem gastar errado?
 
 A ordem que funciona pra maioria das PMEs:
 
-1. **Diagnóstico primeiro.** Antes de contratar qualquer ferramenta, entenda onde estão os gargalos da sua operação e qual deles custa mais caro por mês.
+1. **[Diagnóstico primeiro](/blog/diagnostico-ia-pequena-empresa/).** Antes de contratar qualquer ferramenta, entenda onde estão os gargalos da sua operação e qual deles custa mais caro por mês.
 2. **Um problema por vez.** Escolha o gargalo mais doloroso e resolva ele até o fim. Atendimento lento no WhatsApp costuma ser o melhor ponto de partida: dor clara, retorno rápido, fácil de medir.
 3. **Piloto antes de expansão.** Prove o retorno num processo antes de espalhar IA pela empresa inteira.
 4. **Meça sem preguiça.** Tempo de resposta, taxa de conversão, horas economizadas. Sem número, você não sabe se funcionou.
+
+Se você quer o mapa completo antes de decidir, o [guia de IA para PME](/blog/ia-para-pme-guia-pratico/) organiza essa sequência do começo ao fim.
 
 Se você quer saber quanto custaria pro seu caso específico, o caminho mais curto é o **diagnóstico gratuito da Feed**. A gente olha sua operação e sua presença digital, aponta onde a IA resolve de verdade e te entrega uma visão honesta de investimento e retorno, com escopo realista pra pequena e média empresa. Sem compromisso e sem papo de vendedor: se o seu caso não precisar de IA agora, a gente fala isso também. É só clicar no botão abaixo ou chamar no WhatsApp.

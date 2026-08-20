@@ -66,7 +66,7 @@ Vale considerar um agente de IA quando:
 - há dados que a IA precisa consultar;
 - o ticket médio permite recuperar investimento.
 
-Se um agente custa R$15 mil de implantação e R$1.200 por mês, ele precisa gerar ou economizar valor compatível. Em empresas que perdem leads por atraso, recuperar poucas vendas por mês já muda a conta.
+Se um agente custa R$15 mil de implantação e R$1.200 por mês, ele precisa gerar ou economizar valor compatível. Em empresas que perdem leads por atraso, recuperar poucas vendas por mês já muda a conta. A conta completa de payback está em [como calcular ROI de automação com IA](/blog/calcular-roi-automacao-ia/).
 
 ## Quando ainda é cedo?
 
@@ -80,4 +80,4 @@ Um bom escopo inicial inclui resposta imediata, qualificação, dúvidas frequen
 
 O projeto precisa ter uma métrica principal. Pode ser reduzir tempo de resposta, aumentar agendamentos, recuperar orçamentos ou diminuir horas do time.
 
-Agente de IA no WhatsApp vale quando a conversa já é parte central da venda. Se o WhatsApp é só canal auxiliar, talvez não seja prioridade. O diagnóstico certo separa esses casos antes de qualquer proposta.
+Agente de IA no WhatsApp vale quando a conversa já é parte central da venda. Se o WhatsApp é só canal auxiliar, talvez não seja prioridade. O diagnóstico certo separa esses casos antes de qualquer proposta. Se você ainda está montando o quadro geral, o [guia de IA para PME](/blog/ia-para-pme-guia-pratico/) mostra a sequência inteira, do gargalo escolhido ao projeto que se paga.

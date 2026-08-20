@@ -34,7 +34,7 @@ status: published
 
 Integrar IA com CRM, agenda e planilhas faz sentido quando a integração elimina retrabalho, reduz erro ou acelera uma etapa que impacta venda e operação. Não faz sentido quando a empresa quer conectar tudo antes de provar que o fluxo principal funciona.
 
-Integração é uma das partes que mais encarece projeto de IA. Por isso, ela precisa ser escolhida com critério.
+Integração é uma das partes que mais encarece projeto de IA, como mostram as faixas de [quanto custa implementar IA numa pequena empresa](/blog/quanto-custa-implementar-ia-pequena-empresa/). Por isso, ela precisa ser escolhida com critério.
 
 ## Integração boa resolve trabalho real
 
@@ -44,7 +44,7 @@ Outro exemplo: a IA lê um pedido e preenche uma planilha de produção. O human
 
 ## Integração ruim é vaidade técnica
 
-Conectar sistemas só porque é possível não é estratégia. Se a agenda quase não é usada, integrar agenda não muda nada. Se o CRM está bagunçado, a IA vai alimentar bagunça. Se a planilha muda toda semana, a integração quebra.
+Conectar sistemas só porque é possível não é estratégia. Se a agenda quase não é usada, integrar agenda não muda nada. Se o CRM está bagunçado, a IA vai alimentar bagunça, e a arrumação vem antes, no [CRM com IA para pequena empresa](/blog/crm-ia-pequena-empresa/). Se a planilha muda toda semana, a integração quebra.
 
 Antes de conectar, pergunte: qual trabalho manual desaparece? Qual erro reduz? Qual métrica melhora?
 
@@ -88,4 +88,4 @@ Liste todas as integrações desejadas e dê nota para:
 - impacto na venda;
 - facilidade técnica.
 
-Comece pela maior pontuação. Deixe o resto para fase dois. Projeto de IA bom não conecta tudo de primeira. Conecta o necessário para gerar retorno e aprender com a operação real.
+Comece pela maior pontuação. Deixe o resto para fase dois. Projeto de IA bom não conecta tudo de primeira. Conecta o necessário para gerar retorno e aprender com a operação real. Para ver a ordem completa do projeto, do gargalo à escala, leia o [guia de IA para PME](/blog/ia-para-pme-guia-pratico/).

@@ -3,8 +3,8 @@ title: "IA para PME: guia prático para começar sem gastar errado"
 slug: ia-para-pme-guia-pratico
 seoTitle: "IA para PME: guia prático | Feed"
 description: "Um guia para pequenas e médias empresas começarem com IA: onde aplicar, quanto custa, como medir, quais erros evitar e por onde começar sem gastar errado."
-date: 2026-08-20
-publishAt: 2026-08-20
+date: 2026-08-19
+publishAt: 2026-08-19
 keyword: IA para PME
 category: Guia pilar
 stage: Estou começando
@@ -28,7 +28,7 @@ readingPromise:
 relatedPlanned:
   - "Quanto custa implementar IA numa pequena empresa?"
   - "Como escolher o primeiro processo para automatizar"
-status: scheduled
+status: published
 ---
 
 IA para PME precisa ser prática. Não começa com laboratório, transformação digital ou pilha de ferramentas. Começa com um gargalo que custa tempo ou dinheiro toda semana. Atendimento lento, follow-up perdido, relatório manual, processo repetitivo, dados espalhados. É aí que a IA deixa de ser assunto de palestra e vira operação que paga a conta.

@@ -95,7 +95,7 @@ Três armadilhas deixam a conta errada. A primeira é confiar só na média de t
 
 ## O que fazer depois da medição?
 
-Se o problema é volume baixo, talvez não seja hora de automatizar. A prioridade pode ser aquisição. Se o volume existe, mas a resposta demora, uma [automação de WhatsApp](/blog/automacao-whatsapp-pequena-empresa/) inicial costuma ser o primeiro projeto com retorno mais rápido. Se a resposta é rápida, mas a conversa não fecha, o gargalo pode estar no script, na oferta ou no follow-up.
+Se o problema é volume baixo, talvez não seja hora de automatizar. A prioridade pode ser aquisição. Se o volume existe, mas a resposta demora, uma [automação de WhatsApp](/blog/automacao-whatsapp-pequena-empresa/) inicial costuma ser o primeiro projeto com retorno mais rápido. Se a resposta é rápida, mas a conversa não fecha, o gargalo pode estar no script, na oferta ou no follow-up. O [guia de IA para PME](/blog/ia-para-pme-guia-pratico/) mostra o que fazer em cada um desses cenários.
 
 Medir perda por demora não serve para culpar o time. Serve para escolher o primeiro projeto certo. A empresa deixa de falar "preciso de IA" e passa a falar "preciso reduzir de 4 horas para 5 minutos o primeiro contato de 40 leads por semana".
 

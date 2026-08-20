@@ -57,7 +57,7 @@ Comece por:
 - situações que exigem humano;
 - tom de voz da marca.
 
-Isso forma uma base mínima para atendimento e automação.
+Isso forma uma base mínima para atendimento e automação. Um [diagnóstico de IA](/blog/diagnostico-ia-pequena-empresa/) bem feito já aponta qual pedaço dessa base precisa vir primeiro.
 
 ## O perigo da informação desatualizada
 
@@ -89,4 +89,4 @@ Se a IA responde bem a perguntas comuns e reconhece limite, a base está no cami
 
 Mesmo antes da IA, organizar conhecimento ajuda o time. Novos funcionários aprendem mais rápido, respostas ficam consistentes e o atendimento depende menos de uma pessoa específica.
 
-Por isso, estruturar dados não é custo invisível. É infraestrutura operacional. Sem ela, a IA vira risco. Com ela, a automação fica mais confiável, rápida e fácil de manter.
+Por isso, estruturar dados não é custo invisível. É infraestrutura operacional. Sem ela, a IA vira risco. Com ela, a automação fica mais confiável, rápida e fácil de manter. Para ver onde a organização de dados entra na sequência completa, leia o [guia de IA para PME](/blog/ia-para-pme-guia-pratico/).

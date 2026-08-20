@@ -84,4 +84,4 @@ IA sem manutenção começa a perder confiança. Responde com informação antig
 
 Isso é perigoso porque o cliente não separa IA e marca. Para ele, a resposta errada é da empresa.
 
-Manutenção não é extra supérfluo. É o que transforma agente de IA em operação confiável. Se a empresa quer retorno contínuo, precisa tratar a IA como canal vivo.
+Manutenção não é extra supérfluo. É o que transforma agente de IA em operação confiável. Se a empresa quer retorno contínuo, precisa tratar a IA como canal vivo. Boa parte da manutenção é manter a base em ordem, assunto de [por que a IA responde mal com dados desorganizados](/blog/dados-desorganizados-ia-responde-mal/), e o [guia de IA para PME](/blog/ia-para-pme-guia-pratico/) mostra onde essa etapa entra no projeto.

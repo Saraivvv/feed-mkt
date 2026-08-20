@@ -112,7 +112,7 @@ Se você consegue descrever as etapas em passos claros e o time concorda com ess
 Não. Piloto pequeno prova valor em semanas e gera aprendizado barato. Projeto completo de primeira costuma travar em integração e treinamento, e o erro sai caro. Quem começa pequeno expande com confiança e dados.
 
 **O que devo exigir do fornecedor para evitar esses erros?**
-Diagnóstico antes de proposta, métrica definida em contrato, escopo de piloto com prazo curto e manutenção prevista depois da entrega. Fornecedor que promete tudo sem perguntar sobre teu processo é sinal de alerta.
+Diagnóstico antes de proposta, métrica definida em contrato, escopo de piloto com prazo curto e manutenção prevista depois da entrega. Fornecedor que promete tudo sem perguntar sobre teu processo é sinal de alerta. O [guia de IA para PME](/blog/ia-para-pme-guia-pratico/) reúne o caminho certo, do diagnóstico ao piloto que se paga.
 
 **A Feed ajuda a evitar esses erros como?**
 Começando pelo diagnóstico gratuito: a gente olha teus processos, aponta onde a IA se paga primeiro e define a métrica antes de falar de ferramenta. Se o projeto não fizer sentido, a gente fala que não faz.
