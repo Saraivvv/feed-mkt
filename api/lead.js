@@ -1,8 +1,16 @@
 import nodemailer from "nodemailer";
-import { enviarParaCRM } from "./_crm.js";
+import { enviarAoHub } from "./_hub.js";
 
-// Recebe as respostas do quiz do site e envia um e-mail com o lead.
+// Recebe as respostas do quiz do site e entrega o lead.
 // Roda como Serverless Function na Vercel (mesmo dominio do site, sem CORS).
+//
+// C-200 — A ORDEM AQUI E O CONSERTO. Antes o e-mail vinha primeiro e o resto
+// morava DEPOIS dele, dentro do mesmo try: quando o SMTP recusou o remetente
+// (553, 08/09/2026), o throw pulou o CRM e o lead nao chegou em lugar nenhum.
+// Agora o Hub — que grava, mostra na home e espelha no Twenty do workspace —
+// vem primeiro, e o e-mail e uma copia que so consegue derrubar a si mesma.
+// O CRM direto saiu daqui de proposito: quem fala com o Twenty da Feed passa a
+// ser o Hub, num lugar so (agendar.js e diagnostico.js seguem no _crm.js).
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     res.status(405).json({ error: "Method not allowed" });
@@ -86,6 +94,21 @@ export default async function handler(req, res) {
     `Navegador: ${userAgent || "—"}`,
   ].join("\n");
 
+  // (1) Hub primeiro: destino duravel do lead.
+  const noHub = await enviarAoHub({
+    nome: company,
+    origem: "Quiz do site",
+    respostas: {
+      "Mercado / segmento": market,
+      "Momento atual": stage,
+      "Presença digital": digitalPresence,
+      Prioridade: priority,
+      "Página": pageUrl,
+    },
+  });
+
+  // (2) E-mail como copia. Falha dele nao pode mais custar o lead.
+  let noEmail = false;
   try {
     await transporter.sendMail({
       from: `"Site Feed" <${user}>`,
@@ -95,22 +118,16 @@ export default async function handler(req, res) {
       text,
       html,
     });
-    // CRM best-effort: e-mail ja garantiu o lead; falha aqui so loga.
-    await enviarParaCRM({
-      empresa: company,
-      origem: "Quiz do site",
-      detalhes: {
-        "Mercado / segmento": market,
-        "Momento atual": stage,
-        "Presença digital": digitalPresence,
-        Prioridade: priority,
-        "Página": pageUrl,
-      },
-    });
-
-    res.status(200).json({ ok: true });
+    noEmail = true;
   } catch (err) {
     console.error("Falha ao enviar lead por e-mail:", err);
-    res.status(500).json({ error: "Falha ao enviar" });
   }
+
+  // 500 so quando NENHUM destino ficou com o lead — ai o visitante precisa
+  // saber que nao chegou.
+  if (!noHub && !noEmail) {
+    res.status(500).json({ error: "Falha ao enviar" });
+    return;
+  }
+  res.status(200).json({ ok: true });
 }
