@@ -70,7 +70,7 @@ Consultoria por projeto, quando existe mais de um gargalo, mais de uma área env
 
 Acompanhamento mensal, para revisar métrica, ajustar escopo e conduzir a próxima fase. Só faz sentido quando existe projeto rodando de verdade.
 
-Seja qual for o formato, compare o valor com o tamanho do projeto que ele vai destravar. As faixas de preço da implementação estão em [quanto custa implementar IA numa pequena empresa](/blog/quanto-custa-implementar-ia-pequena-empresa/). Se a consultoria custa quase o mesmo que a implementação, algo está desproporcional.
+Seja qual for o formato, compare o valor com o tamanho do projeto que ele vai destravar. As faixas de preço da implementação estão em [quanto custa implementar IA numa pequena empresa](/quanto-custa/). Se a consultoria custa quase o mesmo que a implementação, algo está desproporcional.
 
 ## O que precisa estar escrito no escopo
 

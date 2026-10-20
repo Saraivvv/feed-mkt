@@ -34,7 +34,7 @@ status: published
 
 Integrar IA com CRM, agenda e planilhas faz sentido quando a integração elimina retrabalho, reduz erro ou acelera uma etapa que impacta venda e operação. Não faz sentido quando a empresa quer conectar tudo antes de provar que o fluxo principal funciona.
 
-Integração é uma das partes que mais encarece projeto de IA, como mostram as faixas de [quanto custa implementar IA numa pequena empresa](/blog/quanto-custa-implementar-ia-pequena-empresa/). Por isso, ela precisa ser escolhida com critério.
+Integração é uma das partes que mais encarece projeto de IA, como mostram as faixas de [quanto custa implementar IA numa pequena empresa](/quanto-custa/). Por isso, ela precisa ser escolhida com critério.
 
 ## Integração boa resolve trabalho real
 
@@ -132,7 +132,7 @@ Se marcação de horário é parte central da venda, sim. Se a agenda é usada d
 É solução legítima para muita PME. Barata, flexível e todo mundo entende. Vira problema quando não tem padrão de coluna e quando várias pessoas editam ao mesmo tempo.
 
 **Quanto custa uma integração?**
-Depende do nível. Conector pronto é quase custo zero de desenvolvimento. API documentada é trabalho de horas. Sistema fechado pode custar mais que o resto do projeto. As faixas gerais estão em [quanto custa implementar IA numa pequena empresa](/blog/quanto-custa-implementar-ia-pequena-empresa/).
+Depende do nível. Conector pronto é quase custo zero de desenvolvimento. API documentada é trabalho de horas. Sistema fechado pode custar mais que o resto do projeto. As faixas gerais estão em [quanto custa implementar IA numa pequena empresa](/quanto-custa/).
 
 **Como escolho a primeira integração?**
 Pela que elimina trabalho manual diário com menor esforço técnico. Se duas empatam, escolha a que envolve o sistema que sua equipe realmente usa. Esse ordenamento é parte do diagnóstico gratuito da Feed.

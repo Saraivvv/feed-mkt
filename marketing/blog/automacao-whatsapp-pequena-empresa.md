@@ -89,7 +89,7 @@ Esse é o ponto que separa investimento de gasto. Sem número na frente, a decis
 
 ## Quanto custa?
 
-Depende do formato. Uma automação simples sobre uma ferramenta pronta pode custar algumas centenas de reais por mês. Um agente sob medida, com qualificação, integração e passagem para humano, exige implantação e sobe conforme a complexidade. Para a maioria das pequenas empresas, o investimento fica na faixa de R$800 por mês a alguns milhares no projeto, com payback típico de 4 a 8 meses quando o gargalo é real. A lógica completa de preços está no guia de [quanto custa implementar IA numa pequena empresa](/blog/quanto-custa-implementar-ia-pequena-empresa/).
+Depende do formato. Uma automação simples sobre uma ferramenta pronta pode custar algumas centenas de reais por mês. Um agente sob medida, com qualificação, integração e passagem para humano, exige implantação e sobe conforme a complexidade. Para a maioria das pequenas empresas, o investimento fica na faixa de R$800 por mês a alguns milhares no projeto, com payback típico de 4 a 8 meses quando o gargalo é real. A lógica completa de preços está no guia de [quanto custa implementar IA numa pequena empresa](/quanto-custa/).
 
 ## Por onde começar com segurança?
 

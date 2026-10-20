@@ -85,7 +85,7 @@ Nada disso precisa estar perfeito. Precisa estar bom o suficiente para o primeir
 
 ## Quanto custa e em quanto tempo se paga?
 
-Existem duas faixas bem diferentes. Ferramenta pronta com IA embutida sai de R$100 a R$800 por mês, resolve o básico e depende do que o fornecedor liberou. Agente sob medida, com base própria, regras e integração, costuma exigir implantação de R$8 mil a R$40 mil e mensalidade de R$800 a R$3 mil, conforme volume e complexidade. As faixas completas estão em [quanto custa implementar IA numa pequena empresa](/blog/quanto-custa-implementar-ia-pequena-empresa/).
+Existem duas faixas bem diferentes. Ferramenta pronta com IA embutida sai de R$100 a R$800 por mês, resolve o básico e depende do que o fornecedor liberou. Agente sob medida, com base própria, regras e integração, costuma exigir implantação de R$8 mil a R$40 mil e mensalidade de R$800 a R$3 mil, conforme volume e complexidade. As faixas completas estão em [quanto custa implementar IA numa pequena empresa](/quanto-custa/).
 
 A conta que importa é simples. Um agente de R$15 mil de implantação e R$1.200 por mês precisa gerar por volta de R$3.700 mensais em valor para se pagar em seis meses. Com ticket médio de R$500, isso significa recuperar sete ou oito vendas por mês que hoje se perdem por demora. Em quem atende pelo WhatsApp, esse número costuma aparecer já no primeiro mês. O método para refazer essa conta com os seus números está em [como calcular ROI de automação com IA](/blog/calcular-roi-automacao-ia/).
 

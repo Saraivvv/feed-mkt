@@ -55,7 +55,7 @@ Retorno mensal estimado = vendas recuperadas + horas economizadas + custos evita
 
 Payback = investimento inicial dividido pelo ganho mensal líquido.
 
-Se um projeto custa R$18 mil de implantação e R$1.200 por mês, e gera R$5 mil por mês em valor, o ganho líquido é R$3.800. O payback aproximado é 18.000 / 3.800 = 4,7 meses. Se você ainda não sabe se esses valores fazem sentido, veja as faixas praticadas em [quanto custa implementar IA numa pequena empresa](/blog/quanto-custa-implementar-ia-pequena-empresa/).
+Se um projeto custa R$18 mil de implantação e R$1.200 por mês, e gera R$5 mil por mês em valor, o ganho líquido é R$3.800. O payback aproximado é 18.000 / 3.800 = 4,7 meses. Se você ainda não sabe se esses valores fazem sentido, veja as faixas praticadas em [quanto custa implementar IA numa pequena empresa](/quanto-custa/).
 
 Isso é bom para PME. Projetos que se pagam entre 4 e 8 meses costumam ser saudáveis. Acima de 12 meses, precisa olhar com mais cuidado.
 

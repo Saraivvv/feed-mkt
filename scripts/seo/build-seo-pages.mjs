@@ -61,7 +61,7 @@ const pages = [
     related: ["automacao-whatsapp", "agentes-de-ia", "diagnostico-ia-empresa"],
     relatedPosts: [
       ["/blog/ia-para-pme-guia-pratico/", "IA para PME: guia prático para começar"],
-      ["/blog/quanto-custa-implementar-ia-pequena-empresa/", "Quanto custa implementar IA numa pequena empresa?"],
+      ["/quanto-custa/", "Quanto custa automação e IA para pequena empresa"],
       ["/blog/primeiro-processo-automatizar-pme/", "Como escolher o primeiro processo para automatizar"],
     ],
   },
@@ -77,7 +77,7 @@ const pages = [
       "Cliente que espera demais esfria. A Feed monta automações de WhatsApp que respondem o básico na hora, qualificam oportunidades e deixam o humano entrar quando a conversa exige cuidado.",
     primaryCta: "Diagnosticar meu atendimento",
     secondaryCta: "Ler sobre custos de IA",
-    secondaryHref: "/blog/quanto-custa-implementar-ia-pequena-empresa/",
+    secondaryHref: "/quanto-custa/",
     serviceName: "Automação de atendimento no WhatsApp com IA",
     bulletsTitle: "O que entra no projeto",
     bullets: [
@@ -197,7 +197,7 @@ const pages = [
       "A Feed ajuda empresas de Ribeirão Preto e cidades vizinhas a usarem IA onde ela paga a conta: atendimento, follow-up e operação. O trabalho é remoto na maior parte do tempo, presencial quando o projeto pede, sempre com escopo enxuto e retorno mensurável.",
     primaryCta: "Pedir diagnóstico gratuito",
     secondaryCta: "Ver guia de custos",
-    secondaryHref: "/blog/quanto-custa-implementar-ia-pequena-empresa/",
+    secondaryHref: "/quanto-custa/",
     serviceName:
       "Consultoria e implementação de IA para empresas de Ribeirão Preto e região",
     bulletsTitle: "O que a Feed resolve para empresas da região",
@@ -223,7 +223,7 @@ const pages = [
     related: ["ia-para-pequenas-empresas", "automacao-whatsapp", "agentes-de-ia"],
     relatedPosts: [
       ["/blog/ia-para-pme-guia-pratico/", "IA para PME: guia prático para começar"],
-      ["/blog/quanto-custa-implementar-ia-pequena-empresa/", "Quanto custa implementar IA numa pequena empresa?"],
+      ["/quanto-custa/", "Quanto custa automação e IA para pequena empresa"],
       ["/blog/automacao-whatsapp-pequena-empresa/", "Automação de WhatsApp: quando vale a pena"],
     ],
   },
@@ -239,7 +239,7 @@ const pages = [
       "A Feed nasceu unindo marketing e IA aplicada para ajudar empresas de Bebedouro e região a venderem mais sem depender de sorte. Menos post solto, mais operação que gera contato, atende rápido e converte.",
     primaryCta: "Pedir diagnóstico gratuito",
     secondaryCta: "Ver guia de custos",
-    secondaryHref: "/blog/quanto-custa-implementar-ia-pequena-empresa/",
+    secondaryHref: "/quanto-custa/",
     serviceName:
       "Marketing, posicionamento e IA aplicada para empresas de Bebedouro e região",
     bulletsTitle: "O que a Feed faz por empresas de Bebedouro",
@@ -265,7 +265,7 @@ const pages = [
     related: ["ia-para-pequenas-empresas", "diagnostico-ia-empresa", "automacao-whatsapp"],
     relatedPosts: [
       ["/blog/ia-para-pme-guia-pratico/", "IA para PME: guia prático para começar"],
-      ["/blog/quanto-custa-implementar-ia-pequena-empresa/", "Quanto custa implementar IA numa pequena empresa?"],
+      ["/quanto-custa/", "Quanto custa automação e IA para pequena empresa"],
       ["/blog/primeiro-processo-automatizar-pme/", "Como escolher o primeiro processo para automatizar"],
     ],
   },
@@ -427,7 +427,7 @@ ${JSON.stringify(pageSchema(page), null, 2)}
         </div>
         <div class="related-links">
           ${related}
-          ${(page.relatedPosts || [["/blog/quanto-custa-implementar-ia-pequena-empresa/", "Quanto custa implementar IA numa pequena empresa?"]])
+          ${(page.relatedPosts || [["/quanto-custa/", "Quanto custa automação e IA para pequena empresa"]])
             .map(([href, label]) => `<a href="${href}">${esc(label)}</a>`)
             .join("\n          ")}
           <a href="/blog/">Todos os artigos do blog</a>
@@ -662,13 +662,19 @@ ol li::before {
 `;
 }
 
+// Páginas estratégicas que não são geradas por este script, mas entram no
+// sitemap e no llms.txt. /quanto-custa/ precisa estar publicada no mesmo deploy.
+const extraStrategicPages = [
+  { slug: "quanto-custa", title: "Quanto custa automação e IA para pequena empresa", priority: "0.9" },
+];
+
 function updateSitemap() {
   const path = join(PUBLIC_DIR, "sitemap.xml");
   let xml = readFileSync(path, "utf8");
   // Remove dinamicamente as entradas das paginas atuais antes de reinserir,
   // para o build ser idempotente e nao acumular duplicatas a cada rodada.
   const reEsc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  const slugAlt = pages.map((p) => reEsc(p.slug)).join("|");
+  const slugAlt = [...pages, ...extraStrategicPages].map((p) => reEsc(p.slug)).join("|");
   xml = xml.replace(
     new RegExp(
       `\\s*<url>\\s*<loc>${reEsc(SITE)}/(?:${slugAlt})/</loc>[\\s\\S]*?</url>`,
@@ -686,6 +692,16 @@ function updateSitemap() {
     <priority>${page.type === "hub" ? "0.9" : "0.8"}</priority>
   </url>`
     )
+    .concat(
+      extraStrategicPages.map(
+        (page) => `  <url>
+    <loc>${SITE}/${page.slug}/</loc>
+    <lastmod>${LASTMOD}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>${page.priority}</priority>
+  </url>`
+      )
+    )
     .join("\n");
 
   xml = xml.replace("</urlset>", `${entries}\n</urlset>`);
@@ -699,6 +715,7 @@ function updateLlms() {
   text += `\n\n## Páginas estratégicas\n\n`;
   text += pages
     .map((page) => `- ${page.h1.replace(/\.$/, "")}: ${SITE}/${page.slug}/`)
+    .concat(extraStrategicPages.map((page) => `- ${page.title}: ${SITE}/${page.slug}/`))
     .join("\n");
   text += `\n- Blog da Feed: ${SITE}/blog/\n`;
   writeFileSync(path, text, "utf8");

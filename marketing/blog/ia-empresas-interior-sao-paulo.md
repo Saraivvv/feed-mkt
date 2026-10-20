@@ -88,7 +88,7 @@ O caminho que funciona é o mesmo em qualquer cidade:
 4. rodar um piloto enxuto por algumas semanas;
 5. comparar com a semana medida no começo e decidir se expande.
 
-As faixas de investimento estão em [quanto custa implementar IA numa pequena empresa](/blog/quanto-custa-implementar-ia-pequena-empresa/). Para empresa pequena da região, o piloto costuma caber bem antes de qualquer projeto grande.
+As faixas de investimento estão em [quanto custa implementar IA numa pequena empresa](/quanto-custa/). Para empresa pequena da região, o piloto costuma caber bem antes de qualquer projeto grande.
 
 ## Quando não é hora
 

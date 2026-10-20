@@ -73,7 +73,7 @@ Para muitas PMEs, o primeiro projeto é atendimento. O motivo é simples: conver
 
 O investimento varia muito, de cerca de R$100 por mês em ferramenta pronta a dezenas de milhares numa solução sob medida com implantação. O ponto não é buscar o menor preço. É buscar o projeto que se paga.
 
-Para PME, um payback entre 4 e 8 meses costuma ser uma boa régua. Se a conta não fecha nesse intervalo, reduza o escopo ou escolha outro gargalo. A faixa completa, com o que encarece e o que é desperdício, está no guia de [quanto custa implementar IA numa pequena empresa](/blog/quanto-custa-implementar-ia-pequena-empresa/).
+Para PME, um payback entre 4 e 8 meses costuma ser uma boa régua. Se a conta não fecha nesse intervalo, reduza o escopo ou escolha outro gargalo. A faixa completa, com o que encarece e o que é desperdício, está no guia de [quanto custa implementar IA numa pequena empresa](/quanto-custa/).
 
 Antes de aprovar qualquer proposta, monte a conta de retorno com seus próprios números. O passo a passo para isso está em [como calcular o ROI de automação com IA](/blog/calcular-roi-automacao-ia/). Proposta sem métrica de retorno não é proposta, é aposta.
 

@@ -96,7 +96,7 @@ Ao comparar fornecedores, pergunte o que está incluído depois da entrega. Quem
 
 Comece por diagnóstico. Escolha um problema real, pequeno o bastante para implementar em semanas e grande o bastante para gerar retorno visível. Defina métrica, organize os dados mínimos e implemente com saída humana para os casos que fogem do padrão.
 
-Antes de assinar, faça a conta: o custo do projeto cabe no retorno esperado? As faixas reais de investimento estão no guia de [quanto custa implementar IA numa pequena empresa](/blog/quanto-custa-implementar-ia-pequena-empresa/), e a régua é simples: piloto que não se paga em poucos meses merece escopo menor.
+Antes de assinar, faça a conta: o custo do projeto cabe no retorno esperado? As faixas reais de investimento estão no guia de [quanto custa implementar IA numa pequena empresa](/quanto-custa/), e a régua é simples: piloto que não se paga em poucos meses merece escopo menor.
 
 Essa abordagem pode parecer menos empolgante do que "IA em tudo", mas é a que funciona para pequena empresa. Projeto bom não é o que impressiona na apresentação. É o que roda na rotina e paga a própria conta.
 

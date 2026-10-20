@@ -133,7 +133,7 @@ Dá para começar com planilha se o volume é baixo e uma ou duas pessoas vendem
 Resumo de conversa, registro automático do que foi combinado, classificação de intenção, alerta de oportunidade parada e sugestão de próxima mensagem. Ela reduz digitação e esquecimento, que são as duas causas mais comuns de venda perdida.
 
 **Quanto custa um CRM com IA para pequena empresa?**
-As ferramentas variam de plano gratuito a algumas centenas de reais por mês por usuário. O custo maior costuma ser a implantação e a integração com o WhatsApp, não a licença. As faixas de projeto estão em [quanto custa implementar IA numa pequena empresa](/blog/quanto-custa-implementar-ia-pequena-empresa/).
+As ferramentas variam de plano gratuito a algumas centenas de reais por mês por usuário. O custo maior costuma ser a implantação e a integração com o WhatsApp, não a licença. As faixas de projeto estão em [quanto custa implementar IA numa pequena empresa](/quanto-custa/).
 
 **Meu time não usa o CRM atual. Trocar resolve?**
 Quase nunca. Se o problema é rotina e campo demais, a ferramenta nova vira o mesmo abandono em três meses. Simplifique etapas e campos primeiro, depois avalie a troca.

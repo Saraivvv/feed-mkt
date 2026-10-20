@@ -40,7 +40,7 @@ A maioria das pequenas empresas sente que perde venda por demora, mas não mede.
 
 Sem número, toda discussão de melhoria vira opinião. Um sócio acha que o problema é preço, outro acha que é o vendedor, outro acha que falta anúncio. Ninguém está totalmente certo porque ninguém está medindo.
 
-Com número, a conversa muda de "acho que perdemos venda" para "perdemos por volta de R$6 mil por mês entre gente que pediu orçamento e não teve retorno a tempo". Esse segundo jeito de falar decide investimento, define prioridade e evita gastar no lugar errado. É o mesmo raciocínio que sustenta qualquer conta de retorno, como no guia de [quanto custa implementar IA numa pequena empresa](/blog/quanto-custa-implementar-ia-pequena-empresa/).
+Com número, a conversa muda de "acho que perdemos venda" para "perdemos por volta de R$6 mil por mês entre gente que pediu orçamento e não teve retorno a tempo". Esse segundo jeito de falar decide investimento, define prioridade e evita gastar no lugar errado. É o mesmo raciocínio que sustenta qualquer conta de retorno, como no guia de [quanto custa implementar IA numa pequena empresa](/quanto-custa/).
 
 ## O primeiro número: volume de oportunidades
 
