@@ -16,8 +16,6 @@ businessOutcome: "Planejar manutenção para evitar resposta errada, queda de qu
 heroSummary: "Agente de IA precisa de revisão de conversas, atualização de base, ajustes de fluxo e acompanhamento de métricas."
 cardLabel: "Depois do lançamento"
 cardTakeaway: "Entenda a rotina que mantém a IA útil depois da implantação."
-costRange: "R$800/mês a R$2.500/mês"
-payback: "Protege resultado"
 difficulty: "Médio"
 ctaVariant: diagnostico-operacao
 readingPromise:
@@ -102,7 +100,7 @@ Três papéis dão conta: quem atende cliente todo dia, quem decide prioridade e
 
 O custo mensal de um agente tem três partes, e a proposta precisa mostrar todas.
 
-A primeira é o serviço do fornecedor, que cobre suporte, ajuste de fluxo e correção. A segunda é o consumo: canal oficial cobra por conversa e o modelo de IA cobra por uso. A terceira é o tempo da sua equipe, aquelas horas de revisão que não aparecem em fatura nenhuma mas existem.
+A primeira é o serviço do fornecedor, que cobre suporte, ajuste de fluxo e correção. A segunda é o que fica fora do serviço: integração nova, fluxo novo ou mudança de escopo. Isso precisa estar escrito antes, para não aparecer como surpresa. A terceira é o tempo da sua equipe, aquelas horas de revisão que não aparecem em fatura nenhuma mas existem.
 
 Se a proposta traz só a primeira parte, peça as outras duas por escrito. É o tipo de surpresa que azeda projeto bom no terceiro mês.
 

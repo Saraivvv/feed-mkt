@@ -16,8 +16,6 @@ businessOutcome: "Entender o trabalho de organizar conhecimento antes de automat
 heroSummary: "IA não adivinha regra de negócio: ela responde bem quando a empresa explica bem."
 cardLabel: "Base antes da IA"
 cardTakeaway: "Veja por que organizar conhecimento é parte do projeto, não detalhe burocrático."
-costRange: "Tempo de estruturação"
-payback: "Reduz erro"
 difficulty: "Médio"
 ctaVariant: diagnostico-operacao
 readingPromise:

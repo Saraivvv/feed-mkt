@@ -13,11 +13,9 @@ featured: true
 readerQuestion: "Como minha empresa pode começar com IA de forma prática e segura?"
 painPoint: "A empresa quer usar IA, mas está cercada por ferramenta, promessa e dúvida de investimento."
 businessOutcome: "Montar uma sequência prática para diagnosticar, priorizar, testar e escalar IA com retorno."
-heroSummary: "IA para PME deve começar por um gargalo mensurável: atendimento, follow-up, operação repetitiva ou organização de dados. Um projeto pequeno, com métrica, que se paga em 4 a 8 meses."
+heroSummary: "IA para PME deve começar por um gargalo mensurável: atendimento, follow-up, operação repetitiva ou organização de dados. Um projeto pequeno, com métrica, que mostra se está se pagando."
 cardLabel: "Guia principal"
 cardTakeaway: "O mapa completo para começar com IA sem cair em hype, escopo gigante ou ferramenta desnecessária."
-costRange: "R$100/mês a R$40 mil"
-payback: "4 a 8 meses"
 difficulty: "Médio"
 ctaVariant: diagnostico-ia
 readingPromise:
@@ -71,9 +69,9 @@ Para muitas PMEs, o primeiro projeto é atendimento. O motivo é simples: conver
 
 ## Quanto custa e quando se paga?
 
-O investimento varia muito, de cerca de R$100 por mês em ferramenta pronta a dezenas de milhares numa solução sob medida com implantação. O ponto não é buscar o menor preço. É buscar o projeto que se paga.
+O investimento varia muito, de ferramenta pronta por assinatura a solução sob medida com implantação. Por isso não existe preço de tabela: o valor sai do tamanho do problema, das integrações e do estado dos dados. O ponto não é buscar o menor preço. É buscar o projeto que se paga.
 
-Para PME, um payback entre 4 e 8 meses costuma ser uma boa régua. Se a conta não fecha nesse intervalo, reduza o escopo ou escolha outro gargalo. A faixa completa, com o que encarece e o que é desperdício, está no guia de [quanto custa implementar IA numa pequena empresa](/quanto-custa/).
+O prazo para se pagar depende do gargalo e do volume. Defina antes quanto tempo a empresa aguenta esperar. Se a conta não fecha nesse prazo, reduza o escopo ou escolha outro gargalo. O que compõe o preço, o que encarece e o que é desperdício está no guia de [quanto custa implementar IA numa pequena empresa](/quanto-custa/).
 
 Antes de aprovar qualquer proposta, monte a conta de retorno com seus próprios números. O passo a passo para isso está em [como calcular o ROI de automação com IA](/blog/calcular-roi-automacao-ia/). Proposta sem métrica de retorno não é proposta, é aposta.
 
@@ -134,7 +132,7 @@ Não. Você precisa entender do seu negócio e dos seus gargalos. A parte técni
 Automatizar a primeira resposta de atendimento ou um follow-up. Custa pouco, é fácil de medir e resolve uma dor diária. Serve como piloto para provar valor antes de investir mais.
 
 **Quanto tempo até ver resultado?**
-Um piloto bem escolhido mostra sinal em semanas no indicador que você definiu. O retorno financeiro que fecha a conta costuma aparecer em 4 a 8 meses.
+Um piloto bem escolhido mostra sinal primeiro no indicador que você definiu, antes de aparecer no caixa. Quando o retorno financeiro fecha a conta depende do gargalo e do volume.
 
 **IA vai substituir minha equipe?**
 Não é o objetivo num projeto bem feito. A IA tira a repetição e libera a equipe para decisão, exceção e relacionamento, que é onde ela gera mais valor.

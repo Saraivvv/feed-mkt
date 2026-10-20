@@ -16,8 +16,6 @@ businessOutcome: "Decidir se o WhatsApp deve ser automatizado agora, o que autom
 heroSummary: "Automação de WhatsApp vale quando demora de resposta, repetição e falta de follow-up já custam vendas mensuráveis."
 cardLabel: "Atendimento e vendas"
 cardTakeaway: "Veja os sinais de que o WhatsApp virou gargalo e como começar sem criar um robô irritante."
-costRange: "R$800/mês a R$25 mil"
-payback: "4 a 8 meses"
 difficulty: "Médio"
 ctaVariant: diagnostico-atendimento
 readingPromise:
@@ -34,7 +32,7 @@ status: published
 
 Automação de WhatsApp para pequena empresa vale a pena quando o atendimento deixou de ser apenas uma conversa e virou gargalo comercial. Se a empresa demora para responder, esquece follow-up, repete a mesma explicação todos os dias e não sabe quantas oportunidades perdeu, o problema já passou do ponto de "organizar melhor a agenda". Ele virou operação.
 
-O erro comum é começar pela ferramenta. O dono procura chatbot, IA, CRM, API oficial, fluxo de menu, integração com agenda. Tudo isso pode fazer sentido, mas vem depois da pergunta principal: qual parte do atendimento está custando dinheiro agora? Este guia ajuda você a responder isso antes de gastar.
+O erro comum é começar pela ferramenta. O dono procura chatbot, IA, CRM, forma de conectar o WhatsApp, fluxo de menu, integração com agenda. Tudo isso pode fazer sentido, mas vem depois da pergunta principal: qual parte do atendimento está custando dinheiro agora? Este guia ajuda você a responder isso antes de gastar.
 
 ## Quando o WhatsApp vira gargalo?
 
@@ -83,13 +81,13 @@ Antes de contratar qualquer solução, meça três números por uma semana:
 2. Quanto tempo a empresa demora para responder.
 3. Quantas conversas ficam sem fechamento ou sem próximo passo.
 
-Depois da automação, compare tempo de resposta, taxa de agendamento, taxa de orçamento enviado e vendas recuperadas. A conta costuma ser direta. Se um agente de atendimento custa R$1.200 por mês e recupera três vendas de R$600, ele já pagou o dobro do que custou. Se economiza 30 horas de atendimento repetitivo por mês, existe retorno mesmo antes de contar venda nova.
+Depois da automação, compare tempo de resposta, taxa de agendamento, taxa de orçamento enviado e vendas recuperadas. A conta costuma ser direta. Se um agente de atendimento recupera três vendas por mês que antes se perdiam, multiplique pelo seu ticket médio e compare com o valor mensal da proposta. Se economiza 30 horas de atendimento repetitivo por mês, existe retorno mesmo antes de contar venda nova.
 
 Esse é o ponto que separa investimento de gasto. Sem número na frente, a decisão vira sensação. Com número, você sabe se continua, ajusta o escopo ou desliga.
 
 ## Quanto custa?
 
-Depende do formato. Uma automação simples sobre uma ferramenta pronta pode custar algumas centenas de reais por mês. Um agente sob medida, com qualificação, integração e passagem para humano, exige implantação e sobe conforme a complexidade. Para a maioria das pequenas empresas, o investimento fica na faixa de R$800 por mês a alguns milhares no projeto, com payback típico de 4 a 8 meses quando o gargalo é real. A lógica completa de preços está no guia de [quanto custa implementar IA numa pequena empresa](/quanto-custa/).
+Depende do formato. Uma automação simples sobre uma ferramenta pronta é o ponto de entrada. Um agente sob medida, com qualificação, integração e passagem para humano, exige implantação e sobe conforme a complexidade. Na Feed, o valor sai numa proposta personalizada depois de uma conversa, e a IA só entra quando faz sentido para o seu atendimento. O que compõe o preço está no guia de [quanto custa implementar IA numa pequena empresa](/quanto-custa/).
 
 ## Por onde começar com segurança?
 
@@ -106,10 +104,10 @@ Vale quando existe volume e repetição. Se você responde as mesmas perguntas t
 Só se for mal feita. Uma boa automação responde no contexto, tem saída clara para humano e não prende o cliente num menu. O objetivo é agilizar o repetitivo, não fingir que a máquina resolve tudo.
 
 **Preciso da API oficial do WhatsApp?**
-Depende do volume e do tipo de automação. Operações maiores e com IA costumam usar a API oficial por estabilidade e regras. Muita empresa começa mais simples e migra quando o volume justifica.
+Depende do volume e do que precisa integrar. Existem as duas formas: a API do WhatsApp Business, que costuma entrar quando o volume é alto ou várias pessoas atendem ao mesmo tempo, e a conexão com o WhatsApp que a empresa já usa. A escolha se faz no diagnóstico, olhando a sua operação.
 
 **Quanto tempo até ver resultado?**
-Tempo de resposta e taxa de agendamento melhoram já nas primeiras semanas. O retorno financeiro que fecha a conta costuma aparecer em 4 a 8 meses, dependendo do ticket e do volume.
+Tempo de resposta e taxa de agendamento são os primeiros números a mudar. O prazo do retorno financeiro depende do gargalo, do ticket e do volume.
 
 **Por onde eu começo?**
 Meça uma semana de atendimento real: volume, tempo de resposta e conversas sem fechamento. Esses números mostram se o WhatsApp virou gargalo e qual fluxo automatizar primeiro. Se a dúvida ainda é mais ampla, o [guia de IA para PME](/blog/ia-para-pme-guia-pratico/) mostra onde o atendimento entra na fila de prioridades. Para ver o escopo do serviço, a página de [automação de WhatsApp com IA](/automacao-whatsapp/) explica o que entra no projeto. É por aí que o diagnóstico gratuito da Feed começa.

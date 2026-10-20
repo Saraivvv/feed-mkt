@@ -16,8 +16,6 @@ businessOutcome: "Avaliar fornecedores com perguntas práticas antes de fechar c
 heroSummary: "Fornecedor bom explica problema, escopo, métrica, manutenção e limite da IA sem esconder atrás de jargão."
 cardLabel: "Antes de fechar"
 cardTakeaway: "Use perguntas objetivas para comparar fornecedores e evitar proposta bonita sem operação."
-costRange: "Evita contrato ruim"
-payback: "Antes do projeto"
 difficulty: "Baixo"
 ctaVariant: diagnostico-ia
 readingPromise:
@@ -131,7 +129,7 @@ Não. Você precisa entender da sua operação. As perguntas que separam propost
 Depende do que falta. Freelancer resolve escopo pequeno e bem definido. Agência e consultoria fazem sentido quando é preciso desenhar processo, integrar áreas e manter o projeto vivo depois da entrega. O risco do freelancer é continuidade, o risco da agência é escopo inflado.
 
 **Preço muito abaixo dos outros é sinal ruim?**
-Nem sempre, mas exige explicação. Costuma significar escopo menor, ferramenta pronta em vez de solução própria ou conexão não oficial com o WhatsApp. Pergunte o que muda em relação à proposta mais cara e decida com a diferença na mão.
+Nem sempre, mas exige explicação. Costuma significar escopo menor, ferramenta pronta em vez de solução própria ou menos coisa incluída, como integração, suporte e revisão. Pergunte o que muda em relação à proposta mais cara e decida com a diferença na mão.
 
 **Como saber se o fornecedor vai sumir depois da entrega?**
 Pergunte quem atende, em qual canal e com qual prazo. Peça o nome da pessoa responsável, não só o da empresa. E confirme se manutenção está no contrato ou se será cobrada por demanda.

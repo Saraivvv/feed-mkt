@@ -19,7 +19,7 @@ Depois dos primeiros 60 dias:
 
 O blog deve ajudar o dono de negocio a decidir melhor. Prioridade para temas que envolvem:
 
-- custo real de IA;
+- o que compõe o custo de IA (sem tabela nem faixa de preço);
 - automacao de atendimento;
 - WhatsApp, CRM, agenda e processos;
 - ROI e payback;
@@ -70,8 +70,6 @@ businessOutcome: "O que o leitor decide melhor depois de ler"
 heroSummary: "Resposta curta que vende a leitura"
 cardLabel: "Antes de pedir orcamento"
 cardTakeaway: "Por que vale clicar neste guia"
-costRange: "R$100/mes a R$40 mil"
-payback: "4 a 8 meses"
 difficulty: "Medio"
 ctaVariant: diagnostico-custo
 readingPromise:

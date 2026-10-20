@@ -16,8 +16,6 @@ businessOutcome: "Evitar decisões caras e começar com um projeto menor, mensur
 heroSummary: "A maior parte dos erros acontece antes da tecnologia: escopo errado, dado bagunçado, métrica ausente e expectativa inflada."
 cardLabel: "Antes de contratar"
 cardTakeaway: "Veja os erros que transformam IA em custo fixo sem retorno e como fugir deles."
-costRange: "Evita desperdício"
-payback: "Antes do contrato"
 difficulty: "Baixo"
 ctaVariant: diagnostico-ia
 readingPromise:
@@ -50,7 +48,7 @@ Um teste simples: se você não consegue explicar em uma frase o que a ferrament
 
 O melhor caminho é piloto pequeno. Escolha um gargalo, resolva bem, meça o resultado e expanda depois. A primeira vitória compra confiança para a segunda. Se você não sabe qual gargalo atacar primeiro, o método de [como escolher o primeiro processo para automatizar](/blog/primeiro-processo-automatizar-pme/) resolve exatamente essa dúvida com uma matriz simples de frequência, impacto e risco.
 
-Escopo pequeno não é falta de ambição. É estratégia de quem quer resultado em semanas, não promessa em anos.
+Escopo pequeno não é falta de ambição. É estratégia de quem quer resultado medido, não promessa.
 
 ## 3. Automatizar processo ruim
 
@@ -94,9 +92,9 @@ Ao comparar fornecedores, pergunte o que está incluído depois da entrega. Quem
 
 ## Como começar melhor
 
-Comece por diagnóstico. Escolha um problema real, pequeno o bastante para implementar em semanas e grande o bastante para gerar retorno visível. Defina métrica, organize os dados mínimos e implemente com saída humana para os casos que fogem do padrão.
+Comece por diagnóstico. Escolha um problema real, pequeno o bastante para sair do papel e grande o bastante para gerar retorno visível. Defina métrica, organize os dados mínimos e implemente com saída humana para os casos que fogem do padrão.
 
-Antes de assinar, faça a conta: o custo do projeto cabe no retorno esperado? As faixas reais de investimento estão no guia de [quanto custa implementar IA numa pequena empresa](/quanto-custa/), e a régua é simples: piloto que não se paga em poucos meses merece escopo menor.
+Antes de assinar, faça a conta: o custo do projeto cabe no retorno esperado? O que compõe o investimento está no guia de [quanto custa implementar IA numa pequena empresa](/quanto-custa/), e a régua é simples: piloto cuja conta não fecha merece escopo menor.
 
 Essa abordagem pode parecer menos empolgante do que "IA em tudo", mas é a que funciona para pequena empresa. Projeto bom não é o que impressiona na apresentação. É o que roda na rotina e paga a própria conta.
 
@@ -109,7 +107,7 @@ Comprar ferramenta antes de entender o processo. Além da mensalidade desperdiç
 Se você consegue descrever as etapas em passos claros e o time concorda com essa descrição, está pronto. Se cada pessoa faz de um jeito e as exceções são maioria, organize primeiro. Automação amplifica o que existe.
 
 **Projeto pequeno não é perder tempo? Não seria melhor já fazer completo?**
-Não. Piloto pequeno prova valor em semanas e gera aprendizado barato. Projeto completo de primeira costuma travar em integração e treinamento, e o erro sai caro. Quem começa pequeno expande com confiança e dados.
+Não. Piloto pequeno prova valor antes e gera aprendizado barato. Projeto completo de primeira costuma travar em integração e treinamento, e o erro sai caro. Quem começa pequeno expande com confiança e dados.
 
 **O que devo exigir do fornecedor para evitar esses erros?**
 Diagnóstico antes de proposta, métrica definida em contrato, escopo de piloto com prazo curto e manutenção prevista depois da entrega. Fornecedor que promete tudo sem perguntar sobre teu processo é sinal de alerta. O [guia de IA para PME](/blog/ia-para-pme-guia-pratico/) reúne o caminho certo, do diagnóstico ao piloto que se paga, e o [diagnóstico de IA](/diagnostico-ia-empresa/) é onde esse caminho começa.

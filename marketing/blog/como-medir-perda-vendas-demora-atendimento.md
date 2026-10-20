@@ -16,8 +16,6 @@ businessOutcome: "Calcular uma estimativa simples de perda e usar isso para prio
 heroSummary: "Você não precisa de BI complexo: com volume de leads, tempo de resposta, taxa de perda e ticket médio já dá para estimar o buraco."
 cardLabel: "Antes de automatizar"
 cardTakeaway: "Transforme atraso no atendimento em número para saber se vale investir em processo, IA ou equipe."
-costRange: "R$0 para medir"
-payback: "1 semana de análise"
 difficulty: "Baixo"
 ctaVariant: diagnostico-atendimento
 readingPromise:
@@ -40,7 +38,7 @@ A maioria das pequenas empresas sente que perde venda por demora, mas não mede.
 
 Sem número, toda discussão de melhoria vira opinião. Um sócio acha que o problema é preço, outro acha que é o vendedor, outro acha que falta anúncio. Ninguém está totalmente certo porque ninguém está medindo.
 
-Com número, a conversa muda de "acho que perdemos venda" para "perdemos por volta de R$6 mil por mês entre gente que pediu orçamento e não teve retorno a tempo". Esse segundo jeito de falar decide investimento, define prioridade e evita gastar no lugar errado. É o mesmo raciocínio que sustenta qualquer conta de retorno, como no guia de [quanto custa implementar IA numa pequena empresa](/quanto-custa/).
+Com número, a conversa muda de "acho que perdemos venda" para "perdemos umas dez vendas por mês entre gente que pediu orçamento e não teve retorno a tempo". Esse segundo jeito de falar decide investimento, define prioridade e evita gastar no lugar errado. É o mesmo raciocínio que sustenta qualquer conta de retorno, como no guia de [quanto custa implementar IA numa pequena empresa](/quanto-custa/).
 
 ## O primeiro número: volume de oportunidades
 
@@ -68,7 +66,7 @@ Esse número costuma assustar. Muitas empresas não perdem por preço; perdem po
 
 ## O quarto número: ticket médio
 
-Agora use o valor médio de uma venda. Se a empresa vende serviços de R$500, R$1.500 ou R$5.000, o cálculo muda muito. O mesmo atendimento lento pode ser tolerável em um ticket baixo e caro demais em um ticket alto.
+Agora use o valor médio de uma venda. Se a empresa vende um serviço barato e frequente ou um contrato grande e raro, o cálculo muda muito. O mesmo atendimento lento pode ser tolerável em um ticket baixo e caro demais em um ticket alto.
 
 ## Onde tirar esses números sem ferramenta cara
 
@@ -83,11 +81,11 @@ Imagine:
 - 60 oportunidades por semana;
 - 20 ficam sem próximo passo;
 - 25% dessas poderiam virar venda se fossem bem conduzidas;
-- ticket médio de R$600.
+- o ticket médio da sua empresa.
 
-Conta: 20 x 25% x R$600 = R$3.000 por semana em venda provável perdida. Em um mês, R$12 mil. Mesmo que a estimativa esteja otimista e o número real seja metade, ainda existe um buraco de R$6 mil.
+Conta: 20 x 25% = 5 vendas prováveis perdidas por semana. Em um mês, cerca de 20. Mesmo que a estimativa esteja otimista e o número real seja metade, ainda são 10 vendas por mês que não aconteceram. Multiplique pelo seu ticket médio e você tem o tamanho do buraco.
 
-Com esse número, fica muito mais fácil decidir. Um projeto de automação de R$1.200 por mês não parece caro se recupera parte desse valor. Um treinamento de atendimento também pode ser prioridade. O ponto é parar de discutir no escuro.
+Com esse número, fica muito mais fácil decidir. Um projeto de automação não parece caro se recupera parte dessas vendas. Um treinamento de atendimento também pode ser prioridade. O ponto é parar de discutir no escuro.
 
 ## Erros comuns ao medir
 

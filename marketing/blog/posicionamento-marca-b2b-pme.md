@@ -16,8 +16,6 @@ businessOutcome: "Definir para quem a empresa é, contra o que ela se posiciona 
 heroSummary: "Ninguém lembra de empresa que fala igual a todo mundo. Posicionamento é escolha: um público, um problema, uma promessa que a concorrência não consegue copiar sem mudar de operação."
 cardLabel: "Antes de gastar com marca"
 cardTakeaway: "O método para sair da descrição genérica e virar a primeira lembrança do seu tipo de cliente."
-costRange: "Baixo, custa decisão"
-payback: "Médio prazo"
 difficulty: "Médio"
 ctaVariant: diagnostico-marca
 readingPromise:
@@ -106,7 +104,7 @@ O mais comum é o medo de restringir. Escolher um público não impede vender pa
 ## Três frases antes e depois
 
 **Antes:** "Somos uma empresa de tecnologia que oferece soluções personalizadas com qualidade e agilidade."
-**Depois:** "Colocamos IA no atendimento de pequenas empresas que vendem por WhatsApp, com escopo enxuto e retorno medido em meses."
+**Depois:** "Colocamos IA no atendimento de pequenas empresas que vendem por WhatsApp, com escopo enxuto e retorno medido."
 
 **Antes:** "Consultoria empresarial completa para o seu negócio crescer."
 **Depois:** "Ajudamos indústrias de médio porte do interior paulista a parar de perder pedido por falha de processo entre vendas e produção."

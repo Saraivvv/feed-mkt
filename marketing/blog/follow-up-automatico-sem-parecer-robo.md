@@ -16,8 +16,6 @@ businessOutcome: "Criar follow-up automatizado com contexto, timing e passagem p
 heroSummary: "Follow-up automático funciona quando usa contexto da conversa, motivo da pausa e próximo passo claro."
 cardLabel: "Recuperação de leads"
 cardTakeaway: "Aprenda a recuperar conversas paradas sem transformar o WhatsApp em disparo frio."
-costRange: "R$800/mês a R$5 mil/mês"
-payback: "3 a 6 meses"
 difficulty: "Baixo"
 ctaVariant: diagnostico-atendimento
 readingPromise:
@@ -148,7 +146,7 @@ Horário comercial e no mesmo canal em que a conversa começou. Fora do horário
 Não. Uma sequência simples por etapa já recupera oportunidade. A IA melhora o resultado quando lê o histórico e escreve mensagem específica, principalmente em volume alto.
 
 **Follow-up automático pode derrubar meu número no WhatsApp?**
-Pode, se for disparo em massa por conexão não oficial. Na API oficial, o envio segue regras de janela e modelo aprovado, o que reduz risco de bloqueio e de denúncia.
+O que pesa é o jeito de enviar. Disparo em massa para quem não pediu gera denúncia, seja qual for a forma de conexão. Follow-up que fala só com quem já conversou com a empresa, no tempo certo e com mensagem específica, é o oposto disso. Pergunte ao fornecedor como ele envia e quais limites usa.
 
 **Como saber se meu follow-up está incomodando?**
 Acompanhe pedidos de parar e respostas negativas. Se passarem de poucos casos por semana, reduza a frequência e melhore o contexto da mensagem. É um dos pontos que o diagnóstico gratuito da Feed olha no atendimento.

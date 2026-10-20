@@ -16,8 +16,6 @@ businessOutcome: "Criar rotina de atualização para manter o blog útil, confi�
 heroSummary: "Revisar posts antigos mantém dados corretos, melhora links internos e aumenta chance de o conteúdo continuar sendo usado."
 cardLabel: "Manutenção editorial"
 cardTakeaway: "Entenda por que conteúdo bom não é só publicar: é atualizar, conectar e fortalecer."
-costRange: "Rotina quinzenal"
-payback: "Acumula autoridade"
 difficulty: "Baixo"
 ctaVariant: diagnostico-conteudo
 readingPromise:

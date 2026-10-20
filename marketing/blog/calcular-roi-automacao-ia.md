@@ -2,7 +2,7 @@
 title: "Como calcular ROI de automação com IA na pequena empresa"
 slug: calcular-roi-automacao-ia
 seoTitle: "Como calcular ROI de automação com IA | Feed"
-description: "Aprenda uma conta simples para avaliar se uma automação com IA se paga em meses ou se o investimento ainda não faz sentido."
+description: "Aprenda uma conta simples para avaliar se uma automação com IA se paga e quando, ou se o investimento ainda não faz sentido."
 date: 2026-07-30
 publishAt: 2026-07-30
 keyword: ROI de automação com IA
@@ -16,8 +16,6 @@ businessOutcome: "Montar uma conta simples de ROI antes de contratar automação
 heroSummary: "ROI de IA vem de vendas recuperadas, horas economizadas, erros reduzidos e velocidade operacional."
 cardLabel: "Conta antes do contrato"
 cardTakeaway: "Use uma fórmula simples para saber se a automação paga a conta ou se é cedo para investir."
-costRange: "Depende do escopo"
-payback: "Meta: até 8 meses"
 difficulty: "Baixo"
 ctaVariant: diagnostico-roi
 readingPromise:
@@ -55,17 +53,17 @@ Retorno mensal estimado = vendas recuperadas + horas economizadas + custos evita
 
 Payback = investimento inicial dividido pelo ganho mensal líquido.
 
-Se um projeto custa R$18 mil de implantação e R$1.200 por mês, e gera R$5 mil por mês em valor, o ganho líquido é R$3.800. O payback aproximado é 18.000 / 3.800 = 4,7 meses. Se você ainda não sabe se esses valores fazem sentido, veja as faixas praticadas em [quanto custa implementar IA numa pequena empresa](/quanto-custa/).
+Na prática: se a automação recupera 5 vendas por mês e devolve 20 horas ao time, multiplique as vendas pelo seu ticket médio e as horas pelo custo da hora da sua equipe. Some, tire o valor mensal da proposta e divida o investimento inicial pelo que sobra. O resultado é o payback em meses. Se você ainda não sabe o que entra no valor de uma proposta, veja [quanto custa implementar IA numa pequena empresa](/quanto-custa/).
 
-Isso é bom para PME. Projetos que se pagam entre 4 e 8 meses costumam ser saudáveis. Acima de 12 meses, precisa olhar com mais cuidado.
+Qual prazo é aceitável depende do gargalo, do volume e do caixa da empresa. Quanto mais longo o prazo, mais cuidado: projeto que demora demais para se pagar pede escopo menor.
 
 ## Como estimar vendas recuperadas
 
 Comece pelo gargalo. Se a empresa perde leads por demora, estime quantas vendas poderiam ser recuperadas com resposta rápida e follow-up. Não precisa ser perfeito; precisa ser honesto. O passo a passo dessa estimativa está em [como medir perda de vendas por demora no atendimento](/blog/como-medir-perda-vendas-demora-atendimento/).
 
-Exemplo: 40 leads por semana, 10 ficam sem resposta adequada, 20% poderiam virar venda, ticket médio de R$500. Isso dá R$1.000 por semana, ou R$4 mil por mês em potencial.
+Exemplo: 40 leads por semana, 10 ficam sem resposta adequada, 20% poderiam virar venda. Isso dá 2 vendas por semana, ou 8 por mês em potencial.
 
-Se a automação recupera metade disso, já são R$2 mil mensais.
+Se a automação recupera metade disso, já são 4 vendas a mais por mês. Multiplique pelo seu ticket médio e você tem o valor.
 
 ## Como estimar horas economizadas
 
@@ -97,23 +95,23 @@ Calcular ROI antes de contratar não elimina risco, mas reduz muito a chance de 
 
 ## Um exemplo completo, do começo ao fim
 
-Uma clínica recebe 60 mensagens por semana pedindo informação e agendamento. Hoje responde em média em 3 horas, e nesse intervalo parte das pessoas já marcou em outro lugar. Ticket médio de R$400.
+Uma clínica recebe 60 mensagens por semana pedindo informação e agendamento. Hoje responde em média em 3 horas, e nesse intervalo parte das pessoas já marcou em outro lugar.
 
-**Passo 1, medir o buraco.** Numa semana, 18 conversas ficaram sem próximo passo. A clínica estima, olhando o histórico, que 25% dessas viraram agendamento se respondidas na hora. São 4 ou 5 agendamentos perdidos por semana, algo entre R$6 mil e R$8 mil por mês.
+**Passo 1, medir o buraco.** Numa semana, 18 conversas ficaram sem próximo passo. A clínica estima, olhando o histórico, que 25% dessas viraram agendamento se respondidas na hora. São 4 ou 5 agendamentos perdidos por semana, algo entre 16 e 20 por mês.
 
-**Passo 2, ser conservador.** Assuma que a automação recupera metade. Ganho estimado: R$3.500 por mês.
+**Passo 2, ser conservador.** Assuma que a automação recupera metade. Ganho estimado: 8 a 10 agendamentos por mês.
 
 **Passo 3, somar as horas.** A recepção gasta cerca de 1 hora por dia respondendo pergunta repetida. São 20 horas por mês que voltam para agenda, confirmação e pós-atendimento. Conte como capacidade, não como corte de custo.
 
-**Passo 4, montar a conta.** Implantação de R$15 mil, mensalidade de R$1.200. Ganho líquido mensal: R$3.500 menos R$1.200, igual a R$2.300. Payback: 15.000 dividido por 2.300, aproximadamente 6,5 meses.
+**Passo 4, montar a conta.** Multiplique os 8 a 10 agendamentos recuperados pelo valor médio de uma consulta. Esse é o ganho mensal. Tire dele o valor mensal da proposta e divida a implantação pelo que sobra. O resultado é o payback em meses.
 
-**Passo 5, decidir.** Está dentro da faixa saudável de 4 a 8 meses. Para montar essa conta com alguém olhando a sua operação junto, existe o [diagnóstico de IA](/diagnostico-ia-empresa/). Se estivesse em 14 meses, a resposta certa seria reduzir escopo, não desistir do projeto.
+**Passo 5, decidir.** Compare o prazo com o tempo que o caixa da clínica aguenta esperar. Para montar essa conta com alguém olhando a sua operação junto, existe o [diagnóstico de IA](/diagnostico-ia-empresa/). Se o prazo ficasse longo demais, a resposta certa seria reduzir escopo, não desistir do projeto.
 
 ## Os custos que ninguém coloca na conta
 
 Três itens somem das propostas e reaparecem na fatura:
 
-- **consumo de uso.** Modelo de IA e canal oficial cobram por volume. Em PME é valor pequeno, mas precisa estar escrito.
+- **o que fica fora do escopo.** Integração nova, fluxo novo ou recurso que entra depois. Se não está escrito na proposta, vira extra.
 - **tempo da sua equipe.** Alguém vai revisar respostas, organizar informação e testar. Reserve algumas horas por semana no primeiro mês.
 - **manutenção.** Preço muda, campanha entra, política muda. Automação sem revisão envelhece e começa a responder errado.
 
@@ -128,7 +126,7 @@ Mesmo aí, defina o número que prova. Pode ser quantidade de erros, tempo de re
 ## Perguntas frequentes
 
 **Qual payback é considerado bom em pequena empresa?**
-Entre 4 e 8 meses. Até 12 meses ainda pode fazer sentido se o ganho for estrutural. Acima disso, reduza o escopo até a conta fechar.
+O que o caixa da empresa aguenta esperar. O prazo depende do gargalo e do volume, e pode ser mais longo se o ganho for estrutural. Defina esse limite antes de contratar e, se a conta passar dele, reduza o escopo até ela fechar.
 
 **Posso calcular o ROI antes de contratar?**
 Pode e deve. Você precisa de quatro números: volume, tempo de resposta atual, taxa de conversão estimada e ticket médio. Com isso já dá para comparar com o investimento pedido na proposta.

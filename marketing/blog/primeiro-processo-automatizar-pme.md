@@ -16,8 +16,6 @@ businessOutcome: "Escolher um primeiro processo pequeno, mensurável e com retor
 heroSummary: "O melhor primeiro processo é frequente, repetitivo, mensurável e doloroso, mas não crítico demais para testar."
 cardLabel: "Comece por aqui"
 cardTakeaway: "Use uma matriz simples para escolher uma automação que prova valor rápido e não vira projeto infinito."
-costRange: "R$3 mil a R$40 mil"
-payback: "4 a 8 meses"
 difficulty: "Baixo"
 ctaVariant: diagnostico-operacao
 readingPromise:
@@ -94,7 +92,7 @@ Nesse caso, o primeiro projeto deveria ser atendimento e qualificação, não po
 
 Defina uma métrica principal. Pode ser tempo de resposta, horas economizadas, taxa de agendamento, vendas recuperadas ou erros reduzidos. Sem métrica, a empresa não sabe se a automação funcionou.
 
-Também defina limite. O primeiro projeto precisa caber em poucas semanas. Se o escopo parece levar meses, corte. A melhor automação inicial é pequena o bastante para sair do papel e importante o bastante para ser levada a sério.
+Também defina limite. O primeiro projeto precisa ser curto. Se o escopo parece longo demais, corte. A melhor automação inicial é pequena o bastante para sair do papel e importante o bastante para ser levada a sério.
 
 ## Perguntas frequentes
 
@@ -108,7 +106,7 @@ Para muitas empresas sim, porque tem volume diário, repetição e demora que cu
 Não. O melhor é automatizar a parte repetitiva e deixar a exceção com humano. Um pedaço bem resolvido prova valor mais rápido do que um projeto grande que demora a sair do papel.
 
 **Quanto custa esse primeiro projeto?**
-Depende do escopo e da integração. As faixas reais estão no guia de [quanto custa implementar IA numa pequena empresa](/quanto-custa/). A régua é simples: se não se paga em poucos meses, reduza o escopo. Para ver o processo inteiro antes de escolher, comece pelo [guia de IA para PME](/blog/ia-para-pme-guia-pratico/). Se preferir fazer isso acompanhado, o [diagnóstico de IA](/diagnostico-ia-empresa/) prioriza junto com você.
+Depende do escopo e da integração. O que compõe o preço está explicado em [quanto custa implementar IA numa pequena empresa](/quanto-custa/). A régua é simples: se a conta não fecha, reduza o escopo. Para ver o processo inteiro antes de escolher, comece pelo [guia de IA para PME](/blog/ia-para-pme-guia-pratico/). Se preferir fazer isso acompanhado, o [diagnóstico de IA](/diagnostico-ia-empresa/) prioriza junto com você.
 
 **E se eu não conseguir escolher sozinho?**
 É exatamente o que o diagnóstico gratuito da Feed faz: olha teus processos, aplica esses critérios e aponta o primeiro projeto com maior chance de retorno, sem empurrar ferramenta.
