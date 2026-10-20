@@ -140,6 +140,13 @@ ol li::before {
   color: var(--orange);
   font-weight: 900;
 }
+.updated { margin: 8px 0 0; color: rgba(244, 245, 240, 0.58); font-size: 0.95rem; }
+.prose-body p { margin: 0 0 14px; color: var(--muted); font-weight: 300; line-height: 1.55; }
+.prose-body strong { color: var(--white); font-weight: 800; }
+.prose-body a { color: var(--orange); }
+.prose-body ul { margin: 0 0 16px; padding-left: 20px; display: grid; gap: 10px; color: var(--muted); font-weight: 300; }
+.prose-body ol { margin: 0 0 16px; }
+.prose-body ol li { font-weight: 300; }
 .faq-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
 .faq article {
   padding: 22px;
