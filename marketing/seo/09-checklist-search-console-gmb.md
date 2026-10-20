@@ -24,7 +24,7 @@ Em **Inspeção de URL**, pedir indexação destas seis, uma por vez, para acele
    - `https://agenciafeed.com/agencia-de-ia-ribeirao-preto/`
    - `https://agenciafeed.com/agencia-de-marketing-bebedouro/`
    - `https://agenciafeed.com/blog/ia-para-pme-guia-pratico/`
-   - `https://agenciafeed.com/blog/quanto-custa-implementar-ia-pequena-empresa/`
+   - `https://agenciafeed.com/quanto-custa/` (só depois de publicada; o artigo antigo redireciona pra ela)
 
 Depois de duas semanas com dados, me avisa: dá para escolher os próximos artigos pelo que já aparece na busca em vez de escolher por pesquisa qualitativa.
 

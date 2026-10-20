@@ -29,9 +29,9 @@ Regras práticas:
 Cada uma tem botão **Saiba mais** apontando para o artigo indicado.
 
 ### 1. Preço de IA
-Link: https://agenciafeed.com/blog/quanto-custa-implementar-ia-pequena-empresa/
+Link: https://agenciafeed.com/quanto-custa/ (publicar só depois da página no ar)
 
-> Quanto custa colocar IA numa pequena empresa? De R$100 por mês em ferramenta pronta a R$40 mil num projeto completo. Um agente de atendimento no WhatsApp sob medida fica entre R$8 mil e R$25 mil de implantação. Escrevemos um guia com as faixas reais praticadas no mercado, o que encarece o projeto e onde a maioria das empresas joga dinheiro fora.
+> Quanto custa colocar IA numa pequena empresa? Depende do que a sua operação precisa, e por isso a gente não trabalha com tabela. O preço sai de uma conversa sobre o seu negócio e vira uma proposta personalizada. A IA entra só se fizer sentido pra você. Na página, explicamos o que compõe o valor, o que faz ele subir ou descer e como funciona do primeiro contato até a proposta.
 
 ### 2. Perda por demora
 Link: https://agenciafeed.com/blog/como-medir-perda-vendas-demora-atendimento/
