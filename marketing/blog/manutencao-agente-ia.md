@@ -29,7 +29,7 @@ relatedPlanned:
   - "Dados desorganizados: por que a IA responde mal"
   - "Agente de IA no WhatsApp vale para sua empresa?"
   - "IA para PME: guia prático para começar sem gastar errado"
-status: scheduled
+status: draft
 ---
 
 Manutenção de agente de IA começa no dia em que ele entra no ar. A implantação não é o fim do projeto. É o começo da operação real. Clientes fazem perguntas inesperadas, campanhas mudam, preços mudam, equipe muda e a base de conhecimento envelhece.
