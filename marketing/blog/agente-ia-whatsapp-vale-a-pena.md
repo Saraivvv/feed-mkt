@@ -113,7 +113,7 @@ Compare tudo com a semana anterior à implantação. Sem esse número de partida
 O que mais pesa é o uso. Disparo em massa e mensagem que o cliente não pediu geram denúncia, seja qual for a forma de conexão. Agente que responde quem chamou e passa para humano quando precisa trabalha no ritmo da conversa. Pergunte ao fornecedor como ele conecta o número e o que acontece se o número tiver problema.
 
 **Quanto custa manter um agente rodando por mês?**
-Depende do volume de conversas, das integrações e do quanto de ajuste a operação pede. O que precisa estar escrito na proposta é o que entra no mensal (suporte, ajuste de fluxo, revisão da base) e o que fica fora. Some também as horas da sua equipe revisando conversas, que não aparecem em fatura nenhuma.
+Depende do volume de conversas, das integrações e do quanto de ajuste a operação pede. O que precisa estar escrito na proposta é o que entra na manutenção (suporte, ajuste de fluxo, revisão da base) e o que fica fora. Some também as horas da sua equipe revisando conversas, que não aparecem em fatura nenhuma.
 
 **O cliente percebe que está falando com IA?**
 Percebe quando a resposta é genérica ou quando ele foge do roteiro e o sistema insiste no script. Um agente bem feito assume que é atendimento automático, resolve rápido o que sabe e chama uma pessoa quando o caso pede.
@@ -122,4 +122,4 @@ Percebe quando a resposta é genérica ou quando ele foge do roteiro e o sistema
 Não. Dá para começar registrando em planilha e evoluir depois. O que não pode faltar é alguém para assumir a conversa qualificada, senão o agente só acelera a chegada de um lead que ninguém atende.
 
 **Como sei se meu volume justifica?**
-Meça uma semana real de atendimento: quantas mensagens chegam, quantas ficam mais de uma hora sem resposta e quantas conversas morrem sem próximo passo. Se o buraco aparece já nessa semana, o volume justifica. É por aí que o diagnóstico gratuito da Feed começa.
+Meça uma semana real de atendimento: quantas mensagens chegam, quantas ficam mais de uma hora sem resposta e quantas conversas morrem sem próximo passo. Se o buraco aparece já nessa semana, o volume justifica. O primeiro passo com a Feed é o [Diagnóstico do Gargalo](/diagnostico): um PDF no seu e-mail, na hora, e depois uma conversa com o Guilherme, se fizer sentido.

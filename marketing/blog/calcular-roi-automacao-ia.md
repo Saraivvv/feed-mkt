@@ -30,7 +30,7 @@ relatedPlanned:
 status: published
 ---
 
-Calcular ROI de automação com IA não precisa começar com planilha complicada. Para pequena empresa, a pergunta principal é: quanto dinheiro ou tempo o projeto recupera por mês em comparação com o investimento inicial e o custo mensal?
+Calcular ROI de automação com IA não precisa começar com planilha complicada. Para pequena empresa, a pergunta principal é: quanto dinheiro ou tempo o projeto recupera por mês em comparação com o investimento inicial e o custo de manutenção?
 
 Se a conta não fecha de forma simples, provavelmente o projeto ainda não está maduro.
 
@@ -53,7 +53,7 @@ Retorno mensal estimado = vendas recuperadas + horas economizadas + custos evita
 
 Payback = investimento inicial dividido pelo ganho mensal líquido.
 
-Na prática: se a automação recupera 5 vendas por mês e devolve 20 horas ao time, multiplique as vendas pelo seu ticket médio e as horas pelo custo da hora da sua equipe. Some, tire o valor mensal da proposta e divida o investimento inicial pelo que sobra. O resultado é o payback em meses. Se você ainda não sabe o que entra no valor de uma proposta, veja [quanto custa implementar IA numa pequena empresa](/quanto-custa/).
+Na prática: se a automação recupera 5 vendas por mês e devolve 20 horas ao time, multiplique as vendas pelo seu ticket médio e as horas pelo custo da hora da sua equipe. Some, tire o custo de manutenção do mês e divida o investimento inicial pelo que sobra. O resultado é o payback em meses. Se você ainda não sabe o que entra no valor de uma proposta, veja [quanto custa implementar IA numa pequena empresa](/quanto-custa/).
 
 Qual prazo é aceitável depende do gargalo, do volume e do caixa da empresa. Quanto mais longo o prazo, mais cuidado: projeto que demora demais para se pagar pede escopo menor.
 
@@ -85,7 +85,7 @@ Peça que a proposta mostre:
 - métrica atual;
 - meta depois da implementação;
 - investimento inicial;
-- custo mensal;
+- custo de manutenção;
 - premissas de retorno;
 - prazo esperado de payback.
 
@@ -103,9 +103,9 @@ Uma clínica recebe 60 mensagens por semana pedindo informação e agendamento. 
 
 **Passo 3, somar as horas.** A recepção gasta cerca de 1 hora por dia respondendo pergunta repetida. São 20 horas por mês que voltam para agenda, confirmação e pós-atendimento. Conte como capacidade, não como corte de custo.
 
-**Passo 4, montar a conta.** Multiplique os 8 a 10 agendamentos recuperados pelo valor médio de uma consulta. Esse é o ganho mensal. Tire dele o valor mensal da proposta e divida a implantação pelo que sobra. O resultado é o payback em meses.
+**Passo 4, montar a conta.** Multiplique os 8 a 10 agendamentos recuperados pelo valor médio de uma consulta. Esse é o ganho mensal. Tire dele o custo de manutenção do mês e divida a implementação pelo que sobra. O resultado é o payback em meses.
 
-**Passo 5, decidir.** Compare o prazo com o tempo que o caixa da clínica aguenta esperar. Para montar essa conta com alguém olhando a sua operação junto, existe o [diagnóstico de IA](/diagnostico-ia-empresa/). Se o prazo ficasse longo demais, a resposta certa seria reduzir escopo, não desistir do projeto.
+**Passo 5, decidir.** Compare o prazo com o tempo que o caixa da clínica aguenta esperar. Para montar essa conta com o Guilherme, comece pelo [Diagnóstico do Gargalo](/diagnostico): o PDF chega no seu e-mail e depois vem a conversa sobre o seu caso. Se o prazo ficasse longo demais, a resposta certa seria reduzir escopo, não desistir do projeto.
 
 ## Os custos que ninguém coloca na conta
 

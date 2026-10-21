@@ -34,7 +34,7 @@ IA em empresa do interior de São Paulo funciona pelo mesmo motivo que funciona 
 
 Na região de Ribeirão Preto, Bebedouro e cidades vizinhas, a economia é de comércio, serviço, saúde, agro e indústria de médio porte. São operações que vendem por conversa, atendem por WhatsApp e dependem de agenda cheia. É exatamente o terreno onde automação com IA se paga mais rápido.
 
-## O que a gente vê nos diagnósticos da região
+## O que se repete nas PMEs da região
 
 Alguns padrões se repetem quase sempre:
 
@@ -92,7 +92,7 @@ O que compõe o investimento está em [quanto custa implementar IA numa pequena 
 
 Quando chegam poucos contatos por semana, quando a oferta ainda não está clara ou quando não existe ninguém para assumir o lead qualificado. Nesses casos, o dinheiro rende mais em presença, oferta e processo comercial.
 
-Um [diagnóstico honesto](/diagnostico-ia-empresa/) separa esses cenários antes de qualquer proposta, e às vezes a melhor recomendação é esperar. O quadro completo de decisão está no [guia de IA para PME](/blog/ia-para-pme-guia-pratico/).
+Um [diagnóstico honesto](/blog/diagnostico-ia-pequena-empresa/) separa esses cenários antes de qualquer proposta, e às vezes a melhor recomendação é esperar. O quadro completo de decisão está no [guia de IA para PME](/blog/ia-para-pme-guia-pratico/).
 
 ## O plano dos próximos 30 dias
 
@@ -129,4 +129,4 @@ Existe, e a Feed atende a região de forma remota e presencial quando o projeto 
 Depende do formato, de ferramenta pronta por assinatura até projeto sob medida. Na Feed, o valor sai numa proposta personalizada, depois de uma conversa sobre a sua operação. Para a maioria das empresas da região, o piloto de atendimento é o formato com retorno mais rápido.
 
 **Como sei se o meu caso tem retorno?**
-Meça uma semana de atendimento e conte quantas conversas ficaram sem próximo passo. Esse número costuma responder a pergunta sozinho, e é o começo do diagnóstico gratuito da Feed.
+Meça uma semana de atendimento e conte quantas conversas ficaram sem próximo passo. Esse número costuma responder a pergunta sozinho. Se quiser seguir com a Feed, o [Diagnóstico do Gargalo](/diagnostico) chega em PDF no seu e-mail, e depois vem a conversa com o Guilherme.

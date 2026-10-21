@@ -109,4 +109,4 @@ Não. O melhor é automatizar a parte repetitiva e deixar a exceção com humano
 Depende do escopo e da integração. O que compõe o preço está explicado em [quanto custa implementar IA numa pequena empresa](/quanto-custa/). A régua é simples: se a conta não fecha, reduza o escopo. Para ver o processo inteiro antes de escolher, comece pelo [guia de IA para PME](/blog/ia-para-pme-guia-pratico/). Se preferir fazer isso acompanhado, o [diagnóstico de IA](/diagnostico-ia-empresa/) prioriza junto com você.
 
 **E se eu não conseguir escolher sozinho?**
-É exatamente o que o diagnóstico gratuito da Feed faz: olha teus processos, aplica esses critérios e aponta o primeiro projeto com maior chance de retorno, sem empurrar ferramenta.
+Se quiser aplicar esses critérios com a Feed, comece pelo [Diagnóstico do Gargalo](/diagnostico): o PDF chega no seu e-mail na hora e, se fizer sentido, você conversa com o Guilherme sobre qual processo atacar.

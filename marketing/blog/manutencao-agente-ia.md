@@ -98,7 +98,7 @@ Três papéis dão conta: quem atende cliente todo dia, quem decide prioridade e
 
 ## Quanto custa manter
 
-O custo mensal de um agente tem três partes, e a proposta precisa mostrar todas.
+O custo de manutenção de um agente tem três partes, e a proposta precisa mostrar todas.
 
 A primeira é o serviço do fornecedor, que cobre suporte, ajuste de fluxo e correção. A segunda é o que fica fora do serviço: integração nova, fluxo novo ou mudança de escopo. Isso precisa estar escrito antes, para não aparecer como surpresa. A terceira é o tempo da sua equipe, aquelas horas de revisão que não aparecem em fatura nenhuma mas existem.
 
@@ -127,7 +127,7 @@ Fornecedor que centraliza tudo cria dependência cara. Quem entrega painel e tre
 **Com que frequência preciso revisar um agente de IA?**
 Semanal no primeiro mês, depois quinzenal ou mensal conforme o volume. Além disso, sempre que houver mudança de preço, campanha ou processo.
 
-**Manutenção costuma estar incluída na mensalidade?**
+**O que a manutenção costuma cobrir?**
 Varia. Alguns contratos cobrem ajuste de fluxo e correção, outros cobram por hora. Peça por escrito o que entra e o que vira extra antes de assinar.
 
 **Quem deve ser o responsável interno?**

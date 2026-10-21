@@ -135,4 +135,4 @@ Meses, porque depende de repetição. O que acelera é consistência em todos os
 Cliente paga mais quando entende por que você é a escolha certa para o caso dele. Sem essa clareza, a única comparação possível entre fornecedores parecidos é o preço.
 
 **Por onde começo se minha empresa fala igual a todo mundo?**
-Pela frase única e por um levantamento honesto de para quem você entrega melhor. É o mesmo tipo de leitura de operação que a Feed faz no diagnóstico gratuito, e que também organiza o discurso antes de qualquer automação.
+Pela frase única e por um levantamento honesto de para quem você entrega melhor. Se quiser conversar sobre isso com a Feed, comece pelo [Diagnóstico do Gargalo](/diagnostico) e depois fale com o Guilherme.

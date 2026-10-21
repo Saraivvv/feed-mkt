@@ -81,7 +81,7 @@ Antes de contratar qualquer solução, meça três números por uma semana:
 2. Quanto tempo a empresa demora para responder.
 3. Quantas conversas ficam sem fechamento ou sem próximo passo.
 
-Depois da automação, compare tempo de resposta, taxa de agendamento, taxa de orçamento enviado e vendas recuperadas. A conta costuma ser direta. Se um agente de atendimento recupera três vendas por mês que antes se perdiam, multiplique pelo seu ticket médio e compare com o valor mensal da proposta. Se economiza 30 horas de atendimento repetitivo por mês, existe retorno mesmo antes de contar venda nova.
+Depois da automação, compare tempo de resposta, taxa de agendamento, taxa de orçamento enviado e vendas recuperadas. A conta costuma ser direta. Se um agente de atendimento recupera três vendas por mês que antes se perdiam, multiplique pelo seu ticket médio e compare com o custo de manutenção da proposta no mesmo período. Se economiza 30 horas de atendimento repetitivo por mês, existe retorno mesmo antes de contar venda nova.
 
 Esse é o ponto que separa investimento de gasto. Sem número na frente, a decisão vira sensação. Com número, você sabe se continua, ajusta o escopo ou desliga.
 
@@ -110,6 +110,6 @@ Depende do volume e do que precisa integrar. Existem as duas formas: a API do Wh
 Tempo de resposta e taxa de agendamento são os primeiros números a mudar. O prazo do retorno financeiro depende do gargalo, do ticket e do volume.
 
 **Por onde eu começo?**
-Meça uma semana de atendimento real: volume, tempo de resposta e conversas sem fechamento. Esses números mostram se o WhatsApp virou gargalo e qual fluxo automatizar primeiro. Se a dúvida ainda é mais ampla, o [guia de IA para PME](/blog/ia-para-pme-guia-pratico/) mostra onde o atendimento entra na fila de prioridades. Para ver o escopo do serviço, a página de [automação de WhatsApp com IA](/automacao-whatsapp/) explica o que entra no projeto. É por aí que o diagnóstico gratuito da Feed começa.
+Meça uma semana de atendimento real: volume, tempo de resposta e conversas sem fechamento. Esses números mostram se o WhatsApp virou gargalo e qual fluxo automatizar primeiro. Se a dúvida ainda é mais ampla, o [guia de IA para PME](/blog/ia-para-pme-guia-pratico/) mostra onde o atendimento entra na fila de prioridades. Para ver o escopo do serviço, a página de [automação de WhatsApp com IA](/automacao-whatsapp/) explica o que entra no projeto.
 
-Se você quer saber se esse é o caso da sua empresa, o diagnóstico gratuito da Feed olha o atendimento real, identifica onde a venda escapa e desenha um primeiro escopo enxuto, sem vender ferramenta que você não precisa.
+Se você quer saber se esse é o caso da sua empresa, comece pelo [Diagnóstico do Gargalo](/diagnostico): o PDF chega no seu e-mail na hora e, se fizer sentido, você conversa com o Guilherme sobre o seu atendimento.

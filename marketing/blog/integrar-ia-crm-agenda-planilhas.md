@@ -98,7 +98,7 @@ Nem toda integração custa igual. Na prática existem três níveis.
 
 **Nível 3, sistema fechado ou legado.** ERP antigo, software regional sem API, planilha que mora na máquina de alguém. Aqui o custo sobe muito e a manutenção também. Muitas vezes a resposta certa é não integrar agora e resolver com exportação periódica.
 
-Antes de pedir orçamento, descubra em qual nível cada sistema seu está. Essa checagem faz parte do [diagnóstico de IA](/diagnostico-ia-empresa/). Essa única informação muda o preço da proposta e o prazo do projeto.
+Antes de pedir orçamento, descubra em qual nível cada sistema seu está. Essa única informação muda o preço da proposta e o prazo do projeto.
 
 ## O que quebra depois e como se proteger
 
@@ -133,4 +133,4 @@ Se marcação de horário é parte central da venda, sim. Se a agenda é usada d
 Depende do nível. Conector pronto é quase custo zero de desenvolvimento. API documentada é trabalho de horas. Sistema fechado pode custar mais que o resto do projeto. O que compõe o preço está em [quanto custa implementar IA numa pequena empresa](/quanto-custa/).
 
 **Como escolho a primeira integração?**
-Pela que elimina trabalho manual diário com menor esforço técnico. Se duas empatam, escolha a que envolve o sistema que sua equipe realmente usa. Esse ordenamento é parte do diagnóstico gratuito da Feed.
+Pela que elimina trabalho manual diário com menor esforço técnico. Se duas empatam, escolha a que envolve o sistema que sua equipe realmente usa.

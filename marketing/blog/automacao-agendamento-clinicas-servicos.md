@@ -135,4 +135,4 @@ O fluxo precisa ter saída para humano em qualquer etapa, com o histórico da co
 Reduz quando junta lembrete no tempo certo, confirmação simples e remarcação fácil. O maior ganho costuma vir da remarcação, que transforma falta em horário reagendado.
 
 **Quanto custa montar?**
-Depende do formato. Ferramenta pronta com integração de agenda resolve o caso simples, e projeto sob medida entra quando existe regra complexa e mais de um profissional. O que compõe o preço está em [quanto custa implementar IA numa pequena empresa](/quanto-custa/), e o diagnóstico gratuito da Feed ajuda a dimensionar o seu caso.
+Depende do formato. Ferramenta pronta com integração de agenda resolve o caso simples, e projeto sob medida entra quando existe regra complexa e mais de um profissional. O que compõe o preço está em [quanto custa implementar IA numa pequena empresa](/quanto-custa/), e o primeiro passo é o [Diagnóstico do Gargalo](/diagnostico), em PDF no seu e-mail, seguido de uma conversa com o Guilherme sobre o seu caso.

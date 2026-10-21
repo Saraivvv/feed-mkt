@@ -137,4 +137,4 @@ As ferramentas vão de plano gratuito a plano pago por usuário. O custo maior c
 Quase nunca. Se o problema é rotina e campo demais, a ferramenta nova vira o mesmo abandono em três meses. Simplifique etapas e campos primeiro, depois avalie a troca.
 
 **Por onde começo se vendo tudo pelo WhatsApp?**
-Pelo registro automático da conversa e por um funil de cinco etapas. Resolvido isso, o resto do CRM entra sozinho. É esse desenho que o diagnóstico gratuito da Feed entrega antes de falar de ferramenta.
+Pelo registro automático da conversa e por um funil de cinco etapas. Resolvido isso, o resto do CRM entra sozinho. Se quiser conversar sobre o seu funil, comece pelo [Diagnóstico do Gargalo](/diagnostico): o PDF chega no seu e-mail e depois vem a conversa com o Guilherme.

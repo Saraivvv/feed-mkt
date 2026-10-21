@@ -32,11 +32,11 @@ status: published
 
 Projetos de IA em pequenas empresas raramente dão errado por falta de tecnologia. Eles dão errado porque começam com a pergunta errada, escopo grande demais, dados bagunçados e nenhuma métrica de retorno. A ferramenta vira protagonista, mas o problema real continua escondido.
 
-IA pode gerar retorno, mas também pode virar mais uma mensalidade esquecida. A diferença está na forma de começar. Os sete erros abaixo aparecem em quase todo projeto que fracassa, e a boa notícia é que todos são evitáveis antes de assinar qualquer contrato.
+IA pode gerar retorno, mas também pode virar mais uma assinatura esquecida. A diferença está na forma de começar. Os sete erros abaixo aparecem em quase todo projeto que fracassa, e a boa notícia é que todos são evitáveis antes de assinar qualquer contrato.
 
 ## 1. Comprar ferramenta antes de entender o processo
 
-Esse é o erro mais comum e o mais caro no longo prazo. A empresa assina uma ferramenta de IA porque viu alguém usando, porque o concorrente anunciou ou porque o vendedor mostrou uma demonstração impressionante. Mas não muda rotina, não define processo e não mede ganho. Depois de algumas semanas, ninguém usa direito e a mensalidade continua caindo.
+Esse é o erro mais comum e o mais caro no longo prazo. A empresa assina uma ferramenta de IA porque viu alguém usando, porque o concorrente anunciou ou porque o vendedor mostrou uma demonstração impressionante. Mas não muda rotina, não define processo e não mede ganho. Depois de algumas semanas, ninguém usa direito e a assinatura continua sendo cobrada.
 
 Ferramenta sem processo vira brinquedo caro. Antes de contratar qualquer coisa, responda por escrito: qual tarefa será melhorada, quem usa, quando usa e qual resultado esperado. Se essas quatro respostas não existem, o problema não é falta de IA. É falta de clareza sobre a própria operação.
 
@@ -64,7 +64,7 @@ Sem métrica, tudo vira opinião. O dono acha que melhorou, o time acha que pior
 
 Escolha uma métrica principal antes da implementação: tempo de resposta, taxa de agendamento, horas economizadas, vendas recuperadas ou erros reduzidos. E meça o ponto de partida antes de mudar qualquer coisa, senão não existe comparação possível. O guia de [como medir perda de vendas por demora no atendimento](/blog/como-medir-perda-vendas-demora-atendimento/) mostra como levantar esses números em uma semana, sem ferramenta cara.
 
-Projeto sem métrica não é investimento. É aposta com mensalidade.
+Projeto sem métrica não é investimento. É aposta paga todo mês.
 
 ## 5. Ignorar o humano no fluxo
 
@@ -101,7 +101,7 @@ Essa abordagem pode parecer menos empolgante do que "IA em tudo", mas é a que f
 ## Perguntas frequentes
 
 **Qual é o erro mais caro dessa lista?**
-Comprar ferramenta antes de entender o processo. Além da mensalidade desperdiçada, ele gera frustração no time e deixa a empresa desconfiada de IA, o que atrasa projetos futuros que poderiam dar certo.
+Comprar ferramenta antes de entender o processo. Além da assinatura desperdiçada, ele gera frustração no time e deixa a empresa desconfiada de IA, o que atrasa projetos futuros que poderiam dar certo.
 
 **Como sei se meu processo está bom o suficiente para automatizar?**
 Se você consegue descrever as etapas em passos claros e o time concorda com essa descrição, está pronto. Se cada pessoa faz de um jeito e as exceções são maioria, organize primeiro. Automação amplifica o que existe.
@@ -110,7 +110,7 @@ Se você consegue descrever as etapas em passos claros e o time concorda com ess
 Não. Piloto pequeno prova valor antes e gera aprendizado barato. Projeto completo de primeira costuma travar em integração e treinamento, e o erro sai caro. Quem começa pequeno expande com confiança e dados.
 
 **O que devo exigir do fornecedor para evitar esses erros?**
-Diagnóstico antes de proposta, métrica definida em contrato, escopo de piloto com prazo curto e manutenção prevista depois da entrega. Fornecedor que promete tudo sem perguntar sobre teu processo é sinal de alerta. O [guia de IA para PME](/blog/ia-para-pme-guia-pratico/) reúne o caminho certo, do diagnóstico ao piloto que se paga, e o [diagnóstico de IA](/diagnostico-ia-empresa/) é onde esse caminho começa.
+Diagnóstico antes de proposta, métrica definida em contrato, escopo de piloto com prazo curto e manutenção prevista depois da entrega. Fornecedor que promete tudo sem perguntar sobre teu processo é sinal de alerta. O [guia de IA para PME](/blog/ia-para-pme-guia-pratico/) reúne o caminho certo, do diagnóstico ao piloto que se paga, e o [Diagnóstico do Gargalo](/diagnostico) é o primeiro passo com a Feed.
 
 **A Feed ajuda a evitar esses erros como?**
-Começando pelo diagnóstico gratuito: a gente olha teus processos, aponta onde a IA se paga primeiro e define a métrica antes de falar de ferramenta. Se o projeto não fizer sentido, a gente fala que não faz.
+Começando pelo [Diagnóstico do Gargalo](/diagnostico): um PDF que chega no seu e-mail na hora. Depois, se fizer sentido, você conversa com o Guilherme sobre o seu caso. Se o projeto não fizer sentido, a gente fala que não faz.

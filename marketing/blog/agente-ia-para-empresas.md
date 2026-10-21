@@ -83,9 +83,9 @@ Nada disso precisa estar perfeito. Precisa estar bom o suficiente para o primeir
 
 ## Quanto custa e em quanto tempo se paga?
 
-Existem dois formatos bem diferentes. Ferramenta pronta com IA embutida é assinatura, resolve o básico e depende do que o fornecedor liberou. Agente sob medida, com base própria, regras e integração, exige implantação e acompanhamento mensal, e o valor acompanha volume e complexidade. Na Feed, o preço sai numa proposta personalizada depois de uma conversa. O que compõe esse valor está em [quanto custa implementar IA numa pequena empresa](/quanto-custa/).
+Existem dois formatos bem diferentes. Ferramenta pronta com IA embutida é assinatura, resolve o básico e depende do que o fornecedor liberou. Agente sob medida, com base própria, regras e integração, exige implementação e manutenção, e o valor acompanha volume e complexidade. Na Feed, o preço sai numa proposta personalizada depois de uma conversa. O que compõe esse valor está em [quanto custa implementar IA numa pequena empresa](/quanto-custa/).
 
-A conta que importa é simples. Conte quantas vendas por mês hoje se perdem por demora e quantas horas o time gasta respondendo a mesma pergunta. Se o agente recupera sete ou oito dessas vendas, multiplique pelo seu ticket médio, some as horas devolvidas e compare com o que a proposta pede de implantação e de mensal. O método para refazer essa conta com os seus números está em [como calcular ROI de automação com IA](/blog/calcular-roi-automacao-ia/).
+A conta que importa é simples. Conte quantas vendas por mês hoje se perdem por demora e quantas horas o time gasta respondendo a mesma pergunta. Se o agente recupera sete ou oito dessas vendas, multiplique pelo seu ticket médio, some as horas devolvidas e compare com o que a proposta pede de implementação e de manutenção. O método para refazer essa conta com os seus números está em [como calcular ROI de automação com IA](/blog/calcular-roi-automacao-ia/).
 
 ## Qual escopo inicial faz sentido?
 
@@ -129,4 +129,4 @@ O prazo depende do escopo e de como está a base de informação. O que estica p
 Depende do tipo de pergunta que chega. Se a maioria é previsível, uma automação simples resolve. A comparação está em [agente de IA no WhatsApp vale para sua empresa?](/blog/agente-ia-whatsapp-vale-a-pena/).
 
 **Como sei se minha empresa tem volume suficiente?**
-Meça uma semana real: quantas mensagens chegam, quantas ficam sem resposta em uma hora e quantas conversas morrem sem próximo passo. Se o buraco aparece já nessa semana, existe volume. É por aí que o diagnóstico gratuito da Feed começa.
+Meça uma semana real: quantas mensagens chegam, quantas ficam sem resposta em uma hora e quantas conversas morrem sem próximo passo. Se o buraco aparece já nessa semana, existe volume. Se quiser dar o primeiro passo com a Feed, o [Diagnóstico do Gargalo](/diagnostico) chega em PDF no seu e-mail, na hora, e depois, se fizer sentido, você conversa com o Guilherme sobre o seu caso.

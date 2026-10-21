@@ -114,4 +114,4 @@ Separe os dois números. Se muita gente espera mais de uma hora, o problema é v
 Ajuda no que é velocidade e continuidade: resposta imediata, qualificação e lembrete de follow-up. Não substitui uma boa oferta nem um vendedor preparado para o fechamento.
 
 **Por onde começo se descobrir um buraco grande?**
-Pela medição virar meta. Em vez de "quero IA", defina "reduzir o tempo de primeira resposta e recuperar as conversas sem próximo passo". É exatamente por aí que o diagnóstico gratuito da Feed começa.
+Pela medição virar meta. Em vez de "quero IA", defina "reduzir o tempo de primeira resposta e recuperar as conversas sem próximo passo". Se quiser dar esse passo com a Feed, o [Diagnóstico do Gargalo](/diagnostico) chega em PDF no seu e-mail na hora, e depois vem uma conversa com o Guilherme.

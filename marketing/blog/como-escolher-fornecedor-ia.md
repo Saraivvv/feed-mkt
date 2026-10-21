@@ -94,12 +94,12 @@ Propostas de IA costumam chegar em formatos diferentes de propósito, o que difi
 - métrica que prova sucesso e o número de partida;
 - escopo da primeira fase, item por item;
 - o que fica de fora;
-- investimento inicial e custo mensal;
+- investimento inicial e custo de manutenção;
 - prazo até estar no ar;
 - quem mantém a base depois;
 - de quem são as contas, credenciais e dados.
 
-Quando você preenche essa tabela, a proposta vaga se revela sozinha. Se quiser comparar com um trabalho que já nasce nesse formato, veja como funciona o [diagnóstico de IA da Feed](/diagnostico-ia-empresa/). Ela deixa metade das células vazias e compensa com adjetivo.
+Quando você preenche essa tabela, a proposta vaga se revela sozinha: ela deixa metade das células vazias e compensa com adjetivo.
 
 ## O que pedir de prova antes de assinar
 
@@ -135,4 +135,4 @@ Nem sempre, mas exige explicação. Costuma significar escopo menor, ferramenta 
 Pergunte quem atende, em qual canal e com qual prazo. Peça o nome da pessoa responsável, não só o da empresa. E confirme se manutenção está no contrato ou se será cobrada por demanda.
 
 **E se eu não souber avaliar a resposta técnica?**
-Peça a explicação em termos de operação: o que muda no dia a dia da equipe, o que o cliente vai sentir, quem faz o quê. Quem entende de verdade consegue explicar sem jargão. É assim que o diagnóstico gratuito da Feed conversa com o dono do negócio.
+Peça a explicação em termos de operação: o que muda no dia a dia da equipe, o que o cliente vai sentir, quem faz o quê. Quem entende de verdade consegue explicar sem jargão. Na Feed, essa conversa é com o Guilherme, depois do [Diagnóstico do Gargalo](/diagnostico) que chega em PDF no seu e-mail.

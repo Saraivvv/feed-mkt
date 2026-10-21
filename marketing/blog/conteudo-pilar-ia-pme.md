@@ -138,6 +138,6 @@ Um piloto bem escolhido mostra sinal primeiro no indicador que você definiu, an
 Não é o objetivo num projeto bem feito. A IA tira a repetição e libera a equipe para decisão, exceção e relacionamento, que é onde ela gera mais valor.
 
 **Por onde eu começo hoje?**
-Escolha um gargalo, coloque um número nele e faça um diagnóstico honesto do que dá para automatizar com segurança. É exatamente isso que fazemos no [diagnóstico de IA](/diagnostico-ia-empresa/) gratuito. Se preferir ver antes como a Feed implementa, a página de [consultoria e implementação de IA para PMEs](/ia-para-pequenas-empresas/) mostra o escopo.
+Escolha um gargalo, coloque um número nele e faça um diagnóstico honesto do que dá para automatizar com segurança. Na Feed, o primeiro passo é o [Diagnóstico do Gargalo](/diagnostico): um PDF no seu e-mail, na hora, e depois uma conversa com o Guilherme. Se preferir ver antes como a Feed implementa, a página de [consultoria e implementação de IA para PMEs](/ia-para-pequenas-empresas/) mostra o escopo.
 
 IA para PME não precisa ser complexa para ser útil. Precisa ser bem escolhida. Comece pequeno, meça sem preguiça e só expanda quando o primeiro projeto provar valor. O resto é consequência.

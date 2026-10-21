@@ -56,17 +56,17 @@ Consultoria é o trabalho de decisão que vem junto ou logo depois: priorizaçã
 
 Implementação é construir e colocar no ar. Agente, automação, integração, base de conhecimento, testes e ajuste.
 
-Para PME, o mais comum e mais saudável é o pacote curto: diagnóstico e consultoria juntos, seguidos de uma implementação pequena que prova valor. Consultoria longa sem implementação costuma render relatório bonito e operação intacta. O formato curto está descrito em [diagnóstico de IA para empresas](/diagnostico-ia-empresa/).
+Para PME, o mais comum e mais saudável é o pacote curto: diagnóstico e consultoria juntos, seguidos de uma implementação pequena que prova valor. Consultoria longa sem implementação costuma render relatório bonito e operação intacta.
 
 ## Como esse trabalho é cobrado?
 
 Existem três formatos no mercado, e cada um tem um encaixe.
 
-Diagnóstico avulso, de curta duração. Serve para quem quer clareza antes de investir. Costuma custar uma fração do projeto que ele recomenda, e em muitos casos é oferecido sem custo como porta de entrada, inclusive na Feed.
+Diagnóstico avulso, de curta duração. Serve para quem quer clareza antes de investir. Costuma custar uma fração do projeto que ele recomenda, e em muitos casos é oferecido sem custo como porta de entrada. Na Feed, essa porta é o [Diagnóstico do Gargalo](/diagnostico): um PDF gratuito no seu e-mail, seguido de uma conversa com o Guilherme.
 
 Consultoria por projeto, quando existe mais de um gargalo, mais de uma área envolvida ou necessidade de desenhar fases. Serve para quem já decidiu investir e quer errar menos. O preço acompanha o tamanho da operação analisada, não a quantidade de slides.
 
-Acompanhamento mensal, para revisar métrica, ajustar escopo e conduzir a próxima fase. Só faz sentido quando existe projeto rodando de verdade.
+Acompanhamento contínuo, para revisar métrica, ajustar escopo e conduzir a próxima fase. Só faz sentido quando existe projeto rodando de verdade.
 
 Seja qual for o formato, compare o valor com o tamanho do projeto que ele vai destravar. O que compõe o preço da implementação está em [quanto custa implementar IA numa pequena empresa](/quanto-custa/). Se a consultoria custa quase o mesmo que a implementação, algo está desproporcional.
 
@@ -114,7 +114,7 @@ Consultoria de IA boa para pequena empresa é curta, específica e termina em de
 Diagnóstico é o levantamento que mostra onde a empresa perde tempo ou dinheiro. Consultoria usa esse levantamento para priorizar, desenhar escopo, definir métrica e planejar as fases do projeto.
 
 **Quanto custa uma consultoria de IA para pequena empresa?**
-Depende do formato e do tamanho da operação analisada. A régua prática é comparar com a implementação que ela recomenda: consultoria que custa quase o mesmo que o projeto está desproporcional. Na Feed, o diagnóstico inicial é gratuito justamente para a empresa decidir com informação antes de gastar.
+Depende do formato e do tamanho da operação analisada. A régua prática é comparar com a implementação que ela recomenda: consultoria que custa quase o mesmo que o projeto está desproporcional. Na Feed, o primeiro passo é gratuito: o Diagnóstico do Gargalo em PDF no seu e-mail e uma conversa com o Guilherme, antes de qualquer proposta.
 
 **Preciso de consultoria antes de contratar um agente de IA?**
 Nem sempre. Se o gargalo já é claro e mensurável, um piloto pequeno prova mais rápido. Consultoria compensa quando existem várias frentes possíveis e o risco de escolher errado é caro.
@@ -123,4 +123,4 @@ Nem sempre. Se o gargalo já é claro e mensurável, um piloto pequeno prova mai
 Depende do tamanho da operação analisada e do escopo. Combine o prazo antes de começar: prazo que não para de crescer em PME costuma indicar escopo mal definido.
 
 **Como sei se a recomendação é isenta?**
-Pergunte se o consultor recebe comissão da ferramenta recomendada e peça pelo menos duas alternativas com prós e contras. Recomendação única e fechada merece uma segunda opinião. É por isso que o diagnóstico gratuito da Feed começa pela operação e só depois fala de solução.
+Pergunte se o consultor recebe comissão da ferramenta recomendada e peça pelo menos duas alternativas com prós e contras. Recomendação única e fechada merece uma segunda opinião. Na Feed, a conversa com o Guilherme, depois do [Diagnóstico do Gargalo](/diagnostico), começa pelo seu gargalo, não pela ferramenta.
