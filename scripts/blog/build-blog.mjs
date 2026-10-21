@@ -634,8 +634,7 @@ ${cards}
       <aside class="blog-cta">
         <h2>Quer saber o que faz sentido pro seu negócio?</h2>
         <p>
-          A Feed faz um diagnóstico gratuito da sua operação e da sua presença digital.
-          Você sai sabendo onde a IA resolve de verdade, quanto custa e por onde começar.
+          A Feed faz um diagnóstico gratuito do gargalo da sua operação. Você recebe o PDF do Diagnóstico do Gargalo por e-mail e conversa com o Guilherme sobre ele.
         </p>
         <div class="blog-cta-actions">
           <a class="btn-diagnostico" href="/#contato">Diagnóstico gratuito</a>
@@ -1471,8 +1470,7 @@ ${plannedCards}
       <aside class="blog-cta">
         <h2>Quer saber o que faz sentido pro seu negócio?</h2>
         <p>
-          A Feed faz um diagnóstico gratuito da sua operação e da sua presença digital.
-          Você sai sabendo onde a IA resolve de verdade, quanto custa e por onde começar.
+          A Feed faz um diagnóstico gratuito do gargalo da sua operação. Você recebe o PDF do Diagnóstico do Gargalo por e-mail e conversa com o Guilherme sobre ele.
         </p>
         <div class="blog-cta-actions">
           <a class="btn-diagnostico" href="/#contato">Diagnóstico gratuito</a>
@@ -2044,8 +2042,7 @@ ${cards}
       <aside class="cta">
         <h2>Quer saber o que faz sentido para sua empresa?</h2>
         <p>
-          A Feed faz um diagnóstico gratuito da sua operação e da sua presença digital.
-          Você sai sabendo onde a IA resolve de verdade, quanto custa e por onde começar.
+          A Feed faz um diagnóstico gratuito do gargalo da sua operação. Você recebe o PDF do Diagnóstico do Gargalo por e-mail e conversa com o Guilherme sobre ele.
         </p>
         <div class="cta-actions">
           <a class="button" href="/#contato">Diagnóstico gratuito</a>

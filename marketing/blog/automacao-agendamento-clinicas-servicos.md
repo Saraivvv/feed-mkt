@@ -16,8 +16,6 @@ businessOutcome: "Montar um fluxo de agendamento automático com regras claras, 
 heroSummary: "Automação de agendamento resolve três coisas: oferecer horário na hora, confirmar antes e facilitar remarcação. É uma das automações com retorno mais rápido em negócio de hora marcada."
 cardLabel: "Agenda cheia, time livre"
 cardTakeaway: "O fluxo, as regras e os números para automatizar agendamento sem criar conflito de horário."
-costRange: "R$100/mês a R$25 mil"
-payback: "3 a 6 meses"
 difficulty: "Baixo"
 ctaVariant: diagnostico-atendimento
 readingPromise:
@@ -137,4 +135,4 @@ O fluxo precisa ter saída para humano em qualquer etapa, com o histórico da co
 Reduz quando junta lembrete no tempo certo, confirmação simples e remarcação fácil. O maior ganho costuma vir da remarcação, que transforma falta em horário reagendado.
 
 **Quanto custa montar?**
-De poucas centenas de reais por mês, usando ferramenta pronta com integração de agenda, até projeto sob medida quando existe regra complexa e mais de um profissional. As faixas estão em [quanto custa implementar IA numa pequena empresa](/blog/quanto-custa-implementar-ia-pequena-empresa/), e o diagnóstico gratuito da Feed ajuda a dimensionar o seu caso.
+Depende do formato. Ferramenta pronta com integração de agenda resolve o caso simples, e projeto sob medida entra quando existe regra complexa e mais de um profissional. O que compõe o preço está em [quanto custa implementar IA numa pequena empresa](/quanto-custa/), e o primeiro passo é o [Diagnóstico do Gargalo](/diagnostico), em PDF no seu e-mail, seguido de uma conversa com o Guilherme sobre o seu caso.

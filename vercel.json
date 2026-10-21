@@ -4,5 +4,17 @@
     "api/diagnostico.js": {
       "includeFiles": "public/diagnostico-do-gargalo.pdf"
     }
-  }
+  },
+  "redirects": [
+    {
+      "source": "/blog/quanto-custa-implementar-ia-pequena-empresa",
+      "destination": "/quanto-custa/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/quanto-custa-implementar-ia-pequena-empresa/",
+      "destination": "/quanto-custa/",
+      "statusCode": 301
+    }
+  ]
 }

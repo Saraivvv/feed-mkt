@@ -16,8 +16,6 @@ businessOutcome: "Evitar decisões caras e começar com um projeto menor, mensur
 heroSummary: "A maior parte dos erros acontece antes da tecnologia: escopo errado, dado bagunçado, métrica ausente e expectativa inflada."
 cardLabel: "Antes de contratar"
 cardTakeaway: "Veja os erros que transformam IA em custo fixo sem retorno e como fugir deles."
-costRange: "Evita desperdício"
-payback: "Antes do contrato"
 difficulty: "Baixo"
 ctaVariant: diagnostico-ia
 readingPromise:
@@ -34,11 +32,11 @@ status: published
 
 Projetos de IA em pequenas empresas raramente dão errado por falta de tecnologia. Eles dão errado porque começam com a pergunta errada, escopo grande demais, dados bagunçados e nenhuma métrica de retorno. A ferramenta vira protagonista, mas o problema real continua escondido.
 
-IA pode gerar retorno, mas também pode virar mais uma mensalidade esquecida. A diferença está na forma de começar. Os sete erros abaixo aparecem em quase todo projeto que fracassa, e a boa notícia é que todos são evitáveis antes de assinar qualquer contrato.
+IA pode gerar retorno, mas também pode virar mais uma assinatura esquecida. A diferença está na forma de começar. Os sete erros abaixo aparecem em quase todo projeto que fracassa, e a boa notícia é que todos são evitáveis antes de assinar qualquer contrato.
 
 ## 1. Comprar ferramenta antes de entender o processo
 
-Esse é o erro mais comum e o mais caro no longo prazo. A empresa assina uma ferramenta de IA porque viu alguém usando, porque o concorrente anunciou ou porque o vendedor mostrou uma demonstração impressionante. Mas não muda rotina, não define processo e não mede ganho. Depois de algumas semanas, ninguém usa direito e a mensalidade continua caindo.
+Esse é o erro mais comum e o mais caro no longo prazo. A empresa assina uma ferramenta de IA porque viu alguém usando, porque o concorrente anunciou ou porque o vendedor mostrou uma demonstração impressionante. Mas não muda rotina, não define processo e não mede ganho. Depois de algumas semanas, ninguém usa direito e a assinatura continua sendo cobrada.
 
 Ferramenta sem processo vira brinquedo caro. Antes de contratar qualquer coisa, responda por escrito: qual tarefa será melhorada, quem usa, quando usa e qual resultado esperado. Se essas quatro respostas não existem, o problema não é falta de IA. É falta de clareza sobre a própria operação.
 
@@ -50,7 +48,7 @@ Um teste simples: se você não consegue explicar em uma frase o que a ferrament
 
 O melhor caminho é piloto pequeno. Escolha um gargalo, resolva bem, meça o resultado e expanda depois. A primeira vitória compra confiança para a segunda. Se você não sabe qual gargalo atacar primeiro, o método de [como escolher o primeiro processo para automatizar](/blog/primeiro-processo-automatizar-pme/) resolve exatamente essa dúvida com uma matriz simples de frequência, impacto e risco.
 
-Escopo pequeno não é falta de ambição. É estratégia de quem quer resultado em semanas, não promessa em anos.
+Escopo pequeno não é falta de ambição. É estratégia de quem quer resultado medido, não promessa.
 
 ## 3. Automatizar processo ruim
 
@@ -66,7 +64,7 @@ Sem métrica, tudo vira opinião. O dono acha que melhorou, o time acha que pior
 
 Escolha uma métrica principal antes da implementação: tempo de resposta, taxa de agendamento, horas economizadas, vendas recuperadas ou erros reduzidos. E meça o ponto de partida antes de mudar qualquer coisa, senão não existe comparação possível. O guia de [como medir perda de vendas por demora no atendimento](/blog/como-medir-perda-vendas-demora-atendimento/) mostra como levantar esses números em uma semana, sem ferramenta cara.
 
-Projeto sem métrica não é investimento. É aposta com mensalidade.
+Projeto sem métrica não é investimento. É aposta paga todo mês.
 
 ## 5. Ignorar o humano no fluxo
 
@@ -94,25 +92,25 @@ Ao comparar fornecedores, pergunte o que está incluído depois da entrega. Quem
 
 ## Como começar melhor
 
-Comece por diagnóstico. Escolha um problema real, pequeno o bastante para implementar em semanas e grande o bastante para gerar retorno visível. Defina métrica, organize os dados mínimos e implemente com saída humana para os casos que fogem do padrão.
+Comece por diagnóstico. Escolha um problema real, pequeno o bastante para sair do papel e grande o bastante para gerar retorno visível. Defina métrica, organize os dados mínimos e implemente com saída humana para os casos que fogem do padrão.
 
-Antes de assinar, faça a conta: o custo do projeto cabe no retorno esperado? As faixas reais de investimento estão no guia de [quanto custa implementar IA numa pequena empresa](/blog/quanto-custa-implementar-ia-pequena-empresa/), e a régua é simples: piloto que não se paga em poucos meses merece escopo menor.
+Antes de assinar, faça a conta: o custo do projeto cabe no retorno esperado? O que compõe o investimento está no guia de [quanto custa implementar IA numa pequena empresa](/quanto-custa/), e a régua é simples: piloto cuja conta não fecha merece escopo menor.
 
 Essa abordagem pode parecer menos empolgante do que "IA em tudo", mas é a que funciona para pequena empresa. Projeto bom não é o que impressiona na apresentação. É o que roda na rotina e paga a própria conta.
 
 ## Perguntas frequentes
 
 **Qual é o erro mais caro dessa lista?**
-Comprar ferramenta antes de entender o processo. Além da mensalidade desperdiçada, ele gera frustração no time e deixa a empresa desconfiada de IA, o que atrasa projetos futuros que poderiam dar certo.
+Comprar ferramenta antes de entender o processo. Além da assinatura desperdiçada, ele gera frustração no time e deixa a empresa desconfiada de IA, o que atrasa projetos futuros que poderiam dar certo.
 
 **Como sei se meu processo está bom o suficiente para automatizar?**
 Se você consegue descrever as etapas em passos claros e o time concorda com essa descrição, está pronto. Se cada pessoa faz de um jeito e as exceções são maioria, organize primeiro. Automação amplifica o que existe.
 
 **Projeto pequeno não é perder tempo? Não seria melhor já fazer completo?**
-Não. Piloto pequeno prova valor em semanas e gera aprendizado barato. Projeto completo de primeira costuma travar em integração e treinamento, e o erro sai caro. Quem começa pequeno expande com confiança e dados.
+Não. Piloto pequeno prova valor antes e gera aprendizado barato. Projeto completo de primeira costuma travar em integração e treinamento, e o erro sai caro. Quem começa pequeno expande com confiança e dados.
 
 **O que devo exigir do fornecedor para evitar esses erros?**
-Diagnóstico antes de proposta, métrica definida em contrato, escopo de piloto com prazo curto e manutenção prevista depois da entrega. Fornecedor que promete tudo sem perguntar sobre teu processo é sinal de alerta. O [guia de IA para PME](/blog/ia-para-pme-guia-pratico/) reúne o caminho certo, do diagnóstico ao piloto que se paga, e o [diagnóstico de IA](/diagnostico-ia-empresa/) é onde esse caminho começa.
+Diagnóstico antes de proposta, métrica definida em contrato, escopo de piloto com prazo curto e manutenção prevista depois da entrega. Fornecedor que promete tudo sem perguntar sobre teu processo é sinal de alerta. O [guia de IA para PME](/blog/ia-para-pme-guia-pratico/) reúne o caminho certo, do diagnóstico ao piloto que se paga, e o [Diagnóstico do Gargalo](/diagnostico) é o primeiro passo com a Feed.
 
 **A Feed ajuda a evitar esses erros como?**
-Começando pelo diagnóstico gratuito: a gente olha teus processos, aponta onde a IA se paga primeiro e define a métrica antes de falar de ferramenta. Se o projeto não fizer sentido, a gente fala que não faz.
+Começando pelo [Diagnóstico do Gargalo](/diagnostico): um PDF que chega no seu e-mail na hora. Depois, se fizer sentido, você conversa com o Guilherme sobre o seu caso. Se o projeto não fizer sentido, a gente fala que não faz.

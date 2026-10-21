@@ -16,8 +16,6 @@ businessOutcome: "Priorizar integrações que reduzem trabalho e melhoram venda,
 heroSummary: "Integração faz sentido quando evita retrabalho, reduz erro ou acelera uma etapa crítica da venda ou operação."
 cardLabel: "Integrações"
 cardTakeaway: "Saiba quando conectar IA com sistemas ajuda e quando é melhor começar mais simples."
-costRange: "R$3 mil a R$20 mil por fase"
-payback: "Depende do volume"
 difficulty: "Médio"
 ctaVariant: diagnostico-operacao
 readingPromise:
@@ -34,7 +32,7 @@ status: published
 
 Integrar IA com CRM, agenda e planilhas faz sentido quando a integração elimina retrabalho, reduz erro ou acelera uma etapa que impacta venda e operação. Não faz sentido quando a empresa quer conectar tudo antes de provar que o fluxo principal funciona.
 
-Integração é uma das partes que mais encarece projeto de IA, como mostram as faixas de [quanto custa implementar IA numa pequena empresa](/blog/quanto-custa-implementar-ia-pequena-empresa/). Por isso, ela precisa ser escolhida com critério.
+Integração é uma das partes que mais encarece projeto de IA, como mostra o guia de [quanto custa implementar IA numa pequena empresa](/quanto-custa/). Por isso, ela precisa ser escolhida com critério.
 
 ## Integração boa resolve trabalho real
 
@@ -100,7 +98,7 @@ Nem toda integração custa igual. Na prática existem três níveis.
 
 **Nível 3, sistema fechado ou legado.** ERP antigo, software regional sem API, planilha que mora na máquina de alguém. Aqui o custo sobe muito e a manutenção também. Muitas vezes a resposta certa é não integrar agora e resolver com exportação periódica.
 
-Antes de pedir orçamento, descubra em qual nível cada sistema seu está. Essa checagem faz parte do [diagnóstico de IA](/diagnostico-ia-empresa/). Essa única informação muda o preço da proposta e o prazo do projeto.
+Antes de pedir orçamento, descubra em qual nível cada sistema seu está. Essa única informação muda o preço da proposta e o prazo do projeto.
 
 ## O que quebra depois e como se proteger
 
@@ -132,7 +130,7 @@ Se marcação de horário é parte central da venda, sim. Se a agenda é usada d
 É solução legítima para muita PME. Barata, flexível e todo mundo entende. Vira problema quando não tem padrão de coluna e quando várias pessoas editam ao mesmo tempo.
 
 **Quanto custa uma integração?**
-Depende do nível. Conector pronto é quase custo zero de desenvolvimento. API documentada é trabalho de horas. Sistema fechado pode custar mais que o resto do projeto. As faixas gerais estão em [quanto custa implementar IA numa pequena empresa](/blog/quanto-custa-implementar-ia-pequena-empresa/).
+Depende do nível. Conector pronto é quase custo zero de desenvolvimento. API documentada é trabalho de horas. Sistema fechado pode custar mais que o resto do projeto. O que compõe o preço está em [quanto custa implementar IA numa pequena empresa](/quanto-custa/).
 
 **Como escolho a primeira integração?**
-Pela que elimina trabalho manual diário com menor esforço técnico. Se duas empatam, escolha a que envolve o sistema que sua equipe realmente usa. Esse ordenamento é parte do diagnóstico gratuito da Feed.
+Pela que elimina trabalho manual diário com menor esforço técnico. Se duas empatam, escolha a que envolve o sistema que sua equipe realmente usa.

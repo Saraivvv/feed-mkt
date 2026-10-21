@@ -16,8 +16,6 @@ businessOutcome: "Mapear processos internos com potencial de automação e escol
 heroSummary: "Comece por tarefas frequentes, repetitivas e mensuráveis, não por processos críticos cheios de exceção."
 cardLabel: "Operação interna"
 cardTakeaway: "Veja como escolher automações internas que economizam horas sem virar projeto de meses."
-costRange: "R$12 mil a R$40 mil"
-payback: "6 a 10 meses"
 difficulty: "Médio"
 ctaVariant: diagnostico-operacao
 readingPromise:
@@ -102,7 +100,7 @@ Os três têm a mesma assinatura: acontecem toda semana, seguem regra clara e o 
 
 ## Quanto custa e o que fica com a empresa
 
-Automação interna simples, sobre ferramentas que a empresa já usa, costuma ser o projeto de IA mais barato que existe. Não tem canal oficial para verificar, não tem conversa com cliente para revisar, não tem risco de resposta errada chegar no comprador.
+Automação interna simples roda sobre ferramentas que a empresa já usa. Não tem canal de atendimento para configurar, não tem conversa com cliente para revisar, não tem risco de resposta errada chegar no comprador.
 
 Duas perguntas evitam a maior parte dos problemas. A primeira: se eu trocar de fornecedor, o que fica comigo? Fluxo, credencial e dado precisam ficar na conta da empresa. A segunda: quem mexe quando quebrar? Automação interna quebra quando alguém muda uma coluna da planilha ou renomeia uma pasta, e isso vai acontecer.
 
@@ -124,7 +122,7 @@ Se a tarefa é mover dado, disparar lembrete ou preencher campo fixo, automaçã
 Nem sempre. Muita coisa começa em planilha, e-mail ou pasta compartilhada, que é onde o dado já está. Integração com ERP e financeiro é fase dois, depois que o piloto provou valor.
 
 **Quanto tempo leva um piloto interno?**
-De duas a quatro semanas quando o processo está mapeado. O que atrasa é descobrir no meio do caminho que ninguém sabia explicar a regra de exceção.
+Depende de quanto o processo já está mapeado. O que atrasa é descobrir no meio do caminho que ninguém sabia explicar a regra de exceção.
 
 **Como provo que valeu?**
-Meça antes de começar: quantas vezes por semana acontece, quanto tempo consome e quantos erros aparecem. Sem esse ponto de partida, não existe comparação depois. É exatamente o levantamento que o diagnóstico gratuito da Feed faz.
+Meça antes de começar: quantas vezes por semana acontece, quanto tempo consome e quantos erros aparecem. Sem esse ponto de partida, não existe comparação depois.

@@ -61,7 +61,7 @@ const pages = [
     related: ["automacao-whatsapp", "agentes-de-ia", "diagnostico-ia-empresa"],
     relatedPosts: [
       ["/blog/ia-para-pme-guia-pratico/", "IA para PME: guia prático para começar"],
-      ["/blog/quanto-custa-implementar-ia-pequena-empresa/", "Quanto custa implementar IA numa pequena empresa?"],
+      ["/quanto-custa/", "Quanto custa automação e IA para pequena empresa"],
       ["/blog/primeiro-processo-automatizar-pme/", "Como escolher o primeiro processo para automatizar"],
     ],
   },
@@ -77,7 +77,7 @@ const pages = [
       "Cliente que espera demais esfria. A Feed monta automações de WhatsApp que respondem o básico na hora, qualificam oportunidades e deixam o humano entrar quando a conversa exige cuidado.",
     primaryCta: "Diagnosticar meu atendimento",
     secondaryCta: "Ler sobre custos de IA",
-    secondaryHref: "/blog/quanto-custa-implementar-ia-pequena-empresa/",
+    secondaryHref: "/quanto-custa/",
     serviceName: "Automação de atendimento no WhatsApp com IA",
     bulletsTitle: "O que entra no projeto",
     bullets: [
@@ -197,7 +197,7 @@ const pages = [
       "A Feed ajuda empresas de Ribeirão Preto e cidades vizinhas a usarem IA onde ela paga a conta: atendimento, follow-up e operação. O trabalho é remoto na maior parte do tempo, presencial quando o projeto pede, sempre com escopo enxuto e retorno mensurável.",
     primaryCta: "Pedir diagnóstico gratuito",
     secondaryCta: "Ver guia de custos",
-    secondaryHref: "/blog/quanto-custa-implementar-ia-pequena-empresa/",
+    secondaryHref: "/quanto-custa/",
     serviceName:
       "Consultoria e implementação de IA para empresas de Ribeirão Preto e região",
     bulletsTitle: "O que a Feed resolve para empresas da região",
@@ -223,7 +223,7 @@ const pages = [
     related: ["ia-para-pequenas-empresas", "automacao-whatsapp", "agentes-de-ia"],
     relatedPosts: [
       ["/blog/ia-para-pme-guia-pratico/", "IA para PME: guia prático para começar"],
-      ["/blog/quanto-custa-implementar-ia-pequena-empresa/", "Quanto custa implementar IA numa pequena empresa?"],
+      ["/quanto-custa/", "Quanto custa automação e IA para pequena empresa"],
       ["/blog/automacao-whatsapp-pequena-empresa/", "Automação de WhatsApp: quando vale a pena"],
     ],
   },
@@ -239,7 +239,7 @@ const pages = [
       "A Feed nasceu unindo marketing e IA aplicada para ajudar empresas de Bebedouro e região a venderem mais sem depender de sorte. Menos post solto, mais operação que gera contato, atende rápido e converte.",
     primaryCta: "Pedir diagnóstico gratuito",
     secondaryCta: "Ver guia de custos",
-    secondaryHref: "/blog/quanto-custa-implementar-ia-pequena-empresa/",
+    secondaryHref: "/quanto-custa/",
     serviceName:
       "Marketing, posicionamento e IA aplicada para empresas de Bebedouro e região",
     bulletsTitle: "O que a Feed faz por empresas de Bebedouro",
@@ -265,9 +265,124 @@ const pages = [
     related: ["ia-para-pequenas-empresas", "diagnostico-ia-empresa", "automacao-whatsapp"],
     relatedPosts: [
       ["/blog/ia-para-pme-guia-pratico/", "IA para PME: guia prático para começar"],
-      ["/blog/quanto-custa-implementar-ia-pequena-empresa/", "Quanto custa implementar IA numa pequena empresa?"],
+      ["/quanto-custa/", "Quanto custa automação e IA para pequena empresa"],
       ["/blog/primeiro-processo-automatizar-pme/", "Como escolher o primeiro processo para automatizar"],
     ],
+  },
+  {
+    slug: "quanto-custa",
+    type: "pricing",
+    lastmod: "2026-10-20",
+    llmsLabel: "Como funciona o preço",
+    title: "Quanto custa automação e IA para pequena empresa | Feed",
+    h1: "Quanto custa contratar a Feed para destravar a sua operação",
+    eyebrow: "Preço",
+    updated: "Atualizado em outubro de 2026.",
+    description:
+      "Na Feed, o preço é personalizado. Veja o que compõe o valor, quando a IA entra como adicional e como sair com uma proposta feita para a sua empresa.",
+    intro:
+      "Na Feed, o preço é personalizado. A gente não vende pacote fechado pelo site: primeiro entende onde a sua operação trava, depois monta uma proposta com o escopo, o prazo e o valor do seu caso. O valor depende de quantos sistemas a gente conecta, do volume de atendimento e de quão organizadas estão as informações da empresa. A IA é um adicional opcional: entra só se fizer sentido pro seu negócio e, quando entra, muda o valor da proposta. O primeiro passo é gratuito: o Diagnóstico do Gargalo por e-mail e uma conversa com o Guilherme.",
+    answer: "O preço é personalizado: sai numa proposta feita pro seu caso, depois do diagnóstico gratuito e de uma conversa com o Guilherme.",
+    answerNote: "Sem tabela de preço. A IA é adicional opcional e, quando entra, muda o valor da proposta.",
+    primaryCta: "Quero o diagnóstico",
+    primaryHref: "/diagnostico",
+    secondaryCta: "Ver quando a IA entra no projeto",
+    secondaryHref: "/agentes-de-ia/",
+    serviceName: "Automação de atendimento e processos para pequenas empresas, com preço personalizado",
+    sections: [
+      {
+        eyebrow: "Sem tabela",
+        h2: "Por que não tem tabela de preço aqui",
+        paragraphs: [
+          "Porque duas empresas que pedem \"automatizar o WhatsApp\" quase nunca precisam da mesma coisa. Uma quer organizar o atendimento e responder rápido a dúvida repetida. A outra quer consultar agenda, registrar no CRM e passar pra pessoa certa. Uma precisa de IA, a outra não. Preço de tabela ou fica caro pra primeira ou mal feito pra segunda. Por isso o valor sai depois de entender o problema, não antes.",
+        ],
+      },
+      {
+        eyebrow: "Composição",
+        h2: "O que compõe o preço",
+        paragraphs: [
+          "A Feed trabalha de dois jeitos, e a proposta diz qual faz sentido pro seu caso: **implementação mais manutenção**, quando a solução precisa de acompanhamento depois de entregue, ou **serviço pontual**, com pagamento único, quando o trabalho tem começo, meio e fim.",
+          "**A implementação** é o trabalho de colocar a solução de pé, nos dois modelos:",
+        ],
+        list: [
+          "Entender o processo e escrever as regras: o que é respondido automaticamente, o que não é e quando uma pessoa assume.",
+          "Conectar com o que a empresa já usa: WhatsApp, agenda, CRM, planilhas e documentos.",
+          "Organizar as informações do negócio que o atendimento e a operação usam.",
+          "Testar até funcionar certo, antes de abrir pro cliente.",
+        ],
+        after: [
+          "**A manutenção**, quando entra, mantém tudo funcionando depois da entrega:",
+        ],
+        list2: [
+          "Acompanhamento e ajustes: pergunta nova, regra nova, resposta que precisa mudar.",
+          "Manutenção do que foi instalado, pra continuar rodando depois que o projeto termina.",
+        ],
+        closing: [
+          "**IA, se fizer sentido (adicional opcional).** Quando o seu caso pede, a proposta inclui um [agente de IA](/agentes-de-ia/) treinado no contexto da empresa: conhece a oferta, as regras de atendimento e os limites do que pode responder. Ele entra como item separado dentro da proposta e muda o valor. Se a sua operação resolve bem sem IA, ela fica de fora.",
+        ],
+      },
+      {
+        eyebrow: "Fatores",
+        h2: "O que faz o valor subir ou descer",
+        list: [
+          "**Quantos sistemas a gente conecta.** Organizar o atendimento só no WhatsApp é um projeto. Conectar agenda, CRM e planilha é outro. Cada sistema a mais é uma frente de trabalho.",
+          "**Volume de atendimento.** Mais conversas trazem mais caso raro pra tratar.",
+          "**Regras do negócio.** Se a resposta certa depende de região, tipo de cliente e exceção da época, tem mais regra pra escrever e mais teste pra fazer.",
+          "**Organização das informações.** Se o que o atendimento precisa saber está espalhado em planilha, caderno e na cabeça do dono, uma parte do trabalho é organizar isso antes.",
+          "**Dado sensível.** Setor como saúde pede cuidado extra com dado pessoal.",
+          "**Entrar ou não IA.** O agente de IA é adicional. Com ele, a proposta sobe. Sem ele, não.",
+        ],
+        closing: [
+          "O que faz o valor descer: começar por um problema só, o que mais dói, em vez de um projeto grande. Normalmente é o atendimento ou o follow-up comercial.",
+        ],
+      },
+      {
+        eyebrow: "Resultado",
+        h2: "O que a gente não garante",
+        paragraphs: [
+          "A gente não garante número de vendas, faturamento, posição no Google ou conversão. Isso depende do seu mercado e de fatores que nenhuma agência controla. O que vai ser entregue, com limites e prazo, fica escrito na proposta.",
+        ],
+      },
+      {
+        eyebrow: "Passo a passo",
+        h2: "Do primeiro contato até a proposta",
+        ordered: true,
+        list: [
+          "**Diagnóstico do Gargalo.** Você deixa nome e e-mail em [agenciafeed.com/diagnostico](/diagnostico) e recebe o PDF no seu e-mail na hora: onde a operação para quando você não está, o que mais consome seu tempo e o primeiro passo pra tirar a empresa das suas costas.",
+          "**Conversa com o Guilherme.** Ele entende o seu caso: onde trava, quanto isso custa em tempo e venda, o que já existe na empresa e se IA faz sentido ou não.",
+          "**Proposta personalizada.** Problema, o que vai ser entregue, limites, prazo e valor no papel antes de começar. Se tiver IA, ela aparece como item à parte.",
+          "**Implementação.** Regras, conexões, organização das informações e teste.",
+          "**No ar.** O primeiro fluxo de [WhatsApp](/automacao-whatsapp/) entra no ar no prazo escrito na proposta, que depende da clareza das respostas, das integrações e do volume de exceções.",
+        ],
+        closing: ["As condições ficam no contrato."],
+      },
+    ],
+    faqs: [
+      ["Quanto custa implementar IA numa pequena empresa?", "Na Feed, o preço é personalizado. Primeiro a gente vê onde a operação trava. Muitas vezes o problema se resolve organizando atendimento e processo, sem IA. Quando a IA faz sentido, ela entra como adicional e muda o valor da proposta. Você recebe o número numa proposta feita pro seu caso, depois de uma conversa com o Guilherme."],
+      ["A IA vem incluída em todo projeto?", "Não. A IA é um adicional opcional e nem todo cliente usa. Ela entra quando o seu atendimento ou a sua operação pedem um agente que responda com o contexto da empresa. Nesse caso, aparece como item separado na proposta."],
+      ["Quanto custa automatizar o atendimento no WhatsApp?", "Depende do que a automação precisa fazer. Responder dúvida frequente é um escopo. Qualificar contato, consultar agenda e chamar uma pessoa na hora certa é outro. Se entrar IA, o valor muda. O número sai na proposta, depois da conversa."],
+      ["O que entra no valor?", "Depende do modelo. Num serviço pontual, você paga uma vez pela implementação: regras, conexões com o que a empresa já usa, organização das informações e teste. No modelo com manutenção, entra também o acompanhamento depois da entrega, pra tudo continuar funcionando. IA só entra se fizer sentido, como adicional."],
+      ["Dá pra começar com orçamento curto?", "Dá. A gente começa por um problema só, o que mais dói, em vez de um projeto grande. Normalmente é o atendimento ou o follow-up comercial, porque têm repetição e retorno fácil de medir. Começar sem IA também é um caminho."],
+      ["Vale mais contratar uma agência ou usar uma ferramenta pronta?", "Ferramenta pronta deixa cada pessoa da equipe mais rápida, mas não conhece o seu negócio e não conversa com os seus sistemas. A agência entra quando o problema é da operação: atendimento com as suas regras, registro no CRM, passagem pra pessoa certa. Se o problema é individual, ferramenta resolve. Se é da operação, precisa de implantação."],
+      ["Em quanto tempo fica pronto?", "Depende de quão claras estão as respostas, de quantas integrações tem e do volume de exceções. O prazo de cada projeto vem escrito na proposta, antes de começar."],
+      ["Preciso de equipe de TI ou trocar meus sistemas?", "Não necessariamente. A gente começa conectando a solução ao que a empresa já usa: WhatsApp, CRM, agenda, planilhas e documentos."],
+      ["A Feed atende fora de Ribeirão Preto?", "Atende. A base é Ribeirão Preto e Bebedouro, com atendimento em Barretos, Jaboticabal, Sertãozinho e região, e no resto do Brasil de forma remota."],
+      ["O diagnóstico é gratuito mesmo? O que eu recebo?", "É gratuito. Você deixa nome e e-mail e recebe o Diagnóstico do Gargalo em PDF, no seu e-mail, na hora: onde a operação para quando você não está, o que mais consome seu tempo e o primeiro passo pra tirar a empresa das suas costas. Depois, se fizer sentido, vem a conversa com o Guilherme."],
+    ],
+    services: [
+      { name: "Automação de atendimento no WhatsApp", description: "Implementação e acompanhamento de automação de atendimento no WhatsApp, com regras do negócio, conexão com agenda, CRM e planilhas, e passagem para humano. Preço personalizado em proposta." },
+      { name: "Automação de processos internos", description: "Implementação e acompanhamento de automações de tarefas repetitivas de operação e vendas, conectadas ao que a empresa já usa. Preço personalizado em proposta." },
+      { name: "Agente de IA (adicional opcional)", description: "Agente de IA treinado no contexto da empresa. É um adicional opcional da proposta: entra só se fizer sentido para o negócio e, quando entra, muda o valor da proposta." },
+    ],
+    areaServed: ["Ribeirão Preto", "Bebedouro", "Barretos", "Jaboticabal", "Sertãozinho"],
+    related: ["automacao-whatsapp", "agentes-de-ia", "ia-para-pequenas-empresas", "diagnostico-ia-empresa"],
+    relatedPosts: [
+      ["/blog/calcular-roi-automacao-ia/", "Como calcular ROI de automação com IA na pequena empresa"],
+    ],
+    ctaTitle: "Quer saber quanto fica no seu caso?",
+    ctaText: "Comece pelo Diagnóstico do Gargalo. Ele chega no seu e-mail na hora, e depois você conversa com o Guilherme pra sair com uma proposta feita pra sua empresa.",
+    ctaButton: "Quero o diagnóstico",
+    ctaHref: "/diagnostico",
   },
 ];
 
@@ -279,11 +394,109 @@ function esc(value) {
     .replace(/"/g, "&quot;");
 }
 
+// Texto curto com **negrito** e [link](/caminho), sempre escapado antes.
+function inline(value) {
+  return esc(value)
+    .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+    .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, '<a href="$2">$1</a>');
+}
+
+function renderSection(section) {
+  const items = (list, ordered) =>
+    list
+      ? `<${ordered ? "ol" : "ul"} class="prose-list">${list.map((item) => `<li><span>${inline(item)}</span></li>`).join("")}</${ordered ? "ol" : "ul"}>`
+      : "";
+  const paras = (list) => (list || []).map((item) => `<p>${inline(item)}</p>`).join("");
+  return `<section class="decision prose">
+        <div>
+          <p class="eyebrow">${esc(section.eyebrow)}</p>
+          <h2>${esc(section.h2)}</h2>
+        </div>
+        <div class="prose-body">
+          ${paras(section.paragraphs)}${items(section.list, section.ordered)}${paras(section.after)}${items(section.list2, section.ordered)}${paras(section.closing)}
+        </div>
+      </section>`;
+}
+
+function legacyBlocks(page) {
+  return `<section class="split">
+        <div>
+          <p class="eyebrow">${esc(page.bulletsTitle)}</p>
+          <h2>O que precisa ficar claro antes de investir</h2>
+        </div>
+        <div class="cards">
+          ${page.bullets.map((item) => `<article><h3>${esc(item)}</h3></article>`).join("\n          ")}
+        </div>
+      </section>
+
+      <section class="decision">
+        <div>
+          <p class="eyebrow">${esc(page.decisionTitle)}</p>
+          <h2>Critérios práticos para decidir</h2>
+        </div>
+        <ol>
+          ${page.decisions.map((item) => `<li>${esc(item)}</li>`).join("\n          ")}
+        </ol>
+      </section>
+`;
+}
+
 function linkFor(slug) {
   return `/${slug}/`;
 }
 
+function pricingSchema(page) {
+  const url = `${SITE}/${page.slug}/`;
+  const areaServed = [
+    ...page.areaServed.map((name) => ({ "@type": "City", name })),
+    { "@type": "Country", name: "Brasil" },
+  ];
+  return [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": `${url}#page`,
+      name: page.title,
+      headline: page.h1,
+      description: page.description,
+      url,
+      inLanguage: "pt-BR",
+      dateModified: page.lastmod,
+      publisher: { "@id": ORG["@id"] },
+    },
+    ...page.services.map((service, index) => ({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "@id": `${url}#service-${index + 1}`,
+      name: service.name,
+      serviceType: service.name,
+      description: service.description,
+      url,
+      provider: ORG,
+      areaServed,
+    })),
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: page.faqs.map(([q, a]) => ({
+        "@type": "Question",
+        name: q,
+        acceptedAnswer: { "@type": "Answer", text: a },
+      })),
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${SITE}/` },
+        { "@type": "ListItem", position: 2, name: page.h1, item: url },
+      ],
+    },
+  ];
+}
+
 function pageSchema(page) {
+  if (page.type === "pricing") return pricingSchema(page);
   const url = `${SITE}/${page.slug}/`;
   return [
     {
@@ -377,40 +590,22 @@ ${JSON.stringify(pageSchema(page), null, 2)}
       <section class="hero">
         <div>
           <p class="eyebrow">${esc(page.eyebrow)}</p>
-          <h1>${esc(page.h1)}</h1>
+          <h1>${esc(page.h1)}</h1>${page.updated ? `
+          <p class="updated">${esc(page.updated)}</p>` : ""}
           <p class="intro">${esc(page.intro)}</p>
           <div class="actions">
-            <a class="button" href="/#contato">${esc(page.primaryCta)}</a>
+            <a class="button" href="${page.primaryHref || "/#contato"}">${esc(page.primaryCta)}</a>
             <a class="text-link" href="${page.secondaryHref}">${esc(page.secondaryCta)}</a>
           </div>
         </div>
         <aside class="answer-box">
           <span>Resposta curta</span>
-          <p>${esc(page.bullets[0])}</p>
-          <small>Para SEO e GEO, a Feed descreve IA como solução operacional mensurável, não como promessa genérica.</small>
+          <p>${esc(page.answer || page.bullets[0])}</p>
+          <small>${esc(page.answerNote || "Para SEO e GEO, a Feed descreve IA como solução operacional mensurável, não como promessa genérica.")}</small>
         </aside>
       </section>
 
-      <section class="split">
-        <div>
-          <p class="eyebrow">${esc(page.bulletsTitle)}</p>
-          <h2>O que precisa ficar claro antes de investir</h2>
-        </div>
-        <div class="cards">
-          ${page.bullets.map((item) => `<article><h3>${esc(item)}</h3></article>`).join("\n          ")}
-        </div>
-      </section>
-
-      <section class="decision">
-        <div>
-          <p class="eyebrow">${esc(page.decisionTitle)}</p>
-          <h2>Critérios práticos para decidir</h2>
-        </div>
-        <ol>
-          ${page.decisions.map((item) => `<li>${esc(item)}</li>`).join("\n          ")}
-        </ol>
-      </section>
-
+      ${page.sections ? page.sections.map(renderSection).join("\n\n      ") + "\n" : legacyBlocks(page)}
       <section class="faq">
         <p class="eyebrow">Perguntas frequentes</p>
         <div class="faq-grid">
@@ -427,7 +622,7 @@ ${JSON.stringify(pageSchema(page), null, 2)}
         </div>
         <div class="related-links">
           ${related}
-          ${(page.relatedPosts || [["/blog/quanto-custa-implementar-ia-pequena-empresa/", "Quanto custa implementar IA numa pequena empresa?"]])
+          ${(page.relatedPosts || [["/quanto-custa/", "Quanto custa automação e IA para pequena empresa"]])
             .map(([href, label]) => `<a href="${href}">${esc(label)}</a>`)
             .join("\n          ")}
           <a href="/blog/">Todos os artigos do blog</a>
@@ -435,9 +630,9 @@ ${JSON.stringify(pageSchema(page), null, 2)}
       </section>
 
       <aside class="cta">
-        <h2>Quer saber onde começar na sua empresa?</h2>
-        <p>A Feed faz um diagnóstico gratuito da sua operação e mostra o primeiro projeto de IA com maior chance de retorno.</p>
-        <a class="button" href="/#contato">Pedir diagnóstico gratuito</a>
+        <h2>${esc(page.ctaTitle || "Quer saber onde começar na sua empresa?")}</h2>
+        <p>${esc(page.ctaText || "A Feed faz um diagnóstico gratuito da sua operação e mostra o primeiro projeto de IA com maior chance de retorno.")}</p>
+        <a class="button" href="${page.ctaHref || "/#contato"}">${esc(page.ctaButton || "Pedir diagnóstico gratuito")}</a>
       </aside>
 
       <footer class="site-nap">
@@ -601,6 +796,13 @@ ol li::before {
   color: var(--orange);
   font-weight: 900;
 }
+.updated { margin: 8px 0 0; color: rgba(244, 245, 240, 0.58); font-size: 0.95rem; }
+.prose-body p { margin: 0 0 14px; color: var(--muted); font-weight: 300; line-height: 1.55; }
+.prose-body strong { color: var(--white); font-weight: 800; }
+.prose-body a { color: var(--orange); }
+.prose-body ul { margin: 0 0 16px; padding-left: 20px; display: grid; gap: 10px; color: var(--muted); font-weight: 300; }
+.prose-body ol { margin: 0 0 16px; }
+.prose-body ol li { font-weight: 300; }
 .faq-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
 .faq article {
   padding: 22px;
@@ -681,7 +883,7 @@ function updateSitemap() {
     .map(
       (page) => `  <url>
     <loc>${SITE}/${page.slug}/</loc>
-    <lastmod>${LASTMOD}</lastmod>
+    <lastmod>${page.lastmod || LASTMOD}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>${page.type === "hub" ? "0.9" : "0.8"}</priority>
   </url>`
@@ -696,9 +898,9 @@ function updateLlms() {
   const path = join(PUBLIC_DIR, "llms.txt");
   let text = readFileSync(path, "utf8");
   text = text.replace(/\n## Páginas estratégicas[\s\S]*?(?=\n## |\n?$)/, "");
-  text += `\n\n## Páginas estratégicas\n\n`;
+  text = `${text.trimEnd()}\n\n## Páginas estratégicas\n\n`;
   text += pages
-    .map((page) => `- ${page.h1.replace(/\.$/, "")}: ${SITE}/${page.slug}/`)
+    .map((page) => `- ${page.llmsLabel || page.h1.replace(/\.$/, "")}: ${SITE}/${page.slug}/`)
     .join("\n");
   text += `\n- Blog da Feed: ${SITE}/blog/\n`;
   writeFileSync(path, text, "utf8");

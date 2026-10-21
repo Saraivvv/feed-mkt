@@ -16,8 +16,6 @@ businessOutcome: "Entender os blocos de um diagnóstico útil e evitar proposta 
 heroSummary: "Um bom diagnóstico olha atendimento, operação, dados, aquisição, rotina do time e impacto financeiro."
 cardLabel: "Antes da proposta"
 cardTakeaway: "Veja o que deve ser analisado antes de recomendar qualquer projeto de IA."
-costRange: "Gratuito a R$10 mil"
-payback: "Evita gasto errado"
 difficulty: "Baixo"
 ctaVariant: diagnostico-ia
 readingPromise:
@@ -86,21 +84,21 @@ O resultado deve ser um mapa claro:
 
 Diagnóstico não é apresentação bonita. É decisão. Ele evita que a empresa compre IA porque está na moda e ajuda a começar por onde existe retorno real. O [guia de IA para PME](/blog/ia-para-pme-guia-pratico/) reúne o caminho inteiro depois do diagnóstico.
 
-## Como é um diagnóstico de uma semana
+## Como é um diagnóstico curto
 
-Diagnóstico bom em pequena empresa é curto. Uma semana costuma bastar, com este roteiro:
+Diagnóstico bom em pequena empresa é curto. O roteiro tem cinco etapas:
 
-**Dia 1, conversa com quem decide.** Onde dói, o que já foi tentado, qual resultado é esperado e quanto a empresa está disposta a investir. Sem essa conversa, o resto vira exercício técnico.
+**Etapa 1, conversa com quem decide.** Onde dói, o que já foi tentado, qual resultado é esperado e quanto a empresa está disposta a investir. Sem essa conversa, o resto vira exercício técnico.
 
-**Dia 2, olhar o atendimento real.** Últimas semanas de conversa, volume por canal, tempo de resposta, quantas conversas morreram sem próximo passo.
+**Etapa 2, olhar o atendimento real.** Últimas semanas de conversa, volume por canal, tempo de resposta, quantas conversas morreram sem próximo passo.
 
-**Dia 3, olhar a operação interna.** Que tarefa se repete, quanto tempo consome, onde acontece erro, o que é feito duas vezes.
+**Etapa 3, olhar a operação interna.** Que tarefa se repete, quanto tempo consome, onde acontece erro, o que é feito duas vezes.
 
-**Dia 4, olhar a informação.** Onde estão preço, política, prazo e regra. Se está na cabeça de alguém, isso vira item do projeto.
+**Etapa 4, olhar a informação.** Onde estão preço, política, prazo e regra. Se está na cabeça de alguém, isso vira item do projeto.
 
-**Dia 5, montar a conta e a recomendação.** Gargalos ordenados por impacto e facilidade, projeto sugerido, métrica, investimento e próximo passo.
+**Etapa 5, montar a conta e a recomendação.** Gargalos ordenados por impacto e facilidade, projeto sugerido, métrica, investimento e próximo passo.
 
-Se alguém propõe um diagnóstico de dois meses para uma empresa de dez pessoas, o problema está no escopo, não na complexidade do negócio. O formato curto que a Feed usa está em [diagnóstico de IA para empresas](/diagnostico-ia-empresa/).
+Se alguém propõe um diagnóstico longo para uma empresa de dez pessoas, o problema está no escopo, não na complexidade do negócio.
 
 ## As perguntas que o diagnóstico precisa responder com número
 
@@ -124,7 +122,7 @@ Um diagnóstico que sempre termina em proposta de projeto não é diagnóstico. 
 ## Perguntas frequentes
 
 **Quanto tempo leva um diagnóstico de IA?**
-Em pequena empresa, de uma a três semanas. Uma semana costuma bastar quando a operação é enxuta e o dono participa das conversas.
+Depende do tamanho da operação. Ele fica curto quando a operação é enxuta e o dono participa das conversas.
 
 **O que eu recebo no final?**
 Mapa dos gargalos por impacto e facilidade, projeto recomendado com escopo fechado, métrica de sucesso com número de partida, estimativa de investimento e retorno, e a lista do que precisa ser organizado antes.
@@ -136,4 +134,4 @@ Ajuda ter acesso ao histórico de atendimento, uma ideia do ticket médio e meia
 Não. Diagnóstico é a leitura da operação. Consultoria usa essa leitura para priorizar, desenhar escopo e planejar fases. Em PME, os dois costumam vir juntos e curtos.
 
 **E se o diagnóstico apontar que não é hora de investir em IA?**
-Então ele economizou o valor do projeto inteiro. O relatório continua útil, porque mostra qual gargalo resolver primeiro com processo, oferta ou aquisição. É assim que o diagnóstico gratuito da Feed funciona.
+Então ele economizou o valor do projeto inteiro. O relatório continua útil, porque mostra qual gargalo resolver primeiro com processo, oferta ou aquisição. Na Feed, o primeiro passo é mais simples: o [Diagnóstico do Gargalo](/diagnostico) chega em PDF no seu e-mail, e depois você conversa com o Guilherme sobre o seu caso.

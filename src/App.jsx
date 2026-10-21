@@ -93,30 +93,49 @@ const faqItems = [
     a: "Encontra onde sua operação perde tempo e dinheiro e resolve com tecnologia: atendimento que responde sozinho, processos que rodam sem ninguém empurrar, marca e aquisição organizadas. Na Feed isso começa com um diagnóstico da operação e termina com a solução implementada e rodando na sua rotina.",
   },
   {
-    q: "Quanto custa implementar IA numa pequena empresa?",
-    a: "Depende do tamanho do buraco. Ferramentas prontas custam de R$100 a R$500 por mês. Um agente de IA no WhatsApp bem implementado fica entre R$8 mil e R$25 mil, mais uma mensalidade. O caminho certo é começar pequeno, com um projeto que se paga em poucos meses. No diagnóstico a gente mostra a faixa real pro seu caso.",
+    q: "Quanto custa contratar a Feed?",
+    a: "O preço é personalizado. Primeiro a gente entende onde a sua operação trava, depois monta uma proposta com escopo, prazo e valor do seu caso. O valor muda com quantos sistemas a gente conecta, o volume de atendimento e a organização das informações. A IA é um adicional opcional: entra só se fizer sentido pro seu negócio e, quando entra, muda o valor da proposta. Veja como funciona em [quanto custa](/quanto-custa/) ou comece pelo [Diagnóstico do Gargalo](/diagnostico).",
   },
   {
     q: "Automação de WhatsApp não vai irritar meus clientes?",
     a: "Robô burro irrita. Automação bem feita responde na hora, resolve o que é simples e passa pro humano quando a conversa pede. Seu cliente ganha resposta imediata e seu time para de perder o dia repetindo a mesma informação.",
   },
   {
-    q: "Preciso de time de TI pra usar IA na empresa?",
-    a: "Não. A Feed implementa, treina quem vai usar e acompanha a solução funcionando. Você não precisa contratar ninguém nem entender de tecnologia: precisa saber onde sua operação trava, e isso a gente descobre junto.",
+    q: "Preciso de time de TI pra automatizar a empresa?",
+    a: "Não. A Feed implementa, treina quem vai usar e acompanha a solução funcionando. Você não precisa contratar ninguém nem entender de tecnologia: precisa saber onde sua operação trava, e isso a gente descobre junto. A IA não é obrigatória. Ela entra como adicional só se fizer sentido pro seu negócio e, quando entra, muda o valor da proposta.",
   },
   {
-    q: "Em quanto tempo vejo resultado?",
-    a: "Automação de atendimento começa a trabalhar em semanas. Posicionamento e aquisição aparecem em 2 a 3 meses. Bons projetos de IA costumam se pagar entre 4 e 8 meses. A gente prefere entrega rápida e escopo enxuto a projeto grande que nunca termina.",
+    q: "Em quanto tempo fica pronto?",
+    a: "Depende de quão claras estão as respostas, de quantas integrações tem e do volume de exceções. O prazo de cada projeto vem escrito na proposta. A gente prefere entrega rápida e escopo enxuto a projeto grande que nunca termina. Se quiser começar já, o [Diagnóstico do Gargalo](/diagnostico) chega no seu e-mail na hora.",
   },
   {
     q: "A Feed atende só a região de Ribeirão Preto?",
-    a: "A base é a região de Ribeirão Preto e Bebedouro, no interior de SP, com atendimento presencial quando faz sentido. Boa parte dos clientes a gente atende 100% remoto, em qualquer lugar do Brasil.",
+    a: "A base é a região de Ribeirão Preto e Bebedouro, no interior de SP, com atendimento presencial quando faz sentido. Fora da região, o atendimento é remoto, em qualquer lugar do Brasil.",
   },
   {
     q: "O que é o diagnóstico gratuito?",
-    a: "Uma leitura rápida da sua operação e presença digital: onde você perde cliente, o que dá pra automatizar e o que trava seu crescimento. Você sai com um mapa claro do que fazer, feche com a gente ou não.",
+    a: "Você deixa nome e e-mail e recebe no seu e-mail, na hora, o Diagnóstico do Gargalo, um PDF curto que mostra onde a operação para quando você não está, o que mais consome seu tempo e o primeiro passo pra tirar a empresa das suas costas. Depois, se fizer sentido, você conversa com o Guilherme sobre o seu caso. Não custa nada. Comece em [agenciafeed.com/diagnostico](/diagnostico).",
   },
 ];
+
+// Respostas do FAQ aceitam link no formato [texto](/caminho), igual ao JSON-LD do index.html.
+function renderFaqAnswer(text) {
+  const parts = [];
+  const re = /\[([^\]]+)\]\(([^)]+)\)/g;
+  let last = 0;
+  let match;
+  while ((match = re.exec(text)) !== null) {
+    if (match.index > last) parts.push(text.slice(last, match.index));
+    parts.push(
+      <a href={match[2]} key={match.index}>
+        {match[1]}
+      </a>,
+    );
+    last = re.lastIndex;
+  }
+  if (last < text.length) parts.push(text.slice(last));
+  return parts;
+}
 
 function App() {
   const [isQuizOpen, setIsQuizOpen] = useState(false);
@@ -330,7 +349,7 @@ function App() {
                   </button>
                   <div className="faq-answer">
                     <div className="faq-answer-clip">
-                      <p>{item.a}</p>
+                      <p>{renderFaqAnswer(item.a)}</p>
                     </div>
                   </div>
                 </div>

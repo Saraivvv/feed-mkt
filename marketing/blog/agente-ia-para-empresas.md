@@ -16,8 +16,6 @@ businessOutcome: "Saber se o caso da empresa comporta um agente de IA, com qual 
 heroSummary: "Agente de IA é um sistema que conversa, consulta a informação da empresa e executa tarefas dentro de regras. Ele se paga quando existe volume, repetição e um gargalo que custa dinheiro todo mês."
 cardLabel: "Antes de contratar um agente"
 cardTakeaway: "A diferença entre chatbot, automação e agente de IA, com a conta que mostra quando ele vale."
-costRange: "R$100/mês a R$40 mil"
-payback: "4 a 8 meses"
 difficulty: "Médio"
 ctaVariant: diagnostico-ia
 readingPromise:
@@ -34,7 +32,7 @@ status: scheduled
 
 Agente de IA para empresas é um sistema que entende uma mensagem em linguagem natural, consulta as informações do negócio e executa tarefas dentro de regras que a empresa definiu. Ele responde cliente, qualifica oportunidade, agenda, registra dado, resume conversa e passa para uma pessoa quando o caso sai do combinado.
 
-Ele vale a pena quando existem três coisas juntas: volume de conversas ou tarefas, repetição no que é pedido e um gargalo que custa dinheiro todo mês. Sem esses três, o projeto vira despesa bonita. Com eles, costuma se pagar entre 4 e 8 meses.
+Ele vale a pena quando existem três coisas juntas: volume de conversas ou tarefas, repetição no que é pedido e um gargalo que custa dinheiro todo mês. Sem esses três, o projeto vira despesa bonita. Com eles, a conta costuma fechar, num prazo que depende do gargalo e do volume.
 
 ## O que é um agente de IA, na prática?
 
@@ -85,9 +83,9 @@ Nada disso precisa estar perfeito. Precisa estar bom o suficiente para o primeir
 
 ## Quanto custa e em quanto tempo se paga?
 
-Existem duas faixas bem diferentes. Ferramenta pronta com IA embutida sai de R$100 a R$800 por mês, resolve o básico e depende do que o fornecedor liberou. Agente sob medida, com base própria, regras e integração, costuma exigir implantação de R$8 mil a R$40 mil e mensalidade de R$800 a R$3 mil, conforme volume e complexidade. As faixas completas estão em [quanto custa implementar IA numa pequena empresa](/blog/quanto-custa-implementar-ia-pequena-empresa/).
+Existem dois formatos bem diferentes. Ferramenta pronta com IA embutida é assinatura, resolve o básico e depende do que o fornecedor liberou. Agente sob medida, com base própria, regras e integração, exige implementação e manutenção, e o valor acompanha volume e complexidade. Na Feed, o preço sai numa proposta personalizada depois de uma conversa. O que compõe esse valor está em [quanto custa implementar IA numa pequena empresa](/quanto-custa/).
 
-A conta que importa é simples. Um agente de R$15 mil de implantação e R$1.200 por mês precisa gerar por volta de R$3.700 mensais em valor para se pagar em seis meses. Com ticket médio de R$500, isso significa recuperar sete ou oito vendas por mês que hoje se perdem por demora. Em quem atende pelo WhatsApp, esse número costuma aparecer já no primeiro mês. O método para refazer essa conta com os seus números está em [como calcular ROI de automação com IA](/blog/calcular-roi-automacao-ia/).
+A conta que importa é simples. Conte quantas vendas por mês hoje se perdem por demora e quantas horas o time gasta respondendo a mesma pergunta. Se o agente recupera sete ou oito dessas vendas, multiplique pelo seu ticket médio, some as horas devolvidas e compare com o que a proposta pede de implementação e de manutenção. O método para refazer essa conta com os seus números está em [como calcular ROI de automação com IA](/blog/calcular-roi-automacao-ia/).
 
 ## Qual escopo inicial faz sentido?
 
@@ -125,10 +123,10 @@ Chatbot segue menu fixo e trava quando o cliente foge do roteiro. Agente entende
 Não em pequena empresa. Ele assume o repetitivo e o primeiro contato, e entrega para a pessoa o que exige negociação, exceção ou relacionamento. O ganho é velocidade e continuidade, não corte de equipe.
 
 **Quanto tempo demora para colocar um agente no ar?**
-Um escopo enxuto, com base organizada, costuma levar de três a seis semanas. O que estica prazo é integração com muitos sistemas e regra de negócio cheia de exceção.
+O prazo depende do escopo e de como está a base de informação. O que estica prazo é integração com muitos sistemas e regra de negócio cheia de exceção.
 
 **Preciso de agente ou basta automatizar o WhatsApp?**
 Depende do tipo de pergunta que chega. Se a maioria é previsível, uma automação simples resolve. A comparação está em [agente de IA no WhatsApp vale para sua empresa?](/blog/agente-ia-whatsapp-vale-a-pena/).
 
 **Como sei se minha empresa tem volume suficiente?**
-Meça uma semana real: quantas mensagens chegam, quantas ficam sem resposta em uma hora e quantas conversas morrem sem próximo passo. Se o buraco aparece já nessa semana, existe volume. É por aí que o diagnóstico gratuito da Feed começa.
+Meça uma semana real: quantas mensagens chegam, quantas ficam sem resposta em uma hora e quantas conversas morrem sem próximo passo. Se o buraco aparece já nessa semana, existe volume. Se quiser dar o primeiro passo com a Feed, o [Diagnóstico do Gargalo](/diagnostico) chega em PDF no seu e-mail, na hora, e depois, se fizer sentido, você conversa com o Guilherme sobre o seu caso.

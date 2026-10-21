@@ -16,8 +16,6 @@ businessOutcome: "Decidir se vale investir em agente de IA, qual escopo faz sent
 heroSummary: "Agente de IA vale quando existe volume, repetição, perda por demora e necessidade de consultar dados ou conduzir fluxo."
 cardLabel: "WhatsApp com IA"
 cardTakeaway: "Entenda quando um agente de IA é investimento e quando é só excesso de tecnologia."
-costRange: "R$8 mil a R$25 mil"
-payback: "4 a 8 meses"
 difficulty: "Médio"
 ctaVariant: diagnostico-atendimento
 readingPromise:
@@ -66,7 +64,7 @@ Vale considerar um agente de IA quando:
 - há dados que a IA precisa consultar;
 - o ticket médio permite recuperar investimento.
 
-Se um agente custa R$15 mil de implantação e R$1.200 por mês, ele precisa gerar ou economizar valor compatível. Em empresas que perdem leads por atraso, recuperar poucas vendas por mês já muda a conta. A conta completa de payback está em [como calcular ROI de automação com IA](/blog/calcular-roi-automacao-ia/).
+O valor do agente sai na proposta, e ele precisa gerar ou economizar algo compatível com esse valor. Em empresas que perdem leads por atraso, recuperar poucas vendas por mês já muda a conta. A conta completa de payback está em [como calcular ROI de automação com IA](/blog/calcular-roi-automacao-ia/).
 
 ## Quando ainda é cedo?
 
@@ -84,17 +82,17 @@ Agente de IA no WhatsApp vale quando a conversa já é parte central da venda. S
 
 ## Conta oficial ou número comum?
 
-Essa decisão vem antes da escolha do fornecedor. Um agente de IA precisa de acesso programável às mensagens, e existem dois caminhos.
+Essa decisão vem antes da escolha do fornecedor. Um agente de IA precisa de acesso às mensagens, e existem duas formas de fazer isso.
 
-O caminho oficial é a API do WhatsApp Business, da própria Meta. O número fica verificado, a empresa aparece com nome e categoria, várias pessoas atendem ao mesmo tempo e a conta não corre risco de bloqueio por automação. A cobrança é por conversa iniciada, com valor pequeno por janela de 24 horas, e mensagens que a empresa inicia precisam usar modelos aprovados.
+Uma é a API do WhatsApp Business, oferecida pela própria Meta. Ela costuma ser escolhida quando o volume é alto, quando várias pessoas atendem ao mesmo tempo ou quando a empresa precisa iniciar muitas conversas. Tem regras próprias de envio e uma etapa de configuração da conta antes de entrar no ar.
 
-O caminho não oficial conecta um celular comum por meio de bibliotecas que simulam o aplicativo. Sai mais barato no começo e é o que muitos fornecedores oferecem sem avisar. O problema é o risco: o número pode ser bloqueado, o histórico se perde e a empresa fica sem o canal principal de venda de um dia para o outro.
+A outra conecta o WhatsApp que a empresa já usa. Costuma ser escolhida quando o atendimento roda num número só, o volume é de pequena empresa e a equipe quer continuar no aplicativo que já conhece.
 
-Para negócio que depende do WhatsApp para vender, a conta oficial é o caminho seguro. É por ela que a Feed monta os projetos de [automação de WhatsApp](/automacao-whatsapp/). Se o fornecedor não deixa claro qual dos dois ele usa, pergunte antes de assinar.
+Não existe resposta única. A escolha depende do volume, do que precisa ser integrado e das regras de envio que a operação pede, e se faz no diagnóstico. Se o fornecedor não deixa claro qual das duas formas ele usa e por quê, pergunte antes de assinar.
 
 ## Quanto tempo demora para colocar no ar?
 
-Um escopo enxuto, com base de conhecimento organizada, costuma levar de três a seis semanas. A conta oficial precisa de verificação do negócio, o que leva alguns dias e depende de documento e página no Facebook Business.
+O prazo depende do escopo e de como está a base de conhecimento. Escopo enxuto com base organizada anda mais rápido. Se a escolha for a API, entra também a etapa de configuração da conta.
 
 O que estica prazo é sempre a mesma coisa: informação espalhada, regra de negócio cheia de exceção e integração com sistema que ninguém documentou. Quando a empresa já tem preço, política e perguntas frequentes escritos, a implantação anda rápido.
 
@@ -112,10 +110,10 @@ Compare tudo com a semana anterior à implantação. Sem esse número de partida
 ## Perguntas frequentes
 
 **Agente de IA no WhatsApp pode derrubar meu número?**
-Na API oficial da Meta, não. O risco existe nas soluções que conectam um celular comum simulando o aplicativo, que violam os termos e podem levar a bloqueio. Pergunte ao fornecedor qual caminho ele usa antes de fechar.
+O que mais pesa é o uso. Disparo em massa e mensagem que o cliente não pediu geram denúncia, seja qual for a forma de conexão. Agente que responde quem chamou e passa para humano quando precisa trabalha no ritmo da conversa. Pergunte ao fornecedor como ele conecta o número e o que acontece se o número tiver problema.
 
 **Quanto custa manter um agente rodando por mês?**
-Além da mensalidade do fornecedor, existe o custo por conversa da própria Meta e o consumo do modelo de IA. Em operação de pequena empresa, esses dois somados costumam ficar bem abaixo da mensalidade do serviço, mas precisam estar na proposta.
+Depende do volume de conversas, das integrações e do quanto de ajuste a operação pede. O que precisa estar escrito na proposta é o que entra na manutenção (suporte, ajuste de fluxo, revisão da base) e o que fica fora. Some também as horas da sua equipe revisando conversas, que não aparecem em fatura nenhuma.
 
 **O cliente percebe que está falando com IA?**
 Percebe quando a resposta é genérica ou quando ele foge do roteiro e o sistema insiste no script. Um agente bem feito assume que é atendimento automático, resolve rápido o que sabe e chama uma pessoa quando o caso pede.
@@ -124,4 +122,4 @@ Percebe quando a resposta é genérica ou quando ele foge do roteiro e o sistema
 Não. Dá para começar registrando em planilha e evoluir depois. O que não pode faltar é alguém para assumir a conversa qualificada, senão o agente só acelera a chegada de um lead que ninguém atende.
 
 **Como sei se meu volume justifica?**
-Meça uma semana real de atendimento: quantas mensagens chegam, quantas ficam mais de uma hora sem resposta e quantas conversas morrem sem próximo passo. Se o buraco aparece já nessa semana, o volume justifica. É por aí que o diagnóstico gratuito da Feed começa.
+Meça uma semana real de atendimento: quantas mensagens chegam, quantas ficam mais de uma hora sem resposta e quantas conversas morrem sem próximo passo. Se o buraco aparece já nessa semana, o volume justifica. O primeiro passo com a Feed é o [Diagnóstico do Gargalo](/diagnostico): um PDF no seu e-mail, na hora, e depois uma conversa com o Guilherme, se fizer sentido.

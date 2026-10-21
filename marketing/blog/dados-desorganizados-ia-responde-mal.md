@@ -16,8 +16,6 @@ businessOutcome: "Entender o trabalho de organizar conhecimento antes de automat
 heroSummary: "IA não adivinha regra de negócio: ela responde bem quando a empresa explica bem."
 cardLabel: "Base antes da IA"
 cardTakeaway: "Veja por que organizar conhecimento é parte do projeto, não detalhe burocrático."
-costRange: "Tempo de estruturação"
-payback: "Reduz erro"
 difficulty: "Médio"
 ctaVariant: diagnostico-operacao
 readingPromise:
@@ -138,4 +136,4 @@ Alguém que convive com o cliente e tem autonomia para confirmar preço e polít
 Ela usa o que você fornece como fonte de verdade. Aprender sozinha com conversa é justamente o que causa resposta errada, porque a conversa contém dúvida, erro e exceção não confirmada.
 
 **Como sei se a base está boa o suficiente?**
-Faça o teste das dez perguntas. Se ela acerta o comum, admite o que não sabe e escala o que exige humano, está pronta para a primeira fase. Esse levantamento faz parte do diagnóstico gratuito da Feed.
+Faça o teste das dez perguntas. Se ela acerta o comum, admite o que não sabe e escala o que exige humano, está pronta para a primeira fase. Pra começar com a Feed, o [Diagnóstico do Gargalo](/diagnostico) chega em PDF no seu e-mail, e a conversa com o Guilherme vem depois.

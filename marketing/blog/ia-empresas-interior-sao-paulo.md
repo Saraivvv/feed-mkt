@@ -16,8 +16,6 @@ businessOutcome: "Reconhecer os usos de IA que fazem sentido no perfil de negóc
 heroSummary: "No interior paulista, a IA que se paga não é a mais sofisticada. É a que responde cliente na hora, não deixa orçamento morrer e tira digitação repetida da operação."
 cardLabel: "Panorama da região"
 cardTakeaway: "Onde a IA já funciona em comércio, serviço, saúde e agro do interior de São Paulo."
-costRange: "R$100/mês a R$40 mil"
-payback: "4 a 8 meses"
 difficulty: "Baixo"
 ctaVariant: diagnostico-ia
 readingPromise:
@@ -36,7 +34,7 @@ IA em empresa do interior de São Paulo funciona pelo mesmo motivo que funciona 
 
 Na região de Ribeirão Preto, Bebedouro e cidades vizinhas, a economia é de comércio, serviço, saúde, agro e indústria de médio porte. São operações que vendem por conversa, atendem por WhatsApp e dependem de agenda cheia. É exatamente o terreno onde automação com IA se paga mais rápido.
 
-## O que a gente vê nos diagnósticos da região
+## O que se repete nas PMEs da região
 
 Alguns padrões se repetem quase sempre:
 
@@ -70,7 +68,7 @@ Negócio de cidade média vive de relação e de velocidade. Quem responde prime
 
 Três coisas, e todas jogam a favor da PME do interior.
 
-A primeira é decisão rápida. Quem decide costuma ser o dono, o que reduz meses de aprovação e permite testar um piloto pequeno em semanas.
+A primeira é decisão rápida. Quem decide costuma ser o dono, o que reduz meses de aprovação e permite testar um piloto pequeno sem ciclo longo de aprovação.
 
 A segunda é escopo menor. Não existe pressão para transformar a empresa inteira. Um gargalo resolvido já muda o mês.
 
@@ -88,13 +86,13 @@ O caminho que funciona é o mesmo em qualquer cidade:
 4. rodar um piloto enxuto por algumas semanas;
 5. comparar com a semana medida no começo e decidir se expande.
 
-As faixas de investimento estão em [quanto custa implementar IA numa pequena empresa](/blog/quanto-custa-implementar-ia-pequena-empresa/). Para empresa pequena da região, o piloto costuma caber bem antes de qualquer projeto grande.
+O que compõe o investimento está em [quanto custa implementar IA numa pequena empresa](/quanto-custa/). Para empresa pequena da região, o piloto costuma caber bem antes de qualquer projeto grande.
 
 ## Quando não é hora
 
 Quando chegam poucos contatos por semana, quando a oferta ainda não está clara ou quando não existe ninguém para assumir o lead qualificado. Nesses casos, o dinheiro rende mais em presença, oferta e processo comercial.
 
-Um [diagnóstico honesto](/diagnostico-ia-empresa/) separa esses cenários antes de qualquer proposta, e às vezes a melhor recomendação é esperar. O quadro completo de decisão está no [guia de IA para PME](/blog/ia-para-pme-guia-pratico/).
+Um [diagnóstico honesto](/blog/diagnostico-ia-pequena-empresa/) separa esses cenários antes de qualquer proposta, e às vezes a melhor recomendação é esperar. O quadro completo de decisão está no [guia de IA para PME](/blog/ia-para-pme-guia-pratico/).
 
 ## O plano dos próximos 30 dias
 
@@ -128,7 +126,7 @@ Não. As soluções rodam na nuvem e se conectam ao que a empresa já usa: Whats
 Existe, e a Feed atende a região de forma remota e presencial quando o projeto pede. A página de [agência de IA em Ribeirão Preto e região](/agencia-de-ia-ribeirao-preto/) explica como funciona.
 
 **Quanto custa começar?**
-De algumas centenas de reais por mês em ferramentas prontas até projetos sob medida de dezenas de milhares. Para a maioria das empresas da região, o piloto de atendimento é o formato com retorno mais rápido.
+Depende do formato, de ferramenta pronta por assinatura até projeto sob medida. Na Feed, o valor sai numa proposta personalizada, depois de uma conversa sobre a sua operação. Para a maioria das empresas da região, o piloto de atendimento é o formato com retorno mais rápido.
 
 **Como sei se o meu caso tem retorno?**
-Meça uma semana de atendimento e conte quantas conversas ficaram sem próximo passo. Esse número costuma responder a pergunta sozinho, e é o começo do diagnóstico gratuito da Feed.
+Meça uma semana de atendimento e conte quantas conversas ficaram sem próximo passo. Esse número costuma responder a pergunta sozinho. Se quiser seguir com a Feed, o [Diagnóstico do Gargalo](/diagnostico) chega em PDF no seu e-mail, e depois vem a conversa com o Guilherme.

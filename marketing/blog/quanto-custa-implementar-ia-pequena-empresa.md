@@ -28,7 +28,7 @@ relatedPlanned:
   - "Como escolher o primeiro processo para automatizar"
   - "Agente de IA no WhatsApp vale para sua empresa?"
   - "IA para PME: guia prático para começar sem gastar errado"
-status: published
+status: draft
 ---
 
 Implementar IA numa pequena empresa custa entre **R$100 por mês e R$40 mil de investimento inicial**, dependendo do que você quer resolver. Uma ferramenta pronta de IA sai por R$100 a R$500 mensais. Um agente de IA no WhatsApp, feito sob medida, fica entre R$8 mil e R$25 mil de implantação, mais uma mensalidade de R$800 a R$2.500. Automação de processos internos vai de R$12 mil a R$40 mil. E uma consultoria com diagnóstico, pra descobrir por onde começar, custa de R$3 mil a R$10 mil.

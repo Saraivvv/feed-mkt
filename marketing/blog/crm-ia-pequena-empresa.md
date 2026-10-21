@@ -16,8 +16,6 @@ businessOutcome: "Decidir o que o CRM precisa fazer e onde a IA pode ajudar sem 
 heroSummary: "CRM com IA só funciona quando existe processo comercial mínimo: etapas, responsáveis, próximos passos e dados confiáveis."
 cardLabel: "Vendas organizadas"
 cardTakeaway: "Entenda quando CRM com IA ajuda e quando ele só digitaliza a bagunça comercial."
-costRange: "R$100/mês a R$5 mil/mês"
-payback: "3 a 6 meses"
 difficulty: "Médio"
 ctaVariant: diagnostico-vendas
 readingPromise:
@@ -133,10 +131,10 @@ Dá para começar com planilha se o volume é baixo e uma ou duas pessoas vendem
 Resumo de conversa, registro automático do que foi combinado, classificação de intenção, alerta de oportunidade parada e sugestão de próxima mensagem. Ela reduz digitação e esquecimento, que são as duas causas mais comuns de venda perdida.
 
 **Quanto custa um CRM com IA para pequena empresa?**
-As ferramentas variam de plano gratuito a algumas centenas de reais por mês por usuário. O custo maior costuma ser a implantação e a integração com o WhatsApp, não a licença. As faixas de projeto estão em [quanto custa implementar IA numa pequena empresa](/blog/quanto-custa-implementar-ia-pequena-empresa/).
+As ferramentas vão de plano gratuito a plano pago por usuário. O custo maior costuma ser a implantação e a integração com o WhatsApp, não a licença. O que compõe o preço de um projeto está em [quanto custa implementar IA numa pequena empresa](/quanto-custa/).
 
 **Meu time não usa o CRM atual. Trocar resolve?**
 Quase nunca. Se o problema é rotina e campo demais, a ferramenta nova vira o mesmo abandono em três meses. Simplifique etapas e campos primeiro, depois avalie a troca.
 
 **Por onde começo se vendo tudo pelo WhatsApp?**
-Pelo registro automático da conversa e por um funil de cinco etapas. Resolvido isso, o resto do CRM entra sozinho. É esse desenho que o diagnóstico gratuito da Feed entrega antes de falar de ferramenta.
+Pelo registro automático da conversa e por um funil de cinco etapas. Resolvido isso, o resto do CRM entra sozinho. Se quiser conversar sobre o seu funil, comece pelo [Diagnóstico do Gargalo](/diagnostico): o PDF chega no seu e-mail e depois vem a conversa com o Guilherme.
