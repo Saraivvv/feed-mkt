@@ -300,7 +300,10 @@ const pages = [
       {
         eyebrow: "Composição",
         h2: "O que compõe o preço",
-        paragraphs: ["**A implantação** é o trabalho de colocar a solução de pé:"],
+        paragraphs: [
+          "A Feed trabalha de dois jeitos, e a proposta diz qual faz sentido pro seu caso: **implementação mais manutenção**, quando a solução precisa de acompanhamento depois de entregue, ou **serviço pontual**, com pagamento único, quando o trabalho tem começo, meio e fim.",
+          "**A implementação** é o trabalho de colocar a solução de pé, nos dois modelos:",
+        ],
         list: [
           "Entender o processo e escrever as regras: o que é respondido automaticamente, o que não é e quando uma pessoa assume.",
           "Conectar com o que a empresa já usa: WhatsApp, agenda, CRM, planilhas e documentos.",
@@ -308,7 +311,7 @@ const pages = [
           "Testar até funcionar certo, antes de abrir pro cliente.",
         ],
         after: [
-          "**A mensalidade** mantém tudo funcionando depois da entrega:",
+          "**A manutenção**, quando entra, mantém tudo funcionando depois da entrega:",
         ],
         list2: [
           "Acompanhamento e ajustes: pergunta nova, regra nova, resposta que precisa mudar.",
@@ -348,7 +351,7 @@ const pages = [
           "**Diagnóstico do Gargalo.** Você deixa nome e e-mail em [agenciafeed.com/diagnostico](/diagnostico) e recebe o material na hora: onde a operação para quando você não está, o que mais consome seu tempo e o primeiro passo pra tirar a empresa das suas costas.",
           "**Conversa com o Guilherme.** Ele entende o seu caso: onde trava, quanto isso custa em tempo e venda, o que já existe na empresa e se IA faz sentido ou não.",
           "**Proposta personalizada.** Problema, o que vai ser entregue, limites, prazo e valor no papel antes de começar. Se tiver IA, ela aparece como item à parte.",
-          "**Implantação.** Regras, conexões, organização das informações e teste.",
+          "**Implementação.** Regras, conexões, organização das informações e teste.",
           "**No ar.** O primeiro fluxo de [WhatsApp](/automacao-whatsapp/) entra no ar em poucas semanas, dependendo da clareza das respostas, das integrações e do volume de exceções.",
         ],
         closing: ["As condições de contrato ficam no contrato."],
@@ -358,7 +361,7 @@ const pages = [
       ["Quanto custa implementar IA numa pequena empresa?", "Na Feed, o preço é personalizado. Primeiro a gente vê onde a operação trava. Muitas vezes o problema se resolve organizando atendimento e processo, sem IA. Quando a IA faz sentido, ela entra como adicional e muda o valor da proposta. Você recebe o número numa proposta feita pro seu caso, depois de uma conversa com o Guilherme."],
       ["A IA vem incluída em todo projeto?", "Não. A IA é um adicional opcional e nem todo cliente usa. Ela entra quando o seu atendimento ou a sua operação pedem um agente que responda com o contexto da empresa. Nesse caso, aparece como item separado na proposta."],
       ["Quanto custa automatizar o atendimento no WhatsApp?", "Depende do que a automação precisa fazer. Responder dúvida frequente é um escopo. Qualificar contato, consultar agenda e chamar uma pessoa na hora certa é outro. Se entrar IA, o valor muda. O número sai na proposta, depois da conversa."],
-      ["O que entra no valor?", "A implantação (regras, conexões com o que a empresa já usa, organização das informações e teste) e o acompanhamento depois da entrega, pra tudo continuar funcionando. IA só entra se fizer sentido, como adicional."],
+      ["O que entra no valor?", "Depende do modelo. Num serviço pontual, você paga uma vez pela implementação: regras, conexões com o que a empresa já usa, organização das informações e teste. No modelo com manutenção, entra também o acompanhamento depois da entrega, pra tudo continuar funcionando. IA só entra se fizer sentido, como adicional."],
       ["Dá pra começar com orçamento curto?", "Dá. A gente começa por um problema só, o que mais dói, em vez de um projeto grande. Normalmente é o atendimento ou o follow-up comercial, porque têm repetição e retorno fácil de medir. Começar sem IA também é um caminho."],
       ["Vale mais contratar uma agência ou usar uma ferramenta pronta?", "Ferramenta pronta deixa cada pessoa da equipe mais rápida, mas não conhece o seu negócio e não conversa com os seus sistemas. A agência entra quando o problema é da operação: atendimento com as suas regras, registro no CRM, passagem pra pessoa certa. Se o problema é individual, ferramenta resolve. Se é da operação, precisa de implantação."],
       ["Em quanto tempo fica pronto?", "O primeiro fluxo de WhatsApp entra no ar em poucas semanas. O prazo depende de quão claras estão as respostas, de quantas integrações tem e do volume de exceções. O prazo de cada projeto vem escrito na proposta."],
@@ -367,8 +370,8 @@ const pages = [
       ["O diagnóstico é gratuito mesmo? O que eu recebo?", "É gratuito. Você deixa nome e e-mail e recebe o Diagnóstico do Gargalo na hora: onde a operação para quando você não está, o que mais consome seu tempo e o primeiro passo pra tirar a empresa das suas costas. Depois, se fizer sentido, vem a conversa com o Guilherme."],
     ],
     services: [
-      { name: "Automação de atendimento no WhatsApp", description: "Implantação e acompanhamento de automação de atendimento no WhatsApp, com regras do negócio, conexão com agenda, CRM e planilhas, e passagem para humano. Preço personalizado em proposta." },
-      { name: "Automação de processos internos", description: "Implantação e acompanhamento de automações de tarefas repetitivas de operação e vendas, conectadas ao que a empresa já usa. Preço personalizado em proposta." },
+      { name: "Automação de atendimento no WhatsApp", description: "Implementação e acompanhamento de automação de atendimento no WhatsApp, com regras do negócio, conexão com agenda, CRM e planilhas, e passagem para humano. Preço personalizado em proposta." },
+      { name: "Automação de processos internos", description: "Implementação e acompanhamento de automações de tarefas repetitivas de operação e vendas, conectadas ao que a empresa já usa. Preço personalizado em proposta." },
       { name: "Agente de IA (adicional opcional)", description: "Agente de IA treinado no contexto da empresa. É um adicional opcional da proposta: entra só se fizer sentido para o negócio e, quando entra, muda o valor da proposta." },
     ],
     areaServed: ["Ribeirão Preto", "Bebedouro", "Barretos", "Jaboticabal", "Sertãozinho"],
