@@ -286,7 +286,7 @@ const pages = [
     answerNote: "Sem tabela de preço. A IA é adicional opcional e, quando entra, muda o valor da proposta.",
     primaryCta: "Quero o diagnóstico",
     primaryHref: "/diagnostico",
-    secondaryCta: "Ver como a IA entra no projeto",
+    secondaryCta: "Ver quando a IA entra no projeto",
     secondaryHref: "/agentes-de-ia/",
     serviceName: "Automação de atendimento e processos para pequenas empresas, com preço personalizado",
     sections: [
@@ -337,10 +337,10 @@ const pages = [
         ],
       },
       {
-        eyebrow: "Fora da proposta",
-        h2: "O que não está incluso",
-        list: [
-          "Promessa de resultado. A gente não garante número de vendas, faturamento, posição no Google ou conversão, porque isso depende de mercado e de fatores que nenhuma agência controla.",
+        eyebrow: "Resultado",
+        h2: "O que a gente não garante",
+        paragraphs: [
+          "A gente não garante número de vendas, faturamento, posição no Google ou conversão. Isso depende do seu mercado e de fatores que nenhuma agência controla. O que vai ser entregue, com limites e prazo, fica escrito na proposta.",
         ],
       },
       {
@@ -348,13 +348,13 @@ const pages = [
         h2: "Do primeiro contato até a proposta",
         ordered: true,
         list: [
-          "**Diagnóstico do Gargalo.** Você deixa nome e e-mail em [agenciafeed.com/diagnostico](/diagnostico) e recebe o material na hora: onde a operação para quando você não está, o que mais consome seu tempo e o primeiro passo pra tirar a empresa das suas costas.",
+          "**Diagnóstico do Gargalo.** Você deixa nome e e-mail em [agenciafeed.com/diagnostico](/diagnostico) e recebe o PDF no seu e-mail na hora: onde a operação para quando você não está, o que mais consome seu tempo e o primeiro passo pra tirar a empresa das suas costas.",
           "**Conversa com o Guilherme.** Ele entende o seu caso: onde trava, quanto isso custa em tempo e venda, o que já existe na empresa e se IA faz sentido ou não.",
           "**Proposta personalizada.** Problema, o que vai ser entregue, limites, prazo e valor no papel antes de começar. Se tiver IA, ela aparece como item à parte.",
           "**Implementação.** Regras, conexões, organização das informações e teste.",
-          "**No ar.** O primeiro fluxo de [WhatsApp](/automacao-whatsapp/) entra no ar em poucas semanas, dependendo da clareza das respostas, das integrações e do volume de exceções.",
+          "**No ar.** O primeiro fluxo de [WhatsApp](/automacao-whatsapp/) entra no ar no prazo escrito na proposta, que depende da clareza das respostas, das integrações e do volume de exceções.",
         ],
-        closing: ["As condições de contrato ficam no contrato."],
+        closing: ["As condições ficam no contrato."],
       },
     ],
     faqs: [
@@ -364,10 +364,10 @@ const pages = [
       ["O que entra no valor?", "Depende do modelo. Num serviço pontual, você paga uma vez pela implementação: regras, conexões com o que a empresa já usa, organização das informações e teste. No modelo com manutenção, entra também o acompanhamento depois da entrega, pra tudo continuar funcionando. IA só entra se fizer sentido, como adicional."],
       ["Dá pra começar com orçamento curto?", "Dá. A gente começa por um problema só, o que mais dói, em vez de um projeto grande. Normalmente é o atendimento ou o follow-up comercial, porque têm repetição e retorno fácil de medir. Começar sem IA também é um caminho."],
       ["Vale mais contratar uma agência ou usar uma ferramenta pronta?", "Ferramenta pronta deixa cada pessoa da equipe mais rápida, mas não conhece o seu negócio e não conversa com os seus sistemas. A agência entra quando o problema é da operação: atendimento com as suas regras, registro no CRM, passagem pra pessoa certa. Se o problema é individual, ferramenta resolve. Se é da operação, precisa de implantação."],
-      ["Em quanto tempo fica pronto?", "O primeiro fluxo de WhatsApp entra no ar em poucas semanas. O prazo depende de quão claras estão as respostas, de quantas integrações tem e do volume de exceções. O prazo de cada projeto vem escrito na proposta."],
-      ["Preciso de equipe de TI ou trocar meus sistemas?", "Não necessariamente. Na maioria dos casos a gente começa conectando a solução ao que a empresa já usa: WhatsApp, CRM, agenda, planilhas e documentos."],
+      ["Em quanto tempo fica pronto?", "Depende de quão claras estão as respostas, de quantas integrações tem e do volume de exceções. O prazo de cada projeto vem escrito na proposta, antes de começar."],
+      ["Preciso de equipe de TI ou trocar meus sistemas?", "Não necessariamente. A gente começa conectando a solução ao que a empresa já usa: WhatsApp, CRM, agenda, planilhas e documentos."],
       ["A Feed atende fora de Ribeirão Preto?", "Atende. A base é Ribeirão Preto e Bebedouro, com atendimento em Barretos, Jaboticabal, Sertãozinho e região, e no resto do Brasil de forma remota."],
-      ["O diagnóstico é gratuito mesmo? O que eu recebo?", "É gratuito. Você deixa nome e e-mail e recebe o Diagnóstico do Gargalo na hora: onde a operação para quando você não está, o que mais consome seu tempo e o primeiro passo pra tirar a empresa das suas costas. Depois, se fizer sentido, vem a conversa com o Guilherme."],
+      ["O diagnóstico é gratuito mesmo? O que eu recebo?", "É gratuito. Você deixa nome e e-mail e recebe o Diagnóstico do Gargalo em PDF, no seu e-mail, na hora: onde a operação para quando você não está, o que mais consome seu tempo e o primeiro passo pra tirar a empresa das suas costas. Depois, se fizer sentido, vem a conversa com o Guilherme."],
     ],
     services: [
       { name: "Automação de atendimento no WhatsApp", description: "Implementação e acompanhamento de automação de atendimento no WhatsApp, com regras do negócio, conexão com agenda, CRM e planilhas, e passagem para humano. Preço personalizado em proposta." },

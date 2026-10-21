@@ -105,16 +105,16 @@ const faqItems = [
     a: "Não. A Feed implementa, treina quem vai usar e acompanha a solução funcionando. Você não precisa contratar ninguém nem entender de tecnologia: precisa saber onde sua operação trava, e isso a gente descobre junto. A IA não é obrigatória. Ela entra como adicional só se fizer sentido pro seu negócio e, quando entra, muda o valor da proposta.",
   },
   {
-    q: "Em quanto tempo vejo resultado?",
-    a: "O primeiro fluxo de atendimento no WhatsApp entra no ar em poucas semanas, dependendo de quão claras estão as respostas, das integrações e do volume de exceções. O prazo de cada projeto vem escrito na proposta. A gente prefere entrega rápida e escopo enxuto a projeto grande que nunca termina. Se quiser começar já, o [Diagnóstico do Gargalo](/diagnostico) chega no seu e-mail na hora.",
+    q: "Em quanto tempo fica pronto?",
+    a: "Depende de quão claras estão as respostas, de quantas integrações tem e do volume de exceções. O prazo de cada projeto vem escrito na proposta. A gente prefere entrega rápida e escopo enxuto a projeto grande que nunca termina. Se quiser começar já, o [Diagnóstico do Gargalo](/diagnostico) chega no seu e-mail na hora.",
   },
   {
     q: "A Feed atende só a região de Ribeirão Preto?",
-    a: "A base é a região de Ribeirão Preto e Bebedouro, no interior de SP, com atendimento presencial quando faz sentido. Boa parte dos clientes a gente atende 100% remoto, em qualquer lugar do Brasil.",
+    a: "A base é a região de Ribeirão Preto e Bebedouro, no interior de SP, com atendimento presencial quando faz sentido. Fora da região, o atendimento é remoto, em qualquer lugar do Brasil.",
   },
   {
     q: "O que é o diagnóstico gratuito?",
-    a: "Você deixa nome e e-mail e recebe na hora o Diagnóstico do Gargalo, um PDF curto que mostra onde a operação para quando você não está, o que mais consome seu tempo e o primeiro passo pra tirar a empresa das suas costas. Depois, se fizer sentido, você conversa com o Guilherme sobre o seu caso. Não custa nada. Comece em [agenciafeed.com/diagnostico](/diagnostico).",
+    a: "Você deixa nome e e-mail e recebe no seu e-mail, na hora, o Diagnóstico do Gargalo, um PDF curto que mostra onde a operação para quando você não está, o que mais consome seu tempo e o primeiro passo pra tirar a empresa das suas costas. Depois, se fizer sentido, você conversa com o Guilherme sobre o seu caso. Não custa nada. Comece em [agenciafeed.com/diagnostico](/diagnostico).",
   },
 ];
 
