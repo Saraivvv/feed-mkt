@@ -166,7 +166,7 @@ function jsonLdPost(post) {
       headline: post.title,
       description: post.description,
       datePublished: post.date,
-      dateModified: post.date,
+      dateModified: post.dateModified || post.date,
       inLanguage: "pt-BR",
       mainEntityOfPage: { "@type": "WebPage", "@id": url },
       image: OG_IMAGE,
@@ -194,6 +194,24 @@ function jsonLdPost(post) {
     },
   ];
 
+  // Service opcional (serviceName no frontmatter), sem preço.
+  if (post.serviceName) {
+    graph.push({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "@id": `${url}#service`,
+      name: post.serviceName,
+      serviceType: post.serviceType || post.serviceName,
+      description: post.serviceDescription || post.description,
+      provider: { "@id": `${SITE}/#organization` },
+      audience: { "@type": "BusinessAudience", name: "Donos e gestores de pequenas e médias empresas" },
+      areaServed: [
+        ...["Ribeirão Preto", "Bebedouro", "Barretos", "Jaboticabal", "Sertãozinho"].map((name) => ({ "@type": "City", name })),
+        { "@type": "Country", name: "Brasil" },
+      ],
+    });
+  }
+
   if (post.faq?.length) {
     graph.push({
       "@context": "https://schema.org",
@@ -202,7 +220,11 @@ function jsonLdPost(post) {
       mainEntity: post.faq.map((item) => ({
         "@type": "Question",
         name: item.q,
-        acceptedAnswer: { "@type": "Answer", text: item.a },
+        // faqLinks: html no frontmatter: [texto](/caminho) vira <a> com URL absoluta.
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: post.faqLinks !== "html" ? item.a : item.a.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_, label, href) => `<a href="${href.startsWith("/") ? SITE + href : href}">${label}</a>`),
+        },
       })),
     });
   }
@@ -253,7 +275,11 @@ function renderPost(template, post, posts = []) {
     .replaceAll("{{POST_BRIEF}}", promiseBlock)
     .replaceAll("{{POST_TOC}}", toc)
     .replaceAll("{{POST_CONTENT}}", post.html)
-    .replaceAll("{{RELATED_POSTS}}", related);
+    .replaceAll("{{RELATED_POSTS}}", related)
+    .replaceAll("{{CTA_TITLE}}", esc(post.ctaTitle || "Quer saber o que faz sentido pro seu negócio?"))
+    .replaceAll("{{CTA_TEXT}}", esc(post.ctaText || "A Feed faz um diagnóstico gratuito do gargalo da sua operação. Você recebe o PDF do Diagnóstico do Gargalo por e-mail e conversa com o Guilherme sobre ele."))
+    .replaceAll("{{CTA_HREF}}", post.ctaHref || "/#contato")
+    .replaceAll("{{CTA_BUTTON}}", esc(post.ctaButton || "Diagnóstico gratuito"));
 }
 
 function list(value) {
@@ -279,6 +305,8 @@ function findPublishedByTitle(title, posts) {
   if (!n) return null;
   return (
     posts.find((p) => normTitle(p.title) === n) ||
+    // aliases: títulos antigos de um post renomeado, pra não quebrar relatedPlanned de outros posts.
+    posts.find((p) => list(p.aliases).some((alias) => normTitle(alias) === n)) ||
     posts.find((p) => {
       const pt = normTitle(p.title);
       return pt && (pt.includes(n) || n.includes(pt));

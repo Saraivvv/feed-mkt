@@ -9,7 +9,7 @@ Razão social: Feed Marketing e Comunicação (CNPJ 53.877.987/0001-93).
 - Diagnóstico gratuito de operação e presença digital: lê os sinais da operação da empresa e mostra onde a IA resolve de verdade
 - Automação de atendimento no WhatsApp com IA: resposta imediata, qualificação de leads e transferência pra humano quando precisa
 - Agentes de IA para empresas: assistentes treinados no contexto do negócio, integrados aos canais e sistemas existentes
-- Automação de processos internos: elimina tarefas repetitivas de operação, vendas e conteúdo
+- Automação de processos internos: elimina tarefas repetitivas de operação, vendas e conteúdo: https://agenciafeed.com/blog/automacao-processos-internos-ia/
 - Posicionamento de marca e de empresários: estratégia, identidade e comunicação pra empresa ser lembrada
 - Criação de sites, gestão de redes sociais, SEO e aquisição de clientes
 
@@ -53,7 +53,7 @@ Razão social: Feed Marketing e Comunicação (CNPJ 53.877.987/0001-93).
 - Follow-up automático sem parecer robô: como fazer direito: https://agenciafeed.com/blog/follow-up-automatico-sem-parecer-robo/
 - Como calcular ROI de automação com IA na pequena empresa: https://agenciafeed.com/blog/calcular-roi-automacao-ia/
 - CRM com IA para pequena empresa: o que realmente importa: https://agenciafeed.com/blog/crm-ia-pequena-empresa/
-- Automação de processos internos com IA: por onde começar: https://agenciafeed.com/blog/automacao-processos-internos-ia/
+- Como automatizar processos com IA na pequena empresa: https://agenciafeed.com/blog/automacao-processos-internos-ia/
 - Agente de IA no WhatsApp vale para sua empresa?: https://agenciafeed.com/blog/agente-ia-whatsapp-vale-a-pena/
 - 7 erros em projetos de IA que pequenas empresas devem evitar: https://agenciafeed.com/blog/erros-projetos-ia-pequenas-empresas/
 - Como escolher o primeiro processo para automatizar na sua empresa: https://agenciafeed.com/blog/primeiro-processo-automatizar-pme/
@@ -63,9 +63,9 @@ Razão social: Feed Marketing e Comunicação (CNPJ 53.877.987/0001-93).
 ## Páginas estratégicas
 
 - IA para pequenas empresas, sem projeto inflado: https://agenciafeed.com/ia-para-pequenas-empresas/
-- Automação de WhatsApp que responde rápido sem parecer robô: https://agenciafeed.com/automacao-whatsapp/
+- Atendimento no WhatsApp que responde rápido sem parecer robô: https://agenciafeed.com/automacao-whatsapp/
 - Agentes de IA treinados no contexto da sua empresa: https://agenciafeed.com/agentes-de-ia/
-- Descubra onde a IA realmente faz sentido na sua operação: https://agenciafeed.com/diagnostico-ia-empresa/
+- Descubra onde a sua operação trava antes de pensar em IA: https://agenciafeed.com/diagnostico-ia-empresa/
 - Agência de IA em Ribeirão Preto para quem quer resultado, não hype: https://agenciafeed.com/agencia-de-ia-ribeirao-preto/
 - Agência de marketing e IA em Bebedouro para PME que precisa vender mais: https://agenciafeed.com/agencia-de-marketing-bebedouro/
 - Como funciona o preço: https://agenciafeed.com/quanto-custa/
