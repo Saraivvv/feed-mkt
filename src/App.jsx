@@ -102,7 +102,7 @@ const faqItems = [
   },
   {
     q: "Preciso de time de TI pra automatizar a empresa?",
-    a: "Não. A Feed implementa, treina quem vai usar e acompanha a solução funcionando. Você não precisa contratar ninguém nem entender de tecnologia: precisa saber onde sua operação trava, e isso a gente descobre junto. A IA não é obrigatória. Ela entra como adicional só se fizer sentido pro seu negócio e, quando entra, muda o valor da proposta.",
+    a: "Não. A Feed implementa e treina quem vai usar. Se o projeto tiver manutenção, a Feed acompanha depois da entrega. Você não precisa contratar ninguém nem entender de tecnologia: precisa saber onde sua operação trava, e isso a gente descobre junto. A IA não é obrigatória. Ela entra como adicional só se fizer sentido pro seu negócio e, quando entra, muda o valor da proposta.",
   },
   {
     q: "Em quanto tempo fica pronto?",

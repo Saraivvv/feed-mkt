@@ -24,80 +24,265 @@ const ORG = {
   ],
 };
 
+const AREA_SERVED = [
+  ...["Ribeirão Preto", "Bebedouro", "Barretos", "Jaboticabal", "Sertãozinho"].map((name) => ({ "@type": "City", name })),
+  { "@type": "Country", name: "Brasil" },
+];
+
 const pages = [
   {
     slug: "ia-para-pequenas-empresas",
     type: "hub",
-    title: "Consultoria e implementação de IA para PMEs | Feed",
-    h1: "IA para pequenas empresas, sem projeto inflado.",
+    lastmod: "2026-10-22",
+    title: "Agência de IA para pequenas empresas | Feed",
+    h1: "IA para pequenas empresas, sem projeto inflado",
     eyebrow: "Serviço",
+    updated: "Atualizado em outubro de 2026.",
     description:
-      "A Feed implementa IA em pequenas e médias empresas: atendimento no WhatsApp, follow-up, agentes internos e organização de dados, com escopo enxuto e retorno medido.",
+      "A Feed ajuda pequenas e médias empresas a destravar atendimento, follow-up e operação com automação. IA entra quando faz sentido. Ribeirão Preto e todo o Brasil.",
     intro:
-      "A IA só vale a pena quando resolve um gargalo real: atendimento lento, follow-up esquecido, dados bagunçados ou operação manual demais. Esta página organiza o caminho para uma PME começar com segurança.",
-    primaryCta: "Pedir diagnóstico gratuito",
-    secondaryCta: "Ler o guia completo",
-    secondaryHref: "/blog/ia-para-pme-guia-pratico/",
-    serviceName: "Consultoria e implementação de IA para pequenas empresas",
-    bulletsTitle: "Onde a IA costuma pagar a conta",
-    bullets: [
-      "Atendimento no WhatsApp com resposta imediata e passagem para humano quando precisa.",
-      "Follow-up comercial automático para reduzir oportunidades esquecidas.",
-      "Organização de CRM, agenda, planilhas e base de conhecimento.",
-      "Agentes internos para tarefas repetitivas de operação, vendas e conteúdo.",
-    ],
-    decisionTitle: "Comece pequeno, mas comece no lugar certo",
-    decisions: [
-      "Mapeie onde o time perde mais tempo ou mais venda.",
-      "Escolha um processo com volume, repetição e impacto financeiro claro.",
-      "Implemente uma solução enxuta antes de comprar várias ferramentas.",
-      "Meça tempo economizado, velocidade de resposta e oportunidades recuperadas.",
+      "A Feed é uma agência de Ribeirão Preto (SP) que ajuda pequenas e médias empresas a resolver onde a operação trava: atendimento lento no WhatsApp, follow-up esquecido, processo manual e informação espalhada. A gente começa pelo gargalo, não pela ferramenta. Muita coisa se resolve com automação e processo bem desenhado; a IA entra como adicional quando faz sentido pro negócio. Atende a região de Ribeirão Preto e Bebedouro e empresas de todo o Brasil de forma remota.",
+    answer:
+      "A gente começa pelo gargalo, não pela ferramenta. Muita coisa se resolve com automação e processo bem desenhado; a IA entra como adicional quando faz sentido pro negócio.",
+    primaryCta: "Quero o diagnóstico",
+    primaryHref: "/diagnostico",
+    sections: [
+      {
+        h2: "Pra quem é",
+        paragraphs: ["Pro dono ou gestor de PME que virou o gargalo da própria operação. Sinais comuns:"],
+        list: [
+          "O cliente espera resposta no WhatsApp e o time demora.",
+          "A mesma pergunta chega todo dia e alguém responde na mão.",
+          "Lead some porque ninguém faz follow-up.",
+          "O atendimento depende de uma pessoa que sabe tudo de cabeça.",
+        ],
+      },
+      {
+        h2: "O que a Feed faz",
+        list: [
+          "**Automação de atendimento no WhatsApp.** Responde o básico na hora, qualifica quem tem perfil de compra e passa pra uma pessoa quando a conversa pede cuidado. → [Ver automação de WhatsApp](/automacao-whatsapp/)",
+          "**Automação de processos internos.** Tira do time a tarefa repetitiva de operação, vendas e conteúdo.",
+          "**Agentes de IA, se fizer sentido.** Um assistente treinado no contexto da empresa: conhece a oferta, as regras de atendimento e os limites do que pode responder. Entra como adicional opcional na proposta e muda o valor. → [Ver agentes de IA](/agentes-de-ia/)",
+          "**Marca e aquisição.** Posicionamento de marca e de empresários, sites, redes sociais e SEO.",
+        ],
+      },
+      {
+        h2: "Por onde uma pequena empresa começa",
+        ordered: true,
+        list: [
+          "**Achar onde o time perde mais tempo ou mais venda.**",
+          "**Escolher um processo só,** com volume, repetição e impacto claro no caixa. Normalmente é o atendimento ou o follow-up comercial.",
+          "**Resolver com uma solução enxuta** antes de comprar várias ferramentas.",
+          "**Medir** tempo economizado, velocidade de resposta e oportunidades recuperadas.",
+        ],
+      },
+      {
+        h2: "Como a Feed trabalha",
+        list: [
+          "**Escopo realista pra PME.** Projeto do tamanho do problema, não do tamanho da proposta.",
+          "**Implementação, não só consultoria.** A solução entra na rotina da empresa e roda.",
+          "**Sem hype.** IA é ferramenta pra resolver gargalo, não promessa milagrosa. E nem todo gargalo precisa dela.",
+          "**Atendimento próximo.** Agência de dois sócios: operação e IA com o Guilherme, administração com a Roseane.",
+          "**Conecta ao que a empresa já usa:** WhatsApp, CRM, agenda, planilhas e documentos, sem trocar sistema.",
+        ],
+      },
+      {
+        h2: "Quanto custa",
+        paragraphs: [
+          "O preço é personalizado: sai numa proposta feita pro seu caso, depois de entender onde a operação trava. A Feed trabalha de dois jeitos, e a proposta diz qual faz sentido: implementação mais manutenção, quando a solução precisa de acompanhamento depois de entregue, ou serviço pontual, com pagamento único. Se entrar IA, ela aparece como item à parte e muda o valor. Veja o que compõe o preço em [quanto custa](/quanto-custa/).",
+        ],
+      },
+      {
+        h2: "Do primeiro contato até a proposta",
+        ordered: true,
+        list: [
+          "**Diagnóstico do Gargalo.** Você deixa nome e e-mail em agenciafeed.com/diagnostico e recebe o PDF no seu e-mail na hora.",
+          "**Conversa com o Guilherme** sobre o seu caso, incluindo se IA faz sentido ou não.",
+          "**Proposta personalizada,** com problema, entrega, limites, prazo e valor no papel.",
+          "**Implementação.** O prazo depende da clareza das respostas, das integrações e do volume de exceções, e vem escrito na proposta.",
+        ],
+      },
     ],
     faqs: [
-      ["O que é IA para pequenas empresas?", "É o uso de automações, agentes e modelos de linguagem para resolver tarefas práticas da rotina: atendimento, vendas, follow-up, organização de dados e produção de conteúdo."],
-      ["Qual é o primeiro processo que uma PME deve automatizar?", "Normalmente é o atendimento ou o follow-up comercial, porque são áreas com repetição, impacto direto em vendas e retorno mais fácil de medir."],
-      ["Preciso trocar meus sistemas para usar IA?", "Não necessariamente. Na maioria dos casos, a Feed começa conectando IA ao que a empresa já usa: WhatsApp, CRM, agenda, planilhas e documentos."],
+      ["Qual agência faz IA para pequenas empresas?", "A Feed é uma agência de Ribeirão Preto (SP) focada em pequenas e médias empresas. Ela resolve gargalo de atendimento, follow-up e operação com automação, e usa IA quando faz sentido pro negócio. Atende a região de Ribeirão Preto e Bebedouro e todo o Brasil de forma remota."],
+      ["O que é IA para pequenas empresas, na prática?", "É usar automação e, quando faz sentido, IA pra tirar do time tarefa repetitiva: responder a primeira mensagem do cliente, puxar de volta o lead que sumiu, organizar informação espalhada. Não é robô pensando sozinho. É processo claro, com regras que a empresa define."],
+      ["Toda pequena empresa precisa de IA?", "Não. Muito gargalo se resolve organizando atendimento e processo, sem IA. A IA entra como adicional quando o caso pede, por exemplo um agente que responde com o contexto da empresa, e aí muda o valor da proposta."],
+      ["Qual é o primeiro processo pra automatizar?", "Normalmente o atendimento ou o follow-up comercial, porque têm repetição, impacto direto em vendas e retorno mais fácil de medir."],
+      ["Preciso trocar meus sistemas ou ter time de TI?", "Não necessariamente. A Feed começa conectando a solução ao que a empresa já usa: WhatsApp, CRM, agenda, planilhas e documentos. A Feed implementa e treina quem vai usar. Se o projeto tiver manutenção, a Feed acompanha depois da entrega."],
+      ["Automação no WhatsApp não vai irritar meus clientes?", "Irrita quando é rígida e burra. Automação bem feita resolve o simples, deixa claro quando chama uma pessoa e evita resposta genérica."],
+      ["Quanto custa?", "O preço é personalizado e sai numa proposta, depois de uma conversa sobre o seu caso. A Feed trabalha de dois jeitos: implementação mais manutenção, ou serviço pontual com pagamento único. IA, se entrar, é adicional e muda o valor. O que compõe o preço está em [agenciafeed.com/quanto-custa](/quanto-custa/)."],
+      ["Em quanto tempo fica pronto?", "O prazo depende da clareza das respostas, das integrações e do volume de exceções, e vem escrito na proposta."],
+      ["A Feed atende só Ribeirão Preto?", "Não. A base é Ribeirão Preto e Bebedouro, com atendimento em Barretos, Jaboticabal, Sertãozinho e região, e no resto do Brasil de forma remota."],
+      ["Como começo?", "Pelo Diagnóstico do Gargalo: você deixa nome e e-mail e recebe o PDF no seu e-mail na hora. Depois, se fizer sentido, conversa com o Guilherme sobre o seu caso. Comece em [agenciafeed.com/diagnostico](/diagnostico)."],
     ],
-    related: ["automacao-whatsapp", "agentes-de-ia", "diagnostico-ia-empresa"],
+    schemaNodes: [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "@id": `${SITE}/ia-para-pequenas-empresas/#page`,
+        url: `${SITE}/ia-para-pequenas-empresas/`,
+        name: "Agência de IA para pequenas empresas | Feed",
+        inLanguage: "pt-BR",
+        about: { "@id": `${SITE}/ia-para-pequenas-empresas/#service` },
+        dateModified: "2026-10-22",
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "@id": `${SITE}/ia-para-pequenas-empresas/#service`,
+        name: "IA e automação para pequenas e médias empresas",
+        serviceType: "Automação de atendimento, follow-up e processos para PME, com IA como adicional opcional",
+        description:
+          "A Feed resolve gargalos de atendimento, follow-up e operação de pequenas e médias empresas com automação. IA entra como adicional quando faz sentido para o negócio. Preço personalizado, definido em proposta.",
+        provider: { "@id": `${SITE}/#organization` },
+        audience: { "@type": "BusinessAudience", name: "Donos e gestores de pequenas e médias empresas" },
+        areaServed: AREA_SERVED,
+      },
+    ],
+    related: ["automacao-whatsapp", "agentes-de-ia", "diagnostico-ia-empresa", "agencia-de-ia-ribeirao-preto"],
     relatedPosts: [
-      ["/blog/ia-para-pme-guia-pratico/", "IA para PME: guia prático para começar"],
       ["/quanto-custa/", "Quanto custa automação e IA para pequena empresa"],
       ["/blog/primeiro-processo-automatizar-pme/", "Como escolher o primeiro processo para automatizar"],
     ],
+    ctaTitle: "Quer saber onde a sua empresa trava?",
+    ctaText: "Comece pelo Diagnóstico do Gargalo. Ele chega no seu e-mail na hora, e depois você conversa com o Guilherme sobre o seu caso.",
+    ctaButton: "Quero o diagnóstico",
+    ctaHref: "/diagnostico",
   },
   {
     slug: "automacao-whatsapp",
     type: "service",
-    title: "Automação de WhatsApp com IA para empresas | Feed",
-    h1: "Automação de WhatsApp que responde rápido sem parecer robô.",
+    lastmod: "2026-10-22",
+    title: "Atendimento no WhatsApp com IA para pequenas empresas | Feed",
+    h1: "Atendimento no WhatsApp que responde rápido sem parecer robô",
     eyebrow: "Serviço",
     description:
-      "Automação de atendimento no WhatsApp com IA para pequenas empresas: qualificação de leads, respostas rápidas, follow-up e transferência para humano.",
+      "A Feed monta o atendimento no WhatsApp da pequena empresa: responde o básico na hora, qualifica o lead e chama uma pessoa quando a conversa pede. IA entra quando faz sentido.",
     intro:
-      "Cliente que espera demais esfria. A Feed monta automações de WhatsApp que respondem o básico na hora, qualificam oportunidades e deixam o humano entrar quando a conversa exige cuidado.",
-    primaryCta: "Diagnosticar meu atendimento",
-    secondaryCta: "Ler sobre custos de IA",
-    secondaryHref: "/quanto-custa/",
-    serviceName: "Automação de atendimento no WhatsApp com IA",
-    bulletsTitle: "O que entra no projeto",
-    bullets: [
-      "Fluxo de perguntas e respostas para dúvidas frequentes.",
-      "Qualificação de lead antes de chegar no time comercial.",
-      "Transferência para humano quando há objeção, negociação ou exceção.",
-      "Registro de informações importantes para CRM, agenda ou planilha.",
+      "Atendimento no WhatsApp com IA é colocar a primeira resposta, a triagem e o registro do contato pra rodar sozinhos, e deixar a sua equipe só com a conversa que pede gente. A Feed monta isso pra pequenas e médias empresas: responde o básico na hora, qualifica quem tem perfil de compra e passa pra uma pessoa quando a conversa pede cuidado. Muita coisa se resolve com fluxo simples. A IA entra como adicional quando a conversa é aberta e o fluxo não dá conta. A Feed é de Ribeirão Preto (SP) e atende a região e o resto do Brasil de forma remota.",
+    answer:
+      "A Feed monta o atendimento no WhatsApp da sua empresa: resposta na hora pro básico, qualificação do lead e uma pessoa assumindo quando a conversa pede. IA entra se fizer sentido.",
+    primaryCta: "Quero o diagnóstico",
+    primaryHref: "/diagnostico",
+    breadcrumbName: "Automação de WhatsApp com IA",
+    sections: [
+      {
+        h2: "Pra quem é",
+        paragraphs: [
+          "Pro dono de PME que virou o atendente principal da própria empresa: o celular não para, a resposta sai quando dá e a venda esfria no intervalo. Sinais de que o WhatsApp virou gargalo:",
+        ],
+        list: [
+          "A empresa recebe as mesmas perguntas todos os dias.",
+          "O time demora pra responder contato novo.",
+          "Lead some porque ninguém faz follow-up.",
+          "O atendimento depende de uma pessoa que sabe tudo de cabeça.",
+        ],
+        after: ["Se chegam poucas mensagens e o time responde bem, ainda não é a hora. Primeiro organiza o atendimento."],
+      },
+      {
+        h2: "O que entra no atendimento",
+        list: [
+          "**Resposta pras perguntas frequentes,** na hora, inclusive fora do horário.",
+          "**Qualificação do lead** antes de chegar no time comercial.",
+          "**Passagem pra uma pessoa** quando aparece objeção, negociação ou exceção.",
+          "**Registro do que importa** no CRM, na agenda ou na planilha.",
+        ],
+        after: [
+          "Exemplo: o cliente pergunta às 22h se tem horário na quinta. O atendimento responde, pergunta o que ele precisa e deixa o pedido registrado. De manhã, a sua equipe abre a conversa já sabendo o que fazer.",
+        ],
+      },
+      {
+        h2: "Fluxo simples ou IA?",
+        paragraphs: ["Depende do tipo de dúvida que chega no seu WhatsApp:"],
+        list: [
+          "**Fluxo simples** segue roteiro fixo. Serve pra horário, endereço, documentos e direcionamento inicial. Trava quando o cliente foge das opções.",
+          "**IA** lê o que o cliente escreveu, responde no contexto da empresa e sabe a hora de chamar uma pessoa. Faz sentido quando a conversa varia, mas ainda tem padrão.",
+        ],
+        after: [
+          "Na Feed, a IA é adicional opcional: entra na proposta só se o seu atendimento pedir e, quando entra, aparece como item à parte e muda o valor. Pra decidir com calma, leia [chatbot ou agente de IA no WhatsApp](/blog/agente-ia-whatsapp-vale-a-pena/).",
+        ],
+      },
+      {
+        h2: "Conta oficial ou o número que você já usa?",
+        paragraphs: [
+          "Existem duas formas de ligar a automação ao WhatsApp. A conta oficial para empresas costuma ser escolhida quando o volume é alto ou várias pessoas atendem ao mesmo tempo. Conectar o WhatsApp que a empresa já usa costuma ser escolhido quando o atendimento roda num número só e a equipe quer continuar no aplicativo que conhece. Não existe resposta única: a escolha depende do volume e do que precisa integrar.",
+        ],
+      },
+      {
+        h2: "O que continua com a sua equipe",
+        paragraphs: [
+          "Negociação complexa, reclamação séria, exceção comercial e conversa emocional. A automação não tenta fingir que resolve tudo. Ela tira o repetitivo da frente e entrega a conversa pra quem decide.",
+        ],
+      },
+      {
+        h2: "Como a Feed faz",
+        list: [
+          "**Começa pelo gargalo,** não pela ferramenta.",
+          "**Escreve as regras com você:** o que é respondido sozinho, o que não é e quando uma pessoa assume.",
+          "**Organiza as informações do negócio** que o atendimento usa: oferta, regras e limites do que pode ser respondido.",
+          "**Conecta ao que a empresa já usa:** WhatsApp, CRM, agenda e planilhas, sem trocar sistema.",
+          "**Testa antes de abrir pro cliente.**",
+          "**Passa a conversa com resumo e contexto:** quem assume já recebe um resumo do que foi dito e o contexto do cliente, e atende com mais acerto.",
+          "**Implementa e treina quem vai usar.** O acompanhamento depois da entrega entra quando o projeto tem manutenção.",
+        ],
+      },
+      {
+        h2: "Como saber se valeu",
+        paragraphs: [
+          "Antes de começar, anote por uma semana: quantas mensagens novas chegam por dia, quanto tempo a empresa demora pra responder e quantas conversas ficam sem próximo passo. Depois, compare tempo de resposta, agendamentos, orçamentos enviados e vendas recuperadas. Sem esse ponto de partida, qualquer resultado vira opinião. Se a dúvida ainda é se vale a pena pra sua empresa, leia [automação de WhatsApp para pequena empresa: quando vale a pena](/blog/automacao-whatsapp-pequena-empresa/) e [como medir perda de vendas por demora no atendimento](/blog/como-medir-perda-vendas-demora-atendimento/).",
+        ],
+      },
+      {
+        h2: "Quanto custa",
+        paragraphs: [
+          "O preço é personalizado: sai numa proposta, depois de entender o seu atendimento. A Feed trabalha de dois jeitos, e a proposta diz qual faz sentido: implementação mais manutenção, quando o atendimento precisa de acompanhamento depois de entregue, ou serviço pontual, com pagamento único, quando o trabalho tem começo, meio e fim. Se entrar IA, ela aparece como item à parte e muda o valor. As condições ficam no contrato. O que compõe o preço está em [quanto custa](/quanto-custa/).",
+        ],
+      },
+      {
+        h2: "Do primeiro contato até o atendimento no ar",
+        ordered: true,
+        list: [
+          "**Diagnóstico do Gargalo.** Você deixa nome e e-mail em agenciafeed.com/diagnostico e recebe o PDF no seu e-mail na hora.",
+          "**Conversa com o Guilherme** sobre o seu atendimento, incluindo se IA faz sentido ou não.",
+          "**Proposta personalizada,** com problema, entrega, limites, prazo e valor no papel.",
+          "**Implementação.** O prazo depende da clareza das respostas, das integrações e do volume de exceções, e vem escrito na proposta.",
+        ],
+      },
     ],
-    decisionTitle: "Quando faz sentido automatizar",
-    decisions: [
-      "A empresa recebe perguntas repetidas todos os dias.",
-      "O time demora para responder novos contatos.",
-      "Leads somem porque ninguém faz follow-up.",
-      "O atendimento depende de uma pessoa específica saber tudo de cabeça.",
-    ],
+    faqId: true,
     faqs: [
-      ["Automação de WhatsApp irrita cliente?", "Irrita quando é rígida e burra. Uma automação bem feita resolve o simples, deixa claro quando chama humano e evita respostas genéricas."],
-      ["A automação substitui o atendente?", "Não. Ela reduz repetição, organiza contexto e acelera triagem. Conversas delicadas, negociação e exceções continuam com o time."],
-      ["Quanto tempo leva para implementar?", "Um primeiro fluxo pode entrar no ar em poucas semanas, dependendo da clareza das respostas, integrações e volume de exceções."],
+      ["Quem faz automação de atendimento no WhatsApp com IA?", "A Feed é uma agência de Ribeirão Preto (SP) que monta automação de atendimento no WhatsApp pra pequenas e médias empresas: resposta imediata, qualificação de leads e transferência pra uma pessoa quando a conversa pede. A IA entra como adicional quando faz sentido pro negócio. Atende a região de Ribeirão Preto e Bebedouro e empresas de todo o Brasil de forma remota."],
+      ["Automação de WhatsApp irrita cliente?", "Irrita quando é rígida e burra. Uma automação bem feita resolve o simples, deixa claro quando chama uma pessoa e evita resposta genérica. O cliente não se irrita porque existe automação. Ele se irrita quando a automação impede a solução."],
+      ["A automação substitui o atendente?", "Não. Ela reduz repetição, organiza contexto e acelera a triagem. Conversa delicada, negociação e exceção continuam com o time."],
+      ["Preciso de IA ou um fluxo simples resolve?", "Depende do tipo de dúvida que chega. Dúvida padronizada, como horário, endereço e documentos, aceita fluxo simples. Conversa aberta, em que o cliente escreve do jeito dele, pede IA. Na Feed, a IA é um adicional opcional: entra na proposta só se o seu atendimento pedir e, quando entra, muda o valor."],
+      ["O que a automação faz no atendimento?", "Responde as perguntas frequentes, qualifica o lead antes de chegar no time comercial, passa a conversa pra uma pessoa quando aparece objeção, negociação ou exceção, e registra as informações importantes no CRM, na agenda ou na planilha."],
+      ["Preciso de conta oficial do WhatsApp ou dá pra usar o número que já tenho?", "Existem as duas formas. A conta oficial para empresas costuma ser escolhida quando o volume é alto ou várias pessoas atendem ao mesmo tempo. Conectar o WhatsApp que a empresa já usa costuma ser escolhido quando o atendimento roda num número só e a equipe quer continuar no aplicativo que conhece. A escolha depende do volume e do que precisa integrar."],
+      ["Preciso ter CRM antes de automatizar?", "Não. Dá pra começar registrando em planilha e evoluir depois. O que não pode faltar é alguém pra assumir a conversa qualificada, senão a automação só acelera a chegada de um lead que ninguém atende."],
+      ["Quanto tempo leva para implementar?", "Depende da clareza das respostas, das integrações e do volume de exceções. O prazo vem escrito na proposta, antes de começar."],
+      ["Quanto custa automatizar o atendimento no WhatsApp?", "Na Feed, o preço é personalizado e sai numa proposta, depois de entender o seu atendimento. A Feed trabalha de dois jeitos: implementação mais manutenção, quando a solução precisa de acompanhamento depois de entregue, ou serviço pontual, com pagamento único. Se entrar IA, ela aparece como item à parte e muda o valor. O que compõe o preço está em [agenciafeed.com/quanto-custa](/quanto-custa/)."],
+      ["Como começo com a Feed?", "Pelo Diagnóstico do Gargalo: você deixa nome e e-mail e recebe o PDF no seu e-mail na hora. Depois, se fizer sentido, conversa com o Guilherme sobre o seu atendimento. Comece em [agenciafeed.com/diagnostico](/diagnostico)."],
     ],
+    schemaNodes: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "@id": `${SITE}/automacao-whatsapp/#service`,
+        name: "Automação de atendimento no WhatsApp para pequenas e médias empresas",
+        headline: "Atendimento no WhatsApp que responde rápido sem parecer robô",
+        serviceType: "Automação de atendimento no WhatsApp, com IA como adicional opcional",
+        description:
+          "A Feed monta automação de atendimento no WhatsApp para pequenas e médias empresas: resposta imediata às perguntas frequentes, qualificação de leads, transferência para uma pessoa quando a conversa pede e registro no CRM, na agenda ou na planilha. IA entra como adicional quando faz sentido. Preço personalizado, definido em proposta.",
+        url: `${SITE}/automacao-whatsapp/`,
+        inLanguage: "pt-BR",
+        provider: { "@id": `${SITE}/#organization` },
+        audience: { "@type": "BusinessAudience", name: "Donos e gestores de pequenas e médias empresas" },
+        areaServed: AREA_SERVED,
+      },
+    ],
+    ctaTitle: "Quantas mensagens ficaram sem resposta hoje?",
+    ctaText: "Comece pelo Diagnóstico do Gargalo. Ele chega no seu e-mail na hora, e depois você conversa com o Guilherme sobre o seu atendimento.",
+    ctaButton: "Quero o diagnóstico",
+    ctaHref: "/diagnostico",
     related: ["ia-para-pequenas-empresas", "agentes-de-ia", "diagnostico-ia-empresa"],
     relatedPosts: [
       ["/blog/automacao-whatsapp-pequena-empresa/", "Automação de WhatsApp: quando vale a pena"],
@@ -111,14 +296,16 @@ const pages = [
     title: "Agentes de IA para empresas e PMEs | Feed",
     h1: "Agentes de IA treinados no contexto da sua empresa.",
     eyebrow: "Serviço",
+    lastmod: "2026-10-22",
     description:
-      "Criação e implementação de agentes de IA para empresas: atendimento, vendas, operação, conteúdo e processos internos com base de conhecimento organizada.",
+      "Agentes de IA para pequenas e médias empresas: atendimento, vendas, operação, conteúdo e processos internos, treinados no contexto do negócio. Na Feed, o agente é adicional opcional e o preço sai em proposta.",
     intro:
-      "Agente de IA bom não é um chat genérico. Ele precisa conhecer a oferta, os processos, as regras de atendimento e os limites do que pode responder.",
-    primaryCta: "Mapear um agente de IA",
-    secondaryCta: "Entender o guia de IA para PMEs",
-    secondaryHref: "/ia-para-pequenas-empresas/",
-    serviceName: "Implementação de agentes de IA para empresas",
+      "Agente de IA bom não é um chat genérico. Ele precisa conhecer a oferta, os processos, as regras de atendimento e os limites do que pode responder. Na Feed, ele é um adicional: entra na proposta só quando o seu caso pede.",
+    primaryCta: "Quero o diagnóstico",
+    primaryHref: "/diagnostico",
+    answer:
+      "Agente de IA é um assistente treinado na oferta, nas regras e nos limites da sua empresa. Na Feed, ele entra como adicional opcional, só quando o caso pede, e muda o valor da proposta.",
+    serviceName: "Implementação de agentes de IA para empresas (adicional opcional)",
     bulletsTitle: "Tipos de agente que a Feed implementa",
     bullets: [
       "Agente de atendimento para responder dúvidas e qualificar contatos.",
@@ -135,9 +322,16 @@ const pages = [
     ],
     faqs: [
       ["O que é um agente de IA?", "É um assistente treinado para executar uma função específica com contexto da empresa, regras, base de conhecimento e integração com canais ou sistemas."],
+      ["Toda empresa precisa de um agente de IA?", "Não. Muito gargalo se resolve com processo e automação simples. Na Feed, o agente é um adicional opcional: entra na proposta só se o seu caso pedir e, quando entra, muda o valor."],
       ["Agente de IA pode errar?", "Pode, por isso o projeto precisa de limites, revisão de respostas críticas, base confiável e passagem para humano nos casos certos."],
       ["Um agente de IA precisa integrar com sistemas?", "Nem sempre no começo. A integração faz sentido quando o agente precisa consultar ou registrar dados em CRM, agenda, planilhas ou plataformas internas."],
+      ["Quanto custa um agente de IA?", "O preço é personalizado e sai numa proposta, depois de entender o seu caso. O agente aparece como item à parte. A Feed trabalha de dois jeitos: implementação mais manutenção, ou serviço pontual com pagamento único. O que compõe o preço está em agenciafeed.com/quanto-custa."],
+      ["Como começo?", "Pelo Diagnóstico do Gargalo: você deixa nome e e-mail em agenciafeed.com/diagnostico e recebe o PDF no seu e-mail na hora. Depois, se fizer sentido, conversa com o Guilherme sobre o seu caso, incluindo se um agente faz sentido ou não."],
     ],
+    ctaTitle: "Quer saber se a sua empresa precisa de um agente?",
+    ctaText: "Comece pelo Diagnóstico do Gargalo. Ele chega no seu e-mail na hora, e depois você conversa com o Guilherme sobre o seu caso.",
+    ctaButton: "Quero o diagnóstico",
+    ctaHref: "/diagnostico",
     related: ["ia-para-pequenas-empresas", "automacao-whatsapp", "diagnostico-ia-empresa"],
     relatedPosts: [
       ["/blog/agente-ia-whatsapp-vale-a-pena/", "Agente de IA no WhatsApp vale para sua empresa?"],
@@ -148,36 +342,42 @@ const pages = [
   {
     slug: "diagnostico-ia-empresa",
     type: "service",
-    title: "Diagnóstico de IA para empresas | Feed",
-    h1: "Descubra onde a IA realmente faz sentido na sua operação.",
+    lastmod: "2026-10-22",
+    title: "Diagnóstico do Gargalo para pequenas empresas | Feed",
+    h1: "Descubra onde a sua operação trava antes de pensar em IA.",
     eyebrow: "Diagnóstico gratuito",
     description:
-      "Diagnóstico gratuito da Feed para identificar gargalos, oportunidades de automação, riscos e prioridades de IA em pequenas empresas.",
+      "O Diagnóstico do Gargalo da Feed é um PDF gratuito que chega no seu e-mail na hora e ajuda a ver onde a empresa ainda depende de você. Depois, se fizer sentido, uma conversa com o Guilherme.",
     intro:
-      "Antes de comprar ferramenta ou montar agente, a empresa precisa saber onde está perdendo tempo, cliente e dinheiro. O diagnóstico mostra prioridades e evita projeto bonito que não se paga.",
-    primaryCta: "Quero meu diagnóstico",
-    secondaryCta: "Ver página pilar de IA",
-    secondaryHref: "/ia-para-pequenas-empresas/",
-    serviceName: "Diagnóstico de IA e automação para empresas",
-    bulletsTitle: "O que avaliamos",
+      "Antes de comprar ferramenta ou montar agente, vale enxergar onde a empresa trava. O Diagnóstico do Gargalo é um material curto e direto que chega no seu e-mail na hora. Depois, se fizer sentido, você conversa com o Guilherme sobre o seu caso.",
+    primaryCta: "Quero o diagnóstico",
+    primaryHref: "/diagnostico",
+    answer:
+      "O Diagnóstico do Gargalo é um PDF gratuito. Você deixa nome e e-mail e ele chega no seu e-mail na hora. Depois, se fizer sentido, você conversa com o Guilherme.",
+    serviceName: "Diagnóstico do Gargalo (gratuito)",
+    bulletsTitle: "O que o material ajuda você a enxergar",
     bullets: [
-      "Velocidade e qualidade do atendimento.",
-      "Rotina comercial, follow-up e perda de oportunidades.",
-      "Processos repetitivos que podem virar automação.",
-      "Base de dados, CRM, agenda, planilhas e presença digital.",
+      "Onde a operação para quando você não está por perto.",
+      "Os pontos que mais consomem seu tempo hoje.",
+      "O primeiro passo pra tirar a empresa das suas costas.",
     ],
-    decisionTitle: "O que você recebe",
+    decisionTitle: "Como funciona",
     decisions: [
-      "Mapa dos gargalos principais da operação.",
-      "Oportunidades de IA por impacto e facilidade de implementação.",
-      "Indicação do primeiro projeto com melhor chance de retorno.",
-      "Noção realista de escopo, investimento e próximos passos.",
+      "Você deixa nome e e-mail em agenciafeed.com/diagnostico.",
+      "O PDF chega no seu e-mail na hora.",
+      "Se fizer sentido, você conversa com o Guilherme sobre o seu caso.",
+      "Se virar projeto, ele vem numa proposta personalizada, com escopo, prazo e valor no papel. IA só entra se fizer sentido, como adicional.",
     ],
     faqs: [
-      ["O diagnóstico é gratuito mesmo?", "Sim. A Feed faz uma leitura inicial para mostrar onde a IA pode gerar retorno e qual projeto deveria vir primeiro."],
-      ["Preciso já saber o que quero automatizar?", "Não. O objetivo do diagnóstico é justamente encontrar onde a automação faz sentido antes de definir solução."],
-      ["O diagnóstico serve para empresas pequenas?", "Sim. Ele foi pensado para PMEs que precisam de clareza, escopo enxuto e implementação realista."],
+      ["O diagnóstico é gratuito mesmo?", "Sim. Você deixa nome e e-mail e recebe o Diagnóstico do Gargalo em PDF, no seu e-mail, na hora."],
+      ["Preciso já saber o que quero automatizar?", "Não. O material ajuda a enxergar onde a operação trava. Se fizer sentido, a conversa com o Guilherme vem depois."],
+      ["O diagnóstico já diz se eu preciso de IA?", "Não. Ele ajuda a ver onde a operação trava. Se IA faz sentido ou não é assunto da conversa com o Guilherme, e, se entrar, ela aparece como adicional na proposta."],
+      ["O diagnóstico serve para empresas pequenas?", "Sim. Ele foi pensado pro dono de pequena e média empresa que virou o gargalo da própria operação."],
     ],
+    ctaTitle: "Quer saber o quanto a sua empresa ainda depende de você?",
+    ctaText: "Receba o Diagnóstico do Gargalo. Ele chega no seu e-mail na hora, e depois você conversa com o Guilherme sobre o seu caso.",
+    ctaButton: "Quero o diagnóstico",
+    ctaHref: "/diagnostico",
     related: ["ia-para-pequenas-empresas", "automacao-whatsapp", "agentes-de-ia"],
     relatedPosts: [
       ["/blog/diagnostico-ia-pequena-empresa/", "Diagnóstico de IA: o que precisa ser analisado"],
@@ -408,8 +608,8 @@ function renderSection(section) {
       : "";
   const paras = (list) => (list || []).map((item) => `<p>${inline(item)}</p>`).join("");
   return `<section class="decision prose">
-        <div>
-          <p class="eyebrow">${esc(section.eyebrow)}</p>
+        <div>${section.eyebrow ? `
+          <p class="eyebrow">${esc(section.eyebrow)}</p>` : ""}
           <h2>${esc(section.h2)}</h2>
         </div>
         <div class="prose-body">
@@ -443,6 +643,34 @@ function legacyBlocks(page) {
 
 function linkFor(slug) {
   return `/${slug}/`;
+}
+
+// Resposta do FAQ no JSON-LD: [texto](/caminho) vira <a> com URL absoluta, igual ao visível.
+function faqSchema(page) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    ...(page.faqId ? { "@id": `${SITE}/${page.slug}/#faq` } : {}),
+    mainEntity: page.faqs.map(([q, a]) => ({
+      "@type": "Question",
+      name: q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: a.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_, label, href) => `<a href="${href.startsWith("/") ? SITE + href : href}">${label}</a>`),
+      },
+    })),
+  };
+}
+
+function breadcrumbSchema(page) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE}/` },
+      { "@type": "ListItem", position: 2, name: page.breadcrumbName || page.h1, item: `${SITE}/${page.slug}/` },
+    ],
+  };
 }
 
 function pricingSchema(page) {
@@ -497,6 +725,7 @@ function pricingSchema(page) {
 
 function pageSchema(page) {
   if (page.type === "pricing") return pricingSchema(page);
+  if (page.schemaNodes) return [...page.schemaNodes, faqSchema(page), breadcrumbSchema(page)];
   const url = `${SITE}/${page.slug}/`;
   return [
     {
@@ -594,14 +823,14 @@ ${JSON.stringify(pageSchema(page), null, 2)}
           <p class="updated">${esc(page.updated)}</p>` : ""}
           <p class="intro">${esc(page.intro)}</p>
           <div class="actions">
-            <a class="button" href="${page.primaryHref || "/#contato"}">${esc(page.primaryCta)}</a>
-            <a class="text-link" href="${page.secondaryHref}">${esc(page.secondaryCta)}</a>
+            <a class="button" href="${page.primaryHref || "/diagnostico"}">${esc(page.primaryCta)}</a>${page.secondaryHref ? `
+            <a class="text-link" href="${page.secondaryHref}">${esc(page.secondaryCta)}</a>` : ""}
           </div>
         </div>
         <aside class="answer-box">
           <span>Resposta curta</span>
           <p>${esc(page.answer || page.bullets[0])}</p>
-          <small>${esc(page.answerNote || "Para SEO e GEO, a Feed descreve IA como solução operacional mensurável, não como promessa genérica.")}</small>
+          ${page.answerNote ? `<small>${esc(page.answerNote)}</small>` : ""}
         </aside>
       </section>
 
@@ -610,7 +839,7 @@ ${JSON.stringify(pageSchema(page), null, 2)}
         <p class="eyebrow">Perguntas frequentes</p>
         <div class="faq-grid">
           ${page.faqs
-            .map(([q, a]) => `<article><h2>${esc(q)}</h2><p>${esc(a)}</p></article>`)
+            .map(([q, a]) => `<article><h2>${esc(q)}</h2><p>${inline(a)}</p></article>`)
             .join("\n          ")}
         </div>
       </section>
@@ -630,9 +859,9 @@ ${JSON.stringify(pageSchema(page), null, 2)}
       </section>
 
       <aside class="cta">
-        <h2>${esc(page.ctaTitle || "Quer saber onde começar na sua empresa?")}</h2>
-        <p>${esc(page.ctaText || "A Feed faz um diagnóstico gratuito da sua operação e mostra o primeiro projeto de IA com maior chance de retorno.")}</p>
-        <a class="button" href="${page.ctaHref || "/#contato"}">${esc(page.ctaButton || "Pedir diagnóstico gratuito")}</a>
+        <h2>${esc(page.ctaTitle || "Quer saber onde a sua empresa trava?")}</h2>
+        <p>${esc(page.ctaText || "Comece pelo Diagnóstico do Gargalo. Ele chega no seu e-mail na hora, e depois você conversa com o Guilherme sobre o seu caso.")}</p>
+        <a class="button" href="${page.ctaHref || "/diagnostico"}">${esc(page.ctaButton || "Quero o diagnóstico")}</a>
       </aside>
 
       <footer class="site-nap">
