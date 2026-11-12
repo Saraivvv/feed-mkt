@@ -1,0 +1,8 @@
+/* Aparelho 3D: o canvas de cada aparição (assets/fone-3d.js). As três regras que escondem a versão em
+   imagem ficam no <style> da página, junto das do .fone, para valerem antes de o primeiro aparelho ser pintado. */
+.f3d-c{position:absolute;left:-45%;top:-13%;width:190%;height:126%;max-width:none;pointer-events:none;z-index:4;opacity:0;transition:opacity .45s}
+.f3d-c.on{opacity:1}
+html:not(.f3d) .f3d-c{display:none}
+/* o leque inteiro é uma cena só: os três .lq continuam na página como botões, sem desenho */
+.leque>.f3d-c{left:0;top:-70px;width:100%;height:calc(100% + 140px);z-index:1}
+.f3d .leque.trocando .lq{transition:translate .35s var(--ease)}

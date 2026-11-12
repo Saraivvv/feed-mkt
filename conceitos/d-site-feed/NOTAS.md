@@ -158,3 +158,48 @@ Não foram feitos agora, de propósito.
 - `node conceitos/_comum/medir.mjs d-site-feed` na raiz do worktree. Tem que dar `TOTAL 0 achados`.
 - Os scripts deste fecho (clicáveis, pico do giro, SEO, palco em 10 telas) ficaram em `scratchpad\v2-fecho\`, fora do repo.
 - Assets usados: `assets/fone.webp`, `assets/tela-atendimento.webp`, `assets/tela-funil.webp`, `assets/tela-aprovar.webp`, `assets/tela-inicio.webp`, `assets/feed-hub.svg`, `assets/icone.webp`, `assets/logo-preta.svg` e `assets/logo-branca.png`. HTML com 152 KB e 242 KB de imagens.
+
+---
+
+## Aparelho 3D (12/11/2026)
+
+Substitui o item 3 da Parte 1. O aparelho em CSS foi reprovado ("parece um papel que responde ao mouse"). Agora ele é um objeto 3D de verdade, em WebGL, e é o mesmo nas 6 aparições: abertura, anúncio, palco e os 3 do leque.
+
+### O que foi feito
+- **Corpo:** 71,5 × 154,6 × 8,6 mm, cantos de 12 mm. A altura passou dos 147 mm do pedido porque as telas do Hub (1080×2313) não trazem barra de status. Sem a barra, a câmera frontal caía em cima do cabeçalho do app. Com a barra a tela fica 4:9 (9:20,25) e o aparelho, 9:19,5.
+- **Aro de titânio escovado** (`MeshPhysicalMaterial`, metal 1, aspereza 0,34, brilho esticado no sentido do comprimento), com 4 botões em relevo, 7 linhas de antena, entrada USB-C, furos de som e parafusos.
+- **Frente de vidro** com verniz (clearcoat) e reflexo do ambiente com teto, para nunca apagar o texto da tela. Câmera frontal no meio da barra de status.
+- **Costas de vidro fosco** com a ilha das câmeras: 3 lentes com anel de metal, cano em degraus, cristal com reflexo colorido, flash e sensor.
+- **Luz:** ambiente de estúdio (`RoomEnvironment` com PMREM), uma luz principal de perto (o canto de cima recebe 1,6 vez a luz do de baixo), uma luz lateral que desenha um risco no aro, um contraluz quente e uma luz que anda com o giro. Sombra macia atrás do aparelho.
+- **Telas:** as 4 telas reais do Hub em 1080×2430 (webp, 58 a 86 KB cada), pintadas num canvas do tamanho exato que a tela ocupa, para o texto sair nítido. O anúncio do Instagram e a conversa do Agente, que eram HTML, viraram imagem tirada do próprio HTML (`assets/f3d-feed.webp` e `assets/f3d-chat.webp`). O rolo do anúncio continua rolando e as mensagens continuam entrando uma a uma.
+- **Movimento, agora com peso:** tudo passa por molas (inércia e um leve passar do ponto). Ficaram o giro com a rolagem, a inclinação com o mouse e com o dedo e o leque de 3. No leque os aparelhos de lado ficam de fato atrás do central.
+- **Duas decisões novas, fáceis de desligar:** na abertura o aparelho entra de costas e vira de frente; na última virada do palco ele dá a volta inteira e a tela troca (conversa, depois Funil) enquanto está de costas. É onde a pessoa vê as costas e as câmeras.
+
+### Desempenho e reserva
+- **1 contexto WebGL** para a página inteira, fora da tela. Cada aparição é desenhada nele e copiada para o canvas dela.
+- Só acorda a aparição que está perto da tela e só desenha quando a pose ou a tela mudam. DPR no máximo 2.
+- Medido rolando a página inteira no celular (390×844, DPR 2), com placa de vídeo: **16,9 ms por quadro com o 3D e 17,2 ms sem ele**. O arquivo custa 0,5 ms de script por quadro (2,1 ms com a CPU 4 vezes mais lenta).
+- **Sem WebGL, sem a CDN ou se algo falhar, volta o aparelho em imagem**, que continua na página. Em WebGL por software (sem placa de vídeo) o 3D desiste sozinho depois de 14 desenhos lentos.
+- Com `prefers-reduced-motion` o aparelho fica parado e desenhado. No palco só a tela troca.
+- Peso novo: Three.js 167 KB comprimido (mais 10 KB de complementos) e `assets/fone-3d.js` 10 KB comprimido.
+
+### Arquivos
+- `assets/fone-3d.js` e `assets/fone-3d.css`: o aparelho.
+- `gera-telas-3d.mjs`: gera de novo as 6 imagens de tela. **Mudou o texto do anúncio ou da conversa no HTML? Rode e confira os números que ele imprime com os do `fone-3d.js`.**
+- No `index.html`: 3 regras `.f3d` junto das do `.fone`, um `<script>` de uma linha dentro do `.hf` (decide se o 3D liga, antes de o primeiro aparelho ser pintado), `data-f3d` nas duas telas que eram HTML, 8 pontos no script da página marcados com `F3` e 3 linhas no fim do `<body>`.
+
+### O que peço ao agente de SEO (no `<head>`)
+1. `<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>`.
+2. `<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.min.js">`. A URL tem que ser idêntica à do importmap.
+3. Trocar o `preload` de `assets/fone.webp` por `assets/tela-atendimento.webp`. A moldura em imagem agora é só a reserva. A tela do Atendimento é a primeira coisa que o 3D precisa.
+4. Não mexer no `<script>` que está dentro do `.hf`, nas regras `.f3d` nem no conteúdo dos `.fone`. Os `alt` das telas continuam valendo para leitor de tela e para os buscadores.
+5. Se o site ganhar uma política CSP, liberar `cdn.jsdelivr.net` em `script-src`.
+
+### Como conferir
+- `node conceitos/_comum/medir.mjs d-site-feed` dá `TOTAL 0 achados` (celular com 16.099 px, 19,1 telas). **Esse script abre a página como arquivo, e o navegador não deixa WebGL usar imagem de arquivo. Ali ele mede a reserva em imagem.** A mesma medição por http, com o 3D ligado, também deu `TOTAL 0 achados` nas 3 larguras.
+- Os scripts desta conferência (estúdio, aparições, tiras de animação, tempo de quadro, reserva) ficaram em `scratchpad\fone3d\`, fora do repo.
+
+### O que ainda está fraco
+- **As costas são lisas.** Sem marca e sem textura, de frente para a câmera elas parecem um render limpo. O "escovado" do aro é só o brilho esticado, sem risco fino.
+- **Foi medido só no Chromium sem janela** (placa GTX 1650 Ti e por software). Falta abrir num Android e num iPhone de verdade: tempo de quadro, Safari e perda de contexto não foram vistos em aparelho.
+- **O anúncio e a conversa agora são imagem.** O botão "Enviar mensagem no WhatsApp" continua clicável, mas a área de toque é plana e o aparelho gira. E a página pesa mais: Three.js e telas em 1080.
