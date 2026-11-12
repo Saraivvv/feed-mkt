@@ -209,6 +209,8 @@
   --ease:cubic-bezier(.16,.84,.24,1);
   interpolate-size:allow-keywords;
 }
+/* larguras de texto em em (0,57em = 1ch da Barlow): o Chromium não refaz a conta do ch quando a fonte chega, e o parágrafo ficava uma linha mais alto até a primeira rolagem */
+@property --syf{syntax:"<number>";inherits:false;initial-value:0}
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--papel);color:var(--tinta);font:500 17px/1.5 Barlow,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
@@ -230,14 +232,14 @@ h2 .servico{display:block;margin-bottom:10px;font:800 17px/1.2 Barlow;letter-spa
 .preto h2 .servico{color:var(--laranja);opacity:1}
 mark{position:relative;z-index:-1;display:inline-block;line-height:.8;white-space:nowrap;background:var(--tinta);color:var(--branco);padding:.03em .12em .22em;border-radius:.14em}
 .preto mark,.papel mark,.claro mark,.cap-preto mark{background:var(--laranja);color:var(--tinta)}
-.sub{margin-top:16px;max-width:38ch;font:500 17.5px/1.45 Barlow;color:rgba(10,10,9,.8);text-wrap:pretty}
+.sub{margin-top:16px;max-width:21.66em;font:500 17.5px/1.45 Barlow;color:rgba(10,10,9,.8);text-wrap:pretty}
 .preto .sub{color:var(--cinza)}
 .sub a,.texto a,.passo p a,.onde a,.nota-rod a{font-weight:700;text-decoration-color:var(--laranja);text-decoration-thickness:2px;text-underline-offset:3px}
 .preto .sub a{color:var(--branco)}
 
 /* ---------- os quatro fundos ---------- */
 .laranja{background:radial-gradient(130% 80% at 50% 0%,#FFC24F 0%,#FFA300 36%,#FF8D00 70%,#EF7200 100%);color:var(--tinta)}
-.preto{background:radial-gradient(70% 34% at calc(var(--bx,100%) + var(--sy,0) * 26%) 0%,rgba(255,140,0,.2),transparent 70%),var(--preto);color:var(--branco)}
+.preto{background:radial-gradient(70% 34% at calc(var(--bx,100%) + var(--syf,0) * 26%) 0%,rgba(255,140,0,.2),transparent 70%),var(--preto);color:var(--branco)}
 .papel{background:radial-gradient(90% 40% at 0% 0%,#F7F4EE,transparent 70%),var(--papel)}
 .claro{background:var(--branco)}
 .fundo{position:absolute;inset:0;pointer-events:none;z-index:0}
@@ -313,7 +315,7 @@ p a:active,address a:active{opacity:.55}
 .canais svg{width:22px;height:22px}
 .etiqueta{display:inline-block;font:700 10.5px/1 Barlow;letter-spacing:.12em;text-transform:uppercase;padding:6px 8px;border-radius:6px;border:1.5px dashed currentColor;white-space:nowrap}
 .convite{margin-top:36px;padding-top:24px;border-top:1.5px solid rgba(10,10,9,.22);display:grid;gap:14px;justify-items:start}
-.convite p{font:800 25px/1.1 Barlow;letter-spacing:-.028em;max-width:20ch;text-wrap:balance}
+.convite p{font:800 25px/1.1 Barlow;letter-spacing:-.028em;max-width:11.4em;text-wrap:balance}
 .cap-sec{padding:72px 0 56px}
 .nota-rod{margin-top:16px;font:500 14px/1.45 Barlow;color:rgba(10,10,9,.62)}
 
@@ -368,7 +370,7 @@ h1{font:800 clamp(40px,11.2vw,60px)/1.06 Barlow;letter-spacing:-.037em;text-wrap
 h1 .kicker{justify-content:center;margin-bottom:14px;font-size:11.5px;letter-spacing:.11em}
 h1 .kicker::before{display:none}
 h1 .frase{display:block}
-.heroi-sub{max-width:37ch;margin:16px auto 0;font:500 16.5px/1.42 Barlow;color:rgba(10,10,9,.84);text-wrap:pretty}
+.heroi-sub{max-width:21.09em;margin:16px auto 0;font:500 16.5px/1.42 Barlow;color:rgba(10,10,9,.84);text-wrap:pretty}
 .heroi .acoes{margin-top:22px;gap:8px;flex-wrap:nowrap}
 .heroi .btn{padding:0 18px;font-size:15.5px}
 .heroi-cena{position:relative;z-index:2;flex:1;min-height:300px;margin-top:28px}
@@ -482,13 +484,13 @@ html:not(.js) .parada .txt{opacity:1}
 .abas::before{content:"";position:absolute;top:4px;bottom:4px;left:4px;width:calc((100% - 16px) / 3);border-radius:999px;background:var(--laranja);box-shadow:0 0 24px rgba(255,163,0,.4);transform:translateX(calc(var(--aba,0) * (100% + 4px)));transition:transform .45s var(--ease)}
 .abas-corpo{margin-top:6px;touch-action:pan-y;user-select:none;-webkit-user-select:none}
 .js .abas-corpo{display:grid}
-.js .abas-corpo>[role=tabpanel]{grid-area:1/1;opacity:0;visibility:hidden;transform:translateX(calc(var(--lado,1) * 26px));transition:opacity .3s,transform .45s var(--ease),visibility 0s .3s}
+.js .abas-corpo>[role=tabpanel]{grid-area:1/1;display:flex;flex-direction:column;opacity:0;visibility:hidden;transform:translateX(calc(var(--lado,1) * 26px));transition:opacity .3s,transform .45s var(--ease),visibility 0s .3s}
 .js .abas-corpo>[role=tabpanel].ativa{opacity:1;visibility:visible;transform:none;transition:opacity .3s,transform .45s var(--ease),visibility 0s}
 .cartaz{margin-top:18px}
 .cartaz b{display:block;font:900 clamp(96px,30vw,190px)/.8 Barlow;letter-spacing:-.062em;color:var(--laranja);font-variant-numeric:tabular-nums;text-shadow:0 0 60px rgba(255,140,0,.35)}
 .cartaz span{display:flex;align-items:center;gap:8px;margin-top:12px;font:700 17px/1.25 Barlow}
 .cartaz span svg{width:20px;height:20px;flex:none}
-.serie{position:relative;display:flex;align-items:flex-end;height:96px;margin-top:18px;cursor:crosshair}
+.serie{position:relative;display:flex;align-items:flex-end;flex:1 0 auto;height:96px;margin-top:18px;cursor:crosshair}
 .serie i{position:relative;flex:1;height:100%;min-width:0}
 .serie i::before{content:"";position:absolute;left:12%;right:12%;bottom:0;height:calc(var(--h) * 100%);border-radius:3px 3px 0 0;background:linear-gradient(180deg,var(--laranja),rgba(255,163,0,.22));transform-origin:bottom;transform:scaleY(clamp(.04,calc(var(--m,1) * 2.1 - var(--i) * var(--passo,.04)),1));transition:background .2s}
 .serie i.on::before{background:linear-gradient(180deg,#fff,rgba(255,255,255,.5))}
@@ -529,7 +531,7 @@ html:not(.js) .serie,html:not(.js) .serie-leg{display:none}
 .agenda .btn{width:100%;margin-top:14px}
 .agenda .btn svg{width:17px;height:17px}
 .palavra{margin-top:28px;display:grid;gap:10px}
-.palavra-tit{font:800 25px/1.08 Barlow;letter-spacing:-.028em;margin-bottom:6px;max-width:18ch}
+.palavra-tit{font:800 25px/1.08 Barlow;letter-spacing:-.028em;margin-bottom:6px;max-width:10.26em}
 .dm-vaga{display:grid;justify-items:end}
 .dm-vaga>*{grid-area:1/1}
 .coment,.dm,.dig{max-width:88%;padding:13px 16px;border-radius:20px;font:500 15.5px/1.4 Barlow;box-shadow:0 18px 30px -16px rgba(100,35,0,.6)}
@@ -546,7 +548,8 @@ html:not(.js) .serie,html:not(.js) .serie-leg{display:none}
 .palavra.pulso .coment{animation:pop .45s var(--ease)}
 .palavra .btn{justify-self:start;margin:2px 0 6px}
 .dig{display:flex;align-items:center;gap:5px;min-height:46px;align-self:start}
-.dig i{width:7px;height:7px;border-radius:50%;background:currentColor;opacity:.4;animation:ponto 1s infinite}
+.dig i{width:7px;height:7px;border-radius:50%;background:currentColor;opacity:.4}
+.digitando .dig i{animation:ponto 1s infinite}
 .dig i:nth-child(2){animation-delay:.15s}
 .dig i:nth-child(3){animation-delay:.3s}
 @keyframes ponto{30%{opacity:1;translate:0 -4px}}
@@ -574,7 +577,7 @@ html:not(.js) .serie,html:not(.js) .serie-leg{display:none}
 .cap-laranja .kicker{color:var(--tinta)}
 .cap h3,.cap h2{margin-top:10px;font:800 28px/1.03 Barlow;letter-spacing:-.033em;text-wrap:balance}
 .cap h2 .servico{font-size:15px;margin-bottom:6px;opacity:.8}
-.cap p:not(.kicker){margin-top:10px;font:500 15.5px/1.4 Barlow;max-width:40ch;opacity:.86;text-wrap:pretty}
+.cap p:not(.kicker){margin-top:10px;font:500 15.5px/1.4 Barlow;max-width:22.8em;opacity:.86;text-wrap:pretty}
 .palco-cena{position:absolute;top:calc(44px + 212px + 12px);bottom:calc(var(--doca) + 6px);left:0;right:0;display:grid;grid-template:100%/100%;justify-items:center;perspective:var(--persp);perspective-origin:calc(50% - var(--giro,0) * var(--olho)) 50%;z-index:3}
 .palco-cena>.fone{grid-area:1/1;height:100%;width:auto;z-index:2;will-change:transform}
 .palco-cena .fone::before{background:rgba(40,12,0,.42);box-shadow:none}
@@ -599,7 +602,7 @@ html:not(.js) .serie,html:not(.js) .serie-leg{display:none}
 .msg.nota small span{color:#B9591A;background:#F3DCCB;padding:.3cqw 1.8cqw;border-radius:3cqw;margin-left:1cqw;white-space:nowrap}
 .chat-campo{flex:none;margin:0 3.4cqw 4.4cqw;height:12cqw;border-radius:6cqw;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 1.2cqw 0 5cqw;font:500 4.1cqw/1 Barlow;color:#8b8f8e}
 .chat-campo i{width:9.6cqw;height:9.6cqw;border-radius:50%;background:var(--lv)}
-.pdf{position:absolute;z-index:5;top:9%;right:max(22px,calc(50% - 196px));width:min(44vw,190px);padding:13px 13px 14px;border-radius:6px;background:#fff;color:var(--lt);box-shadow:0 30px 50px -14px rgba(60,20,0,.6),0 0 0 1px rgba(0,0,0,.05);font:500 11px/1.4 Barlow;transform-origin:20% 100%;opacity:0;will-change:transform,opacity}
+.pdf{position:absolute;z-index:5;top:9%;right:max(34px,calc(50% - 196px));width:min(44vw,190px);padding:13px 13px 14px;border-radius:6px;background:#fff;color:var(--lt);box-shadow:0 30px 50px -14px rgba(60,20,0,.6),0 0 0 1px rgba(0,0,0,.05);font:500 11px/1.4 Barlow;transform-origin:20% 100%;opacity:0;will-change:transform,opacity}
 .pdf-topo{display:flex;align-items:center;gap:6px;padding-bottom:8px;border-bottom:2px solid var(--lve);color:var(--lve)}
 .pdf-topo svg:first-child{width:17px;height:17px;flex:none}
 .pdf-topo svg:last-child{width:86px;height:auto;fill:currentColor}
@@ -621,7 +624,7 @@ html:not(.js) .pdf,html:not(.js) .palco-trilho{display:none}
 
 /* ---------- prova real ---------- */
 .prova{padding:64px 0 56px}
-.prova .texto{margin-top:18px;max-width:42ch;font:500 18px/1.5 Barlow;color:rgba(10,10,9,.78)}
+.prova .texto{margin-top:18px;max-width:23.94em;font:500 18px/1.5 Barlow;color:rgba(10,10,9,.78)}
 .prova .texto b{color:var(--tinta)}
 
 /* ---------- 7. Feed Hub ---------- */
@@ -646,7 +649,7 @@ html:not(.js) .pdf,html:not(.js) .palco-trilho{display:none}
 .lq .tela{transition:filter .5s}
 .leque.trocando .lq{transition:transform .65s var(--ease)}
 .leque.trocando .fone{transition:transform .65s var(--ease)}
-.leque-leg{position:relative;z-index:2;min-height:52px;margin:18px auto 0;max-width:30ch;font:800 21px/1.15 Barlow;letter-spacing:-.02em;text-wrap:balance}
+.leque-leg{position:relative;z-index:2;min-height:52px;margin:18px auto 0;max-width:17.1em;font:800 21px/1.15 Barlow;letter-spacing:-.02em;text-wrap:balance}
 .leque-leg small{display:block;margin-bottom:5px;font:700 11.5px/1 Barlow;letter-spacing:.16em;text-transform:uppercase;color:var(--laranja)}
 .hub .acoes{margin-top:22px}
 .hub .link-seta{color:var(--branco)}
@@ -680,7 +683,7 @@ html:not(.js) .caso+.caso{margin-top:18px}
 .num{grid-row:span 4;font:900 96px/.8 Barlow;letter-spacing:-.05em;color:transparent;-webkit-text-stroke:2px var(--tinta);background:linear-gradient(var(--tinta),var(--tinta)) 0 100%/100% calc(var(--lit,1) * 100%) no-repeat;-webkit-background-clip:text;background-clip:text}
 .passo h3{font:800 27px/1.05 Barlow;letter-spacing:-.03em}
 .passo .tag{display:inline-block;margin-top:8px;font:700 12px/1 Barlow;letter-spacing:.14em;text-transform:uppercase;background:var(--tinta);color:var(--laranja);padding:6px 9px;border-radius:6px;justify-self:start}
-.passo p{margin-top:10px;font:500 16px/1.48 Barlow;color:rgba(10,10,9,.84);max-width:42ch}
+.passo p{margin-top:10px;font:500 16px/1.48 Barlow;color:rgba(10,10,9,.84);max-width:23.94em}
 .passo .btn,.passo .link-seta{grid-column:2;justify-self:start;margin-top:16px}
 
 /* ---------- 10. perguntas, onde atende, do blog ---------- */
@@ -696,11 +699,11 @@ html:not(.js) .caso+.caso{margin-top:18px}
 .faq summary i::before,.faq summary i::after{content:"";position:absolute;left:50%;top:50%;width:13px;height:2px;background:var(--laranja);transform:translate(-50%,-50%)}
 .faq summary i::after{transform:translate(-50%,-50%) rotate(90deg)}
 .faq details[open] summary i{transform:rotate(45deg)}
-.faq details p{padding:0 0 24px;max-width:62ch;font:500 16.5px/1.6 Barlow;color:rgba(10,10,9,.8)}
+.faq details p{padding:0 0 24px;max-width:35.34em;font:500 16.5px/1.6 Barlow;color:rgba(10,10,9,.8)}
 .faq details p a{font-weight:700;text-decoration-color:var(--laranja);text-decoration-thickness:2px;text-underline-offset:3px}
 .rodada{display:grid;gap:34px;margin-top:44px}
 .rodada h3{font:800 25px/1.08 Barlow;letter-spacing:-.028em}
-.onde p{margin-top:10px;max-width:46ch;font:500 16.5px/1.55 Barlow;color:rgba(10,10,9,.8)}
+.onde p{margin-top:10px;max-width:26.22em;font:500 16.5px/1.55 Barlow;color:rgba(10,10,9,.8)}
 .blog ul{list-style:none;margin:8px 0 0;padding:0}
 .blog a{display:grid;grid-template-columns:1fr auto;align-items:center;gap:12px;min-height:60px;padding:10px 0;border-top:1.5px solid rgba(10,10,9,.2);text-decoration:none;transition:scale .2s}
 .blog li:last-child a{border-bottom:1.5px solid rgba(10,10,9,.2)}
@@ -710,7 +713,7 @@ html:not(.js) .caso+.caso{margin-top:18px}
 
 /* ---------- 11. chamada final ---------- */
 .final{padding:76px 0 70px;text-align:center}
-.final h2{max-width:13ch;margin-left:auto;margin-right:auto}
+.final h2{max-width:7.41em;margin-left:auto;margin-right:auto}
 .final .sub{margin-left:auto;margin-right:auto}
 .final .acoes{margin-top:26px}
 
@@ -759,7 +762,7 @@ html:not(.js) .d-indice{display:none}
   h1 .kicker{font-size:12.5px;letter-spacing:.16em}
   h1 .kicker::before{display:block}
   h2 .servico{font-size:20px}
-  .heroi-sub{font-size:19px;max-width:48ch}
+  .heroi-sub{font-size:19px;max-width:27.36em}
   .hf{left:50%;right:auto;margin-left:calc(min(38vw,320px) / -2);width:min(38vw,320px)}
   .avisos{position:static;display:block;width:auto;translate:none}
   .aviso{position:absolute;z-index:5;padding:10px 26px 10px 10px;translate:0 calc(var(--hp,0) * var(--py,-30px))}
@@ -767,7 +770,7 @@ html:not(.js) .d-indice{display:none}
   .aviso b{font-size:15px}
   .ev1{left:calc(50% - 370px);top:150px;--py:-46px}
   .ev2{right:calc(50% - 360px);top:40px;--py:-22px}
-  .sub{font-size:20px;max-width:46ch}
+  .sub{font-size:20px;max-width:26.22em}
   .parada{grid-template-columns:150px 1fr auto;min-height:124px}
   li:nth-child(even) .parada .no{margin-left:84px}
   .parada h3{font-size:32px}
@@ -795,7 +798,7 @@ html:not(.js) .d-indice{display:none}
   .rodada{grid-template-columns:1fr 1fr;gap:48px}
   .rodape-seo{column-gap:32px}
   .convite{grid-template-columns:1fr auto;align-items:center}
-  .convite p{font-size:32px;max-width:24ch}
+  .convite p{font-size:32px;max-width:13.68em}
   .coment,.dm{max-width:520px}
   .agenda .btn{width:auto}
   .d-wa{padding:0 18px!important}
@@ -812,6 +815,7 @@ html:not(.js) .d-indice{display:none}
   .marca img{width:112px}
   .heroi-texto{padding-top:116px}
   h1{font-size:clamp(64px,6vw,98px)}
+  h2{font-size:min(84px,5.83vw)} /* no tablet deitado o título encolhe junto com a coluna, na mesma proporção do desktop */
   .heroi-cena{min-height:360px}
   .hf{width:clamp(250px,23vw,340px);margin-left:calc(clamp(250px,23vw,340px) / -2)}
   .ev1{left:calc(50% - 470px);top:170px}.ev2{right:calc(50% - 450px);top:60px}
@@ -834,7 +838,7 @@ html:not(.js) .d-indice{display:none}
   .redes .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:0 72px;align-items:start}
   .redes .cab{position:sticky;top:110px}
   .agenda{margin-top:0}
-  .caminho h2,.marca-sec h2,.trafego h2,.redes h2,.sob h2{font-size:clamp(44px,4.4vw,64px)}
+  .caminho h2,.marca-sec h2,.trafego h2,.redes h2,.sob h2,.perguntas h2{font-size:clamp(44px,4.4vw,64px)}
   .agente-abre{padding:130px 0 70px}
   .palco-trilho{display:none}
   .palco-indice{display:grid;position:absolute;right:max(40px,5.5vw);top:50%;transform:translateY(-50%);z-index:5;gap:2px;list-style:none;margin:0;padding:0}
@@ -843,14 +847,16 @@ html:not(.js) .d-indice{display:none}
   .palco-indice a[aria-current]{opacity:1}
   .palco-indice a[aria-current]::after{width:44px}
   .palco-indice a:hover{opacity:1}
-  .palco-caps{--slot:420px;top:50%;left:max(48px,6vw);right:auto;width:min(410px,28vw);transform:translateY(-50%)}
+  .palco-caps{--slot:420px;top:50%;left:max(48px,6vw);right:auto;width:min(410px,26vw);transform:translateY(-50%)}
   .cap{display:flex;flex-direction:column;justify-content:center}
-  .cap h3,.cap h2{font-size:clamp(34px,3.5vw,54px);margin-top:16px}
+  .cap h3,.cap h2{font-size:clamp(32px,3.1vw,48px);margin-top:16px}
   .cap h2 .servico{font-size:19px}
   .cap p:not(.kicker){font-size:19px;margin-top:18px}
   .palco{--cy:50%}
-  .palco-cena{top:9vh;bottom:9vh}
-  .pdf{width:260px;font-size:14px;right:calc(50% - 440px);top:16%;padding:20px}
+  .palco-cena{top:9vh;bottom:9vh;align-items:center}
+  .palco-cena>.fone{height:min(100%,62vw)}
+  /* a proposta encosta na lateral direita do aparelho (meia largura dele = 19vh ou 14,4vw), antes do índice */
+  .pdf{width:260px;font-size:14px;left:calc(50% + min(19vh,14.4vw) - 36px);right:auto;top:calc(50% - min(41vh,31vw) * .68);padding:20px}
   .pdf-topo svg:last-child{width:130px}
   .prova{padding:120px 0 110px}
   .prova .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:72px;align-items:end}
@@ -872,10 +878,10 @@ html:not(.js) .d-indice{display:none}
   .num{grid-row:auto;font-size:190px;margin-bottom:22px}
   .passo .btn,.passo .link-seta{grid-column:1}
   .perguntas{padding:130px 0 110px}
-  .perguntas .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:0 64px;align-items:start}
+  .faq-dupla{display:grid;grid-template-columns:.8fr 1.2fr;gap:0 64px;align-items:start}
   .perguntas .cab{position:sticky;top:110px}
   .perguntas .faq{margin-top:0}
-  .rodada{grid-column:1/-1;margin-top:80px;gap:64px}
+  .rodada{margin-top:80px;gap:64px}
   .faq summary{font-size:21px}
   .final{padding:140px 0 130px}
   .rodape{padding:64px 0}
@@ -899,6 +905,14 @@ html:not(.js) .d-indice{display:none}
 @media (min-width:1024px) and (max-width:1239px){
   .barra-topo ol a{padding:0 8px;font-size:13.5px}
   .barra-topo ol a i{display:none}
+}
+/* tablet deitado e notebook estreito: a proposta encolhe e o índice do palco fica só com os traços */
+@media (min-width:1024px) and (max-width:1365px){
+  .pdf{width:230px;font-size:13px;padding:16px}
+  .pdf-topo svg:last-child{width:112px}
+}
+@media (min-width:1024px) and (max-width:1279px){
+  .palco-indice a{font-size:0;gap:0;padding-left:0;min-width:44px}
 }
 
 @media (prefers-reduced-motion:reduce){
@@ -1321,6 +1335,7 @@ html:not(.js) .d-indice{display:none}
 <!-- 10. PERGUNTAS, ONDE ATENDE E BLOG -->
 <section class="perguntas papel" id="perguntas" data-nav="|Perguntas" aria-labelledby="faq-titulo">
   <div class="wrap">
+    <div class="faq-dupla">
     <div class="cab">
       <p class="kicker" data-rv>Perguntas frequentes</p>
       <h2 id="faq-titulo" data-rv>O que todo mundo pergunta <mark>antes de começar.</mark></h2>
@@ -1336,6 +1351,7 @@ html:not(.js) .d-indice{display:none}
       <details><summary>E se der problema, quem me atende?<i aria-hidden="true"></i></summary><p>Quando o projeto tem manutenção, a Feed acompanha depois da entrega. A operação e a parte técnica ficam com o Guilherme, e o administrativo com a Roseane.</p></details>
       <details><summary>A Feed atende só a região de Ribeirão Preto?<i aria-hidden="true"></i></summary><p>A base é a região de Ribeirão Preto e Bebedouro, no interior de SP, com atendimento presencial quando faz sentido. Fora da região, o atendimento é remoto, em qualquer lugar do Brasil.</p></details>
       <details><summary>O que é o diagnóstico gratuito?<i aria-hidden="true"></i></summary><p>Você deixa nome e e-mail e recebe no seu e-mail, na hora, o Diagnóstico do Gargalo, um PDF curto que mostra onde a operação para quando você não está, o que mais consome seu tempo e o primeiro passo pra tirar a empresa das suas costas. Depois, se fizer sentido, você conversa com o Guilherme sobre o seu caso. Não custa nada. Comece em <a href="https://agenciafeed.com/diagnostico">agenciafeed.com/diagnostico</a>.</p></details>
+    </div>
     </div>
     <div class="rodada">
       <div class="onde">
@@ -1357,7 +1373,7 @@ html:not(.js) .d-indice{display:none}
 <!-- 11. CHAMADA FINAL -->
 <section class="final laranja" id="contato" data-nav="|Contato" aria-labelledby="final-titulo">
   <div class="fundo"><span class="grade"></span><span class="vinheta"></span></div>
-  <svg class="curva" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M-40 820 C 240 840, 420 710, 600 700 S 860 670, 1060 580"/></svg>
+  <svg class="curva" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M-40 955 C 240 970, 420 915, 600 905 S 860 890, 1060 840"/></svg>
   <div class="wrap">
     <p class="kicker centro" data-rv>Próximo passo</p>
     <h2 id="final-titulo" data-rv>Conta qual é o problema. <mark>A gente resolve.</mark></h2>
@@ -1580,7 +1596,7 @@ html:not(.js) .d-indice{display:none}
   }
   comentar.addEventListener('click', tocaAgenda);
   // quem só rola também vê a mensagem chegar, uma vez
-  new IntersectionObserver((es, o) => es.forEach(e => { if (e.isIntersecting) { o.disconnect(); setTimeout(() => agendaTocou || tocaAgenda(), 1500); } }), { threshold: .7 }).observe(palavra);
+  new IntersectionObserver((es, o) => es.forEach(e => { if (e.isIntersecting) { o.disconnect(); setTimeout(() => agendaTocou || tocaAgenda(), 700); } }), { threshold: .5 }).observe(palavra);
 
   // ---------- leque do Hub: tocar num aparelho de lado traz a tela dele para a frente ----------
   const leque = $('.leque'), lqs = $$('.lq', leque), lequeLeg = $('.leque-leg');
@@ -1639,10 +1655,10 @@ html:not(.js) .d-indice{display:none}
   // ---------- a rolagem ----------
   // Tudo o que a rolagem move é calculado a partir de posições guardadas em medir().
   // O quadro() só lê o scrollY e só escreve no que está perto da tela (IntersectionObserver).
-  const heroi = $('.heroi'), doca = $('.doca'), barra = $('.barra-topo');
+  const heroi = $('.heroi'), heroiCena = $('.heroi-cena'), doca = $('.doca'), barra = $('.barra-topo');
   const ms = $$('[data-m]').map(el => { const [a, b] = (el.dataset.m || '1,.6').split(',').map(Number); return { el, a, b, y: 0, m: -1, v: true }; });
   const lits = $$('[data-acende]').map(el => ({ el, y: 0, l: -1, v: true }));
-  const sys = $$('[data-sy]').map(el => ({ el, y: 0, h: 0, s: 9, v: true }));
+  const sys = $$('[data-sy]').map(el => ({ el, p: el.tagName === 'SECTION' ? '--syf' : '--sy', y: 0, h: 0, s: 9, v: true })); // --syf não é herdada: mexer nela não refaz o estilo dos filhos da seção
   const navs = $$('[data-nav]').map(el => { const [n, t] = el.dataset.nav.split('|'); return { el, n, t, y: 0 }; });
   const navLinks = $$('.folha a, .barra-topo ol a');
   const rota = $('.rota'), rotaSvg = $('svg', rota), fio = $('.fio', rota), guia = $('.guia', rota), viajante = $('.viajante', rota), paradas = $$('.parada', rota);
@@ -1651,7 +1667,7 @@ html:not(.js) .d-indice{display:none}
   const N = caps.length, TOM = caps.map(c => +c.classList.contains('cap-laranja'));
   const QUANDO = [-1, .12, .42, .68, 1.12]; // em que ponto do palco (0 a 3) cada mensagem entra
   const oRota = { v: true }, oEst = { v: true }, tiltPalco = { x: 0, y: 0 };
-  let vh = innerHeight, altura = 1, L = 0, nosY = [], pontos = [[0, 0]], rotaY = 0, rotaH = 1, estY = 0, estH = 1;
+  let recuo = 20, vh = innerHeight, altura = 1, L = 0, nosY = [], pontos = [[0, 0]], rotaY = 0, rotaH = 1, estY = 0, estH = 1;
   let docaOn = null, barraOn = null, hpAntes = '', rotaP = -1, navAtivo = -2, capAtivo = -1, chaveEst = '', lido = -1;
 
   const donos = new Map();
@@ -1665,7 +1681,7 @@ html:not(.js) .d-indice{display:none}
     // 1) leituras, com as transformações da montagem desligadas
     raiz.classList.add('medindo');
     const sy = scrollY, topo = el => el.getBoundingClientRect().top + sy;
-    vh = innerHeight; altura = raiz.scrollHeight;
+    vh = innerHeight; altura = raiz.scrollHeight; recuo = innerWidth >= 1024 ? 6 : 20;
     ms.forEach(o => { o.y = topo(o.el); });
     lits.forEach(o => { o.y = topo(o.el); });
     sys.forEach(o => { const b = o.el.getBoundingClientRect(); o.y = b.top + sy; o.h = b.height; });
@@ -1701,10 +1717,10 @@ html:not(.js) .d-indice{display:none}
 
     if (!reduz) {
       const hp = clamp(sy / vh).toFixed(3);
-      if (hp !== hpAntes) heroi.style.setProperty('--hp', hpAntes = hp);
+      if (hp !== hpAntes) heroiCena.style.setProperty('--hp', hpAntes = hp);
       lits.forEach(o => { if (!o.v) return; const l = +clamp((sy + vh * .86 - o.y) / (vh * .32)).toFixed(2); if (l !== o.l) o.el.style.setProperty('--lit', o.l = l); });
       ms.forEach(o => { if (!o.v) return; const m = +suave(clamp((sy + vh * o.a - o.y) / (vh * (o.a - o.b)))).toFixed(3); if (m !== o.m) o.el.style.setProperty('--m', o.m = m); });
-      sys.forEach(o => { if (!o.v) return; const s = +clamp((o.y + o.h / 2 - sy - vh / 2) / vh, -1, 1).toFixed(3); if (s !== o.s) o.el.style.setProperty('--sy', o.s = s); });
+      sys.forEach(o => { if (!o.v) return; const s = +clamp((o.y + o.h / 2 - sy - vh / 2) / vh, -1, 1).toFixed(3); if (s !== o.s) o.el.style.setProperty(o.p, o.s = s); });
     }
 
     // o índice sabe em que trecho a pessoa está
@@ -1758,7 +1774,7 @@ html:not(.js) .d-indice{display:none}
     const giro = Math.sin(pos * Math.PI);
     // pico de 28° no meio da troca (a lateral aparece) e um balanço de 5° com a rolagem enquanto o capítulo está parado
     const ry = giro * GIRO + Math.sin(s * Math.PI * 2) * 5 * (1 - Math.abs(giro)) + tiltPalco.y, rx = (1 - ent) * 14 + tiltPalco.x;
-    fone.style.transform = reduz ? `translateX(${-v * 20}%)` : `translateX(${(-v * 20).toFixed(2)}%) translateY(${((1 - ent) * 10).toFixed(2)}%) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) scale(${(.92 + ent * .08 - Math.abs(giro) * .03).toFixed(3)})`;
+    fone.style.transform = reduz ? `translateX(${-v * recuo}%)` : `translateX(${(-v * recuo).toFixed(2)}%) translateY(${((1 - ent) * 10).toFixed(2)}%) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) scale(${(.92 + ent * .08 - Math.abs(giro) * .03).toFixed(3)})`;
     cena.style.setProperty('--giro', (ry / 28).toFixed(3));
     pdf.style.opacity = v.toFixed(3);
     pdf.style.transform = `translate(${((1 - v) * -46).toFixed(1)}%,${((1 - v) * 34).toFixed(1)}%) rotate(${(v * 5).toFixed(2)}deg) scale(${(.6 + v * .4).toFixed(3)})`;
