@@ -1,0 +1,729 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Feed | A operação instalada, no seu celular</title>
+<meta name="description" content="A Feed encontra onde a sua empresa trava e instala o que resolve: Agente de IA no WhatsApp, funil de vendas, Instagram no automático. Você comanda tudo pelo Feed Hub.">
+<meta name="theme-color" content="#FFA300">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/fone.webp">
+<style>
+:root{
+  --laranja:#FFA300; --preto:#070707; --branco:#F4F5F0; --tinta:#0A0A09;
+  --cinza:#A9A9A2; --g:20px; --max:1240px;
+  --ease:cubic-bezier(.16,.84,.24,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:auto}
+body{margin:0;background:var(--preto);color:var(--branco);font:500 17px/1.5 Barlow,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3,p{margin:0}
+section,footer{position:relative;overflow:clip}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--g)}
+.kicker{display:flex;align-items:center;gap:10px;font:700 12.5px/1.2 Barlow;letter-spacing:.16em;text-transform:uppercase}
+.kicker::before{content:"";width:20px;height:2px;background:currentColor;flex:none}
+.centro .kicker,.kicker.centro{justify-content:center}
+h1,h2{isolation:isolate}
+mark{position:relative;z-index:-1;display:inline-block;line-height:.8;white-space:nowrap;background:var(--tinta);color:var(--branco);padding:.03em .12em .22em;border-radius:.14em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.preto mark,.cap-preto mark{background:var(--laranja);color:var(--tinta)}
+
+/* ---------- laranja da loja: gradiente quente + quadriculado leve + vinheta ---------- */
+.laranja{background:radial-gradient(130% 80% at 50% 0%,#FFC24F 0%,#FFA300 36%,#FF8D00 70%,#EF7200 100%);color:var(--tinta)}
+.fundo{position:absolute;inset:0;pointer-events:none;z-index:0}
+.grade{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.17) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.17) 1px,transparent 1px);background-size:56px 56px;background-position:center -1px;opacity:.55;-webkit-mask-image:radial-gradient(120% 85% at 50% 30%,#000 30%,transparent 85%);mask-image:radial-gradient(120% 85% at 50% 30%,#000 30%,transparent 85%)}
+.vinheta{position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 38%,transparent 52%,rgba(130,40,0,.32) 100%)}
+
+/* ---------- botões ---------- */
+.acoes{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55em;min-height:54px;padding:0 24px;border-radius:999px;font:700 16px/1.1 Barlow;text-decoration:none;text-align:center;transition:transform .25s var(--ease),background-color .25s,box-shadow .25s}
+.btn svg{width:16px;height:16px;flex:none}
+.btn:hover{transform:translateY(-2px)}
+.btn-preto{background:var(--tinta);color:var(--branco);box-shadow:0 14px 30px -12px rgba(60,20,0,.55)}
+.btn-laranja{background:var(--laranja);color:var(--tinta);box-shadow:0 0 0 0 rgba(255,163,0,.0)}
+.btn-laranja:hover{box-shadow:0 0 40px rgba(255,163,0,.45)}
+.btn-linha{border:1.5px solid currentColor;background:transparent}
+.play{display:inline-flex;align-items:center;gap:11px;min-height:54px;padding:0 20px 0 16px;border-radius:14px;background:#000;color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.3);transition:transform .25s var(--ease)}
+.play:hover{transform:translateY(-2px)}
+.play svg{width:23px;height:25px;flex:none}
+.play span{display:grid;text-align:left}
+.play small{font:600 10px/1.1 Barlow;letter-spacing:.1em;text-transform:uppercase;opacity:.82}
+.play b{font:700 19px/1.05 Barlow;letter-spacing:-.01em}
+:focus-visible{outline:3px solid #fff;outline-offset:3px;box-shadow:0 0 0 6px var(--tinta)}
+
+/* ---------- o aparelho (foto real + tela real por baixo) ---------- */
+.fone{position:relative;aspect-ratio:1542/3323}
+.fone::before{content:"";position:absolute;inset:4% 7% 3%;border-radius:14%/7%;box-shadow:0 50px 90px -10px rgba(70,25,0,.55),0 18px 30px -8px rgba(70,25,0,.35);z-index:0}
+.preto .fone::before,.fone-noite::before{box-shadow:0 0 120px rgba(255,140,0,.32),0 40px 80px rgba(0,0,0,.7)}
+.moldura{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none;-webkit-user-drag:none}
+.tela{position:absolute;left:4.02%;top:1.956%;width:91.31%;height:95.91%;border-radius:8.8%/3.89%;overflow:hidden;background:#101010;z-index:1;container-type:inline-size}
+.tela>img,.tela>[data-t]{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.reflexo{position:absolute;inset:-5% -70%;z-index:6;pointer-events:none;background:linear-gradient(104deg,transparent 43%,rgba(255,255,255,.17) 49%,rgba(255,255,255,.05) 53%,transparent 58%);transform:translateX(-60%)}
+
+/* ---------- 1. abertura ---------- */
+.heroi{min-height:100vh;min-height:100svh;display:flex;flex-direction:column}
+.topo{position:absolute;top:0;left:0;right:0;z-index:6;display:flex;justify-content:space-between;align-items:center;padding:12px var(--g);max-width:var(--max);margin:0 auto}
+.marca{display:flex;align-items:center;min-height:48px;min-width:48px}
+.marca img{width:98px;height:auto}
+.pilula{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;background:var(--tinta);color:var(--branco);font:700 14px/1 Barlow;text-decoration:none}
+.curva{position:absolute;left:0;top:0;width:100%;height:100%;z-index:1;pointer-events:none;overflow:visible}
+.curva path{fill:none;stroke:rgba(255,255,255,.85);stroke-width:2;vector-effect:non-scaling-stroke;filter:drop-shadow(0 0 6px rgba(255,255,255,.55))}
+.heroi-texto{position:relative;z-index:4;padding:92px var(--g) 0;max-width:1180px;margin:0 auto;text-align:center}
+.heroi-texto .kicker{justify-content:center}
+h1{font:800 clamp(40px,11.4vw,60px)/1.06 Barlow;letter-spacing:-.037em;margin-top:16px;text-wrap:balance}
+.heroi-sub{max-width:31ch;margin:18px auto 0;font:500 17px/1.45 Barlow;color:rgba(10,10,9,.8);text-wrap:pretty}
+.heroi .acoes{margin-top:24px;gap:8px;flex-wrap:nowrap}
+.heroi .btn{padding:0 18px;font-size:15.5px}
+.heroi .btn svg{display:none}
+.heroi .play{padding:0 14px 0 12px;gap:9px}
+.heroi .play b{font-size:17px}
+.heroi-fones{position:relative;z-index:2;flex:1;min-height:330px;margin-top:34px;perspective:1600px}
+.hf{position:absolute;top:0;left:50%;width:min(60vw,290px)}
+.hf-centro{z-index:3;transform:translateX(-50%) translateY(calc(var(--hp,0) * -70px))}
+.hf-esq{z-index:2;transform:translateX(calc(-50% - 60%)) translateY(calc(46px + var(--hp,0) * -10px)) rotate(calc(-8deg - var(--hp,0) * 5deg)) scale(.84)}
+.hf-dir{z-index:2;transform:translateX(calc(-50% + 60%)) translateY(calc(46px + var(--hp,0) * -10px)) rotate(calc(8deg + var(--hp,0) * 5deg)) scale(.84)}
+.hf-esq .tela,.hf-dir .tela{filter:brightness(.9) saturate(.92)}
+
+/* ---------- 2. o problema ---------- */
+.problema{background:radial-gradient(70% 40% at 100% 0%,rgba(255,140,0,.16),transparent 70%),radial-gradient(60% 30% at 0% 100%,rgba(255,140,0,.08),transparent 70%),var(--preto);padding:104px 0 88px}
+.problema h2{font:700 15px/1.3 Barlow;letter-spacing:.16em;text-transform:uppercase;color:var(--laranja);display:flex;gap:10px;align-items:center;margin-bottom:40px}
+.problema h2::before{content:"";width:20px;height:2px;background:currentColor}
+.dor{font:700 clamp(29px,7.8vw,68px)/1.06 Barlow;letter-spacing:-.03em;margin-bottom:.72em;max-width:19ch;opacity:calc(.13 + .87 * var(--lit,1));transform:translateY(calc((1 - var(--lit,1)) * 16px));text-wrap:balance}
+.dor em{font-style:normal;color:var(--laranja)}
+.dor-fim{color:var(--laranja);max-width:16ch}
+.promessa{margin-top:64px;padding-top:30px;border-top:1px solid rgba(255,255,255,.14);font:500 20px/1.45 Barlow;color:var(--cinza);max-width:34ch}
+.promessa b{color:var(--branco);font-weight:700}
+
+/* ---------- 3. o que a Feed instala (carrossel) ---------- */
+.instala{padding:100px 0 88px}
+.instala .cab{position:relative;z-index:2}
+.instala h2,.passos h2,.prova h2,.perguntas h2,.final h2,.hub-abre h2{font:800 clamp(36px,9.6vw,84px)/1.06 Barlow;letter-spacing:-.035em;margin-top:16px;text-wrap:balance}
+.instala .sub{margin-top:18px;max-width:36ch;font:500 18px/1.45 Barlow;color:rgba(10,10,9,.78)}
+.trilho{position:relative;z-index:2;list-style:none;margin:40px 0 0;padding:6px var(--g) 30px;display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--g);scrollbar-width:none;overscroll-behavior-x:contain}
+.trilho::-webkit-scrollbar{display:none}
+.modulo{flex:0 0 84%;max-width:430px;scroll-snap-align:start;display:flex;flex-direction:column;border-radius:26px;padding:24px 24px 14px;color:var(--branco);background:radial-gradient(90% 55% at 100% 0%,rgba(255,150,20,.26),transparent 70%),linear-gradient(180deg,#151311,#0A0A09 60%);border:1px solid rgba(255,255,255,.07);box-shadow:0 34px 60px -24px rgba(100,35,0,.65)}
+.mod-topo{display:flex;align-items:center;gap:14px}
+.mod-num{font:900 64px/.85 Barlow;letter-spacing:-.04em;color:transparent;-webkit-text-stroke:1.5px var(--laranja)}
+.mod-topo i{flex:1;height:1px;background:linear-gradient(90deg,rgba(255,163,0,.6),transparent)}
+.modulo h3{margin-top:22px;font:800 29px/1.02 Barlow;letter-spacing:-.03em;text-wrap:balance}
+.mod-promessa{margin-top:10px;font:700 18px/1.3 Barlow;color:var(--laranja)}
+.mod-desc{margin-top:12px;font:500 16px/1.48 Barlow;color:var(--cinza);text-wrap:pretty}
+.mod-lista{list-style:none;margin:auto 0 0;padding:20px 0 0}
+.mod-lista li{display:flex;align-items:center;gap:12px;min-height:46px;border-top:1px solid rgba(255,255,255,.1);font:600 15.5px/1.3 Barlow}
+.mod-lista li::before{content:"";width:7px;height:7px;border-radius:2px;background:var(--laranja);flex:none;box-shadow:0 0 10px rgba(255,163,0,.8)}
+.trilho-ctrl{position:relative;z-index:2;display:flex;align-items:center;gap:10px;padding:0 var(--g);max-width:var(--max);margin:0 auto}
+.contador{font:700 15px/1 Barlow;letter-spacing:.08em;margin-right:auto}
+.contador span{opacity:.55}
+.dica{font:600 14px/1 Barlow;opacity:.7;margin-right:6px}
+.seta{width:50px;height:50px;border-radius:50%;border:1.5px solid var(--tinta);background:transparent;color:var(--tinta);display:grid;place-items:center;cursor:pointer;transition:background .2s,color .2s}
+.seta:hover{background:var(--tinta);color:var(--laranja)}
+.seta svg{width:18px;height:18px}
+
+/* ---------- 4. o Feed Hub ---------- */
+.hub-abre{background:radial-gradient(55% 40% at 50% 58%,rgba(255,140,0,.15),transparent 70%),var(--preto);padding:108px 0 64px;text-align:center}
+.assinatura{width:min(76vw,540px);height:auto;margin:26px auto 0;filter:invert(1)}
+.hub-abre h2{margin-top:30px}
+.hub-abre .sub{margin:18px auto 0;max-width:34ch;font:500 18px/1.45 Barlow;color:var(--cinza)}
+.hub-abre .acoes{margin-top:26px}
+.hub{height:calc(6 * 100vh);height:calc(6 * 100svh);background:var(--preto)}
+.hub-palco{position:sticky;top:0;height:100vh;height:100svh;overflow:clip;color:var(--branco);transition:color .35s}
+.hub-palco[data-tom="laranja"]{color:var(--tinta)}
+.hub-fundo{position:absolute;inset:0;clip-path:circle(calc(var(--tom,0) * 82%) at 50% var(--cy,62%))}
+.hub-trilho{position:absolute;top:18px;left:var(--g);right:var(--g);z-index:4}
+.hub-trilho .segs{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.hub-trilho .segs span{height:3px;border-radius:2px;position:relative;overflow:hidden}
+.hub-trilho .segs span::before{content:"";position:absolute;inset:0;background:currentColor;opacity:.22}
+.hub-trilho i{position:absolute;inset:0;background:currentColor;transform-origin:left;transform:scaleX(0)}
+.hub-caps{--slot:196px;position:absolute;top:44px;left:var(--g);right:var(--g);height:var(--slot);z-index:4}
+.cap{position:absolute;inset:0}
+.cap-preto{color:var(--branco)}
+.cap-laranja{color:var(--tinta)}
+.cap .kicker{color:var(--laranja)}
+.cap-laranja .kicker{color:var(--tinta)}
+.cap h3{margin-top:10px;font:800 30px/1.02 Barlow;letter-spacing:-.033em;text-wrap:balance}
+.cap p:not(.kicker){margin-top:12px;font:500 15.5px/1.42 Barlow;max-width:40ch;opacity:.82;text-wrap:pretty}
+.hub-cena{position:absolute;top:calc(44px + 196px + 18px);bottom:18px;left:0;right:0;display:grid;grid-template:100%/100%;justify-items:center;perspective:1500px;z-index:3}
+.hub-cena>.fone{grid-area:1/1;height:100%;width:auto}
+.fone-frente{z-index:2;will-change:transform}
+.fone-tras{z-index:1;opacity:0;will-change:transform,opacity}
+.fone-tras .tela{filter:brightness(.78)}
+.brilho{position:absolute;left:50%;top:50%;width:150vmin;height:min(150vmin,100vh);transform:translate(-50%,-50%);pointer-events:none;border-radius:50%}
+.brilho-noite{background:radial-gradient(closest-side,rgba(255,150,20,.42),rgba(255,120,0,.13) 48%,transparent 100%);opacity:calc(1 - var(--tom,0))}
+.brilho-dia{background:radial-gradient(closest-side,rgba(255,246,214,.7),rgba(255,226,160,.22) 50%,transparent 100%);opacity:var(--tom,0)}
+.hub-cena .fone::before{box-shadow:0 22px 34px -6px rgba(40,12,0,.45)}
+.hub-indice{display:none}
+.vibra{animation:vibra .55s linear}
+@keyframes vibra{10%,50%,90%{translate:-4px 0;rotate:-1.3deg}30%,70%{translate:4px 0;rotate:1.3deg}100%{translate:0;rotate:0deg}}
+/* tela de bloqueio com o aviso (texto real, não imagem) */
+.bloqueio{background:radial-gradient(95% 50% at 50% 104%,#FFA51F 0%,#E06400 26%,#4A1C00 56%,#0B0807 84%);color:#fff;text-align:center}
+.bloqueio::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:9cqw 9cqw;-webkit-mask-image:linear-gradient(transparent 30%,#000);mask-image:linear-gradient(transparent 30%,#000)}
+.bl-hora{position:relative;margin-top:21cqw;font:600 24cqw/1 Barlow;letter-spacing:-.03em}
+.bl-data{position:relative;margin-top:2.4cqw;font:500 4.7cqw/1.2 Barlow;opacity:.85}
+.notifs{position:absolute;left:4.2cqw;right:4.2cqw;top:64cqw;display:grid;gap:2.8cqw}
+.notif{display:grid;grid-template-columns:10cqw 1fr;gap:3.2cqw;align-items:start;text-align:left;padding:3.8cqw 4.2cqw;border-radius:5.5cqw;background:rgba(246,244,238,.93);color:#161514;box-shadow:0 3cqw 8cqw rgba(0,0,0,.35)}
+.notif img{width:10cqw;height:10cqw;border-radius:2.8cqw}
+.n-app{font:600 3.3cqw/1.2 Barlow;opacity:.58;display:flex;justify-content:space-between}
+.n-tit{margin-top:.6cqw;font:700 4.3cqw/1.22 Barlow}
+.n-txt{margin-top:.4cqw;font:500 4cqw/1.32 Barlow;opacity:.86}
+
+/* ---------- 5. como funciona ---------- */
+.passos{padding:104px 0 56px}
+.passos .wrap{position:relative;z-index:2}
+.passos-lista{list-style:none;margin:52px 0 0;padding:0;display:grid;gap:0}
+.passo{display:grid;align-content:start;grid-template-columns:84px 1fr;gap:0 16px;padding:30px 0 34px;border-top:1.5px solid rgba(10,10,9,.22)}
+.num{grid-row:span 3;font:900 104px/.8 Barlow;letter-spacing:-.05em;color:transparent;-webkit-text-stroke:2px var(--tinta);background:linear-gradient(var(--tinta),var(--tinta)) 0 100%/100% calc(var(--lit,1) * 100%) no-repeat;-webkit-background-clip:text;background-clip:text}
+.passo h3{font:800 28px/1.05 Barlow;letter-spacing:-.03em}
+.passo .tag{display:inline-block;margin-top:8px;font:700 12px/1 Barlow;letter-spacing:.14em;text-transform:uppercase;background:var(--tinta);color:var(--laranja);padding:6px 9px;border-radius:6px;justify-self:start}
+.passo p{margin-top:12px;font:500 16.5px/1.5 Barlow;color:rgba(10,10,9,.82);max-width:42ch}
+.passo .btn,.link-seta{grid-column:2;justify-self:start;margin-top:18px}
+.link-seta{display:inline-flex;align-items:center;gap:8px;min-height:46px;font:700 16px/1 Barlow;text-decoration:none;border-bottom:2px solid currentColor}
+.link-seta svg{width:15px;height:15px}
+
+/* ---------- 6. prova real ---------- */
+.prova{padding:104px 0 40px;background:radial-gradient(80% 45% at 15% 0%,rgba(255,140,0,.18),transparent 70%),var(--preto)}
+.prova .texto{margin-top:22px;max-width:40ch;font:500 19px/1.5 Barlow;color:var(--cinza)}
+.prova .texto b{color:var(--branco)}
+.fatos{margin:54px 0 0;display:grid;gap:0}
+.fatos div{display:grid;gap:14px;padding:26px 0;border-top:1px solid rgba(255,255,255,.12)}
+.fatos dt{font:800 clamp(54px,15vw,120px)/.9 Barlow;letter-spacing:-.045em;color:var(--laranja)}
+.fatos dd{margin:0;font:600 17px/1.35 Barlow;color:var(--branco);max-width:26ch}
+.fatos .marcador{font-size:clamp(24px,6vw,40px);letter-spacing:0;color:var(--laranja);border:1.5px dashed rgba(255,163,0,.7);border-radius:10px;padding:12px 14px;justify-self:start}
+.nota{margin-top:26px;font:500 14px/1.45 Barlow;color:#8a8a84}
+
+/* ---------- 7. perguntas ---------- */
+.perguntas{padding:72px 0 104px;background:linear-gradient(180deg,var(--preto),#0E0D0B)}
+.faq{margin-top:44px;border-bottom:1px solid rgba(255,255,255,.12)}
+.faq details{border-top:1px solid rgba(255,255,255,.12)}
+.faq summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:68px;padding:16px 0;font:700 19px/1.3 Barlow;letter-spacing:-.01em}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary i{position:relative;width:34px;height:34px;flex:none;border-radius:50%;border:1.5px solid rgba(255,163,0,.7);transition:transform .35s var(--ease),background .3s}
+.faq summary i::before,.faq summary i::after{content:"";position:absolute;left:50%;top:50%;width:13px;height:2px;background:var(--laranja);transform:translate(-50%,-50%)}
+.faq summary i::after{transform:translate(-50%,-50%) rotate(90deg)}
+.faq details[open] summary i{transform:rotate(45deg);background:rgba(255,163,0,.12)}
+.faq details p{padding:0 0 26px;max-width:62ch;font:500 16.5px/1.6 Barlow;color:var(--cinza)}
+.faq details p a{color:var(--laranja);font-weight:700}
+
+/* ---------- 8. chamada final ---------- */
+.final{padding:100px 0 0;text-align:center}
+.final .texto{position:relative;z-index:3}
+.final h2{max-width:12ch;margin-left:auto;margin-right:auto}
+.final .sub{margin:20px auto 0;max-width:34ch;font:500 18px/1.45 Barlow;color:rgba(10,10,9,.8)}
+.final .acoes{margin-top:28px}
+.final .mini{margin-top:14px;font:600 14px/1.4 Barlow;color:rgba(10,10,9,.7)}
+.final-fones{position:relative;z-index:2;height:400px;margin-top:44px;perspective:1300px}
+.ff{position:absolute;top:0;left:50%;width:min(64vw,330px)}
+.ff-frente{z-index:2;transform:translateX(-50%) translateY(calc((1 - var(--e,1)) * 90px)) rotateX(calc((1 - var(--e,1)) * 32deg))}
+.ff-tras{z-index:1;transform:translateX(calc(-50% + 40%)) translateY(calc(30px + (1 - var(--e,1)) * 140px)) rotate(calc(9deg * var(--e,1))) scale(.88)}
+.ff-tras .tela{filter:brightness(.88)}
+
+/* ---------- rodapé ---------- */
+.rodape{background:var(--preto);padding:64px 0 48px;color:var(--cinza);font:500 14.5px/1.6 Barlow}
+.rodape .logo{width:118px;height:auto}
+.rodape-seo{display:grid;margin:34px 0 30px;border-top:1px solid rgba(255,255,255,.1)}
+.rodape-seo a{display:flex;align-items:center;min-height:48px;border-bottom:1px solid rgba(255,255,255,.1);color:var(--branco);font:600 16px/1.2 Barlow;text-decoration:none}
+.rodape-seo a:hover{color:var(--laranja)}
+.rodape address{font-style:normal;margin-top:10px}
+.rodape address a{color:var(--branco)}
+.rodape-links{display:flex;flex-wrap:wrap;gap:4px 22px;margin:14px 0}
+.rodape-links a{display:inline-flex;align-items:center;min-height:44px;min-width:44px;color:var(--branco);font-weight:600}
+.rodape small{display:block;color:#6f6f69}
+
+/* ---------- entradas (só com movimento ligado) ---------- */
+.anima [data-rv]{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:var(--d,0s)}
+.anima [data-rv].in{opacity:1;transform:none}
+.anima .heroi [data-in]{animation:entra 1s var(--ease) both;animation-delay:var(--d,0s)}
+.anima .hf>.fone{animation:sobeFone 1.15s var(--ease) both;animation-delay:var(--d,.1s)}
+.anima .curva path{stroke-dasharray:1;stroke-dashoffset:1;animation:traco 1.6s .2s var(--ease) forwards}
+@keyframes entra{from{opacity:0;transform:translateY(22px)}}
+@keyframes sobeFone{from{opacity:0;transform:translateY(24%) rotateX(20deg)}}
+@keyframes traco{to{stroke-dashoffset:0}}
+
+/* sem JS: o palco vira lista e tudo fica legível */
+html:not(.js) .hub{height:auto}
+html:not(.js) .hub-palco{position:relative;height:auto;padding:40px 0}
+html:not(.js) .hub-caps{position:relative;top:0;height:auto;display:grid;gap:40px}
+html:not(.js) .cap{position:relative}
+html:not(.js) .hub-cena{position:relative;top:0;height:70vh;margin-top:40px}
+html:not(.js) .tela>[data-t]:not([data-t="0"]){display:none}
+
+/* ---------- tablet ---------- */
+@media (min-width:720px){
+  :root{--g:40px}
+  h1{font-size:clamp(60px,8.4vw,82px)}
+  .heroi-sub{font-size:19px;max-width:38ch}
+  .hf{width:min(38vw,320px)}
+  .hub-caps{--slot:220px;top:56px}
+  .hub-trilho{top:22px}
+  .cap h3{font-size:44px}
+  .cap p:not(.kicker){font-size:18px}
+  .hub-cena{top:calc(56px + 220px + 20px);bottom:26px}
+  .modulo{flex-basis:46%;padding:28px 28px 16px}
+  .passo{grid-template-columns:130px 1fr;padding:38px 0 42px}
+  .num{font-size:150px}
+  .passo h3{font-size:36px}
+  .fatos{grid-template-columns:1fr 1fr}
+  .fatos div:last-child{grid-column:span 2}
+  .final-fones{height:480px}
+  .ff{width:min(42vw,340px)}
+  .rodape-seo{grid-template-columns:1fr 1fr;column-gap:32px}
+}
+
+/* ---------- desktop ---------- */
+@media (min-width:1024px){
+  :root{--g:56px}
+  .topo{padding:18px var(--g)}
+  .marca img{width:112px}
+  .heroi-texto{padding-top:120px}
+  h1{font-size:clamp(64px,6vw,98px);max-width:none}
+  .heroi-sub{max-width:44ch}
+  .heroi-fones{min-height:360px}
+  .hf{width:clamp(250px,23vw,340px)}
+  .hf-esq{transform:translateX(calc(-50% - 92%)) translateY(calc(70px + var(--hp,0) * -10px)) rotate(calc(-9deg - var(--hp,0) * 5deg)) scale(.86)}
+  .hf-dir{transform:translateX(calc(-50% + 92%)) translateY(calc(70px + var(--hp,0) * -10px)) rotate(calc(9deg + var(--hp,0) * 5deg)) scale(.86)}
+  .problema{padding:170px 0 170px}
+  .problema .wrap{max-width:1060px}
+  .promessa{font-size:24px}
+  .instala{padding:150px 0 120px}
+  .instala .sub{font-size:20px;max-width:48ch}
+  .trilho{padding-left:max(var(--g),calc((100vw - var(--max)) / 2 + var(--g)));padding-right:var(--g);scroll-padding-inline:max(var(--g),calc((100vw - var(--max)) / 2 + var(--g)));gap:20px;margin-top:56px}
+  .modulo{flex-basis:400px;min-height:500px;padding:32px 32px 18px}
+  .modulo h3{font-size:34px}
+  .hub-abre{padding:160px 0 80px}
+  .hub-trilho{display:none}
+  .hub-caps{--slot:400px;top:50%;left:max(48px,6vw);right:auto;width:min(410px,28vw);transform:translateY(-50%)}
+  .cap{display:flex;flex-direction:column;justify-content:center}
+  .cap h3{font-size:clamp(36px,3.7vw,56px);margin-top:16px}
+  .cap p:not(.kicker){font-size:19px;margin-top:18px}
+  .hub-palco{--cy:50%}
+  .hub-cena{top:9vh;bottom:9vh}
+  .hub-indice{display:grid;position:absolute;right:max(40px,5.5vw);top:50%;transform:translateY(-50%);z-index:4;gap:2px;list-style:none;margin:0;padding:0}
+  .hub-indice button{display:flex;align-items:center;justify-content:flex-end;gap:12px;min-height:46px;padding:0 0 0 18px;background:none;border:0;color:inherit;font:600 15px/1 Barlow;letter-spacing:.02em;cursor:pointer;opacity:.42;transition:opacity .3s}
+  .hub-indice button::after{content:"";width:18px;height:2px;background:currentColor;transition:width .35s var(--ease)}
+  .hub-indice button[aria-current]{opacity:1}
+  .hub-indice button[aria-current]::after{width:44px}
+  .hub-indice button:hover{opacity:1}
+  .passos{padding:150px 0}
+  .passos-lista{grid-template-columns:repeat(3,1fr);gap:40px;margin-top:80px}
+  .passo{grid-template-columns:1fr;border-top-width:2px;padding-top:34px}
+  .num{grid-row:auto;font-size:190px;margin-bottom:22px}
+  .passo .btn,.link-seta{grid-column:1}
+  .prova{padding:160px 0 140px}
+  .prova .grade-prova{display:grid;grid-template-columns:1.1fr 1fr;gap:72px;align-items:start}
+  .prova h2{font-size:clamp(48px,4.5vw,68px)}
+  .prova .texto{font-size:21px}
+  .fatos{margin-top:0;grid-template-columns:1fr}
+  .fatos div:last-child{grid-column:auto}
+  .perguntas{padding:150px 0}
+  .perguntas .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;align-items:start}
+  .perguntas .faq{margin-top:0}
+  .faq summary{font-size:21px}
+  .final{padding-top:150px}
+  .final-fones{height:520px;margin-top:64px}
+  .ff{width:clamp(280px,24vw,360px)}
+  .rodape .wrap{display:grid;grid-template-columns:1fr 1.6fr;gap:64px}
+  .rodape-seo{margin-top:0}
+}
+@media (min-width:1024px) and (max-height:820px){ .hub-cena{top:7vh;bottom:7vh} }
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<!-- 1. ABERTURA -->
+<section class="heroi laranja" id="topo" aria-label="Abertura">
+  <div class="fundo"><span class="grade"></span><span class="vinheta"></span></div>
+  <svg class="curva" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M-40 930 C 200 930, 380 850, 540 790 S 820 690, 1060 650"/></svg>
+  <header class="topo">
+    <a class="marca" href="#topo" aria-label="Feed, voltar ao início"><img src="assets/logo-preta.svg" alt="Feed" width="98" height="33"></a>
+    <a class="pilula" href="https://wa.me/5516993020694" target="_blank" rel="noopener">Falar no WhatsApp</a>
+  </header>
+  <div class="heroi-texto">
+    <p class="kicker" data-in style="--d:.05s">Agência de IA aplicada · interior de SP</p>
+    <h1 data-in style="--d:.12s">A Feed instala a operação. <mark>Você comanda</mark> pelo celular.</h1>
+    <p class="heroi-sub" data-in style="--d:.22s">A gente encontra onde a sua empresa trava, instala o que resolve e entrega tudo num app: o Feed Hub.</p>
+    <div class="acoes" data-in style="--d:.3s">
+      <a class="btn btn-preto" href="https://agenciafeed.com/diagnostico">Diagnóstico grátis
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></a>
+      <a class="play" href="https://play.google.com/store/apps/details?id=com.agenciafeed.hub" target="_blank" rel="noopener" aria-label="Baixar o Feed Hub no Google Play">
+        <svg viewBox="0 0 24 26" aria-hidden="true"><path fill="#2FB6FF" d="M1.2.9 13.6 13 1.2 25.1c-.5-.3-.8-.9-.8-1.6V2.5c0-.7.3-1.3.8-1.6z"/><path fill="#31D07C" d="M17.8 8.8 13.6 13 1.2.9c.4-.2.9-.2 1.3.1l15.3 7.8z"/><path fill="#FF4A4A" d="M17.8 17.2 2.5 25c-.4.3-.9.3-1.3.1L13.6 13l4.2 4.2z"/><path fill="#FFC928" d="m22.6 14.3-4.8 2.9-4.2-4.2 4.2-4.2 4.8 2.7c1 .6 1 2.2 0 2.8z"/></svg>
+        <span><small>Disponível no</small><b>Google Play</b></span></a>
+    </div>
+  </div>
+  <div class="heroi-fones">
+    <div class="hf hf-esq"><div class="fone" style="--d:.32s"><div class="tela"><img src="assets/tela-aprovar.webp" alt="" loading="eager"></div><img class="moldura" src="assets/fone.webp" alt=""></div></div>
+    <div class="hf hf-dir"><div class="fone" style="--d:.38s"><div class="tela"><img src="assets/tela-funil.webp" alt="" loading="eager"></div><img class="moldura" src="assets/fone.webp" alt=""></div></div>
+    <div class="hf hf-centro"><div class="fone" style="--d:.18s"><div class="tela"><img src="assets/tela-atendimento.webp" alt="Feed Hub no celular: a conversa da cliente no WhatsApp respondida pelo Agente"><span class="reflexo" style="transform:translateX(-20%)"></span></div><img class="moldura" src="assets/fone.webp" alt=""></div></div>
+  </div>
+</section>
+
+<!-- 2. O PROBLEMA -->
+<section class="problema" id="problema">
+  <div class="wrap">
+    <h2>Onde a sua empresa trava hoje</h2>
+    <p class="dor" data-acende>O cliente chama no WhatsApp de noite. A resposta sai no dia seguinte, <em>se sair.</em></p>
+    <p class="dor" data-acende>O orçamento ficou para depois. E o depois <em>não chegou.</em></p>
+    <p class="dor" data-acende>O lead de terça sumiu. <em>Ninguém foi atrás.</em></p>
+    <p class="dor" data-acende>O post da semana ficou <em>no rascunho.</em></p>
+    <p class="dor dor-fim" data-acende>E tudo depende de você estar olhando.</p>
+    <p class="promessa" data-rv><b>A Feed encontra onde a sua operação trava e instala o que resolve,</b> rodando na sua rotina. Sem vender ferramenta solta.</p>
+  </div>
+</section>
+
+<!-- 3. O QUE A FEED INSTALA -->
+<section class="instala laranja" id="instala" aria-labelledby="instala-titulo">
+  <div class="fundo"><span class="grade"></span><span class="vinheta"></span></div>
+  <div class="wrap cab">
+    <div>
+      <p class="kicker" data-rv>O que a Feed instala</p>
+      <h2 id="instala-titulo" data-rv>Cinco frentes. <mark>Instaladas</mark> e rodando.</h2>
+    </div>
+    <p class="sub" data-rv style="--d:.1s">A Feed monta, conecta e treina quem vai usar. Você escolhe por onde começar, e o diagnóstico mostra o que destrava mais.</p>
+  </div>
+  <ol class="trilho" aria-label="As cinco frentes que a Feed instala">
+    <li class="modulo">
+      <div class="mod-topo"><span class="mod-num">01</span><i></i></div>
+      <h3>Agente de IA no WhatsApp</h3>
+      <p class="mod-promessa">Responde na hora, 24 horas.</p>
+      <p class="mod-desc">Resolve o que é simples, deixa um resumo pronto e passa para a sua equipe quando a conversa pede gente.</p>
+      <ul class="mod-lista"><li>Resposta imediata, dia e noite</li><li>Resumo pronto para quem assume</li><li>Passa para o humano na hora certa</li></ul>
+    </li>
+    <li class="modulo">
+      <div class="mod-topo"><span class="mod-num">02</span><i></i></div>
+      <h3>Funil de vendas</h3>
+      <p class="mod-promessa">Cada oportunidade no seu lugar.</p>
+      <p class="mod-desc">Todo contato numa etapa, com acompanhamento automático de quem sumiu. A proposta sai em PDF, montada e enviada pelo celular.</p>
+      <ul class="mod-lista"><li>Etapas do jeito da sua venda</li><li>Lembrete de quem parou de responder</li><li>Proposta em PDF pelo celular</li></ul>
+    </li>
+    <li class="modulo">
+      <div class="mod-topo"><span class="mod-num">03</span><i></i></div>
+      <h3>Instagram no automático</h3>
+      <p class="mod-promessa">Posts que saem sozinhos.</p>
+      <p class="mod-desc">Você aprova, o post vai ao ar no horário. As métricas ficam no mesmo lugar, e comentário com palavra-chave vira mensagem direta.</p>
+      <ul class="mod-lista"><li>Agenda e publicação sozinha</li><li>Métricas sem planilha</li><li>Comentou "AGENDA", recebeu o link</li></ul>
+    </li>
+    <li class="modulo">
+      <div class="mod-topo"><span class="mod-num">04</span><i></i></div>
+      <h3>Marca, conteúdo, site e SEO</h3>
+      <p class="mod-promessa">O marketing que serve à operação.</p>
+      <p class="mod-desc">A Feed nasceu agência de marketing. Marca clara, conteúdo constante e um site que explica, e que aparece no Google quando alguém procura.</p>
+      <ul class="mod-lista"><li>Marca e posicionamento</li><li>Conteúdo para as redes</li><li>Site e SEO</li></ul>
+    </li>
+    <li class="modulo">
+      <div class="mod-topo"><span class="mod-num">05</span><i></i></div>
+      <h3>Agentes especialistas</h3>
+      <p class="mod-promessa">Uma equipe de agentes, pelo chat.</p>
+      <p class="mod-desc">Cada agente cuida de uma tarefa. Você pede pelo chat do jeito que pediria para alguém da equipe, e ele entrega.</p>
+      <ul class="mod-lista"><li>Calcular frete</li><li>Montar orçamento</li><li>Preparar relatório</li></ul>
+    </li>
+  </ol>
+  <div class="trilho-ctrl">
+    <p class="contador" aria-live="polite"><b>01</b> <span>/ 05</span></p>
+    <p class="dica">Arraste para o lado</p>
+    <button class="seta" type="button" data-dir="-1" aria-label="Frente anterior"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 3 5 9l6 6"/></svg></button>
+    <button class="seta" type="button" data-dir="1" aria-label="Próxima frente"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="m7 3 6 6-6 6"/></svg></button>
+  </div>
+</section>
+
+<!-- 4. O FEED HUB -->
+<section class="hub-abre preto" aria-labelledby="hub-titulo">
+  <div class="wrap centro">
+    <p class="kicker" data-rv>Onde você comanda</p>
+    <img class="assinatura" src="assets/feed-hub.svg" alt="Feed Hub" width="540" height="99" data-rv>
+    <h2 id="hub-titulo" data-rv>Você comanda <mark>pelo celular.</mark></h2>
+    <p class="sub" data-rv style="--d:.08s">O app onde a sua equipe atende, vende e aprova tudo o que a Feed instala. Já está no Google Play.</p>
+    <div class="acoes" data-rv style="--d:.14s">
+      <a class="play" href="https://play.google.com/store/apps/details?id=com.agenciafeed.hub" target="_blank" rel="noopener" aria-label="Baixar o Feed Hub no Google Play">
+        <svg viewBox="0 0 24 26" aria-hidden="true"><path fill="#2FB6FF" d="M1.2.9 13.6 13 1.2 25.1c-.5-.3-.8-.9-.8-1.6V2.5c0-.7.3-1.3.8-1.6z"/><path fill="#31D07C" d="M17.8 8.8 13.6 13 1.2.9c.4-.2.9-.2 1.3.1l15.3 7.8z"/><path fill="#FF4A4A" d="M17.8 17.2 2.5 25c-.4.3-.9.3-1.3.1L13.6 13l4.2 4.2z"/><path fill="#FFC928" d="m22.6 14.3-4.8 2.9-4.2-4.2 4.2-4.2 4.8 2.7c1 .6 1 2.2 0 2.8z"/></svg>
+        <span><small>Disponível no</small><b>Google Play</b></span></a>
+    </div>
+  </div>
+</section>
+
+<section class="hub" id="hub" aria-label="O Feed Hub por dentro">
+  <div class="hub-palco" data-tom="preto">
+    <div class="hub-fundo laranja"><span class="grade"></span><span class="vinheta"></span></div>
+    <div class="hub-trilho" aria-hidden="true">
+      <div class="segs"><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span></div>
+    </div>
+    <div class="hub-caps">
+      <article class="cap cap-preto">
+        <p class="kicker">01 · Atendimento</p>
+        <h3>O Agente deixa o resumo pronto.</h3>
+        <p>Ele responde o WhatsApp na hora, 24 horas. Quando a conversa pede gente, passa para a equipe com tudo anotado.</p>
+      </article>
+      <article class="cap cap-laranja">
+        <p class="kicker">02 · Início</p>
+        <h3>Veja primeiro o que precisa de você.</h3>
+        <p>Abriu o app, a primeira tela mostra o que espera a sua decisão. O resto segue andando sem você empurrar.</p>
+      </article>
+      <article class="cap cap-preto">
+        <p class="kicker">03 · Funil</p>
+        <h3>Cada oportunidade no seu lugar.</h3>
+        <p>A conversa vira oportunidade no funil. Quem sumiu ganha acompanhamento e a proposta sai em PDF pelo celular.</p>
+      </article>
+      <article class="cap cap-laranja">
+        <p class="kicker">04 · Aprovar</p>
+        <h3>Aprove seus posts pelo celular.</h3>
+        <p>A peça chega pronta, com dia e hora sugeridos. Um toque e ela vai ao ar no Instagram, no horário certo.</p>
+      </article>
+      <article class="cap cap-preto">
+        <p class="kicker">05 · Aviso</p>
+        <h3>O celular avisa quando é a sua vez.</h3>
+        <p>Resumo pronto, peça para aprovar, lead para chamar. O Feed Hub te avisa e você resolve de onde estiver.</p>
+      </article>
+    </div>
+    <div class="hub-cena">
+      <span class="brilho brilho-noite" aria-hidden="true"></span>
+      <span class="brilho brilho-dia" aria-hidden="true"></span>
+      <div class="fone fone-tras" aria-hidden="true"><div class="tela"><img src="assets/tela-atendimento.webp" alt="" loading="lazy"></div><img class="moldura" src="assets/fone.webp" alt=""></div>
+      <div class="fone fone-frente">
+        <div class="tela">
+          <img data-t="0" src="assets/tela-atendimento.webp" alt="Tela de Atendimento: a cliente pergunta, o Agente responde e deixa uma nota interna com o resumo">
+          <img data-t="1" src="assets/tela-inicio.webp" alt="Tela de Início: 1 peça aguarda sua aprovação" loading="lazy">
+          <img data-t="2" src="assets/tela-funil.webp" alt="Tela do Funil: contatos na etapa Novo contato, com valor e próximo passo" loading="lazy">
+          <img data-t="3" src="assets/tela-aprovar.webp" alt="Tela de Aprovar: post aguardando você, com data e hora para ir ao ar" loading="lazy">
+          <div data-t="4" class="bloqueio" role="img" aria-label="Tela de bloqueio com avisos do Feed Hub">
+            <p class="bl-hora">18:42</p>
+            <p class="bl-data">quarta, 28 de outubro</p>
+            <div class="notifs">
+              <div class="notif"><img src="assets/icone.webp" alt="" width="48" height="48"><div><p class="n-app"><span>Feed Hub · Atendimento</span><span>agora</span></p><p class="n-tit">Lia Ventora</p><p class="n-txt">O Agente deixou o resumo pronto: 2 cadernos azuis para sexta.</p></div></div>
+              <div class="notif"><img src="assets/icone.webp" alt="" width="48" height="48"><div><p class="n-app"><span>Feed Hub · Instagram</span><span>agora</span></p><p class="n-tit">1 peça aguarda sua aprovação</p><p class="n-txt">Aprovou, a Feed publica. Leva menos de um minuto.</p></div></div>
+              <div class="notif"><img src="assets/icone.webp" alt="" width="48" height="48"><div><p class="n-app"><span>Feed Hub · Funil</span><span>agora</span></p><p class="n-tit">Nina Alvore parou de responder</p><p class="n-txt">Hora de chamar de volta. A mensagem já está pronta.</p></div></div>
+            </div>
+          </div>
+          <span class="reflexo"></span>
+        </div>
+        <img class="moldura" src="assets/fone.webp" alt="">
+      </div>
+    </div>
+    <ol class="hub-indice" aria-label="Capítulos do Feed Hub">
+      <li><button type="button">Atendimento</button></li>
+      <li><button type="button">Início</button></li>
+      <li><button type="button">Funil</button></li>
+      <li><button type="button">Aprovar</button></li>
+      <li><button type="button">Aviso</button></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 5. COMO FUNCIONA -->
+<section class="passos laranja" id="passos" aria-labelledby="passos-titulo">
+  <div class="fundo"><span class="grade"></span><span class="vinheta"></span></div>
+  <div class="wrap">
+    <p class="kicker" data-rv>Como funciona</p>
+    <h2 id="passos-titulo" data-rv>Três passos. O&nbsp;primeiro é <mark>grátis.</mark></h2>
+    <ol class="passos-lista">
+      <li class="passo" data-acende>
+        <span class="num" aria-hidden="true">1</span>
+        <h3>Diagnóstico do Gargalo</h3>
+        <span class="tag">Grátis · na hora</span>
+        <p>Você deixa nome e e-mail e recebe um PDF na hora, mostrando onde a operação para quando você não está. Se fizer sentido, conversa com o Guilherme.</p>
+        <a class="btn btn-preto" href="https://agenciafeed.com/diagnostico">Quero o diagnóstico</a>
+      </li>
+      <li class="passo" data-acende>
+        <span class="num" aria-hidden="true">2</span>
+        <h3>Implantação</h3>
+        <span class="tag">Sem time de TI</span>
+        <p>Proposta com escopo, prazo e valor do seu caso. A Feed monta, conecta e treina quem vai usar. Você não precisa contratar ninguém.</p>
+      </li>
+      <li class="passo" data-acende>
+        <span class="num" aria-hidden="true">3</span>
+        <h3>Acompanhamento</h3>
+        <span class="tag">Quando o projeto pede</span>
+        <p>Manutenção mensal quando o projeto precisa. O preço é personalizado: implantação mais manutenção, ou um serviço pontual.</p>
+        <a class="link-seta" href="https://agenciafeed.com/quanto-custa/">Como funciona o preço <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- 6. PROVA REAL -->
+<section class="prova preto" id="prova" aria-labelledby="prova-titulo">
+  <div class="wrap grade-prova">
+    <div>
+      <p class="kicker" data-rv style="color:var(--laranja)">Prova real</p>
+      <h2 id="prova-titulo" data-rv>Já roda numa revenda de veículos do <mark>interior de SP.</mark></h2>
+      <p class="texto" data-rv><b>O Agente da Feed atende o WhatsApp da loja.</b> A equipe assume quando a conversa pede e manda a proposta pelo celular, no Hub. E o funil acompanha cada lead, um por um.</p>
+      <p class="nota" data-rv>O nome do cliente fica preservado. As telas deste site usam dados de demonstração.</p>
+    </div>
+    <dl class="fatos">
+      <div data-rv><dt>24 horas</dt><dd>o Agente atendendo o WhatsApp, dia e noite</dd></div>
+      <div data-rv style="--d:.08s"><dt>1 app</dt><dd>atendimento, funil e proposta no mesmo lugar</dd></div>
+      <div data-rv style="--d:.16s"><dt class="marcador">[número a confirmar]</dt><dd>leads acompanhados no funil desde a implantação</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- 7. PERGUNTAS -->
+<section class="perguntas" id="perguntas" aria-labelledby="faq-titulo">
+  <div class="wrap">
+    <div>
+      <p class="kicker" data-rv style="color:var(--laranja)">Perguntas frequentes</p>
+      <h2 id="faq-titulo" data-rv>O que todo mundo pergunta antes de começar.</h2>
+    </div>
+    <div class="faq">
+      <details open><summary>O que uma agência de IA faz na prática?<i aria-hidden="true"></i></summary><p>Encontra onde sua operação perde tempo e dinheiro e resolve com tecnologia: atendimento que responde sozinho, processos que rodam sem ninguém empurrar, marca e aquisição organizadas. Na Feed isso começa com um diagnóstico da operação e termina com a solução implementada e rodando na sua rotina.</p></details>
+      <details><summary>Quanto custa contratar a Feed?<i aria-hidden="true"></i></summary><p>O preço é personalizado. Primeiro a gente entende onde a sua operação trava, depois monta uma proposta com escopo, prazo e valor do seu caso. O valor muda com quantos sistemas a gente conecta, o volume de atendimento e a organização das informações. A IA é um adicional opcional: entra só se fizer sentido pro seu negócio e, quando entra, muda o valor da proposta. Veja como funciona em <a href="https://agenciafeed.com/quanto-custa/">quanto custa</a> ou comece pelo <a href="https://agenciafeed.com/diagnostico">Diagnóstico do Gargalo</a>.</p></details>
+      <details><summary>Automação de WhatsApp não vai irritar meus clientes?<i aria-hidden="true"></i></summary><p>Robô burro irrita. Automação bem feita responde na hora, resolve o que é simples e passa pro humano quando a conversa pede. Seu cliente ganha resposta imediata e seu time para de perder o dia repetindo a mesma informação.</p></details>
+      <details><summary>Preciso de time de TI pra automatizar a empresa?<i aria-hidden="true"></i></summary><p>Não. A Feed implementa e treina quem vai usar. Se o projeto tiver manutenção, a Feed acompanha depois da entrega. Você não precisa contratar ninguém nem entender de tecnologia: precisa saber onde sua operação trava, e isso a gente descobre junto. A IA não é obrigatória. Ela entra como adicional só se fizer sentido pro seu negócio e, quando entra, muda o valor da proposta.</p></details>
+      <details><summary>Em quanto tempo fica pronto?<i aria-hidden="true"></i></summary><p>Depende de quão claras estão as respostas, de quantas integrações tem e do volume de exceções. O prazo de cada projeto vem escrito na proposta. A gente prefere entrega rápida e escopo enxuto a projeto grande que nunca termina. Se quiser começar já, o <a href="https://agenciafeed.com/diagnostico">Diagnóstico do Gargalo</a> chega no seu e-mail na hora.</p></details>
+      <details><summary>A Feed atende só a região de Ribeirão Preto?<i aria-hidden="true"></i></summary><p>A base é a região de Ribeirão Preto e Bebedouro, no interior de SP, com atendimento presencial quando faz sentido. Fora da região, o atendimento é remoto, em qualquer lugar do Brasil.</p></details>
+      <details><summary>O que é o diagnóstico gratuito?<i aria-hidden="true"></i></summary><p>Você deixa nome e e-mail e recebe no seu e-mail, na hora, o Diagnóstico do Gargalo, um PDF curto que mostra onde a operação para quando você não está, o que mais consome seu tempo e o primeiro passo pra tirar a empresa das suas costas. Depois, se fizer sentido, você conversa com o Guilherme sobre o seu caso. Não custa nada. Comece em <a href="https://agenciafeed.com/diagnostico">agenciafeed.com/diagnostico</a>.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- 8. CHAMADA FINAL -->
+<section class="final laranja" id="contato" data-entra aria-labelledby="final-titulo">
+  <div class="fundo"><span class="grade"></span><span class="vinheta"></span></div>
+  <svg class="curva" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M-40 720 C 240 740, 420 610, 600 600 S 860 570, 1060 480"/></svg>
+  <div class="wrap texto">
+    <p class="kicker centro" data-rv>Próximo passo</p>
+    <h2 id="final-titulo" data-rv>Sua empresa na <mark>palma da mão.</mark></h2>
+    <p class="sub" data-rv>Comece pelo Diagnóstico do Gargalo: é grátis e chega no seu e-mail na hora. Depois, se fizer sentido, a gente conversa.</p>
+    <div class="acoes" data-rv>
+      <a class="btn btn-preto" href="https://agenciafeed.com/diagnostico">Fazer o Diagnóstico do Gargalo</a>
+      <a class="btn btn-linha" href="https://wa.me/5516993020694" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="play" href="https://play.google.com/store/apps/details?id=com.agenciafeed.hub" target="_blank" rel="noopener" aria-label="Baixar o Feed Hub no Google Play">
+        <svg viewBox="0 0 24 26" aria-hidden="true"><path fill="#2FB6FF" d="M1.2.9 13.6 13 1.2 25.1c-.5-.3-.8-.9-.8-1.6V2.5c0-.7.3-1.3.8-1.6z"/><path fill="#31D07C" d="M17.8 8.8 13.6 13 1.2.9c.4-.2.9-.2 1.3.1l15.3 7.8z"/><path fill="#FF4A4A" d="M17.8 17.2 2.5 25c-.4.3-.9.3-1.3.1L13.6 13l4.2 4.2z"/><path fill="#FFC928" d="m22.6 14.3-4.8 2.9-4.2-4.2 4.2-4.2 4.8 2.7c1 .6 1 2.2 0 2.8z"/></svg>
+        <span><small>Disponível no</small><b>Google Play</b></span></a>
+    </div>
+    <p class="mini" data-rv>Feed Hub para Android. A versão para iPhone vem depois.</p>
+  </div>
+  <div class="final-fones" aria-hidden="true">
+    <div class="ff ff-tras"><div class="fone"><div class="tela"><img src="assets/tela-aprovar.webp" alt="" loading="lazy"></div><img class="moldura" src="assets/fone.webp" alt=""></div></div>
+    <div class="ff ff-frente"><div class="fone"><div class="tela"><img src="assets/tela-inicio.webp" alt="" loading="lazy"><span class="reflexo" style="transform:translateX(-10%)"></span></div><img class="moldura" src="assets/fone.webp" alt=""></div></div>
+  </div>
+</section>
+
+<!-- RODAPÉ -->
+<footer class="rodape" aria-label="Rodapé Feed">
+  <div class="wrap">
+    <div>
+      <img class="logo" src="assets/logo-branca.png" alt="Feed" width="118" height="39">
+      <div class="rodape-legal">
+        <p style="margin-top:22px">FEED MARKETING E COMUNICAÇÃO • CNPJ 53.877.987/0001-93</p>
+        <address>Interior de São Paulo, região de Ribeirão Preto e Bebedouro. Atendimento remoto em todo o Brasil.<br>
+          <a href="tel:+5516993020694">(16) 99302-0694</a> · <a href="https://wa.me/5516993020694" target="_blank" rel="noopener">WhatsApp</a> · <a href="mailto:emailmkt@agenciafeed.com">emailmkt@agenciafeed.com</a></address>
+        <nav class="rodape-links" aria-label="Links do rodapé"><a href="https://agenciafeed.com/blog/">Blog</a><a href="https://agenciafeed.com/privacidade.html">Política de Privacidade</a></nav>
+        <small>© 2026 FEED MKT. Todos os direitos reservados.</small>
+      </div>
+    </div>
+    <nav class="rodape-seo" aria-label="Páginas estratégicas">
+      <a href="https://agenciafeed.com/ia-para-pequenas-empresas/">IA para pequenas empresas</a>
+      <a href="https://agenciafeed.com/automacao-whatsapp/">Automação de WhatsApp</a>
+      <a href="https://agenciafeed.com/agentes-de-ia/">Agentes de IA</a>
+      <a href="https://agenciafeed.com/diagnostico-ia-empresa/">Diagnóstico de IA</a>
+      <a href="https://agenciafeed.com/agencia-de-ia-ribeirao-preto/">Agência de IA em Ribeirão Preto</a>
+      <a href="https://agenciafeed.com/agencia-de-marketing-bebedouro/">Agência de marketing em Bebedouro</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const raiz = document.documentElement;
+  raiz.classList.add('js');
+  const reduz = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduz) raiz.classList.add('anima');
+  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+  const suave = t => t * t * (3 - 2 * t);
+  const $ = (s, el = document) => el.querySelector(s), $$ = (s, el = document) => [...el.querySelectorAll(s)];
+
+  const heroi = $('.heroi'), acende = $$('[data-acende]'), entra = $$('[data-entra]');
+  const hub = $('.hub'), palco = $('.hub-palco');
+  const caps = $$('.cap', hub), telas = $$('.fone-frente [data-t]', hub);
+  const frente = $('.fone-frente', hub), tras = $('.fone-tras', hub);
+  const segs = $$('.hub-trilho i', hub);
+  const indice = $$('.hub-indice button', hub), notifs = $$('.notif', hub), reflexo = $('.fone-frente .reflexo', hub);
+  const N = caps.length, TOM = caps.map(c => c.classList.contains('cap-laranja') ? 1 : 0);
+  let ativoAntes = -1, avisou = false;
+
+  function quadro() {
+    const vh = innerHeight;
+    if (!reduz) {
+      heroi.style.setProperty('--hp', clamp(scrollY / vh).toFixed(3));
+      acende.forEach(el => el.style.setProperty('--lit', clamp((vh * .86 - el.getBoundingClientRect().top) / (vh * .32)).toFixed(3)));
+      entra.forEach(el => el.style.setProperty('--e', clamp((vh - el.getBoundingClientRect().top) / vh).toFixed(3)));
+    }
+
+    // palco do Hub: s anda de 0 a N com a rolagem; pos é o "capítulo" com a troca suavizada perto de cada virada
+    const r = hub.getBoundingClientRect();
+    const s = clamp(-r.top / (r.height - vh)) * N;
+    let pos = 0;
+    for (let b = 1; b < N; b++) pos += reduz ? +(s >= b) : suave(clamp((s - b + .17) / .34));
+    const i0 = Math.min(Math.floor(pos), N - 1), f = pos - i0, ativo = Math.round(pos);
+    const tom = TOM[i0] + (TOM[Math.min(i0 + 1, N - 1)] - TOM[i0]) * suave(clamp((f - .25) / .5));
+    palco.style.setProperty('--tom', tom.toFixed(3));
+    palco.dataset.tom = tom > .5 ? 'laranja' : 'preto';
+
+    caps.forEach((c, i) => {
+      const d = i - pos;
+      c.style.opacity = clamp(1 - Math.abs(d) * 2.4).toFixed(3);
+      c.style.transform = `translateY(${(d * 40).toFixed(1)}px)`;
+    });
+    telas.forEach((t, i) => {
+      if (i === N - 1) { t.style.opacity = clamp(pos - (N - 2)).toFixed(3); return; } // a tela de bloqueio acende
+      t.style.transform = `translateY(${(clamp(i - pos) * 100).toFixed(2)}%)`;
+      t.style.filter = i === i0 && f > 0 ? `brightness(${(1 - f * .45).toFixed(3)})` : '';
+    });
+
+    const giro = Math.sin(pos * Math.PI), ent = reduz ? 1 : clamp(1 - r.top / vh);
+    const v = reduz ? +(ativo === 2) : clamp(1 - Math.abs(pos - 2) * 1.3); // segundo aparelho no capítulo do funil
+    if (!reduz) frente.style.transform = `translateX(${(-v * 17).toFixed(2)}%) translateY(${((1 - ent) * 14).toFixed(2)}%) rotateX(${((1 - ent) * 24).toFixed(2)}deg) rotateY(${(giro * 17).toFixed(2)}deg) scale(${(.9 + ent * .1 - Math.abs(giro) * .035).toFixed(3)})`;
+    tras.style.opacity = v.toFixed(3);
+    tras.style.transform = `translateX(${(v * 36).toFixed(2)}%) translateY(${(v * 3).toFixed(2)}%) rotate(${(v * 7).toFixed(2)}deg) scale(.86)`;
+    if (!reduz) reflexo.style.transform = `translateX(${(-95 + (s % 1) * 190).toFixed(1)}%)`;
+
+    const q = s - (N - 1);
+    notifs.forEach((n, k) => {
+      const a = reduz ? +(q > .06 + k * .2) : suave(clamp((q - .06 - k * .2) / .16));
+      n.style.opacity = a.toFixed(3);
+      n.style.transform = `translateY(${((1 - a) * -70).toFixed(1)}%) scale(${(.92 + a * .08).toFixed(3)})`;
+    });
+    const chegou = q > .24;
+    if (chegou && !avisou && !reduz) { frente.classList.remove('vibra'); void frente.offsetWidth; frente.classList.add('vibra'); }
+    avisou = chegou;
+
+    segs.forEach((g, i) => g.style.transform = `scaleX(${clamp(s - i).toFixed(3)})`);
+    if (ativo !== ativoAntes) {
+      indice.forEach((b, i) => i === ativo ? b.setAttribute('aria-current', 'step') : b.removeAttribute('aria-current'));
+      ativoAntes = ativo;
+    }
+  }
+
+  let pedido = false;
+  const pede = () => { if (!pedido) { pedido = true; requestAnimationFrame(() => { pedido = false; quadro(); }); } };
+  addEventListener('scroll', pede, { passive: true });
+  addEventListener('resize', pede);
+  quadro();
+
+  indice.forEach((b, i) => b.addEventListener('click', () => {
+    const passo = (hub.offsetHeight - innerHeight) / N;
+    scrollTo({ top: hub.getBoundingClientRect().top + scrollY + passo * (i + .5), behavior: reduz ? 'auto' : 'smooth' });
+  }));
+
+  // carrossel das frentes: contador e setas
+  const trilho = $('.trilho'), cont = $('.contador b'), mods = $$('.modulo', trilho);
+  const largura = () => mods[0].getBoundingClientRect().width + parseFloat(getComputedStyle(trilho).columnGap || 12);
+  trilho.addEventListener('scroll', () => {
+    const fim = trilho.scrollLeft >= trilho.scrollWidth - trilho.clientWidth - 4;
+    cont.textContent = String(fim ? mods.length : Math.round(trilho.scrollLeft / largura()) + 1).padStart(2, '0');
+  }, { passive: true });
+  $$('.seta').forEach(b => b.addEventListener('click', () => trilho.scrollBy({ left: b.dataset.dir * largura(), behavior: reduz ? 'auto' : 'smooth' })));
+
+  // entradas suaves; sem movimento, tudo já está visível
+  if (!reduz) {
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
+    $$('[data-rv]').forEach(el => io.observe(el));
+  }
+})();
+</script>
+</body>
+</html>

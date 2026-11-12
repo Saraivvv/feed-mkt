@@ -1,0 +1,978 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Feed · A empresa que para quando você para</title>
+<meta name="description" content="A Feed é uma agência de IA aplicada do interior de SP. Encontra onde a sua operação trava e instala o que resolve: Agente de IA no WhatsApp, funil de vendas, Instagram no automático e o app Feed Hub.">
+<meta name="theme-color" content="#000000">
+<script>
+  // Sem esta classe a página é um documento comum, tudo visível. Com ela, as cenas ficam presas e animam.
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('motion');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@300;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --preto:#070707; --breu:#000; --laranja:#ffa300; --branco:#f4f5f0; --cinza:#53565a; --azul:#1560d1;
+  --dim:rgba(244,245,240,.66); --dim2:rgba(244,245,240,.42); --linha:rgba(244,245,240,.12);
+  --frio:#c9d3e3;
+  --tarja-topo:56px; --tarja-base:40px; --lado:18px;
+  --cond:"Barlow Condensed","Barlow",system-ui,sans-serif; --sans:"Barlow",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--preto);color:var(--branco);font-family:var(--sans);-webkit-text-size-adjust:100%}
+body{background:var(--preto);font-size:17px;line-height:1.5;overflow-x:clip;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--laranja);outline-offset:3px}
+ul,ol{list-style:none}
+
+/* ---------- tarjas de cinema (letterbox) ---------- */
+.tarja{position:fixed;left:0;right:0;z-index:50;background:var(--breu);display:flex;align-items:center;gap:12px;padding:0 max(14px,env(safe-area-inset-left))}
+.tarja--topo{top:0;height:var(--tarja-topo);justify-content:space-between}
+.tarja--base{bottom:0;height:var(--tarja-base);justify-content:space-between;font-family:var(--cond);font-weight:600;letter-spacing:.16em;font-size:12px;color:var(--dim2);text-transform:uppercase}
+.marca{display:inline-flex;align-items:center;min-height:44px;min-width:44px;padding:0 4px}
+.marca img{height:24px;width:auto}
+.contador{font-family:var(--cond);text-transform:uppercase;text-align:center;line-height:1.1;display:grid}
+.contador-n{font-weight:700;font-size:13px;letter-spacing:.2em;color:var(--branco)}
+.contador-nome{font-weight:500;font-size:11px;letter-spacing:.14em;color:var(--dim2)}
+.contador.troca{animation:pisca .5s steps(4)}
+@keyframes pisca{0%{opacity:.2}25%{opacity:1}50%{opacity:.4}100%{opacity:1}}
+.relogio{font-variant-numeric:tabular-nums;color:var(--branco);letter-spacing:.14em}
+.relogio::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--laranja);margin-right:9px;vertical-align:1px;box-shadow:0 0 8px var(--laranja)}
+.cena-titulo-base{display:none}
+.regua{display:flex;gap:4px}
+.regua i{width:12px;height:3px;background:rgba(244,245,240,.16)}
+.regua i.on{background:var(--laranja)}
+
+/* abertura das tarjas: a imagem abre do meio, como cortina */
+.cortina{position:fixed;inset:0;z-index:55;pointer-events:none}
+.cortina i{position:absolute;left:0;right:0;height:50%;background:var(--breu);animation:abre 1s cubic-bezier(.7,0,.2,1) .1s both}
+.cortina i:first-child{top:0;transform-origin:top}
+.cortina i:last-child{bottom:0;transform-origin:bottom}
+@keyframes abre{from{transform:scaleY(1)}to{transform:scaleY(0)}}
+
+/* grão de película e vinheta, por cima de tudo, sem pegar clique */
+.vinheta{position:fixed;inset:0;z-index:40;pointer-events:none;background:radial-gradient(120% 90% at 50% 50%,transparent 55%,rgba(0,0,0,.62) 100%)}
+.grao{position:fixed;inset:0;z-index:41;pointer-events:none;overflow:hidden;opacity:.06}
+.grao::before{content:"";position:absolute;inset:-80px;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .7 0'/></filter><rect width='100%' height='100%' filter='url(%23g)'/></svg>");animation:grao .9s steps(5) infinite}
+@keyframes grao{0%{transform:translate(0,0)}20%{transform:translate(-31px,17px)}40%{transform:translate(23px,-41px)}60%{transform:translate(-47px,-11px)}80%{transform:translate(13px,37px)}100%{transform:translate(0,0)}}
+
+/* ---------- cena ---------- */
+.cena{position:relative}
+.palco{position:relative;min-height:100vh;min-height:100svh;padding:calc(var(--tarja-topo) + 14px) var(--lado) calc(var(--tarja-base) + 14px);display:grid;align-content:center;overflow:clip}
+.motion .cena--longa{height:calc(var(--altura,200) * 1vh);height:calc(var(--altura,200) * 1svh)}
+.motion .cena--longa>.palco{position:sticky;top:0;height:100vh;height:100svh}
+.luz{position:absolute;inset:0;pointer-events:none}
+.luz--fria{background:radial-gradient(70% 42% at 50% 62%,rgba(21,96,209,.20),transparent 70%),radial-gradient(40% 30% at 50% 66%,rgba(201,211,227,.07),transparent 70%)}
+.luz--quente{background:radial-gradient(75% 45% at 50% 58%,rgba(255,163,0,.17),transparent 70%),radial-gradient(35% 22% at 50% 60%,rgba(255,190,80,.08),transparent 70%)}
+.quadro{position:relative;width:100%;max-width:560px;margin:0 auto;display:grid;grid-template-areas:"cabeca" "ui" "pe";gap:22px;align-content:center}
+.cabeca{grid-area:cabeca}
+.ui{grid-area:ui;min-width:0}
+.pe{grid-area:pe}
+.claquete{font-family:var(--cond);font-weight:600;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim2);margin-bottom:10px}
+.acesa .claquete{color:var(--laranja)}
+.titulo{font-family:var(--cond);font-weight:700;font-size:clamp(40px,11.4vw,64px);line-height:.98;letter-spacing:-.005em;text-wrap:balance}
+.titulo em{font-style:normal;color:var(--laranja)}
+.titulo .apagado{color:var(--dim2)}
+.fecho{color:var(--frio)}
+.fecho .apagado{color:var(--dim2)}
+@media (max-width:899px){.quadro--centro .cabeca,.quadro--centro .pe{text-align:center}}
+.legenda{font-weight:500;font-size:19px;line-height:1.38;color:var(--branco);text-shadow:0 2px 14px rgba(0,0,0,.9);text-wrap:balance}
+.corpo{font-size:17px;line-height:1.52;color:var(--dim);text-wrap:pretty}
+.corpo b{color:var(--branco);font-weight:600}
+.miudo{font-family:var(--cond);font-weight:500;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim2)}
+
+/* botões */
+.botao{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:3px;background:var(--laranja);color:#0a0a09;font-weight:700;font-size:16px;text-decoration:none;letter-spacing:.01em;box-shadow:0 14px 44px -14px rgba(255,163,0,.75);transition:filter .2s,transform .2s}
+.botao:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.botao--contorno{background:transparent;color:var(--branco);box-shadow:inset 0 0 0 1px rgba(244,245,240,.32)}
+.botao--tarja{min-height:44px;padding:0 14px;font-size:14px;box-shadow:none;white-space:nowrap}
+.botao .seta{font-weight:500}
+.tri{width:0;height:0;border-left:9px solid currentColor;border-top:6px solid transparent;border-bottom:6px solid transparent}
+
+/* ---------- abertura ---------- */
+.abertura .palco{align-content:stretch}
+.abertura .quadro{grid-template-areas:none;grid-template-rows:auto 1fr auto;height:100%;gap:18px}
+.flare{position:absolute;left:-20%;right:-20%;top:47%;height:2px;background:linear-gradient(90deg,transparent 0,rgba(255,163,0,.0) 18%,rgba(255,180,40,.95) 50%,rgba(255,163,0,0) 82%,transparent 100%);box-shadow:0 0 22px 4px rgba(255,163,0,.35);opacity:.75}
+.flare::after{content:"";position:absolute;left:30%;right:30%;top:-90px;height:180px;background:radial-gradient(50% 50% at 50% 50%,rgba(255,163,0,.20),transparent 70%)}
+.abertura .luz{background:radial-gradient(60% 35% at 50% 47%,rgba(255,163,0,.10),transparent 70%)}
+.titulo-filme{font-family:var(--cond);font-weight:800;text-transform:uppercase;font-size:clamp(58px,16.6vw,168px);line-height:.88;letter-spacing:-.01em;align-self:center}
+.titulo-filme span{display:block}
+.titulo-filme .ultima{color:var(--laranja)}
+.abre-sub{font-size:18px;line-height:1.45;color:var(--dim);max-width:30em;margin-top:18px}
+.acoes{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.billing{font-family:var(--cond);font-weight:300;font-size:11.5px;line-height:1.5;letter-spacing:.16em;text-transform:uppercase;color:var(--dim2);border-top:1px solid var(--linha);padding-top:12px;text-wrap:balance}
+.billing b{font-weight:600;color:var(--dim)}
+@keyframes sobe{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@keyframes varre{from{transform:scaleX(.1);opacity:0}to{transform:scaleX(1);opacity:.75}}
+.motion .titulo-filme span{animation:sobe .9s cubic-bezier(.2,.7,.2,1) both}
+.motion .titulo-filme span:nth-child(1){animation-delay:.35s}
+.motion .titulo-filme span:nth-child(2){animation-delay:.45s}
+.motion .titulo-filme span:nth-child(3){animation-delay:.55s}
+.motion .titulo-filme span:nth-child(4){animation-delay:.65s}
+.motion .flare{animation:varre 1.4s cubic-bezier(.2,.7,.2,1) .3s both}
+
+/* ---------- interfaces (o "set") ---------- */
+.ui-topo{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--cond);font-weight:600;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim2);padding:0 2px 10px}
+.ui-topo b{color:var(--frio);font-weight:600}
+.notifs{display:grid;gap:8px}
+.notif{display:grid;grid-template-columns:1fr auto;gap:2px 10px;padding:12px 14px 12px 28px;border-radius:14px;background:linear-gradient(180deg,rgba(201,211,227,.10),rgba(201,211,227,.05));border:1px solid rgba(201,211,227,.12);position:relative;box-shadow:0 18px 40px -24px rgba(21,96,209,.6)}
+.notif::before{content:"";position:absolute;left:12px;top:19px;width:7px;height:7px;border-radius:50%;background:var(--frio);box-shadow:0 0 10px rgba(201,211,227,.8)}
+.notif b{font-weight:700;font-size:15px}
+.notif time{font-size:13px;color:var(--dim2);font-variant-numeric:tabular-nums}
+.notif p{grid-column:1/-1;font-size:16px;color:var(--dim);line-height:1.35}
+.relogio-grande{font-family:var(--cond);font-weight:700;font-size:clamp(108px,33vw,220px);line-height:.84;letter-spacing:-.02em;color:var(--frio);font-variant-numeric:tabular-nums;text-shadow:0 0 60px rgba(21,96,209,.45)}
+
+.conversa{display:grid;gap:8px}
+.msg{max-width:84%;padding:10px 14px 8px;border-radius:16px;font-size:16px;line-height:1.38;position:relative}
+.msg time{display:block;text-align:right;font-size:12px;color:var(--dim2);margin-top:3px;font-variant-numeric:tabular-nums}
+.msg--cliente{justify-self:start;background:rgba(244,245,240,.08);border:1px solid rgba(244,245,240,.08);border-bottom-left-radius:4px}
+.msg--voce{justify-self:end;background:rgba(201,211,227,.16);border-bottom-right-radius:4px}
+.msg--agente{justify-self:end;background:linear-gradient(180deg,rgba(255,163,0,.16),rgba(255,163,0,.09));border:1px solid rgba(255,163,0,.32);border-bottom-right-radius:4px}
+.msg-autor{display:block;font-family:var(--cond);font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--laranja);margin-bottom:2px}
+.digitando{position:absolute;top:0;right:0;width:30%;height:38%;display:flex;align-items:center;justify-content:center;gap:6px;opacity:0;pointer-events:none}
+.digitando i{width:7px;height:7px;border-radius:50%;background:var(--laranja);opacity:.8}
+.espera{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:12px;padding:2px 0 2px 18px}
+.espera-linha{width:2px;height:110px;background:repeating-linear-gradient(180deg,rgba(201,211,227,.55) 0 5px,transparent 5px 10px)}
+.espera-tempo{font-family:var(--cond);font-weight:600;font-size:22px;letter-spacing:.02em;color:var(--frio);font-variant-numeric:tabular-nums}
+.espera-tempo small{display:block;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim2)}
+.nota{border-radius:14px;padding:12px 14px;background:#17120a;border:1px dashed rgba(255,163,0,.45);border-left:3px solid var(--laranja);font-size:15.5px;line-height:1.42;color:var(--branco);box-shadow:0 20px 60px -30px rgba(255,163,0,.7)}
+.nota-topo{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-size:13px;color:var(--dim);margin-bottom:5px}
+.nota-topo span{font-weight:600;font-size:12px;color:var(--laranja);background:rgba(255,163,0,.14);border-radius:999px;padding:1px 9px}
+
+.pendencias{display:grid;gap:0;border-top:1px solid var(--linha)}
+.pend{display:grid;grid-template-columns:22px 1fr auto;gap:2px 12px;align-items:start;padding:13px 2px;border-bottom:1px solid var(--linha)}
+.caixa{width:18px;height:18px;border:1.5px solid var(--dim2);border-radius:4px;margin-top:3px}
+.pend b{font-weight:600;font-size:16.5px;line-height:1.3}
+.pend small{grid-column:2;font-size:14px;color:var(--dim2)}
+.prazo{grid-row:1/3;grid-column:3;display:grid;justify-items:end;font-family:var(--cond);font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase}
+.prazo .hoje{position:relative;color:var(--dim2)}
+.risco{position:absolute;left:-2px;right:-2px;top:52%;height:1.5px;background:var(--frio)}
+.prazo .amanha{color:var(--frio)}
+
+/* cena 04: a luz acende */
+.cena--luz .quadro{grid-template-areas:none;text-align:center;justify-items:center;gap:18px;max-width:900px}
+.legendas{display:grid}.legendas>*{grid-area:1/1}.legendas .corta{opacity:0}
+.fita{position:absolute;inset:0;display:grid;align-content:space-between;padding:calc(var(--tarja-topo) + 30px) var(--lado) calc(var(--tarja-base) + 30px);opacity:0;pointer-events:none}
+.fita p{font-family:var(--cond);font-weight:600;font-size:clamp(24px,6.4vw,44px);line-height:1.1;color:var(--frio);opacity:.22;max-width:80%;transform:skewX(-8deg)}
+.fita p:nth-child(even){justify-self:end;text-align:right}
+.luz--acende{background:radial-gradient(70% 52% at 50% 56%,rgba(255,163,0,.30),transparent 68%),radial-gradient(30% 20% at 50% 46%,rgba(255,200,110,.16),transparent 70%)}
+.rebobina{font-family:var(--cond);font-weight:700;font-size:clamp(84px,25vw,170px);line-height:.85;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:var(--laranja);text-shadow:0 0 50px rgba(255,163,0,.45)}
+.logo-grande{width:min(190px,52vw);height:auto;filter:drop-shadow(0 0 30px rgba(255,163,0,.35))}
+.promessa{font-family:var(--cond);font-weight:700;font-size:clamp(32px,8.6vw,64px);line-height:1.02;text-wrap:balance}
+.promessa span{display:inline-block}
+.promessa em{font-style:normal;color:var(--laranja)}
+
+/* cena 06: funil */
+.funil{display:grid;gap:14px}
+.trilho{position:relative;padding-top:18px}
+.trilho ol{display:grid;grid-template-columns:repeat(4,1fr)}
+.trilho::before,.trilho-fill{content:"";position:absolute;top:5px;left:12.5%;right:12.5%;height:2px;background:rgba(244,245,240,.16)}
+.trilho-fill{background:var(--laranja);transform-origin:left;transform:scaleX(.6667);box-shadow:0 0 12px rgba(255,163,0,.6)}
+.trilho li{position:relative;text-align:center;font-family:var(--cond);font-weight:600;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim2);line-height:1.15;padding:6px 2px 0}
+.trilho li::before{content:"";position:absolute;left:50%;top:-18px;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:var(--preto);border:2px solid rgba(244,245,240,.3)}
+.trilho li.on{color:var(--branco)}
+.trilho li.on::before{background:var(--laranja);border-color:var(--laranja);box-shadow:0 0 12px var(--laranja)}
+.lead{padding:14px 16px;border-radius:14px;background:linear-gradient(180deg,rgba(244,245,240,.09),rgba(244,245,240,.04));border:1px solid rgba(244,245,240,.12)}
+.lead-nome{font-weight:700;font-size:18px}
+.lead p{font-size:15px;color:var(--dim)}
+.lead-etapa{display:inline-block;margin-top:8px;font-family:var(--cond);font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--laranja)}
+.log{display:grid;gap:0}
+.log li{display:grid;grid-template-columns:86px 1fr;gap:12px;padding:10px 0;border-top:1px solid var(--linha);font-size:15px;line-height:1.38;color:var(--dim)}
+.log li b{font-family:var(--cond);font-weight:600;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--branco);padding-top:2px}
+
+/* cena 07: instagram */
+.agenda{display:grid;border-top:1px solid var(--linha);margin-bottom:16px}
+.agenda li{display:grid;grid-template-columns:78px 1fr auto;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid var(--linha);font-size:15px;color:var(--dim)}
+.agenda .dia{font-family:var(--cond);font-weight:600;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--branco)}
+.status{font-family:var(--cond);font-weight:600;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim2)}
+.status--ok{color:var(--laranja)}
+.comentario,.dm{padding:12px 14px;border-radius:14px;font-size:15.5px}
+.comentario{background:rgba(244,245,240,.07);border:1px solid rgba(244,245,240,.1);max-width:78%}
+.comentario .quem,.dm .quem{display:block;font-size:13px;color:var(--dim2)}
+.palavra{font-family:var(--cond);font-weight:800;font-size:30px;letter-spacing:.06em;line-height:1.05}
+.ligacao{display:flex;align-items:center;gap:10px;height:38px;padding-left:30px}
+.ligacao i{width:2px;height:100%;background:linear-gradient(var(--laranja),rgba(255,163,0,.2));box-shadow:0 0 10px rgba(255,163,0,.6)}
+.ligacao span{font-family:var(--cond);font-weight:600;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--laranja)}
+.dm{background:linear-gradient(180deg,rgba(255,163,0,.16),rgba(255,163,0,.08));border:1px solid rgba(255,163,0,.32);margin-left:auto;max-width:86%}
+
+/* cena 08: elenco */
+.creditos{display:grid;gap:14px;text-align:center}
+.creditos li{display:grid;gap:1px}
+.papel{font-family:var(--cond);font-weight:500;font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--dim2)}
+.nome{font-family:var(--cond);font-weight:700;font-size:26px;line-height:1.05;letter-spacing:.02em}
+.creditos .sep{height:1px;width:56px;margin:2px auto;background:rgba(255,163,0,.5)}
+
+/* cena 09: Feed Hub */
+.cena--hub .quadro{grid-template-areas:"topo" "fone" "lado";gap:14px;justify-items:center;max-width:1180px}
+.hub-topo{grid-area:topo;text-align:center;display:grid;justify-items:center}
+.hub-topo .claquete{margin-bottom:8px}
+.hub-assinatura{height:26px;width:auto}
+.hub-frase{font-family:var(--cond);font-weight:600;font-size:24px;line-height:1.1;margin-top:8px}
+.luz--hub{background:radial-gradient(42% 34% at 50% 52%,rgba(255,163,0,.36),transparent 70%),radial-gradient(80% 50% at 50% 60%,rgba(255,163,0,.08),transparent 70%)}
+.fone{grid-area:fone;position:relative;height:min(calc(100vh - 372px),150vw);height:min(calc(100svh - 372px),150vw);aspect-ratio:820/1767}
+.fone::before{content:"";position:absolute;inset:-12% -40%;background:radial-gradient(50% 46% at 50% 50%,rgba(255,163,0,.42),rgba(255,163,0,.12) 45%,transparent 72%);z-index:-1}
+.tela{position:absolute;left:4.02%;top:1.96%;width:91.31%;height:95.91%;border-radius:7%/3.2%;overflow:hidden;background:#000;container-type:inline-size}
+.tela-img{position:absolute;inset:0;display:flex;flex-direction:column;background:var(--fundo,#f4f4f5)}
+.tela-img img{width:100%;height:auto;flex:none}
+.status-bar{flex:none;height:5.38%;display:flex;align-items:center;justify-content:space-between;padding:0 7cqw 0 8cqw;font:600 3.7cqw/1 var(--sans);color:#1b1b1b;padding-top:.6cqw}
+.status-bar span{display:flex;gap:1.6cqw;align-items:center}
+.status-bar svg{height:2.9cqw;width:auto;fill:currentColor}
+.tela-img--escura .status-bar{color:#f4f5f0}
+.fone-moldura{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.fone-escuro{position:absolute;inset:-2%;background:#000;opacity:0;pointer-events:none;border-radius:12%/6%}
+html:not(.motion) .tela-img:not(.tela-capa){display:none}
+.hub-lado{grid-area:lado;display:grid;gap:12px;justify-items:center;text-align:center;width:100%}
+.hub-legendas{display:grid}
+.motion .hub-legendas li{grid-area:1/1;opacity:0;transform:translateY(10px);transition:opacity .3s,transform .3s}
+.motion .hub-legendas li.ativa{opacity:1;transform:none}
+.hub-legendas li{font-family:var(--cond);font-weight:600;font-size:21px;line-height:1.12;text-wrap:balance;max-width:20em}
+.hub-legendas li small{display:block;font-family:var(--sans);font-weight:400;font-size:14.5px;color:var(--dim);margin-top:4px}
+html:not(.motion) .hub-legendas{gap:12px}
+.hub-ticks{display:flex;gap:6px}
+.hub-ticks i{width:28px;height:3px;background:rgba(244,245,240,.18);position:relative;overflow:hidden}
+.hub-ticks i::after{content:"";position:absolute;inset:0;background:var(--laranja);transform-origin:left;transform:scaleX(var(--t,1))}
+.hub-cta{display:flex;align-items:center;justify-content:center;gap:14px}
+.hub-cta .miudo{max-width:150px;text-align:left;line-height:1.3;font-size:12px}
+
+/* cena 10: amanhecer */
+.sol{position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 52% at 50% 100%,rgba(255,163,0,.58),rgba(255,110,0,.18) 45%,transparent 74%),linear-gradient(0deg,rgba(255,163,0,.12),transparent 65%)}
+.sol::after{content:"";position:absolute;left:0;right:0;bottom:calc(var(--tarja-base) + 8px);height:1px;background:linear-gradient(90deg,transparent,rgba(255,200,110,.9),transparent);box-shadow:0 0 18px 3px rgba(255,163,0,.5)}
+.resumo{border-radius:16px;padding:16px 16px 6px;background:rgba(10,8,5,.62);border:1px solid rgba(255,163,0,.22);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.resumo-topo{font-family:var(--cond);font-weight:600;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--laranja);margin-bottom:6px}
+.resumo li{display:grid;grid-template-columns:18px 1fr;gap:10px;padding:10px 0;border-top:1px solid var(--linha);font-size:15.5px;line-height:1.38;color:var(--dim)}
+.resumo li::before{content:"";width:9px;height:9px;margin-top:6px;border-radius:50%;background:var(--laranja);opacity:.85}
+.resumo li.voce{color:var(--branco)}
+.resumo li.voce::before{background:transparent;border:2px solid var(--laranja)}
+.resumo li b{color:var(--branco);font-weight:600}
+
+/* ---------- epílogo: fluxo normal ---------- */
+.bloco{position:relative;padding:88px var(--lado) 72px;overflow:clip}
+.bloco>.dentro{max-width:1180px;margin:0 auto;position:relative}
+.bloco .titulo{max-width:16em}
+.passos .luz{background:radial-gradient(80% 40% at 50% 0%,rgba(255,163,0,.16),transparent 70%)}
+.pelicula{display:grid;gap:0;margin-top:34px;padding:0 22px;position:relative;background:#0d0c0a}
+.pelicula::before,.pelicula::after{content:"";position:absolute;top:0;bottom:0;width:22px;background:radial-gradient(circle at 50% 50%,#000 0 4.5px,transparent 5px) 50% 0/22px 26px repeat-y}
+.pelicula::before{left:0}.pelicula::after{right:0}
+.fotograma{padding:26px 20px 28px;border-bottom:6px solid #000;position:relative;background:radial-gradient(90% 70% at 30% 0%,rgba(255,163,0,.10),transparent 70%),#111;}
+.fotograma:last-child{border-bottom:0}
+.fotograma .num{font-family:var(--cond);font-weight:800;font-size:76px;line-height:.8;color:transparent;-webkit-text-stroke:1.5px rgba(255,163,0,.85)}
+.fotograma .etapa{font-family:var(--cond);font-weight:600;font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim2);margin:14px 0 4px}
+.fotograma h3{font-family:var(--cond);font-weight:700;font-size:32px;line-height:1.02;margin-bottom:10px}
+.fotograma p{font-size:16.5px;color:var(--dim);line-height:1.5}
+.fotograma a{color:var(--laranja)}
+.passos .acoes{margin-top:30px}
+
+.prova{text-align:center}
+.prova .luz{background:radial-gradient(60% 50% at 50% 50%,rgba(255,163,0,.12),transparent 70%)}
+.prova .dentro{max-width:820px;display:grid;justify-items:center}
+.intertitulo{font-family:var(--cond);font-weight:800;text-transform:uppercase;font-size:clamp(46px,13.5vw,124px);line-height:.9;letter-spacing:-.005em;padding:22px 0;border-top:1px solid rgba(255,163,0,.45);border-bottom:1px solid rgba(255,163,0,.45);margin:8px 0 28px;text-wrap:balance}
+.prova .corpo{font-size:18.5px;max-width:34em;color:var(--branco)}
+.no-ar{display:grid;gap:0;margin-top:28px;width:100%;max-width:520px;text-align:left}
+.no-ar li{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:baseline;padding:12px 2px;border-top:1px solid var(--linha);font-size:16px}
+.no-ar li:last-child{border-bottom:1px solid var(--linha)}
+.no-ar li span{font-family:var(--cond);font-weight:600;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--laranja)}
+.prova .miudo{margin-top:18px}
+
+.faq .dentro{max-width:820px}
+.faq-lista{margin-top:30px;border-top:1px solid var(--linha)}
+.faq details{border-bottom:1px solid var(--linha)}
+.faq summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:1fr 28px;gap:14px;align-items:center;min-height:64px;padding:14px 2px;font-weight:600;font-size:18px;line-height:1.3}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";width:14px;height:14px;justify-self:center;background:linear-gradient(var(--laranja),var(--laranja)) 50%/100% 2px no-repeat,linear-gradient(var(--laranja),var(--laranja)) 50%/2px 100% no-repeat;transition:transform .25s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 2px 20px;color:var(--dim);font-size:16.5px;line-height:1.55;max-width:44em}
+.faq details a{color:var(--laranja)}
+.faq-mais{margin-top:26px;color:var(--dim)}
+.faq-mais a{color:var(--laranja);font-weight:600}
+
+.chamada{text-align:center;padding-top:110px;padding-bottom:110px}
+.chamada .luz{background:radial-gradient(70% 55% at 50% 60%,rgba(255,163,0,.30),transparent 70%)}
+.chamada .dentro{display:grid;justify-items:center;max-width:860px}
+.chamada .titulo{font-size:clamp(46px,13vw,120px);text-transform:uppercase;font-weight:800;line-height:.9}
+.chamada .corpo{max-width:32em;margin-top:18px;font-size:18px}
+.chamada .acoes{justify-content:center;flex-direction:column;align-items:stretch;width:100%;max-width:360px}
+
+.rodape{position:relative;padding:56px var(--lado) calc(var(--tarja-base) + 34px);border-top:1px solid var(--linha);text-align:center;background:#050505}
+.rodape .dentro{max-width:900px;margin:0 auto;display:grid;justify-items:center;gap:22px}
+.rodape .uma{font-family:var(--cond);font-weight:500;font-size:12.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--dim2)}
+.rodape .logo-rodape{width:150px;height:auto}
+.links-seo{display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px}
+.links-seo a,.links-rodape a,.contato a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;min-width:44px;color:var(--dim);text-decoration:none;font-size:15px}
+.links-seo a:hover,.links-rodape a:hover,.contato a:hover{color:var(--laranja)}
+.legal{font-family:var(--cond);font-weight:600;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.rodape address{font-style:normal;color:var(--dim2);font-size:15px;line-height:1.5;max-width:34em}
+.contato,.links-rodape{display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px}
+.contato a{color:var(--branco)}
+.rodape small{color:var(--dim2);font-size:13px}
+
+/* ---------- tablet ---------- */
+@media (min-width:700px){
+  :root{--lado:32px}
+  .quadro{max-width:600px}
+  .relogio-grande{font-size:200px}
+  .notif p{font-size:17px}
+  .pelicula{max-width:640px}
+}
+/* ---------- desktop ---------- */
+@media (min-width:900px){
+  :root{--tarja-topo:68px;--tarja-base:50px;--lado:48px}
+  .marca img{height:28px}
+  .contador-n{font-size:14px}
+  .tarja--base{font-size:13px}
+  .cena-titulo-base{display:block}
+  .quadro{max-width:1180px;grid-template-columns:minmax(0,1fr) minmax(0,480px);grid-template-areas:"cabeca ui" "pe ui";column-gap:clamp(48px,7vw,120px);row-gap:26px}
+  .quadro--inverso{grid-template-columns:minmax(0,480px) minmax(0,1fr);grid-template-areas:"ui cabeca" "ui pe"}
+  .cabeca{align-self:end}
+  .pe{align-self:start;max-width:30em}
+  .ui{align-self:center}
+  .titulo{font-size:clamp(56px,5.4vw,88px)}
+  .relogio-grande{font-size:clamp(170px,16vw,250px)}
+  .legenda{font-size:22px}
+  .corpo{font-size:18px}
+  .abertura .quadro{max-width:1240px;grid-template-columns:1fr}
+  .titulo-filme{font-size:clamp(96px,9.6vw,168px)}
+  .titulo-filme span{display:inline}
+  .titulo-filme span:nth-child(2)::after{content:"\A";white-space:pre}
+  .abertura .base-abre{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);align-items:end;gap:56px}
+  .abre-sub{font-size:20px}
+  .cena--luz .quadro{max-width:980px;grid-template-columns:1fr}
+  .cena--hub .quadro{grid-template-columns:1fr auto 1fr;grid-template-areas:"topo fone lado";column-gap:clamp(40px,5vw,90px);align-items:center}
+  .hub-topo{text-align:left;justify-items:start;justify-self:end;max-width:360px}
+  .hub-assinatura{height:40px}
+  .hub-frase{font-size:clamp(40px,3.6vw,58px);font-weight:700;line-height:1;margin-top:16px}
+  .fone{height:min(calc(100vh - 170px),780px);height:min(calc(100svh - 170px),780px)}
+  .hub-lado{justify-self:start;justify-items:start;text-align:left;max-width:360px;gap:18px}
+  .hub-legendas li{font-size:clamp(30px,2.6vw,40px)}
+  .hub-legendas li small{font-size:17px}
+  .hub-cta{justify-content:flex-start;margin-top:10px}
+  .bloco{padding:130px var(--lado) 110px}
+  .pelicula{grid-template-columns:repeat(3,1fr);padding:22px 0;max-width:none}
+  .pelicula::before,.pelicula::after{left:0;right:0;top:auto;bottom:auto;width:auto;height:22px;background:radial-gradient(circle at 50% 50%,#000 0 4.5px,transparent 5px) 0 50%/26px 22px repeat-x}
+  .pelicula::before{top:0}.pelicula::after{bottom:0}
+  .fotograma{border-bottom:0;border-right:6px solid #000;padding:34px 30px 38px}
+  .fotograma:last-child{border-right:0}
+  .chamada .acoes{flex-direction:row;max-width:none;align-items:center}
+}
+@media (min-width:1200px){.ui{zoom:1.16}}
+@media (max-height:700px) and (max-width:899px){
+  .titulo{font-size:36px}.relogio-grande{font-size:86px}.notif{padding:9px 12px 9px 26px}.notif p,.msg{font-size:15px}.legenda{font-size:17px}.corpo{font-size:15.5px}.quadro{gap:14px}
+}
+@media (prefers-reduced-motion:reduce){
+  .cortina,.grao{display:none}
+  *{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-sinal" viewBox="0 0 16 12"><path d="M1 11h2V8H1zm4 0h2V6H5zm4 0h2V3H9zm4 0h2V0h-2z"/></symbol>
+  <symbol id="i-wifi" viewBox="0 0 16 12"><path d="M8 11.6l2.3-2.7a3.5 3.5 0 0 0-4.6 0zM3.4 6.3l1.4 1.6a4.9 4.9 0 0 1 6.4 0l1.4-1.6a7 7 0 0 0-9.2 0zM.6 3.1L2 4.7a9 9 0 0 1 12 0l1.4-1.6a11.1 11.1 0 0 0-14.8 0z"/></symbol>
+  <symbol id="i-bat" viewBox="0 0 24 12"><path d="M3 0.6h14.4a2.4 2.4 0 0 1 2.4 2.4v6a2.4 2.4 0 0 1-2.4 2.4H3A2.4 2.4 0 0 1 .6 9V3A2.4 2.4 0 0 1 3 .6zm0 1.2A1.2 1.2 0 0 0 1.8 3v6A1.2 1.2 0 0 0 3 10.2h14.4A1.2 1.2 0 0 0 18.6 9V3a1.2 1.2 0 0 0-1.2-1.2zm.6 1.2h11.6v6H3.6zM21 4h1.2a.8.8 0 0 1 .8.8v2.4a.8.8 0 0 1-.8.8H21z"/></symbol>
+</svg>
+
+<header class="tarja tarja--topo">
+  <a class="marca" href="#abertura" aria-label="Feed, voltar ao início"><img src="assets/feed-logo-branca.png" alt="Feed" width="480" height="160"></a>
+  <p class="contador" aria-hidden="true"><span class="contador-n">Abertura</span><span class="contador-nome">10 cenas</span></p>
+  <a class="botao botao--tarja" href="https://agenciafeed.com/diagnostico">Diagnóstico grátis</a>
+</header>
+<div class="tarja tarja--base" aria-hidden="true">
+  <span class="relogio">TER 22:06</span>
+  <span class="cena-titulo-base">Feed · agência de IA aplicada</span>
+  <span class="regua"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+</div>
+<div class="cortina" aria-hidden="true"><i></i><i></i></div>
+<div class="vinheta" aria-hidden="true"></div>
+<div class="grao" aria-hidden="true"></div>
+
+<main>
+
+<!-- ABERTURA -->
+<section class="cena abertura" id="abertura" data-i="0" data-rotulo="Abertura" data-nome="10 cenas" data-hora="TER 22:06">
+  <div class="palco">
+    <div class="luz" aria-hidden="true"></div>
+    <div class="flare" aria-hidden="true"></div>
+    <div class="quadro">
+      <p class="claquete">Feed apresenta · baseado na rotina de muita empresa</p>
+      <h1 class="titulo-filme"><span>A empresa</span> <span>que para</span> <span>quando</span> <span class="ultima">você para.</span></h1>
+      <div class="base-abre">
+        <div>
+          <p class="abre-sub">A Feed é uma agência de IA aplicada para pequena e média empresa. Role e assista, em 10 cenas, o que muda na sua rotina quando a operação roda sem você empurrar.</p>
+          <div class="acoes">
+            <a class="botao" href="https://agenciafeed.com/diagnostico">Diagnóstico do Gargalo <span class="seta" aria-hidden="true">↗</span></a>
+            <a class="botao botao--contorno" href="#c01"><span class="tri" aria-hidden="true"></span> Assistir</a>
+          </div>
+        </div>
+        <p class="billing"><b>Feed</b> apresenta · Agente de IA no WhatsApp · Funil de vendas · Instagram no automático · Agentes especialistas · Marca, conteúdo, site e SEO · e o app <b>Feed Hub</b> · rodado em Ribeirão Preto e Bebedouro, interior de SP</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CENA 01 -->
+<section class="cena cena--longa" id="c01" style="--altura:200" data-i="1" data-rotulo="Cena 01 / 10" data-nome="22h07" data-hora="TER 22:07">
+  <div class="palco">
+    <div class="luz luz--fria" aria-hidden="true"></div>
+    <div class="quadro">
+      <div class="cabeca">
+        <p class="claquete entra">Cena 01 · Int. Escritório. Noite.</p>
+        <h2 class="relogio-grande entra" aria-label="22h07">22h07</h2>
+      </div>
+      <div class="ui">
+        <p class="ui-topo"><span>WhatsApp da empresa</span><b class="nao-lidas">4 não lidas</b></p>
+        <ol class="notifs">
+          <li class="notif"><b>Mariana</b><time>21:48</time><p>Oi! Vocês entregam amanhã?</p></li>
+          <li class="notif"><b>Carlos</b><time>21:55</time><p>Qual o valor pra 3 unidades?</p></li>
+          <li class="notif"><b>Número novo</b><time>22:03</time><p>Oi, ainda dá pra pedir orçamento hoje?</p></li>
+          <li class="notif"><b>Mariana</b><time>22:07</time><p>Oi?? Alguém aí?</p></li>
+        </ol>
+      </div>
+      <div class="pe">
+        <p class="legenda">A loja fechou às 18h. O WhatsApp, não. E quem responde é você, do sofá, quando dá.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CENA 02 -->
+<section class="cena cena--longa" id="c02" style="--altura:210" data-i="2" data-rotulo="Cena 02 / 10" data-nome="O lead esfria" data-hora="QUA 08:52">
+  <div class="palco">
+    <div class="luz luz--fria" aria-hidden="true"></div>
+    <div class="quadro quadro--inverso">
+      <div class="cabeca">
+        <p class="claquete entra">Cena 02 · No dia seguinte. 08h52.</p>
+        <h2 class="titulo entra">Quem chama de noite <span class="apagado">não espera até de manhã.</span></h2>
+      </div>
+      <div class="ui">
+        <div class="conversa">
+          <div class="msg msg--cliente">Oi, ainda dá pra pedir orçamento hoje?<time>22:03</time></div>
+          <div class="espera"><i class="espera-linha"></i><p class="espera-tempo"><span class="espera-n">10h37</span><small>sem resposta</small></p></div>
+          <div class="msg msg--voce">Bom dia! Dá sim. Do que você precisa?<time>08:40</time></div>
+          <div class="msg msg--cliente">Obrigado, já resolvi com outra empresa.<time>08:52</time></div>
+        </div>
+      </div>
+      <div class="pe">
+        <p class="legenda">O cliente não sumiu. Ele foi atendido. Só que por outra empresa.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CENA 03 -->
+<section class="cena cena--longa" id="c03" style="--altura:190" data-i="3" data-rotulo="Cena 03 / 10" data-nome="Tudo passa por você" data-hora="QUA 23:52">
+  <div class="palco">
+    <div class="luz luz--fria" aria-hidden="true"></div>
+    <div class="quadro">
+      <div class="cabeca">
+        <p class="claquete entra">Cena 03 · Int. Casa. 23h52.</p>
+        <h2 class="titulo entra">Tudo passa por você.</h2>
+      </div>
+      <div class="ui">
+        <p class="ui-topo"><span>Pendências de hoje</span><b>0 de 4</b></p>
+        <ul class="pendencias">
+          <li class="pend"><i class="caixa"></i><b>Mandar a proposta da transportadora</b><small>rascunho parado desde sexta</small><span class="prazo"><span class="hoje">hoje<i class="risco"></i></span><span class="amanha">amanhã</span></span></li>
+          <li class="pend"><i class="caixa"></i><b>Cobrar quem pediu orçamento e sumiu</b><small>ninguém lembrou de chamar de volta</small><span class="prazo"><span class="hoje">hoje<i class="risco"></i></span><span class="amanha">amanhã</span></span></li>
+          <li class="pend"><i class="caixa"></i><b>Postar no Instagram</b><small>último post: três semanas atrás</small><span class="prazo"><span class="hoje">hoje<i class="risco"></i></span><span class="amanha">amanhã</span></span></li>
+          <li class="pend"><i class="caixa"></i><b>Responder o WhatsApp do dia</b><small>de novo, à noite</small><span class="prazo"><span class="hoje">hoje<i class="risco"></i></span><span class="amanha">amanhã</span></span></li>
+        </ul>
+      </div>
+      <div class="pe">
+        <p class="titulo fecho">Então tudo para <span class="apagado">quando você para.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CENA 04 -->
+<section class="cena cena--longa cena--luz acesa" id="c04" style="--altura:270" data-i="4" data-rotulo="Cena 04 / 10" data-nome="A luz acende" data-hora="QUA 23:52">
+  <div class="palco">
+    <div class="luz luz--fria" aria-hidden="true"></div>
+    <div class="luz luz--acende" aria-hidden="true"></div>
+    <div class="fita" aria-hidden="true">
+      <p>Oi?? Alguém aí?</p><p>Obrigado, já resolvi com outra empresa.</p><p>Mandar a proposta da transportadora</p>
+      <p>10h37 sem resposta</p><p>Postar no Instagram</p><p>Qual o valor pra 3 unidades?</p><p>Cobrar quem sumiu</p>
+    </div>
+    <div class="quadro">
+      <p class="claquete entra">Cena 04 · Volta a fita</p>
+      <p class="rebobina" aria-label="22h07">22:07</p>
+      <div class="legendas"><p class="legenda corta" aria-hidden="true">Corta. Volta a fita.</p><p class="legenda volta">A mesma terça, 22h07. Agora com a Feed.</p></div>
+      <img class="logo-grande" src="assets/feed-logo-branca.png" alt="Feed" width="480" height="160">
+      <h2 class="promessa"><span>A Feed encontra</span> <span>onde a sua operação trava</span> <span>e <em>instala o que resolve,</em></span> <span>rodando na sua rotina.</span></h2>
+      <p class="corpo promessa-sub">Sem ferramenta solta, sem time de TI do seu lado. Cada coisa que a Feed instala é uma cena daqui pra frente.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CENA 05 -->
+<section class="cena cena--longa acesa" id="c05" style="--altura:210" data-i="5" data-rotulo="Cena 05 / 10" data-nome="O Agente atende" data-hora="TER 22:03">
+  <div class="palco">
+    <div class="luz luz--quente" aria-hidden="true"></div>
+    <div class="quadro">
+      <div class="cabeca">
+        <p class="claquete entra">Cena 05 · 22h03. O mesmo WhatsApp.</p>
+        <h2 class="titulo entra">Agora alguém <em>responde na hora.</em></h2>
+      </div>
+      <div class="ui">
+        <div class="conversa">
+          <div class="msg msg--cliente">Oi, ainda dá pra pedir orçamento hoje?<time>22:03</time></div>
+          <div class="msg msg--agente"><div class="msg-conteudo"><span class="msg-autor">Agente</span>Oi! Dá sim. Me conta o que você precisa e pra quando, que eu já deixo tudo pronto pra equipe.<time>22:03</time></div><span class="digitando" aria-hidden="true"><i></i><i></i><i></i></span></div>
+          <div class="msg msg--cliente">3 unidades, pra sexta.<time>22:04</time></div>
+          <div class="nota"><p class="nota-topo">Nota interna · Agente <span>Só a equipe vê</span></p>Resumo: quer 3 unidades para sexta. Próximo passo: confirmar a entrega e enviar o orçamento.</div>
+        </div>
+      </div>
+      <div class="pe">
+        <p class="corpo">O <b>Agente de IA no WhatsApp</b> responde na hora, 24 horas. Resolve o simples, deixa o resumo pronto e passa pra sua equipe quando a conversa pede.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CENA 06 -->
+<section class="cena cena--longa acesa" id="c06" style="--altura:210" data-i="6" data-rotulo="Cena 06 / 10" data-nome="O funil anda" data-hora="TER 22:09">
+  <div class="palco">
+    <div class="luz luz--quente" aria-hidden="true"></div>
+    <div class="quadro quadro--inverso">
+      <div class="cabeca">
+        <p class="claquete entra">Cena 06 · 22h09. O funil de vendas.</p>
+        <h2 class="titulo entra">Cada oportunidade <em>no seu lugar.</em></h2>
+      </div>
+      <div class="ui">
+        <div class="funil">
+          <div class="trilho"><ol><li class="on">Novo contato</li><li class="on">Em conversa</li><li class="on">Proposta</li><li>Fechado</li></ol><i class="trilho-fill" aria-hidden="true"></i></div>
+          <article class="lead">
+            <p class="lead-nome">Número novo, das 22h03</p>
+            <p>3 unidades pra sexta · resumo do Agente anexado</p>
+            <span class="lead-etapa">Etapa: <b>Proposta enviada</b></span>
+          </article>
+          <ul class="log">
+            <li><b>Novo contato</b>Entrou no funil sozinho, com o resumo do Agente.</li>
+            <li><b>Em conversa</b>Se o cliente some, o acompanhamento sai sozinho. Ninguém fica esquecido.</li>
+            <li><b>Proposta</b>Proposta em PDF montada e enviada pelo celular.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="pe">
+        <p class="corpo">Um <b>funil de vendas (CRM)</b> onde cada lead tem etapa, próximo passo e lembrete. A proposta que ficava parada desde sexta sai no mesmo dia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CENA 07 -->
+<section class="cena cena--longa acesa" id="c07" style="--altura:190" data-i="7" data-rotulo="Cena 07 / 10" data-nome="O Instagram" data-hora="TER 23:10">
+  <div class="palco">
+    <div class="luz luz--quente" aria-hidden="true"></div>
+    <div class="quadro">
+      <div class="cabeca">
+        <p class="claquete entra">Cena 07 · 23h10. O Instagram.</p>
+        <h2 class="titulo entra">O post sai sozinho. <em>O comentário vira conversa.</em></h2>
+      </div>
+      <div class="ui">
+        <ul class="agenda">
+          <li><span class="dia">Seg 11h30</span><span>Novidades da semana</span><span class="status status--ok">Publicado</span></li>
+          <li><span class="dia">Qua 11h30</span><span>Carrossel: como escolher</span><span class="status">Agendado</span></li>
+          <li><span class="dia">Sex 11h30</span><span>Bastidores da loja</span><span class="status">Agendado</span></li>
+        </ul>
+        <div class="comentario"><span class="quem">Alguém comentou no post</span><p class="palavra">AGENDA</p></div>
+        <div class="ligacao" aria-hidden="true"><i></i><span>na hora</span></div>
+        <div class="dm"><span class="quem">Mensagem direta enviada</span>Oi! Aqui está o link pra agendar o seu horário.</div>
+      </div>
+      <div class="pe">
+        <p class="corpo"><b>Instagram no automático:</b> posts agendados e publicados sozinhos, com as métricas à vista. Quem comenta a palavra-chave recebe o link por mensagem direta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CENA 08 -->
+<section class="cena cena--longa acesa" id="c08" style="--altura:180" data-i="8" data-rotulo="Cena 08 / 10" data-nome="Elenco de apoio" data-hora="TER 23:30">
+  <div class="palco">
+    <div class="luz luz--quente" aria-hidden="true"></div>
+    <div class="quadro quadro--inverso quadro--centro">
+      <div class="cabeca">
+        <p class="claquete entra">Cena 08 · Elenco de apoio</p>
+        <h2 class="titulo entra">Uma equipe de agentes, <em>pronta pra tarefa.</em></h2>
+      </div>
+      <div class="ui">
+        <ul class="creditos">
+          <li><span class="papel">Atende o WhatsApp</span><span class="nome">Agente de Atendimento</span></li>
+          <li><span class="papel">Calcula o frete</span><span class="nome">Agente de Logística</span></li>
+          <li><span class="papel">Monta o orçamento</span><span class="nome">Agente Comercial</span></li>
+          <li><span class="papel">Prepara o relatório</span><span class="nome">Agente de Relatórios</span></li>
+          <li class="sep" aria-hidden="true"></li>
+          <li><span class="papel">Direção de arte</span><span class="nome">Marca e conteúdo</span></li>
+          <li><span class="papel">Para ser encontrado</span><span class="nome">Site e SEO</span></li>
+        </ul>
+      </div>
+      <div class="pe">
+        <p class="corpo">Os <b>agentes especialistas</b> fazem tarefa pelo chat: você pede, eles fazem, você confere. E o lado de marketing entra quando serve à operação.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CENA 09: FEED HUB -->
+<section class="cena cena--longa cena--hub acesa" id="c09" style="--altura:420" data-i="9" data-rotulo="Cena 09 / 10" data-nome="Feed Hub" data-hora="TER 23:58">
+  <div class="palco">
+    <div class="luz luz--hub" aria-hidden="true"></div>
+    <div class="quadro">
+      <div class="hub-topo">
+        <p class="claquete entra">Cena 09 · 23h58. Tudo no seu celular.</p>
+        <img class="hub-assinatura" src="assets/feed-hub-branca.svg" alt="Feed Hub" width="1642" height="300">
+        <h2 class="hub-frase">Sua empresa na palma da mão.</h2>
+      </div>
+      <div class="fone">
+        <div class="tela">
+          <figure class="tela-img tela-img--escura" style="--fundo:#0e0e0a"><div class="status-bar"><b>23:58</b><span><svg><use href="#i-sinal"/></svg><svg><use href="#i-wifi"/></svg><svg><use href="#i-bat"/></svg></span></div><img src="assets/tela-01-entrar.webp" alt="Tela de entrada do Feed Hub, com e-mail e senha da empresa" width="720" height="1542"></figure>
+          <figure class="tela-img tela-capa" style="--fundo:#f4f4f5"><div class="status-bar"><b>23:58</b><span><svg><use href="#i-sinal"/></svg><svg><use href="#i-wifi"/></svg><svg><use href="#i-bat"/></svg></span></div><img src="assets/tela-02-inicio.webp" alt="Tela Início do Feed Hub: uma peça aguardando aprovação aparece primeiro" width="720" height="1542"></figure>
+          <figure class="tela-img" style="--fundo:#ecf0ef"><div class="status-bar"><b>23:58</b><span><svg><use href="#i-sinal"/></svg><svg><use href="#i-wifi"/></svg><svg><use href="#i-bat"/></svg></span></div><img src="assets/tela-03-atendimento.webp" alt="Tela de Atendimento do Feed Hub: conversa do WhatsApp com nota interna e resumo do Agente" width="720" height="1542"></figure>
+          <figure class="tela-img" style="--fundo:#f4f4f5"><div class="status-bar"><b>23:58</b><span><svg><use href="#i-sinal"/></svg><svg><use href="#i-wifi"/></svg><svg><use href="#i-bat"/></svg></span></div><img src="assets/tela-04-funil.webp" alt="Tela do Funil do Feed Hub: contatos por etapa, com valor e próximo passo" width="720" height="1542"></figure>
+          <figure class="tela-img" style="--fundo:#f4f4f5"><div class="status-bar"><b>23:58</b><span><svg><use href="#i-sinal"/></svg><svg><use href="#i-wifi"/></svg><svg><use href="#i-bat"/></svg></span></div><img src="assets/tela-05-aprovar.webp" alt="Tela de aprovação do Feed Hub: post com data e hora propostas e botão para aprovar" width="720" height="1542"></figure>
+        </div>
+        <img class="fone-moldura" src="assets/fone-moldura.webp" alt="" width="820" height="1767">
+        <div class="fone-escuro" aria-hidden="true"></div>
+      </div>
+      <div class="hub-lado">
+        <ol class="hub-legendas">
+          <li class="ativa">Um app só pra operação inteira.<small>A equipe entra com o e-mail da empresa.</small></li>
+          <li>Veja primeiro o que precisa de você.<small>O resto já está andando.</small></li>
+          <li>O Agente deixa o resumo pronto.<small>Atendimento com cara de WhatsApp.</small></li>
+          <li>Cada oportunidade no seu lugar.<small>O funil inteiro, de onde você estiver.</small></li>
+          <li>Aprove seus posts pelo celular.<small>E os orçamentos também. O aviso chega no celular.</small></li>
+        </ol>
+        <div class="hub-ticks" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="hub-cta">
+          <a class="botao" href="https://play.google.com/store/apps/details?id=com.agenciafeed.hub" target="_blank" rel="noopener">Baixar o Feed Hub</a>
+          <p class="miudo">No ar no Google Play. iPhone vem depois.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CENA 10 -->
+<section class="cena cena--longa acesa" id="c10" style="--altura:170" data-i="10" data-rotulo="Cena 10 / 10" data-nome="Amanhecer" data-hora="QUA 07:00">
+  <div class="palco">
+    <div class="sol" aria-hidden="true"></div>
+    <div class="quadro">
+      <div class="cabeca">
+        <p class="claquete entra">Cena 10 · Quarta, 07h00. Amanhecer.</p>
+        <h2 class="titulo entra">Bom dia. <em>A noite foi atendida.</em></h2>
+      </div>
+      <div class="ui">
+        <article class="resumo">
+          <p class="resumo-topo">Enquanto você dormia</p>
+          <ul>
+            <li>As conversas da noite foram respondidas pelo Agente, cada uma com resumo pronto.</li>
+            <li>A proposta da transportadora saiu. Se não responderem, o acompanhamento vai sozinho.</li>
+            <li>O post de hoje está agendado para 11h30.</li>
+            <li class="voce"><span><b>Precisa de você:</b> aprovar um orçamento. Leva um minuto.</span></li>
+          </ul>
+        </article>
+      </div>
+      <div class="pe">
+        <p class="legenda">A empresa continuou rodando. E você dormiu.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMO COMEÇA -->
+<section class="bloco passos" id="passos" data-i="10" data-rotulo="Como começa" data-nome="3 passos" data-hora="QUA 08:00">
+  <div class="luz" aria-hidden="true"></div>
+  <div class="dentro">
+    <p class="claquete revela" style="color:var(--laranja)">Como começa · 3 passos</p>
+    <h2 class="titulo revela">Do primeiro diagnóstico <em>à operação rodando.</em></h2>
+    <ol class="pelicula">
+      <li class="fotograma revela">
+        <p class="num" aria-hidden="true">01</p>
+        <p class="etapa">Pré-produção · grátis</p>
+        <h3>Diagnóstico do Gargalo</h3>
+        <p>Você deixa nome e e-mail e recebe um PDF na hora, mostrando onde a sua operação trava. Depois, se fizer sentido, conversa com o Guilherme sobre o seu caso.</p>
+      </li>
+      <li class="fotograma revela">
+        <p class="num" aria-hidden="true">02</p>
+        <p class="etapa">Filmagem</p>
+        <h3>Implantação</h3>
+        <p>Proposta com escopo, prazo e valor do seu caso. A Feed monta, conecta e treina quem vai usar. Você não precisa de time de TI.</p>
+      </li>
+      <li class="fotograma revela">
+        <p class="num" aria-hidden="true">03</p>
+        <p class="etapa">Em cartaz</p>
+        <h3>Acompanhamento</h3>
+        <p>Manutenção mensal quando o projeto pede. O preço é personalizado: implantação mais manutenção, ou serviço pontual. Veja <a href="https://agenciafeed.com/quanto-custa/">quanto custa</a>.</p>
+      </li>
+    </ol>
+    <div class="acoes revela">
+      <a class="botao" href="https://agenciafeed.com/diagnostico">Começar pelo Diagnóstico do Gargalo <span class="seta" aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- PROVA -->
+<section class="bloco prova" id="prova" data-i="10" data-rotulo="Fatos reais" data-nome="já está no ar" data-hora="HOJE">
+  <div class="luz" aria-hidden="true"></div>
+  <div class="dentro">
+    <p class="claquete revela" style="color:var(--laranja)">Antes dos créditos</p>
+    <h2 class="intertitulo revela">Baseado em fatos reais.</h2>
+    <p class="corpo revela">Uma revenda de veículos do interior de SP já roda assim. O Agente da Feed atende o WhatsApp, a equipe responde e manda proposta pelo celular no Feed Hub, e o funil acompanha cada lead.</p>
+    <ul class="no-ar revela">
+      <li><span>No ar</span>WhatsApp atendido pelo Agente, com resumo pra equipe</li>
+      <li><span>No ar</span>Proposta montada e enviada pelo celular, no Feed Hub</li>
+      <li><span>No ar</span>Funil acompanhando cada lead até a proposta</li>
+    </ul>
+    <p class="miudo revela">O nome do cliente fica com a gente.</p>
+  </div>
+</section>
+
+<!-- PERGUNTAS -->
+<section class="bloco faq" id="perguntas" data-i="10" data-rotulo="Bastidores" data-nome="perguntas" data-hora="HOJE">
+  <div class="dentro">
+    <p class="claquete revela" style="color:var(--laranja)">Bastidores · perguntas frequentes</p>
+    <h2 class="titulo revela">O que todo mundo pergunta <em>antes de começar.</em></h2>
+    <div class="faq-lista">
+      <details open><summary>O que uma agência de IA faz na prática?</summary><p>Encontra onde sua operação perde tempo e dinheiro e resolve com tecnologia: atendimento que responde sozinho, processos que rodam sem ninguém empurrar, marca e aquisição organizadas. Na Feed isso começa com um diagnóstico da operação e termina com a solução implementada e rodando na sua rotina.</p></details>
+      <details><summary>Quanto custa contratar a Feed?</summary><p>O preço é personalizado. Primeiro a gente entende onde a sua operação trava, depois monta uma proposta com escopo, prazo e valor do seu caso. O valor muda com quantos sistemas a gente conecta, o volume de atendimento e a organização das informações. A IA é um adicional opcional: entra só se fizer sentido pro seu negócio e, quando entra, muda o valor da proposta. Veja como funciona em <a href="https://agenciafeed.com/quanto-custa/">quanto custa</a> ou comece pelo <a href="https://agenciafeed.com/diagnostico">Diagnóstico do Gargalo</a>.</p></details>
+      <details><summary>Automação de WhatsApp não vai irritar meus clientes?</summary><p>Robô burro irrita. Automação bem feita responde na hora, resolve o que é simples e passa pro humano quando a conversa pede. Seu cliente ganha resposta imediata e seu time para de perder o dia repetindo a mesma informação.</p></details>
+      <details><summary>Preciso de time de TI pra automatizar a empresa?</summary><p>Não. A Feed implementa e treina quem vai usar. Se o projeto tiver manutenção, a Feed acompanha depois da entrega. Você não precisa contratar ninguém nem entender de tecnologia: precisa saber onde sua operação trava, e isso a gente descobre junto. A IA não é obrigatória. Ela entra como adicional só se fizer sentido pro seu negócio e, quando entra, muda o valor da proposta.</p></details>
+      <details><summary>Em quanto tempo fica pronto?</summary><p>Depende de quão claras estão as respostas, de quantas integrações tem e do volume de exceções. O prazo de cada projeto vem escrito na proposta. A gente prefere entrega rápida e escopo enxuto a projeto grande que nunca termina. Se quiser começar já, o <a href="https://agenciafeed.com/diagnostico">Diagnóstico do Gargalo</a> chega no seu e-mail na hora.</p></details>
+      <details><summary>A Feed atende só a região de Ribeirão Preto?</summary><p>A base é a região de Ribeirão Preto e Bebedouro, no interior de SP, com atendimento presencial quando faz sentido. Fora da região, o atendimento é remoto, em qualquer lugar do Brasil.</p></details>
+      <details><summary>O que é o diagnóstico gratuito?</summary><p>Você deixa nome e e-mail e recebe no seu e-mail, na hora, o Diagnóstico do Gargalo, um PDF curto que mostra onde a operação para quando você não está, o que mais consome seu tempo e o primeiro passo pra tirar a empresa das suas costas. Depois, se fizer sentido, você conversa com o Guilherme sobre o seu caso. Não custa nada. Comece em <a href="https://agenciafeed.com/diagnostico">agenciafeed.com/diagnostico</a>.</p></details>
+    </div>
+    <p class="faq-mais">Ficou com outra dúvida? <a href="https://wa.me/5516993020694" target="_blank" rel="noopener">Chama no WhatsApp</a>.</p>
+  </div>
+</section>
+
+<!-- CHAMADA -->
+<section class="bloco chamada" id="chamada" data-i="10" data-rotulo="Próxima cena" data-nome="a sua empresa" data-hora="AGORA">
+  <div class="luz" aria-hidden="true"></div>
+  <div class="dentro">
+    <p class="claquete" style="color:var(--laranja)">Próxima cena · a sua empresa</p>
+    <h2 class="titulo">Onde a sua operação trava?</h2>
+    <p class="corpo">Comece pelo Diagnóstico do Gargalo. É grátis, chega no seu e-mail na hora e mostra o primeiro passo pra tirar a empresa das suas costas.</p>
+    <div class="acoes">
+      <a class="botao" href="https://agenciafeed.com/diagnostico">Fazer o Diagnóstico do Gargalo <span class="seta" aria-hidden="true">↗</span></a>
+      <a class="botao botao--contorno" href="https://wa.me/5516993020694" target="_blank" rel="noopener">Falar no WhatsApp</a>
+      <a class="botao botao--contorno" href="https://play.google.com/store/apps/details?id=com.agenciafeed.hub" target="_blank" rel="noopener">Baixar o Feed Hub</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="rodape" data-i="10" data-rotulo="Créditos" data-nome="uma produção Feed" data-hora="FIM">
+  <div class="dentro">
+    <p class="uma">Uma produção</p>
+    <img class="logo-rodape" src="assets/feed-logo-branca.png" alt="Feed" width="480" height="160">
+    <nav class="links-seo" aria-label="Páginas estratégicas">
+      <a href="https://agenciafeed.com/ia-para-pequenas-empresas/">IA para pequenas empresas</a>
+      <a href="https://agenciafeed.com/automacao-whatsapp/">Automação de WhatsApp</a>
+      <a href="https://agenciafeed.com/agentes-de-ia/">Agentes de IA</a>
+      <a href="https://agenciafeed.com/diagnostico-ia-empresa/">Diagnóstico de IA</a>
+      <a href="https://agenciafeed.com/agencia-de-ia-ribeirao-preto/">Agência de IA em Ribeirão Preto</a>
+      <a href="https://agenciafeed.com/agencia-de-marketing-bebedouro/">Agência de marketing em Bebedouro</a>
+    </nav>
+    <p class="legal">Feed Marketing e Comunicação · CNPJ 53.877.987/0001-93</p>
+    <address>Interior de São Paulo, região de Ribeirão Preto e Bebedouro. Atendimento remoto em todo o Brasil.</address>
+    <p class="contato"><a href="tel:+5516993020694">(16) 99302-0694</a><a href="https://wa.me/5516993020694" target="_blank" rel="noopener">WhatsApp</a><a href="mailto:emailmkt@agenciafeed.com">emailmkt@agenciafeed.com</a></p>
+    <nav class="links-rodape" aria-label="Links do rodapé"><a href="https://agenciafeed.com/blog/">Blog</a><a href="https://agenciafeed.com/privacidade.html">Política de Privacidade</a></nav>
+    <small>© 2026 FEED MKT. Todos os direitos reservados.</small>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(() => {
+  const html = document.documentElement;
+  const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const motion = html.classList.contains('motion') && window.gsap && window.ScrollTrigger;
+  if (!motion) html.classList.remove('motion');
+
+  // ---- tarjas: contador de cena, relógio da história e régua ----
+  const contador = $('.contador'), contN = $('.contador-n'), contNome = $('.contador-nome');
+  const relogio = $('.relogio'), baseTitulo = $('.cena-titulo-base'), ticks = $$('.regua i');
+  let atual = null;
+  const marca = sec => {
+    if (sec === atual) return;
+    atual = sec;
+    contN.textContent = sec.dataset.rotulo;
+    contNome.textContent = sec.dataset.nome;
+    relogio.textContent = sec.dataset.hora;
+    baseTitulo.textContent = sec.dataset.nome;
+    ticks.forEach((t, k) => t.classList.toggle('on', k < +sec.dataset.i));
+    contador.classList.remove('troca'); void contador.offsetWidth; contador.classList.add('troca');
+  };
+  const io = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && marca(e.target)), { rootMargin: '-49% 0px -50% 0px' });
+  $$('[data-rotulo]').forEach(s => io.observe(s));
+  if (!motion) return;
+
+  gsap.registerPlugin(ScrollTrigger);
+  ScrollTrigger.config({ ignoreMobileResize: true });
+  const S = 0.35;
+  const linha = (sec, start = 'top top') => gsap.timeline({ defaults: { ease: 'none', duration: 1 }, scrollTrigger: { trigger: sec, start, end: 'bottom bottom', scrub: S } });
+  const cena = (id, fn) => { try { fn($('#' + id)); } catch (e) { console.warn('cena', id, e); } };
+  const hhmm = m => { m = ((Math.round(m) % 1440) + 1440) % 1440; return String(Math.floor(m / 60)).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0'); };
+
+  // entrada (claquete e título sobem antes da cena prender) e saída (a cena recua e escurece: profundidade)
+  $$('.cena--longa').forEach(sec => {
+    const entra = $$('.entra', sec);
+    if (entra.length) gsap.from(entra, { y: 46, opacity: 0, stagger: .12, ease: 'power2.out', scrollTrigger: { trigger: sec, start: 'top 92%', end: 'top 30%', scrub: S } });
+    gsap.to($('.quadro', sec), { scale: .93, opacity: .4, ease: 'none', scrollTrigger: { trigger: sec, start: 'bottom bottom', end: 'bottom 15%', scrub: S } });
+  });
+  // abertura: a câmera se afasta
+  gsap.to('#abertura .quadro', { y: -70, opacity: .35, scale: .96, ease: 'none', scrollTrigger: { trigger: '#abertura', start: 'top top', end: 'bottom top', scrub: S } });
+
+  cena('c01', sec => {
+    const cards = $$('.notif', sec), rel = $('.relogio-grande', sec), horas = ['21h48', '21h55', '22h03', '22h07'], ini = 'top 75%';
+    const t = linha(sec, ini);
+    cards.forEach((c, i) => {
+      t.from(c, { opacity: 0, y: 34, scale: .94, ease: 'power2.out' }, i);
+      if (i) t.to(cards[i - 1], { opacity: .5, duration: .5 }, i);
+    });
+    t.to({}, { duration: .8 });
+    const lidas = $('.nao-lidas', sec);
+    ScrollTrigger.create({ trigger: sec, start: ini, end: 'bottom bottom', onUpdate: s => { const k = Math.min(3, Math.floor(s.progress * 4.8)); rel.textContent = horas[k]; lidas.textContent = k ? (k + 1) + ' não lidas' : '1 não lida'; } });
+  });
+
+  cena('c02', sec => {
+    const [m1, m2, m3] = $$('.msg', sec), n = $('.espera-n', sec), tempo = { m: 0 };
+    const t = linha(sec, 'top 45%');
+    t.from(m1, { opacity: 0, y: 26 }, 0)
+     .from($('.espera-linha', sec), { scaleY: 0, transformOrigin: 'top', duration: 1.6 }, 1)
+     .fromTo(tempo, { m: 0 }, { m: 637, duration: 1.6, onUpdate: () => { n.textContent = Math.floor(tempo.m / 60) + 'h' + String(Math.floor(tempo.m % 60)).padStart(2, '0'); } }, 1)
+     .from(m2, { opacity: 0, y: 26 }, 2.8)
+     .from(m3, { opacity: 0, y: 26 }, 3.8)
+     .from($('.legenda', sec), { opacity: 0, y: 18 }, 4.6)
+     .to({}, { duration: .6 });
+  });
+
+  cena('c03', sec => {
+    const itens = $$('.pend', sec), t = linha(sec, 'top 45%');
+    t.from(itens, { opacity: 0, x: -18, stagger: .2, duration: .7 }, 0);
+    itens.forEach((it, i) => {
+      t.from($('.risco', it), { scaleX: 0, transformOrigin: 'left', duration: .35 }, 1.3 + i * .6)
+       .from($('.amanha', it), { opacity: 0, x: -8, duration: .35 }, 1.5 + i * .6);
+    });
+    t.from($('.fecho', sec), { opacity: 0, y: 22, duration: .8 }, 4).to({}, { duration: .6 });
+  });
+
+  cena('c04', sec => {
+    const rel = $('.rebobina', sec), acende = $('.luz--acende', sec), fria = $('.luz--fria', sec), voltas = { m: 1440 + 23 * 60 + 52 };
+    const t = linha(sec);
+    t.fromTo(voltas, { m: 1440 + 23 * 60 + 52 }, { m: 22 * 60 + 7, duration: 2, ease: 'power1.inOut', onUpdate: () => {
+        rel.textContent = hhmm(voltas.m);
+        relogio.textContent = (voltas.m >= 1440 ? 'QUA ' : 'TER ') + hhmm(voltas.m);
+      } }, 0)
+     .fromTo($('.fita', sec), { yPercent: -25 }, { yPercent: 30, duration: 2, ease: 'power1.in' }, 0)
+     .fromTo($('.fita', sec), { opacity: 0 }, { opacity: 1, duration: .3 }, 0)
+     .to($('.fita', sec), { opacity: 0, duration: .4 }, 1.6)
+     .fromTo($('.corta', sec), { opacity: 0 }, { opacity: 1, duration: .25 }, 0)
+     .to($('.corta', sec), { opacity: 0, duration: .25 }, 1.8)
+     .from($('.volta', sec), { opacity: 0, duration: .3 }, 2)
+     .fromTo(rel, { color: '#c9d3e3', textShadow: '0 0 50px rgba(21,96,209,.45)' }, { color: '#ffa300', textShadow: '0 0 50px rgba(255,163,0,.45)', duration: .4 }, 2)
+     .fromTo(acende, { opacity: 0 }, { opacity: .75, duration: .12 }, 2)
+     .to(acende, { opacity: .08, duration: .1 })
+     .to(acende, { opacity: .9, duration: .14 })
+     .to(acende, { opacity: .3, duration: .1 })
+     .to(acende, { opacity: 1, duration: .5 })
+     .to(fria, { opacity: 0, duration: .6 }, 2)
+     .from($('.logo-grande', sec), { opacity: 0, scale: 1.25, duration: .8, ease: 'power2.out' }, 2.7)
+     .from($$('.promessa span', sec), { opacity: 0, y: 26, stagger: .3, duration: .6 }, 3.4)
+     .from($('.promessa-sub', sec), { opacity: 0, y: 16, duration: .6 }, 4.8)
+     .to({}, { duration: .6 });
+  });
+
+  cena('c05', sec => {
+    const [m1, ag, m3] = $$('.msg', sec), t = linha(sec, 'top 45%');
+    t.from(m1, { opacity: 0, y: 26 }, 0)
+     .from(ag, { opacity: 0, y: 26, duration: .5 }, 1)
+     .fromTo(ag, { clipPath: 'inset(0% 0% 62% 70% round 16px)' }, { clipPath: 'inset(0% 0% 0% 0% round 16px)', duration: .45, ease: 'power2.inOut' }, 1.8)
+     .to($('.digitando', sec), { opacity: 1, duration: .25 }, 1.1)
+     .to($('.digitando', sec), { opacity: 0, duration: .2 }, 1.8)
+     .fromTo($('.msg-conteudo', ag), { opacity: 0 }, { opacity: 1, duration: .3 }, 1.95)
+     .from(m3, { opacity: 0, y: 26 }, 2.6)
+     .from($('.nota', sec), { opacity: 0, y: 26, scale: .97 }, 3.5)
+     .to({}, { duration: .6 });
+  });
+
+  cena('c06', sec => {
+    const pontos = $$('.trilho li', sec), etapa = $('.lead-etapa b', sec), logs = $$('.log li', sec);
+    const nomes = ['Novo contato', 'Em conversa', 'Proposta enviada'];
+    const t = linha(sec, 'top 45%');
+    t.from($('.lead', sec), { opacity: 0, y: 30 }, 0)
+     .fromTo($('.trilho-fill', sec), { scaleX: 0 }, { scaleX: .3333, duration: .8 }, 1.1)
+     .to($('.trilho-fill', sec), { scaleX: .6667, duration: .8 }, 2.5)
+     .from(logs[0], { opacity: 0, y: 16 }, .5)
+     .from(logs[1], { opacity: 0, y: 16 }, 1.7)
+     .from(logs[2], { opacity: 0, y: 16 }, 3.1)
+     .to({}, { duration: .5 });
+    ScrollTrigger.create({ trigger: sec, start: 'top 45%', end: 'bottom bottom', onUpdate: s => {
+      const k = s.progress < 1.5 / t.duration() ? 0 : s.progress < 2.9 / t.duration() ? 1 : 2;
+      pontos.forEach((p, i) => p.classList.toggle('on', i <= k));
+      etapa.textContent = nomes[k];
+    } });
+  });
+
+  cena('c07', sec => {
+    const t = linha(sec, 'top 45%');
+    t.from($$('.agenda li', sec), { opacity: 0, y: 16, stagger: .2, duration: .6 }, 0)
+     .from($('.status--ok', sec), { opacity: 0, scale: .7, duration: .4 }, .9)
+     .from($('.comentario', sec), { opacity: 0, y: 26 }, 1.4)
+     .from($('.ligacao i', sec), { scaleY: 0, transformOrigin: 'top', duration: .6 }, 2.3)
+     .from($('.ligacao span', sec), { opacity: 0, duration: .4 }, 2.5)
+     .from($('.dm', sec), { opacity: 0, y: 26 }, 2.9)
+     .to({}, { duration: .6 });
+  });
+
+  cena('c08', sec => {
+    const t = linha(sec, 'top 50%');
+    t.fromTo($('.creditos', sec), { yPercent: 28 }, { yPercent: 0, duration: 3.6 }, 0)
+     .from($$('.creditos li', sec), { opacity: 0, stagger: .45, duration: .6 }, 0)
+     .to({}, { duration: .5 });
+  });
+
+  cena('c09', sec => {
+    const fone = $('.fone', sec), telas = $$('.tela-img', sec), legs = $$('.hub-legendas li', sec), ticksHub = $$('.hub-ticks i', sec);
+    gsap.timeline({ scrollTrigger: { trigger: sec, start: 'top 90%', end: 'top top', scrub: S } })
+      .from(fone, { y: 140, scale: .84, ease: 'power2.out' }, 0)
+      .fromTo($('.fone-escuro', sec), { opacity: 1 }, { opacity: 0, ease: 'power1.in' }, 0)
+      .from($('.luz--hub', sec), { opacity: 0, scale: .6, ease: 'power2.out' }, 0);
+    const t = linha(sec);
+    ticksHub.forEach((k, i) => gsap.set(k, { '--t': i ? 0 : 1 }));
+    telas.slice(1).forEach((tela, k) => {
+      const at = .5 + k * 1.5;
+      t.fromTo(tela, { clipPath: 'inset(100% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: .45, ease: 'power2.inOut' }, at)
+       .to(fone, { rotate: k % 2 ? -1.4 : 1.4, duration: .22 }, at)
+       .to(fone, { rotate: 0, duration: .23 }, at + .22)
+       .to(ticksHub[k + 1], { '--t': 1, duration: .45 }, at);
+    });
+    t.to({}, { duration: .7 });
+    // legenda é estado, não tween: sempre inteira na tela, troca no meio da passagem da tela
+    ScrollTrigger.create({ trigger: sec, start: 'top top', end: 'bottom bottom', onUpdate: s => {
+      const tt = s.progress * t.duration(), k = Math.max(0, Math.min(4, Math.floor((tt - .5 - .22) / 1.5) + 1));
+      legs.forEach((l, i) => l.classList.toggle('ativa', i === k));
+    } });
+  });
+
+  cena('c10', sec => {
+    const t = linha(sec, 'top 55%');
+    t.from($('.sol', sec), { yPercent: 35, opacity: 0, duration: 2, ease: 'power1.out' }, 0)
+     .from($('.resumo', sec), { opacity: 0, y: 30, duration: .6 }, .3)
+     .from($$('.resumo li', sec), { opacity: 0, y: 14, stagger: .35, duration: .5 }, .7)
+     .from($('.legenda', sec), { opacity: 0, y: 16, duration: .6 }, 2.4)
+     .to({}, { duration: .5 });
+  });
+
+  // epílogo: cada bloco sobe ao entrar, preso à rolagem (nunca fica escondido se a rolagem parar)
+  $$('.revela').forEach(el => gsap.from(el, { opacity: 0, y: 40, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 96%', end: 'top 72%', scrub: S } }));
+
+  addEventListener('load', () => ScrollTrigger.refresh());
+})();
+</script>
+</body>
+</html>

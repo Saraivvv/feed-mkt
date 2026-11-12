@@ -1,0 +1,926 @@
+<!doctype html>
+<html lang="pt-BR" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Feed · Agência de IA aplicada</title>
+<meta name="description" content="A Feed encontra onde a sua operação trava e instala o que resolve, rodando na sua rotina. Agente de IA no WhatsApp, funil de vendas, Instagram no automático e o Feed Hub.">
+<meta name="theme-color" content="#070707">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..100,500..900;1,62..100,600..800&family=Barlow:wght@400;500;600;700&display=swap">
+<script>document.documentElement.className = 'js';</script>
+<style>
+:root {
+  --tinta: #070707;
+  --papel: #ece9e2;
+  --laranja: #ffa300;
+  --g: 18px;
+  --exp: cubic-bezier(.16, 1, .3, 1);
+  --io: cubic-bezier(.7, 0, .2, 1);
+  --disp: 'Archivo', 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  interpolate-size: allow-keywords;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { background: var(--tinta); color: var(--papel); -webkit-text-size-adjust: 100%; }
+body { font: 400 17px/1.55 'Barlow', system-ui, sans-serif; background: var(--tinta); }
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+ol, ul { list-style: none; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+:focus-visible { outline: 2px solid var(--laranja); outline-offset: 3px; }
+
+/* grão de filme, bem fraco, por cima de tudo */
+body::after {
+  content: ""; position: fixed; inset: 0; z-index: 90; pointer-events: none; opacity: .07;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------- tipografia ---------- */
+.d, .mega, .abre-h, .peca-palavra, .passo-n, .fim-h, .cena-frase, .troca-frase, .fita-linha, .hub-frase-t {
+  font-family: var(--disp); font-stretch: 62%; font-weight: 800; text-transform: uppercase;
+  font-kerning: normal; overflow-wrap: normal; word-break: keep-all; hyphens: none;
+}
+.mega { font-size: 15.2vw; line-height: .88; letter-spacing: -.004em; }
+.laranja { color: var(--laranja); }
+.olho { font: 600 12px/1.3 'Barlow', sans-serif; letter-spacing: .16em; text-transform: uppercase; }
+.corpo { font-size: 18px; line-height: 1.55; color: rgb(236 233 226 / .78); max-width: 34em; }
+
+/* ---------- botões ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: space-between; gap: 18px;
+  min-height: 56px; padding: 0 22px; border-radius: 3px; text-decoration: none;
+  font: 600 17px/1.15 'Barlow', sans-serif; letter-spacing: .01em;
+  transition: background-color .3s, color .3s, transform .3s var(--exp);
+}
+.btn span { transition: transform .4s var(--exp); }
+.btn:hover span { transform: translate(3px, -3px); }
+.btn-laranja { background: var(--laranja); color: var(--tinta); box-shadow: 0 0 0 0 rgb(255 163 0 / .0), 0 18px 50px -18px rgb(255 163 0 / .55); }
+.btn-laranja:hover { background: #ffb42e; }
+.btn-linha { border: 1px solid rgb(236 233 226 / .36); color: var(--papel); }
+.btn-linha:hover { border-color: var(--papel); }
+.btn-tinta { background: var(--tinta); color: var(--papel); }
+.btn-tinta:hover { background: #222; }
+
+/* ---------- topo fixo ---------- */
+.topo {
+  position: fixed; inset: 0 0 auto; z-index: 50; height: 64px; padding: 0 var(--g);
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  color: var(--papel); background: rgb(7 7 7 / .8); border-bottom: 1px solid rgb(236 233 226 / .08);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2); backdrop-filter: blur(14px) saturate(1.2);
+  transition: color .35s, background-color .35s, border-color .35s;
+}
+.topo[data-tone="papel"] { color: var(--tinta); background: rgb(236 233 226 / .86); border-color: rgb(7 7 7 / .08); }
+.topo[data-tone="laranja"] { color: var(--tinta); background: rgb(255 163 0 / .88); border-color: rgb(7 7 7 / .1); }
+.topo-marca { display: flex; align-items: center; min-height: 44px; min-width: 44px; position: relative; }
+.topo-marca img { height: 26px; width: auto; transition: opacity .35s; }
+.topo-marca .logo-p { position: absolute; left: 0; top: 50%; translate: 0 -50%; opacity: 0; height: 26px; }
+.topo[data-tone="papel"] .logo-b, .topo[data-tone="laranja"] .logo-b { opacity: 0; }
+.topo[data-tone="papel"] .logo-p, .topo[data-tone="laranja"] .logo-p { opacity: 1; }
+.topo-cap { display: flex; align-items: baseline; gap: 4px; margin-left: auto; font: 600 12px/1 'Barlow', sans-serif; letter-spacing: .12em; text-transform: uppercase; }
+.topo-cap b { font: 800 16px/1 var(--disp); font-stretch: 62%; letter-spacing: .02em; }
+.topo-cap span { opacity: .55; }
+.topo-cap i { display: none; font-style: normal; margin-left: 10px; opacity: .8; }
+.topo-cta {
+  display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 3px;
+  background: var(--laranja); color: var(--tinta); text-decoration: none; font: 700 14px/1 'Barlow', sans-serif;
+}
+.topo[data-tone="laranja"] .topo-cta { background: var(--tinta); color: var(--papel); }
+
+/* ---------- abertura ---------- */
+.abre {
+  position: relative; min-height: 100vh; min-height: 100svh; padding: 92px var(--g) 28px;
+  display: flex; flex-direction: column; overflow: clip; isolation: isolate;
+}
+.abre-luz { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+.abre-luz::before {
+  content: ""; position: absolute; width: 130vw; height: 90vw; right: -55vw; bottom: -30vw; border-radius: 50%;
+  background: radial-gradient(closest-side, rgb(255 163 0 / .42), rgb(255 120 0 / .12) 55%, transparent);
+  filter: blur(10px); animation: luz 14s ease-in-out infinite alternate;
+}
+.abre-luz::after {
+  content: ""; position: absolute; inset: 0;
+  background:
+    repeating-linear-gradient(to right, rgb(236 233 226 / .045) 0 1px, transparent 1px calc((100% - 1px) / 4)),
+    radial-gradient(120% 90% at 30% 30%, transparent 40%, rgb(0 0 0 / .7));
+}
+@keyframes luz { to { transform: translate(-14vw, -10vw) scale(1.12); } }
+.abre .olho { display: flex; align-items: center; gap: 10px; color: rgb(236 233 226 / .72); margin-bottom: 18px; }
+.abre .olho::before { content: ""; width: 8px; height: 8px; background: var(--laranja); border-radius: 50%; box-shadow: 0 0 12px var(--laranja); }
+.abre-h { --fit-max: 999; line-height: .84; letter-spacing: -.012em; margin: 0 0 26px; }
+.ln { display: block; white-space: nowrap; font-size: 15vw; clip-path: inset(-25% -4% -14% -4%); }
+.ln-i { display: inline-block; }
+.abre-h .laranja .ln-i { text-shadow: 0 0 .5em rgb(255 163 0 / .28); }
+.corte { --c: .055em; position: relative; display: inline-block; color: transparent; }
+.corte::before, .corte::after {
+  content: attr(data-t); content: attr(data-t) / ""; position: absolute; left: 0; top: 0; color: var(--papel);
+}
+.corte::before { clip-path: inset(-20% -10% 52% -10%); transform: translateX(calc(var(--c) * -1)); }
+.corte::after { clip-path: inset(48% -10% -20% -10%); transform: translateX(var(--c)); }
+.abre-sub { font-size: 18px; line-height: 1.5; color: rgb(236 233 226 / .8); max-width: 30em; margin-bottom: 26px; }
+.abre-sub b { color: var(--papel); font-weight: 600; }
+.acoes { display: grid; gap: 10px; }
+.abre-nota { margin-top: 12px; font-size: 14px; color: rgb(236 233 226 / .6); }
+.abre-rola {
+  margin-top: auto; padding-top: 30px; display: flex; align-items: center; justify-content: space-between;
+  min-height: 44px; text-decoration: none; border-top: 1px solid rgb(236 233 226 / .14);
+  font: 600 12px/1 'Barlow', sans-serif; letter-spacing: .16em; text-transform: uppercase; color: rgb(236 233 226 / .7);
+}
+.abre-rola span { font-size: 18px; animation: desce 2.4s var(--io) infinite; }
+@keyframes desce { 50% { transform: translateY(5px); } }
+
+/* entrada da abertura */
+.js .abre .olho, .js .abre-sub, .js .acoes, .js .abre-nota, .js .abre-rola { opacity: 0; transform: translateY(18px); transition: opacity 1s var(--exp), transform 1s var(--exp); }
+.js .abre-h .ln-i { transform: translateY(135%); transition: transform 1.25s var(--exp); }
+.js .abre-h .ln:nth-child(2) .ln-i { transition-delay: .09s; }
+.js .abre-h .ln:nth-child(3) .ln-i { transition-delay: .18s; }
+.js .abre-h .ln:nth-child(4) .ln-i { transition-delay: .27s; }
+.js .pronto .abre .olho, .js .pronto .abre-sub, .js .pronto .acoes, .js .pronto .abre-nota, .js .pronto .abre-rola { opacity: 1; transform: none; }
+.js .pronto .abre-sub { transition-delay: .55s; }
+.js .pronto .acoes { transition-delay: .65s; }
+.js .pronto .abre-nota, .js .pronto .abre-rola { transition-delay: .75s; }
+.js .pronto .abre-h .ln-i { transform: none; }
+.js .pronto .corte::before { animation: corte-a 1.5s var(--exp) .35s backwards; }
+.js .pronto .corte::after { animation: corte-b 1.5s var(--exp) .35s backwards; }
+@keyframes corte-a { from { transform: translateX(-.42em); } }
+@keyframes corte-b { from { transform: translateX(.42em); } }
+
+/* ---------- capítulos ---------- */
+.cap { position: relative; padding: 100px var(--g) 96px; }
+.cap-1 { padding-bottom: 40px; }
+.cap-cab {
+  position: relative; display: flex; align-items: baseline; gap: 12px; padding-top: 14px; margin-bottom: 34px;
+  font: 600 12px/1 'Barlow', sans-serif; letter-spacing: .16em; text-transform: uppercase;
+}
+.cap-cab::before { content: ""; position: absolute; inset: 0 0 auto; height: 1px; background: currentColor; opacity: .28; transform-origin: left; }
+.cap-cab b { font: 800 17px/1 var(--disp); font-stretch: 62%; letter-spacing: .03em; }
+.cap-cab b i { font-style: normal; opacity: .45; }
+.js .cap-cab::before { transform: scaleX(0); transition: transform 1.4s var(--exp); }
+.js .cap-cab.in::before { transform: none; }
+.papel { background: var(--papel); color: var(--tinta); }
+.papel .corpo { color: rgb(7 7 7 / .72); }
+
+/* revelação por máscara, palavra a palavra */
+.w { display: inline-block; overflow: hidden; vertical-align: top; padding: .12em .03em .16em; margin: -.12em -.03em -.16em; }
+.wi { display: inline-block; }
+.js [data-split] .wi { transform: translateY(150%); transition: transform 1.05s var(--exp); transition-delay: calc(var(--i) * 42ms); }
+.js [data-split].in .wi { transform: none; }
+.js [data-rev] { opacity: 0; transform: translateY(26px); transition: opacity 1s var(--exp), transform 1s var(--exp); }
+.js [data-rev].in { opacity: 1; transform: none; }
+
+/* ---------- 01 problema ---------- */
+.cap-cols { display: grid; gap: 24px; }
+.troca-frase { font-size: 11.6vw; line-height: .9; margin: 44px 0 6px; }
+.troca { display: block; position: relative; padding-bottom: 14px; margin-bottom: 14px; }
+.troca-pilha { display: grid; font-style: italic; font-weight: 700; font-stretch: 70%; color: var(--papel); }
+.troca-pilha > span { grid-area: 1 / 1; }
+.troca-pilha > span:not(:first-child) { visibility: hidden; }
+.js .troca-pilha > span { visibility: visible; }
+.tw { display: inline-block; overflow: hidden; vertical-align: top; padding: .1em .04em .18em; margin: -.1em -.04em -.18em; white-space: nowrap; }
+.tc { display: inline-block; }
+/* só entrar e sair animam; voltar ao repouso escondido é seco, senão a letra atravessa a máscara */
+.js .troca-pilha .tc { transform: translateY(140%); }
+.js .troca-pilha .on .tc { transform: none; transition: transform .62s var(--io) calc(var(--i) * 16ms); }
+.js .troca-pilha .sai .tc { transform: translateY(-140%); transition: transform .62s var(--io) calc(var(--i) * 16ms); }
+.troca::after {
+  content: ""; position: absolute; left: 0; bottom: 0; height: 2px; width: 100%; background: rgb(236 233 226 / .16);
+}
+.troca i { position: absolute; left: 0; bottom: 0; height: 2px; width: 100%; background: var(--papel); transform-origin: left; transform: scaleX(0); z-index: 1; }
+.troca i.corre { transform: scaleX(1); transition: transform 2.6s linear; }
+.fita { margin: 70px calc(var(--g) * -1) 0; overflow: hidden; border-block: 1px solid rgb(236 233 226 / .14); padding: 18px 0 16px; }
+.fita-rot { padding: 0 var(--g) 14px; color: rgb(236 233 226 / .6); }
+.fita-trilha { display: flex; width: max-content; animation: corre 38s linear infinite; }
+.fita-trilha.volta { animation-direction: reverse; animation-duration: 46s; margin-top: 6px; }
+.fita-linha { display: flex; flex-shrink: 0; font-size: 64px; line-height: 1; letter-spacing: -.005em; }
+.fita-linha li { display: flex; align-items: center; white-space: nowrap; padding-right: 30px; }
+.fita-linha li::after { content: ""; width: .16em; height: .16em; margin-left: 30px; background: var(--laranja); border-radius: 50%; }
+.volta .fita-linha { font-size: 40px; font-weight: 600; font-stretch: 80%; color: transparent; -webkit-text-stroke: 1px rgb(236 233 226 / .55); }
+.volta .fita-linha li::after { background: rgb(236 233 226 / .4); }
+@keyframes corre { to { transform: translateX(-50%); } }
+
+/* cortina: antes e depois */
+.cortinas { position: relative; }
+.cena { position: relative; }
+.cena-fixa { position: relative; overflow: clip; }
+.cena-antes, .cena-depois { padding: max(110px, 27vh) var(--g) 80px; display: flex; flex-direction: column; }
+.cena-depois { background: var(--papel); color: var(--tinta); }
+.cena-rot { display: flex; justify-content: space-between; margin-bottom: 26px; opacity: .7; }
+.cena-depois .cena-rot { opacity: 1; }
+.cena-depois .cena-rot b { color: var(--tinta); display: inline-flex; align-items: center; gap: 8px; }
+.cena-depois .cena-rot b::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--laranja); }
+.cena-frase { font-size: 13.4vw; line-height: .9; letter-spacing: -.004em; }
+.cena-antes .cena-frase { color: rgb(236 233 226 / .92); }
+.cena-nota { margin-top: auto; padding-top: 40px; opacity: .62; }
+.cena-depois .cena-nota { opacity: .8; }
+.cena-fio { display: none; }
+.js .cena { height: 175vh; height: 175svh; }
+.js .cena-fixa { position: sticky; top: 0; height: 100vh; height: 100svh; }
+.js .cena-antes, .js .cena-depois { position: absolute; inset: 0; }
+.js .cena-antes { transform: translateX(calc(var(--q, 0) * -7%)); opacity: calc(1 - var(--q, 0) * .6); }
+.js .cena-depois { clip-path: inset(0 calc(100% - var(--q, 0) * 100%) 0 0); }
+.js .cena-depois > * { transform: translateX(calc((1 - var(--q, 0)) * 5%)); }
+.js .cena-fio {
+  display: block; position: absolute; top: 0; bottom: 0; left: calc(var(--q, 0) * 100%); width: 3px; margin-left: -1px;
+  background: var(--laranja); box-shadow: 0 0 18px 2px rgb(255 163 0 / .75), 0 0 60px 8px rgb(255 163 0 / .3);
+  opacity: calc(min(var(--q, 0), 1 - var(--q, 0)) * 40);
+}
+
+/* ---------- 02 o que a Feed instala ---------- */
+.trilho-cab { display: flex; justify-content: space-between; align-items: center; margin: 44px 0 0; padding: 12px 0; border-top: 1px solid rgb(236 233 226 / .14); color: rgb(236 233 226 / .6); }
+.trilho-cab b { font: 800 16px/1 var(--disp); font-stretch: 62%; color: var(--papel); letter-spacing: .03em; }
+.trilho {
+  display: grid; grid-auto-flow: column; grid-auto-columns: 86%; overflow-x: auto; scroll-snap-type: x mandatory;
+  margin: 0 calc(var(--g) * -1); padding: 0 var(--g) 8px; scroll-padding: 0 var(--g); scrollbar-width: none; overscroll-behavior-x: contain;
+}
+.trilho::-webkit-scrollbar { display: none; }
+.peca { scroll-snap-align: start; display: flex; flex-direction: column; padding: 20px 20px 10px 0; margin-right: 20px; border-right: 1px solid rgb(236 233 226 / .14); }
+.peca-topo { display: flex; justify-content: space-between; align-items: baseline; color: rgb(236 233 226 / .6); }
+.peca-topo b { font: 800 17px/1 var(--disp); font-stretch: 62%; color: var(--laranja); letter-spacing: .03em; }
+.peca-palavra { --fit-max: 128; min-height: 1.04em; display: flex; align-items: flex-end; margin: 18px 0 18px; line-height: .84; font-size: 64px; }
+.peca-palavra .ln { clip-path: none; }
+.peca h3 { font: 700 21px/1.2 'Barlow', sans-serif; margin-bottom: 8px; }
+.peca > p:not(.peca-palavra) { color: rgb(236 233 226 / .74); }
+.peca-ex { margin-top: auto; padding-top: 22px; }
+.peca-ex dl, .peca-ex ol { border-top: 1px dashed rgb(236 233 226 / .24); padding-top: 12px; }
+.peca-ex .olho { color: rgb(236 233 226 / .5); margin-bottom: 10px; display: block; font-size: 11px; }
+.ex-msg { display: grid; gap: 8px; font-size: 15px; line-height: 1.4; }
+.ex-msg p { padding: 10px 12px; border-radius: 3px; background: rgb(236 233 226 / .06); }
+.ex-msg p.ag { background: rgb(255 163 0 / .12); border-left: 2px solid var(--laranja); }
+.ex-msg b { display: block; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; opacity: .65; margin-bottom: 2px; }
+.ex-etapas { display: flex; flex-wrap: wrap; gap: 6px 4px; font: 600 14px/1 'Barlow', sans-serif; }
+.ex-etapas li { display: inline-flex; align-items: center; gap: 4px; padding: 8px 10px; border: 1px solid rgb(236 233 226 / .2); border-radius: 3px; }
+.ex-etapas li.ok { border-color: var(--laranja); color: var(--laranja); }
+.ex-linha { font-size: 15px; line-height: 1.45; color: rgb(236 233 226 / .85); }
+.ex-linha + .ex-linha { margin-top: 8px; }
+.ex-linha em { font-style: normal; color: var(--laranja); font-weight: 600; }
+
+/* ---------- 03 Feed Hub ---------- */
+.cap.hub { background: var(--laranja); color: var(--tinta); padding: 0; isolation: isolate; }
+.hub::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: radial-gradient(90% 60% at 70% 45%, #ffbe3d 0%, rgb(255 163 0 / 0) 60%), radial-gradient(140% 100% at 50% 50%, transparent 55%, rgb(150 70 0 / .4));
+}
+.hub-palco { position: relative; }
+.hub-fixo { position: relative; padding: 100px var(--g) 0; display: flex; flex-direction: column; overflow: clip; }
+.hub-linha { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.hub-assina { height: 30px; width: auto; }
+.hub-loja { font-size: 11px; text-align: right; opacity: .75; }
+.hub-barras { display: flex; gap: 5px; margin: 18px 0 20px; }
+.hub-barras i { flex: 1; height: 3px; background: rgb(7 7 7 / .18); position: relative; overflow: hidden; border-radius: 2px; }
+.hub-barras i::after { content: ""; position: absolute; inset: 0; background: var(--tinta); transform-origin: left; transform: scaleX(var(--b, 1)); }
+.hub-frases { display: grid; }
+.hub-frase { display: flex; flex-direction: column; margin-bottom: 26px; }
+.js .hub-frase { grid-area: 1 / 1; margin: 0; }
+.hub-frase-t { font-size: 11.4vw; line-height: .88; letter-spacing: -.004em; margin-bottom: 14px; }
+.hub-leg { display: flex; gap: 12px; font-size: 14px; line-height: 1.4; padding-top: 10px; border-top: 1px solid rgb(7 7 7 / .25); max-width: 30em; }
+.hub-leg b { font: 800 14px/1.4 var(--disp); font-stretch: 62%; text-transform: uppercase; letter-spacing: .04em; white-space: nowrap; }
+.hub-fone { position: relative; margin: 30px auto 0; width: min(80%, 340px); }
+.hub-fone::before {
+  content: ""; position: absolute; inset: -18% -40% 0; z-index: -1; border-radius: 50%;
+  background: radial-gradient(closest-side, rgb(255 236 200 / .75), rgb(255 200 90 / 0));
+}
+.fone { position: relative; aspect-ratio: 1528 / 3316; container-type: inline-size; transform: rotate(-3.5deg); filter: drop-shadow(0 40px 50px rgb(90 40 0 / .45)); }
+.fone-tela { position: absolute; left: 3.927%; top: 1.87%; width: 92.147%; height: 96.11%; border-radius: 6cqw; overflow: hidden; background: #f3f3f2; }
+.fone-moldura { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.scr { position: absolute; inset: 0; background: #f3f3f2; }
+.scr.escuro { background: #0b0b0b; color: #f3f3f2; }
+.st { height: 5.4%; display: flex; align-items: center; justify-content: space-between; padding: 0 7% 0 8%; font: 600 3.4cqw/1 'Barlow', sans-serif; color: #1b1b1b; }
+.escuro .st { color: #f3f3f2; }
+.st span { display: flex; align-items: center; gap: 1.2cqw; }
+.st span i { display: block; width: 1cqw; background: currentColor; border-radius: .3cqw; }
+.st span i:nth-child(1) { height: 1.4cqw; } .st span i:nth-child(2) { height: 2.1cqw; } .st span i:nth-child(3) { height: 2.8cqw; }
+.st span u { display: block; width: 4.6cqw; height: 2.4cqw; border: .35cqw solid currentColor; border-radius: .6cqw; margin-left: 1.2cqw; position: relative; }
+.st span u::after { content: ""; position: absolute; inset: .35cqw; right: 1.1cqw; background: currentColor; border-radius: .2cqw; }
+.scr img { width: 100%; height: auto; }
+.hub-baixar { position: relative; z-index: 1; padding: 56px var(--g) 96px; background: var(--laranja); border-top: 1px solid rgb(7 7 7 / .2); }
+.hub-baixar .mega { font-size: 12.6vw; margin-bottom: 26px; }
+.hub-faz { font: 800 24px/1.18 var(--disp); font-stretch: 72%; text-transform: uppercase; margin-bottom: 24px; padding-top: 16px; border-top: 1px solid rgb(7 7 7 / .25); }
+.hub-faz li { display: inline; }
+.hub-faz li + li::before { content: " / "; opacity: .4; }
+.hub-baixar .corpo { color: rgb(7 7 7 / .78); margin-bottom: 24px; }
+.hub-baixar .btn { width: 100%; }
+
+.js .hub-palco { height: 430vh; height: 430svh; }
+.js .hub-fixo { position: sticky; top: 0; height: 100vh; height: 100svh; }
+.js .hub-frase .wi { transform: translateY(150%); opacity: 0; }
+.js .hub-frase.on .wi { transform: none; opacity: 1; transition: transform .8s var(--exp), opacity .2s; transition-delay: calc(.22s + var(--i) * 28ms); }
+.js .hub-frase.sai .wi { transform: translateY(-150%); opacity: 0; transition: transform .4s var(--io), opacity .22s; transition-delay: calc(var(--i) * 8ms); }
+.js .hub-leg { opacity: 0; transition: opacity .5s; }
+.js .hub-frase.on .hub-leg { opacity: 1; transition-delay: .25s; }
+.js .hub-fone { margin: 22px 0 0; flex: 1; min-height: 0; width: 100%; container-type: size; }
+.js .hub-fone .fone { width: min(72cqh, 86cqw); margin: 0 auto; transform: translateY(calc((1 - var(--p, 0)) * 6%)) rotate(-3.5deg); }
+.js .scr { opacity: 0; transform: translateY(4%) scale(.98); transition: opacity .55s var(--exp), transform .8s var(--exp); }
+.js .scr.on { opacity: 1; transform: none; }
+
+/* ---------- 04 como funciona ---------- */
+.passos { margin-top: 44px; counter-reset: p; }
+.passo { display: grid; grid-template-columns: auto 1fr; grid-template-areas: "n t" "c c"; column-gap: 14px; padding: 26px 0 34px; border-top: 1px solid rgb(7 7 7 / .18); }
+.passo-n {
+  --f: 100%; grid-area: n; font-size: 44vw; font-weight: 900; line-height: .76; letter-spacing: -.02em;
+  color: transparent; -webkit-text-stroke: 1.5px var(--tinta);
+  background: linear-gradient(to top, var(--tinta) var(--f), transparent var(--f)); -webkit-background-clip: text; background-clip: text;
+}
+.js .passo-n { --f: 0%; }
+.passo-t { grid-area: t; align-self: end; padding-bottom: 4px; }
+.passo-t .olho { opacity: .6; margin-bottom: 8px; display: block; }
+.passo h3 { font: 800 30px/.95 var(--disp); font-stretch: 70%; text-transform: uppercase; letter-spacing: -.003em; }
+.passo-c { grid-area: c; padding-top: 20px; }
+.passo-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+.passo-tags span { font: 700 13px/1 'Barlow', sans-serif; letter-spacing: .08em; text-transform: uppercase; padding: 8px 10px; border-radius: 3px; background: var(--tinta); color: var(--papel); }
+.passo-tags span.l { background: var(--laranja); color: var(--tinta); }
+.passo-c .corpo { margin-bottom: 18px; }
+.passo-c .btn { width: 100%; }
+.passo-link { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; text-underline-offset: 4px; }
+
+/* ---------- 05 prova ---------- */
+.prova .mega { --fit-max: 999; line-height: .84; }
+.leitura { font: 600 8.6vw/1.08 var(--disp); font-stretch: 78%; letter-spacing: -.006em; margin: 40px 0 46px; max-width: 22em; }
+.leitura .lw { transition: opacity .35s, color .35s; }
+.js .leitura .lw { opacity: .2; }
+.js .leitura .lw.on { opacity: 1; }
+.leitura .lw.lj { color: var(--laranja); }
+.ficha { border-top: 1px solid rgb(236 233 226 / .3); }
+.ficha div { display: grid; grid-template-columns: 7.5em 1fr; gap: 12px; padding: 15px 0; border-bottom: 1px solid rgb(236 233 226 / .14); align-items: baseline; }
+.ficha dt { font: 600 12px/1.3 'Barlow', sans-serif; letter-spacing: .14em; text-transform: uppercase; color: rgb(236 233 226 / .55); }
+.ficha dd { font: 700 22px/1.1 var(--disp); font-stretch: 72%; text-transform: uppercase; }
+.marcador { display: inline-block; font: 500 14px/1.2 ui-monospace, Consolas, monospace; text-transform: none; padding: 6px 8px; border: 1px dashed var(--laranja); color: var(--laranja); border-radius: 3px; }
+.prova-nota { margin-top: 18px; font-size: 14px; color: rgb(236 233 226 / .6); max-width: 32em; }
+
+/* ---------- 06 perguntas ---------- */
+.faq { margin-top: 40px; border-top: 1px solid rgb(7 7 7 / .2); }
+.faq details { border-bottom: 1px solid rgb(7 7 7 / .2); }
+.faq summary {
+  list-style: none; cursor: pointer; display: grid; grid-template-columns: 2.2em 1fr 28px; gap: 8px; align-items: start;
+  min-height: 44px; padding: 18px 0;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq-n { font: 800 15px/1.5 var(--disp); font-stretch: 62%; opacity: .45; padding-top: 2px; }
+.faq-q { font: 800 25px/1 var(--disp); font-stretch: 72%; text-transform: uppercase; letter-spacing: -.002em; }
+.faq summary i { position: relative; width: 28px; height: 28px; margin-top: -1px; }
+.faq summary i::before, .faq summary i::after { content: ""; position: absolute; left: 6px; right: 6px; top: 13px; height: 2px; background: currentColor; transition: transform .45s var(--exp); }
+.faq summary i::after { transform: rotate(90deg); }
+.faq details[open] summary i::after { transform: rotate(0); }
+.faq details[open] summary i::before { background: var(--laranja); }
+.faq-r { padding: 0 0 24px 2.7em; }
+.faq-r p { color: rgb(7 7 7 / .74); max-width: 36em; }
+.faq-r a { font-weight: 600; text-underline-offset: 3px; }
+.faq details::details-content { block-size: 0; overflow: clip; transition: block-size .5s var(--exp), content-visibility .5s allow-discrete; }
+.faq details[open]::details-content { block-size: auto; }
+
+/* ---------- fim ---------- */
+.fim { position: relative; padding: 110px var(--g) 90px; overflow: clip; isolation: isolate; }
+.fim::before {
+  content: ""; position: absolute; left: -30vw; right: -30vw; bottom: -40vw; height: 110vw; z-index: -1; border-radius: 50%;
+  background: radial-gradient(closest-side, rgb(255 163 0 / .38), rgb(255 110 0 / .1) 60%, transparent);
+}
+.fim-h { --fit-max: 999; line-height: .84; letter-spacing: -.012em; margin: 10px 0 28px; }
+.fim .corpo { margin-bottom: 26px; }
+.fim .btn-laranja { width: 100%; min-height: 64px; font-size: 18px; }
+.fim-sec { display: grid; gap: 10px; margin-top: 10px; }
+.fim-sec .btn { width: 100%; }
+
+/* ---------- rodapé ---------- */
+.rodape { padding: 64px var(--g) 40px; border-top: 1px solid rgb(236 233 226 / .14); }
+.rodape-logo { width: 100%; max-width: 560px; height: auto; margin-bottom: 44px; }
+.rodape-col { display: grid; gap: 34px; }
+.rodape h2 { font: 600 12px/1 'Barlow', sans-serif; letter-spacing: .16em; text-transform: uppercase; color: rgb(236 233 226 / .5); margin-bottom: 8px; }
+.rodape nav a, .rodape address a { display: flex; align-items: center; min-height: 44px; text-decoration: none; border-bottom: 1px solid rgb(236 233 226 / .1); font-size: 16px; }
+.rodape nav a:hover, .rodape address a:hover { color: var(--laranja); }
+.rodape address { font-style: normal; color: rgb(236 233 226 / .72); }
+.rodape address p { margin-bottom: 8px; }
+.rodape-legal { margin-top: 40px; display: grid; gap: 8px; font-size: 13px; color: rgb(236 233 226 / .5); }
+
+/* ---------- tablet ---------- */
+@media (min-width: 700px) {
+  :root { --g: 36px; }
+  .mega { font-size: 10.4vw; }
+  .acoes { grid-template-columns: auto auto; justify-content: start; }
+  .topo-cap i { display: inline; }
+  .troca-frase { font-size: 8.4vw; }
+  .cena-frase { font-size: 9.6vw; max-width: 13em; }
+  .trilho { grid-auto-columns: min(58%, 420px); }
+  .fita-linha { font-size: 92px; }
+  .volta .fita-linha { font-size: 56px; }
+  .hub-frase-t { font-size: 8.8vw; }
+  .hub-baixar .mega { font-size: 8.6vw; }
+  .hub-baixar .btn, .passo-c .btn, .fim .btn-laranja { width: auto; }
+  .fim-sec { grid-template-columns: auto auto; justify-content: start; }
+  .passo { grid-template-columns: 30vw 1fr; grid-template-areas: "n t" "n c"; column-gap: 32px; }
+  .passo-n { font-size: 34vw; }
+  .leitura { font-size: 6.2vw; }
+  .faq-q { font-size: 32px; }
+  .rodape-col { grid-template-columns: 1fr 1fr; }
+}
+
+/* ---------- desktop ---------- */
+@media (min-width: 1024px) {
+  :root { --g: 56px; }
+  body { font-size: 18px; }
+  .topo { height: 76px; }
+  .topo-marca img, .topo-marca .logo-p { height: 30px; }
+  .mega { font-size: min(8.4vw, 150px); }
+  .abre { padding-top: 112px; display: grid; grid-template-columns: minmax(0, 1fr) 30vw; grid-template-rows: auto 1fr auto; column-gap: 5vw; }
+  .abre .olho { grid-column: 1 / -1; }
+  .abre-h { grid-column: 1; grid-row: 2; align-self: center; }
+  .abre-txt { grid-column: 2; grid-row: 2; align-self: end; padding-bottom: 1.2vw; }
+  .abre-rola { grid-column: 1 / -1; grid-row: 3; }
+  .acoes { grid-template-columns: 1fr; }
+  .cap { padding: 140px var(--g) 130px; }
+  .cap-1 { padding-bottom: 60px; }
+  .cap-cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 6vw; align-items: end; margin-top: 56px; }
+  .cap-cab + .cap-cols { margin-top: 0; }
+  .troca-frase { font-size: min(6.4vw, 116px); margin-top: 0; }
+  .cena-antes, .cena-depois { padding-left: 9vw; padding-right: 9vw; }
+  .cena-frase { font-size: min(7vw, 128px); max-width: 12.5em; }
+  .fita-linha { font-size: 120px; }
+  .volta .fita-linha { font-size: 70px; }
+
+  .trilho-cab { display: none; }
+  .trilho { display: block; overflow: visible; margin: 70px 0 0; padding: 0; }
+  .peca { display: grid; grid-template-columns: 90px minmax(0, 1.2fr) minmax(0, 1fr); grid-template-rows: auto auto 1fr; column-gap: 44px; padding: 38px 0 42px; margin: 0; border-right: 0; border-top: 1px solid rgb(236 233 226 / .16); }
+  .peca-topo { grid-column: 1; grid-row: 1 / 4; flex-direction: column; justify-content: flex-start; gap: 10px; }
+  .peca-palavra { grid-column: 2; grid-row: 1 / 4; margin: 0; align-items: flex-start; font-size: 6.4vw !important; transition: color .4s, font-stretch .6s var(--exp); }
+  .peca:hover .peca-palavra { color: var(--laranja); font-stretch: 70%; }
+  .peca-palavra .ln { font-size: inherit !important; }
+  .peca h3, .peca > p:not(.peca-palavra), .peca-ex { grid-column: 3; }
+  .peca-ex { padding-top: 22px; }
+
+  .hub-fixo { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: auto auto auto 1fr; column-gap: 4vw; padding-top: 120px; }
+  .hub-fixo > .cap-cab, .hub-fixo > .hub-linha, .hub-fixo > .hub-barras { grid-column: 1; }
+  .hub-frases { grid-column: 1; grid-row: 4; align-self: end; padding-bottom: 11vh; }
+  .hub-frase-t { font-size: min(6.6vw, 118px); margin-bottom: 20px; }
+  .hub-leg { font-size: 16px; }
+  .hub-fone { grid-column: 2; grid-row: 1 / 6; margin: 0; width: 100%; }
+  .js .hub-fone { margin: 0; }
+  .js .hub-fone .fone { width: min(58cqh, 78cqw); }
+  .hub-baixar { display: grid; grid-template-columns: 1.2fr 1fr; column-gap: 6vw; padding: 90px var(--g) 130px; }
+  .hub-baixar .mega { font-size: min(6.4vw, 116px); grid-row: 1 / 4; }
+
+  .passos { margin-top: 70px; }
+  .passo { grid-template-columns: 22vw minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: "n t c"; column-gap: 4vw; padding: 40px 0 50px; }
+  .passo-n { font-size: min(26vw, 380px); }
+  .passo-t { align-self: start; padding-top: 10px; }
+  .passo h3 { font-size: 52px; }
+  .passo-c { padding-top: 14px; }
+  .leitura { font-size: min(4.4vw, 76px); }
+  .ficha { max-width: 880px; }
+  .ficha div { grid-template-columns: 14em 1fr; }
+  .ficha dd { font-size: 30px; }
+  .faq { max-width: 1100px; margin-left: auto; }
+  .faq-q { font-size: 40px; }
+  .faq-r { padding-left: 3.4em; }
+  .fim { padding: 150px var(--g) 130px; }
+  .fim-h { max-width: 1100px; }
+  .rodape-col { grid-template-columns: 1.2fr 1fr 1fr; }
+}
+
+/* ---------- sem animação ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .js .abre .olho, .js .abre-sub, .js .acoes, .js .abre-nota, .js .abre-rola, .js [data-rev] { opacity: 1; transform: none; }
+  .js .abre-h .ln-i, .js [data-split] .wi { transform: none; }
+  .fita-trilha { flex-wrap: wrap; width: auto; }
+  .fita-trilha .fita-linha[aria-hidden] { display: none; }
+  .fita-linha { flex-wrap: wrap; white-space: normal; padding: 0 var(--g); }
+  .js .cena { height: auto; }
+  .js .cena-fixa { position: relative; height: auto; }
+  .js .cena-antes, .js .cena-depois { position: relative; inset: auto; transform: none; opacity: 1; clip-path: none; }
+  .js .cena-depois > * { transform: none; }
+  .js .cena-nota { margin-top: auto; padding-top: 40px; opacity: .62; }
+.cena-depois .cena-nota { opacity: .8; }
+.cena-fio { display: none; }
+  .js .leitura .lw { opacity: 1; }
+  .js .passo-n { --f: 100%; }
+  .js .hub-fone .fone { transform: rotate(-3.5deg); }
+}
+</style>
+</head>
+<body>
+
+<header class="topo" data-tone="ink">
+  <a class="topo-marca" href="#inicio" aria-label="Feed, voltar ao início">
+    <img class="logo-b" src="assets/logo-branca.webp" alt="" width="520" height="173">
+    <img class="logo-p" src="assets/logo-preta.svg" alt="" width="451" height="150">
+  </a>
+  <p class="topo-cap"><b data-cap-n>00</b><span>/ 06</span><i data-cap-t>Manifesto</i></p>
+  <a class="topo-cta" href="https://agenciafeed.com/diagnostico">Diagnóstico grátis</a>
+</header>
+
+<main id="inicio">
+
+  <!-- ABERTURA -->
+  <section class="abre" data-tone="ink" data-cap="00" data-cap-t="Manifesto" aria-label="Abertura">
+    <div class="abre-luz" aria-hidden="true"></div>
+    <p class="olho">Agência de IA aplicada · Interior de SP</p>
+    <h1 class="abre-h d" data-fit aria-label="Achamos onde trava. Instalamos o que resolve.">
+      <span class="ln" aria-hidden="true"><span class="ln-i">Achamos onde</span></span>
+      <span class="ln" aria-hidden="true"><span class="ln-i"><span class="corte" data-t="trava.">trava.</span></span></span>
+      <span class="ln" aria-hidden="true"><span class="ln-i">Instalamos o que</span></span>
+      <span class="ln laranja" aria-hidden="true"><span class="ln-i">resolve.</span></span>
+    </h1>
+    <div class="abre-txt">
+      <p class="abre-sub">A Feed encontra onde a sua operação trava e <b>instala o que resolve, rodando na sua rotina.</b> Nada de ferramenta solta.</p>
+      <div class="acoes">
+        <a class="btn btn-laranja" href="https://agenciafeed.com/diagnostico">Fazer o Diagnóstico do Gargalo <span aria-hidden="true">↗</span></a>
+        <a class="btn btn-linha" href="https://wa.me/5516993020694" target="_blank" rel="noopener">Falar no WhatsApp <span aria-hidden="true">↗</span></a>
+      </div>
+      <p class="abre-nota">Grátis. O PDF chega no seu e-mail na hora.</p>
+    </div>
+    <a class="abre-rola" href="#cap-1">Um manifesto em 6 capítulos <span aria-hidden="true">↓</span></a>
+  </section>
+
+  <!-- 01 O PROBLEMA -->
+  <section class="cap cap-1" id="cap-1" data-tone="ink" data-cap="01" data-cap-t="O problema">
+    <header class="cap-cab" data-rev><b>01 <i>/ 06</i></b><span>O problema</span></header>
+    <h2 class="mega" data-split>Toda empresa tem um lugar onde trava.</h2>
+    <div class="cap-cols">
+      <p class="troca-frase">
+        Hoje quem
+        <span class="troca" data-troca>
+          <span class="sr">responde o WhatsApp, lembra de quem sumiu, monta o orçamento, posta no Instagram e cobra o retorno</span>
+          <span class="troca-pilha" aria-hidden="true"><span class="on">responde o WhatsApp</span><span>lembra de quem sumiu</span><span>monta o orçamento</span><span>posta no Instagram</span><span>cobra o retorno</span></span>
+          <i aria-hidden="true"></i>
+        </span>
+        é você.
+      </p>
+      <p class="corpo" data-rev>O cliente pergunta e ninguém responde. O orçamento fica pra amanhã. Quem sumiu não recebe retorno. O post não sai. Não é falta de esforço: é a operação inteira passando pela sua mão.</p>
+    </div>
+    <div class="fita" aria-label="Tarefas que a Feed tira da sua mão">
+      <p class="fita-rot olho">Isso sai da sua mão</p>
+      <div class="fita-trilha">
+        <ul class="fita-linha"><li>Responder a mesma pergunta</li><li>Lembrar quem sumiu</li><li>Montar orçamento</li><li>Postar no Instagram</li><li>Mandar o link da agenda</li><li>Passar o resumo pro vendedor</li></ul>
+        <ul class="fita-linha" aria-hidden="true"><li>Responder a mesma pergunta</li><li>Lembrar quem sumiu</li><li>Montar orçamento</li><li>Postar no Instagram</li><li>Mandar o link da agenda</li><li>Passar o resumo pro vendedor</li></ul>
+      </div>
+      <div class="fita-trilha volta">
+        <ul class="fita-linha"><li>Calcular frete</li><li>Atender fora do horário</li><li>Preparar relatório</li><li>Cobrar o retorno</li><li>Aprovar post</li><li>Mandar proposta</li></ul>
+        <ul class="fita-linha" aria-hidden="true"><li>Calcular frete</li><li>Atender fora do horário</li><li>Preparar relatório</li><li>Cobrar o retorno</li><li>Aprovar post</li><li>Mandar proposta</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ANTES E DEPOIS: cortina tipográfica -->
+  <section class="cortinas" data-tone="ink" data-cap="01" data-cap-t="Antes e depois" aria-label="Antes e depois">
+    <div class="cena" data-cena>
+      <div class="cena-fixa">
+        <div class="cena-antes"><p class="cena-rot olho"><b>Antes</b><span>1 / 3</span></p><p class="cena-frase">O cliente pergunta às 23h. Ninguém responde.</p><p class="cena-nota olho">Role, e a cortina passa</p></div>
+        <div class="cena-depois"><p class="cena-rot olho"><b>Com a Feed</b><span>1 / 3</span></p><p class="cena-frase">O Agente responde na hora e deixa o resumo pronto pra equipe.</p><p class="cena-nota olho">Capítulo 02 · Agente de IA no WhatsApp</p></div>
+        <span class="cena-fio" aria-hidden="true"></span>
+      </div>
+    </div>
+    <div class="cena" data-cena>
+      <div class="cena-fixa">
+        <div class="cena-antes"><p class="cena-rot olho"><b>Antes</b><span>2 / 3</span></p><p class="cena-frase">O lead some e ninguém lembra de chamar de volta.</p></div>
+        <div class="cena-depois"><p class="cena-rot olho"><b>Com a Feed</b><span>2 / 3</span></p><p class="cena-frase">Cada oportunidade numa etapa. Quem sumiu recebe retorno.</p><p class="cena-nota olho">Capítulo 02 · Funil de vendas</p></div>
+        <span class="cena-fio" aria-hidden="true"></span>
+      </div>
+    </div>
+    <div class="cena" data-cena>
+      <div class="cena-fixa">
+        <div class="cena-antes"><p class="cena-rot olho"><b>Antes</b><span>3 / 3</span></p><p class="cena-frase">A empresa para quando você não está.</p></div>
+        <div class="cena-depois"><p class="cena-rot olho"><b>Com a Feed</b><span>3 / 3</span></p><p class="cena-frase">A rotina roda. Você vê primeiro o que precisa de você.</p><p class="cena-nota olho">Capítulo 03 · O Feed Hub</p></div>
+        <span class="cena-fio" aria-hidden="true"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 O QUE A FEED INSTALA -->
+  <section class="cap" id="cap-2" data-tone="ink" data-cap="02" data-cap-t="O que a Feed instala">
+    <header class="cap-cab" data-rev><b>02 <i>/ 06</i></b><span>O que a Feed instala</span></header>
+    <div class="cap-cols">
+      <h2 class="mega" data-split>Nada de ferramenta solta.</h2>
+      <p class="corpo" data-rev>A Feed instala o que resolve e liga na sua rotina. Você não escolhe ferramenta: a gente começa por onde a sua operação mais trava.</p>
+    </div>
+    <div class="trilho-cab olho"><span>Arraste para o lado</span><b data-trilho-n>01 / 05</b></div>
+    <ol class="trilho" data-trilho tabindex="0" aria-label="O que a Feed instala, cinco frentes">
+      <li class="peca">
+        <div class="peca-topo olho"><b>01</b><span>No WhatsApp</span></div>
+        <p class="peca-palavra d" data-fit="m" aria-hidden="true"><span class="ln"><span class="ln-i">Agente</span></span></p>
+        <h3>Agente de IA no WhatsApp</h3>
+        <p>Responde na hora, 24 horas. Resolve o simples, deixa um resumo pronto e passa pro humano quando a conversa pede.</p>
+        <div class="peca-ex"><span class="olho">Exemplo</span>
+          <div class="ex-msg"><p><b>Cliente, 23h12</b>Vocês abrem sábado?</p><p class="ag"><b>Agente</b>Abrimos sim, das 8h às 12h. Quer que eu reserve um horário pra você?</p></div>
+        </div>
+      </li>
+      <li class="peca">
+        <div class="peca-topo olho"><b>02</b><span>Funil de vendas</span></div>
+        <p class="peca-palavra d" data-fit="m" aria-hidden="true"><span class="ln"><span class="ln-i">Funil</span></span></p>
+        <h3>Funil de vendas (CRM)</h3>
+        <p>Cada oportunidade numa etapa. Quem sumiu recebe acompanhamento automático. A proposta sai em PDF, montada e enviada pelo celular.</p>
+        <div class="peca-ex"><span class="olho">Exemplo</span>
+          <ol class="ex-etapas"><li>Novo contato</li><li>Em conversa</li><li class="ok">Proposta</li><li>Fechado</li></ol>
+        </div>
+      </li>
+      <li class="peca">
+        <div class="peca-topo olho"><b>03</b><span>Redes</span></div>
+        <p class="peca-palavra d" data-fit="m" aria-hidden="true"><span class="ln"><span class="ln-i">Instagram</span></span></p>
+        <h3>Instagram no automático</h3>
+        <p>Posts agendados e publicados sozinhos, com as métricas à vista. Comentário com palavra-chave vira mensagem direta.</p>
+        <div class="peca-ex"><span class="olho">Exemplo</span>
+          <p class="ex-linha">Comentou <em>AGENDA</em> no post.</p><p class="ex-linha">Recebeu o link na mensagem direta, na hora.</p>
+        </div>
+      </li>
+      <li class="peca">
+        <div class="peca-topo olho"><b>04</b><span>Marketing</span></div>
+        <p class="peca-palavra d" data-fit="m" aria-hidden="true"><span class="ln"><span class="ln-i">Marca</span></span></p>
+        <h3>Marca, conteúdo, site e SEO</h3>
+        <p>O lado do marketing, quando ele serve à operação. Marca clara, conteúdo com rumo, um site que explica e quem procura te encontra.</p>
+        <div class="peca-ex"><span class="olho">Na prática</span>
+          <ol class="ex-etapas"><li>Marca</li><li>Conteúdo</li><li>Site</li><li class="ok">SEO</li></ol>
+        </div>
+      </li>
+      <li class="peca">
+        <div class="peca-topo olho"><b>05</b><span>Pelo chat</span></div>
+        <p class="peca-palavra d" data-fit="m" aria-hidden="true"><span class="ln"><span class="ln-i">Especialistas</span></span></p>
+        <h3>Agentes especialistas</h3>
+        <p>Uma equipe de agentes que faz tarefa pelo chat. Você pede do jeito que fala, eles entregam.</p>
+        <div class="peca-ex"><span class="olho">Exemplo</span>
+          <p class="ex-linha"><em>“</em>Calcula o frete até Bebedouro.<em>”</em></p><p class="ex-linha"><em>“</em>Monta o orçamento do João.<em>”</em></p><p class="ex-linha"><em>“</em>Prepara o relatório da semana.<em>”</em></p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- 03 O FEED HUB -->
+  <section class="cap hub" id="cap-3" data-tone="laranja" data-cap="03" data-cap-t="O Feed Hub">
+    <div class="hub-palco" data-hub>
+      <div class="hub-fixo">
+        <header class="cap-cab" data-rev><b>03 <i>/ 06</i></b><span>O Feed Hub</span></header>
+        <div class="hub-linha">
+          <img class="hub-assina" src="assets/hub-assinatura.svg" alt="Feed Hub" width="1642" height="300">
+          <p class="hub-loja olho">No ar no Google Play<br>desde 09/11/2026</p>
+        </div>
+        <div class="hub-barras" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+        <ol class="hub-frases">
+          <li class="hub-frase on"><h2 class="hub-frase-t" data-split-s>Sua empresa na palma da mão.</h2><p class="hub-leg"><b>Fig. 1</b><span>Entrar. A equipe inteira num app só: atendimento, vendas e aprovações.</span></p></li>
+          <li class="hub-frase"><p class="hub-frase-t" data-split-s>Veja primeiro o que precisa de você.</p><p class="hub-leg"><b>Fig. 2</b><span>Início. O que pede a sua decisão aparece no topo, antes de tudo.</span></p></li>
+          <li class="hub-frase"><p class="hub-frase-t" data-split-s>O Agente deixa o resumo pronto.</p><p class="hub-leg"><b>Fig. 3</b><span>Atendimento. O WhatsApp com cara de WhatsApp, e a nota do Agente só pra equipe.</span></p></li>
+          <li class="hub-frase"><p class="hub-frase-t" data-split-s>Cada oportunidade no seu lugar.</p><p class="hub-leg"><b>Fig. 4</b><span>Funil. Cada contato numa etapa, com valor, próximo passo e prazo.</span></p></li>
+          <li class="hub-frase"><p class="hub-frase-t" data-split-s>Aprove seus posts pelo celular.</p><p class="hub-leg"><b>Fig. 5</b><span>Aprovar. A peça chega com horário proposto. Um toque confirma, e você recebe aviso no celular.</span></p></li>
+        </ol>
+        <figure class="hub-fone">
+          <div class="fone">
+            <div class="fone-tela">
+              <div class="scr escuro on"><div class="st">18:42<span><i></i><i></i><i></i><u></u></span></div><img src="assets/tela-01-entrar.webp" alt="Feed Hub, tela de entrar com e-mail e senha da empresa" width="760" height="1628"></div>
+              <div class="scr"><div class="st">18:42<span><i></i><i></i><i></i><u></u></span></div><img src="assets/tela-02-inicio.webp" alt="Feed Hub, tela Início: uma peça aguarda aprovação, no topo" width="760" height="1628" loading="lazy"></div>
+              <div class="scr"><div class="st">18:42<span><i></i><i></i><i></i><u></u></span></div><img src="assets/tela-03-atendimento.webp" alt="Feed Hub, tela Atendimento: conversa de WhatsApp com o Agente e o resumo pronto para a equipe" width="760" height="1628" loading="lazy"></div>
+              <div class="scr"><div class="st">18:42<span><i></i><i></i><i></i><u></u></span></div><img src="assets/tela-04-funil.webp" alt="Feed Hub, tela Funil: contatos por etapa com valor e próximo passo" width="760" height="1628" loading="lazy"></div>
+              <div class="scr"><div class="st">18:42<span><i></i><i></i><i></i><u></u></span></div><img src="assets/tela-05-aprovar.webp" alt="Feed Hub, tela Aprovar: post aguardando com data e hora de publicação" width="760" height="1628" loading="lazy"></div>
+            </div>
+            <img class="fone-moldura" src="assets/fone.webp" alt="" width="900" height="1953">
+          </div>
+          <figcaption class="sr">Telas reais do Feed Hub, com dados de demonstração.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <div class="hub-baixar">
+      <h2 class="mega" data-split>Atendimento, vendas e aprovações no celular.</h2>
+      <ul class="hub-faz" data-rev aria-label="O que a equipe faz no Feed Hub">
+        <li>Atende o WhatsApp</li><li>Vê o que precisa dela</li><li>Acompanha o funil</li><li>Aprova posts e orçamentos</li><li>Recebe aviso no celular</li>
+      </ul>
+      <p class="corpo" data-rev>O Feed Hub é o app onde o cliente da Feed opera tudo. Está no ar no Google Play desde 09/11/2026. iPhone vem depois. As telas acima são reais, com dados de demonstração.</p>
+      <div data-rev><a class="btn btn-tinta" href="https://play.google.com/store/apps/details?id=com.agenciafeed.hub" target="_blank" rel="noopener">Baixar o Feed Hub no Google Play <span aria-hidden="true">↗</span></a></div>
+    </div>
+  </section>
+
+  <!-- 04 COMO FUNCIONA -->
+  <section class="cap papel" id="cap-4" data-tone="papel" data-cap="04" data-cap-t="Como funciona">
+    <header class="cap-cab" data-rev><b>04 <i>/ 06</i></b><span>Como funciona</span></header>
+    <h2 class="mega" data-split>Três passos. Nenhum time de TI.</h2>
+    <ol class="passos">
+      <li class="passo">
+        <span class="passo-n d" aria-hidden="true">1</span>
+        <div class="passo-t"><span class="olho">Passo 1</span><h3>Diagnóstico do Gargalo</h3></div>
+        <div class="passo-c">
+          <p class="passo-tags"><span class="l">Grátis</span><span>PDF na hora</span></p>
+          <p class="corpo">Você deixa nome e e-mail e recebe um PDF curto que mostra onde a operação para quando você não está. Depois, se fizer sentido, conversa com o Guilherme.</p>
+          <a class="btn btn-tinta" href="https://agenciafeed.com/diagnostico">Quero o diagnóstico <span aria-hidden="true">↗</span></a>
+        </div>
+      </li>
+      <li class="passo">
+        <span class="passo-n d" aria-hidden="true">2</span>
+        <div class="passo-t"><span class="olho">Passo 2</span><h3>Implantação</h3></div>
+        <div class="passo-c">
+          <p class="corpo">Uma proposta com escopo, prazo e valor do seu caso. A Feed monta, conecta e treina quem vai usar. Sem time de TI do seu lado.</p>
+        </div>
+      </li>
+      <li class="passo">
+        <span class="passo-n d" aria-hidden="true">3</span>
+        <div class="passo-t"><span class="olho">Passo 3</span><h3>Acompanhamento</h3></div>
+        <div class="passo-c">
+          <p class="corpo">Manutenção mensal quando o projeto pede. O preço é do seu caso: implementação com manutenção, ou serviço pontual.</p>
+          <a class="passo-link" href="https://agenciafeed.com/quanto-custa/">Ver quanto custa <span aria-hidden="true">&nbsp;↗</span></a>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- 05 PROVA REAL -->
+  <section class="cap prova" id="cap-5" data-tone="ink" data-cap="05" data-cap-t="Prova real">
+    <header class="cap-cab" data-rev><b>05 <i>/ 06</i></b><span>Prova real</span></header>
+    <h2 class="mega" data-fit aria-label="Isso já roda.">
+      <span class="ln" aria-hidden="true"><span class="ln-i">Isso já</span></span>
+      <span class="ln laranja" aria-hidden="true"><span class="ln-i">roda.</span></span>
+    </h2>
+    <p class="leitura" data-leitura>Numa revenda de veículos do interior de SP, o Agente da Feed atende o WhatsApp. A equipe responde e manda proposta pelo celular, no Hub. E o funil acompanha cada lead.</p>
+    <dl class="ficha" data-rev>
+      <div><dt>Atendimento</dt><dd>24 horas, com o Agente</dd></div>
+      <div><dt>Equipe</dt><dd>1 app no celular</dd></div>
+      <div><dt>Funil</dt><dd>Cada lead numa etapa</dd></div>
+      <div><dt>Volume</dt><dd><span class="marcador">[número a confirmar]</span></dd></div>
+    </dl>
+    <p class="prova-nota" data-rev>Cliente real, nome preservado. Aqui não entra número que a gente não pode provar.</p>
+  </section>
+
+  <!-- 06 PERGUNTAS -->
+  <section class="cap papel" id="cap-6" data-tone="papel" data-cap="06" data-cap-t="Perguntas">
+    <header class="cap-cab" data-rev><b>06 <i>/ 06</i></b><span>Perguntas</span></header>
+    <h2 class="mega" data-split>O que todo mundo pergunta antes de começar.</h2>
+    <div class="faq">
+      <details><summary><span class="faq-n">01</span><span class="faq-q">O que uma agência de IA faz na prática?</span><i aria-hidden="true"></i></summary>
+        <div class="faq-r"><p>Encontra onde sua operação perde tempo e dinheiro e resolve com tecnologia: atendimento que responde sozinho, processos que rodam sem ninguém empurrar, marca e aquisição organizadas. Na Feed isso começa com um diagnóstico da operação e termina com a solução implementada e rodando na sua rotina.</p></div></details>
+      <details><summary><span class="faq-n">02</span><span class="faq-q">Quanto custa contratar a Feed?</span><i aria-hidden="true"></i></summary>
+        <div class="faq-r"><p>O preço é personalizado. Primeiro a gente entende onde a sua operação trava, depois monta uma proposta com escopo, prazo e valor do seu caso. O valor muda com quantos sistemas a gente conecta, o volume de atendimento e a organização das informações. A IA é um adicional opcional: entra só se fizer sentido pro seu negócio e, quando entra, muda o valor da proposta. Veja como funciona em <a href="https://agenciafeed.com/quanto-custa/">quanto custa</a> ou comece pelo <a href="https://agenciafeed.com/diagnostico">Diagnóstico do Gargalo</a>.</p></div></details>
+      <details><summary><span class="faq-n">03</span><span class="faq-q">Automação de WhatsApp não vai irritar meus clientes?</span><i aria-hidden="true"></i></summary>
+        <div class="faq-r"><p>Robô burro irrita. Automação bem feita responde na hora, resolve o que é simples e passa pro humano quando a conversa pede. Seu cliente ganha resposta imediata e seu time para de perder o dia repetindo a mesma informação.</p></div></details>
+      <details><summary><span class="faq-n">04</span><span class="faq-q">Preciso de time de TI pra automatizar a empresa?</span><i aria-hidden="true"></i></summary>
+        <div class="faq-r"><p>Não. A Feed implementa e treina quem vai usar. Se o projeto tiver manutenção, a Feed acompanha depois da entrega. Você não precisa contratar ninguém nem entender de tecnologia: precisa saber onde sua operação trava, e isso a gente descobre junto. A IA não é obrigatória. Ela entra como adicional só se fizer sentido pro seu negócio e, quando entra, muda o valor da proposta.</p></div></details>
+      <details><summary><span class="faq-n">05</span><span class="faq-q">Em quanto tempo fica pronto?</span><i aria-hidden="true"></i></summary>
+        <div class="faq-r"><p>Depende de quão claras estão as respostas, de quantas integrações tem e do volume de exceções. O prazo de cada projeto vem escrito na proposta. A gente prefere entrega rápida e escopo enxuto a projeto grande que nunca termina. Se quiser começar já, o <a href="https://agenciafeed.com/diagnostico">Diagnóstico do Gargalo</a> chega no seu e-mail na hora.</p></div></details>
+      <details><summary><span class="faq-n">06</span><span class="faq-q">A Feed atende só a região de Ribeirão Preto?</span><i aria-hidden="true"></i></summary>
+        <div class="faq-r"><p>A base é a região de Ribeirão Preto e Bebedouro, no interior de SP, com atendimento presencial quando faz sentido. Fora da região, o atendimento é remoto, em qualquer lugar do Brasil.</p></div></details>
+      <details><summary><span class="faq-n">07</span><span class="faq-q">O que é o diagnóstico gratuito?</span><i aria-hidden="true"></i></summary>
+        <div class="faq-r"><p>Você deixa nome e e-mail e recebe no seu e-mail, na hora, o Diagnóstico do Gargalo, um PDF curto que mostra onde a operação para quando você não está, o que mais consome seu tempo e o primeiro passo pra tirar a empresa das suas costas. Depois, se fizer sentido, você conversa com o Guilherme sobre o seu caso. Não custa nada. Comece em <a href="https://agenciafeed.com/diagnostico">agenciafeed.com/diagnostico</a>.</p></div></details>
+    </div>
+  </section>
+
+  <!-- CHAMADA FINAL -->
+  <section class="fim" data-tone="ink" data-cap="06" data-cap-t="Comece" aria-label="Chamada final">
+    <p class="olho" data-rev>Fim do manifesto. Começo do seu.</p>
+    <h2 class="fim-h d" data-fit aria-label="Comece pelo gargalo.">
+      <span class="ln" aria-hidden="true"><span class="ln-i">Comece pelo</span></span>
+      <span class="ln laranja" aria-hidden="true"><span class="ln-i">gargalo.</span></span>
+    </h2>
+    <p class="corpo" data-rev>O Diagnóstico do Gargalo é grátis. Você deixa nome e e-mail e recebe o PDF na hora. Depois, se fizer sentido, conversa com o Guilherme.</p>
+    <div data-rev>
+      <a class="btn btn-laranja" href="https://agenciafeed.com/diagnostico">Fazer o Diagnóstico do Gargalo <span aria-hidden="true">↗</span></a>
+      <div class="fim-sec">
+        <a class="btn btn-linha" href="https://wa.me/5516993020694" target="_blank" rel="noopener">Falar no WhatsApp <span aria-hidden="true">↗</span></a>
+        <a class="btn btn-linha" href="https://play.google.com/store/apps/details?id=com.agenciafeed.hub" target="_blank" rel="noopener">Baixar o Feed Hub <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="rodape" data-tone="ink" aria-label="Rodapé Feed">
+  <img class="rodape-logo" src="assets/logo-branca.webp" alt="Feed" width="520" height="173" loading="lazy">
+  <div class="rodape-col">
+    <nav aria-label="Páginas estratégicas">
+      <h2>Páginas</h2>
+      <a href="https://agenciafeed.com/ia-para-pequenas-empresas/">IA para pequenas empresas</a>
+      <a href="https://agenciafeed.com/automacao-whatsapp/">Automação de WhatsApp</a>
+      <a href="https://agenciafeed.com/agentes-de-ia/">Agentes de IA</a>
+      <a href="https://agenciafeed.com/diagnostico-ia-empresa/">Diagnóstico de IA</a>
+      <a href="https://agenciafeed.com/agencia-de-ia-ribeirao-preto/">Agência de IA em Ribeirão Preto</a>
+      <a href="https://agenciafeed.com/agencia-de-marketing-bebedouro/">Agência de marketing em Bebedouro</a>
+    </nav>
+    <address>
+      <h2>Contato</h2>
+      <p>Interior de São Paulo, região de Ribeirão Preto e Bebedouro. Atendimento remoto em todo o Brasil.</p>
+      <a href="tel:+5516993020694">(16) 99302-0694</a>
+      <a href="https://wa.me/5516993020694" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="mailto:emailmkt@agenciafeed.com">emailmkt@agenciafeed.com</a>
+    </address>
+    <nav aria-label="Links do rodapé">
+      <h2>Mais</h2>
+      <a href="https://agenciafeed.com/blog/">Blog</a>
+      <a href="https://agenciafeed.com/privacidade.html">Política de Privacidade</a>
+    </nav>
+  </div>
+  <div class="rodape-legal">
+    <p>FEED MARKETING E COMUNICAÇÃO • CNPJ 53.877.987/0001-93</p>
+    <small>© 2026 FEED MKT. Todos os direitos reservados.</small>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const calmo = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const lim = v => Math.max(0, Math.min(1, v));
+
+  // quebra em palavras para a máscara (palavra nunca parte no meio)
+  const quebra = el => {
+    const txt = el.textContent.trim().split(/\s+/);
+    el.innerHTML = txt.map((w, i) => `<span class="w"><span class="wi" style="--i:${i}">${w}</span></span>`).join(' ');
+  };
+  $$('[data-split], [data-split-s]').forEach(quebra);
+
+  // tipografia que enche a largura da linha
+  const encaixa = () => {
+    $$('[data-fit]').forEach(box => {
+      const lns = $$(':scope > .ln', box);
+      if (box.dataset.fit === 'm' && innerWidth >= 1024) { lns.forEach(l => l.style.fontSize = ''); return; }
+      const cs = getComputedStyle(box);
+      const alvo = box.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+      const teto = innerWidth >= 1024 ? innerHeight * .3 : (parseFloat(cs.getPropertyValue('--fit-max')) || 999);
+      lns.forEach(l => {
+        l.style.fontSize = '100px';
+        const w = l.firstElementChild.getBoundingClientRect().width;
+        l.style.fontSize = Math.min(teto, 100 * alvo / w * .99).toFixed(2) + 'px';
+      });
+    });
+  };
+  const comeca = () => { encaixa(); requestAnimationFrame(() => document.body.classList.add('pronto')); };
+  (document.fonts ? Promise.race([document.fonts.ready, new Promise(r => setTimeout(r, 2500))]) : Promise.resolve()).then(comeca);
+  let rz; addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(encaixa, 120); });
+
+  // revelações ao entrar na tela
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
+  $$('[data-split], [data-rev], .cap-cab').forEach(el => io.observe(el));
+
+  // palavra que troca no meio da frase
+  $$('[data-troca]').forEach(box => {
+    const itens = $$('.troca-pilha > span', box), barra = box.querySelector('i');
+    itens.forEach(s => {
+      s.innerHTML = s.textContent.split(' ').map(w => `<span class="tw">${[...w].map(c => `<span class="tc">${c}</span>`).join('')}</span>`).join(' ');
+      $$('.tc', s).forEach((c, i) => c.style.setProperty('--i', i));
+    });
+    if (calmo) return;
+    let n = 0, t, visivel = false;
+    const corre = () => { barra.classList.remove('corre'); void barra.offsetWidth; barra.classList.add('corre'); };
+    const passo = () => {
+      const a = itens[n]; n = (n + 1) % itens.length; const b = itens[n];
+      a.classList.remove('on'); a.classList.add('sai'); b.classList.remove('sai'); b.classList.add('on');
+      setTimeout(() => a.classList.remove('sai'), 700);
+      corre();
+    };
+    new IntersectionObserver(([e]) => {
+      visivel = e.isIntersecting; clearInterval(t);
+      if (visivel) { corre(); t = setInterval(passo, 2600); }
+    }).observe(box);
+  });
+
+  // trilho do capítulo 02
+  const trilho = document.querySelector('[data-trilho]'), trilhoN = document.querySelector('[data-trilho-n]');
+  trilho.addEventListener('scroll', () => {
+    const p = trilho.firstElementChild.getBoundingClientRect().width + 20;
+    trilhoN.textContent = String(Math.min(5, Math.round(trilho.scrollLeft / p) + 1)).padStart(2, '0') + ' / 05';
+  }, { passive: true });
+
+  // leitura: as palavras acendem conforme você lê
+  const leitura = document.querySelector('[data-leitura]');
+  const destaque = new Set(['Agente', 'Hub.', 'funil']);
+  leitura.innerHTML = leitura.textContent.trim().split(/\s+/).map(w => `<span class="lw${destaque.has(w) ? ' lj' : ''}">${w}</span>`).join(' ');
+  const lws = $$('.lw', leitura);
+
+  // o loop de rolagem: cortinas, Hub, números dos passos, leitura, topo
+  const topo = document.querySelector('.topo'), capN = topo.querySelector('[data-cap-n]'), capT = topo.querySelector('[data-cap-t]');
+  const tons = $$('[data-tone]:not(.topo)'), cenas = $$('[data-cena]'), hub = document.querySelector('[data-hub]');
+  const frases = $$('.hub-frase', hub), telas = $$('.scr', hub), barras = $$('.hub-barras i', hub);
+  const nums = $$('.passo-n'), corte = document.querySelector('.corte');
+  let hubI = 0, pedido = false;
+  const quadro = () => {
+    pedido = false;
+    const H = innerHeight, faixa = 40;
+    let tom = 'ink', cap = null;
+    for (const s of tons) { const r = s.getBoundingClientRect(); if (r.top <= faixa && r.bottom > faixa) { tom = s.dataset.tone; cap = s; } }
+
+    if (!calmo) {
+      corte.style.setProperty('--c', (.055 * (1 - lim(scrollY / (H * .7)))).toFixed(4) + 'em');
+      for (const c of cenas) {
+        const r = c.getBoundingClientRect();
+        const q = lim((lim(-r.top / (r.height - H)) - .1) / .62);
+        c.style.setProperty('--q', q.toFixed(4));
+        if (r.top <= faixa && r.bottom > faixa && q > .25) tom = 'papel';
+      }
+      for (const n of nums) { const r = n.getBoundingClientRect(); n.style.setProperty('--f', (lim((H * .92 - r.top) / (r.height + H * .3)) * 100).toFixed(1) + '%'); }
+      const rl = leitura.getBoundingClientRect();
+      const acesas = Math.round(lim((H * .82 - rl.top) / (rl.height + H * .25)) * lws.length * 1.08);
+      lws.forEach((w, i) => w.classList.toggle('on', i < acesas));
+    }
+
+    // o Hub troca de tela pela rolagem também sem animação (troca seca); senão 4 telas nunca apareceriam
+    const r = hub.getBoundingClientRect();
+    if (r.bottom > -H && r.top < 2 * H) {
+      const p = lim(-r.top / (r.height - H));
+      hub.style.setProperty('--p', p.toFixed(4));
+      barras.forEach((b, i) => b.style.setProperty('--b', lim(p * 5 - i).toFixed(3)));
+      const i = Math.min(4, Math.floor(p * 5));
+      if (i !== hubI) {
+        frases[hubI].classList.remove('on'); frases[hubI].classList.add('sai'); telas[hubI].classList.remove('on');
+        const old = frases[hubI]; setTimeout(() => old.classList.remove('sai'), 600);
+        frases[i].classList.remove('sai'); frases[i].classList.add('on'); telas[i].classList.add('on');
+        hubI = i;
+      }
+    }
+    topo.dataset.tone = tom;
+    if (cap && cap.dataset.cap) { capN.textContent = cap.dataset.cap; capT.textContent = cap.dataset.capT; }
+  };
+  const pede = () => { if (!pedido) { pedido = true; requestAnimationFrame(quadro); } };
+  addEventListener('scroll', pede, { passive: true });
+  addEventListener('resize', pede);
+  quadro();
+})();
+</script>
+</body>
+</html>
