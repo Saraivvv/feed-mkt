@@ -1,0 +1,99 @@
+{
+  "status": "OK",
+  "findings": [],
+  "results": [
+    {
+      "width": 390,
+      "overflow": false,
+      "broken": [],
+      "alt": [],
+      "cuts": [],
+      "targets": [],
+      "links": [],
+      "fonts": [
+        {
+          "family": "Cormorant Garamond",
+          "status": "loaded"
+        },
+        {
+          "family": "Manrope",
+          "status": "loaded"
+        }
+      ],
+      "h1": 1,
+      "errors": [],
+      "external": []
+    },
+    {
+      "width": 768,
+      "overflow": false,
+      "broken": [],
+      "alt": [],
+      "cuts": [],
+      "targets": [],
+      "links": [],
+      "fonts": [
+        {
+          "family": "Cormorant Garamond",
+          "status": "loaded"
+        },
+        {
+          "family": "Manrope",
+          "status": "loaded"
+        }
+      ],
+      "h1": 1,
+      "errors": [],
+      "external": []
+    },
+    {
+      "width": 1024,
+      "overflow": false,
+      "broken": [],
+      "alt": [],
+      "cuts": [],
+      "targets": [],
+      "links": [],
+      "fonts": [
+        {
+          "family": "Cormorant Garamond",
+          "status": "loaded"
+        },
+        {
+          "family": "Manrope",
+          "status": "loaded"
+        }
+      ],
+      "h1": 1,
+      "errors": [],
+      "external": []
+    },
+    {
+      "width": 1440,
+      "overflow": false,
+      "broken": [],
+      "alt": [],
+      "cuts": [],
+      "targets": [],
+      "links": [],
+      "fonts": [
+        {
+          "family": "Cormorant Garamond",
+          "status": "loaded"
+        },
+        {
+          "family": "Manrope",
+          "status": "loaded"
+        }
+      ],
+      "h1": 1,
+      "errors": [],
+      "external": []
+    }
+  ],
+  "counts": {
+    "png": 73,
+    "svg": 65,
+    "applications": 30
+  }
+}

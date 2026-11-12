@@ -1,0 +1,878 @@
+[
+  {
+    "file": "aplicacoes\\anuncio-google.png",
+    "bytes": 22906,
+    "dimensions": [
+      1440,
+      750
+    ],
+    "original": [
+      1440,
+      750
+    ]
+  },
+  {
+    "file": "aplicacoes\\anuncio-meta.png",
+    "bytes": 79682,
+    "dimensions": [
+      1080,
+      1350
+    ],
+    "original": [
+      1080,
+      1350
+    ]
+  },
+  {
+    "file": "aplicacoes\\avental.png",
+    "bytes": 75490,
+    "dimensions": [
+      1440,
+      1000
+    ],
+    "original": [
+      1440,
+      1000
+    ]
+  },
+  {
+    "file": "aplicacoes\\caderno.png",
+    "bytes": 163561,
+    "dimensions": [
+      1440,
+      1000
+    ],
+    "original": [
+      1440,
+      1000
+    ]
+  },
+  {
+    "file": "aplicacoes\\destaque-caderno.png",
+    "bytes": 5803,
+    "dimensions": [
+      360,
+      360
+    ],
+    "original": [
+      360,
+      360
+    ]
+  },
+  {
+    "file": "aplicacoes\\destaque-costura.png",
+    "bytes": 6313,
+    "dimensions": [
+      360,
+      360
+    ],
+    "original": [
+      360,
+      360
+    ]
+  },
+  {
+    "file": "aplicacoes\\destaque-cuidado.png",
+    "bytes": 6837,
+    "dimensions": [
+      360,
+      360
+    ],
+    "original": [
+      360,
+      360
+    ]
+  },
+  {
+    "file": "aplicacoes\\destaque-presente.png",
+    "bytes": 6111,
+    "dimensions": [
+      360,
+      360
+    ],
+    "original": [
+      360,
+      360
+    ]
+  },
+  {
+    "file": "aplicacoes\\embalagem.png",
+    "bytes": 117518,
+    "dimensions": [
+      1440,
+      1000
+    ],
+    "original": [
+      1440,
+      1000
+    ]
+  },
+  {
+    "file": "aplicacoes\\fachada.png",
+    "bytes": 43050,
+    "dimensions": [
+      1440,
+      1000
+    ],
+    "original": [
+      1440,
+      1000
+    ]
+  },
+  {
+    "file": "aplicacoes\\google-negocio.png",
+    "bytes": 29234,
+    "dimensions": [
+      1440,
+      1040
+    ],
+    "original": [
+      1440,
+      1040
+    ]
+  },
+  {
+    "file": "aplicacoes\\instagram-destaques.png",
+    "bytes": 17819,
+    "dimensions": [
+      1440,
+      700
+    ],
+    "original": [
+      1440,
+      700
+    ]
+  },
+  {
+    "file": "aplicacoes\\instagram-grade.png",
+    "bytes": 119715,
+    "dimensions": [
+      1440,
+      1610
+    ],
+    "original": [
+      1440,
+      1610
+    ]
+  },
+  {
+    "file": "aplicacoes\\instagram-post-01.png",
+    "bytes": 66590,
+    "dimensions": [
+      1080,
+      1080
+    ],
+    "original": [
+      1080,
+      1080
+    ]
+  },
+  {
+    "file": "aplicacoes\\instagram-post-02.png",
+    "bytes": 96125,
+    "dimensions": [
+      1080,
+      1080
+    ],
+    "original": [
+      1080,
+      1080
+    ]
+  },
+  {
+    "file": "aplicacoes\\instagram-post-03.png",
+    "bytes": 32881,
+    "dimensions": [
+      1080,
+      1080
+    ],
+    "original": [
+      1080,
+      1080
+    ]
+  },
+  {
+    "file": "aplicacoes\\instagram-post-04.png",
+    "bytes": 82664,
+    "dimensions": [
+      1080,
+      1080
+    ],
+    "original": [
+      1080,
+      1080
+    ]
+  },
+  {
+    "file": "aplicacoes\\instagram-post-05.png",
+    "bytes": 18766,
+    "dimensions": [
+      1080,
+      1080
+    ],
+    "original": [
+      1080,
+      1080
+    ]
+  },
+  {
+    "file": "aplicacoes\\instagram-post-06.png",
+    "bytes": 17713,
+    "dimensions": [
+      1080,
+      1080
+    ],
+    "original": [
+      1080,
+      1080
+    ]
+  },
+  {
+    "file": "aplicacoes\\instagram-post-07.png",
+    "bytes": 41532,
+    "dimensions": [
+      1080,
+      1080
+    ],
+    "original": [
+      1080,
+      1080
+    ]
+  },
+  {
+    "file": "aplicacoes\\instagram-post-08.png",
+    "bytes": 28810,
+    "dimensions": [
+      1080,
+      1080
+    ],
+    "original": [
+      1080,
+      1080
+    ]
+  },
+  {
+    "file": "aplicacoes\\instagram-post-09.png",
+    "bytes": 24252,
+    "dimensions": [
+      1080,
+      1080
+    ],
+    "original": [
+      1080,
+      1080
+    ]
+  },
+  {
+    "file": "aplicacoes\\instagram-story-01.png",
+    "bytes": 108957,
+    "dimensions": [
+      1080,
+      1920
+    ],
+    "original": [
+      1080,
+      1920
+    ]
+  },
+  {
+    "file": "aplicacoes\\instagram-story-02.png",
+    "bytes": 95843,
+    "dimensions": [
+      1080,
+      1920
+    ],
+    "original": [
+      1080,
+      1920
+    ]
+  },
+  {
+    "file": "aplicacoes\\instagram-story-03.png",
+    "bytes": 96417,
+    "dimensions": [
+      1080,
+      1920
+    ],
+    "original": [
+      1080,
+      1920
+    ]
+  },
+  {
+    "file": "aplicacoes\\moodboard.png",
+    "bytes": 107322,
+    "dimensions": [
+      1440,
+      1000
+    ],
+    "original": [
+      1440,
+      1000
+    ]
+  },
+  {
+    "file": "aplicacoes\\papelaria.png",
+    "bytes": 76112,
+    "dimensions": [
+      1440,
+      1000
+    ],
+    "original": [
+      1440,
+      1000
+    ]
+  },
+  {
+    "file": "aplicacoes\\site-desktop.png",
+    "bytes": 139881,
+    "dimensions": [
+      1440,
+      1740
+    ],
+    "original": [
+      1440,
+      1740
+    ]
+  },
+  {
+    "file": "aplicacoes\\site-mobile.png",
+    "bytes": 56156,
+    "dimensions": [
+      390,
+      1645
+    ],
+    "original": [
+      390,
+      1645
+    ]
+  },
+  {
+    "file": "aplicacoes\\whatsapp-agente.png",
+    "bytes": 31390,
+    "dimensions": [
+      720,
+      1320
+    ],
+    "original": [
+      720,
+      1320
+    ]
+  },
+  {
+    "file": "capturas\\celular-inteira.png",
+    "bytes": 260183,
+    "dimensions": [
+      140,
+      9000
+    ],
+    "original": [
+      780,
+      50226
+    ]
+  },
+  {
+    "file": "capturas\\celular-quadro-00.png",
+    "bytes": 80638,
+    "dimensions": [
+      780,
+      1688
+    ],
+    "original": [
+      780,
+      1688
+    ]
+  },
+  {
+    "file": "capturas\\celular-quadro-01.png",
+    "bytes": 87207,
+    "dimensions": [
+      780,
+      1688
+    ],
+    "original": [
+      780,
+      1688
+    ]
+  },
+  {
+    "file": "capturas\\celular-quadro-02.png",
+    "bytes": 71288,
+    "dimensions": [
+      780,
+      1688
+    ],
+    "original": [
+      780,
+      1688
+    ]
+  },
+  {
+    "file": "capturas\\celular-quadro-03.png",
+    "bytes": 70003,
+    "dimensions": [
+      780,
+      1688
+    ],
+    "original": [
+      780,
+      1688
+    ]
+  },
+  {
+    "file": "capturas\\celular-quadro-04.png",
+    "bytes": 61339,
+    "dimensions": [
+      780,
+      1688
+    ],
+    "original": [
+      780,
+      1688
+    ]
+  },
+  {
+    "file": "capturas\\celular-quadro-05.png",
+    "bytes": 69183,
+    "dimensions": [
+      780,
+      1688
+    ],
+    "original": [
+      780,
+      1688
+    ]
+  },
+  {
+    "file": "capturas\\celular-quadro-06.png",
+    "bytes": 85540,
+    "dimensions": [
+      780,
+      1688
+    ],
+    "original": [
+      780,
+      1688
+    ]
+  },
+  {
+    "file": "capturas\\celular-quadro-07.png",
+    "bytes": 38212,
+    "dimensions": [
+      780,
+      1688
+    ],
+    "original": [
+      780,
+      1688
+    ]
+  },
+  {
+    "file": "capturas\\celular-quadro-08.png",
+    "bytes": 46231,
+    "dimensions": [
+      780,
+      1688
+    ],
+    "original": [
+      780,
+      1688
+    ]
+  },
+  {
+    "file": "capturas\\celular-quadro-09.png",
+    "bytes": 36609,
+    "dimensions": [
+      780,
+      1688
+    ],
+    "original": [
+      780,
+      1688
+    ]
+  },
+  {
+    "file": "capturas\\celular-quadro-10.png",
+    "bytes": 65546,
+    "dimensions": [
+      780,
+      1688
+    ],
+    "original": [
+      780,
+      1688
+    ]
+  },
+  {
+    "file": "capturas\\celular-quadro-11.png",
+    "bytes": 61648,
+    "dimensions": [
+      780,
+      1688
+    ],
+    "original": [
+      780,
+      1688
+    ]
+  },
+  {
+    "file": "capturas\\celular-quadro-12.png",
+    "bytes": 38989,
+    "dimensions": [
+      780,
+      1688
+    ],
+    "original": [
+      780,
+      1688
+    ]
+  },
+  {
+    "file": "capturas\\celular-quadro-13.png",
+    "bytes": 32667,
+    "dimensions": [
+      780,
+      1688
+    ],
+    "original": [
+      780,
+      1688
+    ]
+  },
+  {
+    "file": "capturas\\celular-quadro-14.png",
+    "bytes": 44972,
+    "dimensions": [
+      780,
+      1688
+    ],
+    "original": [
+      780,
+      1688
+    ]
+  },
+  {
+    "file": "capturas\\celular-quadro-15.png",
+    "bytes": 55403,
+    "dimensions": [
+      780,
+      1688
+    ],
+    "original": [
+      780,
+      1688
+    ]
+  },
+  {
+    "file": "capturas\\celular-quadro-16.png",
+    "bytes": 53098,
+    "dimensions": [
+      780,
+      1688
+    ],
+    "original": [
+      780,
+      1688
+    ]
+  },
+  {
+    "file": "capturas\\celular-quadro-17.png",
+    "bytes": 51141,
+    "dimensions": [
+      780,
+      1688
+    ],
+    "original": [
+      780,
+      1688
+    ]
+  },
+  {
+    "file": "capturas\\celular-quadro-18.png",
+    "bytes": 38597,
+    "dimensions": [
+      780,
+      1688
+    ],
+    "original": [
+      780,
+      1688
+    ]
+  },
+  {
+    "file": "capturas\\celular-quadro-19.png",
+    "bytes": 64594,
+    "dimensions": [
+      780,
+      1688
+    ],
+    "original": [
+      780,
+      1688
+    ]
+  },
+  {
+    "file": "capturas\\celular-quadro-20.png",
+    "bytes": 76135,
+    "dimensions": [
+      780,
+      1688
+    ],
+    "original": [
+      780,
+      1688
+    ]
+  },
+  {
+    "file": "capturas\\celular-quadro-21.png",
+    "bytes": 54373,
+    "dimensions": [
+      780,
+      1688
+    ],
+    "original": [
+      780,
+      1688
+    ]
+  },
+  {
+    "file": "capturas\\celular-quadro-22.png",
+    "bytes": 45158,
+    "dimensions": [
+      780,
+      1688
+    ],
+    "original": [
+      780,
+      1688
+    ]
+  },
+  {
+    "file": "capturas\\celular-quadro-23.png",
+    "bytes": 73926,
+    "dimensions": [
+      780,
+      1688
+    ],
+    "original": [
+      780,
+      1688
+    ]
+  },
+  {
+    "file": "capturas\\celular-quadro-24.png",
+    "bytes": 106496,
+    "dimensions": [
+      780,
+      1688
+    ],
+    "original": [
+      780,
+      1688
+    ]
+  },
+  {
+    "file": "capturas\\celular-quadro-25.png",
+    "bytes": 115454,
+    "dimensions": [
+      780,
+      1688
+    ],
+    "original": [
+      780,
+      1688
+    ]
+  },
+  {
+    "file": "capturas\\celular-quadro-26.png",
+    "bytes": 93547,
+    "dimensions": [
+      780,
+      1688
+    ],
+    "original": [
+      780,
+      1688
+    ]
+  },
+  {
+    "file": "capturas\\celular-quadro-27.png",
+    "bytes": 76265,
+    "dimensions": [
+      780,
+      1688
+    ],
+    "original": [
+      780,
+      1688
+    ]
+  },
+  {
+    "file": "capturas\\celular-quadro-28.png",
+    "bytes": 76989,
+    "dimensions": [
+      780,
+      1688
+    ],
+    "original": [
+      780,
+      1688
+    ]
+  },
+  {
+    "file": "capturas\\celular-quadro-29.png",
+    "bytes": 87810,
+    "dimensions": [
+      780,
+      1688
+    ],
+    "original": [
+      780,
+      1688
+    ]
+  },
+  {
+    "file": "capturas\\celular-quadro-30.png",
+    "bytes": 71575,
+    "dimensions": [
+      780,
+      1688
+    ],
+    "original": [
+      780,
+      1688
+    ]
+  },
+  {
+    "file": "capturas\\celular-quadro-31.png",
+    "bytes": 78159,
+    "dimensions": [
+      780,
+      1688
+    ],
+    "original": [
+      780,
+      1688
+    ]
+  },
+  {
+    "file": "capturas\\celular-quadro-32.png",
+    "bytes": 85182,
+    "dimensions": [
+      780,
+      1688
+    ],
+    "original": [
+      780,
+      1688
+    ]
+  },
+  {
+    "file": "capturas\\celular-quadro-33.png",
+    "bytes": 80872,
+    "dimensions": [
+      780,
+      1688
+    ],
+    "original": [
+      780,
+      1688
+    ]
+  },
+  {
+    "file": "capturas\\celular-quadro-34.png",
+    "bytes": 63519,
+    "dimensions": [
+      780,
+      1688
+    ],
+    "original": [
+      780,
+      1688
+    ]
+  },
+  {
+    "file": "capturas\\celular-quadro-35.png",
+    "bytes": 52912,
+    "dimensions": [
+      780,
+      1688
+    ],
+    "original": [
+      780,
+      1688
+    ]
+  },
+  {
+    "file": "capturas\\celular-quadro-36.png",
+    "bytes": 56806,
+    "dimensions": [
+      780,
+      1688
+    ],
+    "original": [
+      780,
+      1688
+    ]
+  },
+  {
+    "file": "capturas\\celular-quadro-37.png",
+    "bytes": 46173,
+    "dimensions": [
+      780,
+      1688
+    ],
+    "original": [
+      780,
+      1688
+    ]
+  },
+  {
+    "file": "capturas\\celular-quadro-38.png",
+    "bytes": 62722,
+    "dimensions": [
+      780,
+      1688
+    ],
+    "original": [
+      780,
+      1688
+    ]
+  },
+  {
+    "file": "capturas\\celular-quadro-39.png",
+    "bytes": 61593,
+    "dimensions": [
+      780,
+      1688
+    ],
+    "original": [
+      780,
+      1688
+    ]
+  },
+  {
+    "file": "capturas\\desktop-inteira.png",
+    "bytes": 387658,
+    "dimensions": [
+      471,
+      9000
+    ],
+    "original": [
+      1440,
+      27534
+    ]
+  },
+  {
+    "file": "capturas\\tablet-inteira.png",
+    "bytes": 399822,
+    "dimensions": [
+      329,
+      9000
+    ],
+    "original": [
+      1536,
+      42040
+    ]
+  }
+]

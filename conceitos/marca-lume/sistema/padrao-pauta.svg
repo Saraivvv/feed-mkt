@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600" role="img" aria-label="Padrão de pauta"><defs>
+<linearGradient id="desk" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#F4EFE4"/><stop offset=".55" stop-color="#EAE1CE"/><stop offset="1" stop-color="#CAB99B"/></linearGradient>
+<linearGradient id="cover" x1="0" y1="0" x2="1" y2=".2"><stop stop-color="#102F2B" stop-opacity=".3"/><stop offset=".08" stop-color="#FFFFFF" stop-opacity=".12"/><stop offset=".3" stop-color="#FFFFFF" stop-opacity="0"/><stop offset="1" stop-color="#102F2B" stop-opacity=".18"/></linearGradient>
+<linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#B6CDC4"/><stop offset=".55" stop-color="#D5DED2"/><stop offset="1" stop-color="#8AA89B"/></linearGradient>
+<linearGradient id="wall" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#F2EBDC"/><stop offset="1" stop-color="#D2C2A3"/></linearGradient>
+<pattern id="linen" width="5" height="5" patternUnits="userSpaceOnUse"><path d="M0 1h5M1 0v5" stroke="#F4EFE4" stroke-opacity=".13" stroke-width=".55"/><path d="M0 3.2h5M3.2 0v5" stroke="#102F2B" stroke-opacity=".09" stroke-width=".45"/></pattern>
+<pattern id="paper" width="67" height="61" patternUnits="userSpaceOnUse"><path d="m5 8 5 1m15 14 3-1m19 8 5 2m-34 13 4 1m26-39 2 3m-40 35 3-1m44 13 3 1" fill="none" stroke="#796747" stroke-opacity=".15" stroke-width=".6"/></pattern>
+<pattern id="pauta" width="60" height="24" patternUnits="userSpaceOnUse"><path d="M0 23.5h60" stroke="#1F4D45" stroke-opacity=".18" stroke-width="1"/></pattern>
+<pattern id="seam" width="18" height="18" patternUnits="userSpaceOnUse"><path d="m0 13 8-8" stroke="#C8923C" stroke-width="1.5"/></pattern>
+<filter id="shadow" x="-40%" y="-30%" width="190%" height="200%"><feDropShadow dx="17" dy="28" stdDeviation="19" flood-color="#493C27" flood-opacity=".23"/></filter>
+<filter id="smallShadow" x="-40%" y="-40%" width="190%" height="200%"><feDropShadow dx="5" dy="9" stdDeviation="7" flood-color="#493C27" flood-opacity=".22"/></filter>
+</defs><rect x="0" y="0" width="600" height="600" rx="0" fill="#F4EFE4" /><rect x="0" y="0" width="600" height="600" rx="0" fill="url(#pauta)" /></svg>

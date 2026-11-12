@@ -1,0 +1,22 @@
+celular 390x844: altura 25113px, 0 achado(s) {
+ "paginaMaisLarga": false,
+ "estouro": [],
+ "pequenos": [],
+ "quebradas": [],
+ "erros": []
+}
+tablet 768x1024: altura 21020px, 0 achado(s) {
+ "paginaMaisLarga": false,
+ "estouro": [],
+ "pequenos": [],
+ "quebradas": [],
+ "erros": []
+}
+desktop 1440x900: altura 27534px, 0 achado(s) {
+ "paginaMaisLarga": false,
+ "estouro": [],
+ "pequenos": [],
+ "quebradas": [],
+ "erros": []
+}
+TOTAL 0 achados

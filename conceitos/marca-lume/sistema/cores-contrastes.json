@@ -1,0 +1,128 @@
+{
+  "colors": [
+    {
+      "name": "Papel",
+      "hex": "#F4EFE4",
+      "rgb": [
+        244,
+        239,
+        228
+      ],
+      "cmyk": [
+        0,
+        2,
+        7,
+        4
+      ],
+      "ratio": 55
+    },
+    {
+      "name": "Mata",
+      "hex": "#1F4D45",
+      "rgb": [
+        31,
+        77,
+        69
+      ],
+      "cmyk": [
+        60,
+        0,
+        10,
+        70
+      ],
+      "ratio": 25
+    },
+    {
+      "name": "Verde Lume",
+      "hex": "#3F998B",
+      "rgb": [
+        63,
+        153,
+        139
+      ],
+      "cmyk": [
+        59,
+        0,
+        9,
+        40
+      ],
+      "ratio": 15
+    },
+    {
+      "name": "Âmbar",
+      "hex": "#C8923C",
+      "rgb": [
+        200,
+        146,
+        60
+      ],
+      "cmyk": [
+        0,
+        27,
+        70,
+        22
+      ],
+      "ratio": 5
+    },
+    {
+      "name": "Azul caderno",
+      "hex": "#395C72",
+      "rgb": [
+        57,
+        92,
+        114
+      ],
+      "cmyk": [
+        50,
+        19,
+        0,
+        55
+      ],
+      "ratio": 0
+    }
+  ],
+  "contrasts": [
+    {
+      "label": "Mata sobre Papel",
+      "ratio": 8.3,
+      "AA_normal": true,
+      "AA_large": true
+    },
+    {
+      "label": "Papel sobre Mata",
+      "ratio": 8.3,
+      "AA_normal": true,
+      "AA_large": true
+    },
+    {
+      "label": "Mata sobre Âmbar",
+      "ratio": 3.46,
+      "AA_normal": false,
+      "AA_large": true
+    },
+    {
+      "label": "Papel sobre Azul",
+      "ratio": 6.21,
+      "AA_normal": true,
+      "AA_large": true
+    },
+    {
+      "label": "Papel sobre Verde Lume",
+      "ratio": 2.98,
+      "AA_normal": false,
+      "AA_large": false
+    },
+    {
+      "label": "Mata sobre Verde Lume",
+      "ratio": 2.78,
+      "AA_normal": false,
+      "AA_large": false
+    },
+    {
+      "label": "Âmbar sobre Papel",
+      "ratio": 2.4,
+      "AA_normal": false,
+      "AA_large": false
+    }
+  ]
+}
