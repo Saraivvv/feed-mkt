@@ -359,6 +359,11 @@ p a:active,address a:active{opacity:.55}
   .parada:hover .ir{translate:5px 0}
   .faq summary:hover{color:#8A4E00}
   .faq summary:hover i{scale:1.12}
+  .pv-play:hover{background:var(--fol);box-shadow:0 0 34px rgba(197,160,82,.45)}
+  .pv-trans summary:hover{color:var(--fol)}
+  .pv-trans summary:hover i{background:rgba(197,160,82,.2)}
+  .pv-montou a:hover{color:var(--fol)}
+  .pv-montou a:hover svg{translate:5px 0}
   .rodape-seo a:hover,.rodape-links a:hover,.blog a:hover b{color:var(--laranja)}
   .chip:hover{box-shadow:inset 0 0 0 2px var(--tinta)}
   .aba:hover{color:#fff}
@@ -694,10 +699,75 @@ html:not(.js) .palco-cena{position:relative;top:0;height:70vh;margin-top:40px}
 html:not(.js) .tela>[data-em]:not([data-em="0"]){display:none}
 html:not(.js) .pdf,html:not(.js) .palco-trilho{display:none}
 
-/* ---------- prova real ---------- */
-.prova{padding:64px 0 56px}
-.prova .texto{margin-top:18px;max-width:23.94em;font:500 18px/1.5 Barlow;color:rgba(10,10,9,.78)}
-.prova .texto b{color:var(--tinta)}
+/* ---------- quem já roda com a Feed: o caso Foajupe ---------- */
+/* O cartão usa as cores da marca do cliente (carbono, dourado fosco e marfim, do manual da Foajupe). O resto da seção segue o site. */
+.prova{padding:44px 0 40px}
+.pv-sub{display:none} /* no celular a seção é enxuta (o site tem teto de telas) */
+.pv-caso{--fc:#0C0E10;--fo:#C5A052;--fol:#E0C27D;--fm:#F3EFE7;position:relative;margin-top:24px;padding:28px 22px 18px;border-radius:26px;background:radial-gradient(80% 46% at 0% 0%,rgba(197,160,82,.16),transparent 70%),var(--fc);color:var(--fm);box-shadow:0 40px 60px -34px rgba(20,14,4,.75);display:grid;grid-template-columns:minmax(0,1fr)}
+/* cantoneiras de registro, o detalhe técnico da marca da Foajupe */
+.pv-caso::before{content:"";position:absolute;inset:12px;pointer-events:none;opacity:.7;--l:linear-gradient(var(--fo),var(--fo));background:var(--l) 0 0/16px 1px,var(--l) 0 0/1px 16px,var(--l) 100% 0/16px 1px,var(--l) 100% 0/1px 16px,var(--l) 0 100%/16px 1px,var(--l) 0 100%/1px 16px,var(--l) 100% 100%/16px 1px,var(--l) 100% 100%/1px 16px;background-repeat:no-repeat}
+.pv-cliente img{width:176px;height:auto}
+.pv-cliente p{margin-top:10px;max-width:24em;font:500 14.5px/1.4 Barlow;color:rgba(243,239,231,.7);text-wrap:pretty}
+.pv-fala{margin:16px 0 0;padding-top:16px;border-top:1px solid rgba(243,239,231,.14)}
+.pv-fala blockquote{margin:0}
+.pv-frase{font:800 27px/1.1 Barlow;letter-spacing:-.03em;text-wrap:balance}
+.pv-frase::before{content:"\201C";display:block;height:.42em;font-size:2.3em;line-height:.9;color:var(--fo)}
+.pv-frase em{font-style:normal;color:var(--fo);white-space:nowrap}
+.pv-apoio{margin-top:12px;max-width:27em;font:500 15.5px/1.42 Barlow;color:rgba(243,239,231,.76);text-wrap:pretty}
+.pv-fala figcaption{margin-top:10px;font:500 14.5px/1.3 Barlow;color:rgba(243,239,231,.7)}
+.pv-fala figcaption b{font-weight:800;color:var(--fm)}
+/* o player: o áudio só é baixado no primeiro toque (preload="none") */
+.pv-audio{margin-top:14px}
+.pv-audio-tit{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font:700 12.5px/1.25 Barlow;letter-spacing:.14em;text-transform:uppercase;color:var(--fo)}
+.pv-tempo{font:600 13px/1 Barlow;letter-spacing:.02em;color:rgba(243,239,231,.7);font-variant-numeric:tabular-nums;text-transform:none}
+.pv-toca{display:flex;align-items:center;gap:14px;margin-top:8px}
+.pv-play{position:relative;flex:none;display:grid;place-items:center;width:54px;height:54px;padding:0;border:0;border-radius:50%;background:var(--fo);color:var(--fc);cursor:pointer;transition:background-color .25s,scale .25s var(--ease),box-shadow .25s}
+.pv-play svg{width:24px;height:24px;fill:currentColor}
+.pv-play .ic-pausa,.tocando .pv-play .ic-toca{display:none}
+.tocando .pv-play .ic-pausa{display:block}
+.pv-play::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:1px solid var(--fo);opacity:.45;pointer-events:none;transition:opacity .3s,scale .3s var(--ease)}
+.tocando .pv-play::after{opacity:.9;scale:1.06}
+.pv-play:active{scale:.92;transition-duration:.08s}
+.pv-onda{position:relative;flex:1;min-width:0;height:48px;border-radius:8px}
+.pv-onda svg{position:absolute;inset:4px 0;width:100%;height:calc(100% - 8px);fill:rgba(243,239,231,.3)}
+.pv-onda .feito{fill:var(--fo);clip-path:inset(0 calc((1 - var(--p,0)) * 100%) 0 0)}
+.pv-onda i{position:absolute;top:0;bottom:0;left:calc(var(--p,0) * 100%);width:2px;margin-left:-1px;border-radius:2px;background:var(--fm);opacity:0;transition:opacity .25s}
+.tocando .pv-onda i,.pv-onda:hover i,.pv-onda:has(input:focus-visible) i{opacity:1}
+.pv-onda input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
+.pv-onda:has(input:focus-visible){outline:2px solid var(--fol);outline-offset:4px}
+.pv-audio audio{display:block;width:100%;margin-top:8px}
+.js .pv-audio audio,html:not(.js) .pv-toca,html:not(.js) .pv-tempo{display:none}
+.pv-play:focus-visible,.pv-trans summary:focus-visible,.pv-montou a:focus-visible{outline:2px solid var(--fol);outline-offset:3px;box-shadow:none}
+.pv-trans{margin-top:6px}
+.pv-trans summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:10px;min-height:44px;font:700 15px/1.2 Barlow;color:var(--fm);border-radius:8px;transition:color .25s}
+.pv-trans summary::-webkit-details-marker{display:none}
+.pv-trans summary i{position:relative;width:22px;height:22px;flex:none;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(197,160,82,.7);transition:transform .35s var(--ease),background-color .25s}
+.pv-trans summary i::before,.pv-trans summary i::after{content:"";position:absolute;left:50%;top:50%;width:9px;height:1.5px;background:var(--fo);transform:translate(-50%,-50%)}
+.pv-trans summary i::after{transform:translate(-50%,-50%) rotate(90deg)}
+.pv-trans[open] summary i{transform:rotate(45deg)}
+.pv-trans summary:active{opacity:.6}
+.pv-trans blockquote{margin:0;padding:4px 0 6px 14px;border-left:1px solid rgba(197,160,82,.6)}
+.pv-trans blockquote p{font:500 15px/1.6 Barlow;color:rgba(243,239,231,.82)}
+.pv-trans small{display:block;padding:8px 0 4px;font:500 12.5px/1.4 Barlow;color:rgba(243,239,231,.55)}
+/* o que a Feed montou: ficha em duas colunas no celular, lista com fio no desktop */
+.pv-montou{margin-top:10px;padding-top:16px;border-top:1px solid rgba(243,239,231,.14)}
+.pv-montou h3{font:700 12.5px/1.25 Barlow;letter-spacing:.14em;text-transform:uppercase;color:var(--fo)}
+.pv-montou ul{list-style:none;margin:8px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+.pv-montou li>*{display:grid;grid-template-columns:1fr auto;align-items:center;align-content:center;gap:0 8px;min-height:44px;height:100%;padding:7px 0;border-top:1px solid rgba(243,239,231,.1);color:var(--fm);text-decoration:none;transition:color .25s,scale .2s}
+.pv-montou li:nth-child(-n+2)>*{border-top:0}
+.pv-montou b{font:700 14.5px/1.2 Barlow;letter-spacing:-.005em}
+.pv-montou small{grid-column:1;font:500 12px/1.25 Barlow;color:rgba(243,239,231,.56)}
+.pv-montou svg{grid-row:1/span 2;grid-column:2;width:14px;height:14px;color:var(--fo);transition:translate .25s var(--ease)}
+.pv-montou a:active{scale:.97;transition-duration:.08s}
+/* números reais: só existem quando o PROVA_NUMEROS do script tem itens */
+.pv-numeros{margin:20px 0 0;padding-top:6px;border-top:1px solid rgba(243,239,231,.14)}
+.pv-numeros[hidden]{display:none}
+.pv-numeros div{display:grid;grid-template-columns:auto 1fr;align-items:baseline;gap:14px;padding:10px 0}
+.pv-numeros div+div{border-top:1px solid rgba(243,239,231,.1)}
+.pv-numeros dd{grid-row:1;grid-column:1;font:800 30px/1 Barlow;letter-spacing:-.03em;color:var(--fo);white-space:nowrap}
+.pv-numeros dt{grid-row:1;grid-column:2;font:500 14px/1.3 Barlow;color:rgba(243,239,231,.74);text-wrap:balance}
+.prova .convite{margin-top:22px;padding-top:20px}
+.prova .convite p{max-width:none}
 
 /* ---------- 7. Feed Hub ---------- */
 .hub{padding:64px 0 48px;--bx:50%;text-align:center} /* 8 px a menos em cima e embaixo que os outros trechos, e o leque 4% menor: é o que paga o bloco dos avisos no celular */
@@ -786,8 +856,8 @@ html:not(.js) .caso+.caso{margin-top:18px}
 .perguntas{padding:72px 0 64px}
 .faq{margin-top:30px;border-bottom:1.5px solid rgba(10,10,9,.2)}
 .faq details{border-top:1.5px solid rgba(10,10,9,.2)}
-.faq details::details-content{block-size:0;overflow:clip;transition:block-size .4s var(--ease),content-visibility .4s allow-discrete}
-.faq details[open]::details-content{block-size:auto}
+.faq details::details-content,.pv-trans::details-content{block-size:0;overflow:clip;transition:block-size .4s var(--ease),content-visibility .4s allow-discrete}
+.faq details[open]::details-content,.pv-trans[open]::details-content{block-size:auto}
 .faq summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:62px;padding:13px 0;font:700 18.5px/1.28 Barlow;letter-spacing:-.01em;transition:color .25s}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary i{position:relative;width:34px;height:34px;flex:none;border-radius:50%;background:var(--tinta);transition:transform .35s var(--ease),scale .25s var(--ease)}
@@ -912,6 +982,16 @@ html:not(.js) .d-indice{display:none}
   .rodape-seo{column-gap:32px}
   .convite{grid-template-columns:1fr auto;align-items:center}
   .convite p{font-size:32px;max-width:13.68em}
+  .pv-caso{padding:44px 40px 34px}
+  .pv-cliente img{width:220px}
+  .pv-frase{font-size:40px}
+  .pv-apoio{font-size:17.5px}
+  .pv-montou ul{grid-template-columns:repeat(3,1fr);gap:0 24px}
+  .pv-montou li:nth-child(3)>*{border-top:0}
+  .pv-numeros{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 28px}
+  .pv-numeros div,.pv-numeros div+div{display:flex;flex-direction:column-reverse;justify-content:flex-end;padding:18px 0 4px;border:0}
+  .pv-numeros dd{font-size:40px}
+  .pv-numeros dt{margin-top:8px}
   .coment,.dm{max-width:520px}
   .agenda .btn{width:auto}
   .d-wa{padding:0 18px!important}
@@ -972,8 +1052,37 @@ html:not(.js) .d-indice{display:none}
   .pdf{width:260px;font-size:14px;left:calc(50% + min(19vh,14.4vw) - 36px);right:auto;top:calc(50% - min(41vh,31vw) * .68);padding:20px}
   .pdf-topo svg{width:150px}
   .prova{padding:120px 0 110px}
-  .prova .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:72px;align-items:end}
-  .prova .convite{margin-top:0;grid-template-columns:1fr;border-top:0;padding:28px;border-radius:26px;background:var(--branco);box-shadow:0 30px 50px -30px rgba(40,30,10,.4)}
+  .pv-abre{display:grid;grid-template-columns:1.5fr .5fr;gap:0 72px;align-items:end}
+  .pv-abre .kicker{grid-column:1/-1}
+  .pv-sub{display:block;margin:0 0 10px;font-size:18px}
+  .pv-caso{margin-top:56px;padding:68px 68px 60px;border-radius:34px;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);grid-template-areas:"cliente fala" "montou fala" "montou audio" "montou trans" "numeros numeros";grid-template-rows:auto auto auto 1fr auto;gap:0 84px} /* a sobra de altura vai para a linha da transcrição: fala, player e transcrição ficam juntos */
+  .pv-caso::before{inset:22px;background-size:26px 1px,1px 26px,26px 1px,1px 26px,26px 1px,1px 26px,26px 1px,1px 26px}
+  .pv-cliente{grid-area:cliente}
+  .pv-cliente img{width:288px}
+  .pv-cliente p{margin-top:20px;font-size:17px;line-height:1.45}
+  .pv-fala{grid-area:fala;margin:0;padding:0;border:0}
+  .pv-frase{font-size:clamp(38px,3.6vw,50px);line-height:1.04;letter-spacing:-.035em}
+  .pv-apoio{margin-top:22px;font-size:19px;line-height:1.45}
+  .pv-fala figcaption{margin-top:20px;font-size:16.5px}
+  .pv-audio{grid-area:audio;margin-top:36px}
+  .pv-toca{gap:20px;margin-top:12px}
+  .pv-play{width:64px;height:64px}
+  .pv-play svg{width:28px;height:28px}
+  .pv-onda{height:60px}
+  .pv-trans{grid-area:trans;margin-top:10px}
+  .pv-trans blockquote p{font-size:16.5px}
+  .pv-montou{grid-area:montou;align-self:start;margin-top:44px;padding:0;border:0}
+  .pv-montou ul{grid-template-columns:1fr;margin-top:12px}
+  .pv-montou li:nth-child(n)>*{min-height:56px;padding:9px 0;border-top:1px solid rgba(243,239,231,.14)}
+  .pv-montou li:last-child>*{border-bottom:1px solid rgba(243,239,231,.14)}
+  .pv-montou b{font-size:17.5px}
+  .pv-montou small{font-size:13.5px}
+  .pv-montou svg{width:16px;height:16px}
+  .pv-numeros{grid-area:numeros;margin-top:52px;padding-top:0;gap:0 40px}
+  .pv-numeros div,.pv-numeros div+div{padding:26px 0 0}
+  .pv-numeros dd{font-size:60px}
+  .pv-numeros dt{margin-top:10px;font-size:16px;max-width:17em}
+  .prova .convite{margin-top:56px;padding-top:28px}
   .hub{padding:130px 0 110px}
   .avisa{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:0 56px;align-items:center;max-width:1100px;margin:110px auto 0;text-align:left}
   .avisa .kicker{justify-content:flex-start}
@@ -1344,17 +1453,61 @@ html:not(.js) .d-indice{display:none}
   </div>
 </section>
 
-<!-- PROVA REAL -->
-<section class="prova papel" id="prova" data-nav="|Prova real" aria-labelledby="prova-titulo">
+<!-- QUEM JÁ RODA COM A FEED: o caso Foajupe, cliente real, com o depoimento em áudio do dono -->
+<!-- DONO, CONFIRMAR ANTES DE SUBIR: (1) o Adriano autorizou publicar o nome, a marca, as duas frases e o áudio; (2) a lista "O que a Feed montou" abaixo; (3) os números (PROVA_NUMEROS, no script). -->
+<section class="prova papel" id="prova" data-nav="|Foajupe" aria-labelledby="prova-titulo">
   <div class="wrap">
-    <div>
-      <p class="kicker" data-rv>Prova real</p>
-      <h2 id="prova-titulo" data-rv>Isso já roda numa revenda de veículos do <mark>interior de SP.</mark></h2>
-      <p class="texto" data-rv><b>O Agente da Feed atende o WhatsApp da loja.</b> A equipe assume quando a conversa pede e manda a proposta pelo celular, no Hub. E o funil acompanha cada lead, um por um.</p>
-      <p class="nota-rod" data-rv>O nome do cliente fica preservado. As telas e os números deste site são de demonstração. A Feed é <a href="https://agenciafeed.com/agencia-de-ia-ribeirao-preto/">agência de IA em Ribeirão Preto</a> e região.</p>
+    <div class="pv-abre">
+      <p class="kicker" data-rv>Quem já roda com a Feed</p>
+      <h2 id="prova-titulo" data-rv>A operação da Foajupe <mark>roda com a Feed.</mark></h2>
+      <p class="sub pv-sub" data-rv>Marca, site, atendimento, vendas e redes sociais. Tudo montado e cuidado pela Feed, <a href="https://agenciafeed.com/agencia-de-ia-ribeirao-preto/">agência de IA em Ribeirão Preto</a> e região.</p>
     </div>
+    <article class="pv-caso" data-rv aria-label="Caso Foajupe">
+      <header class="pv-cliente">
+        <img src="assets/foajupe-logo.webp" alt="Foajupe" width="680" height="173" loading="lazy" decoding="async">
+        <p>Compra carro ou caminhão com pendência: financiamento em aberto, multa ou restrição.</p>
+      </header>
+      <dl class="pv-numeros" id="pv-numeros" hidden></dl>
+      <figure class="pv-fala">
+        <blockquote>
+          <p class="pv-frase">A gente se fala pouco sobre o trabalho, porque <em>roda tudo perfeitamente.</em></p>
+          <p class="pv-apoio">Um monte de coisa que eu tinha vontade de fazer, que eu tinha em pensamento, e não tinha nem ideia de por onde começava.</p>
+        </blockquote>
+        <figcaption><b>Adriano</b>, dono da Foajupe</figcaption>
+      </figure>
+      <div class="pv-audio" role="group" aria-label="Depoimento do Adriano em áudio, 44 segundos">
+        <p class="pv-audio-tit"><span>Ouça o Adriano · 44 s</span><span class="pv-tempo" aria-hidden="true">0:00 / 0:44</span></p>
+        <div class="pv-toca">
+          <button class="pv-play" type="button" aria-label="Tocar o depoimento do Adriano"><svg class="ic-toca" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 5.2v13.6L19.5 12z"/></svg><svg class="ic-pausa" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.6v14H7zM13.4 5H17v14h-3.6z"/></svg></button>
+          <div class="pv-onda">
+            <svg viewBox="0 0 320 100" preserveAspectRatio="none" aria-hidden="true"><path/></svg>
+            <svg class="feito" viewBox="0 0 320 100" preserveAspectRatio="none" aria-hidden="true"><path/></svg>
+            <i aria-hidden="true"></i>
+            <input type="range" min="0" max="44.4" step="1" value="0" aria-label="Posição no áudio" aria-valuetext="0:00 de 0:44">
+          </div>
+        </div>
+        <audio controls preload="none" src="assets/adriano-44s.m4a"></audio>
+      </div>
+      <details class="pv-trans">
+        <summary><i aria-hidden="true"></i>Ler a transcrição</summary>
+        <blockquote><p>Fala, Gui. Eu sou meio suspeito pra falar disso, porque, de verdade, eu tô achando o serviço sensacional, cara. Fora de sério. Um monte de coisa que eu tinha vontade de fazer, um monte de coisa que eu tinha em pensamento em fazer e não tinha nem ideia de por onde começava. [...] tudo, cara. Sensacional mesmo, de verdade. Obrigado, viu? O serviço aí é top, é diferenciado. E eu não tenho o que falar, cara, de verdade. Fora aí a gratidão pelo trabalho e a parceria. É sensacional mesmo. Tanto é que você pode ver que a gente fala pouco, né? Nós dois, principalmente, a gente se fala pouco sobre o trabalho aí, porque roda tudo perfeitamente.</p></blockquote>
+        <small>Transcrição do áudio de 44 segundos que o Adriano mandou à Feed. O trecho [...] não ficou claro na gravação.</small>
+      </details>
+      <!-- DONO, CONFERIR ESTA LISTA: são as entregas da Feed para a Foajupe que podem ser citadas em público? Falta alguma, sobra alguma? Site e Material para TV não têm capítulo neste site, por isso não levam link. -->
+      <div class="pv-montou">
+        <h3>O que a Feed montou para a Foajupe</h3>
+        <ul>
+          <li><a href="#marca"><b>Marca e manual</b><svg aria-hidden="true"><use href="#i-seta"/></svg></a></li>
+          <li><span><b>Site</b></span></li>
+          <li><a href="#agente"><b>Agente de IA</b><small>no WhatsApp</small><svg aria-hidden="true"><use href="#i-seta"/></svg></a></li>
+          <li><a href="#funil"><b>Funil e CRM</b><small>no Feed Hub, com proposta em PDF</small><svg aria-hidden="true"><use href="#i-seta"/></svg></a></li>
+          <li><a href="#redes"><b>Redes sociais</b><small>Instagram e Facebook</small><svg aria-hidden="true"><use href="#i-seta"/></svg></a></li>
+          <li><span><b>Material para TV</b><small>merchan na Record Interior SP</small></span></li>
+        </ul>
+      </div>
+    </article>
     <div class="convite" data-rv>
-      <p>Quer o Agente atendendo o seu WhatsApp?</p>
+      <p>Quer a sua operação assim?</p>
       <a class="btn btn-preto" href="https://agenciafeed.com/diagnostico">Fazer o Diagnóstico grátis</a>
     </div>
   </div>
@@ -1552,7 +1705,7 @@ html:not(.js) .d-indice{display:none}
     <li><a href="#redes"><i>03</i>Redes e Google</a></li>
     <li><a href="#agente"><i>04</i>Agente de IA</a></li>
     <li><a href="#funil"><i>05</i>Funil de vendas</a></li>
-    <li><a href="#prova"><i></i>Prova real</a></li>
+    <li><a href="#prova"><i></i>Cliente: Foajupe</a></li>
     <li><a href="#hub"><i>06</i>Feed Hub</a></li>
     <li><a href="#sob-medida"><i></i>Sob medida</a></li>
     <li><a href="#passos"><i></i>Como funciona</a></li>
@@ -1601,6 +1754,18 @@ html:not(.js) .d-indice{display:none}
   console.assert(soma(NUMEROS.trafego.contatosPorDia) === NUMEROS.trafego.contatos, 'contatos por dia não fecham com o total');
   console.assert(NUMEROS.redes.seguidoresAcumulados.at(-1) === NUMEROS.redes.seguidores, 'curva de seguidores não termina no total');
   console.assert(soma(NUMEROS.google.visualizacoesPorSemana) === NUMEROS.google.visualizacoes, 'visualizações por semana não fecham com o total');
+
+  // ============================================================================
+  // NÚMEROS REAIS DA FOAJUPE (seção "Quem já roda com a Feed"). Vazio de propósito:
+  // o dono ainda vai passar os números financeiros que podem ser publicados, com
+  // a autorização do Adriano. Enquanto a lista estiver vazia a seção não mostra
+  // nada de número: nenhum marcador, nenhum "em breve".
+  // Para publicar, preencha com até 3 itens (o quarto em diante é ignorado):
+  //   { valor: 'R$ 000 mil', rotulo: 'o que o número mede e em qual período' },
+  // Quem lê sem JavaScript (buscadores e IAs) não vê estes números. Na hora de
+  // publicar, escreva os mesmos dentro do <dl id="pv-numeros"> do HTML, sem o hidden.
+  // ============================================================================
+  const PROVA_NUMEROS = [];
 
   const raiz = document.documentElement;
   const F3 = window.fone3d = window.fone3d || {}; // a conversa com o aparelho 3D (assets/fone-3d.js); F3.on diz se ele assumiu
@@ -1702,6 +1867,37 @@ html:not(.js) .d-indice{display:none}
     const [t, d] = p.dataset.leg.split('|');
     livroLeg.innerHTML = `<b>${t}:</b> ${d}`;
   }));
+
+  // ---------- caso Foajupe: os números (se houver) e o depoimento em áudio ----------
+  if (PROVA_NUMEROS.length) {
+    const dl = $('#pv-numeros');
+    dl.replaceChildren(...PROVA_NUMEROS.slice(0, 3).map(n => { const d = document.createElement('div'); d.innerHTML = '<dt></dt><dd></dd>'; d.firstChild.textContent = n.rotulo; d.lastChild.textContent = n.valor; return d; }));
+    dl.hidden = false;
+  }
+  // volume real do áudio em 64 fatias (RMS de cada 0,7 s, de 8 a 100). Trocou o áudio? Gere de novo, o jeito está no NOTAS.md
+  const ONDA = [79, 67, 57, 59, 50, 50, 81, 44, 85, 61, 43, 46, 42, 66, 65, 58, 52, 57, 49, 79, 64, 89, 23, 84, 55, 68, 8, 79, 94, 52, 69, 43, 61, 62, 77, 57, 63, 64, 55, 50, 18, 100, 72, 75, 72, 76, 85, 69, 58, 50, 9, 46, 78, 78, 67, 80, 58, 88, 71, 60, 66, 50, 52, 11];
+  const pvAudio = $('.pv-audio'), som = $('audio', pvAudio), pvPlay = $('.pv-play', pvAudio), pvOnda = $('.pv-onda', pvAudio), pvFaixa = $('input', pvOnda), pvTempo = $('.pv-tempo', pvAudio);
+  som.controls = false; // sem JavaScript fica o player do navegador
+  $$('path', pvOnda).forEach(p => p.setAttribute('d', ONDA.map((v, i) => `M${i * 5 + 1} ${50 - v / 2}h3v${v}h-3z`).join('')));
+  const mmss = s => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
+  const duracao = () => Number.isFinite(som.duration) ? som.duration : +pvFaixa.max; // antes do primeiro toque o áudio não foi baixado: vale a duração escrita no HTML
+  let pvPend = null; // posição escolhida antes de o áudio existir: é aplicada quando ele chega
+  const pintaSom = (t = pvPend ?? som.currentTime) => {
+    const d = duracao();
+    pvOnda.style.setProperty('--p', clamp(t / d).toFixed(4));
+    pvFaixa.value = t;
+    pvFaixa.setAttribute('aria-valuetext', `${mmss(t)} de ${mmss(d)}`);
+    pvTempo.textContent = `${mmss(t)} / ${mmss(d)}`;
+  };
+  const lacoSom = () => { pintaSom(); if (!som.paused && !reduz) requestAnimationFrame(lacoSom); }; // o timeupdate vem só 4 vezes por segundo: o laço deixa a agulha lisa
+  pvPlay.addEventListener('click', () => som.paused ? som.play().catch(() => { pvTempo.textContent = 'áudio indisponível'; }) : som.pause());
+  pvFaixa.addEventListener('input', () => { const t = +pvFaixa.value; som.currentTime = t; pvPend = som.readyState ? null : t; pintaSom(t); });
+  som.addEventListener('loadedmetadata', () => { if (pvPend != null) { som.currentTime = pvPend; pvPend = null; } });
+  som.addEventListener('durationchange', () => { pvFaixa.max = duracao(); pintaSom(); });
+  som.addEventListener('timeupdate', () => pintaSom());
+  som.addEventListener('play', () => { pvAudio.classList.add('tocando'); pvPlay.setAttribute('aria-label', 'Pausar o depoimento do Adriano'); lacoSom(); });
+  som.addEventListener('pause', () => { pvAudio.classList.remove('tocando'); pvPlay.setAttribute('aria-label', 'Tocar o depoimento do Adriano'); });
+  som.addEventListener('ended', () => { som.currentTime = 0; });
 
   // ---------- calendário: o "Aprovar" funciona ----------
   const aprovar = $('#aprovar'), dia23 = $('#dia23'), legEsp = $('#leg-esp');

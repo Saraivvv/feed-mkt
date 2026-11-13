@@ -117,8 +117,8 @@ Nada disto está na página. Cada item entra quando houver a resposta.
 1. **Faixa de preço. RESOLVIDO em 13/11/2026:** o dono informou que os planos mensais começam em R$ 997 e que o resto é sob medida. O valor entrou no passo 3 e na pergunta nova "Quanto custa contratar a Feed?", também no `FAQPage`. Na subida, a página `/quanto-custa/` do site no ar precisa dizer o mesmo. Ainda falta o dono definir o que o plano de entrada inclui.
 2. **Prazo médio.** Hoje: "o prazo vem escrito na proposta". Um número médio de dias ajuda no FAQ e nas IAs.
 3. **Fidelidade e multa.** A objeção "Vou ficar preso?" ficou fora do FAQ porque não dá para responder só com fato.
-4. **O número real da revenda.** Leads acompanhados no funil desde a implantação. Com ele a prova real volta a ter um número grande, e seria o dado mais forte do site.
-5. **Pode citar o cliente pelo nome?** Hoje está "uma revenda de veículos do interior de SP". Com autorização, entram o nome e uma frase do cliente.
+4. **Os números reais da Foajupe. CONTINUA PENDENTE.** A seção já tem o lugar pronto (`PROVA_NUMEROS`, no script). Detalhes em "Caso Foajupe (13/11/2026)", no fim deste arquivo.
+5. **Pode citar o cliente pelo nome? ENTROU em 13/11/2026**, com o nome, a marca, duas frases e o áudio do Adriano. **Falta a autorização dele por escrito antes de subir.** Detalhes em "Caso Foajupe (13/11/2026)".
 
 Para confirmar junto:
 - Canal e horário de suporte. **RESOLVIDO em 13/11/2026:** de segunda a sexta, das 8h às 20h, pelo WhatsApp e pelo telefone. Entrou no FAQ, no rodapé e no `contactPoint` do JSON-LD.
@@ -149,7 +149,7 @@ Não foram feitos agora, de propósito.
 ## O que ainda está fraco
 
 - **A lateral do aparelho é desenhada.** Lê como aço, mas uma foto real em três quartos seria melhor que qualquer CSS.
-- **A prova real é só texto.** Sem o número da revenda e sem o nome, é o capítulo mais fraco de ver.
+- **A prova real é só texto.** Sem o número do cliente e sem o nome, é o capítulo mais fraco de ver. (Resolvido em parte em 13/11/2026: ver "Caso Foajupe", no fim deste arquivo. O número ainda falta.)
 - **A marca de demonstração ocupa muito.** A Lume de Papel aparece no livro, no anúncio, no painel, no calendário, na conversa e na proposta. Com um caso real autorizado, metade disso sai.
 - No meio da troca de capítulo do palco, por um instante, o texto fica desfocado e ilegível. É transição, mas quem parar exatamente ali vê borrão.
 - Com a CPU 4 vezes mais lenta ainda aparecem tarefas longas na rolagem. A medição de tempo nesta máquina oscilou muito, então não dá para afirmar que roda liso num celular simples. Vale testar num aparelho de verdade.
@@ -355,3 +355,56 @@ O teto é de 20 telas no celular e a página estava em 19,4. O bloco custa 540 p
 - O tranco é um empurrão só, com peso, e não a vibração em três tempos do conceito B. Num celular de verdade pode passar despercebido para quem rola rápido.
 - Os links levam para trás na página (o Hub é o capítulo 06 e os avisos apontam para o 03, 04 e 05). Fecha a ideia de ponta a ponta, mas quem clica precisa descer tudo de novo.
 - Como o resto do 3D, foi visto só no Chromium sem janela. Falta abrir num Android e num iPhone.
+
+---
+
+## Caso Foajupe (13/11/2026)
+
+A seção "Prova real" (`#prova`) deixou de ser anônima. Agora é "Quem já roda com a Feed", com a Foajupe pelo nome e o depoimento em áudio do Adriano, dono dela. Substitui a seção antiga inteira. O head de SEO e os 4 blocos de JSON-LD não foram tocados (nada de `Review` nem `AggregateRating`).
+
+### O que a seção mostra
+- **Título:** "A operação da Foajupe roda com a Feed." No índice do celular a seção aparece como "Foajupe" e, na folha, como "Cliente: Foajupe".
+- **Um cartão nas cores da marca da Foajupe** (carbono `#0C0E10`, dourado fosco `#C5A052` como único acento e marfim `#F3EFE7`, do manual dela), com as cantoneiras de registro que o manual usa. O resto da seção segue o site: papel claro, título com a faixa laranja.
+- **O cliente:** logo horizontal e a linha "Compra carro ou caminhão com pendência: financiamento em aberto, multa ou restrição." Sem moto e sem promessa de compra ou quitação.
+- **A fala:** "A gente se fala pouco sobre o trabalho, porque roda tudo perfeitamente." em destaque, a frase de apoio e a assinatura "Adriano, dono da Foajupe".
+- **O player:** "Ouça o Adriano · 44 s", com tocar e pausar, a forma de onda real do áudio (64 fatias), progresso que dá para arrastar com o dedo, com o mouse ou com as setas do teclado, e o tempo. O áudio usa `preload="none"`: só é baixado no primeiro toque. Sem JavaScript fica o player do navegador.
+- **"Ler a transcrição":** um `<details>` com o texto dos 44 s. Onde a transcrição automática ouviu uma palavra incerta, está "[...]", com uma linha avisando. A palavra não foi usada em nenhum destaque.
+- **"O que a Feed montou para a Foajupe":** 6 itens. Quatro levam ao capítulo do serviço (`#marca`, `#agente`, `#funil`, `#redes`). Site e Material para TV não têm capítulo neste site e ficam sem link.
+- **Números:** nada aparece. Ver abaixo.
+- **Convite:** "Quer a sua operação assim?" com o botão do Diagnóstico grátis.
+
+### Pendências do dono (nada sobe antes disto)
+1. **Autorização do Adriano**, de preferência por escrito, para publicar o nome e a marca da Foajupe, as duas frases e o áudio de 44 s.
+2. **Conferir a lista de entregas.** Está marcada com um comentário `DONO, CONFERIR ESTA LISTA` no HTML. Hoje: marca e manual; site; Agente de IA no WhatsApp; funil e CRM no Feed Hub, com proposta em PDF; redes sociais (Instagram e Facebook); material para TV (merchan na Record Interior SP). Pode citar a Record pelo nome?
+3. **Os números.** No script há `const PROVA_NUMEROS = [];` com o comentário de como preencher (até 3 itens, `{ valor, rotulo }`). Vazio, a seção não mostra marcador nenhum. Na hora de publicar, escreva os mesmos números dentro do `<dl id="pv-numeros">` do HTML e tire o `hidden`, porque buscadores e IAs não rodam JavaScript.
+4. **Ouvir o trecho de 0:18** e dizer qual é a palavra que ficou como "[...]" na transcrição.
+5. **O parágrafo do caso em `seo/llms-txt-proposta.md`** já fala da Foajupe. Vale o mesmo: só publicar depois dos itens 1 e 2.
+
+### Altura no celular
+- **Antes: 16.844 px, 19,96 telas. Depois: 17.278 px, 20,47 telas.** O teto desta entrega é 20,5 (17.302 px). Sobraram 24 px.
+- A seção foi de 676 para 1.110 px. Para caber, no celular o subtítulo com o link da página de Ribeirão Preto fica escondido (aparece de 1024 px para cima), a lista de entregas vira uma ficha de 2 colunas e o convite ficou numa linha só.
+- **Com 3 números a seção cresce 237 px no celular** (20,75 telas com os exemplos do teste). Quando os números chegarem, ou o teto sobe, ou sai alguma coisa: a frase de apoio (78 px) é a primeira candidata.
+- Desktop: de 16.623 para 17.141 px. Tablet em pé: de 18.418 para 18.923 px.
+
+### Conferência
+- `node conceitos/_comum/medir.mjs d-site-feed`: **`TOTAL 0 achados`** nas 3 larguras.
+- Áudio por script, em 390 (toque) e 1440 (mouse), no Chromium sem janela: o arquivo não é pedido no carregamento; tocar na onda antes do primeiro toque marca a posição e o áudio começa dali; toca, o tempo e o progresso andam; arrastar de 20% a 80% leva o áudio para 0:36; pausa; a seta do teclado anda 1 s; no fim ele para e volta ao começo. O botão troca o nome entre "Tocar" e "Pausar".
+- Números: com 3 exemplos numa cópia temporária da página, aparecem e cabem em 390, 768 e 1440. A página entregue está com a lista vazia (o script confere).
+- JSON-LD faz parse (4 blocos, sem `Review`). Nenhum travessão, nenhum `href="#"`, nenhuma "revenda", os 4 links da lista têm destino.
+- Olhado em captura: 390 e 1440 parada, com o áudio tocando e com a transcrição aberta; 768, 1024 e 1280 parada; os 3 números de exemplo em 390, 768 e 1440; e a tela de verdade do celular com a barra fixa.
+- Os scripts (`confere.mjs` faz tudo acima, `tela.mjs`, `logo.mjs`, `mede.mjs`) e as capturas ficaram em `scratchpad\prova-foajupe\`, fora do repo.
+
+### Arquivos
+- `index.html`: a seção `#prova`, as regras `.pv-*` no `<style>` (base, 720 e 1024 px, e 5 linhas de `:hover`), o `PROVA_NUMEROS` no topo do script e o bloco do player antes do calendário. A folha do índice troca "Prova real" por "Cliente: Foajupe".
+- Novo: `assets/adriano-44s.m4a` (278 KB, AAC mono, 44,4 s). É o corte entregue, sem mexer.
+- Novo: `assets/foajupe-logo.webp` (28 KB, 680×173, sem perda). Sai do `logo-horizontal.svg` da identidade da Foajupe, que pesa 388 KB.
+- `seo/llms-txt-proposta.md`: o parágrafo do caso.
+- **Trocou o áudio?** Refaça a onda: `ffmpeg -i assets/adriano-44s.m4a -ac 1 -ar 8000 -f s16le onda.raw`, tire o RMS de 64 fatias iguais, normalize pelo maior, eleve a 0,7 e multiplique por 100 (mínimo 8). Cole no `ONDA` do script e acerte o `max` do `<input type="range">` com a duração.
+
+### O que ainda está fraco
+- **Sem número, o cartão prova pela voz, não pelo resultado.** É bem mais forte que o texto anônimo, mas o dado que fecha a venda ainda não está lá.
+- **Só 24 px de folga no celular**, e os números vão estourar o teto.
+- **No celular o link "agência de IA em Ribeirão Preto" desta seção some.** Ele continua visível no capítulo de Redes.
+- **Dois itens da lista não levam a lugar nenhum** (Site e Material para TV). Ficam como linha sem seta. Quando existir a página do site da Foajupe como caso, entra o link.
+- O áudio foi tocado só no Chromium sem janela. Falta ouvir num iPhone (Safari) e num Android de verdade.
+- A foto do Adriano ou da loja daria rosto ao depoimento. Hoje a pessoa é só um nome e uma voz.

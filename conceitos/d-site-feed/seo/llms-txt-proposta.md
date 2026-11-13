@@ -44,7 +44,7 @@ O Feed Hub é o aplicativo da Feed para Android, disponível no Google Play desd
 
 ## Caso real e demonstrações
 
-Uma revenda de veículos do interior de SP usa o Agente da Feed no WhatsApp, a equipe assume as conversas e envia propostas pelo Feed Hub, e o funil acompanha os contatos. O nome do cliente está preservado. Não há número de resultado publicado para esse caso.
+A Foajupe, empresa que compra carro ou caminhão com pendência (financiamento em aberto, multa ou restrição), roda com a Feed: marca e manual, site, Agente de IA no WhatsApp, funil e CRM no Feed Hub com proposta em PDF, redes sociais (Instagram e Facebook) e material para TV. Adriano, dono da Foajupe, sobre o trabalho: "A gente se fala pouco sobre o trabalho, porque roda tudo perfeitamente." Não há número de resultado publicado para esse caso. (Publicar este parágrafo só depois da autorização do Adriano e da conferência da lista de entregas pelo dono da Feed.)
 
 Lume de Papel é uma marca fictícia de demonstração. As conversas, telas, propostas e métricas identificadas como exemplo na home não são resultados de clientes da Feed.
 
