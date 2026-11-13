@@ -377,7 +377,7 @@ A seção "Prova real" (`#prova`) deixou de ser anônima. Agora é "Quem já rod
 1. **Autorização do Adriano**, de preferência por escrito, para publicar o nome e a marca da Foajupe, as duas frases e o áudio de 44 s.
 2. **Conferir a lista de entregas.** Está marcada com um comentário `DONO, CONFERIR ESTA LISTA` no HTML. Hoje: marca e manual; site; Agente de IA no WhatsApp; funil e CRM no Feed Hub, com proposta em PDF; redes sociais (Instagram e Facebook); material para TV (merchan na Record Interior SP). Pode citar a Record pelo nome?
 3. **Os números.** No script há `const PROVA_NUMEROS = [];` com o comentário de como preencher (até 3 itens, `{ valor, rotulo }`). Vazio, a seção não mostra marcador nenhum. Na hora de publicar, escreva os mesmos números dentro do `<dl id="pv-numeros">` do HTML e tire o `hidden`, porque buscadores e IAs não rodam JavaScript.
-4. **Ouvir o trecho de 0:18** e dizer qual é a palavra que ficou como "[...]" na transcrição.
+4. **Trecho de 0:18: RESOLVIDO em 13/11/2026.** O dono confirmou que a palavra é "o Hub" ("O Hub, tudo, cara."), e a transcrição já está completa.
 5. **O parágrafo do caso em `seo/llms-txt-proposta.md`** já fala da Foajupe. Vale o mesmo: só publicar depois dos itens 1 e 2.
 
 ### Altura no celular
