@@ -17,7 +17,7 @@ O escolhido vira React depois (o site real é React 19 + Vite + CSS puro, sem Ta
 
 ## O que a Feed é (a história que o site conta)
 
-Agência de IA aplicada do interior de SP (base Ribeirão Preto e Bebedouro, atende o Brasil
+Agência de IA aplicada do interior de SP (base Ribeirão Preto e região, atende o Brasil
 remoto). Nasceu agência de marketing e virou operação de IA para pequena e média empresa.
 Time: Guilherme (operação, IA, técnico) e Roseane (administrativo, cobrança).
 

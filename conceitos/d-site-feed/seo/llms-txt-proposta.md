@@ -5,7 +5,7 @@ Data: 12/11/2026. Proposta completa para substituir `public/llms.txt` quando a h
 ```text
 # Feed
 
-> A Feed Marketing e Comunicação é uma agência de IA aplicada e marketing para pequenas e médias empresas. Tem base na região de Ribeirão Preto e Bebedouro, no interior de São Paulo, e atende todo o Brasil de forma remota. Encontra onde a operação trava e implementa a solução na rotina da empresa.
+> A Feed Marketing e Comunicação é uma agência de IA aplicada e marketing para pequenas e médias empresas. Tem base em Ribeirão Preto e região, no interior de São Paulo, e atende todo o Brasil de forma remota. Encontra onde a operação trava e implementa a solução na rotina da empresa.
 
 ## Fatos da empresa
 

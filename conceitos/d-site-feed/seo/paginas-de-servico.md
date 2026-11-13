@@ -5,7 +5,7 @@ Data: 12/11/2026. Planejamento, sem criar páginas em `public/`. Fonte factual: 
 ## Regras comuns
 
 - Uma intenção principal por página, um H1 e H2 para os assuntos abaixo. H3 só dentro do H2 correspondente. Não copiar toda a home.
-- Primeiras 150 palavras: dizer o que é o serviço, o que a Feed faz e para quem; mencionar a base na região de Ribeirão Preto e Bebedouro e o atendimento remoto no Brasil, sem fingir sede nas duas cidades.
+- Primeiras 150 palavras: dizer o que é o serviço, o que a Feed faz e para quem; mencionar a base em Ribeirão Preto e região e o atendimento remoto no Brasil, sem fingir sede nas duas cidades.
 - As páginas locais continuam donas de “agência de IA Ribeirão Preto” e “agência de marketing Bebedouro”. Cada página nova é dona do serviço sem cidade no title; termos locais entram como contexto de atendimento.
 - Metadados próprios, canonical na URL da página, HTML legível sem JavaScript, contato igual à home. Nenhum endereço sem confirmação.
 - CTA principal para `https://agenciafeed.com/diagnostico`; WhatsApp secundário em `https://wa.me/5516993020694`.
