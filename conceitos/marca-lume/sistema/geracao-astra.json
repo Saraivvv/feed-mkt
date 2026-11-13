@@ -1,0 +1,71 @@
+{
+  "tool": "Codex image_gen.imagegen",
+  "calls": 12,
+  "credits": "Ferramenta nÃ£o informa crÃ©ditos ou custo monetÃ¡rio.",
+  "prompts": [
+    [
+      "fachada",
+      "Photorealistic premium editorial architectural photograph, landscape 1536x1024. A small independent stationery boutique on a quiet Brazilian urban sidewalk, warm plaster facade, deep forest green painted timber framing, large glass display window with plain cream stationery and muted teal notebooks visible inside, subtle amber interior light, late afternoon natural daylight. Camera straight-on with very slight perspective. Above the window and door, a broad flat matte forest green horizontal signboard, completely EMPTY and unlettered, unobstructed and clear for later vector logo compositing. No lettering, text, logos, symbols or watermarks. All packaging completely blank."
+    ],
+    [
+      "sacola",
+      "A cropped torso of a fictional adult wearing oatmeal linen shirt and trousers, face entirely out of frame, standing on a quiet warm plaster street. ONE anatomically correct hand naturally holds two cotton rope handles of a large plain matte deep forest green paper shopping bag, frontal broad bag face nearly flat and unobstructed, bottom of bag visible. The bag is main subject in lower center, with subtle paper creases and warm raking light."
+    ],
+    [
+      "caderno",
+      "Top-down still life on a warm light oak desk: on LEFT a closed deep muted blue linen hardbound notebook, rectangular portrait cover fully visible, slight clockwise rotation, on RIGHT an open cream unruled notebook with stitched center and flat blank pages, slight counterclockwise rotation. Amber ribbon bookmark. Single brass pen away from the books, afternoon window shadows. Generous paper surface on open notebook for later vector pattern, closed cover fully blank."
+    ],
+    [
+      "presente",
+      "Three-quarter overhead editorial still life of a premium flat rigid deep forest green gift box on warm ivory tabletop. Box lid closed, broad top surface fully visible, a narrow matte amber ribbon crossing near its RIGHT edge leaving left two thirds clear, tied bow at upper right. A large plain ivory rectangular gift tag hanging by string on the front-right tabletop separate from the box. Small closed cream envelope at left. Real paper grain, linen ribbon, beautiful angled sunlight."
+    ],
+    [
+      "cartao",
+      "Close overhead editorial photograph of two landscape business cards on travertine stone table. Left card matte deep forest green and right card thick warm ivory cotton paper, both completely visible, not overlapping, gentle opposite rotations. Card proportions 90 by 50 mm, realistic thick paper edges and soft shadows. Both card faces blank. A cropped ivory envelope and brass paperclip at distant edges."
+    ],
+    [
+      "seda",
+      "Premium packaging still life, high near-overhead camera. One wide sheet of warm ivory translucent tissue paper wrapping a flat rectangular object on pale stone tabletop, with broad central flat area and gently crumpled edges. Round flat deep forest green sticker seal near lower right of central tissue face, completely blank. More plain folded tissue in background. Lots of tactile folds, fine fibers, warm diffused window light. The large central tissue face is clear for an all-over printed pattern added later."
+    ],
+    [
+      "ecobag",
+      "A premium natural oatmeal cotton canvas tote bag hanging by its handles from a wooden wall peg on warm plaster wall. Bag completely visible, broad front panel frontal, gently draped realistic cloth folds, seams and textile weave, quiet side sunlight, small shadow to right. Canvas tote is blank unprinted cream with no decoration. No humans. Enough flat central fabric for later precise vector branding."
+    ],
+    [
+      "celular",
+      "Close-up of ONE anatomically correct adult hand holding a contemporary black smartphone upright in portrait orientation over a warm oak desk with out-of-focus cream notebook and muted teal stationery. All five fingers natural, four mostly behind device, thumb along left edge never covering display. Entire phone visible centered, screen a uniform blank pale ivory rectangle with subtle glass reflection and black frame. Straight-on camera, screen almost flat but slight natural tilt. Large phone fills 80 percent image height. Face never visible."
+    ],
+    [
+      "vitrine",
+      "Front view through a beautiful independent stationery shop display window. Warm oak shelves with blank blue and forest green hardbound notebooks, gift boxes and ivory paper, composed as curated museum objects, warm subtle spotlighting and soft real reflections on glass. A large blank matte ivory portrait display panel on LEFT behind glass, fully visible unobstructed, occupying left third; on RIGHT notebooks and gifts. No humans. Refined visual merchandising with negative space."
+    ],
+    [
+      "cartaz",
+      "Photorealistic urban editorial photograph of one portrait poster in a slim dark forest green metal frame on a warm beige plaster wall beside a quiet pedestrian sidewalk. Large flat pale ivory blank poster occupies two thirds of image height and central frame, entirely visible, nearly straight-on perspective. Soft late afternoon light, a hint of foliage shadow at edges but main poster clear. Slight city depth to right. No people, no other signs or posters, no lettering anywhere."
+    ],
+    [
+      "embrulho",
+      "High overhead photograph of a rectangular gift neatly wrapped in smooth matte warm ivory paper, entire gift visible centered on light oak table, rotated slightly clockwise. No ribbon over the broad top surface. A loose narrow forest green ribbon and small plain ivory gift card sit beside the gift. Broad flat empty top surface for later all-over pattern. Fine paper texture and precise folded corners, late afternoon light."
+    ],
+    [
+      "forro",
+      "Directly top-down editorial product photograph of an open rectangular rigid forest green gift box with empty flat warm ivory paper lining bottom fully visible, box centered, sides straight parallel to image edges. Matching green lid placed to the left partially outside frame. Box empty with no tissue, no objects covering interior bottom; broad clear rectangular base for later all-over pattern compositing. Amber ribbon loosely curled on pale stone surface to right. Real card thickness and inner edge shadows, soft directional daylight."
+    ]
+  ],
+  "bases": {
+    "fachada": "fotos/bases/fachada.webp",
+    "sacola": "fotos/bases/sacola.webp",
+    "caderno": "fotos/bases/caderno.webp",
+    "presente": "fotos/bases/presente.webp",
+    "cartao": "fotos/bases/cartao.webp",
+    "seda": "fotos/bases/seda.webp",
+    "ecobag": "fotos/bases/ecobag.webp",
+    "celular": "fotos/bases/celular.webp",
+    "vitrine": "fotos/bases/vitrine.webp",
+    "cartaz": "fotos/bases/cartaz.webp",
+    "embrulho": "fotos/bases/embrulho.webp",
+    "forro": "fotos/bases/forro.webp"
+  },
+  "instrucoes_comuns": "Uma fotografia editorial fotorrealista 1536x1024. Materiais físicos e luz natural. Superfícies completamente limpas para aplicação posterior. Sem letras, texto, logo, marca-dágua ou grafismos. Pessoas sem identidade real conhecida. Verde Mata, Papel, Âmbar e Azul caderno.",
+  "composicao": "Sharp: rasterização dos vetores originais, projeção homográfica por quatro pontos, reamostragem Lanczos e bilinear, mistura multiplicativa para tinta escura, modulação de luz para tinta clara, deslocamento para tecido e seda, máscara de recorte do papel e do adesivo. Playwright headless para posts, stories e tela."
+}

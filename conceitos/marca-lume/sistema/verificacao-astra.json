@@ -1,0 +1,66 @@
+{
+  "layouts": [
+    {
+      "width": 390,
+      "overflow": false,
+      "cropped": [],
+      "badTargets": [],
+      "missingImages": 0,
+      "brokenAnchors": 0,
+      "fonts": true,
+      "h1": 1
+    },
+    {
+      "width": 768,
+      "overflow": false,
+      "cropped": [],
+      "badTargets": [],
+      "missingImages": 0,
+      "brokenAnchors": 0,
+      "fonts": true,
+      "h1": 1
+    },
+    {
+      "width": 1024,
+      "overflow": false,
+      "cropped": [],
+      "badTargets": [],
+      "missingImages": 0,
+      "brokenAnchors": 0,
+      "fonts": true,
+      "h1": 1
+    },
+    {
+      "width": 1440,
+      "overflow": false,
+      "cropped": [],
+      "badTargets": [],
+      "missingImages": 0,
+      "brokenAnchors": 0,
+      "fonts": true,
+      "h1": 1
+    }
+  ],
+  "errors": [],
+  "bytes": 4492995,
+  "kit": [
+    {
+      "file": "kit-site/foto-fachada.webp",
+      "width": 1200,
+      "height": 800,
+      "bytes": 137760
+    },
+    {
+      "file": "kit-site/foto-post.webp",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 110664
+    },
+    {
+      "file": "kit-site/foto-embalagem.webp",
+      "width": 1200,
+      "height": 800,
+      "bytes": 74132
+    }
+  ]
+}

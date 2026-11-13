@@ -1,36 +1,49 @@
-# Verificação da entrega
+# Verificação da Rodada Astra
 
-Resultado final: aprovado nos controles abaixo.
+## Gate solicitado
 
-## Medição solicitada
+Comando no worktree site-v2:
 
-Comando, a partir do worktree site-v2:
+    node conceitos/marca-lume/medir.mjs marca-lume
 
-`node conceitos/marca-lume/medir.mjs marca-lume`
+Código de saída 0:
 
-Saída: código 0, TOTAL 0 achados. Sem estouro horizontal, alvo menor que 44 px, imagem quebrada ou erro de console nas três medidas originais. Log completo em sistema/medicao.txt.
+    celular 390x844: altura 20933px, 0 achado(s)
+    tablet 768x1024: altura 19075px, 0 achado(s)
+    desktop 1440x900: altura 23613px, 0 achado(s)
+    TOTAL 0 achados
 
-O medir.mjs é cópia idêntica ao original de conceitos/_comum/. SHA-256: 4a5cd8d3ce5c240d69e1c88ed470760747c1921d6cf2381565bb3a9c1a16a65a.
+Sem página mais larga, estouro, alvos menores que 44 px, imagens quebradas ou erros de console. Medir.mjs não foi modificado e continua idêntico ao original em conceitos/_comum/.
 
-## Verificação complementar
+## Check adicional
 
-Playwright Chromium headless, com o executável informado no briefing. Larguras 390, 768, 1024 e 1440 px. Sem overflow, texto cortado, alvo de toque pequeno, link interno quebrado, imagem sem alt ou erro de página. Cormorant Garamond e Manrope carregadas localmente. Nenhuma requisição HTTP externa. Relatório em sistema/verificacao.json.
+    node conceitos/marca-lume/sistema/verificar-astra.mjs
 
-Todas as referências locais de imagens, CSS e downloads do HTML foram verificadas. Um único h1, navegação por âncoras, foco visível e respeito a prefers-reduced-motion. Stories têm rolagem lateral declarada no celular. Imagens abrem no tamanho original ao tocar.
+Código 0, ASTRA 0 achados. Relatório em sistema/verificacao-astra.json.
 
-## Arquivos e imagens
+Larguras: 390, 768, 1024 e 1440 px. Sem texto cortado, rolagem horizontal, alvo pequeno, imagem ausente, âncora quebrada ou requisição HTTP externa. Um h1, fontes locais carregadas, foco visível. A abertura das regras de logo foi testada em cada largura. Leitura e navegação dispensam JavaScript.
 
-- 73 PNGs válidos; maior arquivo: 399,822 bytes. Todos abaixo de 400.000 bytes.
-- 30 PNGs de aplicações, com revisão visual em folhas de contato e inspeção ampliada das peças principais.
-- Capturas do brandbook inspecionadas por quadro, incluindo tipografia, logo, paleta, aplicações e rodapé.
-- 65 SVGs XML válidos, sem elemento text, sem DOCTYPE e sem referência externa. Letras convertidas em contorno.
-- 16 arquivos de logo. Positivo, negativo, monocromático, avatar, assinaturas e reduções.
-- Sem nova dependência instalada. FontTools, Pillow e o Playwright existente foram utilizados. Scripts de construção, renderização e testes temporários ficaram no scratchpad autorizado.
+Manifesto em sistema/publicacao-astra.json: 43 arquivos, 4.492.995 bytes (4,49 MB), incluindo HTML, CSS, SVGs, fontes e imagens. Abaixo de 12 MB.
 
-As capturas de página inteira foram reduzidas para manter o teto de tamanho; os quadros do celular conservam a resolução para revisão. As 30 aplicações têm originais SVG correspondentes, exceto o moodboard, cujo SVG está em sistema/.
+Kit abaixo de 1200 px de largura e 150.000 bytes: fachada 137.760, post 110.664, embalagem 74.132. Arquivos antigos preservados.
 
-## Limites
+## Inspeção visual
 
-O gate confirma medidas de interface, integridade e carregamento. Não substitui teste com leitores de tela, prova gráfica, protótipo físico ou pesquisa de marca. As composições são ilustrações autorais renderizadas, sem fotografia.
+12 mockups abertos individualmente:
+fachada, sacola, caderno, presente, cartao, seda, ecobag, celular, vitrine, cartaz, embrulho e forro.
 
-Nenhum commit, push ou deploy foi realizado. Nenhum arquivo do site da Feed ou do Hub foi editado por este trabalho.
+Verificadas letras, posição, proporções, perspectiva, textura e mãos visíveis. Corrigida a proporção do símbolo no lacre. Rasterização ajustada para evitar serrilhamento nas letras pequenas dos cadernos da vitrine.
+
+Chromium headless indicado em conceitos/_comum/medir.mjs. Nenhum Chrome pessoal. Capturas completas em capturas/; aberturas e capítulos em capturas/astra-*.png em 390 e 1440. Tablet também capturado. CSS e fontes carregados.
+
+Padrões vistos em repetição e nas aplicações guarda, seda, embrulho e forro. SVGs de logo, padrões e artes sem DOCTYPE e com letras em contorno.
+
+## Procedência e crédito
+
+12 gerações com Codex image_gen.imagegen, sem pedir texto ou logo. Bases em fotos/bases/. Identidade aplicada depois. Registro em sistema/geracao-astra.json. O serviço não forneceu créditos ou preço: custo não informado.
+
+## Escopo e limitações
+
+Somente conceitos/marca-lume/ foi alterado. Sem commit, push, deploy ou alteração do artifact publicado. Acervo anterior preservado. Scripts temporários no scratchpad autorizado.
+
+O gate verifica interface e integridade, não substitui leitor de tela, prova gráfica, protótipo de encadernação ou fotografia real. A simulação nas dobras da seda é o ponto menos convincente; acabamentos físicos precisam de amostra.

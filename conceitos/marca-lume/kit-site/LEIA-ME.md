@@ -19,3 +19,14 @@ Para cores e tipografia, importar tokens.css. O CSS referencia ../fontes/ e pres
 O logo negativo deve ficar sobre Mata. Para fundo Papel, usar ../logo/horizontal-positivo.svg. Aplicar com object-fit:contain e preservar a proporção. Os demais SVGs podem ser convertidos em PNG para otimização, mantendo o limite de 400 KB por imagem.
 
 As aplicações em PNG estão em ../aplicacoes/. A apresentação completa abre em ../index.html. As restrições e os próximos passos estão em ../NOTAS.md.
+
+## Versões fotográficas da Rodada Astra
+
+Usar as três novas imagens no case, mantendo os SVGs anteriores:
+- foto-fachada.webp: 1200 × 800 px, 137.760 bytes.
+- foto-post.webp: 1080 × 1350 px, 110.664 bytes.
+- foto-embalagem.webp: 1200 × 800 px, 74.132 bytes.
+
+Até 1200 px de largura e menos de 150 KB. Post em 4:5: usar object-fit:contain quando precisar preservar todo o texto. Fachada e embalagem em 3:2.
+
+Cenas geradas por IA, com logo e textos vetoriais aplicados depois. Nenhuma integração no site. Marca fictícia, com crédito Projeto autoral da Feed.

@@ -1,54 +1,75 @@
 # Lume de Papel
 
-Projeto autoral da Feed, para uma marca fictícia. Não é cliente real. Não houve publicação, commit, push ou deploy.
+Projeto autoral da Feed para uma marca fictícia. Nenhum cliente, endereço, telefone, avaliação, resultado comercial ou produção física é atribuído a este case. Domínio reservado: lumedepapel.example.
 
-## Ponto de partida
+## Base preservada
 
-Foram lidos o bloco #marca de conceitos/d-site-feed/index.html e suas capturas, além de telas reais de atendimento do Hub em conceitos/_comum/hub/. Esses materiais foram apenas consultados. Nenhum arquivo dessas pastas foi editado.
+Conceito: O cuidado que fica. Produto: Entrelinhas. Paleta: Verde Lume #3F998B, Mata #1F4D45, Âmbar #C8923C, Papel #F4EFE4 e Azul caderno #395C72 como cor de produto.
 
-A empresa de demonstração vende cadernos para presente, com capa azul ou verde e embrulho. Lia Ventora e Agente Lume continuam na situação de atendimento. O avatar continua sendo LD em verde.
+Os 16 SVGs de logo e o avatar LD verde permanecem. Foram consultados conceitos/d-site-feed/index.html e conceitos/_comum/hub/tela-03-atendimento.png. Lia, cadernos azuis ou verdes e Agente Lume continuam coerentes. Nenhuma edição no site ou Hub.
 
-## Decisões
+Cormorant Garamond 500 e Manrope 450/650 continuam sendo as fontes. TTFs e licenças SIL OFL em fontes/. A rodada extraiu instâncias WOFF2 locais. Origem: https://github.com/google/fonts/tree/main/ofl/cormorantgaramond e https://github.com/google/fonts/tree/main/ofl/manrope.
 
-- Conceito: O cuidado que fica. A marca se organiza pelo gesto de presentear, com produto, matéria e informação concreta.
-- A paleta original foi preservada integralmente: Verde Lume #3F998B, Mata #1F4D45, Âmbar #C8923C e Papel #F4EFE4. Azul caderno #395C72 é cor de produto, sem percentual na composição da marca.
-- A chama foi refinada em duas folhas abertas, com recorte que sugere a dobra do papel. Não houve abandono do conceito original. O símbolo não é usado como estampa repetida.
-- Assinatura principal com Lume e descritor DE PAPEL. Horizontal para cabeçalho e fachada; vertical para formatos altos. LD é a assinatura de identificação em espaços pequenos e no atendimento.
-- Google Fonts: Cormorant Garamond 500 e Manrope 450/650, hospedadas localmente. As duas licenças OFL estão em fontes/.
-- Todos os textos dos SVGs estão em contorno. Sem DOCTYPE, referência de fonte externa, imagem embutida ou dependência de rede.
-- Paleta com contraste WCAG calculado em sRGB. Usar Papel sobre Mata nos botões. Não usar Papel sobre Verde Lume ou Mata sobre Âmbar em texto normal. A tabela do manual explicita as reprovações.
-- CMYK é aproximação matemática, sem perfil ICC. Necessário fazer prova com a gráfica antes de produzir.
-- A área de proteção é de 1x. No módulo de 125 unidades do símbolo, x é fixado em 10 unidades, tomando como referência o recorte interno. Proteção se mede a partir do limite visual do conjunto, não de uma caixa arbitrária da página.
-- A assinatura principal exige 160 px / 32 mm; horizontal 220 px / 45 mm; vertical 144 px / 30 mm. Símbolo e monograma: 24 px / 6 mm. Mínimos de bordado e hot stamping dependem de amostra, não só dessas medidas.
-- Os acabamentos e dimensões são especificações de intenção. Os mockups não são facas ou arquivos fechados de gráfica.
-- A tela WhatsApp é uma recriação ilustrada da visão da cliente, coerente com a situação do Hub. O Agente se identifica como assistente virtual, não garante estoque e confirma o prazo com pessoas.
-- Domínio lumedepapel.example é reservado para exemplo. Não há número de telefone, endereço, avaliação ou resultado comercial inventado.
+## Histórico anterior
 
-## O que foi gerado por IA
+As 30 aplicações PNG, seus originais vetoriais e os arquivos anteriores de sistema/ foram mantidos. São ilustrações construídas por código, não fotografias. O brandbook anterior usava essas ilustrações. A rodada abaixo substitui a apresentação, sem apagar o acervo.
 
-Conceito, textos, desenho vetorial, composição, código e documentação foram desenvolvidos com assistência de IA neste trabalho. Não foi usado modelo de geração de imagens. Não há fotografia, imagem baixada da internet ou banco de imagens. Todas as cenas foram construídas por código em SVG com texturas procedurais e renderizadas por Playwright Chromium headless.
+## Rodada Astra
 
-As únicas fontes externas baixadas são os arquivos tipográficos oficiais do repositório Google Fonts e suas licenças SIL OFL. Arquivos de fontes: CormorantGaramond[wght].ttf e Manrope[wght].ttf. Fontes de origem: https://github.com/google/fonts/tree/main/ofl/cormorantgaramond e https://github.com/google/fonts/tree/main/ofl/manrope.
+### Direção
 
-## Entregas
+Case editorial de papelaria: fotografia ampla, luz lateral, papel com fibra, tecido, madeira e verde profundo. A aparência fotográfica vem de modelo de imagem, não de SVG simulando fotografia.
 
-- index.html e brandbook.css: apresentação responsiva, local e sem servidor.
-- logo/: variantes principal, horizontal, vertical, símbolo, monograma e avatar. Positivo, negativo e monocromático.
-- sistema/: moodboard, regras de logo, paleta, contrastes, ícones e padrões.
-- originais/: fontes vetoriais editáveis das aplicações.
-- aplicacoes/: PNGs comprimidos das aplicações, incluindo nove posts, três stories e quatro destaques individuais.
-- kit-site/: cinco peças vetoriais, tokens e instruções de uso. Fontes do CSS resolvidas pela pasta fontes/ da entrega.
-- capturas/: evidências do brandbook em celular, tablet e desktop. As visões de página inteira podem ter sido reduzidas para respeitar o teto de 400 KB; as capturas por quadro mantêm o detalhe para revisão.
-- medir.mjs: cópia literal de conceitos/_comum/medir.mjs, sem alteração do original. Executar a partir do worktree: node conceitos/marca-lume/medir.mjs marca-lume.
-- VERIFICACAO.md: evidências objetivas da rodada final.
+Index.html foi refeito: abertura fotográfica, conceito, logo, paleta, hierarquia tipográfica, quatro padrões, voz, aplicações, material gráfico e digital. Fechamento: Projeto autoral da Feed. A página declara a marca fictícia e as cenas geradas por IA.
 
-## Rodada 2
+### Imagem e autoria
 
-1. Fotografar protótipos reais com mãos, costura e fibras de papel. As cenas atuais são ilustradas e não pretendem parecer fotografias.
-2. Prototipar capa, sacola e caixa com encadernador e gráfica. Fechar facas, sangria, perfil de impressão, tolerâncias e provas de bordado.
-3. Validar nome e distintividade em pesquisa de marca e com pessoas do público, se a empresa vier a existir. Refinar pequenos detalhes ópticos do lettering após prova impressa.
-4. Transformar a página inicial ilustrada em loja funcional, com estoque, frete, dados reais e atendimento conectado, somente se o escopo for autorizado.
+12 chamadas bem-sucedidas à ferramenta nativa Codex image_gen.imagegen. Sem Magnific, banco de imagens ou API externa paga separadamente. A ferramenta não retornou preço, créditos ou saldo. Custo não informado, não zero.
 
-## Limitações assumidas
+Cenas: fachada, sacola na mão, caderno fechado e aberto, caixa de presente com tag, cartão de visita, papel de seda com adesivo, ecobag, celular na mão, vitrine, cartaz urbano, embrulho e forro de caixa.
 
-Nenhuma pesquisa de mercado real foi realizada. O briefing, o público e o posicionamento são construções de projeto fictício. Os anúncios e o Google Meu Negócio são estudos de linguagem visual, sem campanha ou perfil ativo. Não existem resultados comerciais a atribuir.
+Todas foram solicitadas limpas, sem texto ou logo. Pessoas geradas, sem referência a pessoa real conhecida. Bases em fotos/bases/. Prompts e ferramenta em sistema/geracao-astra.json.
+
+Logo aplicado a partir de logo/. Textos das novas artes convertidos em contorno usando as fontes locais. Nenhuma letra comercial ou marca foi desenhada pelo gerador.
+
+Composição com Sharp: projeção por quatro pontos, reamostragem, mistura multiplicativa para tinta escura, modulação de iluminação para tinta clara e deslocamento para superfícies flexíveis. Seda com máscara de contorno e exclusão do lacre. Celular com captura real do HTML e máscara nos cantos. Mapeamentos em sistema/mapeamentos-astra.json. Playwright Chromium headless renderizou as artes sociais e as conferências.
+
+12 WebPs finais em fotos/. Quatro PNGs finais em fotos/alta/: fachada, sacola, caderno e presente. Bases e PNGs não entram no carregamento da página.
+
+### Padrões
+
+Quatro módulos SVG, sem DOCTYPE, sem texto e sem repetição do logo:
+- Pauta: 120 × 120 unidades, linhas em pares e margem. Guarda do caderno.
+- Costura: 96 × 96, pontos cruzados e fios. Papel de seda.
+- Dobra: 120 × 120, diagonais em dupla. Papel de presente.
+- Trama: 96 × 96, cruzamento de linhas. Forro.
+
+Repetição por translação horizontal e vertical. Campos transparentes estampa-* em artes/ usados na composição. Escalas e usos no brandbook.
+
+### Material gráfico, tipografia e voz
+
+Artes em contorno: cartão frente e verso, tag, etiqueta, cartão de presente, timbrado, capa, impressão da caixa, sacola, ecobag, bilhete e cartazes. Assinatura em HTML com tabela e logo PNG. Ao instalar no serviço de e-mail, incorporar a imagem como anexo de assinatura. Domínio .example demonstrativo.
+
+Nove posts 1080 × 1350 e três stories 1080 × 1920 com fotos de produto. Fonte editável artes/social.html. Perfil em artes/perfil-instagram.html. Botões desenhados são partes da arte, sem funcionamento comercial.
+
+Hierarquia em pixels, pares editorial e funcional e orientação em pontos para impresso. Personalidade, tratamento, ritmo, vocabulário e exemplos completos de legenda, WhatsApp, etiqueta e e-mail. O Agente se identifica e consulta a equipe antes de confirmar prazo.
+
+### Publicação e kit
+
+43 arquivos necessários para a página, 4.492.995 bytes (4,49 MB). Lista em PUBLICAR.md, pesos em sistema/publicacao-astra.json. Sem links de download. Fotos e artes sociais em WebP, vetores em SVG, fontes locais.
+
+Novos arquivos, mantendo os anteriores:
+- kit-site/foto-fachada.webp: 1200 × 800, 137.760 bytes.
+- kit-site/foto-post.webp: 1080 × 1350, 110.664 bytes.
+- kit-site/foto-embalagem.webp: 1200 × 800, 74.132 bytes.
+
+Sem integração no site, commit, push ou deploy. O artifact publicado não foi alterado; esta entrega é local.
+
+### Conferência e limites
+
+TOTAL 0 achados no comando solicitado, sem editar medir.mjs. Check adicional em 390, 768, 1024 e 1440 px. Os 12 mockups foram abertos individualmente na ferramenta de imagem. Revisados lacre, redução de letras da vitrine, mãos visíveis e posicionamento. Capturas 390 e 1440 examinadas com CSS e fontes.
+
+A seda ainda tem simulação aproximada nas dobras complexas. Uma fotografia de estúdio com mapa de deslocamento melhoraria esse detalhe.
+Acabamentos, cor, papel e encadernação pedem protótipo e prova física. O case não é arquivo fechado de produção industrial.
+
+Scripts temporários no scratchpad autorizado lume-astra. Check permanente em sistema/verificar-astra.mjs. Nenhuma dependência instalada. Somente conceitos/marca-lume/ alterado no worktree.

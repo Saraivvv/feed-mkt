@@ -1,0 +1,198 @@
+{
+  "bytes": 4492995,
+  "megabytes": 4.492995,
+  "files": [
+    {
+      "file": "artes/cartao-presente.svg",
+      "bytes": 133605
+    },
+    {
+      "file": "artes/etiqueta.svg",
+      "bytes": 67049
+    },
+    {
+      "file": "artes/papel-timbrado.svg",
+      "bytes": 229912
+    },
+    {
+      "file": "artes/post-01.webp",
+      "bytes": 115992
+    },
+    {
+      "file": "artes/post-02.webp",
+      "bytes": 85678
+    },
+    {
+      "file": "artes/post-03.webp",
+      "bytes": 73264
+    },
+    {
+      "file": "artes/post-04.webp",
+      "bytes": 80382
+    },
+    {
+      "file": "artes/post-05.webp",
+      "bytes": 63200
+    },
+    {
+      "file": "artes/post-06.webp",
+      "bytes": 104318
+    },
+    {
+      "file": "artes/post-07.webp",
+      "bytes": 160044
+    },
+    {
+      "file": "artes/post-08.webp",
+      "bytes": 78788
+    },
+    {
+      "file": "artes/post-09.webp",
+      "bytes": 128564
+    },
+    {
+      "file": "artes/story-01.webp",
+      "bytes": 127136
+    },
+    {
+      "file": "artes/story-02.webp",
+      "bytes": 90896
+    },
+    {
+      "file": "artes/story-03.webp",
+      "bytes": 119692
+    },
+    {
+      "file": "artes/tag.svg",
+      "bytes": 58140
+    },
+    {
+      "file": "brandbook.css",
+      "bytes": 15179
+    },
+    {
+      "file": "fontes/bold-astra.woff2",
+      "bytes": 31044
+    },
+    {
+      "file": "fontes/sans-astra.woff2",
+      "bytes": 31512
+    },
+    {
+      "file": "fontes/serif-astra.woff2",
+      "bytes": 128888
+    },
+    {
+      "file": "fotos/caderno.webp",
+      "bytes": 258308
+    },
+    {
+      "file": "fotos/cartao.webp",
+      "bytes": 383568
+    },
+    {
+      "file": "fotos/cartaz.webp",
+      "bytes": 212908
+    },
+    {
+      "file": "fotos/celular.webp",
+      "bytes": 122196
+    },
+    {
+      "file": "fotos/ecobag.webp",
+      "bytes": 171700
+    },
+    {
+      "file": "fotos/embrulho.webp",
+      "bytes": 223122
+    },
+    {
+      "file": "fotos/fachada.webp",
+      "bytes": 281070
+    },
+    {
+      "file": "fotos/forro.webp",
+      "bytes": 155268
+    },
+    {
+      "file": "fotos/presente.webp",
+      "bytes": 208430
+    },
+    {
+      "file": "fotos/sacola.webp",
+      "bytes": 139960
+    },
+    {
+      "file": "fotos/seda.webp",
+      "bytes": 174500
+    },
+    {
+      "file": "fotos/vitrine.webp",
+      "bytes": 134808
+    },
+    {
+      "file": "index.html",
+      "bytes": 22086
+    },
+    {
+      "file": "logo/avatar-ld.svg",
+      "bytes": 5855
+    },
+    {
+      "file": "logo/horizontal-positivo.svg",
+      "bytes": 27229
+    },
+    {
+      "file": "logo/principal-negativo.svg",
+      "bytes": 14357
+    },
+    {
+      "file": "logo/principal-positivo.svg",
+      "bytes": 14357
+    },
+    {
+      "file": "logo/simbolo-positivo.svg",
+      "bytes": 2302
+    },
+    {
+      "file": "logo/vertical-positivo.svg",
+      "bytes": 14357
+    },
+    {
+      "file": "padroes/costura.svg",
+      "bytes": 490
+    },
+    {
+      "file": "padroes/dobra.svg",
+      "bytes": 1568
+    },
+    {
+      "file": "padroes/pauta.svg",
+      "bytes": 545
+    },
+    {
+      "file": "padroes/trama.svg",
+      "bytes": 728
+    }
+  ],
+  "kit": [
+    {
+      "file": "kit-site/foto-fachada.webp",
+      "width": 1200,
+      "height": 800,
+      "bytes": 137760
+    },
+    {
+      "file": "kit-site/foto-post.webp",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 110664
+    },
+    {
+      "file": "kit-site/foto-embalagem.webp",
+      "width": 1200,
+      "height": 800,
+      "bytes": 74132
+    }
+  ]
+}

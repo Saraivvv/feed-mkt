@@ -1,0 +1,606 @@
+{
+  "fachada": [
+    {
+      "file": "logo/horizontal-negativo.svg",
+      "q": [
+        [
+          520,
+          111
+        ],
+        [
+          1065,
+          111
+        ],
+        [
+          1065,
+          230
+        ],
+        [
+          520,
+          230
+        ]
+      ],
+      "opts": {
+        "trim": true,
+        "opacity": 0.95
+      }
+    }
+  ],
+  "sacola": [
+    {
+      "file": "artes/sacola-impressao.svg",
+      "q": [
+        [
+          448,
+          405
+        ],
+        [
+          1030,
+          416
+        ],
+        [
+          1035,
+          860
+        ],
+        [
+          449,
+          870
+        ]
+      ],
+      "opts": {
+        "curve": 2.1,
+        "opacity": 0.92
+      }
+    }
+  ],
+  "caderno": [
+    {
+      "file": "artes/capa-entrelinhas.svg",
+      "q": [
+        [
+          98,
+          221
+        ],
+        [
+          495,
+          162
+        ],
+        [
+          563,
+          752
+        ],
+        [
+          163,
+          810
+        ]
+      ],
+      "opts": {
+        "opacity": 0.91
+      }
+    },
+    {
+      "file": "artes/estampa-pauta.svg",
+      "q": [
+        [
+          630,
+          149
+        ],
+        [
+          1040,
+          191
+        ],
+        [
+          972,
+          750
+        ],
+        [
+          572,
+          701
+        ]
+      ],
+      "opts": {
+        "mode": "multiply",
+        "opacity": 0.62,
+        "curve": 2
+      }
+    }
+  ],
+  "presente": [
+    {
+      "file": "artes/caixa-impressao.svg",
+      "q": [
+        [
+          399,
+          260
+        ],
+        [
+          938,
+          179
+        ],
+        [
+          1005,
+          499
+        ],
+        [
+          461,
+          590
+        ]
+      ],
+      "opts": {
+        "opacity": 0.94
+      }
+    },
+    {
+      "file": "artes/tag.svg",
+      "q": [
+        [
+          1298,
+          692
+        ],
+        [
+          1444,
+          734
+        ],
+        [
+          1357,
+          971
+        ],
+        [
+          1207,
+          912
+        ]
+      ],
+      "opts": {
+        "strip": true,
+        "mode": "multiply"
+      }
+    }
+  ],
+  "cartao": [
+    {
+      "file": "artes/cartao-frente.svg",
+      "q": [
+        [
+          156,
+          287
+        ],
+        [
+          800,
+          164
+        ],
+        [
+          867,
+          493
+        ],
+        [
+          219,
+          625
+        ]
+      ],
+      "opts": {
+        "strip": true,
+        "opacity": 0.96
+      }
+    },
+    {
+      "file": "artes/cartao-verso.svg",
+      "q": [
+        [
+          718,
+          590
+        ],
+        [
+          1364,
+          448
+        ],
+        [
+          1447,
+          785
+        ],
+        [
+          795,
+          931
+        ]
+      ],
+      "opts": {
+        "strip": true,
+        "mode": "multiply"
+      }
+    }
+  ],
+  "seda": [
+    {
+      "file": "artes/estampa-costura.svg",
+      "q": [
+        [
+          78,
+          128
+        ],
+        [
+          1340,
+          161
+        ],
+        [
+          1370,
+          937
+        ],
+        [
+          72,
+          902
+        ]
+      ],
+      "opts": {
+        "mode": "multiply",
+        "opacity": 0.62,
+        "curve": 7,
+        "clip": [
+          [
+            250,
+            143
+          ],
+          [
+            1292,
+            190
+          ],
+          [
+            1372,
+            378
+          ],
+          [
+            1335,
+            594
+          ],
+          [
+            1361,
+            717
+          ],
+          [
+            1305,
+            917
+          ],
+          [
+            1115,
+            940
+          ],
+          [
+            935,
+            906
+          ],
+          [
+            207,
+            891
+          ],
+          [
+            177,
+            688
+          ],
+          [
+            76,
+            532
+          ],
+          [
+            176,
+            307
+          ]
+        ],
+        "exclude": [
+          1067,
+          710,
+          85
+        ]
+      }
+    },
+    {
+      "file": "logo/simbolo-negativo.svg",
+      "q": [
+        [
+          1032,
+          663
+        ],
+        [
+          1102,
+          663
+        ],
+        [
+          1102,
+          757
+        ],
+        [
+          1032,
+          757
+        ]
+      ],
+      "opts": {
+        "trim": true,
+        "opacity": 0.9
+      }
+    }
+  ],
+  "ecobag": [
+    {
+      "file": "artes/ecobag-impressao.svg",
+      "q": [
+        [
+          534,
+          463
+        ],
+        [
+          991,
+          468
+        ],
+        [
+          978,
+          858
+        ],
+        [
+          527,
+          867
+        ]
+      ],
+      "opts": {
+        "mode": "multiply",
+        "curve": 5,
+        "opacity": 0.9
+      }
+    }
+  ],
+  "vitrine": [
+    {
+      "file": "artes/cartaz-vitrine.svg",
+      "q": [
+        [
+          92,
+          113
+        ],
+        [
+          558,
+          113
+        ],
+        [
+          558,
+          881
+        ],
+        [
+          92,
+          881
+        ]
+      ],
+      "opts": {
+        "strip": true,
+        "mode": "multiply",
+        "opacity": 0.96
+      }
+    },
+    {
+      "file": "artes/capa-entrelinhas.svg",
+      "q": [
+        [
+          749,
+          148
+        ],
+        [
+          895,
+          149
+        ],
+        [
+          897,
+          354
+        ],
+        [
+          749,
+          354
+        ]
+      ],
+      "opts": {
+        "opacity": 0.8
+      }
+    },
+    {
+      "file": "artes/capa-entrelinhas.svg",
+      "q": [
+        [
+          951,
+          156
+        ],
+        [
+          1095,
+          157
+        ],
+        [
+          1099,
+          354
+        ],
+        [
+          951,
+          354
+        ]
+      ],
+      "opts": {
+        "opacity": 0.8
+      }
+    },
+    {
+      "file": "artes/capa-entrelinhas.svg",
+      "q": [
+        [
+          780,
+          609
+        ],
+        [
+          924,
+          608
+        ],
+        [
+          933,
+          846
+        ],
+        [
+          780,
+          848
+        ]
+      ],
+      "opts": {
+        "opacity": 0.84
+      }
+    },
+    {
+      "file": "artes/capa-entrelinhas.svg",
+      "q": [
+        [
+          978,
+          634
+        ],
+        [
+          1124,
+          634
+        ],
+        [
+          1133,
+          847
+        ],
+        [
+          982,
+          847
+        ]
+      ],
+      "opts": {
+        "opacity": 0.84
+      }
+    }
+  ],
+  "cartaz": [
+    {
+      "file": "artes/cartaz-cidade.svg",
+      "q": [
+        [
+          499,
+          114
+        ],
+        [
+          1021,
+          114
+        ],
+        [
+          1021,
+          858
+        ],
+        [
+          499,
+          858
+        ]
+      ],
+      "opts": {
+        "strip": true,
+        "mode": "multiply"
+      }
+    }
+  ],
+  "embrulho": [
+    {
+      "file": "artes/estampa-dobra.svg",
+      "q": [
+        [
+          211,
+          246
+        ],
+        [
+          1110,
+          79
+        ],
+        [
+          1226,
+          708
+        ],
+        [
+          301,
+          873
+        ]
+      ],
+      "opts": {
+        "mode": "multiply",
+        "opacity": 0.7,
+        "curve": 1.2
+      }
+    },
+    {
+      "file": "artes/bilhete.svg",
+      "q": [
+        [
+          1191,
+          821
+        ],
+        [
+          1448,
+          740
+        ],
+        [
+          1502,
+          905
+        ],
+        [
+          1240,
+          980
+        ]
+      ],
+      "opts": {
+        "strip": true,
+        "mode": "multiply"
+      }
+    }
+  ],
+  "forro": [
+    {
+      "file": "artes/estampa-trama.svg",
+      "q": [
+        [
+          325,
+          160
+        ],
+        [
+          1202,
+          160
+        ],
+        [
+          1202,
+          866
+        ],
+        [
+          325,
+          866
+        ]
+      ],
+      "opts": {
+        "mode": "multiply",
+        "opacity": 0.65
+      }
+    }
+  ],
+  "celular": [
+    {
+      "file": "artes/tela-instagram.png",
+      "q": [
+        [
+          553,
+          43
+        ],
+        [
+          981,
+          42
+        ],
+        [
+          983,
+          953
+        ],
+        [
+          555,
+          957
+        ]
+      ],
+      "opts": {
+        "mode": "screen",
+        "opacity": 0.97,
+        "rounded": 0.13
+      }
+    }
+  ]
+}
