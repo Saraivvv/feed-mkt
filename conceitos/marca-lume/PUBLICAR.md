@@ -2,7 +2,7 @@
 
 Caminhos relativos a conceitos/marca-lume/. Preservar as pastas.
 
-Peso total: 4.300.217 bytes (4,30 MB decimais). 45 arquivos, incluindo index.html, dependências do CSS e favicon. Sem dependências de rede ou links de download na página.
+Peso total: 4.303.872 bytes (4,30 MB decimais). 45 arquivos, incluindo index.html, dependências do CSS e favicon. Sem dependências de rede ou links de download na página. Lista atualizada após a revisão do avatar.
 
 - artes/cartao-presente.svg
 - artes/etiqueta.svg
@@ -37,7 +37,7 @@ Peso total: 4.300.217 bytes (4,30 MB decimais). 45 arquivos, incluindo index.htm
 - fotos/seda.webp
 - fotos/vitrine.webp
 - index.html
-- logo/avatar-ld.svg
+- logo/avatar.svg
 - logo/horizontal-positivo.svg
 - logo/principal-negativo.svg
 - logo/principal-positivo.svg

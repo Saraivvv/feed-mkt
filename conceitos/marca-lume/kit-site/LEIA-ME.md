@@ -6,6 +6,9 @@ Projeto autoral da Feed. Marca fictícia. Esta revisão é local; nenhuma integr
 
 | Arquivo | Uso |
 | --- | --- |
+| avatar.svg | Chama original em Papel sobre Mata, quadrado 320 × 320, sem DOCTYPE, pronto para recorte circular |
+| avatar-80.webp | Avatar 80 × 80, WebP sem perdas; uso a 40 px em tela de densidade 2x |
+| avatar-160.webp | Avatar 160 × 160, WebP sem perdas; uso a 80 px em tela de densidade 2x |
 | logo.svg | Logo horizontal negativo original, em contorno, preservado |
 | paleta.svg | Prancha com códigos, textos serifados em EB Garamond 400 |
 | fachada.svg | Ilustração vetorial anterior, textos atualizados, logo preservado |
@@ -18,7 +21,15 @@ Projeto autoral da Feed. Marca fictícia. Esta revisão é local; nenhuma integr
 | serif-texto.woff2 | Subconjunto EB Garamond 400 de 5.040 bytes para as cinco frases abaixo |
 | ebgaramond-OFL.txt | Licença SIL OFL da EB Garamond |
 
-Todos os SVGs são autossuficientes, com letras em contorno, sem DOCTYPE nem dependências externas. Logos Lume de Papel e LD continuam com o desenho anterior. A EB Garamond substitui a Cormorant nos textos porque mantém os acentos do português próximos às letras; a Cormorant fica apenas no logo em contorno.
+Todos os SVGs são autossuficientes, com letras em contorno, sem DOCTYPE nem dependências externas. O logo principal Lume de Papel continua com o desenho anterior. O avatar usa a chama original e substitui LD nas aplicações de marca. A EB Garamond substitui a Cormorant nos textos porque mantém os acentos do português próximos às letras; a Cormorant fica apenas no logo em contorno.
+
+## Avatar no site
+
+Usos previstos no site da Feed: identificação da marca no anúncio do Instagram, no resultado patrocinado do Google e no cabeçalho da conversa. Este kit prepara os ativos; esta revisão não altera o site em produção.
+
+Preferir avatar.svg, inclusive no favicon. Para imagens raster, usar avatar-80.webp ou avatar-160.webp conforme o tamanho exibido e a densidade da tela. O fundo Mata preenche o quadrado; aplicar border-radius:50% nos avatares. Não acrescentar círculo, borda, sombra ou letras. A chama já tem margem e ajuste óptico: não recentralizar pelo retângulo do desenho. Em perfil de 110 px, usar o SVG para manter nitidez.
+
+No Feed Hub, a empresa de demonstração mostra as iniciais LD até a foto da marca ser enviada. A troca depende do envio da imagem no app.
 
 ## Fontes locais
 

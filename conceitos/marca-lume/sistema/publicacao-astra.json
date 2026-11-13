@@ -1,6 +1,6 @@
 {
-  "bytes": 4300217,
-  "megabytes": 4.300217,
+  "bytes": 4303872,
+  "megabytes": 4.303872,
   "files": [
     {
       "file": "artes/cartao-presente.svg",
@@ -68,7 +68,7 @@
     },
     {
       "file": "brandbook.css",
-      "bytes": 15394
+      "bytes": 20259
     },
     {
       "file": "fontes/bold-astra.woff2",
@@ -96,7 +96,7 @@
     },
     {
       "file": "fotos/celular.webp",
-      "bytes": 125562
+      "bytes": 125700
     },
     {
       "file": "fotos/ecobag.webp",
@@ -132,11 +132,11 @@
     },
     {
       "file": "index.html",
-      "bytes": 22451
+      "bytes": 26534
     },
     {
-      "file": "logo/avatar-ld.svg",
-      "bytes": 5855
+      "file": "logo/avatar.svg",
+      "bytes": 424
     },
     {
       "file": "logo/horizontal-positivo.svg",

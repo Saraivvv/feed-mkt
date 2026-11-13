@@ -21,3 +21,31 @@
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
 .credit img{width:108px;height:auto;display:inline-block}.masthead .feed{flex-shrink:0}.masthead{gap:16px}
+
+.logo-row{grid-template-columns:1.35fr 1fr}
+.avatar-system{margin:70px 0 55px;border-top:1px solid var(--line);padding-top:42px}
+.avatar-heading{display:grid;grid-template-columns:1.05fr 1fr;gap:60px;align-items:end;margin-bottom:38px}
+.avatar-heading h3{font:400 48px/1.06 "EB Garamond",Georgia,serif;letter-spacing:-.6px}
+.avatar-heading>p{font-size:14px;max-width:47ch;margin:0}
+.avatar-contexts{display:grid;grid-template-columns:1.05fr 1fr;gap:44px;align-items:start}
+.avatar-contexts figure>figcaption{display:flex;justify-content:space-between;gap:12px;font-size:10px;letter-spacing:.3px;margin-bottom:14px}
+.avatar-contexts figcaption>span{opacity:.75;text-align:right}
+.brand-avatar{border-radius:50%;flex:none;object-fit:contain}
+.ig-sample,.google-sample{background:#fcfaf5}
+.ig-top{display:flex;align-items:center;justify-content:space-between;padding:17px 24px;border-bottom:1px solid var(--line);font-size:13px}
+.ig-top>span{font-size:22px;line-height:1}
+.ig-profile{display:flex;align-items:center;gap:24px;padding:26px 26px 14px}
+.ig-profile strong{font-size:18px}.ig-profile p{font-size:12px;margin:3px 0 10px}.ig-follow{display:inline-block;padding:5px 27px;border-radius:4px;background:#e7e9df;font-size:12px;font-weight:650}
+.ig-bio{padding:0 26px 20px;font-size:12px;line-height:1.8}
+.ig-tabs{display:flex;justify-content:space-around;font-size:11px;border-top:1px solid var(--line);padding:14px 0}
+.ig-preview{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:3px}.ig-preview img{width:100%}
+.avatar-services{display:grid;gap:25px}
+.wa-sample{background:#dfe5da;padding-bottom:18px}.wa-header{display:flex;align-items:center;gap:12px;padding:15px 20px;background:#fcfaf5}
+.wa-header strong{font-size:13px;line-height:1.5;display:block}.wa-header small{font-size:10px;display:block}.wa-back{font:28px/1 Georgia,serif}.wa-menu{margin-left:auto;font-size:20px}
+.wa-message{background:#fcfaf5;border-radius:0 8px 8px 8px;padding:12px 16px;margin:18px 34px 0;font-size:12px;max-width:330px}.wa-message small{display:block;text-align:right;font-size:9px;margin-top:3px;opacity:.7}
+.google-sample{padding:22px 26px}.sponsored{font-size:11px}.google-identity{display:flex;align-items:center;gap:11px;margin:15px 0}.google-identity strong{font-size:12px;display:block}.google-identity small{font-size:10px;display:block}.google-identity>span{margin-left:auto}.google-title{font-size:18px;line-height:1.4;margin-top:0}.google-copy{font-size:12px;line-height:1.8;margin-top:8px;max-width:54ch}
+.browser-sample{background:#d8dcd3;padding:8px 10px 10px}.browser-tab{display:flex;align-items:center;gap:10px;background:#fcfaf5;border-radius:7px 7px 0 0;padding:10px 14px;width:230px;font-size:11px}.browser-tab>span:last-child{margin-left:auto;font-size:16px;line-height:1}.browser-tab img{border-radius:3px}.browser-address{background:#fcfaf5;border-top:1px solid #e7e9df;padding:9px 18px;font-size:10px}
+.avatar-hub{font-size:12px;border-block:1px solid var(--line);padding:18px 0;margin:32px 0}
+.avatar-ruler{display:grid;grid-template-columns:1fr 320px;gap:70px;align-items:center;padding:15px 0 24px}.ruler-heading .eyebrow{margin-bottom:12px}.ruler-heading>p:last-child{font:400 32px/1.1 "EB Garamond",Georgia,serif;margin-top:0}.small-sizes{display:flex;align-items:end;gap:36px;margin:27px 0 22px}.small-sizes figure{flex:none}.small-sizes figcaption{font-size:10px;margin-top:13px}.ruler-note{font-size:12px;max-width:46ch;line-height:1.8}.size-master{width:320px}.size-master>img{max-width:none;width:320px;height:320px}.size-master figcaption{display:flex;justify-content:space-between;margin-top:15px;font-size:10px}.avatar-system>.note{margin-top:0}
+@media(max-width:1000px){.avatar-heading,.avatar-contexts{gap:28px}.ig-profile{padding:22px 18px 14px;gap:15px}.ig-profile strong{font-size:15px}.ig-profile p{font-size:10px}.ig-bio{padding-inline:18px}.wa-header{padding:14px 12px;gap:8px}.wa-header small{font-size:9px}.google-sample{padding:20px}.avatar-ruler{gap:30px}.small-sizes{gap:23px}}
+@media(max-width:720px){.avatar-system{margin:42px 0 32px;padding-top:30px}.avatar-heading,.avatar-contexts{grid-template-columns:1fr;gap:28px}.avatar-heading{margin-bottom:30px}.avatar-heading h3{font-size:38px}.avatar-heading>p{font-size:13px}.avatar-services{gap:26px}.ig-top{padding:16px 18px;font-size:12px}.ig-profile{padding:22px 18px 14px;gap:20px}.ig-profile strong{font-size:16px}.ig-profile p{font-size:11px}.ig-bio{font-size:11px}.avatar-hub{font-size:11px;margin:26px 0;padding:15px 0}.avatar-ruler{grid-template-columns:1fr;gap:28px}.small-sizes{gap:38px}.ruler-note{font-size:11px;max-width:43ch}.size-master{justify-self:center}.avatar-system>.note{font-size:10px}.logo-row{grid-template-columns:1fr 1fr}.logo-row>div:first-child{grid-column:auto}.logo-row img{height:140px}.logo-row>div:nth-child(2) img{height:140px}}

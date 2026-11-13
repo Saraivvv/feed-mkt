@@ -1,0 +1,41 @@
+{
+  "preservados": [
+    "logo\\horizontal-mono.svg",
+    "logo\\horizontal-negativo.svg",
+    "logo\\horizontal-positivo.svg",
+    "logo\\principal-mono.svg",
+    "logo\\principal-negativo.svg",
+    "logo\\principal-positivo.svg",
+    "logo\\simbolo-mono.svg",
+    "logo\\simbolo-negativo.svg",
+    "logo\\simbolo-positivo.svg",
+    "logo\\vertical-mono.svg",
+    "logo\\vertical-negativo.svg",
+    "logo\\vertical-positivo.svg",
+    "fotos\\bases\\caderno.webp",
+    "fotos\\bases\\cartao.webp",
+    "fotos\\bases\\cartaz.webp",
+    "fotos\\bases\\celular.webp",
+    "fotos\\bases\\ecobag.webp",
+    "fotos\\bases\\embrulho.webp",
+    "fotos\\bases\\fachada.webp",
+    "fotos\\bases\\forro.webp",
+    "fotos\\bases\\presente.webp",
+    "fotos\\bases\\sacola.webp",
+    "fotos\\bases\\seda.webp",
+    "fotos\\bases\\vitrine.webp"
+  ],
+  "simbolo_original": true,
+  "avatar_svg_identico_no_kit": true,
+  "ld_em_svg": 0,
+  "tamanhos_webp": [
+    80,
+    160
+  ],
+  "capturas": [
+    390,
+    1440
+  ],
+  "arquivos_pagina": 45,
+  "bytes_pagina": 4303872
+}

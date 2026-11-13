@@ -1,4 +1,42 @@
-# Verificação da revisão Lume de Papel
+# Verificação atual: avatar Lume de Papel
+
+Comando executado a partir do worktree site-v2, com Playwright e Chromium headless:
+
+    node conceitos/marca-lume/medir.mjs marca-lume
+
+Saída, código 0:
+
+```text
+celular 390x844: altura 23229px, 0 achado(s)
+tablet 768x1024: altura 20582px, 0 achado(s)
+desktop 1440x900: altura 25101px, 0 achado(s)
+TOTAL 0 achados
+```
+
+O medidor permanece idêntico ao original em conceitos/_comum/. Nenhuma alteração para silenciar achados. Sem estouro horizontal, alvos pequenos, imagens quebradas ou erros de console.
+
+    node conceitos/marca-lume/sistema/verificar-astra.mjs
+
+Código 0, ASTRA 0 achados. Larguras 390, 768, 1024 e 1440, sem texto cortado ou requisições externas. CSS e fontes locais carregados. Relatório atualizado: sistema/verificacao-astra.json.
+
+    python conceitos/marca-lume/sistema/avatar/verificar.py
+
+Código 0, AVATAR 0 achados. As 12 bases fotográficas e os 12 SVGs da assinatura e do símbolo conferidos por SHA-256. Chama com exatamente o mesmo path do símbolo original. Avatar quadrado 320 × 320, sem texto, DOCTYPE ou dependência de fonte; cópia do kit idêntica. WebPs conferidos em 80 × 80 e 160 × 160. Nenhum SVG conserva o desenho LD. Relatório: sistema/avatar/verificacao.json.
+
+Inspeção visual realizada com ferramenta de imagem:
+
+- capturas/avatar-tamanhos.png: 32, 40, 110 e 320 px em escala real.
+- capturas/avatar-secao-390.png: seção completa com margem, CSS e fontes, largura 390 px.
+- capturas/avatar-secao-1440.png: seção completa com margem, CSS e fontes, largura 1440 px.
+- fotos/celular.webp: perfil recomposto sobre a base limpa, com a chama no avatar.
+
+Página: 45 arquivos, 4.303.872 bytes. Lista atual em PUBLICAR.md e sistema/publicacao-astra.json. Kit: adicionados avatar.svg, avatar-80.webp e avatar-160.webp; alterado LEIA-ME.md. Restante do kit preservado. Escrita somente em conceitos/marca-lume/, sem nova geração de foto, commit, push ou deploy.
+
+Pontos fracos: o favicon de 16 px perde parte da abertura interna da chama. As legendas dos posts continuam pequenas na miniatura da grade do celular.
+
+## Histórico: revisão tipográfica anterior
+
+Os resultados abaixo registram a rodada anterior. A preservação de 16 logos valia antes da substituição autorizada do avatar e dos três arquivos monograma-*; o teste atual de ativos é sistema/avatar/verificar.py.
 
 ## Gate solicitado
 
