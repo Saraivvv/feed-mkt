@@ -209,36 +209,52 @@ Substitui o item 3 da Parte 1. O aparelho em CSS foi reprovado ("parece um papel
 
 ## Marca Lume no site (13/11/2026)
 
-A Lume de Papel deixou de ser esboço. O site agora usa a marca completa de `conceitos/marca-lume/` (projeto autoral da Feed), nas mesmas cores das telas do Hub.
+A Lume de Papel deixou de ser esboço. O site usa a marca completa de `conceitos/marca-lume/` (projeto autoral da Feed), nas mesmas cores das telas do Hub. Na segunda rodada do mesmo dia as peças desenhadas em vetor deram lugar às **fotos de mockup** da marca, e a letra serifada passou da Cormorant Garamond para a **EB Garamond 400**, que mantém os acentos do português perto das letras ("você", "páginas", "Âmbar"). O logo continua igual, em contorno.
 
 ### O que mudou
-- **Capítulo `#marca`:** o livro mostra as peças do kit. Logo novo em curva, as 4 cores de marca com nome e código (Papel, Mata, Verde Lume, Âmbar), fachada, post e embalagem. O desenho e o comportamento são os mesmos: as peças se montam com a rolagem, levantam com o mouse e vêm para a frente com a legenda quando tocadas.
-- **A etiqueta virou "projeto autoral da Feed"** e entrou o botão **"Ver o projeto completo"**, que abre o manual publicado em aba nova.
-- **Anúncio do Instagram:** avatar "LD" verde-água, igual ao do Hub, e a arte é o post de verdade da marca ("Um presente. Muitas páginas pela frente."). O botão do anúncio ficou no verde Mata.
-- **Resultado do Google:** o mesmo avatar "LD". O endereço de exemplo passou de `.demo` para `.example`, que é o domínio reservado para exemplo.
-- **Proposta em PDF:** logo novo no topo, título na Cormorant Garamond e o resto na Manrope, as duas letras da marca.
-- Os tokens `--lv`, `--lve`, `--la`, `--lc` e `--lt` são os do `kit-site/tokens.css`. A tinta passou de `#1C2422` para `#263B35`.
-- **Saiu todo o esboço antigo:** os símbolos `#lume`, `#lume-nome` e `#cadernos`, a fachada e a sacola desenhadas à mão no HTML e o gradiente do logo. Entraram dois símbolos: `#lume-logo` (assinatura horizontal) e `#lume-ld` (as letras do avatar).
+- **Capítulo `#marca`:** o livro mostra o logo em curva, as 4 cores de marca com nome e código (Papel, Mata, Verde Lume, Âmbar) e três fotos: fachada (3:2), post (4:5) e embalagem (3:2). O comportamento é o mesmo: as peças se montam com a rolagem, levantam com o mouse e vêm para a frente com a legenda quando tocadas.
+- **Layout das peças com as proporções novas:**
+  - **Celular:** a mesma grade de antes. A fachada ocupa a linha inteira em 3:2. Embaixo, o post em 4:5 exato (sem corte) ao lado da embalagem, que ali fica mais quadrada e perde uma fatia de cada lado (ponta do envelope e parte da etiqueta). A caixa, o logo, a frase e o laço aparecem inteiros.
+  - **De 720 a 1023 px e de 1240 px para cima:** o post fica à direita e ocupa a altura do logo mais a paleta. A linha do logo é `1fr` e a da paleta é `auto`, então a paleta fica na altura dela e o logo leva o resto. Fachada e embalagem dividem a linha de baixo, as duas em 3:2, sem corte.
+  - **De 1024 a 1239 px** a coluna do livro é estreita e o post fica baixo demais para caber logo e paleta ao lado. Ali a paleta volta para a linha inteira e o logo fica com a altura do post.
+  - Os códigos da paleta ganharam `margin-top:auto`: se um nome quebrar em duas linhas, os códigos continuam alinhados.
+- **As legendas acompanharam as fotos:** Fachada fala de "letreiro, vitrine e porta" e Embalagem de "caixa, laço, envelope e etiqueta". O toldo, a placa, a sacola e o lacre eram do desenho antigo e não existem nas fotos. Os `alt` descrevem as fotos novas.
+- **A etiqueta é "projeto autoral da Feed"** e o botão **"Ver o projeto completo"** abre o manual publicado em aba nova.
+- **Anúncio do Instagram:** avatar "LD" verde-água, igual ao do Hub. A arte é a foto do post ("O que fica em você."), no formato 4:5 do feed. O botão do anúncio fica no verde Mata.
+- **Resultado do Google:** o mesmo avatar "LD". O endereço de exemplo é `.example`, o domínio reservado para exemplo.
+- **Proposta em PDF:** logo no topo, título na EB Garamond 400 e o resto na Manrope, as duas letras da marca. Como a EB Garamond é mais larga que a Cormorant, o título passou de 1,6em para 1,4em no celular (sobra de 10 px em 360) e ficou em 1,6em de 720 px para cima.
+- Os tokens `--lv`, `--lve`, `--la`, `--lc` e `--lt` são os do `kit-site/tokens.css`. A variável `--l-serifa` agora é `"EB Garamond",Georgia,serif`.
+
+### O anúncio 4:5 e as constantes do aparelho 3D
+A textura `assets/f3d-feed.webp` **mudou de layout**, e por isso duas constantes mudaram juntas:
+- A arte do anúncio cresceu de 100cqw para 125cqw de altura (de 1:1 para 4:5). Em vez de achatar a foto do post de cima, que deixaria de ter proporção de Instagram, o rolo ficou 25cqw mais alto e passou a rolar mais: **de 44cqw para 65cqw**.
+- No fim da rolagem aparecem, de cima para baixo: uma tira da foto anterior, as ações dela, o cabeçalho "lumedepapel · Patrocinado", a foto inteira, o botão do WhatsApp, as ações e a legenda.
+- **`FEED_TOPO` passou de 0,0892 para 0,0814.** A faixa fixa do topo é a mesma, a imagem é que ficou mais alta (1080×3060). É o número que o `gera-telas-3d.mjs` imprime.
+- **O `.65` da função `pinta` do `fone-3d.js` é o mesmo `-65cqw` do `.feed-rolo` no CSS da página.** São um par: mudou um, mude o outro. Há um comentário na linha.
+- `assets/f3d-chat.webp` **não mudou**: a conversa é a mesma. O gerador devolve as mensagens uma fração de pixel mais altas (menos de 0,1 px cada) do que os números gravados no `fone-3d.js`. É diferença de ambiente, não de conteúdo. O gerador foi rodado inteiro e a imagem da conversa foi devolvida ao estado do repositório, que é a que bate com o `fone-3d.js`. As 4 telas do Hub saíram idênticas.
 
 ### NA SUBIDA
 - **O link "Ver o projeto completo" vira `/portfolio/lume-de-papel/`**, sem `target`. Hoje ele aponta para https://claude.ai/artifact/TohhykXmc93XcMPVqjTRSk. Há um comentário no HTML, em cima do link, dizendo a mesma coisa.
 
-### Arquivos novos (`assets/lume/`, 104 KB no total)
-- `fachada.webp` (1100×655, 16 KB), `post.webp` (1080×1080, 46 KB) e `embalagem.webp` (1000×609, 32 KB). Saíram dos SVGs do kit, que pesam de 208 a 338 KB cada. O post serve ao livro e ao anúncio.
-- `cormorant-500.woff2` (2,4 KB), `manrope-450.woff2` (4,0 KB) e `manrope-650.woff2` (3,9 KB): subconjunto local, só com as letras que aparecem. Nada de Google Fonts para a Lume.
-- **As letras que cada subconjunto tem.** Cormorant: "Verde Lume Mata Âmbar Papel Proposta de exemplo". Manrope: os 4 códigos de cor e todo o texto da proposta. **Mudou um desses textos? Refaça o subconjunto**, senão a letra nova cai na fonte reserva. O script é o `monta-fontes.py` (precisa do `fontTools`), e o das imagens é o `monta-rasters.mjs`. Os dois ficaram em `scratchpad\lume-no-site\`, fora do repo.
-- `assets/f3d-feed.webp` foi gerado de novo, porque o anúncio mudou. A altura do rolo é a mesma (a foto de cima perdeu o que a arte ganhou), então o `FEED_TOPO` do `fone-3d.js` continua 0,0892 e o arquivo não foi tocado.
-- `assets/f3d-chat.webp` **não mudou**: a conversa é a mesma. O gerador hoje devolve as mensagens uma fração de pixel mais altas (menos de 0,1 px cada) do que os números gravados no `fone-3d.js`, e isso acontece também com a página de antes desta mudança (523b067). É diferença de ambiente, não de conteúdo. Ficou a imagem que bate com o `fone-3d.js`.
+### Arquivos de `assets/lume/` (364 KB no total)
+- `foto-fachada.webp` (1200×800, 135 KB), `foto-post.webp` (1080×1350, 140 KB) e `foto-embalagem.webp` (1200×800, 72 KB). São cópias sem alteração do `conceitos/marca-lume/kit-site/`. A foto do post serve ao livro e ao anúncio.
+- `eb-garamond-400.woff2` (5,0 KB), `manrope-450.woff2` (4,0 KB) e `manrope-650.woff2` (3,9 KB): subconjunto local, só com as letras que aparecem. Nada de Google Fonts para a Lume.
+- **Por que não é o `serif-texto.woff2` do kit:** ele só cobre as 5 frases do kit, e a paleta do site escreve "Verde" e "Âmbar". Faltavam **V, b e Â**. O `eb-garamond-400.woff2` foi gerado com fontTools a partir de `conceitos/marca-lume/fontes/eb-garamond-400-latin.woff2` e cobre as duas listas.
+- **As letras que cada subconjunto tem.** EB Garamond: "Papel Mata Verde Lume Âmbar Proposta de exemplo", que é todo o texto serifado que a página escreve (a paleta e o título da proposta), mais as 5 frases do kit. Manrope: os 4 códigos de cor e todo o texto da proposta. As frases serifadas das fotos são imagem e não dependem da fonte. **Mudou um desses textos? Refaça o subconjunto**, senão a letra nova cai na Georgia. O script é o `monta-fonte.py`, em `scratchpad\lume-fotos-site\`, fora do repo, junto com o `capturas.mjs` e o `confere.mjs` desta rodada.
+- `ebgaramond-OFL.txt` (4 KB): a licença da EB Garamond, que a OFL pede que acompanhe a fonte. A página não carrega esse arquivo.
+- **Saíram:** `fachada.webp`, `post.webp`, `embalagem.webp` (as peças em vetor) e `cormorant-500.woff2`. O `@font-face` da Cormorant saiu do HTML.
 
 ### Head
-Os 3 pedidos da seção "Aparelho 3D" estão feitos: `preconnect` da jsDelivr com `crossorigin`, `modulepreload` com a mesma URL do importmap e o `preload` da tela do Atendimento no lugar da moldura. A tag `google-site-verification`, o canonical e os 4 blocos de JSON-LD estão idênticos e fazem parse.
+Os 3 pedidos da seção "Aparelho 3D" estão feitos: `preconnect` da jsDelivr com `crossorigin`, `modulepreload` com a mesma URL do importmap e o `preload` da tela do Atendimento no lugar da moldura. A tag `google-site-verification`, o canonical e os 4 blocos de JSON-LD estão idênticos e fazem parse. Na rodada das fotos o head de SEO não foi tocado: no `<style>` só mudou a linha do `@font-face`.
 
 ### Conferência
-- `node conceitos/_comum/medir.mjs d-site-feed`: **`TOTAL 0 achados`**. Celular com 16.153 px, **19,1 telas**.
-- Por http, com o 3D ligado, em 360, 390, 768, 1024 e 1440: 0 achados, as 5 peças vêm para a frente e voltam, as 3 fontes carregam e nenhuma letra cai na reserva.
-- As maquetes da Lume continuam com `data-nosnippet` (livro, anúncio, painel, calendário e palco). Nenhum travessão, nenhum "Bot" e nenhum `href="#"`.
-- A página usa os 19 arquivos de `assets/` e nenhum sobra na pasta: 630 KB, mais 149 KB de HTML.
+- `node conceitos/_comum/medir.mjs d-site-feed`: **`TOTAL 0 achados`**. Celular com 16.340 px, **19,4 telas** (o teto é 20). São 53 px a mais que antes: a fachada passou de 1100:655 para 3:2 e o post de 1:1 para 4:5.
+- Por http, com o 3D ligado, em 360, 390, 768, 1024, 1240 e 1440: nenhum erro de console, o post e a fachada sem corte em todas as larguras, a peça tocada vem para a frente com a legenda, as 3 fontes carregam e o título da proposta cabe em uma linha.
+- Olhado em captura: o `#marca` em 390 e 1440, a peça tocada, a peça com o mouse, o anúncio no aparelho 3D e no aparelho de CSS (a reserva, por `file://`), e a proposta e a paleta ampliadas 4 vezes para ver a serifa e os acentos.
+- As maquetes da Lume continuam com `data-nosnippet` (8, como antes). Nenhum travessão, nenhum "Bot" e nenhum `href="#"`.
+- A página pede 19 arquivos de `assets/`, todos existem, e na pasta só sobra a licença: 979 KB, mais 151 KB de HTML.
 
 ### O que ainda está fraco
-- **O post e a embalagem ficam pequenos no celular** (123 px de altura). A frase do post se lê, mas o texto miúdo das peças vira textura. Para ver direito, só no "projeto completo".
+- **A página ficou uns 350 KB mais pesada.** As fotos somam 347 KB contra 93 KB dos desenhos, e a textura do anúncio (`f3d-feed.webp`) foi de 82 para 174 KB, porque agora é fotografia. As três fotos são `loading="lazy"` e estão fora da primeira tela.
+- **No celular o post tem 123 × 154 px.** A capa e a frase grande se leem, o texto miúdo vira textura. E a embalagem perde as pontas ali (envelope e etiqueta). Para ver direito, só no "projeto completo".
 - **O link do projeto sai do site** para o claude.ai até existir a página de portfólio. E a paleta mostra as 4 cores de marca: o Azul caderno, que é só de produto, ficou de fora.

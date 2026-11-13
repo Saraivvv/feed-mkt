@@ -267,12 +267,12 @@
 </script>
 <style>
 /* as duas letras da Lume de Papel, em subconjunto local só com as letras que aparecem (lista no NOTAS.md, "Marca Lume no site") */
-@font-face{font-family:"Cormorant Garamond";src:url(assets/lume/cormorant-500.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"EB Garamond";src:url(assets/lume/eb-garamond-400.woff2) format("woff2");font-weight:400;font-display:swap}
 @font-face{font-family:Manrope;src:url(assets/lume/manrope-450.woff2) format("woff2");font-weight:450;font-display:swap}
 @font-face{font-family:Manrope;src:url(assets/lume/manrope-650.woff2) format("woff2");font-weight:650;font-display:swap}
 :root{
   --laranja:#FFA300; --preto:#070707; --branco:#F4F5F0; --papel:#ECE9E2; --tinta:#0A0A09; --cinza:#A9A9A2;
-  --lv:#3F998B; --lve:#1F4D45; --la:#C8923C; --lc:#F4EFE4; --lt:#263B35; --l-serifa:"Cormorant Garamond",Georgia,serif; --l-sans:Manrope,Barlow,sans-serif;
+  --lv:#3F998B; --lve:#1F4D45; --la:#C8923C; --lc:#F4EFE4; --lt:#263B35; --l-serifa:"EB Garamond",Georgia,serif; --l-sans:Manrope,Barlow,sans-serif;
   --g:20px; --max:1240px; --doca:84px; --persp:700px; --olho:110px;
   --ease:cubic-bezier(.16,.84,.24,1);
   interpolate-size:allow-keywords;
@@ -491,11 +491,11 @@ html:not(.js) .parada .txt{opacity:1}
 .p-logo{grid-area:l;background:var(--lve);color:var(--lc);display:grid;place-items:center}
 .lume-logo{width:74%;max-width:330px;height:auto;fill:currentColor}
 .p-cores{grid-area:c;min-height:0;display:flex;gap:8px;padding:10px 10px 11px}
-.p-cores span{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px;font:500 clamp(13px,3.6vw,15.5px)/1.05 var(--l-serifa);color:var(--lve)}
+.p-cores span{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px;font:400 clamp(13px,3.6vw,15.5px)/1.05 var(--l-serifa);color:var(--lve)}
 .p-cores i{height:52px;margin-bottom:5px;border-radius:7px}
-.p-cores b{font:650 9.5px/1.2 var(--l-sans);letter-spacing:.02em;color:var(--lt)}
-.p-fachada{grid-area:f;min-height:0;aspect-ratio:1100/655}
-.p-post{grid-area:p;min-height:0;aspect-ratio:1}
+.p-cores b{margin-top:auto;font:650 9.5px/1.2 var(--l-sans);letter-spacing:.02em;color:var(--lt)} /* margin-top:auto: quando um nome quebra em duas linhas, os códigos continuam na mesma linha de base */
+.p-fachada{grid-area:f;min-height:0;aspect-ratio:3/2}
+.p-post{grid-area:p;min-height:0;aspect-ratio:4/5}
 .p-post{box-shadow:0 0 0 1px rgba(38,59,53,.12),0 14px 22px -16px rgba(40,30,10,.5)}
 .p-post img+.leg{left:auto;right:8px;bottom:auto;top:8px}
 .p-sacola{grid-area:e;min-height:0}
@@ -515,7 +515,7 @@ html:not(.js) .parada .txt{opacity:1}
 .barra-st i{width:6cqw;height:3cqw;border-radius:.8cqw;border:.5cqw solid currentColor;opacity:.75}
 .feed-topo{position:relative;z-index:2;display:flex;align-items:center;gap:2.4cqw;height:12cqw;padding:0 4.4cqw;background:#fff;border-bottom:1px solid rgba(0,0,0,.08);font:700 5.4cqw/1 Barlow;letter-spacing:-.02em}
 .feed-topo svg{width:6.4cqw;height:6.4cqw}
-.feed-rolo{transform:translateY(calc(var(--m,1) * -44cqw))}
+.feed-rolo{transform:translateY(calc(var(--m,1) * -65cqw))}
 .post-topo{display:flex;align-items:center;gap:2.6cqw;height:13cqw;padding:0 4cqw;font:700 4cqw/1.15 Barlow}
 .post-topo small{display:block;font:500 3.3cqw/1.2 Barlow;opacity:.7}
 .av{width:8.4cqw;height:8.4cqw;border-radius:50%;flex:none;background:linear-gradient(135deg,#d9d9d9,#b9b9b9);display:grid;place-items:center}
@@ -523,7 +523,7 @@ html:not(.js) .parada .txt{opacity:1}
 .av-lume svg,.g-site i svg{width:100%;height:100%;fill:currentColor}
 .post-foto{position:relative;width:100%}
 .foto-a{height:58cqw;background:radial-gradient(circle at 68% 42%,#FFF1C9 0 8.5%,rgba(255,241,201,.35) 9% 15%,transparent 15.5%),radial-gradient(90% 46% at 14% 108%,#3E5F55 0 60%,transparent 60.5%),radial-gradient(100% 52% at 88% 116%,#5F8472 0 60%,transparent 60.5%),linear-gradient(180deg,#F08E6B,#F6B98A 46%,#FBE2B4)}
-.foto-ad{height:100cqw;background:var(--lc)}
+.foto-ad{height:125cqw;background:var(--lc)}
 .foto-ad img{display:block;width:100%;height:100%;object-fit:cover}
 .post-cta{display:flex;justify-content:space-between;align-items:center;height:18.6cqw;min-height:44px;padding:0 4.4cqw;background:var(--lve);color:var(--lc);font:700 4.3cqw/1 Barlow;text-decoration:none;transition:background .2s}
 .post-cta:active{background:#143630}
@@ -676,7 +676,7 @@ html:not(.js) .serie,html:not(.js) .serie-leg{display:none}
 .pdf{position:absolute;z-index:5;top:9%;right:max(34px,calc(50% - 196px));width:min(44vw,190px);padding:13px 13px 14px;border-radius:6px;background:#fff;color:var(--lt);box-shadow:0 30px 50px -14px rgba(60,20,0,.6),0 0 0 1px rgba(0,0,0,.05);font:450 11px/1.4 var(--l-sans);transform-origin:20% 100%;opacity:0;will-change:transform,opacity}
 .pdf-topo{padding-bottom:9px;border-bottom:1.5px solid var(--lve);color:var(--lve)}
 .pdf-topo svg{display:block;width:106px;height:auto;fill:currentColor}
-.pdf-tit{margin:10px 0 3px;font:500 1.6em/1 var(--l-serifa);color:var(--lve)}
+.pdf-tit{margin:10px 0 3px;font:400 1.4em/1 var(--l-serifa);color:var(--lve)}
 .pdf dl{margin-top:8px}
 .pdf dl div{display:flex;justify-content:space-between;gap:8px;padding:5px 0;border-top:1px solid rgba(38,59,53,.12)}
 .pdf dt{opacity:.7}
@@ -846,8 +846,9 @@ html:not(.js) .d-indice{display:none}
   .parada h3{font-size:32px}
   .livro{padding:22px}
   .livro-topo span span{display:inline}
-  .pecas{grid-template-areas:"l l l l l l p p p p" "c c c c c c c c c c" "f f f f f e e e e e";gap:14px}
-  .p-fachada,.p-sacola{aspect-ratio:8/5}
+  .pecas{grid-template-areas:"l l l l l l p p p p" "c c c c c c p p p p" "f f f f f e e e e e";grid-template-rows:1fr auto auto;gap:14px} /* o post 4:5 ocupa as duas primeiras linhas; a paleta fica na altura dela e o logo (1fr) leva o resto */
+  .p-logo{min-height:0}
+  .p-sacola{aspect-ratio:3/2}
   .p-cores{gap:12px;padding:14px 14px 15px}
   .livro-pe{grid-template-columns:1fr auto;gap:12px;align-items:center}
   .af{width:320px}
@@ -861,6 +862,7 @@ html:not(.js) .d-indice{display:none}
   .palco-cena{top:calc(56px + 230px + 20px)}
   .pdf{width:230px;font-size:13px;right:calc(50% - 300px)}
   .pdf-topo svg{width:130px}
+  .pdf-tit{font-size:1.6em}
   .lq{width:min(34vw,300px)}
   .leque{height:calc(min(34vw,300px) * 2.155 + 30px)}
   .chips{grid-template-columns:1fr 1fr}
@@ -896,6 +898,7 @@ html:not(.js) .d-indice{display:none}
   .caminho .wrap,.marca-sec .wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:0 72px;align-items:start}
   .caminho .cab,.marca-sec .cab{position:sticky;top:110px}
   .rota,.livro{margin-top:0}
+  .p-cores{gap:8px}.p-cores span{font-size:14.5px} /* ao lado do post a paleta tem 6 colunas: assim "Verde Lume" cabe numa linha */
   .trafego .wrap{display:grid;grid-template-columns:1fr 1fr;gap:0 72px;align-items:center}
   .trafego .anuncio-cena{margin-top:0}
   .trafego .painel{grid-column:1/-1;margin-top:90px}
@@ -974,6 +977,7 @@ html:not(.js) .d-indice{display:none}
   .barra-fio{position:absolute;left:0;bottom:-2px;height:2px;width:100%;background:var(--laranja);transform-origin:left;transform:scaleX(var(--lido,0))}
 }
 @media (min-width:1024px) and (max-width:1239px){
+  .pecas{grid-template-areas:"l l l l l l p p p p" "c c c c c c c c c c" "f f f f f e e e e e"} /* coluna estreita: o post é baixo demais para caber logo e paleta ao lado, a paleta volta para a linha inteira */
   .barra-topo ol a{padding:0 8px;font-size:13.5px}
   .barra-topo ol a i{display:none}
 }
@@ -1100,9 +1104,9 @@ html:not(.js) .d-indice{display:none}
         <button type="button" class="peca p-cores" data-m style="--dx:-60px;--dy:30px;--r:2deg" data-leg="Cores|a paleta com os códigos, pronta para a gráfica e para a tela.">
           <span><i style="background:#F4EFE4;box-shadow:inset 0 0 0 1px rgba(38,59,53,.16)"></i>Papel<b>#F4EFE4</b></span><span><i style="background:#1F4D45"></i>Mata<b>#1F4D45</b></span><span><i style="background:#3F998B"></i>Verde Lume<b>#3F998B</b></span><span><i style="background:#C8923C"></i>Âmbar<b>#C8923C</b></span>
         </button>
-        <button type="button" class="peca p-fachada" data-m style="--dy:80px;--r:2deg" data-leg="Fachada|a marca aplicada na rua: letreiro, toldo e placa."><img src="assets/lume/fachada.webp" width="1100" height="655" loading="lazy" decoding="async" alt="Fachada da loja Lume de Papel, com letreiro, toldo listrado e placa de bandeira"><span class="leg">Fachada</span></button>
-        <button type="button" class="peca p-post" data-m style="--dx:-70px;--r:-5deg" data-leg="Post|o modelo das redes, para todo conteúdo ter a mesma cara."><img src="assets/lume/post.webp" width="1080" height="1080" loading="lazy" decoding="async" alt="Post da Lume de Papel: Um presente. Muitas páginas pela frente."><span class="leg">Post</span></button>
-        <button type="button" class="peca p-sacola" data-m style="--dx:70px;--r:6deg" data-leg="Embalagem|sacola, caixa, cinta e lacre com a mesma assinatura."><img src="assets/lume/embalagem.webp" width="1000" height="609" loading="lazy" decoding="async" alt="Embalagens da Lume de Papel: sacola, caixa, lacre e caderno com cinta"><span class="leg">Embalagem</span></button>
+        <button type="button" class="peca p-fachada" data-m style="--dy:80px;--r:2deg" data-leg="Fachada|a marca aplicada na rua: letreiro, vitrine e porta."><img src="assets/lume/foto-fachada.webp" width="1200" height="800" loading="lazy" decoding="async" alt="Fachada da loja Lume de Papel: letreiro verde com o logo, vitrine com cadernos e porta de madeira"><span class="leg">Fachada</span></button>
+        <button type="button" class="peca p-post" data-m style="--dx:-70px;--r:-5deg" data-leg="Post|o modelo das redes, para todo conteúdo ter a mesma cara."><img src="assets/lume/foto-post.webp" width="1080" height="1350" loading="lazy" decoding="async" alt="Post da Lume de Papel: caderno azul da linha Entrelinhas sobre a mesa, com a frase O que fica em você."><span class="leg">Post</span></button>
+        <button type="button" class="peca p-sacola" data-m style="--dx:70px;--r:6deg" data-leg="Embalagem|caixa, laço, envelope e etiqueta com a mesma assinatura."><img src="assets/lume/foto-embalagem.webp" width="1200" height="800" loading="lazy" decoding="async" alt="Embalagem da Lume de Papel: caixa verde com o logo, laço âmbar, envelope e etiqueta de presente"><span class="leg">Embalagem</span></button>
       </div>
       <div class="livro-pe">
         <p class="livro-leg" aria-live="polite"><span><b>Toque numa peça.</b> Cada uma mostra o que entra no manual.</span></p>
@@ -1131,7 +1135,7 @@ html:not(.js) .d-indice{display:none}
             <div class="post-foto foto-a"></div>
             <div class="post-acoes" aria-hidden="true"><svg><use href="#i-acoes"/></svg></div>
             <div class="post-topo"><i class="av av-lume"><svg aria-hidden="true"><use href="#lume-ld"/></svg></i><span>lumedepapel<small>Patrocinado</small></span></div>
-            <div class="post-foto foto-ad"><img src="assets/lume/post.webp" width="1080" height="1080" loading="lazy" decoding="async" alt="Anúncio da Lume de Papel: Um presente. Muitas páginas pela frente."></div>
+            <div class="post-foto foto-ad"><img src="assets/lume/foto-post.webp" width="1080" height="1350" loading="lazy" decoding="async" alt="Anúncio da Lume de Papel: caderno azul da linha Entrelinhas, com a frase O que fica em você."></div>
             <a class="post-cta" href="#agente" aria-label="Enviar mensagem no WhatsApp: ver o Agente atender">Enviar mensagem no WhatsApp<svg aria-hidden="true"><use href="#i-seta"/></svg></a>
             <div class="post-acoes" aria-hidden="true"><svg><use href="#i-acoes"/></svg></div>
             <p class="post-leg"><b>lumedepapel</b> Capa azul ou verde. Você escolhe, a gente embrulha.</p>

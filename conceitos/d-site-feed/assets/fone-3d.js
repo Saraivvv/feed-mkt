@@ -131,7 +131,7 @@
   const carrega = src => imagens.get(src) || imagens.set(src, new Promise((ok, erro) => { const im = new Image(); im.onload = () => ok(im); im.onerror = erro; im.src = src; })).get(src);
 
   // medidas tiradas por gera-telas-3d.mjs (rode de novo se mudar o texto dessas telas no HTML)
-  const FEED_TOPO = 0.0892; // quanto da altura da imagem do anúncio é a faixa fixa do topo
+  const FEED_TOPO = 0.0814; // quanto da altura da imagem do anúncio é a faixa fixa do topo
   const CHAT = { msgs: [[0.1681, 0.1233], [0.2914, 0.1233], [0.4147, 0.0953], [0.5101, 0.1233], [0.6334, 0.1817]], campo: 0.9272, fundo: 'rgb(207, 217, 216)' };
   const QUANDO = [-1, .12, .42, .68, 1.12]; // em que ponto do palco cada mensagem entra (o mesmo do script da página)
 
@@ -167,9 +167,9 @@
     x.imageSmoothingQuality = 'high';
     x.globalAlpha = 1;
     if (f.tipo === 'feed') {
-      const k = L / im.width, topo = FEED_TOPO * im.height;
+      const k = L / im.width, topo = FEED_TOPO * im.height; // o .65 de baixo é o -65cqw do .feed-rolo no CSS da página: mudou um, mude o outro
       x.fillStyle = '#fff'; x.fillRect(0, 0, L, A);
-      x.drawImage(im, 0, topo, im.width, im.height - topo, 0, topo * k - e.m * .44 * L, L, (im.height - topo) * k);
+      x.drawImage(im, 0, topo, im.width, im.height - topo, 0, topo * k - e.m * .65 * L, L, (im.height - topo) * k);
       x.drawImage(im, 0, 0, im.width, topo, 0, 0, L, topo * k);
     } else if (f.tipo === 'chat' && e.pos < 1.5) {
       // a conversa inteira e, por cima, o fundo cobrindo o que ainda não foi dito; a mensagem que está entrando cresce e clareia
