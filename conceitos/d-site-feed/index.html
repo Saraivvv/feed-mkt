@@ -32,9 +32,10 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="assets/fone.webp" fetchpriority="high">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.min.js">
+<link rel="preload" as="image" href="assets/tela-atendimento.webp" fetchpriority="high">
 
 <script type="application/ld+json">
 {
@@ -244,9 +245,13 @@
 }
 </script>
 <style>
+/* as duas letras da Lume de Papel, em subconjunto local só com as letras que aparecem (lista no NOTAS.md, "Marca Lume no site") */
+@font-face{font-family:"Cormorant Garamond";src:url(assets/lume/cormorant-500.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Manrope;src:url(assets/lume/manrope-450.woff2) format("woff2");font-weight:450;font-display:swap}
+@font-face{font-family:Manrope;src:url(assets/lume/manrope-650.woff2) format("woff2");font-weight:650;font-display:swap}
 :root{
   --laranja:#FFA300; --preto:#070707; --branco:#F4F5F0; --papel:#ECE9E2; --tinta:#0A0A09; --cinza:#A9A9A2;
-  --lv:#3F998B; --lve:#1F4D45; --la:#C8923C; --lc:#F4EFE4; --lt:#1C2422;
+  --lv:#3F998B; --lve:#1F4D45; --la:#C8923C; --lc:#F4EFE4; --lt:#263B35; --l-serifa:"Cormorant Garamond",Georgia,serif; --l-sans:Manrope,Barlow,sans-serif;
   --g:20px; --max:1240px; --doca:84px; --persp:700px; --olho:110px;
   --ease:cubic-bezier(.16,.84,.24,1);
   interpolate-size:allow-keywords;
@@ -343,7 +348,7 @@ p a:active,address a:active{opacity:.55}
   p a{transition:background-color .2s;border-radius:3px}
   p a:hover{background-color:rgba(255,163,0,.4)}
   .laranja p a:hover{background-color:rgba(10,10,9,.16)}
-  .post-cta:hover{background:var(--lve)}
+  .post-cta:hover{background:#19423B}
   .doca a:hover,.doca button:hover{translate:0 -2px}
   .chip[aria-pressed=true]:hover svg{scale:1.1}
 }
@@ -454,27 +459,28 @@ html:not(.js) .parada .txt{opacity:1}
 
 /* ---------- 3. marca: o livro que se monta ---------- */
 .livro{position:relative;margin-top:36px;border-radius:24px;background:var(--lc);color:var(--lt);padding:14px;box-shadow:0 44px 70px -34px rgba(40,30,10,.5),inset 0 0 0 1px rgba(28,36,34,.09)}
-.livro-topo{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:4px 6px 14px;font:700 11px/1.3 Barlow;letter-spacing:.14em;text-transform:uppercase}
-.pecas{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.livro-topo{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:4px 6px 14px;font:700 11px/1.3 Barlow;letter-spacing:.1em;text-transform:uppercase}
+.livro-topo span span{display:none}
+.pecas{display:grid;grid-template-columns:repeat(10,1fr);grid-template-areas:"l l l l l l l l l l" "c c c c c c c c c c" "f f f f f f f f f f" "p p p p e e e e e e";gap:10px}
 .peca{position:relative;display:block;width:100%;padding:0;border:0;border-radius:15px;overflow:hidden;min-height:150px;background:#fff;color:inherit;text-align:left;cursor:pointer;transform:translate(calc(var(--dx,0px) * (1 - var(--m,1))),calc(var(--dy,60px) * (1 - var(--m,1)))) rotate(calc(var(--r,0deg) * (1 - var(--m,1))));opacity:calc(var(--m,1) * 2.2);transition:scale .35s var(--ease),box-shadow .35s}
 .peca.frente{scale:1.04;z-index:3;box-shadow:0 0 0 3px var(--laranja),0 26px 34px -14px rgba(40,30,10,.6)}
 .peca .leg{position:absolute;left:11px;bottom:9px;z-index:2;font:700 10px/1 Barlow;letter-spacing:.13em;text-transform:uppercase;opacity:.66}
-.larga{grid-column:span 2}
-.p-logo{background:radial-gradient(80% 90% at 80% 0%,#2C6B5F,var(--lve));color:var(--lc);display:grid;place-items:center}
-.lume-logo{display:flex;align-items:center;gap:12px;width:74%;max-width:330px;color:var(--lc)}
-.lume-logo svg:first-child{width:19%;height:auto;flex:none}
-.lume-logo svg:last-child{flex:1;height:auto;fill:currentColor}
-.p-cores{display:flex;min-height:98px}
-.p-cores span:not(.leg){flex:1;display:flex;flex-direction:column;justify-content:flex-end;padding:9px 8px;font:700 9.5px/1.3 Barlow;letter-spacing:.06em;text-transform:uppercase}
-.p-cores b{display:block;font-weight:600;opacity:.75;letter-spacing:.02em}
-.p-fachada{min-height:0}
-.p-fachada svg{width:100%;height:auto}
-.p-post{background:var(--lv);color:var(--lc);padding:13px 12px 30px;display:flex;flex-direction:column}
-.p-post svg{width:70%;margin:0 auto}
-.p-post em{margin-top:auto;font:800 18px/1.02 Barlow;font-style:normal;letter-spacing:-.025em}
-.p-sacola{background:#DCE7E3;display:grid;place-items:center}
-.p-sacola svg{width:56%;height:auto;margin-bottom:14px}
-.livro-leg{display:flex;align-items:center;gap:10px;min-height:52px;margin-top:12px;padding:10px 12px;border-radius:13px;background:var(--lve);color:var(--lc);font:500 14.5px/1.35 Barlow}
+.peca img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.peca img+.leg{left:8px;bottom:8px;padding:5px 7px;border-radius:6px;background:rgba(244,239,228,.92);opacity:1}
+.p-logo{grid-area:l;background:var(--lve);color:var(--lc);display:grid;place-items:center}
+.lume-logo{width:74%;max-width:330px;height:auto;fill:currentColor}
+.p-cores{grid-area:c;min-height:0;display:flex;gap:8px;padding:10px 10px 11px}
+.p-cores span{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px;font:500 clamp(13px,3.6vw,15.5px)/1.05 var(--l-serifa);color:var(--lve)}
+.p-cores i{height:52px;margin-bottom:5px;border-radius:7px}
+.p-cores b{font:650 9.5px/1.2 var(--l-sans);letter-spacing:.02em;color:var(--lt)}
+.p-fachada{grid-area:f;min-height:0;aspect-ratio:1100/655}
+.p-post{grid-area:p;min-height:0;aspect-ratio:1}
+.p-post{outline:1px solid rgba(38,59,53,.14);outline-offset:-1px}
+.p-post img+.leg{left:auto;right:8px;bottom:auto;top:8px}
+.p-sacola{grid-area:e;min-height:0}
+.livro-pe{display:grid;gap:10px;margin-top:12px}
+.livro-pe .btn svg{rotate:-45deg}
+.livro-leg{display:flex;align-items:center;gap:10px;min-height:54px;padding:10px 12px;border-radius:13px;background:var(--lve);color:var(--lc);font:500 14.5px/1.35 Barlow}
 .livro-leg b{font-weight:800;color:#F1C77B}
 .livro-leg::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--la);flex:none;box-shadow:0 0 0 4px rgba(200,146,60,.3)}
 
@@ -492,14 +498,13 @@ html:not(.js) .parada .txt{opacity:1}
 .post-topo{display:flex;align-items:center;gap:2.6cqw;height:13cqw;padding:0 4cqw;font:700 4cqw/1.15 Barlow}
 .post-topo small{display:block;font:500 3.3cqw/1.2 Barlow;opacity:.7}
 .av{width:8.4cqw;height:8.4cqw;border-radius:50%;flex:none;background:linear-gradient(135deg,#d9d9d9,#b9b9b9);display:grid;place-items:center}
-.av-lume{background:var(--lve)}
-.av-lume svg{width:62%;height:62%}
+.av-lume,.g-site i{background:var(--lv);color:var(--lc)}
+.av-lume svg,.g-site i svg{width:100%;height:100%;fill:currentColor}
 .post-foto{position:relative;width:100%}
-.foto-a{height:72cqw;background:radial-gradient(circle at 68% 42%,#FFF1C9 0 8.5%,rgba(255,241,201,.35) 9% 15%,transparent 15.5%),radial-gradient(90% 46% at 14% 108%,#3E5F55 0 60%,transparent 60.5%),radial-gradient(100% 52% at 88% 116%,#5F8472 0 60%,transparent 60.5%),linear-gradient(180deg,#F08E6B,#F6B98A 46%,#FBE2B4)}
-.foto-ad{height:86cqw;background:radial-gradient(70% 60% at 50% 40%,#FBF7EE,#E9DFC8);display:grid;place-items:center;overflow:hidden}
-.foto-ad svg{width:76%;height:auto;margin-top:-12%;filter:drop-shadow(0 4cqw 5cqw rgba(60,40,10,.3))}
-.foto-ad p{position:absolute;left:5cqw;bottom:4.5cqw;right:5cqw;font:800 7.6cqw/1 Barlow;letter-spacing:-.03em;color:var(--lve)}
-.post-cta{display:flex;justify-content:space-between;align-items:center;height:18.6cqw;min-height:44px;padding:0 4.4cqw;background:var(--lv);color:#fff;font:700 4.3cqw/1 Barlow;text-decoration:none;transition:background .2s}
+.foto-a{height:58cqw;background:radial-gradient(circle at 68% 42%,#FFF1C9 0 8.5%,rgba(255,241,201,.35) 9% 15%,transparent 15.5%),radial-gradient(90% 46% at 14% 108%,#3E5F55 0 60%,transparent 60.5%),radial-gradient(100% 52% at 88% 116%,#5F8472 0 60%,transparent 60.5%),linear-gradient(180deg,#F08E6B,#F6B98A 46%,#FBE2B4)}
+.foto-ad{height:100cqw;background:var(--lc)}
+.foto-ad img{display:block;width:100%;height:100%;object-fit:cover}
+.post-cta{display:flex;justify-content:space-between;align-items:center;height:18.6cqw;min-height:44px;padding:0 4.4cqw;background:var(--lve);color:var(--lc);font:700 4.3cqw/1 Barlow;text-decoration:none;transition:background .2s}
 .post-cta:active{background:#143630}
 .post-cta svg{width:4.6cqw;height:4.6cqw}
 .post-acoes{height:11cqw;display:flex;align-items:center;padding:0 3.6cqw}
@@ -510,8 +515,7 @@ html:not(.js) .parada .txt{opacity:1}
 .g-busca svg{width:19px;height:19px;flex:none}
 .g-pat{margin-top:14px;font:700 13.5px/1 Barlow}
 .g-site{display:flex;align-items:center;gap:9px;margin-top:9px;font:500 13.5px/1.2 Barlow}
-.g-site i{width:28px;height:28px;border-radius:50%;background:var(--lve);display:grid;place-items:center;flex:none}
-.g-site i svg{width:16px;height:16px}
+.g-site i{width:28px;height:28px;border-radius:50%;display:grid;flex:none;overflow:hidden}
 .g-site small{display:block;font:500 12px/1.2 Barlow;color:#4d5156}
 .g-tit{margin-top:8px;font:500 19.5px/1.22 Barlow;color:#1a0dab}
 .g-desc{margin-top:5px;font:500 14px/1.42 Barlow;color:#4d5156}
@@ -648,15 +652,14 @@ html:not(.js) .serie,html:not(.js) .serie-leg{display:none}
 .msg.nota small span{color:#B9591A;background:#F3DCCB;padding:.3cqw 1.8cqw;border-radius:3cqw;margin-left:1cqw;white-space:nowrap}
 .chat-campo{flex:none;margin:0 3.4cqw 4.4cqw;height:12cqw;border-radius:6cqw;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 1.2cqw 0 5cqw;font:500 4.1cqw/1 Barlow;color:#8b8f8e}
 .chat-campo i{width:9.6cqw;height:9.6cqw;border-radius:50%;background:var(--lv)}
-.pdf{position:absolute;z-index:5;top:9%;right:max(34px,calc(50% - 196px));width:min(44vw,190px);padding:13px 13px 14px;border-radius:6px;background:#fff;color:var(--lt);box-shadow:0 30px 50px -14px rgba(60,20,0,.6),0 0 0 1px rgba(0,0,0,.05);font:500 11px/1.4 Barlow;transform-origin:20% 100%;opacity:0;will-change:transform,opacity}
-.pdf-topo{display:flex;align-items:center;gap:6px;padding-bottom:8px;border-bottom:2px solid var(--lve);color:var(--lve)}
-.pdf-topo svg:first-child{width:17px;height:17px;flex:none}
-.pdf-topo svg:last-child{width:86px;height:auto;fill:currentColor}
-.pdf-tit{margin:10px 0 2px;font:800 17px/1 Barlow;letter-spacing:-.02em}
+.pdf{position:absolute;z-index:5;top:9%;right:max(34px,calc(50% - 196px));width:min(44vw,190px);padding:13px 13px 14px;border-radius:6px;background:#fff;color:var(--lt);box-shadow:0 30px 50px -14px rgba(60,20,0,.6),0 0 0 1px rgba(0,0,0,.05);font:450 11px/1.4 var(--l-sans);transform-origin:20% 100%;opacity:0;will-change:transform,opacity}
+.pdf-topo{padding-bottom:9px;border-bottom:1.5px solid var(--lve);color:var(--lve)}
+.pdf-topo svg{display:block;width:106px;height:auto;fill:currentColor}
+.pdf-tit{margin:10px 0 3px;font:500 1.6em/1 var(--l-serifa);color:var(--lve)}
 .pdf dl{margin-top:8px}
 .pdf dl div{display:flex;justify-content:space-between;gap:8px;padding:5px 0;border-top:1px solid rgba(28,36,34,.12)}
 .pdf dt{opacity:.7}
-.pdf dd{font-weight:700;white-space:nowrap}
+.pdf dd{font-weight:650;white-space:nowrap}
 .pdf .total{font-size:13px}
 .pdf .selo{display:inline-block;margin-top:10px;padding:5px 8px;border-radius:5px;background:var(--tinta);color:var(--laranja);font:700 9.5px/1 Barlow;letter-spacing:.12em;text-transform:uppercase}
 .pdf .arq{display:block;margin-top:7px;font:600 9.5px/1 Barlow;opacity:.55}
@@ -821,9 +824,11 @@ html:not(.js) .d-indice{display:none}
   li:nth-child(even) .parada .no{margin-left:84px}
   .parada h3{font-size:32px}
   .livro{padding:22px}
-  .pecas{grid-template-columns:repeat(4,1fr);gap:14px}
-  .p-fachada{grid-column:span 2}
-  .p-logo{min-height:200px}
+  .livro-topo span span{display:inline}
+  .pecas{grid-template-areas:"l l l l l l p p p p" "c c c c c c c c c c" "f f f f f e e e e e";gap:14px}
+  .p-fachada,.p-sacola{aspect-ratio:8/5}
+  .p-cores{gap:12px;padding:14px 14px 15px}
+  .livro-pe{grid-template-columns:1fr auto;gap:12px;align-items:center}
   .af{width:320px}
   .g-card{margin-top:-96px;margin-right:2%}
   .painel,.agenda{padding:28px 30px 22px}
@@ -834,7 +839,7 @@ html:not(.js) .d-indice{display:none}
   .cap p:not(.kicker){font-size:18px}
   .palco-cena{top:calc(56px + 230px + 20px)}
   .pdf{width:230px;font-size:13px;right:calc(50% - 300px)}
-  .pdf-topo svg:last-child{width:110px}
+  .pdf-topo svg{width:130px}
   .lq{width:min(34vw,300px)}
   .leque{height:calc(min(34vw,300px) * 2.155 + 30px)}
   .chips{grid-template-columns:1fr 1fr}
@@ -870,7 +875,6 @@ html:not(.js) .d-indice{display:none}
   .caminho .wrap,.marca-sec .wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:0 72px;align-items:start}
   .caminho .cab,.marca-sec .cab{position:sticky;top:110px}
   .rota,.livro{margin-top:0}
-  .p-logo{min-height:240px}
   .trafego .wrap{display:grid;grid-template-columns:1fr 1fr;gap:0 72px;align-items:center}
   .trafego .anuncio-cena{margin-top:0}
   .trafego .painel{grid-column:1/-1;margin-top:90px}
@@ -903,7 +907,7 @@ html:not(.js) .d-indice{display:none}
   .palco-cena>.fone{height:min(100%,62vw)}
   /* a proposta encosta na lateral direita do aparelho (meia largura dele = 19vh ou 14,4vw), antes do índice */
   .pdf{width:260px;font-size:14px;left:calc(50% + min(19vh,14.4vw) - 36px);right:auto;top:calc(50% - min(41vh,31vw) * .68);padding:20px}
-  .pdf-topo svg:last-child{width:130px}
+  .pdf-topo svg{width:150px}
   .prova{padding:120px 0 110px}
   .prova .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:72px;align-items:end}
   .prova .convite{margin-top:0;grid-template-columns:1fr;border-top:0;padding:28px;border-radius:26px;background:var(--branco);box-shadow:0 30px 50px -30px rgba(40,30,10,.4)}
@@ -955,7 +959,7 @@ html:not(.js) .d-indice{display:none}
 /* tablet deitado e notebook estreito: a proposta encolhe e o índice do palco fica só com os traços */
 @media (min-width:1024px) and (max-width:1365px){
   .pdf{width:230px;font-size:13px;padding:16px}
-  .pdf-topo svg:last-child{width:112px}
+  .pdf-topo svg{width:132px}
 }
 @media (min-width:1024px) and (max-width:1279px){
   .palco-indice a{font-size:0;gap:0;padding-left:0;min-width:44px}
@@ -979,9 +983,8 @@ html:not(.js) .d-indice{display:none}
   <symbol id="i-check" viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="m3 8.5 3.2 3.2L13 4.8"/></symbol>
   <symbol id="i-menu" viewBox="0 0 18 18"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M3 5h12M3 9h8M3 13h12"/></symbol>
   <symbol id="i-acoes" viewBox="0 0 84 24"><g fill="none" stroke="#141414" stroke-width="2" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.600-7 10-7 10z"/><path d="M42 4a8 8 0 1 0 3.900 15l4.100 1-1-4A8 8 0 0 0 42 4z"/><path d="m62 5 18 0-11 15-2-8zM67 12l13-7"/></g></symbol>
-  <symbol id="lume" viewBox="0 0 48 48"><path fill="#C8923C" d="M24 3c8 9 15 16 15 25a15 15 0 0 1-30 0c0-6 4-10 7-16 2 3 3 5 5 6 0-6 1-10 3-15z"/><path fill="#F4EFE4" d="M24 24c4 4 7 7 7 11a7 7 0 0 1-14 0c0-4 4-7 7-11z"/></symbol>
-  <symbol id="lume-nome" viewBox="0 -234 1692 312"><path d="M90 -208L90 -208L78 -206Q75 -206 74 -205Q72 -204 72 -202L72 -202L72 -9Q72 -6 74 -4Q76 -3 79 -3L79 -3L107 -3Q115 -3 121 -6Q128 -9 135 -16Q141 -24 148 -37L148 -37L163 -67Q163 -67 164 -68Q164 -68 165 -68L165 -68Q165 -68 165 -67Q166 -66 165 -65L165 -65L151 1Q151 3 151 4Q150 4 150 4L150 4Q149 4 147 3Q145 2 142 1Q139 0 134 0L134 0L12 0Q11 0 11 0Q10 -1 10 -1L10 -1Q10 -2 12 -2L12 -2L24 -4Q27 -4 29 -5Q30 -6 30 -8L30 -8L30 -202Q30 -204 29 -205Q27 -206 24 -206L24 -206L12 -208Q10 -208 10 -209L10 -209Q10 -209 11 -210Q11 -210 12 -210L12 -210L90 -210Q91 -210 91 -210Q92 -209 92 -209L92 -209Q92 -208 90 -208M264 -4L264 -4L264 -24L264 -25L264 -117Q264 -118 263 -119Q263 -119 262 -119L262 -119L252 -119Q251 -119 251 -120Q251 -120 251 -120L251 -120Q251 -121 251 -121Q251 -121 252 -121L252 -121L295 -133Q296 -134 297 -134Q297 -134 298 -134L298 -134Q299 -134 299 -134Q300 -133 300 -132L300 -132L300 -8Q300 -6 300 -5Q301 -4 303 -4L303 -4L311 -2Q312 -2 313 -2Q313 -1 313 -1L313 -1Q313 -1 313 0Q312 0 312 0L312 0L268 0Q266 0 265 -1Q264 -2 264 -4M179 -35L179 -35L179 -117Q179 -118 178 -119Q178 -119 177 -119L177 -119L167 -119Q166 -119 166 -120Q166 -120 166 -120L166 -120Q166 -121 166 -121Q166 -121 167 -121L167 -121L210 -133Q211 -134 212 -134Q212 -134 213 -134L213 -134Q214 -134 214 -134Q215 -133 215 -132L215 -132L215 -39Q215 -25 221 -19Q227 -13 237 -13L237 -13Q243 -13 249 -16Q256 -19 262 -24L262 -24L267 -29L269 -28L264 -23Q248 -9 236 -3Q223 3 213 3L213 3Q198 3 188 -7Q179 -16 179 -35M365 -132L365 -132L365 -8Q365 -6 366 -5Q367 -4 369 -3L369 -3L377 -2Q378 -2 378 -1L378 -1Q378 0 377 0L377 0L317 0Q316 0 316 0Q316 -1 316 -1L316 -1Q316 -1 316 -2Q317 -2 317 -2L317 -2L326 -4Q328 -4 328 -5Q329 -6 329 -8L329 -8L329 -117Q329 -118 329 -119Q329 -120 327 -120L327 -120L317 -120Q317 -120 316 -120Q316 -120 316 -121L316 -121Q316 -121 316 -121Q317 -122 317 -122L317 -122L360 -134Q362 -134 362 -134Q363 -134 363 -134L363 -134Q364 -134 365 -134Q365 -133 365 -132M367 -108L362 -103L361 -104L366 -109Q381 -123 393 -129Q406 -135 416 -135L416 -135Q431 -135 440 -126Q450 -116 450 -97L450 -97L450 -8Q450 -6 451 -5Q452 -3 454 -3L454 -3L460 -2Q461 -2 461 -1L461 -1Q461 0 459 0L459 0L402 0Q401 0 401 -1L401 -1Q401 -2 402 -2L402 -2L410 -3Q413 -4 414 -6Q414 -7 414 -10L414 -10L414 -93Q414 -106 408 -112Q402 -119 393 -119L393 -119Q386 -119 380 -116Q373 -114 367 -108L367 -108M450 -108L446 -103L444 -104L449 -110Q461 -123 471 -129Q482 -135 493 -135L493 -135Q507 -135 516 -126Q525 -116 527 -97L527 -97L539 -8Q539 -6 540 -5Q541 -3 543 -3L543 -3L549 -2Q549 -2 550 -2Q550 -1 550 -1L550 -1Q550 -1 550 0Q549 0 549 0L549 0L489 0Q488 0 488 -1L488 -1Q488 -2 490 -2L490 -2L497 -3Q500 -4 501 -6Q502 -8 502 -10L502 -10L492 -93Q491 -106 485 -112Q480 -119 471 -119L471 -119Q466 -119 461 -116Q456 -114 450 -108L450 -108M670 -78L670 -78Q670 -76 669 -75Q668 -75 666 -75L666 -75L573 -75L573 -77L631 -77Q634 -77 634 -80L634 -80Q634 -107 627 -120Q620 -132 609 -132L609 -132Q601 -132 595 -127Q589 -121 585 -109Q582 -97 582 -79L582 -79Q582 -48 595 -32Q608 -17 629 -17L629 -17Q644 -17 655 -26Q666 -34 667 -49L667 -49Q667 -49 667 -50Q668 -50 668 -50L668 -50Q668 -50 668 -50Q669 -49 669 -49L669 -49Q668 -34 660 -22Q652 -10 640 -4Q627 3 611 3L611 3Q593 3 579 -5Q565 -13 557 -28Q549 -43 549 -63L549 -63Q549 -85 557 -101Q565 -117 579 -126Q594 -135 614 -135L614 -135Q631 -135 643 -127Q656 -120 663 -107Q670 -94 670 -78M813 -4L813 -17L813 -18L813 -206Q813 -207 812 -207Q812 -208 811 -208L811 -208L801 -208Q800 -208 800 -208Q799 -208 799 -209L799 -209Q799 -210 800 -210Q800 -210 801 -210L801 -210L844 -222Q845 -222 846 -223Q846 -223 847 -223L847 -223Q847 -223 848 -222Q848 -222 848 -221L848 -221L848 -8Q848 -6 849 -5Q850 -4 852 -4L852 -4L860 -2Q861 -2 861 -2Q862 -1 862 -1L862 -1Q862 -1 861 0Q861 0 861 0L861 0L816 0Q815 0 814 -1Q813 -2 813 -4L813 -4M717 -62L717 -62Q717 -84 726 -101Q734 -117 748 -126Q763 -135 780 -135L780 -135Q795 -135 804 -129Q814 -123 819 -113L819 -113L817 -112Q813 -120 805 -125Q798 -130 788 -130L788 -130Q779 -130 771 -124Q763 -117 758 -103Q754 -89 754 -65L754 -65Q754 -44 758 -31Q762 -18 769 -11Q776 -5 785 -5L785 -5Q792 -5 800 -9Q808 -13 815 -23L815 -23L817 -21Q806 -8 796 -2Q785 3 773 3L773 3Q757 3 744 -5Q732 -13 724 -27Q717 -42 717 -62M983 -78L983 -78Q983 -76 982 -75Q981 -75 980 -75L980 -75L887 -75L887 -77L945 -77Q947 -77 947 -80L947 -80Q947 -107 940 -120Q933 -132 923 -132L923 -132Q915 -132 908 -127Q902 -121 899 -109Q895 -97 895 -79L895 -79Q895 -48 908 -32Q921 -17 942 -17L942 -17Q958 -17 968 -26Q979 -34 980 -49L980 -49Q981 -49 981 -50Q981 -50 981 -50L981 -50Q982 -50 982 -50Q982 -49 982 -49L982 -49Q981 -34 974 -22Q966 -10 953 -4Q940 3 925 3L925 3Q906 3 892 -5Q878 -13 870 -28Q862 -43 862 -63L862 -63Q862 -85 870 -101Q878 -117 893 -126Q908 -135 927 -135L927 -135Q944 -135 957 -127Q969 -120 976 -107Q983 -94 983 -78M1207 -131L1207 -131Q1207 -111 1198 -96Q1188 -81 1172 -72Q1155 -64 1134 -64L1134 -64Q1117 -64 1105 -68Q1093 -72 1083 -79L1083 -79L1083 -81Q1090 -76 1096 -74Q1103 -71 1109 -70Q1115 -68 1121 -68L1121 -68Q1134 -68 1144 -76Q1154 -83 1160 -97Q1166 -112 1166 -132L1166 -132Q1166 -156 1159 -173Q1151 -190 1138 -198Q1125 -207 1109 -207L1109 -207L1096 -207L1096 -8Q1096 -6 1098 -6Q1099 -5 1102 -4L1102 -4L1114 -2Q1115 -2 1116 -2Q1116 -1 1116 -1L1116 -1Q1116 -1 1116 0Q1115 0 1115 0L1115 0L1036 0Q1035 0 1035 0Q1034 -1 1034 -1L1034 -1Q1034 -2 1036 -2L1036 -2L1049 -4Q1052 -5 1053 -6Q1054 -7 1054 -8L1054 -8L1054 -201Q1054 -203 1053 -204Q1052 -205 1049 -206L1049 -206L1036 -208Q1034 -208 1034 -209L1034 -209Q1034 -210 1035 -210Q1035 -210 1036 -210L1036 -210L1109 -210Q1138 -210 1160 -200Q1182 -190 1195 -172Q1207 -155 1207 -131M1290 -14L1290 -14L1290 -15L1288 -14L1288 -110Q1288 -121 1284 -127Q1279 -133 1271 -133L1271 -133Q1261 -133 1257 -128Q1252 -123 1252 -117L1252 -117L1252 -105Q1252 -98 1247 -93Q1242 -87 1233 -87L1233 -87Q1227 -87 1223 -91Q1220 -94 1220 -102L1220 -102Q1220 -110 1226 -117Q1232 -125 1245 -130Q1257 -135 1275 -135L1275 -135Q1300 -135 1312 -124Q1324 -114 1324 -95L1324 -95L1324 -17Q1324 -12 1326 -10Q1328 -7 1330 -7L1330 -7Q1333 -7 1335 -9Q1337 -11 1338 -15L1338 -15Q1338 -15 1338 -15Q1338 -16 1339 -16L1339 -16Q1339 -16 1339 -15Q1339 -15 1339 -15L1339 -15Q1339 -12 1337 -8Q1334 -4 1328 -1Q1322 3 1313 3L1313 3Q1301 3 1295 -2Q1290 -7 1290 -14M1212 -29L1212 -29Q1212 -45 1226 -55Q1239 -65 1269 -65L1269 -65Q1278 -65 1284 -64Q1290 -62 1295 -59L1295 -59L1293 -58Q1288 -60 1283 -62Q1278 -63 1271 -63L1271 -63Q1260 -63 1254 -55Q1248 -48 1248 -34L1248 -34Q1248 -21 1254 -14Q1260 -7 1269 -7L1269 -7Q1275 -7 1281 -10Q1287 -13 1291 -19L1291 -19L1293 -18Q1286 -8 1275 -3Q1263 3 1250 3L1250 3Q1233 3 1223 -6Q1212 -15 1212 -29M1389 -133L1389 -133L1389 -114L1389 -113L1389 62Q1389 64 1390 65Q1391 66 1393 67L1393 67L1402 68Q1403 68 1404 69Q1404 69 1404 69L1404 69Q1404 70 1404 70Q1403 70 1403 70L1403 70L1342 70Q1342 70 1341 70Q1341 70 1341 69L1341 69Q1341 69 1341 68Q1342 68 1343 68L1343 68L1350 67Q1352 66 1353 65Q1353 64 1353 62L1353 62L1353 -119Q1353 -120 1353 -120Q1353 -121 1352 -121L1352 -121L1342 -121Q1341 -121 1341 -121Q1340 -121 1340 -122L1340 -122Q1340 -122 1341 -122Q1341 -123 1342 -123L1342 -123L1385 -135Q1386 -135 1387 -135Q1387 -135 1388 -135L1388 -135Q1388 -135 1389 -135Q1389 -134 1389 -133M1387 -108L1387 -108L1385 -110Q1395 -122 1406 -129Q1417 -135 1430 -135L1430 -135Q1446 -135 1459 -127Q1471 -119 1478 -104Q1485 -90 1485 -70L1485 -70Q1485 -47 1477 -31Q1469 -15 1455 -6Q1441 3 1423 3L1423 3Q1409 3 1399 -2Q1390 -8 1384 -19L1384 -19L1387 -21Q1391 -12 1398 -7Q1405 -2 1413 -2L1413 -2Q1424 -2 1431 -8Q1439 -14 1444 -28Q1449 -42 1449 -66L1449 -66Q1449 -88 1445 -101Q1440 -115 1433 -121Q1427 -127 1418 -127L1418 -127Q1410 -127 1402 -123Q1394 -118 1387 -108M1612 -78L1612 -78Q1612 -76 1611 -75Q1610 -75 1608 -75L1608 -75L1516 -75L1516 -77L1574 -77Q1576 -77 1576 -80L1576 -80Q1576 -107 1569 -120Q1562 -132 1552 -132L1552 -132Q1543 -132 1537 -127Q1531 -121 1528 -109Q1524 -97 1524 -79L1524 -79Q1524 -48 1537 -32Q1550 -17 1571 -17L1571 -17Q1587 -17 1597 -26Q1608 -34 1609 -49L1609 -49Q1609 -49 1610 -50Q1610 -50 1610 -50L1610 -50Q1610 -50 1611 -50Q1611 -49 1611 -49L1611 -49Q1610 -34 1602 -22Q1595 -10 1582 -4Q1569 3 1554 3L1554 3Q1535 3 1521 -5Q1507 -13 1499 -28Q1491 -43 1491 -63L1491 -63Q1491 -85 1499 -101Q1507 -117 1522 -126Q1536 -135 1556 -135L1556 -135Q1573 -135 1586 -127Q1598 -120 1605 -107Q1612 -94 1612 -78M1667 -221L1667 -221L1667 -8Q1667 -6 1668 -5Q1669 -4 1671 -4L1671 -4L1679 -2Q1680 -2 1680 -2Q1680 -1 1680 -1L1680 -1Q1680 -1 1680 0Q1680 0 1679 0L1679 0L1619 0Q1618 0 1618 0Q1617 -1 1617 -1L1617 -1Q1617 -1 1618 -2Q1618 -2 1619 -2L1619 -2L1627 -4Q1629 -4 1630 -5Q1631 -6 1631 -8L1631 -8L1631 -206Q1631 -207 1631 -207Q1630 -208 1629 -208L1629 -208L1619 -208Q1619 -208 1618 -208Q1618 -208 1618 -209L1618 -209Q1618 -210 1618 -210Q1619 -210 1619 -210L1619 -210L1662 -222Q1664 -222 1664 -223Q1665 -223 1665 -223L1665 -223Q1666 -223 1666 -222Q1667 -222 1667 -221"/></symbol>
-  <symbol id="cadernos" viewBox="0 0 120 100"><g transform="rotate(-12 45 52)"><rect x="18" y="14" width="54" height="74" rx="5" fill="#1F4D45"/><rect x="18" y="14" width="9" height="74" rx="4" fill="#173B35"/><rect x="60" y="14" width="3" height="74" fill="#F4EFE4" opacity=".55"/></g><g transform="rotate(10 82 56)"><rect x="56" y="24" width="48" height="66" rx="5" fill="#C8923C"/><rect x="56" y="24" width="8" height="66" rx="4" fill="#A87528"/><rect x="93" y="24" width="3" height="66" fill="#F4EFE4" opacity=".55"/></g></symbol>
+  <symbol id="lume-logo" viewBox="27 12 609 104"><path fill="#C8923C" transform="translate(18 11) scale(.8)" d="M48 2C45 24 21 35 14 56C5 83 22 105 47 111C30 92 28 72 42 56C38 76 44 91 49 99C58 87 66 73 59 56C72 66 78 81 67 99C90 86 91 65 80 46C72 32 58 18 48 2Z"/><path transform="translate(115 91) scale(0.091 -0.091)" d="M194 543V85Q194 59 199 45Q205 32 220 28Q236 23 267 23H352Q417 23 458 61Q499 99 512 162Q512 165 517 164Q523 164 523 161Q520 132 517 91Q514 50 514 15Q514 0 499 0H33Q31 0 31 6Q31 12 33 12Q68 12 85 17Q103 22 109 37Q115 52 115 81V544Q115 573 109 588Q103 602 85 608Q68 613 33 613Q31 613 31 619Q31 625 33 625Q57 625 88 624Q120 622 154 622Q190 622 220 624Q251 625 275 625Q277 625 277 619Q277 613 275 613Q240 613 223 608Q206 602 200 587Q194 572 194 543Z"/><path transform="translate(163.867 91) scale(0.091 -0.091)" d="M185 -9Q134 -9 105 23Q75 56 75 114V265Q75 303 68 320Q62 337 45 337Q32 337 14 328Q10 326 8 332Q5 338 9 339L127 394Q129 395 131 395Q135 395 139 392Q143 389 143 385V152Q143 94 164 67Q184 39 226 39Q262 39 298 60Q333 81 358 115L363 104Q321 48 277 19Q234 -9 185 -9ZM407 385V110Q407 76 414 61Q422 46 440 46Q449 46 461 50Q472 53 489 60Q493 62 496 56Q498 51 495 49L371 -10Q369 -11 366 -11Q358 -11 349 11Q339 34 339 76V265Q339 303 332 320Q325 337 309 337Q296 337 277 328Q274 326 272 332Q269 338 273 339L391 394Q393 395 395 395Q398 395 402 392Q407 389 407 385Z"/><path transform="translate(209.094 91) scale(0.091 -0.091)" d="M559 0Q557 0 557 6Q557 12 559 12Q596 12 608 26Q620 39 620 81V235Q620 349 537 349Q503 349 469 328Q435 307 411 272L407 284Q447 340 489 369Q531 397 578 397Q630 397 659 367Q687 337 687 274V81Q687 39 699 26Q710 12 747 12Q751 12 751 6Q751 0 747 0Q729 0 705 1Q680 2 653 2Q627 2 602 1Q578 0 559 0ZM300 0Q297 0 297 6Q297 12 300 12Q336 12 348 26Q360 39 360 81V235Q360 349 278 349Q243 349 210 328Q176 307 152 272L148 284Q188 340 230 369Q272 397 318 397Q370 397 399 368Q428 338 428 279V81Q428 39 439 26Q451 12 488 12Q491 12 491 6Q491 0 488 0Q469 0 445 1Q421 2 394 2Q367 2 343 1Q318 0 300 0ZM43 0Q40 0 40 6Q40 12 43 12Q79 12 91 26Q102 39 102 81V276Q102 308 95 323Q87 338 69 338Q59 338 46 335Q33 331 16 324Q12 322 10 328Q8 333 11 335L134 394Q138 395 140 395Q149 395 160 373Q171 351 171 310V81Q171 39 182 26Q194 12 231 12Q234 12 234 6Q234 0 231 0Q212 0 188 1Q164 2 137 2Q110 2 86 1Q61 0 43 0Z"/><path transform="translate(278.982 91) scale(0.091 -0.091)" d="M224 -12Q162 -12 120 15Q78 43 56 87Q35 131 35 181Q35 241 63 289Q92 338 141 366Q190 395 250 395Q308 395 340 366Q371 337 371 281Q371 268 369 260Q366 253 359 253H290Q294 313 275 344Q255 375 216 375Q167 375 139 333Q112 291 112 220Q112 163 130 120Q148 76 183 52Q218 28 268 28Q301 28 322 37Q344 46 367 59Q369 61 372 57Q376 52 374 49Q338 16 301 2Q264 -12 224 -12ZM89 252 88 267 312 271V253Z"/><path transform="translate(337.677 91) scale(0.091 -0.091)" d="M191 -13Q149 -13 114 11Q78 34 56 77Q35 120 35 179Q35 238 56 279Q78 321 112 347Q147 373 187 386Q227 399 263 399Q299 399 329 388Q360 377 386 359L370 287Q347 328 317 352Q287 377 240 377Q182 377 147 336Q111 295 111 210Q111 153 128 112Q144 71 172 49Q200 27 235 27Q279 27 312 51Q345 75 375 109L384 101Q363 77 335 50Q307 24 271 6Q236 -13 191 -13ZM421 715V112Q421 77 429 61Q437 46 455 46Q464 46 476 48Q489 51 504 59Q508 61 510 55Q513 50 510 48L391 -9Q387 -11 384 -11Q372 -11 363 13Q353 37 353 81V594Q353 630 347 646Q340 662 322 662Q313 662 303 658Q293 655 278 648Q274 647 272 653Q269 659 272 660L405 724Q407 725 410 725Q413 725 417 722Q421 719 421 715Z"/><path transform="translate(384.269 91) scale(0.091 -0.091)" d="M224 -12Q162 -12 120 15Q78 43 56 87Q35 131 35 181Q35 241 63 289Q92 338 141 366Q190 395 250 395Q308 395 340 366Q371 337 371 281Q371 268 369 260Q366 253 359 253H290Q294 313 275 344Q255 375 216 375Q167 375 139 333Q112 291 112 220Q112 163 130 120Q148 76 183 52Q218 28 268 28Q301 28 322 37Q344 46 367 59Q369 61 372 57Q376 52 374 49Q338 16 301 2Q264 -12 224 -12ZM89 252 88 267 312 271V253Z"/><path transform="translate(442.964 91) scale(0.091 -0.091)" d="M200 85Q200 55 207 40Q215 24 239 18Q263 12 311 12Q314 12 314 6Q314 0 311 0Q279 0 242 1Q204 2 160 2Q127 2 96 1Q64 0 39 0Q37 0 37 6Q37 12 39 12Q74 12 92 17Q109 22 115 37Q120 52 120 81V544Q120 573 115 588Q109 602 92 608Q74 613 39 613Q37 613 37 619Q37 625 39 625Q64 625 95 624Q126 622 159 622Q185 622 222 625Q260 628 298 628Q356 628 403 611Q449 594 477 558Q505 522 506 464Q506 412 487 374Q468 336 435 311Q403 286 364 274Q324 262 286 262Q274 262 262 263Q249 264 238 267Q234 268 236 274Q237 281 240 280Q249 278 259 277Q268 276 275 276Q313 276 345 294Q377 312 397 349Q417 387 417 443Q417 497 398 534Q380 571 347 591Q314 611 271 611Q243 611 227 607Q212 603 206 588Q200 573 200 542Z"/><path transform="translate(492.65 91) scale(0.091 -0.091)" d="M316 -6Q312 -8 307 -8Q292 -8 278 14Q265 37 265 79V262Q265 324 250 351Q234 377 207 377Q182 377 167 364Q152 350 146 332Q139 315 136 300Q134 281 124 268Q115 255 93 255Q73 255 64 265Q55 275 55 287Q55 308 74 327Q94 346 124 362Q154 378 186 387Q219 396 245 396Q286 396 309 370Q333 343 333 292V108Q333 75 342 59Q351 43 371 43Q388 43 415 54Q419 56 421 50Q424 45 419 43ZM132 -7Q92 -7 71 13Q51 33 51 63Q51 87 64 104Q77 120 101 133Q126 146 161 159L275 201L278 188L187 151Q172 145 159 137Q147 129 139 118Q131 106 131 90Q131 66 147 51Q163 35 186 35Q195 35 205 38Q215 41 229 49L288 86L290 72L217 24Q194 7 174 0Q155 -7 132 -7Z"/><path transform="translate(530.87 91) scale(0.091 -0.091)" d="M30 -275Q27 -275 27 -269Q27 -263 30 -263Q68 -263 79 -250Q91 -237 91 -194V274Q91 308 83 323Q76 339 56 339Q47 339 34 335Q21 332 5 324Q1 323 -2 328Q-4 334 -1 335L119 393Q122 395 126 395Q139 395 149 372Q159 349 159 304V-194Q159 -222 166 -237Q173 -252 194 -258Q214 -263 255 -263Q258 -263 258 -269Q258 -275 255 -275Q228 -275 195 -274Q162 -273 125 -273Q98 -273 73 -274Q48 -275 30 -275ZM258 -13Q220 -13 191 -5Q163 3 126 25L147 82Q173 51 204 30Q234 9 285 9Q335 9 367 54Q400 98 400 184Q400 269 362 312Q324 356 271 356Q229 356 197 333Q166 310 136 277L127 286Q178 345 225 372Q272 399 320 399Q362 399 397 378Q432 356 454 315Q475 274 475 215Q475 153 455 110Q434 66 401 39Q367 12 330 0Q293 -13 258 -13Z"/><path transform="translate(577.371 91) scale(0.091 -0.091)" d="M224 -12Q162 -12 120 15Q78 43 56 87Q35 131 35 181Q35 241 63 289Q92 338 141 366Q190 395 250 395Q308 395 340 366Q371 337 371 281Q371 268 369 260Q366 253 359 253H290Q294 313 275 344Q255 375 216 375Q167 375 139 333Q112 291 112 220Q112 163 130 120Q148 76 183 52Q218 28 268 28Q301 28 322 37Q344 46 367 59Q369 61 372 57Q376 52 374 49Q338 16 301 2Q264 -12 224 -12ZM89 252 88 267 312 271V253Z"/><path transform="translate(614.772 91) scale(0.091 -0.091)" d="M38 0Q36 0 36 6Q36 12 38 12Q75 12 87 26Q98 39 98 81L99 595Q99 630 92 646Q86 662 68 662Q53 662 25 649Q21 647 18 653Q16 659 19 660L153 724Q155 725 157 725Q160 725 165 722Q169 719 169 715V81Q169 40 180 26Q191 12 228 12Q232 12 232 6Q232 0 228 0Q210 0 185 1Q161 2 133 2Q106 2 82 1Q57 0 38 0Z"/></symbol>
+  <symbol id="lume-ld" viewBox="0 0 160 160"><g transform="translate(0 5)"><path transform="translate(27.015 107) scale(0.09 -0.09)" d="M194 543V85Q194 59 199 45Q205 32 220 28Q236 23 267 23H352Q417 23 458 61Q499 99 512 162Q512 165 517 164Q523 164 523 161Q520 132 517 91Q514 50 514 15Q514 0 499 0H33Q31 0 31 6Q31 12 33 12Q68 12 85 17Q103 22 109 37Q115 52 115 81V544Q115 573 109 588Q103 602 85 608Q68 613 33 613Q31 613 31 619Q31 625 33 625Q57 625 88 624Q120 622 154 622Q190 622 220 624Q251 625 275 625Q277 625 277 619Q277 613 275 613Q240 613 223 608Q206 602 200 587Q194 572 194 543Z"/><path transform="translate(70.345 107) scale(0.09 -0.09)" d="M310 -4Q280 -4 236 -1Q192 2 155 2Q121 2 90 1Q58 0 33 0Q31 0 31 6Q31 12 33 12Q68 12 86 17Q104 22 110 37Q116 52 116 81V544Q116 573 110 588Q104 602 87 608Q69 613 35 613Q32 613 32 619Q32 625 35 625Q60 625 90 624Q121 622 155 622Q189 622 228 624Q268 627 296 627Q402 627 480 587Q559 547 603 478Q647 409 647 323Q647 248 620 188Q594 127 547 84Q500 42 439 19Q378 -4 310 -4ZM300 14Q375 14 432 47Q490 80 523 144Q556 209 556 301Q556 388 525 457Q494 527 438 569Q383 610 306 610Q246 610 220 598Q195 586 195 542V92Q195 52 215 33Q235 14 300 14Z"/></g></symbol>
 </svg>
 
 <!-- BARRA FINA DO TOPO (desktop): o índice com o trecho ativo -->
@@ -1069,27 +1072,22 @@ html:not(.js) .d-indice{display:none}
       <h2 id="marca-titulo" data-rv><span class="servico">Branding e identidade visual</span>Uma marca que a pessoa <mark>reconhece</mark> de longe.</h2>
       <p class="sub" data-rv>Antes do anúncio e do post vem a cara da empresa. A Feed desenha a identidade visual: logo, cores, letra, voz e como tudo aparece na rua e na tela.</p>
     </div>
-    <div class="livro" data-nosnippet aria-label="Manual da marca Lume de Papel, marca de demonstração">
-      <p class="livro-topo"><span>Manual da marca · Lume de Papel</span><span class="etiqueta">marca de demonstração</span></p>
+    <div class="livro" data-nosnippet aria-label="Manual da marca Lume de Papel, marca de demonstração e projeto autoral da Feed">
+      <p class="livro-topo"><span>Manual da marca<span> · Lume de Papel</span></span><span class="etiqueta">projeto autoral da Feed</span></p>
       <div class="pecas">
-        <button type="button" class="peca larga p-logo" data-m style="--dy:70px;--r:-3deg" data-leg="Logo|o desenho principal e as versões para fundo claro e escuro."><span class="lume-logo"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#lume"/></svg><svg viewBox="0 -234 1692 312" role="img" aria-label="Lume de Papel"><use href="#lume-nome" y="-234" width="1692" height="312"/></svg></span><span class="leg">Logo</span></button>
-        <button type="button" class="peca larga p-cores" data-m style="--dx:-60px;--dy:30px;--r:2deg" data-leg="Cores|a paleta com os códigos, pronta para a gráfica e para a tela.">
-          <span style="background:#3F998B;color:#fff">Verde lume<b>#3F998B</b></span><span style="background:#1F4D45;color:#fff">Mata<b>#1F4D45</b></span><span style="background:#C8923C;color:#1C2422">Âmbar<b>#C8923C</b></span><span style="background:#F4EFE4;color:#1C2422;box-shadow:inset 0 0 0 1px rgba(28,36,34,.12)">Papel<b>#F4EFE4</b></span>
+        <button type="button" class="peca p-logo" data-m style="--dy:70px;--r:-3deg" data-leg="Logo|a assinatura principal e as versões para fundo claro e escuro."><svg class="lume-logo" viewBox="0 0 609 104" role="img" aria-label="Lume de Papel"><use href="#lume-logo"/></svg><span class="leg">Logo</span></button>
+        <button type="button" class="peca p-cores" data-m style="--dx:-60px;--dy:30px;--r:2deg" data-leg="Cores|a paleta com os códigos, pronta para a gráfica e para a tela.">
+          <span><i style="background:#F4EFE4;box-shadow:inset 0 0 0 1px rgba(38,59,53,.16)"></i>Papel<b>#F4EFE4</b></span><span><i style="background:#1F4D45"></i>Mata<b>#1F4D45</b></span><span><i style="background:#3F998B"></i>Verde Lume<b>#3F998B</b></span><span><i style="background:#C8923C"></i>Âmbar<b>#C8923C</b></span>
         </button>
-        <button type="button" class="peca larga p-fachada" data-m style="--dy:80px;--r:2deg" data-leg="Fachada|a marca aplicada na rua, do letreiro ao toldo.">
-          <svg viewBox="0 0 320 196" role="img" aria-label="Fachada da loja com o letreiro Lume de Papel">
-            <rect width="320" height="196" fill="#E7DDC8"/><rect y="168" width="320" height="28" fill="#CDBF9F"/>
-            <rect x="22" y="20" width="276" height="150" rx="5" fill="#F8F4EA"/><rect x="22" y="20" width="276" height="42" rx="5" fill="#1F4D45"/>
-            <use href="#lume" x="74" y="28" width="26" height="26"/><use href="#lume-nome" x="108" y="28" width="141" height="26" fill="#F4EFE4"/>
-            <g><path d="M24 62h34v20a17 8 0 0 1-34 0z" fill="#3F998B"/><path d="M58 62h34v20a17 8 0 0 1-34 0z" fill="#F4EFE4"/><path d="M92 62h34v20a17 8 0 0 1-34 0z" fill="#3F998B"/><path d="M126 62h34v20a17 8 0 0 1-34 0z" fill="#F4EFE4"/><path d="M160 62h34v20a17 8 0 0 1-34 0z" fill="#3F998B"/><path d="M194 62h34v20a17 8 0 0 1-34 0z" fill="#F4EFE4"/><path d="M228 62h34v20a17 8 0 0 1-34 0z" fill="#3F998B"/><path d="M262 62h34v20a17 8 0 0 1-34 0z" fill="#F4EFE4"/></g>
-            <rect x="40" y="104" width="152" height="58" rx="3" fill="#CFE3DE"/><use href="#cadernos" x="52" y="106" width="68" height="56"/><use href="#cadernos" x="116" y="110" width="62" height="52"/>
-            <rect x="214" y="98" width="62" height="72" rx="3" fill="#1F4D45"/><rect x="222" y="106" width="46" height="38" rx="2" fill="#CFE3DE"/><circle cx="224" cy="154" r="2.6" fill="#C8923C"/>
-          </svg><span class="leg" style="color:#1C2422">Fachada</span></button>
-        <button type="button" class="peca p-post" data-m style="--dx:-70px;--r:-5deg" data-leg="Post|o modelo das redes, para todo conteúdo ter a mesma cara."><svg viewBox="0 0 120 100" aria-hidden="true"><use href="#cadernos"/></svg><em>Cadernos para presentear</em><span class="leg">Post</span></button>
-        <button type="button" class="peca p-sacola" data-m style="--dx:70px;--r:6deg" data-leg="Embalagem|sacola, etiqueta e papel com a mesma assinatura.">
-          <svg viewBox="0 0 100 120" aria-hidden="true"><path d="M34 34c0-22 32-22 32 0" fill="none" stroke="#8A6A3B" stroke-width="3"/><path d="M14 32h72l6 82H8z" fill="#C9A677"/><path d="M14 32h72l1.500 20H12.500z" fill="#B99562"/><use href="#lume" x="35" y="60" width="30" height="30"/></svg><span class="leg">Embalagem</span></button>
+        <button type="button" class="peca p-fachada" data-m style="--dy:80px;--r:2deg" data-leg="Fachada|a marca aplicada na rua: letreiro, toldo e placa."><img src="assets/lume/fachada.webp" width="1100" height="655" loading="lazy" decoding="async" alt="Fachada da loja Lume de Papel, com letreiro, toldo listrado e placa de bandeira"><span class="leg">Fachada</span></button>
+        <button type="button" class="peca p-post" data-m style="--dx:-70px;--r:-5deg" data-leg="Post|o modelo das redes, para todo conteúdo ter a mesma cara."><img src="assets/lume/post.webp" width="1080" height="1080" loading="lazy" decoding="async" alt="Post da Lume de Papel: Um presente. Muitas páginas pela frente."><span class="leg">Post</span></button>
+        <button type="button" class="peca p-sacola" data-m style="--dx:70px;--r:6deg" data-leg="Embalagem|sacola, caixa, cinta e lacre com a mesma assinatura."><img src="assets/lume/embalagem.webp" width="1000" height="609" loading="lazy" decoding="async" alt="Embalagens da Lume de Papel: sacola, caixa, lacre e caderno com cinta"><span class="leg">Embalagem</span></button>
       </div>
-      <p class="livro-leg" aria-live="polite"><span><b>Toque numa peça.</b> Cada uma mostra o que entra no manual.</span></p>
+      <div class="livro-pe">
+        <p class="livro-leg" aria-live="polite"><span><b>Toque numa peça.</b> Cada uma mostra o que entra no manual.</span></p>
+        <!-- NA SUBIDA: este link vira /portfolio/lume-de-papel/ (a página do projeto no site, sem target). Até lá abre o manual completo publicado. -->
+        <a class="btn btn-linha" href="https://claude.ai/artifact/TohhykXmc93XcMPVqjTRSk" target="_blank" rel="noopener">Ver o projeto completo<svg aria-hidden="true"><use href="#i-seta"/></svg></a>
+      </div>
     </div>
   </div>
 </section>
@@ -1111,8 +1109,8 @@ html:not(.js) .d-indice{display:none}
             <div class="post-topo" aria-hidden="true"><i class="av"></i>ana.rsilva</div>
             <div class="post-foto foto-a"></div>
             <div class="post-acoes" aria-hidden="true"><svg><use href="#i-acoes"/></svg></div>
-            <div class="post-topo"><i class="av av-lume"><svg aria-hidden="true"><use href="#lume"/></svg></i><span>lumedepapel<small>Patrocinado</small></span></div>
-            <div class="post-foto foto-ad"><svg viewBox="0 0 120 100" aria-hidden="true"><use href="#cadernos"/></svg><p>Cadernos para presentear</p></div>
+            <div class="post-topo"><i class="av av-lume"><svg aria-hidden="true"><use href="#lume-ld"/></svg></i><span>lumedepapel<small>Patrocinado</small></span></div>
+            <div class="post-foto foto-ad"><img src="assets/lume/post.webp" width="1080" height="1080" loading="lazy" decoding="async" alt="Anúncio da Lume de Papel: Um presente. Muitas páginas pela frente."></div>
             <a class="post-cta" href="#agente" aria-label="Enviar mensagem no WhatsApp: ver o Agente atender">Enviar mensagem no WhatsApp<svg aria-hidden="true"><use href="#i-seta"/></svg></a>
             <div class="post-acoes" aria-hidden="true"><svg><use href="#i-acoes"/></svg></div>
             <p class="post-leg"><b>lumedepapel</b> Capa azul ou verde. Você escolhe, a gente embrulha.</p>
@@ -1123,7 +1121,7 @@ html:not(.js) .d-indice{display:none}
       <div class="g-card" data-m="1,.5" aria-label="Demonstração: resultado patrocinado da Lume de Papel no Google">
         <p class="g-busca"><svg aria-hidden="true"><use href="#i-g"/></svg>cadernos para presente</p>
         <p class="g-pat">Patrocinado</p>
-        <p class="g-site"><i><svg aria-hidden="true"><use href="#lume"/></svg></i><span>Lume de Papel<small>www.lumedepapel.demo</small></span></p>
+        <p class="g-site"><i><svg aria-hidden="true"><use href="#lume-ld"/></svg></i><span>Lume de Papel<small>www.lumedepapel.example</small></span></p>
         <p class="g-tit">Cadernos para presente | Lume de Papel</p>
         <p class="g-desc">Capa dura, costura à mão e embrulho incluso. Chame no WhatsApp e escolha a cor.</p>
         <a class="g-chip" href="#agente" aria-label="Chamar no WhatsApp: ver o Agente atender"><svg aria-hidden="true"><use href="#i-wa"/></svg>Chamar no WhatsApp</a>
@@ -1188,7 +1186,7 @@ html:not(.js) .d-indice{display:none}
         <p class="coment"><small><svg aria-hidden="true"><use href="#i-ig"/></svg>comentário no post</small><b>marina.tavares</b> <strong>AGENDA</strong></p>
         <button class="btn btn-preto" type="button" id="comentar"><svg aria-hidden="true"><use href="#i-ig"/></svg><span>Comentar AGENDA</span></button>
         <div class="dm-vaga" aria-live="polite"><p class="dig" aria-hidden="true"><i></i><i></i><i></i></p>
-        <p class="dm"><small>mensagem direta, enviada sozinha</small>Oi, Marina! Aqui está o link para você agendar: <b>lumedepapel.demo/agendar</b></p></div>
+        <p class="dm"><small>mensagem direta, enviada sozinha</small>Oi, Marina! Aqui está o link para você agendar: <b>lumedepapel.example/agendar</b></p></div>
       </div>
     </div>
   </div>
@@ -1260,7 +1258,7 @@ html:not(.js) .d-indice{display:none}
         <img class="moldura" src="assets/fone.webp" alt="">
       </div>
       <div class="pdf" aria-label="Proposta de exemplo em PDF">
-        <p class="pdf-topo"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#lume"/></svg><svg viewBox="0 -234 1692 312" role="img" aria-label="Lume de Papel"><use href="#lume-nome" y="-234" width="1692" height="312"/></svg></p>
+        <p class="pdf-topo"><svg viewBox="0 0 609 104" role="img" aria-label="Lume de Papel"><use href="#lume-logo"/></svg></p>
         <p class="pdf-tit">Proposta de exemplo</p>
         <p>Para Lia Ventora</p>
         <dl>
