@@ -186,20 +186,26 @@ async function enviarResposta() {
   bolha.disabled = true;
   bolha.style.visibility = 'hidden';
   rolar();
-  // A rolagem termina antes de medir Last, para o destino não escapar durante o FLIP.
-  await esperar(duracao(RITMO.entrada));
-  const first = origem.getBoundingClientRect(), last = bolha.getBoundingClientRect();
+  const painel = $('#painel');
+  // A cópia nasce acima da folha; a opção original sai junto com o cartão inteiro.
+  const last = bolha.getBoundingClientRect(), conversa = $('#conversa');
+  const destinoY = last.top - (seguindo ? conversa.scrollHeight - conversa.clientHeight - conversa.scrollTop : 0);
+  const partidaY = Math.min(10, cartao.getBoundingClientRect().top - 12 - destinoY - last.height);
+  const recolher = movimento(cartao, [
+    {opacity:1,transform:'none'},
+    {opacity:0,transform:reduzido.matches ? 'none' : 'translateY(10px)'}
+  ], RITMO.recolher).then(() => painel.replaceChildren());
   if(seguindo && !reduzido.matches) {
     const voo = document.createElement('div');
     voo.className = 'bolha voo'; voo.setAttribute('aria-hidden','true');
-    voo.style.cssText = `left:${last.left}px;top:${last.top}px;width:${last.width}px;height:${last.height}px`;
+    voo.style.cssText = `left:${last.left}px;top:${destinoY}px;width:${last.width}px;height:${last.height}px`;
     voo.innerHTML = `<div class="voo-inicial">${escapar(livre ? texto : origem.querySelector('strong')?.textContent || origem.textContent)}</div><div class="voo-final">${bolha.innerHTML}</div>`;
     document.body.append(voo);
-    origem.style.visibility = 'hidden';
     const inicial = voo.firstElementChild, final = voo.lastElementChild;
     const flight = movimento(voo, [
-      {transform:`translate(${first.left-last.left}px,${first.top-last.top}px) scale(${first.width/last.width},${first.height/last.height})`,background:'#fff0d1',borderRadius:'8px'},
-      {transform:'none',background:'#dedacf',borderRadius:'18px 18px 4px 18px'}
+      {transform:`translateY(${partidaY}px)`,opacity:0,background:'#fff0d1'},
+      {opacity:1,offset:.2},
+      {transform:'none',opacity:1,background:'#dedacf'}
     ], RITMO.envio);
     movimento(inicial, [{opacity:1},{opacity:0,offset:.65},{opacity:0}], RITMO.envio);
     movimento(final, [{opacity:0},{opacity:1,offset:.7},{opacity:1}], RITMO.envio);
@@ -207,14 +213,10 @@ async function enviarResposta() {
     voo.remove();
   }
   bolha.style.visibility = '';
-  // Recolhimento exige altura real; só este pequeno painel refaz layout durante a saída.
-  const painel = $('#painel');
-  painel.style.overflow = 'hidden';
   await Promise.all([
-    movimento(cartao, [{opacity:1,transform:'none'},{opacity:0,transform:'translateY(10px)'}], RITMO.recolher),
-    movimento(painel, [{height:`${painel.offsetHeight}px`},{height:'0px'}], RITMO.recolher)
+    recolher,
+    reduzido.matches ? movimento(bolha, [{opacity:0},{opacity:1}], RITMO.reduzido) : Promise.resolve()
   ]);
-  painel.replaceChildren(); painel.style.overflow = '';
   ultimoPayload = null;
   if (etapa < 7) await perguntar(etapa+1);
   else await concluir();

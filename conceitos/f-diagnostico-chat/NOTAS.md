@@ -38,7 +38,7 @@ Tempos reais da última execução, medidos com `performance.now()` e MutationOb
 - Nas sete trocas de pergunta: fala completa entre **4,607 e 5,371 s** após o envio; cartão entre **5,021 e 5,789 s**. As diferenças vêm da extensão do texto, das pausas variáveis e do agendamento do navegador. A fala mais longa levou 2,330 s de digitação.
 - Pensando final: **7,845 s**. Movimento reduzido: primeira fala completa em **135 ms**, cartão em **181 ms**, pensando final em **457 ms**.
 - Tocar para completar a fala respondeu em **79 ms**, incluindo a automação. Ao subir para ler durante a resposta, `scrollTop` permaneceu em **663 px**, inclusive depois da entrada do próximo cartão.
-- Tiras finais com intervalos próximos de 100 ms: envio de 2 a 1915 ms em 20 quadros. Sem salto do histórico ou piscada; a sobreposição da bolha durante seu trajeto para fora do cartão é o FLIP solicitado.
+- Ajuste do envio: cópia acima do cartão, alinhada à direita, sem esconder a opção; saída simultânea com fade e descida em 420 ms, sem cartão aos 600 ms nem passagem pelo título; movimento reduzido usa fade curto sem voo e `RITMO` permanece intacto. Tiras revistas em `capturas/envio/tira-envio-390.png` e `capturas/envio/tira-envio-1440.png`; check reproduzível no scratchpad `f-chat-envio/verificar.mjs`; medidor: **TOTAL 0 achados**.
 
 Checks reproduzíveis no scratchpad autorizado:
 
