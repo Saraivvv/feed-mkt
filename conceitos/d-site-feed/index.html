@@ -458,7 +458,7 @@ html:not(.js) .viajante,html:not(.js) .rota>svg{display:none}
 html:not(.js) .parada .txt{opacity:1}
 
 /* ---------- 3. marca: o livro que se monta ---------- */
-.livro{position:relative;margin-top:36px;border-radius:24px;background:var(--lc);color:var(--lt);padding:14px;box-shadow:0 44px 70px -34px rgba(40,30,10,.5),inset 0 0 0 1px rgba(28,36,34,.09)}
+.livro{position:relative;margin-top:36px;border-radius:24px;background:var(--lc);color:var(--lt);padding:14px;box-shadow:0 44px 70px -34px rgba(40,30,10,.5),inset 0 0 0 1px rgba(38,59,53,.09)}
 .livro-topo{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:4px 6px 14px;font:700 11px/1.3 Barlow;letter-spacing:.1em;text-transform:uppercase}
 .livro-topo span span{display:none}
 .pecas{display:grid;grid-template-columns:repeat(10,1fr);grid-template-areas:"l l l l l l l l l l" "c c c c c c c c c c" "f f f f f f f f f f" "p p p p e e e e e e";gap:10px}
@@ -475,7 +475,7 @@ html:not(.js) .parada .txt{opacity:1}
 .p-cores b{font:650 9.5px/1.2 var(--l-sans);letter-spacing:.02em;color:var(--lt)}
 .p-fachada{grid-area:f;min-height:0;aspect-ratio:1100/655}
 .p-post{grid-area:p;min-height:0;aspect-ratio:1}
-.p-post{outline:1px solid rgba(38,59,53,.14);outline-offset:-1px}
+.p-post{box-shadow:0 0 0 1px rgba(38,59,53,.12),0 14px 22px -16px rgba(40,30,10,.5)}
 .p-post img+.leg{left:auto;right:8px;bottom:auto;top:8px}
 .p-sacola{grid-area:e;min-height:0}
 .livro-pe{display:grid;gap:10px;margin-top:12px}
@@ -569,9 +569,9 @@ html:not(.js) .serie,html:not(.js) .serie-leg{display:none}
 .dias .pub,.dias .apr,.dias .esp{font-weight:800;transform:scale(clamp(.4,calc(var(--m,1) * 2.6 - var(--i) * .15),1));opacity:clamp(0,calc(var(--m,1) * 2.6 - var(--i) * .15),1)}
 .dias .pub{background:var(--tinta);color:var(--branco)}
 .dias .apr{background:var(--laranja);color:var(--tinta)}
-.dias .esp{background:transparent;color:var(--tinta);box-shadow:inset 0 0 0 2px var(--laranja);animation:chama 1.8s ease-in-out infinite}
+.dias .esp{background:transparent;color:var(--tinta);box-shadow:inset 0 0 0 2px var(--laranja);animation:espera 1.8s ease-in-out infinite}
 .dias .apr.novo{animation:carimbo .5s var(--ease)}
-@keyframes chama{50%{box-shadow:inset 0 0 0 2px var(--laranja),0 0 0 5px rgba(255,163,0,.25)}}
+@keyframes espera{50%{box-shadow:inset 0 0 0 2px var(--laranja),0 0 0 5px rgba(255,163,0,.25)}}
 @keyframes carimbo{from{scale:1.5;rotate:-12deg}}
 .legendas{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:14px;font:600 13px/1.2 Barlow}
 .legendas span{display:flex;align-items:center;gap:7px}
@@ -657,7 +657,7 @@ html:not(.js) .serie,html:not(.js) .serie-leg{display:none}
 .pdf-topo svg{display:block;width:106px;height:auto;fill:currentColor}
 .pdf-tit{margin:10px 0 3px;font:500 1.6em/1 var(--l-serifa);color:var(--lve)}
 .pdf dl{margin-top:8px}
-.pdf dl div{display:flex;justify-content:space-between;gap:8px;padding:5px 0;border-top:1px solid rgba(28,36,34,.12)}
+.pdf dl div{display:flex;justify-content:space-between;gap:8px;padding:5px 0;border-top:1px solid rgba(38,59,53,.12)}
 .pdf dt{opacity:.7}
 .pdf dd{font-weight:650;white-space:nowrap}
 .pdf .total{font-size:13px}

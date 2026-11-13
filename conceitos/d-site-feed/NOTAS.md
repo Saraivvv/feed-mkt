@@ -203,3 +203,41 @@ Substitui o item 3 da Parte 1. O aparelho em CSS foi reprovado ("parece um papel
 - **As costas são lisas.** Sem marca e sem textura, de frente para a câmera elas parecem um render limpo. O "escovado" do aro é só o brilho esticado, sem risco fino.
 - **Foi medido só no Chromium sem janela** (placa GTX 1650 Ti e por software). Falta abrir num Android e num iPhone de verdade: tempo de quadro, Safari e perda de contexto não foram vistos em aparelho.
 - **O anúncio e a conversa agora são imagem.** O botão "Enviar mensagem no WhatsApp" continua clicável, mas a área de toque é plana e o aparelho gira. E a página pesa mais: Three.js e telas em 1080.
+
+---
+
+## Marca Lume no site (13/11/2026)
+
+A Lume de Papel deixou de ser esboço. O site agora usa a marca completa de `conceitos/marca-lume/` (projeto autoral da Feed), nas mesmas cores das telas do Hub.
+
+### O que mudou
+- **Capítulo `#marca`:** o livro mostra as peças do kit. Logo novo em curva, as 4 cores de marca com nome e código (Papel, Mata, Verde Lume, Âmbar), fachada, post e embalagem. O desenho e o comportamento são os mesmos: as peças se montam com a rolagem, levantam com o mouse e vêm para a frente com a legenda quando tocadas.
+- **A etiqueta virou "projeto autoral da Feed"** e entrou o botão **"Ver o projeto completo"**, que abre o manual publicado em aba nova.
+- **Anúncio do Instagram:** avatar "LD" verde-água, igual ao do Hub, e a arte é o post de verdade da marca ("Um presente. Muitas páginas pela frente."). O botão do anúncio ficou no verde Mata.
+- **Resultado do Google:** o mesmo avatar "LD". O endereço de exemplo passou de `.demo` para `.example`, que é o domínio reservado para exemplo.
+- **Proposta em PDF:** logo novo no topo, título na Cormorant Garamond e o resto na Manrope, as duas letras da marca.
+- Os tokens `--lv`, `--lve`, `--la`, `--lc` e `--lt` são os do `kit-site/tokens.css`. A tinta passou de `#1C2422` para `#263B35`.
+- **Saiu todo o esboço antigo:** os símbolos `#lume`, `#lume-nome` e `#cadernos`, a fachada e a sacola desenhadas à mão no HTML e o gradiente do logo. Entraram dois símbolos: `#lume-logo` (assinatura horizontal) e `#lume-ld` (as letras do avatar).
+
+### NA SUBIDA
+- **O link "Ver o projeto completo" vira `/portfolio/lume-de-papel/`**, sem `target`. Hoje ele aponta para https://claude.ai/artifact/TohhykXmc93XcMPVqjTRSk. Há um comentário no HTML, em cima do link, dizendo a mesma coisa.
+
+### Arquivos novos (`assets/lume/`, 104 KB no total)
+- `fachada.webp` (1100×655, 16 KB), `post.webp` (1080×1080, 46 KB) e `embalagem.webp` (1000×609, 32 KB). Saíram dos SVGs do kit, que pesam de 208 a 338 KB cada. O post serve ao livro e ao anúncio.
+- `cormorant-500.woff2` (2,4 KB), `manrope-450.woff2` (4,0 KB) e `manrope-650.woff2` (3,9 KB): subconjunto local, só com as letras que aparecem. Nada de Google Fonts para a Lume.
+- **As letras que cada subconjunto tem.** Cormorant: "Verde Lume Mata Âmbar Papel Proposta de exemplo". Manrope: os 4 códigos de cor e todo o texto da proposta. **Mudou um desses textos? Refaça o subconjunto**, senão a letra nova cai na fonte reserva. O script é o `monta-fontes.py` (precisa do `fontTools`), e o das imagens é o `monta-rasters.mjs`. Os dois ficaram em `scratchpad\lume-no-site\`, fora do repo.
+- `assets/f3d-feed.webp` foi gerado de novo, porque o anúncio mudou. A altura do rolo é a mesma (a foto de cima perdeu o que a arte ganhou), então o `FEED_TOPO` do `fone-3d.js` continua 0,0892 e o arquivo não foi tocado.
+- `assets/f3d-chat.webp` **não mudou**: a conversa é a mesma. O gerador hoje devolve as mensagens uma fração de pixel mais altas (menos de 0,1 px cada) do que os números gravados no `fone-3d.js`, e isso acontece também com a página de antes desta mudança (523b067). É diferença de ambiente, não de conteúdo. Ficou a imagem que bate com o `fone-3d.js`.
+
+### Head
+Os 3 pedidos da seção "Aparelho 3D" estão feitos: `preconnect` da jsDelivr com `crossorigin`, `modulepreload` com a mesma URL do importmap e o `preload` da tela do Atendimento no lugar da moldura. A tag `google-site-verification`, o canonical e os 4 blocos de JSON-LD estão idênticos e fazem parse.
+
+### Conferência
+- `node conceitos/_comum/medir.mjs d-site-feed`: **`TOTAL 0 achados`**. Celular com 16.153 px, **19,1 telas**.
+- Por http, com o 3D ligado, em 360, 390, 768, 1024 e 1440: 0 achados, as 5 peças vêm para a frente e voltam, as 3 fontes carregam e nenhuma letra cai na reserva.
+- As maquetes da Lume continuam com `data-nosnippet` (livro, anúncio, painel, calendário e palco). Nenhum travessão, nenhum "Bot" e nenhum `href="#"`.
+- A página usa os 19 arquivos de `assets/` e nenhum sobra na pasta: 630 KB, mais 149 KB de HTML.
+
+### O que ainda está fraco
+- **O post e a embalagem ficam pequenos no celular** (123 px de altura). A frase do post se lê, mas o texto miúdo das peças vira textura. Para ver direito, só no "projeto completo".
+- **O link do projeto sai do site** para o claude.ai até existir a página de portfólio. E a paleta mostra as 4 cores de marca: o Azul caderno, que é só de produto, ficou de fora.
