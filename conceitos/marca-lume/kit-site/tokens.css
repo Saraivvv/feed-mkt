@@ -1,4 +1,4 @@
 /* Lume de Papel. Projeto autoral da Feed. Google Fonts, OFL. */
-@font-face{font-family:"Cormorant Garamond";src:url("../fontes/CormorantGaramond[wght].ttf") format("truetype");font-weight:300 700;font-display:swap}
+@font-face{font-family:"EB Garamond";src:url("../fontes/eb-garamond-400-latin.woff2") format("woff2");font-weight:400;font-display:swap}
 @font-face{font-family:Manrope;src:url("../fontes/Manrope[wght].ttf") format("truetype");font-weight:200 800;font-display:swap}
-:root{--lume-verde:#3F998B;--lume-mata:#1F4D45;--lume-ambar:#C8923C;--lume-papel:#F4EFE4;--lume-azul:#395C72;--lume-tinta:#263B35;--lume-display:"Cormorant Garamond",Georgia,serif;--lume-texto:Manrope,Arial,sans-serif;--lume-fundo:var(--lume-papel);--lume-texto-cor:var(--lume-mata);--lume-acao:var(--lume-mata);--lume-acao-texto:var(--lume-papel)}
+:root{--lume-verde:#3F998B;--lume-mata:#1F4D45;--lume-ambar:#C8923C;--lume-papel:#F4EFE4;--lume-azul:#395C72;--lume-tinta:#263B35;--lume-display:"EB Garamond",Georgia,serif;--lume-texto:Manrope,Arial,sans-serif;--lume-fundo:var(--lume-papel);--lume-texto-cor:var(--lume-mata);--lume-acao:var(--lume-mata);--lume-acao-texto:var(--lume-papel)}

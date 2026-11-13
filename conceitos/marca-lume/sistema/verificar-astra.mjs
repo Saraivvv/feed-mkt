@@ -31,7 +31,7 @@ for(const width of [390,768,1024,1440]){
  const visible=e=>{const s=getComputedStyle(e),r=e.getBoundingClientRect();return s.display!=='none'&&s.visibility!=='hidden'&&r.width&&r.height;};
  const cropped=[...document.querySelectorAll('h1,h2,h3,p,figcaption,a,small,summary')].filter(visible).filter(e=>e.scrollWidth>e.clientWidth+1).map(e=>e.textContent.slice(0,70));
  const badTargets=[...document.querySelectorAll('a,summary')].filter(visible).filter(e=>{const r=e.getBoundingClientRect();return r.width<44||r.height<44}).map(e=>e.textContent);
- return {width:innerWidth,overflow:document.documentElement.scrollWidth>innerWidth,cropped,badTargets,missingImages:[...document.images].filter(i=>!i.naturalWidth).length,brokenAnchors:[...document.querySelectorAll('a[href^="#"]')].filter(a=>!document.getElementById(a.hash.slice(1))).length,fonts:document.fonts.check('16px Manrope')&&document.fonts.check('16px Cormorant'),h1:document.querySelectorAll('h1').length};
+ return {width:innerWidth,overflow:document.documentElement.scrollWidth>innerWidth,cropped,badTargets,missingImages:[...document.images].filter(i=>!i.naturalWidth).length,brokenAnchors:[...document.querySelectorAll('a[href^="#"]')].filter(a=>!document.getElementById(a.hash.slice(1))).length,fonts:document.fonts.check('16px Manrope')&&document.fonts.check('16px EB Garamond'),h1:document.querySelectorAll('h1').length};
  });
  layouts.push(result);assert(!result.overflow&&!result.cropped.length&&!result.badTargets.length&&!result.missingImages&&!result.brokenAnchors&&result.fonts&&result.h1===1,JSON.stringify(result));
  await p.screenshot({path:path.join(root,'capturas','astra-'+width+'-abertura.png')});

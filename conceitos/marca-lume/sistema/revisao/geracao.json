@@ -1,0 +1,65 @@
+{
+  "sources": {
+    "fachada": "C:\\Users\\guisa\\.codex\\generated_images\\01a1d607-70ae-7673-9442-4359d71ee483\\exec-7df06b07-ccb5-4563-9a11-2e9c78a0ed20.png",
+    "sacola": "C:\\Users\\guisa\\.codex\\generated_images\\01a1d607-70ae-7673-9442-4359d71ee483\\exec-576f4b5d-0de8-4ea8-8e8c-7b40e16a338a.png",
+    "caderno": "C:\\Users\\guisa\\.codex\\generated_images\\01a1d607-70ae-7673-9442-4359d71ee483\\exec-70190fa1-cd80-4af5-ac17-024083c6b64d.png",
+    "presente": "C:\\Users\\guisa\\.codex\\generated_images\\01a1d607-70ae-7673-9442-4359d71ee483\\exec-f0d869e5-4e09-4dac-87c6-c9654b6c2b97.png",
+    "cartao": "C:\\Users\\guisa\\.codex\\generated_images\\01a1d607-70ae-7673-9442-4359d71ee483\\exec-68317e50-b60e-4424-9d7e-1cc61fa57cc6.png",
+    "seda": "C:\\Users\\guisa\\.codex\\generated_images\\01a1d607-70ae-7673-9442-4359d71ee483\\exec-20654a95-dd50-41b7-9811-8f866dbc48cc.png",
+    "ecobag": "C:\\Users\\guisa\\.codex\\generated_images\\01a1d607-70ae-7673-9442-4359d71ee483\\exec-d0b0dbff-8406-4ed6-add1-57e75cff831f.png",
+    "celular": "C:\\Users\\guisa\\.codex\\generated_images\\01a1d607-70ae-7673-9442-4359d71ee483\\exec-47efb4fc-7f57-4026-90ec-45f04a848fb7.png",
+    "vitrine": "C:\\Users\\guisa\\.codex\\generated_images\\01a1d607-70ae-7673-9442-4359d71ee483\\exec-829b70c6-fb41-4518-8c22-2636b0c22602.png",
+    "cartaz": "C:\\Users\\guisa\\.codex\\generated_images\\01a1d607-70ae-7673-9442-4359d71ee483\\exec-d31cd799-ec6d-4954-8f95-6450b1ddf47c.png",
+    "embrulho": "C:\\Users\\guisa\\.codex\\generated_images\\01a1d607-70ae-7673-9442-4359d71ee483\\exec-6cb879fe-3542-4900-8905-c4211d8339c8.png",
+    "forro": "C:\\Users\\guisa\\.codex\\generated_images\\01a1d607-70ae-7673-9442-4359d71ee483\\exec-b2f54771-d812-4ca9-995c-12fdafb81c9b.png"
+  },
+  "tool": "Codex image_gen.imagegen",
+  "calls": 12,
+  "credits": "Ferramenta não informa créditos ou custo monetário.",
+  "prompts": [
+    [
+      "sacola",
+      "A cropped torso of a fictional adult wearing oatmeal linen shirt and trousers, face entirely out of frame, standing on a quiet warm plaster street. ONE anatomically correct hand naturally holds two cotton rope handles of a large plain matte deep forest green paper shopping bag, frontal broad bag face nearly flat and unobstructed, bottom of bag visible. The bag is main subject in lower center, with subtle paper creases and warm raking light."
+    ],
+    [
+      "caderno",
+      "Top-down still life on a warm light oak desk: on LEFT a closed deep muted blue linen hardbound notebook, rectangular portrait cover fully visible, slight clockwise rotation, on RIGHT an open cream unruled notebook with stitched center and flat blank pages, slight counterclockwise rotation. Amber ribbon bookmark. Single brass pen away from the books, afternoon window shadows. Generous paper surface on open notebook for later vector pattern, closed cover fully blank."
+    ],
+    [
+      "presente",
+      "Three-quarter overhead editorial still life of a premium flat rigid deep forest green gift box on warm ivory tabletop. Box lid closed, broad top surface fully visible, a narrow matte amber ribbon crossing near its RIGHT edge leaving left two thirds clear, tied bow at upper right. A large plain ivory rectangular gift tag hanging by string on the front-right tabletop separate from the box. Small closed cream envelope at left. Real paper grain, linen ribbon, beautiful angled sunlight."
+    ],
+    [
+      "cartao",
+      "Close overhead editorial photograph of two landscape business cards on travertine stone table. Left card matte deep forest green and right card thick warm ivory cotton paper, both completely visible, not overlapping, gentle opposite rotations. Card proportions 90 by 50 mm, realistic thick paper edges and soft shadows. Both card faces blank. A cropped ivory envelope and brass paperclip at distant edges."
+    ],
+    [
+      "seda",
+      "Premium packaging still life, high near-overhead camera. One wide sheet of warm ivory translucent tissue paper wrapping a flat rectangular object on pale stone tabletop, with broad central flat area and gently crumpled edges. Round flat deep forest green sticker seal near lower right of central tissue face, completely blank. More plain folded tissue in background. Lots of tactile folds, fine fibers, warm diffused window light. The large central tissue face is clear for an all-over printed pattern added later."
+    ],
+    [
+      "ecobag",
+      "A premium natural oatmeal cotton canvas tote bag hanging by its handles from a wooden wall peg on warm plaster wall. Bag completely visible, broad front panel frontal, gently draped realistic cloth folds, seams and textile weave, quiet side sunlight, small shadow to right. Canvas tote is blank unprinted cream with no decoration. No humans. Enough flat central fabric for later precise vector branding."
+    ],
+    [
+      "celular",
+      "Close-up of ONE anatomically correct adult hand holding a contemporary black smartphone upright in portrait orientation over a warm oak desk with out-of-focus cream notebook and muted teal stationery. All five fingers natural, four mostly behind device, thumb along left edge never covering display. Entire phone visible centered, screen a uniform blank pale ivory rectangle with subtle glass reflection and black frame. Straight-on camera, screen almost flat but slight natural tilt. Large phone fills 80 percent image height. Face never visible."
+    ],
+    [
+      "vitrine",
+      "Front view through a beautiful independent stationery shop display window. Warm oak shelves with blank blue and forest green hardbound notebooks, gift boxes and ivory paper, composed as curated museum objects, warm subtle spotlighting and soft real reflections on glass. A large blank matte ivory portrait display panel on LEFT behind glass, fully visible unobstructed, occupying left third; on RIGHT notebooks and gifts. No humans. Refined visual merchandising with negative space."
+    ],
+    [
+      "cartaz",
+      "Photorealistic urban editorial photograph of one portrait poster in a slim dark forest green metal frame on a warm beige plaster wall beside a quiet pedestrian sidewalk. Large flat pale ivory blank poster occupies two thirds of image height and central frame, entirely visible, nearly straight-on perspective. Soft late afternoon light, a hint of foliage shadow at edges but main poster clear. Slight city depth to right. No people, no other signs or posters, no lettering anywhere."
+    ],
+    [
+      "embrulho",
+      "High overhead photograph of a rectangular gift neatly wrapped in smooth matte warm ivory paper, entire gift visible centered on light oak table, rotated slightly clockwise. No ribbon over the broad top surface. A loose narrow forest green ribbon and small plain ivory gift card sit beside the gift. Broad flat empty top surface for later all-over pattern. Fine paper texture and precise folded corners, late afternoon light."
+    ],
+    [
+      "forro",
+      "Directly top-down editorial product photograph of an open rectangular rigid forest green gift box with empty flat warm ivory paper lining bottom fully visible, box centered, sides straight parallel to image edges. Matching green lid placed to the left partially outside frame. Box empty with no tissue, no objects covering interior bottom; broad clear rectangular base for later all-over pattern compositing. Amber ribbon loosely curled on pale stone surface to right. Real card thickness and inner edge shadows, soft directional daylight."
+    ]
+  ]
+}

@@ -1,0 +1,12 @@
+import {createRequire} from 'node:module';
+import {fileURLToPath,pathToFileURL} from 'node:url';
+import path from 'node:path';
+const require=createRequire('C:/Users/guisa/OneDrive/Desktop/Feed MKT/hub/app/package.json');
+const {chromium}=require('playwright');
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..');
+const b=await chromium.launch({executablePath:'C:/Users/guisa/AppData/Local/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-win64/chrome-headless-shell.exe',headless:true});
+const p=await b.newPage({viewport:{width:1440,height:1100}});
+await p.goto(pathToFileURL(root+'/sistema/revisao/teste-acentos.html').href);
+await p.evaluate(()=>document.fonts.ready);
+await p.screenshot({path:root+'/capturas/revisao-teste-acentos.png',fullPage:true});
+await b.close();

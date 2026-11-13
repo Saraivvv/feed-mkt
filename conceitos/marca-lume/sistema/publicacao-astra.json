@@ -1,110 +1,110 @@
 {
-  "bytes": 4492995,
-  "megabytes": 4.492995,
+  "bytes": 4300217,
+  "megabytes": 4.300217,
   "files": [
     {
       "file": "artes/cartao-presente.svg",
-      "bytes": 133605
+      "bytes": 60215
     },
     {
       "file": "artes/etiqueta.svg",
-      "bytes": 67049
+      "bytes": 32852
     },
     {
       "file": "artes/papel-timbrado.svg",
-      "bytes": 229912
+      "bytes": 174905
     },
     {
       "file": "artes/post-01.webp",
-      "bytes": 115992
+      "bytes": 153896
     },
     {
       "file": "artes/post-02.webp",
-      "bytes": 85678
+      "bytes": 80950
     },
     {
       "file": "artes/post-03.webp",
-      "bytes": 73264
+      "bytes": 77058
     },
     {
       "file": "artes/post-04.webp",
-      "bytes": 80382
+      "bytes": 75598
     },
     {
       "file": "artes/post-05.webp",
-      "bytes": 63200
+      "bytes": 63924
     },
     {
       "file": "artes/post-06.webp",
-      "bytes": 104318
+      "bytes": 106522
     },
     {
       "file": "artes/post-07.webp",
-      "bytes": 160044
+      "bytes": 183150
     },
     {
       "file": "artes/post-08.webp",
-      "bytes": 78788
+      "bytes": 79294
     },
     {
       "file": "artes/post-09.webp",
-      "bytes": 128564
+      "bytes": 127302
     },
     {
       "file": "artes/story-01.webp",
-      "bytes": 127136
+      "bytes": 127882
     },
     {
       "file": "artes/story-02.webp",
-      "bytes": 90896
+      "bytes": 92084
     },
     {
       "file": "artes/story-03.webp",
-      "bytes": 119692
+      "bytes": 119912
     },
     {
       "file": "artes/tag.svg",
-      "bytes": 58140
+      "bytes": 36579
     },
     {
       "file": "brandbook.css",
-      "bytes": 15179
+      "bytes": 15394
     },
     {
       "file": "fontes/bold-astra.woff2",
       "bytes": 31044
     },
     {
+      "file": "fontes/eb-garamond-400-latin.woff2",
+      "bytes": 25312
+    },
+    {
       "file": "fontes/sans-astra.woff2",
       "bytes": 31512
     },
     {
-      "file": "fontes/serif-astra.woff2",
-      "bytes": 128888
-    },
-    {
       "file": "fotos/caderno.webp",
-      "bytes": 258308
+      "bytes": 258534
     },
     {
       "file": "fotos/cartao.webp",
-      "bytes": 383568
+      "bytes": 384004
     },
     {
       "file": "fotos/cartaz.webp",
-      "bytes": 212908
+      "bytes": 216076
     },
     {
       "file": "fotos/celular.webp",
-      "bytes": 122196
+      "bytes": 125562
     },
     {
       "file": "fotos/ecobag.webp",
-      "bytes": 171700
+      "bytes": 171894
     },
     {
       "file": "fotos/embrulho.webp",
-      "bytes": 223122
+      "bytes": 223294
     },
     {
       "file": "fotos/fachada.webp",
@@ -116,11 +116,11 @@
     },
     {
       "file": "fotos/presente.webp",
-      "bytes": 208430
+      "bytes": 208514
     },
     {
       "file": "fotos/sacola.webp",
-      "bytes": 139960
+      "bytes": 144072
     },
     {
       "file": "fotos/seda.webp",
@@ -128,11 +128,11 @@
     },
     {
       "file": "fotos/vitrine.webp",
-      "bytes": 134808
+      "bytes": 135724
     },
     {
       "file": "index.html",
-      "bytes": 22086
+      "bytes": 22451
     },
     {
       "file": "logo/avatar-ld.svg",
@@ -157,6 +157,14 @@
     {
       "file": "logo/vertical-positivo.svg",
       "bytes": 14357
+    },
+    {
+      "file": "marca-feed/horizontal-branca.png",
+      "bytes": 19676
+    },
+    {
+      "file": "marca-feed/horizontal-preta.svg",
+      "bytes": 2405
     },
     {
       "file": "padroes/costura.svg",
@@ -186,13 +194,13 @@
       "file": "kit-site/foto-post.webp",
       "width": 1080,
       "height": 1350,
-      "bytes": 110664
+      "bytes": 143654
     },
     {
       "file": "kit-site/foto-embalagem.webp",
       "width": 1200,
       "height": 800,
-      "bytes": 74132
+      "bytes": 74212
     }
   ]
 }

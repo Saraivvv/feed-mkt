@@ -1,8 +1,8 @@
-# Arquivos para publicar o brandbook
+# Arquivos do brandbook revisado
 
 Caminhos relativos a conceitos/marca-lume/. Preservar as pastas.
 
-Peso total: 4.492.995 bytes (4,49 MB decimais). 43 arquivos, incluindo index.html. Sem dependências de rede ou downloads na página.
+Peso total: 4.300.217 bytes (4,30 MB decimais). 45 arquivos, incluindo index.html, dependências do CSS e favicon. Sem dependências de rede ou links de download na página.
 
 - artes/cartao-presente.svg
 - artes/etiqueta.svg
@@ -22,8 +22,8 @@ Peso total: 4.492.995 bytes (4,49 MB decimais). 43 arquivos, incluindo index.htm
 - artes/tag.svg
 - brandbook.css
 - fontes/bold-astra.woff2
+- fontes/eb-garamond-400-latin.woff2
 - fontes/sans-astra.woff2
-- fontes/serif-astra.woff2
 - fotos/caderno.webp
 - fotos/cartao.webp
 - fotos/cartaz.webp
@@ -43,9 +43,13 @@ Peso total: 4.492.995 bytes (4,49 MB decimais). 43 arquivos, incluindo index.htm
 - logo/principal-positivo.svg
 - logo/simbolo-positivo.svg
 - logo/vertical-positivo.svg
+- marca-feed/horizontal-branca.png
+- marca-feed/horizontal-preta.svg
 - padroes/costura.svg
 - padroes/dobra.svg
 - padroes/pauta.svg
 - padroes/trama.svg
 
-Não é necessário publicar fotos/bases/, fotos/alta/, capturas/, aplicacoes/ ou originais/ para abrir a página. Ao distribuir as fontes, conservar também fontes/cormorantgaramond-OFL.txt e fontes/manrope-OFL.txt.
+Licenças a conservar na distribuição: fontes/ebgaramond-OFL.txt e fontes/manrope-OFL.txt. Elas não são carregadas pelo index.html e não entram na soma acima.
+
+fotos/bases/, fotos/alta/, capturas/, aplicacoes/, originais/, kit-site/ e scripts de sistema/ não entram no carregamento do brandbook. Esta lista é um manifesto técnico; nenhum envio ou publicação foi realizado.

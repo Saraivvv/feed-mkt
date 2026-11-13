@@ -1,0 +1,4 @@
+celular 390x844: altura 21015px, 0 achado(s)
+tablet 768x1024: altura 19097px, 0 achado(s)
+desktop 1440x900: altura 23635px, 0 achado(s)
+TOTAL 0 achados

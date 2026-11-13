@@ -8,7 +8,7 @@ Conceito: O cuidado que fica. Produto: Entrelinhas. Paleta: Verde Lume #3F998B, 
 
 Os 16 SVGs de logo e o avatar LD verde permanecem. Foram consultados conceitos/d-site-feed/index.html e conceitos/_comum/hub/tela-03-atendimento.png. Lia, cadernos azuis ou verdes e Agente Lume continuam coerentes. Nenhuma edição no site ou Hub.
 
-Cormorant Garamond 500 e Manrope 450/650 continuam sendo as fontes. TTFs e licenças SIL OFL em fontes/. A rodada extraiu instâncias WOFF2 locais. Origem: https://github.com/google/fonts/tree/main/ofl/cormorantgaramond e https://github.com/google/fonts/tree/main/ofl/manrope.
+EB Garamond 400 é a serifada de texto; Manrope 450/650 permanece. A EB Garamond substitui a Cormorant nos textos porque mantém os acentos do português próximos às letras; a Cormorant fica apenas no desenho original do logo em contorno. TTFs, WOFF2 e licenças SIL OFL em fontes/. Origem oficial da nova serifada: https://github.com/google/fonts/tree/main/ofl/ebgaramond.
 
 ## Histórico anterior
 
@@ -56,12 +56,12 @@ Hierarquia em pixels, pares editorial e funcional e orientação em pontos para 
 
 ### Publicação e kit
 
-43 arquivos necessários para a página, 4.492.995 bytes (4,49 MB). Lista em PUBLICAR.md, pesos em sistema/publicacao-astra.json. Sem links de download. Fotos e artes sociais em WebP, vetores em SVG, fontes locais.
+Após a revisão: 45 arquivos necessários para a página, 4.300.217 bytes (4,30 MB). Lista em PUBLICAR.md, pesos em sistema/publicacao-astra.json. Sem links de download. Fotos e artes sociais em WebP, vetores em SVG, fontes locais.
 
 Novos arquivos, mantendo os anteriores:
 - kit-site/foto-fachada.webp: 1200 × 800, 137.760 bytes.
-- kit-site/foto-post.webp: 1080 × 1350, 110.664 bytes.
-- kit-site/foto-embalagem.webp: 1200 × 800, 74.132 bytes.
+- kit-site/foto-post.webp: 1080 × 1350, 143.654 bytes.
+- kit-site/foto-embalagem.webp: 1200 × 800, 74.212 bytes.
 
 Sem integração no site, commit, push ou deploy. O artifact publicado não foi alterado; esta entrega é local.
 
@@ -73,3 +73,31 @@ A seda ainda tem simulação aproximada nas dobras complexas. Uma fotografia de 
 Acabamentos, cor, papel e encadernação pedem protótipo e prova física. O case não é arquivo fechado de produção industrial.
 
 Scripts temporários no scratchpad autorizado lume-astra. Check permanente em sistema/verificar-astra.mjs. Nenhuma dependência instalada. Somente conceitos/marca-lume/ alterado no worktree.
+
+## Revisão de tipografia, crédito e expressão digital
+
+### Escolha tipográfica
+
+Teste de 400 e 500 renderizado e inspecionado antes da aplicação, com a frase “Próxima você ação última também já é página coração” em 82 px. Escolhido 400 pela leveza em títulos grandes. Evidência: capturas/revisao-teste-acentos.png.
+
+Arquivo oficial EBGaramond[wght].ttf e OFL em fontes/. Subconjunto local eb-garamond-400-latin.woff2 com Latin, Latin-1, Latin Extended-A e pontuação, 25.312 bytes. O peso 500 permanece apenas para o teste. kit-site/serif-texto.woff2 contém as cinco frases solicitadas e pesa 5.040 bytes.
+
+Serifada atualizada no brandbook, artes vetoriais, nove posts, três stories, assinatura de e-mail e fotos recompostas. Também foram identificadas pela geometria dos glifos e substituídas 150 frases em 33 SVGs legados de originais/, sistema/ e kit-site/. PNGs correspondentes sincronizados. Assinaturas Lume de Papel e LD preservadas. Auditoria: zero contornos Cormorant fora dos logos.
+
+### Fotografias e posts
+
+Nenhuma nova geração de imagem. Os mesmos PNGs limpos da Rodada Astra foram usados na composição, com as projeções anteriores. Todos os 12 WebPs foram recompostos; os que só têm logo ou padrões resultaram idênticos. Bases e 16 arquivos da pasta logo/ preservados byte a byte.
+
+Posts continuam em 1080 × 1350. A faixa creme passou de 490 px para aproximadamente 238 px, determinada pelo conteúdo; a foto ocupa o restante. Título EB Garamond 400 a 74 px, apoio Manrope a 24 px, margem lateral de 58 px. Removido o símbolo isolado da faixa. Recorte alinhado à esquerda no caderno e vitrine, à direita na caixa e no embrulho para preservar a informação relevante. Stories continuam em 1080 × 1920, com a nova serifada.
+
+### Feed e entrega
+
+Topo com a imagem horizontal preta oficial e “Branding e identidade visual”. Crédito final com a imagem branca oficial. Arquivos em marca-feed/. SVG sem DOCTYPE. Nenhuma marca Feed foi recomposta como texto.
+
+Kit atualizado em vetor, CSS e fotografias; fonte leve e licença incluídas. Fachada fotográfica permanece idêntica porque contém apenas o logo preservado. LEIA-ME explica a diferença entre o subconjunto completo e o reduzido.
+
+Scripts reaproveitados em sistema/revisao/, com preparação e aplicação em sistema/. Conferência headless com o Chromium indicado no medidor original, que não foi alterado. TOTAL 0 achados; check adicional em 390, 768, 1024 e 1440. Capturas revisao-* inspecionadas, incluindo todos os mockups, zoom do caderno, posts, stories, topo, fechamento e tipografia.
+
+Somente conceitos/marca-lume/ alterado. Sem commit, push, deploy ou integração no site em produção.
+
+Pontos fracos: a estampa da seda ainda acompanha as dobras de modo aproximado. Na grade de três colunas do celular, os textos de apoio dos posts ficam pequenos, embora legíveis na peça aberta.

@@ -42,7 +42,7 @@
     }
   ],
   "errors": [],
-  "bytes": 4492995,
+  "bytes": 4300217,
   "kit": [
     {
       "file": "kit-site/foto-fachada.webp",
@@ -54,13 +54,13 @@
       "file": "kit-site/foto-post.webp",
       "width": 1080,
       "height": 1350,
-      "bytes": 110664
+      "bytes": 143654
     },
     {
       "file": "kit-site/foto-embalagem.webp",
       "width": 1200,
       "height": 800,
-      "bytes": 74132
+      "bytes": 74212
     }
   ]
 }
