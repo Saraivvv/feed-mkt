@@ -114,14 +114,15 @@ A tese e a prova na primeira tela, a linha com o ponto "o seu cliente", o livro 
 
 Nada disto está na página. Cada item entra quando houver a resposta.
 
-1. **Faixa de preço.** Hoje o site diz só "preço personalizado" e leva para `/quanto-custa/`. Uma faixa ("a partir de R$ X") é a resposta que mais gente procura.
+1. **Faixa de preço. RESOLVIDO em 13/11/2026:** o dono informou que os planos mensais começam em R$ 997 e que o resto é sob medida. O valor entrou no passo 3 e na pergunta nova "Quanto custa contratar a Feed?", também no `FAQPage`. Na subida, a página `/quanto-custa/` do site no ar precisa dizer o mesmo. Ainda falta o dono definir o que o plano de entrada inclui.
 2. **Prazo médio.** Hoje: "o prazo vem escrito na proposta". Um número médio de dias ajuda no FAQ e nas IAs.
 3. **Fidelidade e multa.** A objeção "Vou ficar preso?" ficou fora do FAQ porque não dá para responder só com fato.
 4. **O número real da revenda.** Leads acompanhados no funil desde a implantação. Com ele a prova real volta a ter um número grande, e seria o dado mais forte do site.
 5. **Pode citar o cliente pelo nome?** Hoje está "uma revenda de veículos do interior de SP". Com autorização, entram o nome e uma frase do cliente.
 
 Para confirmar junto:
-- Canal e horário de suporte. A resposta de "E se der problema, quem me atende?" hoje diz só quem cuida de quê.
+- Canal e horário de suporte. **RESOLVIDO em 13/11/2026:** de segunda a sexta, das 8h às 20h, pelo WhatsApp e pelo telefone. Entrou no FAQ, no rodapé e no `contactPoint` do JSON-LD.
+- Google Meu Negócio: falta o link do perfil, ou a decisão de criar o perfil se ele ainda não existir.
 - Se o manual da marca é mesmo a entrega padrão do serviço de branding.
 - Números reais de um cliente de tráfego ou de redes, com autorização, para trocar o painel de exemplo.
 
