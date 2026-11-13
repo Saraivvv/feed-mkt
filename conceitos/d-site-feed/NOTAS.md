@@ -396,10 +396,10 @@ A seção "Prova real" (`#prova`) deixou de ser anônima. Agora é "Quem já rod
 
 ### Arquivos
 - `index.html`: a seção `#prova`, as regras `.pv-*` no `<style>` (base, 720 e 1024 px, e 5 linhas de `:hover`), o `PROVA_NUMEROS` no topo do script e o bloco do player antes do calendário. A folha do índice troca "Prova real" por "Cliente: Foajupe".
-- Novo: `assets/adriano-44s.m4a` (278 KB, AAC mono, 44,4 s). É o corte entregue, sem mexer.
+- Novo: `assets/adriano-44s.mp3` (304 KB, MP3 mono 56 kbps, 44,4 s; o .m4a não é servido na prévia). É o corte entregue, sem mexer.
 - Novo: `assets/foajupe-logo.webp` (28 KB, 680×173, sem perda). Sai do `logo-horizontal.svg` da identidade da Foajupe, que pesa 388 KB.
 - `seo/llms-txt-proposta.md`: o parágrafo do caso.
-- **Trocou o áudio?** Refaça a onda: `ffmpeg -i assets/adriano-44s.m4a -ac 1 -ar 8000 -f s16le onda.raw`, tire o RMS de 64 fatias iguais, normalize pelo maior, eleve a 0,7 e multiplique por 100 (mínimo 8). Cole no `ONDA` do script e acerte o `max` do `<input type="range">` com a duração.
+- **Trocou o áudio?** Refaça a onda: `ffmpeg -i assets/adriano-44s.mp3 -ac 1 -ar 8000 -f s16le onda.raw`, tire o RMS de 64 fatias iguais, normalize pelo maior, eleve a 0,7 e multiplique por 100 (mínimo 8). Cole no `ONDA` do script e acerte o `max` do `<input type="range">` com a duração.
 
 ### O que ainda está fraco
 - **Sem número, o cartão prova pela voz, não pelo resultado.** É bem mais forte que o texto anônimo, mas o dado que fecha a venda ainda não está lá.
