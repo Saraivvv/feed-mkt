@@ -4,7 +4,7 @@
    - A página põe a classe "f3d" no <html> antes do primeiro aparelho. Se algo falhar aqui, a classe sai
      e volta o aparelho em imagem, que continua na página (é também o que o leitor de tela lê).
    A rolagem e o mouse continuam sendo lidos pelo script da página, que fala com este arquivo pelo objeto
-   window.fone3d (pos, s, ent, pede, refaz) e pelos alvos de inclinação guardados em cada .fone (_mola). */
+   window.fone3d (pos, s, ent, pede, refaz, tranco) e pelos alvos de inclinação guardados em cada .fone (_mola). */
 (async () => {
   'use strict';
   const raiz = document.documentElement, F3 = window.fone3d || (window.fone3d = {});
@@ -368,6 +368,9 @@ t => v.el.addEventListener(t, () => { v.ate = performance.now() + 600; pede(); }
 
   }
   F3.pede = pede;
+  // tranco: um empurrão curto nas molas do aparelho de uma aparição (o aviso que chega no capítulo do Hub); ele recua uns 7° e 2 mm
+  // e assenta sozinho em 0,6 s. O giro é para o lado que mostra mais lateral, nunca para a frente.
+  F3.tranco = el => { const v = vistas.find(v => v.el === el), m = v && v.pronta && v.fones[0].m; if (!m || reduz) return; m.ry.vel += 150; m.rx.vel += 70; m.x.vel -= 60; pede(); };
   addEventListener('scroll', pede, { passive: true });
 
   // cada .fone da página vira uma aparição; os três do leque dividem uma cena só (um passa de verdade na frente do outro)

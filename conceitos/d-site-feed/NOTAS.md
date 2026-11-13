@@ -307,3 +307,51 @@ Os 3 pedidos da seção "Aparelho 3D" estão feitos: `preconnect` da jsDelivr co
 - **A página ficou uns 350 KB mais pesada.** As fotos somam 347 KB contra 93 KB dos desenhos, e a textura do anúncio (`f3d-feed.webp`) foi de 82 para 174 KB, porque agora é fotografia. As três fotos são `loading="lazy"` e estão fora da primeira tela.
 - **No celular o post tem 123 × 154 px.** A capa e a frase grande se leem, o texto miúdo vira textura. E a embalagem perde as pontas ali (envelope e etiqueta). Para ver direito, só no "projeto completo".
 - **O link do projeto sai do site** para o claude.ai até existir a página de portfólio. E a paleta mostra as 4 cores de marca: o Azul caderno, que é só de produto, ficou de fora.
+
+---
+
+## Avisos do Hub na tela de bloqueio (13/11/2026)
+
+Pedido do dono: trazer para o site oficial a tela de bloqueio com os avisos do Feed Hub, que só existia na landing do app (conceito B). Entrou como fecho do capítulo 06 (`#hub`), depois do leque e antes do botão do Google Play. É a prova de que ele não precisa ficar olhando tudo: o Hub avisa o que precisa dele.
+
+### O que foi feito
+- **O mesmo aparelho 3D**, grosso e em três quartos (lateral esquerda à vista, a tela virada para os avisos). É uma aparição nova do tipo `solto` do `fone-3d.js`: nenhuma geometria, luz ou pose nova.
+- **A tela de bloqueio é uma textura nova, `assets/tela-bloqueio.webp`** (1080×2430, 19 KB), montada e fotografada pelo `gera-telas-3d.mjs`, do mesmo jeito que o anúncio e a conversa. Tem só o fundo escuro com o brilho laranja embaixo, o relógio e o dia da semana.
+  - **Sem dia do mês.** A do conceito B dizia "quarta, 28 de outubro" e ficaria velha. Ficou "terça-feira", que não envelhece (o aviso fala em "sexta", então não podia ser sexta).
+  - A hora é a constante `HORA` do gerador (18:32), a mesma da barra de status das telas do Hub.
+- **Os 3 avisos são HTML de verdade**, numa lista com `data-nosnippet` (são dados de demonstração). O texto é o do conceito B, sem mudar uma palavra.
+  - No celular chegam por cima do aparelho, logo abaixo do relógio, como numa tela de bloqueio, só que maiores que ela.
+  - De 720 px para cima saem para o lado da tela, em escada, como os cartões do Google e da proposta. De 1024 px para cima o texto fica à esquerda, do lado da lateral.
+- **Chegam um a um com a rolagem e voltam** quando a pessoa sobe. A conta fica no `quadro()` da página (`oAvisa`): `p` vai de 0 a 1 enquanto a cena sobe de 62% para 22% da altura da tela, e cada aviso tem a sua fatia de `p`. Não tem cena presa: o bloco não acrescenta altura de rolagem além da própria.
+- **O tranco:** quando o primeiro aviso chega, o aparelho leva um empurrão nas molas (`F3.tranco`, 3 linhas no `fone-3d.js`). Medido: gira 6,5° para o lado da lateral, recua 2,2 mm e assenta em 0,6 s. Na reserva em imagem é uma animação de CSS (`.fone.tranco`).
+- **Cada aviso é um link:** Atendimento leva a `#agente`, Instagram a `#redes` e Funil a `#funil`. Tem `:hover` (levanta, ganha contorno laranja e a seta anda), `:active` (afunda) e 98 a 106 px de altura. Aviso que ainda não chegou não recebe clique do mouse. Pelo teclado o aviso focado aparece inteiro, mesmo antes de a rolagem chegar nele.
+- **Movimento reduzido:** os 3 avisos já estão visíveis e o aparelho fica parado na pose. **Sem JavaScript:** igual. **Sem WebGL:** a mesma tela de bloqueio aparece no aparelho em imagem, com os avisos por cima.
+
+### O que foi enxugado no capítulo para caber
+O teto é de 20 telas no celular e a página estava em 19,4. O bloco custa 540 px no celular. Para caber, tudo dentro do próprio capítulo 06:
+- No celular o bloco perde a linha de cima ("Aviso no celular") e a primeira frase do parágrafo. As duas continuam no HTML e aparecem de 720 px para cima.
+- O `#hub` ficou com 8 px a menos em cima e embaixo (64 e 48 px) e o leque 8 px mais perto do título.
+- **O leque ficou 4% menor no celular** (de 52vw para 50vw: 203 para 195 px de largura em 390). Pela proporção, a lateral do aparelho do meio vai de 26,3 para 25,3 px e a dos de lado de 24,7 para 23,7 px. A meta era 22 px. De 720 px para cima o leque é o mesmo.
+- Nenhum outro capítulo foi mexido. O head de SEO e os 4 blocos de JSON-LD estão idênticos (o diff do `index.html` começa dentro do `<style>`).
+
+### Conferência
+- `node conceitos/_comum/medir.mjs d-site-feed`: **`TOTAL 0 achados`**. Celular com 16.844 px, **19,96 telas** (o teto é 20). Tablet 18.418 px e desktop 16.623 px.
+- Por http, com o 3D ligado (`--enable-gpu --use-angle=d3d11`), em 360, 390, 768, 1024, 1280 e 1440: antes do primeiro aviso nenhum aparece, depois 1, depois os 3; rolando para cima somem os 3 e descendo de novo voltam os 3. Nenhum erro de console e nenhum estouro lateral.
+- Clique por script em cada aviso, nas 6 larguras: chega em `#agente`, `#redes` e `#funil`, e o índice marca "04/06 · Agente", "03/06 · Redes" e "05/06 · Funil".
+- Pelo teclado: o Tab sai do leque e cai no primeiro aviso, que aparece; o Enter no segundo leva a `#redes`.
+- Olhado em captura: antes do primeiro aviso, com 1 e com os 3, em 390 e 1440; a segunda passada; 768 e 1024 com os 3; a reserva em imagem (WebGL desligado) e o movimento reduzido; e a tira de quadros do tranco.
+- JSON-LD faz parse (4 blocos). Nenhum travessão, nenhum "Bot", nenhum `href="#"`, toda âncora tem destino. `data-nosnippet` passou de 8 para 9.
+- Os scripts (`cap.mjs` captura e clica, `tranco.mjs` mede o empurrão, `teclado.mjs`, `estatico.mjs`, `resumo.mjs`) e as capturas ficaram em `scratchpad\bloqueio-site\`, fora do repo.
+
+### Arquivos
+- `index.html`: o bloco `.avisa` dentro do `#hub`, as regras dele no `<style>` (junto das do Hub e nas duas faixas de largura) e 4 pontos no script (`oAvisa`, `medir`, `quadro` e o `pegavel`).
+- `assets/fone-3d.js`: só o `F3.tranco`.
+- `gera-telas-3d.mjs`: a tela de bloqueio. **Ele regrava as 7 imagens.** As do anúncio e da conversa saem com diferença de fração de pixel do ambiente, e foram devolvidas ao estado do repositório, como na rodada anterior.
+- Novo: `assets/tela-bloqueio.webp`.
+
+### O que ainda está fraco
+- **No celular, com os 3 avisos, o aparelho quase some.** Sobra o topo com o relógio e um fio da lateral entre os cartões. Mostrar o aparelho inteiro pede uns 100 px a mais, e a página está a 36 px do teto.
+- **Sobrou pouca folga: 19,96 telas.** Qualquer texto novo no celular estoura o teto. O próximo acréscimo vai ter que tirar alguma coisa.
+- O tranco é um empurrão só, com peso, e não a vibração em três tempos do conceito B. Num celular de verdade pode passar despercebido para quem rola rápido.
+- Os links levam para trás na página (o Hub é o capítulo 06 e os avisos apontam para o 03, 04 e 05). Fecha a ideia de ponta a ponta, mas quem clica precisa descer tudo de novo.
+- Como o resto do 3D, foi visto só no Chromium sem janela. Falta abrir num Android e num iPhone.

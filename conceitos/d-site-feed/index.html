@@ -330,7 +330,7 @@ mark{position:relative;z-index:-1;display:inline-block;line-height:.8;white-spac
 .link-seta svg{width:15px;height:15px}
 :focus-visible{outline:3px solid #fff;outline-offset:3px;box-shadow:0 0 0 6px var(--tinta)}
 /* resposta ao dedo: tudo o que é botão afunda */
-.btn:active,.play:active,.pilula:active,.link-seta:active,.doca a:active,.doca button:active,.aba:active,.chip:active,.aviso:active,.barra-topo a:active,.folha a:active,.blog a:active,.rodape-seo a:active,.g-chip:active{scale:.96;transition-duration:.08s}
+.btn:active,.play:active,.pilula:active,.link-seta:active,.doca a:active,.doca button:active,.aba:active,.chip:active,.aviso:active,.notif:active,.barra-topo a:active,.folha a:active,.blog a:active,.rodape-seo a:active,.g-chip:active{scale:.96;transition-duration:.08s}
 .marca:active,.barra-topo>a:active,.rodape-links a:active,.palco-indice a:active{scale:.94;transition-duration:.08s}
 .parada:active .no,.parada.on:active .no{scale:.9;transition-duration:.08s}
 .peca:active,.peca.frente:active{scale:.97;transition-duration:.08s}
@@ -352,6 +352,8 @@ p a:active,address a:active{opacity:.55}
   .agenda:hover{box-shadow:0 46px 70px -24px rgba(100,35,0,.7)}
   .atende:hover{box-shadow:0 40px 60px -26px rgba(40,30,10,.5)}
   .aviso:hover{translate:0 -4px;box-shadow:0 24px 40px -12px rgba(60,20,0,.8),0 0 0 1.5px var(--laranja)}
+  .notif:hover{translate:0 -4px;box-shadow:0 28px 46px -12px rgba(0,0,0,.9),0 0 0 2px var(--laranja)}
+  .notif:hover .n-app svg{translate:4px 0}
   .parada:hover .no{scale:1.14;border-color:var(--tinta)}
   .parada:hover h3{text-decoration:underline;text-decoration-color:var(--laranja);text-decoration-thickness:3px;text-underline-offset:4px}
   .parada:hover .ir{translate:5px 0}
@@ -698,14 +700,14 @@ html:not(.js) .pdf,html:not(.js) .palco-trilho{display:none}
 .prova .texto b{color:var(--tinta)}
 
 /* ---------- 7. Feed Hub ---------- */
-.hub{padding:72px 0 56px;--bx:50%;text-align:center}
+.hub{padding:64px 0 48px;--bx:50%;text-align:center} /* 8 px a menos em cima e embaixo que os outros trechos, e o leque 4% menor: é o que paga o bloco dos avisos no celular */
 .hub .trecho{justify-content:center;text-align:left}
 .assinatura{width:min(62vw,460px);height:auto;margin:24px auto 0;filter:invert(1)}
 .hub h2{margin-top:22px}
 .hub .sub{margin-left:auto;margin-right:auto}
-.leque{position:relative;height:calc(min(52vw,270px) * 2.155 + 20px);margin-top:36px}
+.leque{position:relative;height:calc(min(50vw,270px) * 2.155 + 20px);margin-top:28px}
 .leque::before{content:"";position:absolute;left:50%;top:46%;width:130vmin;height:130vmin;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(255,150,20,.4),rgba(255,120,0,.12) 50%,transparent)}
-.lq{position:absolute;top:0;left:50%;width:min(52vw,270px);perspective:var(--persp)}
+.lq{position:absolute;top:0;left:50%;width:min(50vw,270px);perspective:var(--persp)}
 .lq[data-pos=c]{z-index:3;transform:translateX(-50%)}
 .lq[data-pos=c] .fone{--fy:calc(var(--sy,0) * -12deg)}
 .lq[data-pos=e]{z-index:2;transform:translateX(calc(-50% - 28% - var(--m,1) * 32%)) translateY(42px) scale(.84)}
@@ -724,6 +726,30 @@ html:not(.js) .pdf,html:not(.js) .palco-trilho{display:none}
 .hub .acoes{margin-top:22px}
 .hub .link-seta{color:var(--branco)}
 .mini{margin-top:14px;font:600 14px/1.4 Barlow;opacity:.7}
+/* o fecho do Hub: a tela de bloqueio no mesmo aparelho, e os avisos em HTML saindo dela (--a, de 0 a 1, vem da rolagem; sem JS e sem movimento fica 1) */
+.avisa{margin-top:32px}
+.avisa .kicker{justify-content:center;color:var(--laranja);margin-bottom:12px}
+.avisa .kicker,.avisa .so-largo{display:none} /* no celular o bloco é enxuto (o site tem teto de 20 telas): título, uma linha e os avisos */
+.avisa h3{font:800 28px/1.06 Barlow;letter-spacing:-.03em;text-wrap:balance}
+.avisa-txt p:not(.kicker){max-width:21em;margin:12px auto 0;font:500 16px/1.42 Barlow;color:var(--cinza);text-wrap:pretty}
+.avisa-cena{--fw:min(40vw,170px);position:relative;display:grid;justify-items:center;margin-top:20px}
+.avisa-cena::before{content:"";position:absolute;left:50%;top:50%;width:min(130vw,760px);aspect-ratio:1;translate:-50% -50%;border-radius:50%;background:radial-gradient(closest-side,rgba(255,150,20,.3),rgba(255,120,0,.09) 52%,transparent);pointer-events:none}
+.bf{grid-area:1/1;width:var(--fw);perspective:var(--persp)}
+.bf .fone{--fy:14deg}
+.fone.tranco{animation:tranco .5s linear}
+@keyframes tranco{15%{translate:-5px 0;rotate:-1.6deg}40%{translate:4px 0;rotate:1.2deg}65%{translate:-2px 0;rotate:-.6deg}100%{translate:0;rotate:0deg}}
+.notifs{grid-area:1/1;position:relative;z-index:5;width:100%;max-width:356px;margin:calc(var(--fw) * .6) 0 0;padding:0;list-style:none;display:grid;gap:7px;align-content:start;text-align:left}
+.notif{display:grid;grid-template-columns:40px 1fr;gap:11px;align-items:start;min-height:44px;padding:10px 13px 11px 11px;border-radius:20px;background:#F6F4EE;color:#161514;text-decoration:none;box-shadow:0 22px 40px -12px rgba(0,0,0,.85),0 0 0 1px rgba(255,255,255,.14);opacity:calc(var(--a,1) * 1.6);transform:translate(calc((1 - var(--a,1)) * var(--dx,0px)),calc((1 - var(--a,1)) * var(--dy,-46px))) scale(calc(.72 + var(--a,1) * .28)) rotate(var(--r,0deg));transform-origin:var(--de,50% 0);transition:translate .35s var(--ease),scale .35s var(--ease),box-shadow .35s}
+.notifs li:nth-child(1){--r:-1.1deg}.notifs li:nth-child(2){--r:.8deg}.notifs li:nth-child(3){--r:-.5deg}
+.notifs li.fora .notif{pointer-events:none}
+.notifs .notif:focus-visible{--a:1} /* pelo teclado o aviso aparece inteiro, mesmo antes de a rolagem chegar nele */
+.notif img{width:40px;height:40px;border-radius:11px}
+.n-app{display:flex;justify-content:space-between;align-items:center;gap:8px;font:600 12px/1.2 Barlow;color:rgba(22,21,20,.62)}
+.n-app span:last-child{display:flex;align-items:center;gap:6px;white-space:nowrap}
+.n-app svg{width:13px;height:13px;color:#B45A00;transition:translate .3s var(--ease)}
+.n-tit{display:block;margin-top:2px;font:700 15.5px/1.22 Barlow;letter-spacing:-.005em}
+.n-txt{display:block;margin-top:1px;font:500 14.5px/1.3 Barlow;color:rgba(22,21,20,.84)}
+.avisa+.acoes{margin-top:26px}
 
 /* ---------- 8. sob medida ---------- */
 .chips{display:grid;gap:10px;margin-top:30px}
@@ -865,6 +891,19 @@ html:not(.js) .d-indice{display:none}
   .pdf-tit{font-size:1.6em}
   .lq{width:min(34vw,300px)}
   .leque{height:calc(min(34vw,300px) * 2.155 + 30px)}
+  /* com largura sobrando, os avisos saem para o lado da tela, em escada, e o aparelho fica inteiro à vista */
+  .avisa{margin-top:64px}
+  .avisa+.acoes{margin-top:44px}
+  .avisa .kicker{display:flex}
+  .avisa .so-largo{display:inline}
+  .avisa h3{font-size:40px}
+  .avisa-txt p:not(.kicker){font-size:18px;max-width:26em}
+  .avisa-cena{--fw:230px;width:fit-content;margin:34px auto 0;justify-items:start}
+  .notifs{width:clamp(320px,27vw,380px);max-width:none;margin:calc(var(--fw) * .57) 52px 0 calc(var(--fw) * .68);gap:12px}
+  .notif{padding:12px 14px 13px 12px}
+  .notifs li{position:relative}
+  .notifs li:nth-child(2){left:26px}.notifs li:nth-child(3){left:52px}
+  .notif{--dx:-80px;--dy:-8px;--de:0 50%}
   .chips{grid-template-columns:1fr 1fr}
   .passo{grid-template-columns:130px 1fr;padding:34px 0 38px}
   .num{font-size:150px}
@@ -936,6 +975,12 @@ html:not(.js) .d-indice{display:none}
   .prova .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:72px;align-items:end}
   .prova .convite{margin-top:0;grid-template-columns:1fr;border-top:0;padding:28px;border-radius:26px;background:var(--branco);box-shadow:0 30px 50px -30px rgba(40,30,10,.4)}
   .hub{padding:130px 0 110px}
+  .avisa{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:0 56px;align-items:center;max-width:1100px;margin:110px auto 0;text-align:left}
+  .avisa .kicker{justify-content:flex-start}
+  .avisa h3{font-size:clamp(34px,3.4vw,50px)}
+  .avisa-txt p:not(.kicker){margin-left:0;margin-top:18px;font-size:19px}
+  .avisa-cena{--fw:clamp(230px,19vw,280px);margin:0}
+  .avisa+.acoes{margin-top:70px}
   .lq{width:clamp(250px,22vw,320px)}
   .leque{height:calc(clamp(250px,22vw,320px) * 2.155 + 40px);margin-top:56px}
   .lq[data-pos=e]{transform:translateX(calc(-50% - 50% - var(--m,1) * 45%)) translateY(60px) scale(.86)}
@@ -1330,6 +1375,22 @@ html:not(.js) .d-indice{display:none}
   </div>
   <div class="wrap">
     <p class="leque-leg" aria-live="polite"><small>Início</small>Veja primeiro o que precisa de você.</p>
+    <!-- o fecho: a tela de bloqueio no mesmo aparelho 3D (assets/tela-bloqueio.webp, de gera-telas-3d.mjs) e os avisos em HTML, cada um levando ao trecho dele -->
+    <div class="avisa">
+      <div class="avisa-txt">
+        <p class="kicker" data-rv>Aviso no celular</p>
+        <h3 data-rv>Você não precisa ficar olhando. <mark>O Hub avisa.</mark></h3>
+        <p data-rv><span class="so-largo">Chegou cliente, tem post para aprovar ou um contato esfriou: o aviso chega na hora. </span>Abra um aviso e veja de onde ele vem.</p>
+      </div>
+      <div class="avisa-cena">
+        <div class="bf"><div class="fone" data-pega><div class="tela"><img src="assets/tela-bloqueio.webp" alt="Tela de bloqueio do celular, onde chegam os avisos do Feed Hub" loading="lazy"><span class="reflexo"></span></div><img class="moldura" src="assets/fone.webp" alt=""></div></div>
+        <ul class="notifs" aria-label="Avisos do Feed Hub, com dados de demonstração" data-nosnippet>
+          <li><a class="notif" href="#agente"><img src="assets/icone.webp" alt="" width="40" height="40" loading="lazy"><span><span class="n-app"><span>Feed Hub · Atendimento</span><span>agora<svg aria-hidden="true"><use href="#i-seta"/></svg></span></span><b class="n-tit">Lia Ventora</b><span class="n-txt">O Agente deixou o resumo pronto: 2 cadernos azuis para sexta.</span></span></a></li>
+          <li><a class="notif" href="#redes"><img src="assets/icone.webp" alt="" width="40" height="40" loading="lazy"><span><span class="n-app"><span>Feed Hub · Instagram</span><span>agora<svg aria-hidden="true"><use href="#i-seta"/></svg></span></span><b class="n-tit">1 peça aguarda sua aprovação</b><span class="n-txt">Aprovou, a Feed publica. Leva menos de um minuto.</span></span></a></li>
+          <li><a class="notif" href="#funil"><img src="assets/icone.webp" alt="" width="40" height="40" loading="lazy"><span><span class="n-app"><span>Feed Hub · Funil</span><span>agora<svg aria-hidden="true"><use href="#i-seta"/></svg></span></span><b class="n-tit">Nina Alvore parou de responder</b><span class="n-txt">Hora de chamar de volta. A mensagem já está pronta.</span></span></a></li>
+        </ul>
+      </div>
+    </div>
     <div class="acoes" data-rv>
       <a class="play" href="https://play.google.com/store/apps/details?id=com.agenciafeed.hub" target="_blank" rel="noopener" aria-label="Baixar o Feed Hub no Google Play"><svg aria-hidden="true"><use href="#i-play"/></svg><span><small>Disponível no</small><b>Google Play</b></span></a>
       <a class="link-seta" href="https://play.google.com/store/apps/details?id=com.agenciafeed.hub" target="_blank" rel="noopener">Conheça o app<svg aria-hidden="true"><use href="#i-seta"/></svg></a>
@@ -1740,13 +1801,20 @@ html:not(.js) .d-indice{display:none}
   const N = caps.length, TOM = caps.map(c => +c.classList.contains('cap-laranja'));
   const QUANDO = [-1, .12, .42, .68, 1.12]; // em que ponto do palco (0 a 3) cada mensagem entra
   const oRota = { v: true }, oEst = { v: true }, tiltPalco = { x: 0, y: 0 };
+  // os avisos do Hub: p anda de 0 a 1 enquanto a cena sobe pela tela, e cada aviso entra na sua fatia de p (e sai, na volta)
+  const avisaCena = $('.avisa-cena'), avisos = $$('.notifs li', avisaCena), foneAvisa = $('.fone', avisaCena), oAvisa = { v: true, y: 0, p: -1 };
+  let avisou = false;
+  const tranco = () => { // o aparelho sente o primeiro aviso: no 3D é um empurrão nas molas (F3), na reserva em imagem é a animação do CSS
+    if (F3.on) return F3.tranco(foneAvisa);
+    foneAvisa.classList.remove('tranco'); void foneAvisa.offsetWidth; foneAvisa.classList.add('tranco');
+  };
   let recuo = 20, vh = innerHeight, altura = 1, L = 0, nosY = [], pontos = [[0, 0]], rotaY = 0, rotaH = 1, estY = 0, estH = 1;
   let docaOn = null, barraOn = null, hpAntes = '', rotaP = -1, navAtivo = -2, capAtivo = -1, chaveEst = '', lido = -1;
 
   const donos = new Map();
   const vigia = (el, o) => donos.set(el, [...(donos.get(el) || []), o]);
   [...ms, ...lits, ...sys].forEach(o => vigia(o.el, o));
-  vigia(rota, oRota); vigia(est, oEst);
+  vigia(rota, oRota); vigia(est, oEst); vigia(avisaCena, oAvisa);
   const perto = new IntersectionObserver(es => { es.forEach(e => donos.get(e.target).forEach(o => { o.v = e.isIntersecting; })); pede(); }, { rootMargin: '30% 0px' });
   donos.forEach((_, el) => perto.observe(el));
 
@@ -1759,7 +1827,8 @@ html:not(.js) .d-indice{display:none}
     lits.forEach(o => { o.y = topo(o.el); });
     sys.forEach(o => { const b = o.el.getBoundingClientRect(); o.y = b.top + sy; o.h = b.height; });
     navs.forEach(o => { o.y = topo(o.el); });
-    const R = rota.getBoundingClientRect(), E = est.getBoundingClientRect();
+    oAvisa.y = topo(avisaCena);
+    const R =rota.getBoundingClientRect(), E = est.getBoundingClientRect();
     rotaY = R.top + sy; rotaH = R.height; estY = E.top + sy; estH = E.height;
     const p = paradas.map(a => { const b = $('.no', a).getBoundingClientRect(); return [b.left + b.width / 2 - R.left, b.top + b.height / 2 - R.top]; });
     const larguras = fones.map(f => f.offsetWidth);
@@ -1774,7 +1843,7 @@ html:not(.js) .d-indice{display:none}
     L = fio.getTotalLength(); fio.style.strokeDasharray = L;
     nosY = p.map(q => q[1]);
     pontos = Array.from({ length: 161 }, (_, i) => { const q = fio.getPointAtLength(L * i / 160); return [q.x, q.y]; });
-    rotaP = -1; chaveEst = ''; navAtivo = -2;
+    rotaP = -1; chaveEst = ''; navAtivo = -2; oAvisa.p = -1;
     ms.forEach(o => { o.v = true; }); lits.forEach(o => { o.v = true; }); sys.forEach(o => { o.v = true; });
     pede();
   }
@@ -1794,6 +1863,14 @@ html:not(.js) .d-indice{display:none}
       lits.forEach(o => { if (!o.v) return; const l = +clamp((sy + vh * .86 - o.y) / (vh * .32)).toFixed(2); if (l !== o.l) o.el.style.setProperty('--lit', o.l = l); });
       ms.forEach(o => { if (!o.v) return; const m = +suave(clamp((sy + vh * o.a - o.y) / (vh * (o.a - o.b)))).toFixed(3); if (m !== o.m) o.el.style.setProperty('--m', o.m = m); });
       sys.forEach(o => { if (!o.v) return; const s = +clamp((o.y + o.h / 2 - sy - vh / 2) / vh, -1, 1).toFixed(3); if (s !== o.s) o.el.style.setProperty(o.p, o.s = s); });
+      const pa = oAvisa.v ? +clamp((sy + vh * .62 - oAvisa.y) / (vh * .4)).toFixed(3) : oAvisa.p;
+      if (pa !== oAvisa.p) {
+        oAvisa.p = pa;
+        avisos.forEach((li, k) => { const a = +suave(clamp((pa - .06 - k * .3) / .28)).toFixed(3); li.style.setProperty('--a', a); li.classList.toggle('fora', a < .5); }); // "fora": aviso que ainda não chegou não recebe clique
+        const chegou = pa > .2;
+        if (chegou && !avisou) tranco();
+        avisou = chegou;
+      }
     }
 
     // o índice sabe em que trecho a pessoa está
@@ -1913,6 +1990,7 @@ html:not(.js) .d-indice{display:none}
     pegavel($('.af .fone'), $('.anuncio-cena'));
     pegavel(fone, $('.palco-cena'), o => { tiltPalco.x = o.x; tiltPalco.y = o.y; pede(); });
     lqs.forEach(l => pegavel($('.fone', l), leque, null, () => l.dataset.pos === 'c'));
+    pegavel(foneAvisa, avisaCena);
   }
 
   // ---------- entradas suaves; sem movimento, tudo já está visível ----------

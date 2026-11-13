@@ -1,7 +1,8 @@
 // Gera as texturas de tela do aparelho 3D: node conceitos/d-site-feed/gera-telas-3d.mjs
 // 1) as telas reais do Hub (conceitos/_comum/hub/tela-*.png, 1080x2313) ganham a barra de status e viram webp de 1080x2430;
 // 2) as telas que são HTML na página (o anúncio no Instagram e a conversa do Agente) são fotografadas
-//    do próprio index.html, na proporção da tela do aparelho 3D, e viram webp.
+//    do próprio index.html, na proporção da tela do aparelho 3D, e viram webp;
+// 3) a tela de bloqueio (assets/tela-bloqueio.webp) é montada aqui mesmo e fotografada do mesmo jeito.
 // No fim imprime as medidas que o assets/fone-3d.js usa (FEED_TOPO e CHAT). Mudou o texto de uma
 // dessas telas no HTML? Rode de novo e confira se os números impressos batem com os do fone-3d.js.
 import { createRequire } from 'module';
@@ -40,6 +41,17 @@ for (const [de, para] of [['tela-02-inicio', 'tela-inicio'], ['tela-03-atendimen
   await solta(null, `<div class="barra-st" style="background:rgb(${cor});color:#1b1b1b"><span>${HORA}</span><i></i></div><img src="${pathToFileURL(png).href}" style="position:static;display:block;width:${L}px;height:auto">`);
   await foto(para + '.webp');
 }
+
+// a tela de bloqueio do capítulo do Hub: só o fundo, o relógio e o dia da semana. Os avisos são HTML na página, por cima do aparelho.
+// Sem dia do mês de propósito: data escrita fica velha. A hora é a mesma das telas do Hub.
+await solta(null, `<div style="position:absolute;inset:0;background:radial-gradient(95% 50% at 50% 104%,#FFA51F 0%,#E06400 26%,#4A1C00 56%,#0B0807 84%);color:#fff;text-align:center">
+  <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:9cqw 9cqw;-webkit-mask-image:linear-gradient(transparent 30%,#000);mask-image:linear-gradient(transparent 30%,#000)"></div>
+  <div class="barra-st" style="background:none"><span></span><i></i></div>
+  <p style="position:relative;margin-top:11cqw;font:600 25cqw/1 Barlow;letter-spacing:-.03em">${HORA}</p>
+  <p style="position:relative;margin-top:2.4cqw;font:500 4.9cqw/1.2 Barlow;opacity:.85">terça-feira</p>
+  <i style="position:absolute;left:36%;right:36%;bottom:3.2cqw;height:1.3cqw;border-radius:1cqw;background:rgba(255,255,255,.55)"></i>
+</div>`);
+await foto('tela-bloqueio.webp');
 
 // a conversa, com todas as mensagens abertas
 await solta('.palco-cena .tela');
