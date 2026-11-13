@@ -166,6 +166,8 @@ Não foram feitos agora, de propósito.
 
 Substitui o item 3 da Parte 1. O aparelho em CSS foi reprovado ("parece um papel que responde ao mouse"). Agora ele é um objeto 3D de verdade, em WebGL, e é o mesmo nas 6 aparições: abertura, anúncio, palco e os 3 do leque.
 
+**Atualizado em 13/11/2026:** a pose, a espessura, a câmera, a luz e a sombra mudaram. Está em "Aparelho grosso", no fim desta seção. Onde os dois textos divergirem, vale o de baixo.
+
 ### O que foi feito
 - **Corpo:** 71,5 × 154,6 × 8,6 mm, cantos de 12 mm. A altura passou dos 147 mm do pedido porque as telas do Hub (1080×2313) não trazem barra de status. Sem a barra, a câmera frontal caía em cima do cabeçalho do app. Com a barra a tela fica 4:9 (9:20,25) e o aparelho, 9:19,5.
 - **Aro de titânio escovado** (`MeshPhysicalMaterial`, metal 1, aspereza 0,34, brilho esticado no sentido do comprimento), com 4 botões em relevo, 7 linhas de antena, entrada USB-C, furos de som e parafusos.
@@ -204,6 +206,53 @@ Substitui o item 3 da Parte 1. O aparelho em CSS foi reprovado ("parece um papel
 - **As costas são lisas.** Sem marca e sem textura, de frente para a câmera elas parecem um render limpo. O "escovado" do aro é só o brilho esticado, sem risco fino.
 - **Foi medido só no Chromium sem janela** (placa GTX 1650 Ti e por software). Falta abrir num Android e num iPhone de verdade: tempo de quadro, Safari e perda de contexto não foram vistos em aparelho.
 - **O anúncio e a conversa agora são imagem.** O botão "Enviar mensagem no WhatsApp" continua clicável, mas a área de toque é plana e o aparelho gira. E a página pesa mais: Three.js e telas em 1080.
+
+### Aparelho grosso (13/11/2026)
+
+O dono olhou no desktop e reprovou de novo: "tá fino de papel", apontando o Tráfego e o Funil. A causa não era o modelo, era a pose. Em repouso o aparelho ficava de frente, e de frente todo celular é uma folha: a lateral medida era de 3 a 5 px. Só mudou `assets/fone-3d.js`. O HTML, o CSS e as imagens de tela são os mesmos.
+
+**O que mudou**
+- **Pose de repouso em três quartos, em todas as aparições.** `P = 34°` de giro e `PX = 8°` deitado para trás. O aparelho nunca mais para de frente.
+  - Abertura, Tráfego, Agente (capítulo 1) e Funil: lateral esquerda à vista, a que aponta para o texto. No Tráfego e no Funil o lado direito já é coberto pelo card do Google e pela proposta.
+  - Segundo capítulo do Agente e o aparelho do meio do leque: lateral direita.
+  - Leque: os dois de lado abrem até 46° e mostram a lateral de fora.
+- **A rolagem, o mouse e o dedo giram em volta da pose.** A rolagem mexe 5 a 6° (antes eram 16 a 18°, e ela devolvia o aparelho para a frente). O mouse, no sentido que achataria o aparelho, vale metade.
+- **Palco:** a pose alterna entre os capítulos (+34°, -34°, +34°). Na primeira virada ele passa pela frente e mostra o outro lado. Na última continua dando a volta inteira, e a tela troca com ele exatamente de costas (180°). Há um `console.assert` no arquivo que quebra se essa conta mudar.
+- **Espessura estilizada: `D` foi de 8,6 para 14,5 mm**, como em render de anúncio de celular. O ombro do aro (`B`) foi de 1,1 para 3,4 mm: a lateral é uma faixa reta de 7,7 mm entre dois ombros redondos. Botões, vidro, entrada USB-C e furos de som cresceram junto.
+- **A faixa reta é sombreada como se fosse um pouco abaulada** (`BOJO`). Numa chapa reta a luz virava um chapado de uma cor só. Assim ela vira um risco que corre pela lateral.
+- **Câmera mais perto: `DIST` de 420 para 280 mm.** A borda de cá fica uns 15% mais alta que a de lá. O campo de visão é recalculado, então o tamanho na página é o mesmo.
+- **As luzes acompanham a lateral que está à vista:** a principal de cima, a de lado desenha o risco no ombro da frente e o contraluz quente acende a faixa por trás. O lado contrário fica só com o ambiente, mais escuro.
+- **Sombra de contato:** a pegada do aparelho no chão, logo abaixo da base, girando com ele. A sombra da parede continua e passou a ficar atrás do ponto mais fundo do corpo, para não cortar o aparelho virado.
+
+**Lateral à vista em repouso** (faixa de metal do aro, do fim do plano da frente até a silhueta, na meia altura, em px de CSS; vértices do aro projetados pela câmera da cena). A meta era 22 px em 390 e 40 px em 1440.
+
+| aparição | 390 antes | 390 depois | 1440 antes | 1440 depois |
+|---|---|---|---|---|
+| Abertura | 8,6 | 27,3 | 13,5 | 43,0 |
+| Tráfego (anúncio) | 3,5 | 32,3 | 4,5 | 41,5 |
+| Agente, capítulo 1 | 3,3 | 28,3 | 5,0 | 43,2 |
+| Agente, capítulo 2 | 3,2 | 29,2 | 4,9 | 44,5 |
+| Funil | 3,4 | 27,3 | 5,2 | 41,7 |
+| Leque, o do meio | 2,9 | 26,3 | 4,5 | 41,1 |
+| Leque, os de lado | 7,9 | 24,7 | 11,1 | 36,9 |
+
+- Conferido também pela imagem (pontos de metal claro antes do vidro, na linha do meio): 21 a 26 px em 390 e 33 a 38 px em 1440. Dá menos que a projeção porque o ombro da frente tem um fio escuro de reflexo, e a contagem para nele.
+- No tablet: 35 a 42 px em 768 e 32 a 42 px em 1024.
+- Os de lado do leque ficam em 36,9 px em 1440, abaixo dos 40. Eles são menores (84% do central) e já estão a 46°. Mais que isso a tela deles some.
+
+**Conferência**
+- `node conceitos/_comum/medir.mjs d-site-feed`: **`TOTAL 0 achados`**, celular com 16.340 px (**19,4 telas**, igual a antes: o layout não mudou). Por http, com o 3D ligado, também `TOTAL 0 achados` nas 3 larguras.
+- Tempo de quadro rolando a página inteira no celular (390×844, DPR 2, GTX 1650 Ti): **17,0 ms**, contra 17,2 ms do commit anterior medido no mesmo dia. O arquivo custa 0,54 ms de script por quadro.
+- Continuam valendo: sem WebGL e com a CDN fora do ar volta a imagem; com movimento reduzido o aparelho fica parado na pose e o palco só troca a tela; o dedo inclina e volta; o leque troca pelo teclado; nenhum erro de console.
+- Olhados em captura, antes e depois lado a lado, em 390 e 1440: abertura, Tráfego, os 2 capítulos do Agente, Funil e leque. Mais 768 e 1024, a volta inteira do palco e a troca do leque em tira de quadros.
+- Os scripts (`cap.mjs` mede e captura, `pares.mjs` monta os pares, `checa.mjs`, `rajada.mjs`, `perf.mjs`) e as capturas ficaram em `scratchpad\fone-grosso\`, fora do repo.
+
+**O que ainda está fraco**
+- **A reserva em imagem continua de frente e fina.** Quem cai nela (sem WebGL, CDN fora do ar, `file://`) vê o aparelho antigo. É também o que o `medir.mjs` mede, porque ele abre a página como arquivo.
+- **No meio da primeira virada do palco o aparelho passa pela frente.** É um instante da rolagem, mas quem parar exatamente ali vê a folha de novo.
+- **Em fundo preto a sombra de contato não aparece.** No Tráfego e no Agente o peso vem só da luz no aro. E o metal puxa para o dourado, por causa do contraluz quente.
+- **14,5 mm é quase o dobro de um aparelho real.** Em três quartos lê como render de anúncio. Se um dia o aparelho voltar a ficar de frente ou de perfil, vai parecer um tijolo.
+- Continua medido só no Chromium sem janela. Falta ver num Android e num iPhone de verdade.
 
 ---
 

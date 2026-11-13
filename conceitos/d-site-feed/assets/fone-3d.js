@@ -31,10 +31,12 @@
   const GRAU = Math.PI / 180;
 
   // ---------- medidas do aparelho, em milímetros ----------
-  const W = 71.5, H = 154.6, D = 8.6, R = 12, B = 1.1;       // corpo e o raio da quina do aro
+  // A espessura é estilizada, como em render de anúncio de celular (o aparelho real teria 8,6 mm): com 8,6 e de frente ele lia como folha.
+  const W = 71.5, H = 154.6, D = 14.5, R = 12, B = 3.4;       // corpo e o raio do ombro do aro (a lateral é uma faixa reta de D - 2B com os dois ombros redondos)
   const TW = 66.5, TH = TW * 2.25, TR = 9.6;                 // tela 4:9 (1080 x 2430)
   const ZV = D / 2 + .12;                                    // altura do vidro, na frente e nas costas
-  const DIST = 420;                                          // a câmera fica a 42 cm, como quem segura o aparelho
+  const DIST = 280;                                          // câmera perto (28 cm): a borda de cá fica uns 15% mais alta que a de lá, perspectiva de verdade
+  const P = 34, PX = 8;                                      // a pose de repouso, em graus: três quartos, com a lateral sempre à vista (ver alvos)
   const MX = .45, MY = .13;                                  // folga do canvas em volta do aparelho (igual à do fone-3d.css)
 
   // ---------- geometria ----------
@@ -58,12 +60,15 @@
   const disco = (r, x, y, z, n = 28) => new T.CircleGeometry(r, n).translate(x, y, z);
   const torno = (pts, x, y, z) => new T.LatheGeometry(pts.map(p => new T.Vector2(p[0], p[1])), 40).rotateX(Math.PI / 2).translate(x, y, z);
 
-  // o aro de metal: faixa reta com as duas quinas arredondadas
-  const quinas = [...arco(6, a => [B - B * Math.sin(a), -D / 2 + B - B * Math.cos(a), Math.sin(a), -Math.cos(a)]), ...arco(6, a => [B - B * Math.cos(a), D / 2 - B + B * Math.sin(a), Math.cos(a), Math.sin(a)])];
-  const gAro = casca(contorno(W, H, R, 16), [[3, -D / 2, 0, -1], ...quinas, [3, D / 2, 0, 1]]);
+  // o aro de metal: uma faixa reta entre dois ombros redondos. A faixa é sombreada como se fosse um pouco abaulada (BOJO, em radianos):
+  // numa chapa reta a luz vira um chapado de uma cor só; com a normal abrindo de -BOJO a +BOJO ela vira um risco que corre pela lateral
+  const BOJO = .28, Q = Math.PI / 2;
+  const ombro = s => arco(9, a => { const n = BOJO + a * (1 - BOJO / Q); return [B - B * Math.cos(a), s * (D / 2 - B + B * Math.sin(a)), Math.cos(n), s * Math.sin(n)]; });
+  const quinas = [...ombro(-1).reverse(), ...[-.5, 0, .5].map(t => [0, t * (D / 2 - B), Math.cos(t * BOJO), Math.sin(t * BOJO)]), ...ombro(1)];
+  const gAro = casca(contorno(W, H, R, 16), [[B + 1.5, -D / 2, 0, -1], ...quinas, [B + 1.5, D / 2, 0, 1]]);
   // a lâmina de vidro (frente; a das costas é a mesma, virada)
-  const V = .95, E = .32;
-  const gVidro = junta([casca(contorno(W - 2 * V, H - 2 * V, R - V, 16), [[0, D / 2 - .3, 1, 0], ...arco(4, a => [E - E * Math.cos(a), ZV - E + E * Math.sin(a), Math.cos(a), Math.sin(a)])]), tampa(W - 2 * V - 2 * E, H - 2 * V - 2 * E, R - V - E, ZV)]);
+  const V = 1.75, E = .32;                                   // o vidro começa onde o ombro do aro já está quase na altura dele
+  const gVidro = junta([casca(contorno(W - 2 * V, H - 2 * V, R - V, 16), [[0, D / 2 - .9, 1, 0], ...arco(4, a => [E - E * Math.cos(a), ZV - E + E * Math.sin(a), Math.cos(a), Math.sin(a)])]), tampa(W - 2 * V - 2 * E, H - 2 * V - 2 * E, R - V - E, ZV)]);
   const gTela = tampa(TW, TH, TR, ZV + .02);
   { const p = gTela.attributes.position, u = gTela.attributes.uv; for (let i = 0; i < p.count; i++) u.setXY(i, p.getX(i) / TW + .5, p.getY(i) / TH + .5); }
   const camY = TH / 2 - 3.5;                                 // a câmera frontal, no meio da barra de status
@@ -71,7 +76,7 @@
 
 
   // botões: energia à direita; ação e os dois de volume à esquerda
-  const botao = (lado, y, c) => new RoundedBoxGeometry(1.5, c, 3, 4, .7).translate(lado * (W / 2 + .12), y, 0);
+  const botao = (lado, y, c) => new RoundedBoxGeometry(1.9, c, D * .34, 4, .9).translate(lado * (W / 2 + .15), y, 0);
   const gBotoes = junta([botao(1, 26, 18), botao(-1, 48, 7), botao(-1, 33, 11.5), botao(-1, 18.5, 11.5)]);
   // linhas de antena: tiras de 1 mm que abraçam o aro, um fio para fora
   const tira = quinas.map(([o, z, nr, nz]) => [o - .035, z, nr, nz]), ya = H / 2 - 19, xa = W / 2 - 18;
@@ -80,8 +85,8 @@
     casca([[xa + .5, H / 2, 0, 1], [xa - .5, H / 2, 0, 1]], tira, false), casca([[-xa - .5, -H / 2, 0, -1], [-xa + .5, -H / 2, 0, -1]], tira, false), casca([[xa - .5, -H / 2, 0, -1], [xa + .5, -H / 2, 0, -1]], tira, false)]);
   // embaixo: a entrada USB-C, os furos do som e os dois parafusos
   const chao = g => g.rotateX(Math.PI / 2).translate(0, -H / 2 - .03, 0);
-  const gFuros = junta([chao(new T.ShapeGeometry(cantos(8.6, 2.7, 1.35), 8)), ...[0, 1, 2, 3].flatMap(k => [chao(disco(.62, 11.5 + k * 2.3, 0, 0, 12)), chao(disco(.62, -11.5 - k * 2.3, 0, 0, 12))])]);
-  const gParafusos = junta([chao(disco(.55, 6.6, 0, 0, 12)), chao(disco(.55, -6.6, 0, 0, 12))]);
+  const gFuros = junta([chao(new T.ShapeGeometry(cantos(9.2, 3.3, 1.65), 8)), ...[0, 1, 2, 3].flatMap(k => [chao(disco(.8, 12.4 + k * 2.7, 0, 0, 12)), chao(disco(.8, -12.4 - k * 2.7, 0, 0, 12))])]);
+  const gParafusos = junta([chao(disco(.65, 7.2, 0, 0, 12)), chao(disco(.65, -7.2, 0, 0, 12))]);
   // costas (desenhadas olhando para elas; o grupo é virado depois): a ilha das câmeras no alto, à esquerda
   const IX = -(W / 2 - 5.5 - 17.5), IY = H / 2 - 5.5 - 18, IL = 35, IA = 36, ZI = ZV + 1.5;
   const gIlha = junta([casca(contorno(IL, IA, 10, 12), [[0, ZV - .1, 1, 0], ...arco(5, a => [.7 - .7 * Math.cos(a), ZI - .7 + .7 * Math.sin(a), Math.cos(a), Math.sin(a)])]), tampa(IL - 1.4, IA - 1.4, 9.3, ZI)]).translate(IX, IY, 0);
@@ -126,6 +131,11 @@
   { const x = cs.getContext('2d'); x.shadowColor = '#fff'; x.shadowBlur = 26; x.shadowOffsetY = 600; x.fillStyle = '#fff'; x.fillRect(40, 62 - 600, 48, 132); }
   const tSombra = new T.CanvasTexture(cs);
   const gSombra = new T.PlaneGeometry(W * 128 / 48, H * 256 / 132);
+  // a sombra de contato: a pegada do aparelho no chão, logo abaixo dele (é o que dá peso; gira junto com o corpo)
+  const cc = document.createElement('canvas'); cc.width = 128; cc.height = 64;
+  { const x = cc.getContext('2d'); x.shadowColor = '#fff'; x.shadowBlur = 11; x.shadowOffsetY = 300; x.fillStyle = '#fff'; x.fillRect(26, 23 - 300, 76, 18); }
+  const tChao = new T.CanvasTexture(cc);
+  const gChao = new T.PlaneGeometry(W * 128 / 76, D * 64 / 18).rotateX(-Math.PI / 2);
 
   const imagens = new Map();
   const carrega = src => imagens.get(src) || imagens.set(src, new Promise((ok, erro) => { const im = new Image(); im.onload = () => ok(im); im.onerror = erro; im.src = src; })).get(src);
@@ -147,13 +157,14 @@
     g.rotation.order = 'XYZ';
     cena.add(g);
     const s = new T.Mesh(gSombra, new T.MeshBasicMaterial({ map: tSombra, color: sombra[0], opacity: sombra[1], transparent: true, depthWrite: false, toneMapped: false }));
-    cena.add(s);
+    const ch = new T.Mesh(gChao, new T.MeshBasicMaterial({ map: tChao, color: sombra[0], opacity: Math.min(1, sombra[1] * 1.45), transparent: true, depthWrite: false, toneMapped: false }));
+    cena.add(s, ch);
     // a tela: um canvas 2D do tamanho exato que ela ocupa, para o texto sair nítido, que vira textura
     const tela = el.querySelector('.tela'), tipo = tela.dataset.f3d || 'foto', img = tela.querySelector('img');
     const c = document.createElement('canvas'), x = c.getContext('2d'), tex = new T.CanvasTexture(c);
     tex.colorSpace = T.SRGBColorSpace; tex.anisotropy = anis;
     mTela.emissiveMap = tex;
-    const f = { el, g, s, mTela, tipo, c, x, tex, ims: [], chave: '', m: { rx: mola(), ry: mola(), x: mola(0, 85, 14.5), y: mola(0, 85, 14.5), e: mola(1, 170, 21), lum: mola(1, 60, 13) } };
+    const f = { el, g, s, ch, mTela, tipo, c, x, tex, ims: [], chave: '', m: { rx: mola(), ry: mola(), x: mola(0, 85, 14.5), y: mola(0, 85, 14.5), e: mola(1, 170, 21), lum: mola(1, 60, 13) } };
     f.fontes = [tipo === 'foto' ? img.currentSrc || img.src : new URL(`assets/f3d-${tipo}.webp`, document.baseURI).href, ...(tipo === 'chat' && img ? [img.currentSrc || img.src] : [])];
     return f;
   }
@@ -186,6 +197,10 @@
     return true;
   }
 
+  // o giro do aparelho do palco em cada ponto dos capítulos (0, 1 e 2), em graus
+  const giroPalco = pos => pos <= 1 ? P * Math.cos(pos * Math.PI) : -P + (pos - 1) * (360 + 2 * P);
+  console.assert(giroPalco(0) === P && Math.abs(giroPalco(1) + P) < 1e-9 && giroPalco(1.5) === 180 && giroPalco(2) === 360 + P, 'palco: a pose tem que ser +P, -P, +P e a tela trocar com o aparelho de costas (180°)');
+
   // ---------- molas: tudo o que mexe no aparelho passa por elas (peso e inércia) ----------
   function mola(v = 0, k = 70, c = 12.5) { return { v, a: v, vel: 0, k, c }; }
   function anda(m, dt) {
@@ -214,12 +229,15 @@
     v.ctx = v.canvas.getContext('2d');
     v.cena = new T.Scene(); v.cena.environment = ambiente;
     v.cam = new T.PerspectiveCamera(30, 1, 60, 2000); v.cam.position.z = DIST;
-    const luz = new T.PointLight(0xffffff, 1.3 * 448 * 448, 0, 2); luz.position.set(-150, 250, 340); // perto o bastante para a luz cair ao longo do corpo (448 mm do centro): o canto de cima recebe 1,6 vez a luz do de baixo
-
-    const contra = new T.DirectionalLight(0xffc98a, 1.1); contra.position.set(300, 80, -340);
-    const lado = new T.PointLight(0xfff0dc, .7 * 355 * 355, 0, 2); lado.position.set(300, 120, 150); // de lado e de perto: desenha um risco de luz ao longo do aro, que anda quando o aparelho gira
+    // As três luzes ficam do lado da lateral que está à vista (o x delas é posto no passo): a principal de cima, a de lado desenha o risco
+    // no ombro da frente do aro e o contraluz quente acende a faixa reta por trás. O lado contrário fica só com o ambiente, mais escuro.
+    v.luz = new T.PointLight(0xffffff, 1.3 * 448 * 448, 0, 2); v.luz.position.set(0, 250, 340); // perto o bastante para a luz cair ao longo do corpo: o canto de cima recebe 1,6 vez a luz do de baixo
+    // no leque cada aparelho de lado mostra a lateral de fora, e o segundo contraluz acende a do outro lado. Nas outras cenas ele existe apagado:
+    // com o mesmo número de luzes em todas, os programas compilados na abertura servem para a página inteira (sem ele o leque travava 200 ms ao aparecer)
+    v.contra = [2.1, leque ? 2.1 : 0].map(i => { const c = new T.DirectionalLight(0xffd6a8, i); c.position.set(0, 80, -300); return c; });
+    v.lado = new T.PointLight(0xfff0dc, 1.1 * 355 * 355, 0, 2); v.lado.position.set(0, 120, 150);
     v.corre = new T.PointLight(0xffffff, 1.1, 0, 0); v.corre.position.set(0, 120, 160); // a luz que corre na moldura, levada pelo giro
-    v.cena.add(luz, contra, lado, v.corre);
+    v.cena.add(v.luz, ...v.contra, v.lado, v.corre);
 
     v.fones = v.els.map(e => novoFone(e, v.cena, preto ? [0x000000, .62] : [0x3a1300, .46]));
     v.el.append(v.canvas);
@@ -259,27 +277,33 @@ t => v.el.addEventListener(t, () => { v.ate = performance.now() + 600; pede(); }
   // para onde cada aparelho deve ir agora (ângulos em graus, no sentido do CSS; x e y em mm; e = escala)
   function alvos(v) {
     const t = v.tipo, f0 = v.fones[0], m0 = f0.m, tilt = f => f.el._mola || { tx: 0, ty: 0 };
-    let rx = 0, ry = 0;
+    // Em repouso o aparelho NUNCA fica de frente: de frente todo celular é uma folha. Fica em três quartos (P), deitado um pouco para trás (PX),
+    // e tudo o mais (rolagem, mouse, dedo) gira em volta dessa pose. ry > 0 mostra a lateral esquerda, que é a que aponta para o texto.
+    let rx = PX, ry = P;
     if (v.fixo) { m0.rx.a = v.fixo.rx; m0.ry.a = v.fixo.ry; return; }
-    if (t === 'heroi') { const hp = reduz ? 0 : clamp(scrollY / innerHeight); rx = (1 - hp) * 6; ry = (1 - hp) * -18; }
-    else if (t === 'anuncio') ry = num(v.dono || (v.dono = v.el.closest('.af')), '--sy', 0) * -16;
-    else if (t === 'palco' && !reduz) {
-      const pos = F3.pos || 0, giro = pos <= 1 ? Math.sin(pos * Math.PI) : 0;
-      // de um capítulo para o outro: primeiro mostra a lateral (28°); na última virada dá a volta inteira, e a tela troca enquanto ele está de costas
-      ry = giro * 28 + clamp(pos - 1) * 360 + Math.sin((F3.s || 0) * Math.PI * 2) * 5 * (1 - Math.abs(Math.sin(pos * Math.PI)));
-      rx = (1 - (F3.ent == null ? 1 : F3.ent)) * 14;
+    if (t === 'heroi') { const hp = reduz ? 0 : clamp(scrollY / innerHeight); ry = P - hp * 6; }
+    else if (t === 'anuncio') ry = P + num(v.dono || (v.dono = v.el.closest('.af')), '--sy', 0) * -5;
+    else if (t === 'palco') {
+      const pos = F3.pos || 0, s = F3.s || 0;
+      // de um capítulo para o outro ele troca de lado (+P, -P, +P): na primeira virada passa pela frente; na última dá a volta inteira,
+      // e a tela troca no meio dela (pos 1,5), com ele exatamente de costas
+      ry = giroPalco(pos);
+      if (!reduz) { ry += Math.sin(s * Math.PI * 2) * 4 * (1 - Math.abs(Math.sin(pos * Math.PI))); rx += (1 - (F3.ent == null ? 1 : F3.ent)) * 12; }
     }
+    // o mouse e o dedo giram em volta da pose; para o lado que deixaria o aparelho de frente, só metade
+    const mira = (i, ry) => i.ty * (i.ty * Math.sin(ry * GRAU) < 0 ? .5 : 1);
     if (t === 'leque') {
       const esp = num(v.el, '--m', 1), sy = num(v.el, '--sy', 0), cv = v.canvas.getBoundingClientRect(), cx = cv.left + cv.width / 2, cy = cv.top + cv.height / 2;
       v.fones.forEach(f => {
         const b = f.el.getBoundingClientRect(), p = f.el.parentNode.dataset.pos, c = p === 'c', i = tilt(f);
         f.m.x.a = (b.left + b.width / 2 - cx) / v.ppm; f.m.y.a = (cy - b.top - b.height / 2) / v.ppm; f.m.e.a = b.height / v.fh;
-        f.m.ry.a = c ? sy * -12 + i.ty : (p === 'e' ? 26 : -26) * esp; f.m.rx.a = c ? i.tx : 0; f.m.lum.a = c ? 1 : .74;
+        // o do meio mostra a lateral direita; os de lado abrem até 46° (vistos de fora do eixo da câmera, perdem uns 9°) e mostram a lateral de fora
+        f.m.ry.a = c ? -P + sy * -5 + mira(i, -P) : (p === 'e' ? 1 : -1) * (16 + 30 * esp); f.m.rx.a = PX + (c ? i.tx : 0); f.m.lum.a = c ? 1 : .74;
       });
       return;
     }
     const i = tilt(f0);
-    m0.rx.a = rx + i.tx + (reduz ? 0 : clamp(velRol * .0035, -7, 7)); m0.ry.a = ry + i.ty;
+    m0.rx.a = rx + i.tx + (reduz ? 0 : clamp(velRol * .0035, -7, 7)); m0.ry.a = ry + mira(i, ry);
   }
 
   function passo(v, dt) {
@@ -287,17 +311,21 @@ t => v.el.addEventListener(t, () => { v.ate = performance.now() + 600; pede(); }
     let vivo = performance.now() < v.ate, chave = '';
     v.fones.forEach(f => {
       for (const k in f.m) { if (anda(f.m[k], dt)) vivo = true; }
-      const m = f.m, e = m.e.v, z = DIST * (1 - 1 / e);
-      f.g.position.set(m.x.v / e, m.y.v / e, z);
-      f.g.rotation.set(-m.rx.v * GRAU, m.ry.v * GRAU, 0);
+      const m = f.m, e = m.e.v, z = DIST * (1 - 1 / e), x = m.x.v / e, y = m.y.v / e, ax = m.rx.v * GRAU, ay = m.ry.v * GRAU;
+      f.g.position.set(x, y, z);
+      f.g.rotation.set(-ax, ay, 0);
       f.mTela.emissiveIntensity = m.lum.v;
-      f.s.position.set(m.x.v / e + 5, m.y.v / e - 9, z - 24);
-      f.s.scale.x = .6 + .4 * Math.abs(Math.cos(m.ry.v * GRAU));
+      // a sombra da parede fica atrás do ponto mais fundo do aparelho e cai para o lado contrário ao da luz; a de contato fica no chão, embaixo da base
+      f.s.position.set(x + clamp(Math.sin(ay) * 3, -1, 1) * 9, y - 10, z - Math.max(24, W / 2 * Math.abs(Math.sin(ay)) + D / 2 + 8));
+      f.s.scale.x = .6 + .4 * Math.abs(Math.cos(ay));
+      f.ch.position.set(x, y - H / 2 * Math.cos(ax) - D / 2 * Math.abs(Math.sin(ax)) - 1.5, z + H / 2 * Math.sin(ax));
+      f.ch.rotation.y = ay;
       chave += [m.x.v, m.y.v, e, m.rx.v, m.ry.v, m.lum.v].map(n => n.toFixed(2)).join();
       if (pinta(f, estado(v))) v.suja = true;
     });
     if (chave !== v.chave) { v.chave = chave; v.suja = true; }
-    const ry = v.fones[v.fones.length - 1].m.ry.v * GRAU;
+    const ry = (v.fones.find(f => f.el.parentNode.dataset.pos === 'c') || v.fones[0]).m.ry.v * GRAU, lx = -clamp(Math.sin(ry) * 3, -1, 1); // de que lado está a lateral à vista: -1 esquerda, 1 direita
+    v.luz.position.x = 110 * lx; v.lado.position.x = 300 * lx; v.contra.forEach((c, i) => { c.position.x = (i ? -300 : 300) * lx; });
     v.corre.position.set(Math.sin(ry * 1.5 + .4) * 190, 110 - Math.cos(ry) * 60, 170);
     return vivo;
   }
