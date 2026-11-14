@@ -19,10 +19,13 @@ async function exportAvatar(source, bird, size) {
 }
 
 (async()=>{
-  const sources=process.argv.slice(2);
-  if(sources.length!==4||sources.some(p=>!path.isAbsolute(p)||!fs.existsSync(p)))throw Error('Informe quatro fontes absolutas: sabiá busto, joão busto, sabiá cabeça, joão cabeça.');
-  for(const [i,bird] of ['sabia','joao'].entries()){
-    for(const size of [320,110,40,32])await exportAvatar(sources[i+(size<=40?2:0)],bird,size);
+  let count=0;
+  for(const bird of ['car-a','car-b','car-c']){
+    for(const size of [320,110,40,32]){
+      const source=path.join(__dirname,'fontes',`tuie-${bird}-${size<=40?'cabeca':'busto'}.png`);
+      if(!fs.existsSync(source))throw Error('Matriz ausente: '+source);
+      await exportAvatar(source,bird,size);count++;
+    }
   }
-  console.log('8 avatares WebP exportados em 2x e três cores exatas.');
+  console.log(count+' avatares WebP exportados em 2x e três cores exatas.');
 })().catch(e=>{console.error(e);process.exitCode=1;});

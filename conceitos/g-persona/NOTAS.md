@@ -1,6 +1,17 @@
 # Quadro de personas da Feed
 13/11/2026
 
+## Caricaturas do Tuiê / 14/11/2026
+- O sabiá realista foi vetado pelo dono: "parece mais uma foto que foi vetorizada". O pedido é recuperar o carisma e o desenho do original, com os traços do sabiá-laranjeira.
+- Nova comparação: original + A, B e C. A tem olhar atento e cabeça angular sem topete; B tem cabeça maior e olho mais aberto; C tem busto alongado e topete discreto. A é a recomendação de design pela proximidade do olhar com o original.
+- Quatro candidatos de busto, uma correção de A e três cabeças simplificadas gerados com image_gen. Matrizes selecionadas em fontes/ e prompts completos em PROMPTS.md. Os 12 WebP em assets/tuie-car-{a,b,c}-{320,110,40,32}.webp usam resolução 2x, como o quadro original, com as três tintas exatas.
+- A geração das cabeças B e C foi concluída após a recuperação da ferramenta, que havia retornado HTTP 401, token_revoked. Conforme solicitado, não foi usada edição local alternativa.
+- Removidos os oito arquivos tuie-joao-* e tuie-sabia-*. A grade tem quatro colunas no desktop, duas no tablet e uma no celular. As demais aplicações mantêm o original como referência; #fevi, #tuie e #tadeu continuam funcionando.
+- Gate comum intacto, executado da raiz site-v2 com caminho absoluto: celular 390x844, tablet 768x1024 e desktop 1440x900, todos com 0 achados. Saída final: TOTAL 0 achados.
+- verificar.cjs: 12 combinações de persona e largura (390, 768, 1024, 1440), zero erros. Conferidos hashes diretos e seleção, quatro colunas, imagens e tamanhos 110/40/32, paleta exata dos 12 novos WebP e ausência dos arquivos antigos. Regex Node /[\u2014\u2013]/ sem ocorrências nos arquivos da página e nos documentos.
+- Folha de contato em capturas/tuie-folha-contato.png: original + A, B e C em 320, 110, 40 e 32 px reais. Conferência visual com Playwright headless e leitura da imagem. Sem commit ou publicação.
+- Os registros de espécies e verificações abaixo são históricos, anteriores a esta rodada.
+
 ## Comparação do Tuiê / 14/11/2026
 - O original fica identificado como ave inventada. A aba #tuie compara original, sabiá-laranjeira e joão-de-barro, com 110 e 32 px lado a lado e a mesma abertura de diagnóstico nas três versões. #fevi, #tuie e #tadeu continuam funcionando.
 - O sabiá liga canto e conversa ao peito laranja. O joão-de-barro liga a construção da casa à operação que a Feed monta. Prefiro o sabiá para receber o cliente: a voz é uma ligação mais direta com o chat, e a cabeça preta com anel laranja tem contraste forte em 32 px.

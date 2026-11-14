@@ -29,10 +29,10 @@ no:['Piu, piu! Seu negócio vai voar comigo!','Relaxa, com IA tudo fica fácil.'
 motion:'A ilustração inclina 4 graus e volta, como quem presta atenção. O mesmo desenho é usado em todos os estados.',
 thinking:'Olhando os pontos da conversa',
 site:'Um convite com memória visual.',
-siteText:'O bico, a crista e a asa em seta dão uma silhueta própria. A voz continua adulta e prática; a personagem convida sem virar uma distração.',
+siteText:'No original, o bico, a crista e a asa em seta dão uma silhueta própria. As caricaturas A, B e C aparecem na comparação acima. A voz continua adulta e prática.',
 advantage:'O que ganha: uma personagem fácil de reconhecer.',
 limit:'O que pede cuidado: a ave pode parecer mais lúdica do que alguns clientes esperam. Em 32 px, a textura perde força; a silhueta é quem sustenta o reconhecimento.',
-visual:'Ave fictícia em gravura, com crista angular e asa em seta. Papel, tinta e laranja.',
+visual:'Aplicações do original: ave fictícia em gravura, com crista angular e asa em seta. Papel, tinta e laranja.',
 mail:'Separei o que entendemos até aqui e o ponto que ainda vale conferir com a equipe da Feed.'
 },
 tadeu:{

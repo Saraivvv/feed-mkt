@@ -17,14 +17,22 @@ await page.goto(pathToFileURL(path.join(root,'index.html')).href);
 await page.evaluate(()=>document.fonts.ready);
 for(const [id,name] of Object.entries(personas)){
 await page.locator('[data-persona="'+id+'"]').click();
+await page.locator('#proposta img').evaluateAll(imgs=>Promise.all(imgs.map(img=>img.decode())));
 if(id==='tuie'){
-assert.equal(await page.locator('.bird-card').count(),3);
-assert.equal(await page.locator('.bird-chat').count(),3);
-for(const size of [110,32]){
-const sizes=await page.locator('.bird-sizes img[width="'+size+'"]').evaluateAll(els=>els.map(el=>[el.getBoundingClientRect().width,el.getBoundingClientRect().height]));
-assert.deepEqual(sizes,[[size,size],[size,size],[size,size]]);
+assert.deepEqual(await page.locator('.bird-card').evaluateAll(els=>els.map(el=>el.dataset.bird)),['original','a','b','c']);
+assert.equal(await page.locator('.bird-chat').count(),4);
+for(const size of [110,40,32]){
+const sizes=await page.locator('.bird-card img[width="'+size+'"]').evaluateAll(els=>els.map(el=>[el.getBoundingClientRect().width,el.getBoundingClientRect().height,el.naturalWidth]));
+assert.deepEqual(sizes,Array.from({length:4},()=>[size,size,size*2]));
 }
-if(width===390||width===1440)await page.locator('.bird-comparison').screenshot({path:path.join(out,'tuie-comparacao-'+width+'.png'),animations:'disabled'});
+assert.equal(new Set(await page.locator('.bird-bubble').allTextContents()).size,1);
+assert.equal(await page.locator('.bird-grid').evaluate(el=>getComputedStyle(el).gridTemplateColumns.split(' ').length),width<700?1:width<1200?2:4);
+if(width===390||width===1440){
+await page.evaluate(()=>window.scrollTo(0,0));
+const box=await page.locator('.bird-comparison').boundingBox();
+const full=await page.screenshot({fullPage:true,animations:'disabled'});
+await sharp(full).extract({left:Math.round(box.x),top:Math.round(box.y),width:Math.round(box.width),height:Math.round(box.height)}).toFile(path.join(out,'tuie-comparacao-'+width+'.png'));
+}
 }
 assert.equal(await page.locator('#persona-name').textContent(),name);
 assert.equal(new URL(page.url()).hash,'#'+id);
@@ -69,20 +77,26 @@ assert.equal(await page.locator('[data-choice="tuie"]').getAttribute('aria-press
 assert.equal(await page.locator('#persona-name').textContent(),'Tadeu');
 await page.locator('[data-persona="fevi"]').click();
 assert.equal(await page.locator('[data-option][aria-pressed=true]').count(),0);
+for(const [id,name] of Object.entries(personas)){
+await page.goto(pathToFileURL(path.join(root,'index.html')).href+'#'+id);
+assert.equal(await page.locator('#persona-name').textContent(),name);
+}
 assert.equal(errors.length,0,errors.join('\n'));
 await page.close();
 }
-for(const bird of ['sabia','joao'])for(const size of [320,110,40,32]){
+assert.equal(fs.readdirSync(path.join(root,'assets')).some(f=>/^tuie-(sabia|joao)-/.test(f)),false);
+for(const f of ['index.html','assets/quadro.js'])assert.ok(!/tuie-(sabia|joao)-/.test(fs.readFileSync(path.join(root,f),'utf8')));
+for(const bird of ['car-a','car-b','car-c'])for(const size of [320,110,40,32]){
 const {data,info}=await sharp(path.join(root,'assets',`tuie-${bird}-${size}.webp`)).removeAlpha().raw().toBuffer({resolveWithObject:true});
 assert.equal(info.width,size*2);assert.equal(info.height,size*2);
 const colors=new Set();for(let i=0;i<data.length;i+=info.channels)colors.add([...data.subarray(i,i+3)].join(','));
 assert.deepEqual([...colors].sort(),['255,163,0','21,21,19','236,233,226'].sort());
 }
-const contact=await browser.newPage({viewport:{width:840,height:390},deviceScaleFactor:1});
+const contact=await browser.newPage({viewport:{width:1416,height:700},deviceScaleFactor:1});
 const picture=(id,size)=>`<img width="${size}" height="${size}" src="data:image/webp;base64,${fs.readFileSync(path.join(root,'assets',`${id}-${size}.webp`)).toString('base64')}">`;
-await contact.setContent(`<!doctype html><html lang="pt-BR"><meta charset="utf-8"><style>*{box-sizing:border-box}body{margin:0;padding:28px;background:#ece9e2;color:#151513;font:14px Arial,sans-serif}h1{font-size:27px;margin:0 0 8px}p{margin:0 0 24px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}article{border-top:3px solid #151513;padding-top:14px}h2{font-size:20px;margin:0 0 8px}.avatars{display:flex;align-items:flex-end;gap:32px;margin-top:22px}figure{margin:0}img{display:block}figcaption{margin-top:12px;font-size:12px}footer{border-top:1px solid #151513;margin-top:24px;padding-top:14px;font-size:12px}</style><h1>Tuiê / três presenças</h1><p>110 e 32 px reais. Nas novas aves, a versão pequena usa só a cabeça.</p><div class="grid">${[['tuie','Original','Ave inventada'],['tuie-sabia','Sabiá-laranjeira','Turdus rufiventris'],['tuie-joao','João-de-barro','Furnarius rufus']].map(([id,name,species])=>`<article><h2>${name}</h2><span>${species}</span><div class="avatars">${[110,32].map(n=>`<figure>${picture(id,n)}<figcaption>${n} px</figcaption></figure>`).join('')}</div></article>`).join('')}</div><footer>Feed · Gravura editorial · Papel, tinta e laranja · Comparação em escala 1:1</footer></html>`);
+await contact.setContent(`<!doctype html><html lang="pt-BR"><meta charset="utf-8"><style>*{box-sizing:border-box}body{margin:0;padding:32px;background:#ece9e2;color:#151513;font:14px Arial,sans-serif}h1{font-size:27px;margin:0 0 8px}p{margin:0 0 24px}.grid{display:grid;grid-template-columns:repeat(4,320px);gap:24px}article{border-top:3px solid #151513;padding-top:14px}article:nth-child(2){border-top-color:#FFA300}h2{font-size:20px;margin:0 0 8px}.avatars{display:flex;align-items:flex-end;gap:24px;margin-top:22px}.busto{margin-top:14px}figure{margin:0}img{display:block}figcaption{margin-top:8px;font-size:12px}footer{border-top:1px solid #151513;margin-top:24px;padding-top:14px;font-size:12px}</style><h1>Tuiê / original + três caricaturas</h1><p>320, 110, 40 e 32 px reais. A, B e C usam só a cabeça nas duas menores escalas.</p><div class="grid">${[['tuie','Original','Ave inventada'],['tuie-car-a','A / Atento','Sabiá-laranjeira · sem topete'],['tuie-car-b','B / Curioso','Sabiá-laranjeira · sem topete'],['tuie-car-c','C / Vivaz','Sabiá-laranjeira · topete discreto']].map(([id,name,species])=>`<article><h2>${name}</h2><span>${species}</span><figure class="busto">${picture(id,320)}<figcaption>320 px</figcaption></figure><div class="avatars">${[110,40,32].map(n=>`<figure>${picture(id,n)}<figcaption>${n} px</figcaption></figure>`).join('')}</div></article>`).join('')}</div><footer>Feed · Gravura editorial · Papel, tinta e laranja · Comparação em escala 1:1 · Recomendação: A</footer></html>`);
 await contact.evaluate(()=>Promise.all([...document.images].map(i=>i.decode())));
-await contact.screenshot({path:path.join(out,'tuie-folha-contato.png')});
+await contact.screenshot({path:path.join(out,'tuie-folha-contato.png'),fullPage:true});
 await contact.close();
 const assetBytes=fs.readdirSync(path.join(root,'assets')).reduce((s,f)=>s+fs.statSync(path.join(root,'assets',f)).size,0);
 const total=assetBytes+fs.statSync(path.join(root,'index.html')).size;
