@@ -1,6 +1,15 @@
 # Quadro de personas da Feed
 13/11/2026
 
+## Comparação do Tuiê / 14/11/2026
+- O original fica identificado como ave inventada. A aba #tuie compara original, sabiá-laranjeira e joão-de-barro, com 110 e 32 px lado a lado e a mesma abertura de diagnóstico nas três versões. #fevi, #tuie e #tadeu continuam funcionando.
+- O sabiá liga canto e conversa ao peito laranja. O joão-de-barro liga a construção da casa à operação que a Feed monta. Prefiro o sabiá para receber o cliente: a voz é uma ligação mais direta com o chat, e a cabeça preta com anel laranja tem contraste forte em 32 px.
+- Oito novos WebP em assets/tuie-sabia-{320,110,40,32}.webp e assets/tuie-joao-{320,110,40,32}.webp. Arquivos em 2x, seguindo o quadro existente. Busto em 320/110; cabeça simplificada própria em 40/32. Exportação lossless com somente #FFA300, #151513 e #ece9e2, conferida por leitura dos pixels.
+- As decisões abaixo registram a primeira rodada. A recomendação atual no quadro é Tuiê como sabiá; a perda de textura em 32 px continua sendo um limite do original, não das novas cabeças.
+- Gate comum intacto: TOTAL 0 achados em celular, tablet e desktop. Executado da raiz site-v2 com argumento absoluto para g-persona, pois o medidor já acrescenta conceitos/ ao argumento relativo. Passar conceitos/g-persona duplicaria esse trecho e escreveria fora da pasta autorizada.
+- verificar.cjs: 12 combinações de persona e largura (390, 768, 1024 e 1440), zero erros; comparação, hashes, favorita, dimensões, paleta, imagens, toque e texto conferidos. Regex Node /[\u2014\u2013]/ sem ocorrências nos textos e arquivos da página.
+- Capturas Playwright headless em capturas/. Folha de contato PNG em escala real: capturas/tuie-folha-contato.png. Conferência visual dos bustos, cabeças e comparação em celular e desktop. Nenhum commit ou publicação.
+
 ## Decisões
 - Quadro de escolha, sem integração real. Três propostas alternáveis por hash: #fevi, #tuie e #tadeu. Favorita salva localmente; não há envio.
 - Fevi: Feed + vínculo, símbolo oficial em selo. Tuiê: ave fictícia em gravura. Tadeu: retrato humano assumidamente gráfico e fictício.

@@ -76,6 +76,7 @@ $('#proposta').innerHTML=`
 <div><div class="identity-heading"><p class="eyebrow">${p.number} / ${p.tag}</p><span class="pill">PROPOSTA</span></div><h2 id="persona-name">${p.name}</h2><p class="role">Agente da Feed</p><p class="reason">${p.reason}</p><div class="traits" aria-label="Três traços de personalidade">${p.traits.map(t=>'<span class="trait">'+t+'</span>').join('')}</div></div>
 <figure class="portrait" data-capture="avatar-320">${avatar(id,320)}<figcaption><span>320 px / ${p.pronunciation}</span><span>Assistente de IA</span></figcaption></figure>
 </section>
+${id==='tuie'?$('#tuie-comparacao').innerHTML:''}
 <section class="specimens" aria-label="Escalas do avatar e estado pensando">
 <div><p class="eyebrow">O MESMO ROSTO EM CADA CONTATO</p><div class="scale-set" data-capture="avatares-pequenos">${[32,40,110].map(size=>'<figure>'+avatar(id,size)+'<figcaption>'+size+' px</figcaption></figure>').join('')}</div></div>
 <div class="motion ${motionPaused?'':'is-thinking'}"><div class="motion-box"><div class="thinking-avatar ${id}">${avatar(id,110)}</div><div><p><strong>Pensando</strong></p><small>${p.thinking}</small></div></div><button class="motion-toggle" type="button" aria-pressed="${!motionPaused}">${motionPaused?'Reproduzir movimento':'Pausar movimento'}</button><p class="screen-note">${p.motion} Respeita a preferência de movimento reduzido.</p></div>
