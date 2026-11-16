@@ -8,7 +8,7 @@ Data: 12/11/2026. Planejamento, sem criar páginas em `public/`. Fonte factual: 
 - Primeiras 150 palavras: dizer o que é o serviço, o que a Feed faz e para quem; mencionar a base em Ribeirão Preto e região e o atendimento remoto no Brasil, sem fingir sede nas duas cidades.
 - As páginas locais continuam donas de “agência de IA Ribeirão Preto” e “agência de marketing Bebedouro”. Cada página nova é dona do serviço sem cidade no title; termos locais entram como contexto de atendimento.
 - Metadados próprios, canonical na URL da página, HTML legível sem JavaScript, contato igual à home. Nenhum endereço sem confirmação.
-- CTA principal para `https://agenciafeed.com/diagnostico`; WhatsApp secundário em `https://wa.me/5516993020694`.
+- CTA principal para `https://agenciafeed.com/diagnostico`; WhatsApp secundário em `https://wa.me/5516992948473`.
 - Usar exemplos identificados como demonstração, com `data-nosnippet` num `div`, `span` ou `section` que os envolva. Não apresentar Lume de Papel como cliente.
 - As sugestões de FAQ abaixo têm base nos fatos existentes. A resposta final deve sair desses fatos, ficar visível na página e ser idêntica ao `FAQPage`, inclusive links.
 - Nos quatro documentos HTML, incluir `Organization` com `@id` compartilhado `https://agenciafeed.com/#organization`, contatos e `sameAs` da home; `WebSite` com `@id` `https://agenciafeed.com/#website`; `WebPage` com `@id` da URL canônica mais `#webpage`, `isPartOf` para o WebSite, `about` para a organização, `inLanguage: pt-BR` e `mainEntity` para a entidade específica abaixo. Se houver trilha visível Home > Serviço, usar `BreadcrumbList` correspondente. Não criar trilha só no schema.

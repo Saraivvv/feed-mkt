@@ -147,7 +147,7 @@ function mensagemWhatsApp() {
   const r = calcular();
   return ['Olá, Guilherme. Respondi ao Diagnóstico do Gargalo da Feed.', contato.nome ? `Meu nome é ${contato.nome}.` : '', `Meu gargalo principal: ${tituloResultado(r)}.`, 'Notas de atenção (0 a 10, maior pede mais atenção):', ...Object.entries(REGRAS.areas).map(([id,a]) => `${a.nome}: ${r.notas[id]}/10`), '', 'Minhas respostas:', ...REGRAS.perguntas.map(q => `${q.titulo} ${q.opcoes[respostas[q.id]].texto}`), '', 'Quero conversar sobre meu caso e receber o PDF completo.'].filter(Boolean).join('\n');
 }
-function linkWhatsApp() { return 'https://wa.me/5516993020694?text=' + encodeURIComponent(mensagemWhatsApp()); }
+function linkWhatsApp() { return 'https://wa.me/5516992948473?text=' + encodeURIComponent(mensagemWhatsApp()); }
 
 function montarPayload() {
   const r = calcular();

@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import InteractiveWavesCanvas from "./InteractiveWavesCanvas";
 
-const whatsappPhone = "5516993020694";
+const whatsappPhone = "5516992948473";
 const quizFormName = "feed-quiz";
 
 const initialAnswers = {

@@ -7,7 +7,7 @@
 - **Nome:** Feed Marketing e Comunicação (idêntico ao CNPJ 53.877.987/0001-93; o Google pune nome com palavra-chave enfiada)
 - **Categoria principal:** Agência de marketing
 - **Categorias secundárias:** Consultoria de negócios, Serviço de automação, Agência de publicidade, Designer de sites
-- **Telefone:** (16) 99302-0694
+- **Telefone:** (16) 99294-8473
 - **Site:** https://agenciafeed.com
 - **E-mail:** emailmkt@agenciafeed.com
 - **Endereço:** preencher com o endereço fiscal. Se atendem só remoto/visita, configurar como "empresa de serviço em domicílio" (sem endereço público) e definir área de atendimento
@@ -66,7 +66,7 @@ Recorrência: 1 post por semana, reaproveitando o conteúdo dos carrosséis do I
 
 ## Citações e diretórios (NAP consistente)
 
-Usar sempre: **Feed Marketing e Comunicação | (16) 99302-0694 | https://agenciafeed.com**
+Usar sempre: **Feed Marketing e Comunicação | (16) 99294-8473 | https://agenciafeed.com**
 
 - Google Business Profile (prioridade 1)
 - Bing Places

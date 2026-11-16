@@ -12,7 +12,7 @@ Data: 12/11/2026. Proposta completa para substituir `public/llms.txt` quando a h
 - Nome: Feed Marketing e Comunicação. Também conhecida como Feed e Agência Feed.
 - CNPJ: 53.877.987/0001-93.
 - Site: https://agenciafeed.com/
-- Telefone e WhatsApp: (16) 99302-0694, https://wa.me/5516993020694
+- Telefone e WhatsApp: (16) 99294-8473, https://wa.me/5516992948473
 - E-mail: emailmkt@agenciafeed.com
 - Instagram: https://www.instagram.com/feedmarketingecomunicacao
 - Região: Ribeirão Preto, Bebedouro, Barretos, Jaboticabal e Sertãozinho (SP). Atendimento presencial quando o projeto pede. Atendimento remoto em todo o Brasil.

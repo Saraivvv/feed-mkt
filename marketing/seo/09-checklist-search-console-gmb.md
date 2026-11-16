@@ -43,7 +43,7 @@ Importa direto do Search Console, então é rápido, e vale porque o índice do 
 **Dados que precisam bater exatamente com o site:**
 
 - Nome: Feed Marketing e Comunicação
-- Telefone: (16) 99302-0694
+- Telefone: (16) 99294-8473
 - Site: https://agenciafeed.com
 - E-mail de contato: emailmkt@agenciafeed.com
 

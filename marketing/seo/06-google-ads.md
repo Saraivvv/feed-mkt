@@ -44,7 +44,7 @@ Uma campanha Search, orçamento inicial de R$30 a R$50/dia, região: raio de 150
 **Extensões:**
 - Sitelinks: Diagnóstico gratuito | O que fazemos | Antes e depois | Fale no WhatsApp
 - Frases de destaque: Diagnóstico gratuito, Implementação completa, Atendimento remoto ou presencial, PMEs B2B
-- Chamada: (16) 99302-0694
+- Chamada: (16) 99294-8473
 - Local: vincular ao GMB quando ativo
 
 ## Configurações

@@ -668,7 +668,7 @@ ${cards}
           <a class="btn-diagnostico" href="/#contato">Diagnóstico gratuito</a>
           <a
             class="cta-whats"
-            href="https://wa.me/5516993020694"
+            href="https://wa.me/5516992948473"
             target="_blank"
             rel="noopener"
             >Chamar no WhatsApp</a
@@ -1504,7 +1504,7 @@ ${plannedCards}
           <a class="btn-diagnostico" href="/#contato">Diagnóstico gratuito</a>
           <a
             class="cta-whats"
-            href="https://wa.me/5516993020694"
+            href="https://wa.me/5516992948473"
             target="_blank"
             rel="noopener"
             >Chamar no WhatsApp</a
@@ -2074,7 +2074,7 @@ ${cards}
         </p>
         <div class="cta-actions">
           <a class="button" href="/#contato">Diagnóstico gratuito</a>
-          <a class="text-link" href="https://wa.me/5516993020694" target="_blank" rel="noopener">Chamar no WhatsApp</a>
+          <a class="text-link" href="https://wa.me/5516992948473" target="_blank" rel="noopener">Chamar no WhatsApp</a>
         </div>
       </aside>
 

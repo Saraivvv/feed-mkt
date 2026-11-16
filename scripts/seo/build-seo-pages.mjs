@@ -15,7 +15,7 @@ const ORG = {
   url: `${SITE}/`,
   logo: `${SITE}/brand/feed-logo-simples-branca.png`,
   image: `${SITE}/og-image.png`,
-  telephone: "+5516993020694",
+  telephone: "+5516992948473",
   email: "emailmkt@agenciafeed.com",
   areaServed: [
     { "@type": "City", name: "Ribeirão Preto" },
@@ -868,9 +868,9 @@ ${JSON.stringify(pageSchema(page), null, 2)}
         <address>
           <strong>Feed, marketing e IA</strong><br />
           Interior de São Paulo, região de Ribeirão Preto e Bebedouro. Atendimento remoto em todo o Brasil.<br />
-          <a href="tel:+5516993020694">(16) 99302-0694</a>
+          <a href="tel:+5516992948473">(16) 99294-8473</a>
           <span aria-hidden="true"> · </span>
-          <a href="https://wa.me/5516993020694" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="https://wa.me/5516992948473" target="_blank" rel="noopener">WhatsApp</a>
           <span aria-hidden="true"> · </span>
           <a href="mailto:emailmkt@agenciafeed.com">emailmkt@agenciafeed.com</a>
         </address>

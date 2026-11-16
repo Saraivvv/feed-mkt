@@ -51,7 +51,7 @@ Os termos locais não foram empilhados no title da home nem repetidos em todos o
 | Texto do tráfego | “cria e acompanha as campanhas” | Explicita tráfego pago, Meta Ads e Google Ads, termos confirmados pelo briefing. |
 | Sobre a Feed | Só havia “Onde a Feed atende” com a cobertura regional | O mesmo bloco recebe o título “Sobre a Feed”, nome completo, atividade, público e funções de Guilherme e Roseane. Mantém o parágrafo de cobertura e seus links. |
 | Nome público | Rodapé em caixa alta; schema com nome por extenso | Rodapé usa `Feed Marketing e Comunicação`, igual ao Organization e ao bloco Sobre a Feed. |
-| Telefone e e-mail | Já consistentes | Conferidos: `(16) 99302-0694`, `+5516993020694`, `emailmkt@agenciafeed.com`. Formatos visual e internacional representam o mesmo telefone. |
+| Telefone e e-mail | Já consistentes | Conferidos: `(16) 99294-8473`, `+5516992948473`, `emailmkt@agenciafeed.com`. Formatos visual e internacional representam o mesmo telefone. |
 | Endereço | Só região, sem endereço físico confirmado | Continua só a região. Nenhuma rua, sede, CEP, coordenada ou horário inventado no schema. Pendência do dono. |
 | FAQ de preço | Pergunta de preço e resposta longa | Substituído por “O que é o Feed Hub?”, só com funções e plataforma confirmadas. |
 | FAQ de prazo | Pergunta de prazo | Substituído por “Como a Feed implementa a solução na minha empresa?”, sem prometer duração. |
