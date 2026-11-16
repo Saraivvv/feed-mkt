@@ -53,3 +53,6 @@ Triagem web em 13/11/2026, com grafia exata, acentos e variantes sem acento, com
 Fevi é menos expressivo; Tuiê perde a textura fina em 32 px.
 Tadeu pode sugerir atendimento humano e tem uma associação de nome com publicidade recente de IA. A assinatura é maquete visual, ainda sem validação em clientes de e-mail.
 
+# Escolha aprovada em 16/11/2026
+
+O dono aprovou o Tuiê Atento, caricatura A. A referência definitiva é `assets/tuie-car-a-{32,40,110,320}.webp`: cabeça nos tamanhos de chat e busto nos maiores. A comparação das alternativas fica como histórico. A aplicação segue no diagnóstico em conversa e no atalho do site.

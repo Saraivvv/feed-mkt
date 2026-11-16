@@ -894,7 +894,7 @@ html:not(.js) .caso+.caso{margin-top:18px}
 .rodape small{display:block;color:#6f6f69}
 
 /* ---------- barra de contato fixa, com o índice ---------- */
-.doca{position:fixed;z-index:50;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));display:grid;grid-template-columns:auto auto 1fr;gap:6px;padding:8px;border-radius:999px;background:rgba(12,11,10,.92);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 18px 40px -10px rgba(0,0,0,.65),0 0 0 1px rgba(255,255,255,.12);transform:translateY(calc(100% + 40px));visibility:hidden;transition:transform .5s var(--ease),visibility 0s .5s}
+.doca{position:fixed;z-index:50;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));display:grid;grid-template-columns:minmax(50px,1fr) auto auto;gap:6px;padding:8px;border-radius:999px;background:rgba(12,11,10,.92);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 18px 40px -10px rgba(0,0,0,.65),0 0 0 1px rgba(255,255,255,.12);transform:translateY(calc(100% + 40px));visibility:hidden;transition:transform .5s var(--ease),visibility 0s .5s}
 .doca.on,html:not(.js) .doca{transform:none;visibility:visible;transition:transform .5s var(--ease),visibility 0s}
 .doca a,.doca button{display:flex;align-items:center;justify-content:center;gap:8px;min-height:50px;min-width:50px;padding:0 16px;border:0;border-radius:999px;font:700 15.5px/1 Barlow;text-decoration:none;white-space:nowrap;cursor:pointer;transition:scale .2s var(--ease),translate .25s var(--ease),background .25s}
 .doca svg{width:20px;height:20px;flex:none}
@@ -906,6 +906,10 @@ html:not(.js) .caso+.caso{margin-top:18px}
 .d-wa svg{color:#25D366;width:22px;height:22px}
 .d-wa span{display:none}
 .d-di{background:var(--laranja);color:var(--tinta)}
+.doca .d-di{padding:5px 12px 5px 6px;min-height:54px;text-align:left}
+.d-di img{width:40px;height:40px;flex:none;border-radius:50%}
+.d-di span{display:grid;gap:3px}
+.d-di small{font:600 11px/1.2 Barlow}
 html:not(.js) .d-indice{display:none}
 
 /* ---------- entradas (só com movimento ligado) ---------- */
@@ -1718,7 +1722,7 @@ html:not(.js) .d-indice{display:none}
 <nav class="doca" aria-label="Índice e contato rápido">
   <button class="d-indice" type="button" aria-expanded="false" aria-controls="folha" aria-label="Abrir o índice do site"><svg aria-hidden="true"><use href="#i-menu"/></svg><span>Índice</span></button>
   <a class="d-wa" href="https://wa.me/5516993020694" target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg aria-hidden="true"><use href="#i-wa"/></svg><span>WhatsApp</span></a>
-  <a class="d-di" href="https://agenciafeed.com/diagnostico">Diagnóstico grátis</a>
+  <a class="d-di" href="../f-diagnostico-chat/index.html" aria-label="Fale com o Tuiê, assistente de IA da Feed. Abrir diagnóstico gratuito."><img src="assets/tuie-40.webp" width="40" height="40" alt=""><span>Fale com o Tuiê<small>Assistente de IA da Feed</small></span></a>
 </nav>
 
 <script>

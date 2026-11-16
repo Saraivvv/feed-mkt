@@ -21,7 +21,7 @@ Conceito F, isolado e sem publicação. Abra `index.html`: funciona sem servidor
 2. Criar `api/diagnostico-chat.js` sob `/api/`. Claude ou GPT, chamado pelo servidor, escreve as reações e a leitura final a partir das respostas, das notas calculadas e dos textos de serviço aprovados. Credenciais em variáveis do servidor, nunca no front. Limitar sessões, chamadas por etapa, tamanho de entrada, tokens, tempo e orçamento. Validar saída e ter fallback com estas falas. Respostas são dados, não instruções; proibir estatísticas, clientes e comparações não fornecidos. Não mandar contatos ao modelo para gerar a leitura.
 3. Texto livre: o modelo pode sugerir uma alternativa conhecida, mas a pessoa confirma antes de pontuar. Se não houver correspondência, manter “sem evidência”. Não deixar o modelo atribuir pontos ou inventar critérios. Troca de resposta invalida os passos posteriores também no servidor. Usar eventos reais de processamento na espera, sem impor nove segundos em produção nem expor raciocínio interno do modelo.
 4. Em `api/lead.js`, aceitar e validar contato, IDs/opções, `contextoConversa`, consentimento, honeypot e versão. Normalizar telefone, limitar textos e recalcular resultados. Um único POST consentido, com chave de idempotência, timestamp do servidor e proteção contra abuso. Não postar o envelope inteiro nem chamar duas APIs de lead.
-5. Persistir primeiro no Hub via `enviarAoHub`, com respostas, notas, contato, finalidade e consentimento, e conferir o espelho no Twenty. Não usar nome como empresa. Atualizar o e-mail interno com contexto e `replyTo` validado, escapando entradas. Falha de SMTP não pode impedir a gravação do lead.
+5. Persistir primeiro no CRM do Hub via `enviarAoHub`, com respostas, notas, contato, finalidade e consentimento. A integração direta do site com o Twenty sai da implementação, conforme a decisão do dono. Não usar nome como empresa. Atualizar o e-mail interno com contexto e `replyTo` validado, escapando entradas. Falha de SMTP não pode impedir a gravação do lead.
 6. Reaproveitar a entrega do PDF de `api/diagnostico.js` num helper comum; evitar CRM e notificações duplicadas. Configurar `SITE_URL=https://agenciafeed.com`. Para prometer um relatório personalizado, gerar um PDF com respostas e notas; enquanto isso, manter o aviso de material complementar. Retornar `{leadSaved, pdfSent}` e confirmar somente o que aconteceu. Em falha, preservar campos e permitir repetir só a etapa pendente. Equipe de segunda a sexta, das 8h às 20h, sem prometer prazo de análise.
 
 ## Conferência e limites
@@ -50,7 +50,7 @@ node C:/Users/guisa/AppData/Local/Temp/claude/f3a6600d269a104b/dff5d254-2c2d-40a
 
 ## Arquivos usados pelo index.html
 
-Diretamente: `assets/chat.css`, `assets/regras.js`, `assets/chat.js` e `assets/logo-preta.svg`.
+Diretamente: `assets/chat.css`, `assets/regras.js`, `assets/chat.js`, `assets/logo-preta.svg` e os avatares `assets/tuie-32.webp`, `assets/tuie-40.webp` e `assets/tuie-110.webp`.
 Pelo CSS: `assets/barlow-500.woff2`, `assets/barlow-600.woff2`, `assets/barlow-700.woff2` e `assets/barlow-800.woff2`.
 Pela ação de download criada pelo JavaScript: `assets/diagnostico-do-gargalo.pdf`.
 Os links de privacidade e WhatsApp são externos e só abrem por ação da pessoa.
@@ -63,3 +63,10 @@ O teclado foi simulado; a interação com o teclado real de iOS e Android ainda 
 O roteiro não interpreta livremente o texto; não há IA real. Os pesos continuam sendo hipótese editorial, não uma escala validada.
 
 Nenhuma alteração no site no ar, commit, push ou deploy. Arquivos entregues somente nesta pasta; scripts auxiliares no scratchpad autorizado.
+
+## Tuiê Atento aprovado (16/11/2026)
+
+- A versão A de `g-persona` é a identidade aplicada: cabeça de 40 px no cabeçalho, cabeça de 32 px nos autores e busto na abertura. Os WebP aprovados foram copiados sem alteração para esta pasta, com nomes estáveis `tuie-*`.
+- O nome substitui “Config AI”; o cabeçalho e a apresentação identificam o Tuiê como assistente de IA da Feed. Paleta, Barlow, regras, notas, ritmo, formulário e avisos de simulação foram preservados. Esta etapa aplica a persona, sem ligar envio ou IA de servidor.
+- Check reproduzível: `node conceitos/f-diagnostico-chat/verificar-tuie.cjs`. Passou em 390×844, 768×1024, 1024×768 e 1440×980, com toque nos três primeiros e movimento reduzido. Percorre oito perguntas e abre o contato em cada aparelho; verifica cabeçalho, autores, imagens, estouro horizontal e envio alcançável com alvo de 44 px. Zero erros de página e zero chamadas HTTP.
+- Capturas e relatório: `capturas/tuie/`. Abertura no celular e pergunta no desktop revisadas visualmente. O teclado real continua fora desta verificação.

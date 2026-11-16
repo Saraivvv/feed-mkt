@@ -408,3 +408,10 @@ A seção "Prova real" (`#prova`) deixou de ser anônima. Agora é "Quem já rod
 - **Dois itens da lista não levam a lugar nenhum** (Site e Material para TV). Ficam como linha sem seta. Quando existir a página do site da Foajupe como caso, entra o link.
 - O áudio foi tocado só no Chromium sem janela. Falta ouvir num iPhone (Safari) e num Android de verdade.
 - A foto do Adriano ou da loja daria rosto ao depoimento. Hoje a pessoa é só um nome e uma voz.
+## Tuiê Atento no contato (16/11/2026)
+
+A caricatura A aprovada foi aplicada ao atalho da barra fixa: cabeça do Tuiê, “Fale com o Tuiê” e “Assistente de IA da Feed”. O convite abre `../f-diagnostico-chat/index.html`, a conversa local com a mesma identidade. O índice e o WhatsApp continuam alcançáveis; a grade da barra deixa o índice encolher no celular para acomodar o convite sem estouro.
+
+Conferência integrada: `node conceitos/verificar-tuie.cjs`, em 390×844, 768×1024, 1024×768 e 1440×980. Verifica que o WebP é o Atento aprovado, o convite permanece dentro da tela e descoberto, o índice navega e o clique abre o diagnóstico, que aceita uma resposta e avança.
+
+Esta alteração é local, anterior ao deploy. Na publicação, o atalho deve usar a rota definitiva do novo diagnóstico. O chat ainda é um conceito roteirizado, sem envio de contatos; a integração com o CRM do Hub e a migração das entradas antigas que usam `_crm.js` continuam necessárias antes da publicação do novo fluxo.

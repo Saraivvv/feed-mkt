@@ -1,4 +1,4 @@
-const NOME_ASSISTENTE = 'Config AI';
+const NOME_ASSISTENTE = 'Tuiê';
 // Tempos em ms: pausas variadas, leitura de duas linhas em ~1,5 a 2 s e movimentos sem salto.
 const RITMO = {
   pensando: [1200, 1800], caractere: 14, virgula: 90, ponto: 160,
@@ -20,8 +20,8 @@ const movimento = (el, quadros, ms) => el.animate(quadros, { duration: duracao(m
 document.documentElement.style.setProperty('--entrada', `${RITMO.entrada}ms`);
 document.documentElement.style.setProperty('--selecao', `${RITMO.selecao}ms`);
 document.querySelectorAll('[data-nome]').forEach(el => el.textContent = NOME_ASSISTENTE);
-const autor = () => `<div class="autor"><span class="marca" aria-hidden="true">↗</span>${escapar(NOME_ASSISTENTE)}</div>`;
-const INTRO = `Oi, sou o ${NOME_ASSISTENTE}, o assistente da Feed. Vamos olhar onde sua operação trava? São 8 respostas, em cerca de 3 minutos. Você recebe o diagnóstico antes de eu pedir qualquer contato.`;
+const autor = () => `<div class="autor"><img class="marca" src="assets/tuie-32.webp" width="32" height="32" alt="">${escapar(NOME_ASSISTENTE)}</div>`;
+const INTRO = `Oi, sou o ${NOME_ASSISTENTE}, o assistente de IA da Feed. Vamos olhar onde sua operação trava? São 8 respostas, em cerca de 3 minutos. Você recebe o diagnóstico antes de eu pedir qualquer contato.`;
 
 // As falas deste conceito são roteirizadas. Nenhuma chamada de IA acontece aqui.
 const ROTULOS = [
@@ -374,7 +374,7 @@ window.visualViewport?.addEventListener('scroll',ajustarViewport);
 ajustarViewport();
 async function iniciar(){
   travar(true);
-  $('#mensagens').innerHTML='<div class="inicio"><span class="emblema" aria-hidden="true">↗</span><p class="eyebrow">Uma conversa sobre sua empresa</p><h1>Vamos encontrar o que<br>está segurando sua operação.</h1><p>Atendimento, vendas e o que ainda depende de você.</p></div>';
+  $('#mensagens').innerHTML='<div class="inicio"><img class="emblema" src="assets/tuie-110.webp" width="80" height="80" alt="Tuiê, o sabiá atento da Feed"><p class="eyebrow">Diagnóstico do Gargalo</p><h1>Vamos encontrar o que<br>está segurando sua operação.</h1><p>Atendimento, vendas e o que ainda depende de você.</p></div>';
   await falar(INTRO);travar(false);
   $('#painel').innerHTML='<div class="convite"><p>Sem cadastro para ver seu resultado.</p><button class="primario" id="comecar">Vamos conversar ↗</button></div>';
 }
