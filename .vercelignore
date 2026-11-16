@@ -1,0 +1,27 @@
+# Publicar somente o site e o código necessário ao build e às funções.
+*
+!package.json
+!package-lock.json
+!vercel.json
+!api
+!api/**
+api/*.check.mjs
+!scripts
+scripts/*
+!scripts/build-site.mjs
+!scripts/seo
+!scripts/seo/**
+!public
+!public/**
+!conceitos
+conceitos/*
+!conceitos/d-site-feed
+conceitos/d-site-feed/*
+!conceitos/d-site-feed/index.html
+!conceitos/d-site-feed/assets
+!conceitos/d-site-feed/assets/**
+!conceitos/f-diagnostico-chat
+conceitos/f-diagnostico-chat/*
+!conceitos/f-diagnostico-chat/index.html
+!conceitos/f-diagnostico-chat/assets
+!conceitos/f-diagnostico-chat/assets/**

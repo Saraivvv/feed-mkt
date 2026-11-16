@@ -11,6 +11,9 @@ const types = {
   ".ico": "image/x-icon",
   ".jpg": "image/jpeg",
   ".js": "text/javascript; charset=utf-8",
+  ".woff2": "font/woff2",
+  ".pdf": "application/pdf",
+  ".mp3": "audio/mpeg",
   ".png": "image/png",
   ".svg": "image/svg+xml",
   ".webp": "image/webp",
@@ -20,15 +23,15 @@ const server = http.createServer((request, response) => {
   const pathname = decodeURIComponent(request.url.split("?")[0]);
   let filePath = path.join(root, pathname === "/" ? "index.html" : pathname);
 
-  if (!filePath.startsWith(root)) {
+  if (filePath !== root && !filePath.startsWith(root + path.sep)) {
     response.writeHead(403);
     response.end("Forbidden");
     return;
   }
 
   fs.stat(filePath, (statError, stat) => {
-    if (statError || !stat.isFile()) {
-      filePath = path.join(root, "index.html");
+    if (!statError && stat.isDirectory()) {
+      filePath = path.join(filePath, "index.html");
     }
 
     fs.readFile(filePath, (readError, data) => {

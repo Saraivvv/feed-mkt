@@ -1,5 +1,7 @@
 import nodemailer from "nodemailer";
-import { enviarParaCRM } from "./_crm.js";
+import { enviarAoHub } from "./_hub.js";
+import { lerDiagnostico } from "./_diagnostico.js";
+import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 
@@ -12,7 +14,7 @@ import path from "node:path";
 
 // Base do site pro link de download no e-mail. Ajuste a env SITE_URL na Vercel
 // (ex.: https://feed.com.br). Sem env, cai no fallback abaixo.
-const SITE_URL = (process.env.SITE_URL || "https://feedmkt.vercel.app").replace(/\/$/, "");
+const SITE_URL = (process.env.SITE_URL || "https://agenciafeed.com").replace(/\/$/, "");
 
 const PDF_FILENAME = "diagnostico-do-gargalo.pdf";
 const PDF_URL = `${SITE_URL}/${PDF_FILENAME}`;
@@ -45,6 +47,9 @@ const rateByEmail = new Map();
 // do limiter. Cross-instancia so com Vercel KV / Upstash Redis, fica pra depois.
 const inflightByIp = new Map();
 const inflightByEmail = new Map();
+// ponytail: idempotência limitada à instância e à janela de 10 min; ampliar com
+// chave durável no Hub se ele passar a expor esse contrato entre instâncias.
+const pedidos = new Map();
 
 function reserve(map, key) {
   if (!key) return;
@@ -91,12 +96,23 @@ export default async function handler(req, res) {
   }
 
   const data = req.body || {};
+  if (typeof data !== 'object' || Array.isArray(data) || JSON.stringify(data).length > 20000 ||
+      (data.telefone !== undefined && typeof data.telefone !== 'string')) {
+    res.status(400).json({ error: 'Pedido inválido ou muito longo.' }); return;
+  }
   const nome = (data.nome || "").toString().trim();
   const email = (data.email || "").toString().trim().toLowerCase();
-  const pageUrl = (data.pageUrl || "").toString().trim();
-  const submittedAt = (data.submittedAt || "").toString().trim();
+  // A URL de origem não precisa de query/hash (que podem conter dados pessoais).
+  const pageUrl = (data.pageUrl || "").toString().trim().split(/[?#]/)[0].slice(0, 500);
+  const submittedAt = new Date().toISOString();
   const userAgent = (data.userAgent || "").toString().trim();
   const honeypot = (data.site || "").toString().trim();
+  const telefone = typeof data.telefone === 'string' ? data.telefone.replace(/\D/g, '') : '';
+  let contexto = {};
+  if (data.diagnostico !== undefined) {
+    try { contexto = lerDiagnostico(data.diagnostico, data.consentimento); }
+    catch (e) { res.status(400).json({ error: e.message }); return; }
+  }
 
   // ---- Anti-abuso a) HONEYPOT: campo oculto que humano nunca preenche. ----
   // Se veio preenchido, e bot. Fingimos sucesso e nao enviamos nada. Aqui o
@@ -111,18 +127,32 @@ export default async function handler(req, res) {
   // defesa real no servidor. Quem defende de verdade e honeypot + rate-limit.
 
   // Validacao: nome nao vazio e e-mail valido.
-  if (!nome) {
+  if (!nome || nome.length > 100) {
     res.status(400).json({ error: "Nome obrigatório" });
     return;
   }
-  if (!EMAIL_RE.test(email)) {
+  if (email.length > 254 || !EMAIL_RE.test(email)) {
     res.status(400).json({ error: "E-mail inválido" });
     return;
+  }
+  if (userAgent.length > 1000 || (telefone && !/^(?:55)?[1-9]{2}9?\d{8}$/.test(telefone))) {
+    res.status(400).json({ error: 'Confira os dados de contato.' }); return;
+  }
+  const chave = data.idempotencyKey;
+  if ((data.diagnostico && chave === undefined) || (chave !== undefined && (typeof chave !== 'string' || !/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(chave)))) {
+    res.status(400).json({ error: 'Pedido inválido. Recarregue e tente novamente.' }); return;
+  }
+  for (const [id, pedido] of pedidos) if (Date.now() - pedido.em > RATE_WINDOW_MS) pedidos.delete(id);
+  const fingerprint = createHash('sha256').update(JSON.stringify({ nome, email, telefone, diagnostico: data.diagnostico, consentimento: data.consentimento })).digest('hex');
+  const anterior = chave && pedidos.get(chave);
+  if (anterior) {
+    if (anterior.fingerprint !== fingerprint) { res.status(409).json({ error: 'O pedido mudou. Envie novamente com uma nova identificação.' }); return; }
+    res.status(200).json(anterior.resposta); return;
   }
 
   // ---- Anti-abuso c) RATE LIMIT best-effort, FASE 1: peek read-only. ----
   // So contem flood. O slot so e gravado (rateCommit) depois do envio principal
-  // dar certo, la embaixo. Assim um SMTP que falha nao bloqueia o retry do lead.
+  // ser aceito pelo Hub. Falha do Hub libera retry; SMTP é uma entrega separada.
   const ip = getClientIp(req);
   if (
     !ratePeek(rateByIp, inflightByIp, ip, MAX_PER_IP) ||
@@ -136,13 +166,6 @@ export default async function handler(req, res) {
   const pass = process.env.SMTP_APP_PASSWORD;
   const internalTo = process.env.LEAD_TO || user;
 
-  // SMTP nao configurado retorna ANTES de reservar, entao nao mexe em inflight/slot.
-  if (!user || !pass) {
-    console.error("SMTP_USER ou SMTP_APP_PASSWORD nao configurados.");
-    res.status(500).json({ error: "E-mail nao configurado" });
-    return;
-  }
-
   // RESERVA SINCRONA: logo depois do peek passar e sem NENHUM await no meio, pra a
   // request concorrente com o mesmo e-mail/IP ver a reserva no peek dela e tomar 429.
   // O finally la embaixo garante que a reserva e liberada em TODO caminho de saida.
@@ -150,6 +173,19 @@ export default async function handler(req, res) {
   reserve(inflightByEmail, email);
 
   try {
+  // O contato precisa existir no Hub antes de qualquer tentativa de SMTP.
+  const noHub = await enviarAoHub({ nome, email, telefone,
+    origem: data.diagnostico ? 'Diagnóstico com o Tuiê' : 'Diagnóstico do Gargalo',
+    respostas: { ...contexto, Origem: data.diagnostico ? 'Site Feed' : 'LinkedIn GARGALO', 'Página': pageUrl },
+  });
+  if (!noHub) { res.status(503).json({ error: 'Não foi possível salvar seu pedido. Tente novamente.', leadSaved: false, pdfSent: false }); return; }
+  const resposta = { ok: true, leadSaved: true, pdfSent: false };
+  if (chave) {
+    if (pedidos.size >= 500) pedidos.delete(pedidos.keys().next().value);
+    pedidos.set(chave, { em: Date.now(), fingerprint, resposta });
+  }
+  rateCommit(rateByIp, ip); rateCommit(rateByEmail, email);
+  if (!user || !pass) { res.status(200).json(resposta); return; }
   // SMTP configuravel por env. Padrao = Hostinger (e-mail do dominio agenciafeed.com
   // fica na Hostinger). Pra trocar de provedor (Titan, Gmail, etc.) e so setar
   // SMTP_HOST/SMTP_PORT na Vercel, sem mexer no codigo. secure=true na 465 (SSL).
@@ -265,7 +301,7 @@ export default async function handler(req, res) {
     `Navegador: ${userAgent || "-"}`,
   ].join("\n");
 
-  // 1) Entrega pro LEAD primeiro. Se ISSO falhar, ai sim 500 (o lead nao recebeu).
+  // O PDF é uma entrega separada: falhar aqui não perde nem duplica o contato.
   try {
     await transporter.sendMail({
       from: `"Feed" <${user}>`,
@@ -276,21 +312,12 @@ export default async function handler(req, res) {
       html: leadHtml,
       attachments: pdfAttachment ? [pdfAttachment] : [],
     });
+    resposta.pdfSent = true;
   } catch (err) {
-    console.error("Falha ao enviar Diagnóstico pro lead:", err);
-    // NAO grava o slot: o lead nao recebeu, entao o retry tem que ser permitido.
-    // O finally libera a reserva, logo o retry com o mesmo e-mail continua passando.
-    res.status(500).json({ error: "Falha ao enviar" });
-    return;
+    console.error("Falha ao enviar PDF do diagnóstico; contato salvo no Hub.", err.code, err.responseCode);
   }
 
-  // RATE LIMIT FASE 2: envio principal deu certo, agora sim consome o slot. O slot
-  // commitado passa a segurar a cota pela janela; a reserva e liberada no finally.
-  rateCommit(rateByIp, ip);
-  rateCommit(rateByEmail, email);
-
-  // 2) Notificacao interna DESACOPLADA: se falhar, so loga. Nao derruba a resposta
-  //    nem faz o cliente reenviar (o que geraria PDF duplicado pro lead).
+  // Cópia interna desacoplada: falha não faz a pessoa reenviar o pedido.
   try {
     const internal = await Promise.allSettled([
       transporter.sendMail({
@@ -303,25 +330,13 @@ export default async function handler(req, res) {
       }),
     ]);
     if (internal[0].status === "rejected") {
-      console.error("Falha na notificacao interna do lead (lead ja recebeu):", internal[0].reason);
+      console.error("Falha na cópia interna do diagnóstico; contato salvo no Hub.");
     }
   } catch (err) {
-    console.error("Erro inesperado na notificacao interna:", err);
+    console.error("Erro na cópia interna do diagnóstico; contato salvo no Hub.");
   }
 
-  // 3) CRM (Twenty) DESACOPLADO: best-effort. Falhou, so loga; o lead ja
-  //    recebeu o material e a Feed ja foi notificada por e-mail.
-  await enviarParaCRM({
-    nome,
-    email,
-    origem: "Diagnóstico do Gargalo",
-    detalhes: {
-      Origem: "LinkedIn GARGALO",
-      "Página": pageUrl,
-    },
-  });
-
-  res.status(200).json({ ok: true });
+  res.status(200).json(resposta);
   } finally {
     // Libera a reserva in-flight em QUALQUER saida (sucesso, falha de SMTP ou throw
     // inesperado). Nunca vaza reserva que travaria o e-mail pra sempre. Em sucesso o

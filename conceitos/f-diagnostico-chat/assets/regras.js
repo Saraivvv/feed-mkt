@@ -1,6 +1,6 @@
 // ponytail: escala editorial sem validação empírica; recalibrar com diagnósticos reais antes de tratar as faixas como evidência de desempenho.
 // Todas as regras da leitura ficam aqui. Pontos medem atenção, não desempenho.
-const REGRAS = {
+export const REGRAS = {
   versao: 'gargalo-conceito-1',
   escala: 10, pontosMaximos: 3,
   // Empate: primeiro a autonomia, depois o atendimento e o restante da jornada.
@@ -82,7 +82,7 @@ const REGRAS = {
 };
 
 
-function calcular(respostas) {
+export function calcular(respostas) {
   const somas = Object.fromEntries(Object.keys(REGRAS.areas).map(id => [id, { pontos: 0, peso: 0 }]));
   for (const q of REGRAS.perguntas) {
     const opcao = q.opcoes[respostas[q.id]];

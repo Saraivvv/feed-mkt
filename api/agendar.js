@@ -1,15 +1,13 @@
 import nodemailer from "nodemailer";
-import { enviarParaCRM } from "./_crm.js";
+import { enviarAoHub } from "./_hub.js";
 
 // Peca 3 do funil: pedido de conversa (agendamento) vindo de /agendar.
 // Quem chega aqui ja leu o "Diagnostico do Gargalo" e quer marcar uma reuniao
 // de 30 min. Recebe { nome, email, empresa, cargo, motivo } e faz:
 //   a) manda pra FEED um e-mail de LEAD QUENTE com todos os campos;
-//   b) se houver N8N_WEBHOOK_URL, faz POST JSON do payload pra ela cadastrar no
-//      CRM (best-effort: falhou ou nao existe -> so console.error, nao derruba).
+//   b) salva primeiro no CRM do Hub; o e-mail é apenas a cópia interna.
 // Roda como Serverless Function na Vercel (mesmo dominio, sem CORS).
 // Mesmo padrao/envs de api/diagnostico.js: SMTP_USER, SMTP_APP_PASSWORD, LEAD_TO.
-// Env nova (opcional): N8N_WEBHOOK_URL.
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -93,8 +91,8 @@ export default async function handler(req, res) {
   const empresa = (data.empresa || "").toString().trim();
   const cargo = (data.cargo || "").toString().trim();
   const motivo = (data.motivo || "").toString().trim();
-  const pageUrl = (data.pageUrl || "").toString().trim();
-  const submittedAt = (data.submittedAt || "").toString().trim();
+  const pageUrl = (data.pageUrl || "").toString().trim().split(/[?#]/)[0].slice(0, 500);
+  const submittedAt = new Date().toISOString();
   const userAgent = (data.userAgent || "").toString().trim();
   const honeypot = (data.site || "").toString().trim();
 
@@ -111,22 +109,25 @@ export default async function handler(req, res) {
   // defesa real no servidor. Quem defende de verdade e honeypot + rate-limit.
 
   // Validacao: nome, e-mail valido e empresa obrigatorios.
-  if (!nome) {
+  if (!nome || nome.length > 100) {
     res.status(400).json({ error: "Nome obrigatório" });
     return;
   }
-  if (!EMAIL_RE.test(email)) {
+  if (email.length > 254 || !EMAIL_RE.test(email)) {
     res.status(400).json({ error: "E-mail inválido" });
     return;
   }
-  if (!empresa) {
+  if (!empresa || empresa.length > 200) {
     res.status(400).json({ error: "Empresa obrigatória" });
     return;
+  }
+  if (cargo.length > 200 || motivo.length > 3000 || pageUrl.length > 2048 || userAgent.length > 1000) {
+    res.status(400).json({ error: 'Dados muito longos. Resuma seu pedido.' }); return;
   }
 
   // ---- Anti-abuso c) RATE LIMIT best-effort, FASE 1: peek read-only. ----
   // So contem flood. O slot so e gravado (rateCommit) depois do envio principal
-  // dar certo, la embaixo. Assim um SMTP que falha nao bloqueia o retry do lead.
+  // ser aceito pelo Hub. Falha do Hub libera retry; SMTP é somente cópia.
   const ip = getClientIp(req);
   if (
     !ratePeek(rateByIp, inflightByIp, ip, MAX_PER_IP) ||
@@ -140,13 +141,6 @@ export default async function handler(req, res) {
   const pass = process.env.SMTP_APP_PASSWORD;
   const internalTo = process.env.LEAD_TO || user;
 
-  // SMTP nao configurado retorna ANTES de reservar, entao nao mexe em inflight/slot.
-  if (!user || !pass) {
-    console.error("SMTP_USER ou SMTP_APP_PASSWORD nao configurados.");
-    res.status(500).json({ error: "E-mail nao configurado" });
-    return;
-  }
-
   // RESERVA SINCRONA: logo depois do peek passar e sem NENHUM await no meio, pra a
   // request concorrente com o mesmo e-mail/IP ver a reserva no peek dela e tomar 429.
   // O finally la embaixo garante que a reserva e liberada em TODO caminho de saida.
@@ -154,6 +148,14 @@ export default async function handler(req, res) {
   reserve(inflightByEmail, email);
 
   try {
+  const noHub = await enviarAoHub({ nome, email, origem: 'Pedido de conversa', respostas: {
+    Empresa: empresa, Cargo: cargo,
+    ...Object.fromEntries((motivo.match(/[\s\S]{1,1000}/g) || ['']).map((trecho, i) => [`O que trava (${i + 1})`, trecho])),
+    Origem: ORIGEM, 'Página': pageUrl,
+  } });
+  if (!noHub) { res.status(503).json({ error: 'Não foi possível salvar seu pedido. Tente novamente.', leadSaved: false }); return; }
+  rateCommit(rateByIp, ip); rateCommit(rateByEmail, email);
+  if (!user || !pass) { res.status(200).json({ ok: true, leadSaved: true, emailSent: false }); return; }
   // SMTP configuravel por env. Padrao = Hostinger (e-mail do dominio agenciafeed.com
   // fica na Hostinger). Pra trocar de provedor (Titan, Gmail, etc.) e so setar
   // SMTP_HOST/SMTP_PORT na Vercel, sem mexer no codigo. secure=true na 465 (SSL).
@@ -218,7 +220,8 @@ export default async function handler(req, res) {
     `Navegador: ${userAgent || "-"}`,
   ].join("\n");
 
-  // 1) E-mail pra FEED e o caminho GARANTIDO. Se falhar, ai sim 500.
+  // Cópia interna. O pedido já foi salvo no CRM do Hub.
+  let emailSent = false;
   try {
     await transporter.sendMail({
       from: `"Site Feed" <${user}>`,
@@ -228,77 +231,17 @@ export default async function handler(req, res) {
       text: internalText,
       html: internalHtml,
     });
+    emailSent = true;
   } catch (err) {
-    console.error("Falha ao enviar lead de agendamento pra Feed:", err);
-    // NAO grava o slot: a Feed nao recebeu o lead, entao o retry tem que passar.
-    // O finally libera a reserva, logo o retry com o mesmo e-mail continua passando.
-    res.status(500).json({ error: "Falha ao enviar" });
-    return;
+    console.error("Falha na cópia do pedido de conversa; contato salvo no Hub.");
   }
-
-  // RATE LIMIT FASE 2: envio principal deu certo, agora sim consome o slot. O slot
-  // commitado passa a segurar a cota pela janela; a reserva e liberada no finally.
-  rateCommit(rateByIp, ip);
-  rateCommit(rateByEmail, email);
-
-  // 2) CRM (Twenty) DESACOPLADO: best-effort. Lead quente entra direto como
-  //    oportunidade em MEETING (pediu conversa). Falhou, so loga.
-  await enviarParaCRM({
-    nome,
-    email,
-    empresa,
-    cargo,
-    origem: "Pedido de conversa",
-    stage: "MEETING",
-    detalhes: {
-      "O que trava": motivo,
-      Origem: ORIGEM,
-      "Página": pageUrl,
-    },
-  });
-
-  // 3) Webhook do n8n DESACOPLADO: best-effort. Se a env nao existe OU o
-  //    POST falha, so loga. O e-mail pra Feed ja garantiu o lead.
-  await enviarWebhookN8N({
-    nome,
-    email,
-    empresa,
-    cargo,
-    motivo,
-    origem: ORIGEM,
-    data: submittedAt || new Date().toISOString(),
-    pageUrl,
-    userAgent,
-  });
-
-  res.status(200).json({ ok: true });
+  res.status(200).json({ ok: true, leadSaved: true, emailSent });
   } finally {
     // Libera a reserva in-flight em QUALQUER saida (sucesso, falha de SMTP ou throw
     // inesperado). Nunca vaza reserva que travaria o e-mail pra sempre. Em sucesso o
     // slot commitado ja segura a cota; em falha nada foi gravado e o retry passa.
     release(inflightByIp, ip);
     release(inflightByEmail, email);
-  }
-}
-
-async function enviarWebhookN8N(payload) {
-  const url = process.env.N8N_WEBHOOK_URL;
-  if (!url) return; // env nao configurada: segue sem CRM, e o esperado por enquanto.
-
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), 8000);
-  try {
-    const resp = await fetch(url, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-      signal: controller.signal,
-    });
-    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-  } catch (e) {
-    console.error("Falha ao enviar webhook do n8n (lead ja notificado por e-mail):", e.message);
-  } finally {
-    clearTimeout(timer);
   }
 }
 

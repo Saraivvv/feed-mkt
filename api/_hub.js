@@ -4,8 +4,7 @@
 // (SMTP 553) e levou junto o CRM, que rodava depois dele dentro do mesmo try.
 //
 // Envs (Vercel): HUB_SITE_TAG (a tag do site no Hub, formato fh_<24 hex>) e,
-// opcionalmente, HUB_LEAD_URL. Sem a tag vira no-op declarado — mesmo padrao
-// do _crm.js.
+// opcionalmente, HUB_LEAD_URL. Sem a tag devolve false.
 //
 // Nunca lanca: devolve true se o Hub aceitou, false se nao. Quem chama decide
 // o que fazer com isso.
@@ -13,9 +12,18 @@
 const TIMEOUT_MS = 8000;
 
 export async function enviarAoHub({ nome, email, telefone, origem, respostas }) {
-  const tag = process.env.HUB_SITE_TAG;
-  if (!tag) return false;
+  const tag = (process.env.HUB_SITE_TAG || '').trim();
+  if (!/^fh_[0-9a-f]{24}$/i.test(tag)) return false;
   const url = process.env.HUB_LEAD_URL || "https://hub.agenciafeed.com/api/lead";
+  const corpo = JSON.stringify({
+    t: tag, nome: nome || '', email: email || '', telefone: telefone || '',
+    origem: origem || 'Formulário do site', respostas: respostas || {},
+  });
+  if (corpo.length > 8192 || Object.entries(respostas || {}).length > 20 ||
+      Object.entries(respostas || {}).some(([chave, valor]) => chave.length > 200 || typeof valor !== 'string' || valor.length > 1000)) {
+    console.error('Lead excede os limites de captura do Hub.');
+    return false;
+  }
 
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
@@ -23,14 +31,7 @@ export async function enviarAoHub({ nome, email, telefone, origem, respostas }) 
     const resp = await fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        t: tag,
-        nome: nome || "",
-        email: email || "",
-        telefone: telefone || "",
-        origem: origem || "Formulário do site",
-        respostas: respostas || {},
-      }),
+      body: corpo,
       signal: controller.signal,
     });
     if (!resp.ok) throw new Error(`Hub /api/lead -> HTTP ${resp.status}`);

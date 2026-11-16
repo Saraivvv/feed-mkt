@@ -7,10 +7,7 @@ import { enviarAoHub } from "./_hub.js";
 // C-200 — A ORDEM AQUI E O CONSERTO. Antes o e-mail vinha primeiro e o resto
 // morava DEPOIS dele, dentro do mesmo try: quando o SMTP recusou o remetente
 // (553, 08/09/2026), o throw pulou o CRM e o lead nao chegou em lugar nenhum.
-// Agora o Hub — que grava, mostra na home e espelha no Twenty do workspace —
-// vem primeiro, e o e-mail e uma copia que so consegue derrubar a si mesma.
-// O CRM direto saiu daqui de proposito: quem fala com o Twenty da Feed passa a
-// ser o Hub, num lugar so (agendar.js e diagnostico.js seguem no _crm.js).
+// O CRM do Hub recebe primeiro; o e-mail é uma cópia independente.
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     res.status(405).json({ error: "Method not allowed" });
@@ -23,8 +20,8 @@ export default async function handler(req, res) {
   const stage = (data.stage || "").toString().trim();
   const digitalPresence = (data.digitalPresence || "").toString().trim();
   const priority = (data.priority || "").toString().trim();
-  const pageUrl = (data.pageUrl || "").toString().trim();
-  const submittedAt = (data.submittedAt || "").toString().trim();
+  const pageUrl = (data.pageUrl || "").toString().trim().split(/[?#]/)[0].slice(0, 500);
+  const submittedAt = new Date().toISOString();
   const userAgent = (data.userAgent || "").toString().trim();
 
   // Validacao minima pra evitar disparo vazio / spam de bot.
@@ -32,14 +29,21 @@ export default async function handler(req, res) {
     res.status(400).json({ error: "Dados insuficientes" });
     return;
   }
+  if (company.length > 100 || [market, stage, digitalPresence, priority, userAgent].some(v => v.length > 1000)) {
+    res.status(400).json({ error: 'Dados muito longos. Resuma seu pedido.' }); return;
+  }
+  const noHub = await enviarAoHub({ nome: company, origem: 'Quiz do site', respostas: {
+    'Mercado / segmento': market, 'Momento atual': stage, 'Presença digital': digitalPresence,
+    Prioridade: priority, 'Página': pageUrl,
+  } });
+  if (!noHub) { res.status(503).json({ error: 'Não foi possível salvar seu pedido. Tente novamente.', leadSaved: false }); return; }
 
   const user = process.env.SMTP_USER;
   const pass = process.env.SMTP_APP_PASSWORD;
   const to = process.env.LEAD_TO || user;
 
   if (!user || !pass) {
-    console.error("SMTP_USER ou SMTP_APP_PASSWORD nao configurados.");
-    res.status(500).json({ error: "E-mail nao configurado" });
+    res.status(200).json({ ok: true, leadSaved: true, emailSent: false });
     return;
   }
 
@@ -59,7 +63,7 @@ export default async function handler(req, res) {
   });
 
   const row = (label, value) =>
-    `<tr><td style="padding:6px 12px;font-weight:600;vertical-align:top;white-space:nowrap">${label}</td><td style="padding:6px 12px;white-space:pre-line">${value || "—"}</td></tr>`;
+    `<tr><td style="padding:6px 12px;font-weight:600;vertical-align:top;white-space:nowrap">${label}</td><td style="padding:6px 12px;white-space:pre-line">${escapeHtml(value) || "—"}</td></tr>`;
 
   const html = `
     <div style="font-family:system-ui,Segoe UI,Arial,sans-serif;color:#111;max-width:640px">
@@ -73,8 +77,8 @@ export default async function handler(req, res) {
         ${row("Prioridade", priority)}
       </table>
       <p style="margin:16px 0 0;font-size:12px;color:#888">
-        Página: ${pageUrl || "—"}<br/>
-        Navegador: ${userAgent || "—"}
+        Página: ${escapeHtml(pageUrl) || "—"}<br/>
+        Navegador: ${escapeHtml(userAgent) || "—"}
       </p>
     </div>
   `;
@@ -94,19 +98,6 @@ export default async function handler(req, res) {
     `Navegador: ${userAgent || "—"}`,
   ].join("\n");
 
-  // (1) Hub primeiro: destino duravel do lead.
-  const noHub = await enviarAoHub({
-    nome: company,
-    origem: "Quiz do site",
-    respostas: {
-      "Mercado / segmento": market,
-      "Momento atual": stage,
-      "Presença digital": digitalPresence,
-      Prioridade: priority,
-      "Página": pageUrl,
-    },
-  });
-
   // (2) E-mail como copia. Falha dele nao pode mais custar o lead.
   let noEmail = false;
   try {
@@ -120,14 +111,10 @@ export default async function handler(req, res) {
     });
     noEmail = true;
   } catch (err) {
-    console.error("Falha ao enviar lead por e-mail:", err);
+    console.error("Falha na cópia do quiz; contato salvo no Hub.");
   }
 
-  // 500 so quando NENHUM destino ficou com o lead — ai o visitante precisa
-  // saber que nao chegou.
-  if (!noHub && !noEmail) {
-    res.status(500).json({ error: "Falha ao enviar" });
-    return;
-  }
-  res.status(200).json({ ok: true });
+  res.status(200).json({ ok: true, leadSaved: true, emailSent: noEmail });
 }
+
+function escapeHtml(value) { return value.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }

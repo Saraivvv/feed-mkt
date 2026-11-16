@@ -414,4 +414,8 @@ A caricatura A aprovada foi aplicada ao atalho da barra fixa: cabeça do Tuiê, 
 
 Conferência integrada: `node conceitos/verificar-tuie.cjs`, em 390×844, 768×1024, 1024×768 e 1440×980. Verifica que o WebP é o Atento aprovado, o convite permanece dentro da tela e descoberto, o índice navega e o clique abre o diagnóstico, que aceita uma resposta e avança.
 
-Esta alteração é local, anterior ao deploy. Na publicação, o atalho deve usar a rota definitiva do novo diagnóstico. O chat ainda é um conceito roteirizado, sem envio de contatos; a integração com o CRM do Hub e a migração das entradas antigas que usam `_crm.js` continuam necessárias antes da publicação do novo fluxo.
+Publicado em 16/11/2026 em `https://agenciafeed.com/`, com a conversa em `/diagnostico/`. O build estático em `scripts/build-site.mjs` preserva blog e páginas existentes. Os handlers de diagnóstico, agendamento e quiz usam o CRM nativo do Hub; `_crm.js` e o webhook antigo de CRM foram removidos do site. O servidor valida as respostas e recalcula as notas.
+
+Verificações: build concluído; 15 cenários de backend; chat completo e passagem site → diagnóstico nos quatro aparelhos. Teste real confirmado na tabela `lead`, etapa “Lead novo”, com oito respostas, notas e consentimento. Os três contatos isolados usados no teste foram removidos por workspace, UUID, nome e e-mail, com ausência confirmada depois.
+
+Limite já existente do receptor do Hub: `/api/lead` responde 200 também para recusas silenciosas; por isso a prova de publicação incluiu a consulta ao registro no CRM. A idempotência do site é por instância, com janela de dez minutos. A Hostinger recusou a credencial SMTP configurada (`EAUTH 535`); a página confirma separadamente o recebimento no Hub e o envio de e-mail, mantendo o PDF para download. A senha atual foi solicitada pelo campo seguro para corrigir o envio na Vercel.

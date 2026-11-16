@@ -9,6 +9,7 @@ const { chromium } = require(require.resolve('playwright', {
 const site = path.join(__dirname, 'd-site-feed');
 const chat = path.join(__dirname, 'f-diagnostico-chat');
 const saida = path.join(site, 'capturas/tuie');
+const base = process.env.SITE_URL || 'http://127.0.0.1:5194/';
 const aparelhos = [[390, 844, true], [768, 1024, true], [1024, 768, true], [1440, 980, false]];
 
 (async () => {
@@ -23,7 +24,7 @@ const aparelhos = [[390, 844, true], [768, 1024, true], [1024, 768, true], [1440
       const page = await browser.newPage({ viewport: { width, height }, hasTouch: toque, isMobile: toque, reducedMotion: 'reduce' });
       const erros = [];
       page.on('pageerror', e => erros.push(e.message));
-      await page.goto(pathToFileURL(path.join(site, 'index.html')).href);
+      await page.goto(base);
       await page.evaluate(() => document.fonts.ready);
       const convite = page.locator('.d-di');
       assert.match(await convite.textContent(), /Fale com o Tuiê/);
@@ -54,7 +55,7 @@ const aparelhos = [[390, 844, true], [768, 1024, true], [1024, 768, true], [1440
         await page.waitForFunction(() => !document.documentElement.classList.contains('folha-aberta'));
       }
       await convite.click();
-      await page.waitForURL(pathToFileURL(path.join(chat, 'index.html')).href);
+      await page.waitForURL(new URL('/diagnostico/', base).href);
       await page.locator('#comecar').click();
       await page.locator('[data-opcao="0"]').waitFor();
       assert.equal(await page.locator('[data-nome]').innerText(), 'Tuiê');

@@ -1,3 +1,5 @@
+import { REGRAS, calcular } from './regras.js';
+
 const NOME_ASSISTENTE = 'Tuiê';
 // Tempos em ms: pausas variadas, leitura de duas linhas em ~1,5 a 2 s e movimentos sem salto.
 const RITMO = {
@@ -13,6 +15,7 @@ const esperar = ms => new Promise(r => setTimeout(r, ms));
 const respostas = {}, detalhes = {};
 let etapa = -1, selecionadas = [], livre = false, ocupado = false, ultimoPayload = null;
 let contato = { nome: '', email: '', whatsapp: '', consentimento: false };
+let enviandoContato = false;
 let completarFala = null, seguindo = true, toqueY = 0, manterReserva = false;
 const duracao = ms => reduzido.matches ? RITMO.reduzido : ms;
 const variar = ([min, max]) => min + Math.random() * (max - min);
@@ -23,7 +26,7 @@ document.querySelectorAll('[data-nome]').forEach(el => el.textContent = NOME_ASS
 const autor = () => `<div class="autor"><img class="marca" src="assets/tuie-32.webp" width="32" height="32" alt="">${escapar(NOME_ASSISTENTE)}</div>`;
 const INTRO = `Oi, sou o ${NOME_ASSISTENTE}, o assistente de IA da Feed. Vamos olhar onde sua operação trava? São 8 respostas, em cerca de 3 minutos. Você recebe o diagnóstico antes de eu pedir qualquer contato.`;
 
-// As falas deste conceito são roteirizadas. Nenhuma chamada de IA acontece aqui.
+// Conversa guiada; a nota usa as mesmas regras recalculadas no servidor.
 const ROTULOS = [
   [['Em poucos minutos','Inclusive à noite e no fim de semana.'],['Rápido, no expediente','Fora do horário, só no próximo dia.'],['Demora algumas horas','Fora do horário, fica para depois.'],['Às vezes, nem respondemos','Pode passar um dia ou ficar sem resposta.']],
   [['Indicações e clientes','Quem já conhece traz novos contatos.'],['Instagram, Google ou site','A pessoa encontra a empresa por ali.'],['Anúncios','A divulgação paga traz contatos.'],['Outro cenário','Pouca procura ou origem desconhecida.']],
@@ -110,7 +113,7 @@ async function falar(texto, onde = $('#mensagens'), autoScroll = true) {
 function reacao(i) {
   const anterior = REGRAS.perguntas[i];
   const d = detalhes[anterior.id];
-  if (d.livre) return `Você trouxe um cenário próprio: “${d.texto}”. Vou manter esse contexto, mas ele não recebe pontos automáticos neste conceito. ${i === 7 ? 'Agora vou juntar o que foi possível pontuar.' : 'Vamos olhar a próxima parte da rotina.'}`;
+  if (d.livre) return `Você trouxe um cenário próprio: “${d.texto}”. Vou guardar esse contexto para a equipe olhar com você. ${i === 7 ? 'Agora vou juntar o que foi possível pontuar.' : 'Vamos olhar a próxima parte da rotina.'}`;
   if (i === 1 && d.indices.length > 1) return 'Os contatos chegam por mais de um caminho. Vou manter essas origens juntas e olhar o que acontece depois.';
   return REACOES[i][respostas[anterior.id]];
 }
@@ -119,7 +122,7 @@ function opcaoHTML(i, titulo, descricao) {
 }
 async function mostrarPergunta() {
   const q = REGRAS.perguntas[etapa];
-  $('#painel').innerHTML = `<form id="resposta" class="cartao" aria-labelledby="pergunta"><div class="cartao-corpo"><div class="cartao-topo"><span class="etiqueta">${q.area}</span><span>${String(etapa+1).padStart(2,'0')} / 08</span></div><h2 id="pergunta">${q.titulo}</h2><div class="opcoes" role="group" aria-label="${escapar(q.ajuda)}">${ROTULOS[etapa].map((o,i) => opcaoHTML(i,...o)).join('')}</div><div id="subopcoes"></div><div class="escolha-base"><button type="button" class="texto-botao" id="outra" aria-expanded="false" aria-controls="resposta-livre">Outra coisa</button><span class="atalhos">${etapa===1?'Pode marcar mais de uma origem.':'1 a 4 · setas · Enter'}</span></div><div id="resposta-livre" hidden><label for="texto">Conte do seu jeito</label><textarea id="texto" rows="2" maxlength="1200" placeholder="O que acontece na sua empresa?"></textarea><p class="aviso">Guardado como contexto, sem pontuação automática.</p></div></div><div class="cartao-rodape"><span id="contador" role="status">Escolha para continuar</span><button type="submit" id="enviar" class="enviar" disabled>Enviar <span aria-hidden="true">↑</span></button></div></form>`;
+  $('#painel').innerHTML = `<form id="resposta" class="cartao" aria-labelledby="pergunta"><div class="cartao-corpo"><div class="cartao-topo"><span class="etiqueta">${q.area}</span><span>${String(etapa+1).padStart(2,'0')} / 08</span></div><h2 id="pergunta">${q.titulo}</h2><div class="opcoes" role="group" aria-label="${escapar(q.ajuda)}">${ROTULOS[etapa].map((o,i) => opcaoHTML(i,...o)).join('')}</div><div id="subopcoes"></div><div class="escolha-base"><button type="button" class="texto-botao" id="outra" aria-expanded="false" aria-controls="resposta-livre">Outra coisa</button><span class="atalhos">${etapa===1?'Pode marcar mais de uma origem.':'1 a 4 · setas · Enter'}</span></div><div id="resposta-livre" hidden><label for="texto">Conte do seu jeito</label><textarea id="texto" rows="2" maxlength="600" placeholder="O que acontece na sua empresa?"></textarea><p class="aviso">Guardado como contexto, sem pontuação automática.</p></div></div><div class="cartao-rodape"><span id="contador" role="status">Escolha para continuar</span><button type="submit" id="enviar" class="enviar" disabled>Enviar <span aria-hidden="true">↑</span></button></div></form>`;
   atualizarSelecao();
   $('#resposta').classList.add('preparando');
   manterReserva = false;
@@ -266,7 +269,7 @@ function renderResultado(fim) {
   const r = calcular(respostas), area = REGRAS.areas[r.principal];
   const temLivre = Object.values(detalhes).some(d=>d.livre);
   const el = document.createElement('article');el.className='mensagem';el.id='diagnostico';
-  el.innerHTML = `${autor()}<div class="resultado"><p class="eyebrow">${r.principal?'Seu gargalo principal':'Sua leitura inicial'}</p><h2>${tituloResultado(r)}</h2><p>${area?area.leitura:'Nas respostas que foi possível pontuar, não apareceu um gargalo claro. Isso não garante que está tudo resolvido. Vale conferir a rotina com o Guilherme.'}</p>${r.empatadas.length>1?`<p class="aviso">Mesma nota em ${r.empatadas.slice(1).map(id=>REGRAS.areas[id].nome).join(' e ')}. A prioridade segue o desempate da regra, não uma certeza sobre seu negócio.</p>`:''}${temLivre?'<p class="aviso">Leitura parcial: textos livres foram guardados como contexto, sem pontos. Áreas sem evidência aparecem como “Sem nota”.</p>':''}<div class="mapa"><h3>Onde vale colocar atenção</h3><p>De 0 a 10. Maior nota pede mais atenção.</p>${Object.entries(REGRAS.areas).map(([id,a])=>`<div class="nota ${id===r.principal?'principal':''}"><div class="nota-label"><span>${a.nome}</span><strong>${r.notas[id]===null?'Sem nota':r.notas[id]+' / 10'}</strong></div><div class="trilho" role="img" aria-label="${a.nome}: ${r.notas[id]===null?'sem nota':r.notas[id]+' de 10'}"><span style="width:${(r.notas[id]??0)*10}%"></span></div></div>`).join('')}</div><div class="hoje"><h3>Um primeiro passo para hoje</h3><p>${area?area.hoje:'Escolha uma venda recente e acompanhe de onde veio, quem respondeu e como terminou. Veja se a rotina confirma suas respostas.'}</p></div><div class="ajuda"><h3>Como a Feed ajuda aqui</h3><p>${area?area.feed:'A Feed olha a operação com você para definir o que vale organizar, automatizar ou manter como está.'}</p></div><p class="preco">Planos a partir de <strong>R$ 997 por mês</strong>. O valor final é definido no diagnóstico com o Guilherme.</p><details class="metodo"><summary>Como essa nota foi calculada?</summary><p>A nota é por regra, não por IA: média dos pontos (0 a 3), com os pesos de cada pergunta, dividida por 3 e multiplicada por 10. Arredondamos para um inteiro. Até 3: poucos sinais; até 6: vale organizar; acima: atenção primeiro.</p><p>Pesos: atendimento, resposta 2 e perda 1; atração, origem 1 e anúncios 1; presença, perfis 1; vendas, perda 1, retorno 2 e contatos 1; dependência, contatos 1 e ausência 3. Sem evidência, a resposta fica fora da média. Empate: dependência do dono, atendimento, vendas, presença e atração.</p><p>É uma leitura inicial das suas respostas, não uma auditoria, uma comparação com o mercado ou uma previsão de vendas. Neste conceito, as falas também são roteirizadas.</p></details></div>`;
+  el.innerHTML = `${autor()}<div class="resultado"><p class="eyebrow">${r.principal?'Seu gargalo principal':'Sua leitura inicial'}</p><h2>${tituloResultado(r)}</h2><p>${area?area.leitura:'Nas respostas que foi possível pontuar, não apareceu um gargalo claro. Isso não garante que está tudo resolvido. Vale conferir a rotina com o Guilherme.'}</p>${r.empatadas.length>1?`<p class="aviso">Mesma nota em ${r.empatadas.slice(1).map(id=>REGRAS.areas[id].nome).join(' e ')}. A prioridade segue o desempate da regra, não uma certeza sobre seu negócio.</p>`:''}${temLivre?'<p class="aviso">Leitura parcial: textos livres foram guardados como contexto, sem pontos. Áreas sem evidência aparecem como “Sem nota”.</p>':''}<div class="mapa"><h3>Onde vale colocar atenção</h3><p>De 0 a 10. Maior nota pede mais atenção.</p>${Object.entries(REGRAS.areas).map(([id,a])=>`<div class="nota ${id===r.principal?'principal':''}"><div class="nota-label"><span>${a.nome}</span><strong>${r.notas[id]===null?'Sem nota':r.notas[id]+' / 10'}</strong></div><div class="trilho" role="img" aria-label="${a.nome}: ${r.notas[id]===null?'sem nota':r.notas[id]+' de 10'}"><span style="width:${(r.notas[id]??0)*10}%"></span></div></div>`).join('')}</div><div class="hoje"><h3>Um primeiro passo para hoje</h3><p>${area?area.hoje:'Escolha uma venda recente e acompanhe de onde veio, quem respondeu e como terminou. Veja se a rotina confirma suas respostas.'}</p></div><div class="ajuda"><h3>Como a Feed ajuda aqui</h3><p>${area?area.feed:'A Feed olha a operação com você para definir o que vale organizar, automatizar ou manter como está.'}</p></div><p class="preco">Planos a partir de <strong>R$ 997 por mês</strong>. O valor final é definido no diagnóstico com o Guilherme.</p><details class="metodo"><summary>Como essa nota foi calculada?</summary><p>A nota é por regra, não por IA: média dos pontos (0 a 3), com os pesos de cada pergunta, dividida por 3 e multiplicada por 10. Arredondamos para um inteiro. Até 3: poucos sinais; até 6: vale organizar; acima: atenção primeiro.</p><p>Pesos: atendimento, resposta 2 e perda 1; atração, origem 1 e anúncios 1; presença, perfis 1; vendas, perda 1, retorno 2 e contatos 1; dependência, contatos 1 e ausência 3. Sem evidência, a resposta fica fora da média. Empate: dependência do dono, atendimento, vendas, presença e atração.</p><p>É uma leitura inicial das suas respostas, não uma auditoria, uma comparação com o mercado ou uma previsão de vendas. A conversa é guiada pelas suas respostas.</p></details></div>`;
   fim.append(el);
 }
 function mensagemWhatsApp() {
@@ -275,26 +278,40 @@ function mensagemWhatsApp() {
 }
 function linkWhatsApp(){return 'https://wa.me/5516993020694?text='+encodeURIComponent(mensagemWhatsApp());}
 function montarPayload() {
-  const r=calcular(respostas);
-  const respondidas=Object.fromEntries(REGRAS.perguntas.map(q=>[q.id,{pergunta:q.titulo,opcao:respostas[q.id],resposta:detalhes[q.id].texto}]));
-  const metadados={pageUrl:location.href,submittedAt:new Date().toISOString(),userAgent:navigator.userAgent};
-  return {modo:'conceito: nenhum envio',leadAtual:{company:'',market:'',stage:Object.values(respondidas).map(r=>`${r.pergunta} ${r.resposta}`).join('\n'),digitalPresence:respondidas.presenca.resposta,priority:tituloResultado(r),...metadados},diagnosticoAtual:{nome:contato.nome.trim(),email:contato.email.trim().toLowerCase(),site:'',...metadados},novosCamposLead:{nome:contato.nome.trim(),email:contato.email.trim().toLowerCase(),telefone:contato.whatsapp.replace(/\D/g,''),respostas:respondidas,resultado:{versao:REGRAS.versao,gargalo:r.principal,notas:r.notas,empatadas:r.empatadas},consentimento:{aceito:contato.consentimento,versao:'diagnostico-v1',finalidade:'Receber o PDF e contato da Feed sobre este diagnóstico',registradoEm:contato.consentimento?metadados.submittedAt:null,politica:'https://agenciafeed.com/privacidade.html'},contextoConversa:Object.fromEntries(REGRAS.perguntas.map(q=>[q.id,{livre:detalhes[q.id].livre,opcoes:detalhes[q.id].indices}]))}};
+  return {
+    nome:contato.nome.trim(), email:contato.email.trim().toLowerCase(), telefone:contato.whatsapp.replace(/\D/g,''),
+    site:$('#site')?.value || '', pageUrl:location.href, idempotencyKey:crypto.randomUUID(),
+    diagnostico:{versao:REGRAS.versao,respostas:Object.fromEntries(REGRAS.perguntas.map(q=>[q.id,{
+      opcao:respostas[q.id], opcoes:[...detalhes[q.id].indices], texto:detalhes[q.id].texto, livre:detalhes[q.id].livre
+    }]))},
+    consentimento:{aceito:contato.consentimento,versao:'diagnostico-v1'}
+  };
 }
-function modoConceito(){return `<details class="modo"><summary>Modo conceito: ver payload de envio</summary><p>Nada é enviado ou salvo fora desta página. Este é o mesmo envelope da versão anterior, com contexto adicional para texto livre e múltiplas origens.</p><pre id="payload">${escapar(JSON.stringify(ultimoPayload||montarPayload(),null,2))}</pre></details>`;}
 function renderContato(fim) {
   const el=document.createElement('article');el.className='mensagem';el.id='pedido-contato';
   el.hidden=true;
-  el.innerHTML=`${autor()}<form id="contato" class="contato" novalidate><p class="eyebrow">Agora, se fizer sentido</p><h2>Vamos levar isso adiante?</h2><p>Receba o Diagnóstico do Gargalo completo em PDF e peça ao Guilherme para olhar seu caso. O PDF atual é um exercício complementar, não um relatório personalizado dessas notas.</p><label class="campo"><span>Seu nome <small>Obrigatório</small></span><input name="nome" id="nome" autocomplete="name" maxlength="100" required value="${escapar(contato.nome)}" aria-describedby="erro"></label><label class="campo"><span>E-mail para receber o PDF <small>Obrigatório</small></span><input name="email" id="email" type="email" autocomplete="email" inputmode="email" maxlength="254" required value="${escapar(contato.email)}" aria-describedby="erro"></label><label class="campo"><span>WhatsApp com DDD <small>Opcional</small></span><input name="whatsapp" id="whatsapp" type="tel" autocomplete="tel" inputmode="tel" maxlength="20" value="${escapar(contato.whatsapp)}" aria-describedby="erro"></label><label class="consent"><input id="consentimento" name="consentimento" type="checkbox" required ${contato.consentimento?'checked':''} aria-describedby="erro"><span>Autorizo a Feed a usar meu nome, e-mail, WhatsApp (se informado) e respostas para enviar o PDF e entrar em contato sobre este diagnóstico. Posso retirar a autorização. Sem inscrição em campanhas.</span></label><a class="politica" href="https://agenciafeed.com/privacidade.html" target="_blank" rel="noopener noreferrer">Política de privacidade ↗</a><p id="erro" class="erro" role="alert"></p><button class="primario" type="submit">Pedir PDF e análise do meu caso ↗</button><p class="aviso">Envio simulado neste conceito. Sem custo para receber o material.</p><a class="secundario" id="whatsapp-link" href="${linkWhatsApp()}" target="_blank" rel="noopener noreferrer">Levar meu resultado para o WhatsApp ↗</a><p class="aviso">Abre uma mensagem pronta. Você decide quando enviar. A equipe atende de segunda a sexta, das 8h às 20h.</p></form>${modoConceito()}`;
+  el.innerHTML=`${autor()}<form id="contato" class="contato" novalidate>
+    <p class="eyebrow">Agora, se fizer sentido</p><h2>Vamos levar isso adiante?</h2>
+    <p>Receba o Diagnóstico do Gargalo completo em PDF e peça ao Guilherme para olhar seu caso. O PDF é um exercício complementar, não um relatório personalizado dessas notas.</p>
+    <input name="site" id="site" type="text" autocomplete="off" tabindex="-1" hidden>
+    <label class="campo"><span>Seu nome <small>Obrigatório</small></span><input name="nome" id="nome" autocomplete="name" maxlength="100" required value="${escapar(contato.nome)}" aria-describedby="erro"></label>
+    <label class="campo"><span>E-mail para receber o PDF <small>Obrigatório</small></span><input name="email" id="email" type="email" autocomplete="email" inputmode="email" maxlength="254" required value="${escapar(contato.email)}" aria-describedby="erro"></label>
+    <label class="campo"><span>WhatsApp com DDD <small>Opcional</small></span><input name="whatsapp" id="whatsapp" type="tel" autocomplete="tel" inputmode="tel" maxlength="20" value="${escapar(contato.whatsapp)}" aria-describedby="erro"></label>
+    <label class="consent"><input id="consentimento" name="consentimento" type="checkbox" required ${contato.consentimento?'checked':''} aria-describedby="erro"><span>Autorizo a Feed a usar meu nome, e-mail, WhatsApp (se informado) e respostas para enviar o PDF e entrar em contato sobre este diagnóstico. Posso retirar a autorização. Sem inscrição em campanhas.</span></label>
+    <a class="politica" href="/privacidade.html" target="_blank" rel="noopener noreferrer">Política de privacidade ↗</a>
+    <p id="erro" class="erro" role="alert"></p><button class="primario" type="submit">Pedir PDF e análise do meu caso ↗</button>
+    <p class="aviso">Sem custo para receber o material.</p>
+    <a class="secundario" id="whatsapp-link" href="${linkWhatsApp()}" target="_blank" rel="noopener noreferrer">Levar meu resultado para o WhatsApp ↗</a>
+    <p class="aviso">Abre uma mensagem pronta. Você decide quando enviar. A equipe atende de segunda a sexta, das 8h às 20h.</p>
+  </form>`;
   fim.append(el);
 }
-function confirmar() {
+function confirmar({pdfSent}) {
   const form=$('#contato');form.querySelectorAll('input,button').forEach(el=>el.disabled=true);
   const el=document.createElement('article');el.className='mensagem';el.id='confirmacao';
-  el.innerHTML=`${autor()}<div class="confirmacao"><p class="eyebrow">Pedido preparado · simulação</p><h2>${escapar(contato.nome.split(/\s+/)[0])}, seu próximo passo está aqui.</h2><p>Neste conceito, nada foi enviado. Na versão real, o PDF irá para <strong>${escapar(contato.email)}</strong> e o Guilherme receberá suas respostas para olhar o caso.</p><p>Você já pode abrir o material complementar ou levar seu resultado para a conversa.</p><div class="acoes"><a class="primario" href="assets/diagnostico-do-gargalo.pdf" download>Baixar o PDF completo ↓</a><a class="secundario" href="${linkWhatsApp()}" target="_blank" rel="noopener noreferrer">Conversar no WhatsApp ↗</a></div><p class="aviso">A equipe atende de segunda a sexta, das 8h às 20h. Nenhuma conversa foi agendada.</p></div>`;
+  el.innerHTML=`${autor()}<div class="confirmacao"><p class="eyebrow">Pedido recebido</p><h2>${escapar(contato.nome.split(/\s+/)[0])}, a equipe recebeu seu diagnóstico.</h2><p>Seus dados e suas respostas chegaram à Feed para o Guilherme olhar seu caso.</p><p>${pdfSent?'O material complementar em PDF foi enviado para <strong>'+escapar(contato.email)+'</strong>. Confira também a caixa de spam.':'O envio do PDF por e-mail não foi concluído. Seu pedido já está com a equipe; você pode baixar o material aqui.'}</p><div class="acoes"><a class="primario" href="assets/diagnostico-do-gargalo.pdf" download>Baixar o PDF completo ↓</a><a class="secundario" href="${linkWhatsApp()}" target="_blank" rel="noopener noreferrer">Conversar no WhatsApp ↗</a></div><p class="aviso">A equipe atende de segunda a sexta, das 8h às 20h. Nenhuma conversa foi agendada.</p></div>`;
   fecharContato();
-  el.insertAdjacentHTML('beforeend', modoConceito());
-  $('#pedido-contato #payload').removeAttribute('id');
-  $('#fim').append(el);el.scrollIntoView({block:'start'});anunciar('Pedido simulado. Nenhum dado foi enviado. Seu PDF está disponível para baixar.');
+  $('#fim').append(el);el.scrollIntoView({block:'start'});anunciar('A equipe recebeu seu diagnóstico. '+(pdfSent?'O PDF foi enviado por e-mail.':'O PDF está disponível para baixar.'));
   el.insertAdjacentHTML('beforeend','<button class="texto-botao" data-ir="diagnostico">Voltar ao diagnóstico ↑</button>');
 }
 function abrirContato() {
@@ -310,7 +327,6 @@ function abrirContato() {
     rodape.innerHTML='<button type="button" class="texto-botao" id="fechar-contato">Voltar ao diagnóstico</button>';
     rodape.append(enviar);
     corpo.append(...form.childNodes);
-    corpo.append(el.querySelector('.modo'));
     form.append(corpo,rodape);
   }
   el.hidden=false;
@@ -355,17 +371,36 @@ document.addEventListener('input',e=>{
   if(!e.target.closest('#contato'))return;
   contato[e.target.name]=e.target.type==='checkbox'?e.target.checked:e.target.value;
   e.target.removeAttribute('aria-invalid');$('#erro').textContent='';ultimoPayload=null;
-  $('#payload').textContent=JSON.stringify(montarPayload(),null,2);$('#whatsapp-link').href=linkWhatsApp();
+  $('#whatsapp-link').href=linkWhatsApp();
 });
-document.addEventListener('submit',e=>{
+document.addEventListener('submit',async e=>{
   if(e.target.id!=='contato')return;e.preventDefault();
+  if(enviandoContato || $('#confirmacao')) return;
   const telefone=contato.whatsapp.replace(/\D/g,'');let campo,erro;
   if(!contato.nome.trim()){campo='nome';erro='Conte como podemos te chamar.';}
   else if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contato.email.trim())){campo='email';erro='Confira seu e-mail para receber o PDF.';}
   else if(contato.whatsapp.trim()&&!/^(?:55)?[1-9]{2}9?\d{8}$/.test(telefone)){campo='whatsapp';erro='Confira o WhatsApp com DDD ou deixe esse campo vazio.';}
   else if(!contato.consentimento){campo='consentimento';erro='Marque a autorização para pedir o PDF e a análise do caso.';}
   if(erro){$('#erro').textContent=erro;$('#'+campo).setAttribute('aria-invalid','true');$('#'+campo).focus();return;}
-  contato.nome=contato.nome.trim();contato.email=contato.email.trim().toLowerCase();ultimoPayload=montarPayload();$('#payload').textContent=JSON.stringify(ultimoPayload,null,2);confirmar();
+  contato.nome=contato.nome.trim();contato.email=contato.email.trim().toLowerCase();
+  ultimoPayload ||= montarPayload();
+  const form=$('#contato'), botao=form.querySelector('[type=submit]'), rotulo=botao.textContent;
+  enviandoContato=true;travar(true);form.setAttribute('aria-busy','true');
+  form.querySelectorAll('input,button').forEach(el=>el.disabled=true);
+  botao.textContent='Enviando seu pedido...';$('#erro').textContent='';
+  const controller=new AbortController(), timer=setTimeout(()=>controller.abort(),30000);
+  try {
+    const resposta=await fetch('/api/diagnostico',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(ultimoPayload),signal:controller.signal});
+    const resultado=await resposta.json().catch(()=>({}));
+    if(!resposta.ok || resultado.leadSaved!==true) throw new Error(resultado.error || 'Não conseguimos confirmar o recebimento. Tente novamente.');
+    confirmar({pdfSent:resultado.pdfSent===true});
+  } catch(erro) {
+    $('#erro').textContent=erro.name==='AbortError'?'A confirmação demorou mais que o esperado. Seus dados continuam aqui; tente novamente.':erro.message==='Failed to fetch'?'Não foi possível conectar. Confira sua internet e tente novamente.':erro.message;
+    $('#erro').scrollIntoView({block:'nearest'});anunciar($('#erro').textContent);
+  } finally {
+    clearTimeout(timer);enviandoContato=false;travar(false);form.removeAttribute('aria-busy');botao.textContent=rotulo;
+    if(!$('#confirmacao')) form.querySelectorAll('input,button').forEach(el=>el.disabled=false);
+  }
 });
 // visualViewport acompanha teclado e barras móveis; o conteúdo continua rolando por dentro.
 function ajustarViewport(){if(!window.visualViewport)return;document.documentElement.style.setProperty('--altura',`${visualViewport.height}px`);document.documentElement.style.setProperty('--top',`${visualViewport.offsetTop}px`);requestAnimationFrame(()=>{if(document.activeElement?.matches('#texto,#contato input'))document.activeElement.scrollIntoView({block:'nearest'});});}
