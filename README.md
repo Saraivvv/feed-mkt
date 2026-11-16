@@ -1,5 +1,13 @@
 # MazyOS
 
+## Site da Feed em produção (16/11/2026)
+
+O site em `https://agenciafeed.com/` usa o HTML aprovado de `conceitos/d-site-feed/` e o diagnóstico Tuiê de `conceitos/f-diagnostico-chat/`. `npm run build` gera as páginas SEO e monta `dist/` com `scripts/build-site.mjs`, preservando o blog e as páginas de `public/`. A antiga aplicação em `src/` não é a entrada do build publicado.
+
+As funções em `api/` recebem os contatos no CRM nativo do Hub. Credenciais ficam nas variáveis da Vercel, fora do repositório. Verificações: `node scripts/verificar-conexoes.mjs` e `node conceitos/f-diagnostico-chat/verificar-tuie.cjs`; a passagem pelo site usa `node conceitos/verificar-tuie.cjs` com `SITE_URL` apontando para o build servido por HTTP.
+
+---
+
 > O sistema operacional do seu negócio dentro do Claude Code.
 
 Você acaba de instalar o MazyOS. Em alguns minutos, sua empresa vai
