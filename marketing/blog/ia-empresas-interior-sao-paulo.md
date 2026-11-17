@@ -27,7 +27,7 @@ relatedPlanned:
   - "IA para PME: guia prático para começar sem gastar errado"
   - "Automação de WhatsApp para pequena empresa"
   - "Quanto custa implementar IA numa pequena empresa?"
-status: scheduled
+status: published
 ---
 
 IA em empresa do interior de São Paulo funciona pelo mesmo motivo que funciona em qualquer lugar: existe conversa repetida, orçamento que morre sem resposta e tarefa manual que consome gente. O que muda é a escala e o tipo de negócio, não a lógica.

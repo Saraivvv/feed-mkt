@@ -27,7 +27,7 @@ relatedPlanned:
   - "Agente de IA no WhatsApp vale para sua empresa?"
   - "Quanto custa implementar IA numa pequena empresa?"
   - "IA para PME: guia prático para começar sem gastar errado"
-status: scheduled
+status: published
 ---
 
 Agente de IA para empresas é um sistema que entende uma mensagem em linguagem natural, consulta as informações do negócio e executa tarefas dentro de regras que a empresa definiu. Ele responde cliente, qualifica oportunidade, agenda, registra dado, resume conversa e passa para uma pessoa quando o caso sai do combinado.

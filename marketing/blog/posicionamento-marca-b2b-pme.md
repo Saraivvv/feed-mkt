@@ -27,7 +27,7 @@ relatedPlanned:
   - "IA para PME: guia prático para começar sem gastar errado"
   - "Diagnóstico de IA para pequena empresa"
   - "Como escolher fornecedor de IA sem cair em promessa vazia"
-status: scheduled
+status: published
 ---
 
 Ninguém lembra da sua empresa porque ela se descreve como todas as outras. Se o site diz "soluções personalizadas com qualidade e atendimento diferenciado", o cliente não guarda nada, porque isso é exatamente o que o concorrente também diz.

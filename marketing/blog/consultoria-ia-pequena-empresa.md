@@ -27,7 +27,7 @@ relatedPlanned:
   - "Como escolher fornecedor de IA sem cair em promessa vazia"
   - "Diagnóstico de IA para pequena empresa"
   - "IA para PME: guia prático para começar sem gastar errado"
-status: scheduled
+status: published
 ---
 
 Consultoria de IA para pequena empresa serve para transformar dúvida em decisão. O entregável não é tecnologia. É um mapa: onde a IA se paga na sua operação, qual projeto vem primeiro, qual métrica prova resultado, quanto custa e o que fazer na sequência.

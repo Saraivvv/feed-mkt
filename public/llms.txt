@@ -45,6 +45,12 @@ Razão social: Feed Marketing e Comunicação (CNPJ 53.877.987/0001-93).
 
 ## Guias do blog
 
+- Automação de agendamento: como encher a agenda sem encher o time de trabalho: https://agenciafeed.com/blog/automacao-agendamento-clinicas-servicos/
+- IA em empresas do interior de São Paulo: onde ela já está funcionando: https://agenciafeed.com/blog/ia-empresas-interior-sao-paulo/
+- Posicionamento de marca B2B: por que ninguém lembra da sua empresa: https://agenciafeed.com/blog/posicionamento-marca-b2b-pme/
+- Consultoria de IA para pequena empresa: o que esperar antes de contratar: https://agenciafeed.com/blog/consultoria-ia-pequena-empresa/
+- Agente de IA para empresas: o que é, o que faz e quando vale a pena: https://agenciafeed.com/blog/agente-ia-para-empresas/
+- Por que revisar posts antigos melhora SEO e respostas das IAs: https://agenciafeed.com/blog/revisar-posts-antigos-seo-geo/
 - IA para PME: guia prático para começar sem gastar errado: https://agenciafeed.com/blog/ia-para-pme-guia-pratico/
 - Integrar IA com CRM, agenda e planilhas: quando faz sentido?: https://agenciafeed.com/blog/integrar-ia-crm-agenda-planilhas/
 - Como escolher fornecedor de IA sem cair em promessa vazia: https://agenciafeed.com/blog/como-escolher-fornecedor-ia/

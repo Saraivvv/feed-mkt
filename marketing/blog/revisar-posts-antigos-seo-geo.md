@@ -26,7 +26,7 @@ readingPromise:
 relatedPlanned:
   - "IA para PME: guia prático para começar sem gastar errado"
   - "Quanto custa implementar IA numa pequena empresa?"
-status: scheduled
+status: published
 ---
 
 Revisar posts antigos melhora SEO e respostas das IAs porque conteúdo útil envelhece. Preço muda, ferramenta muda, exemplo muda, link quebra e intenção de busca evolui. Um blog forte não é feito só de publicação nova. É feito de atualização inteligente.

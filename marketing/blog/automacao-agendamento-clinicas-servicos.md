@@ -27,7 +27,7 @@ relatedPlanned:
   - "Automação de WhatsApp para pequena empresa"
   - "Agente de IA no WhatsApp vale para sua empresa?"
   - "IA para PME: guia prático para começar sem gastar errado"
-status: scheduled
+status: published
 ---
 
 Em negócio de hora marcada, a agenda é o produto. Clínica, ótica, estética, oficina, consultoria, escritório e prestador de serviço vivem do horário preenchido, e perdem dinheiro de duas formas: quando alguém pede horário e não recebe resposta rápida, e quando alguém marca e não aparece.

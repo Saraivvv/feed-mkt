@@ -14,9 +14,45 @@
   </url>
   <url>
     <loc>https://agenciafeed.com/blog/</loc>
-    <lastmod>2026-08-19</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://agenciafeed.com/blog/automacao-agendamento-clinicas-servicos/</loc>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agenciafeed.com/blog/ia-empresas-interior-sao-paulo/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agenciafeed.com/blog/posicionamento-marca-b2b-pme/</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agenciafeed.com/blog/consultoria-ia-pequena-empresa/</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agenciafeed.com/blog/agente-ia-para-empresas/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agenciafeed.com/blog/revisar-posts-antigos-seo-geo/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://agenciafeed.com/blog/ia-para-pme-guia-pratico/</loc>
